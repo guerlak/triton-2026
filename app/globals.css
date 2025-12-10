@@ -3,21 +3,22 @@
 :root {
   --background: #ffffff;
   --foreground: #171717;
+  --triton-dark: #0A0A0A;
+  --triton-gray: #1F1F1F;
+  --triton-red: #FF3B30;
+
 }
 
-@theme inline {
+@theme {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
+  --color-triton-dark: var(--triton-dark);
+  --color-triton-gray: var(--triton-gray);
+  --color-triton-red: var(--triton-red);
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
-}
 
 body {
   background: var(--background);
