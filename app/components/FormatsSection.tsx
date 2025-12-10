@@ -110,7 +110,7 @@ const FormatsSection: React.FC = () => {
                           <li className="flex items-center"><span className="w-2 h-2 bg-triton-red rounded-full mr-3"></span>Largada: 15h30</li>
                           <li className="flex items-center"><span className="w-2 h-2 bg-triton-red rounded-full mr-3"></span>Premiação: 17h45</li>
                         </ul>
-                        <button onClick={teste} href="" rel="noopener noreferrer" className="m bg-triton-red hover:bg-red-700 text-white text-sm font-bold rounded-full uppercase tracking-widest px-4 py-2 transition-all transform hover:scale-105">Percurso em vídeo</button>
+                        {/* <button onClick={teste} href="" rel="noopener noreferrer" className="m bg-triton-red hover:bg-red-700 text-white text-sm font-bold rounded-full uppercase tracking-widest px-4 py-2 transition-all transform hover:scale-105">Percurso em vídeo</button> */}
                       </div>
 
                       <Image src={swimMap} alt='swim picture' className="rounded-2xl" />
