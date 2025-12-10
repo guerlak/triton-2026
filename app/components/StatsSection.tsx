@@ -32,12 +32,12 @@ const StatsSection: React.FC = () => {
         </div>
 
         {/* Pontuação Banner */}
-        <div className="bg-gradient-to-r from-neutral-900 to-neutral-800 rounded-2xl p-8 md:p-12 border-l-4 border-triton-red shadow-2xl">
+        <div className="bg-linear-to-r from-neutral-900 to-neutral-800 rounded-2xl p-8 md:p-12 border-l-4 border-triton-red shadow-2xl">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center text-center lg:text-left">
             <div>
               <h3 className="text-3xl font-black uppercase text-white mb-4">Um Sistema de <br></br>pontuação inovador</h3>
               <p className="text-gray-300 text-lg leading-relaxed">
-                Ao contrário dos triathons tradicionais, onde vence quem faz o menor tempo, <strong>no TRITON 3 o jogo é outro! </strong>
+                Ao contrário dos triathlons tradicionais, onde vence quem faz o menor tempo, <strong>no TRITON 3 o jogo é outro! </strong>
                 Aqui, o campeão é <strong>quem soma menos pontos</strong> ao longo dos três dias.
                 A pontuação é definida pela colocação diária. Isso coloca <strong>todas as modalidades com o mesmo peso</strong> e transforma a disputa
                 em uma verdadeira prova de <strong>consistência, estratégia e resiliência.</strong>

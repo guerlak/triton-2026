@@ -53,7 +53,7 @@ const FormatsSection: React.FC = () => {
             Formatos que Redefinem<br />a Experiência
           </h3>
           <p className="text-gray-400 max-w-2xl mx-auto text-lg">
-            O TRITON 3 é uma prova realizada em 3 dias consecutivos.
+            O <strong>TRITON 3</strong> é uma prova realizada em 3 dias consecutivos.
             Uma experiência  única que eleva o triathlon a outro nível. O formato permite que, além dos triatletas, nadadores, ciclistas e corredores participem da prova
             de forma individual.
           </p>
@@ -64,19 +64,19 @@ const FormatsSection: React.FC = () => {
           <div className="bg-neutral-900 p-1 rounded-full inline-flex border border-white/10">
             <button
               onClick={() => setActiveTab('1')}
-              className={`px-8 py-3 rounded-full text-sm font-bold uppercase tracking-wider transition-all ${activeTab === '1' ? 'bg-triton-red text-white shadow-lg' : 'text-gray-400 hover:text-white'}`}
+              className={`px-6 py-3 rounded-full text-sm font-bold uppercase tracking-wider transition-all ${activeTab === '1' ? 'bg-triton-red text-white shadow-lg' : 'text-gray-400 hover:text-white'}`}
             >
               Natação
             </button>
             <button
               onClick={() => setActiveTab('2')}
-              className={`px-8 py-3 rounded-full text-sm font-bold uppercase tracking-wider transition-all ${activeTab === '2' ? 'bg-triton-red text-white shadow-lg' : 'text-gray-400 hover:text-white'}`}
+              className={`px-6 py-3 rounded-full text-sm font-bold uppercase tracking-wider transition-all ${activeTab === '2' ? 'bg-triton-red text-white shadow-lg' : 'text-gray-400 hover:text-white'}`}
             >
               ciclismo
             </button>
             <button
               onClick={() => setActiveTab('3')}
-              className={`px-8 py-3 rounded-full text-sm font-bold uppercase tracking-wider transition-all ${activeTab === '3' ? 'bg-triton-red text-white shadow-lg' : 'text-gray-400 hover:text-white'}`}
+              className={`px-6 py-3 rounded-full text-sm font-bold uppercase tracking-wider transition-all ${activeTab === '3' ? 'bg-triton-red text-white shadow-lg' : 'text-gray-400 hover:text-white'}`}
             >
               Corrida
             </button>
@@ -153,7 +153,7 @@ const FormatsSection: React.FC = () => {
                         </div>
                         <h4 className="text-2xl font-bold text-white mb-4">CORRIDA</h4>
                         <p className="text-gray-400 mb-4">
-                          Realizada no interior do condomínio Portobello, essa prova parte de detro do resort em direção ao safari. Um percurso cinematográfico.
+                          Realizada no interior do condomínio Portobello, essa prova parte de detro do resort em direção ao safári. Um percurso cinematográfico.
                         </p>
                         <ul className="space-y-2 text-gray-300">
                           <li className="flex items-center"><span className="w-2 h-2 bg-triton-red rounded-full mr-3"></span>Data: 23 de agosto (domingo)</li>

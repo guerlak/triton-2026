@@ -61,7 +61,7 @@ const LocationsSection: React.FC = () => {
             <div className="bg-triton-red py-10 px-4 text-center">
                 <h3 className="text-2xl md:text-3xl font-black text-white uppercase mb-2">Transformando o paraíso no seu Campo de Provas</h3>
                 <p className="text-white/80 max-w-3xl mx-auto">
-                    Relembre os melhores momentos do TRITON 3 2025 e prepare-se para vivenciar essa experiência única,
+                    Relembre os melhores momentos do <strong>TRITON 3</strong> 2025 e prepare-se para vivenciar essa experiência única,
                     que desafia o seu corpo e renova a sua mente.
                 </p>
             </div>

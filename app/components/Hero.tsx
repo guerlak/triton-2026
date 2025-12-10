@@ -23,7 +23,7 @@ const Hero: React.FC = () => {
         <Image
           src={logoHero}
           alt="Triathlon Swimming"
-          className="w-full h-full object-cover"
+          className="w-full h-full object-cover hidden md:block"
         />
 
         <div className="flex flex-col md:flex-row justify-center items-center gap-6 text-sm md:text-xl font-bold tracking-widest uppercase">
