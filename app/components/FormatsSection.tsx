@@ -26,7 +26,7 @@ const FormatTable: React.FC<{ distances: typeof TRITON_1_DISTANCES }> = ({ dista
           <tr key={idx} className="border-b border-white/10 hover:bg-white/5 transition-colors">
             <td className="py-4 px-4 font-black text-xl italic uppercase text-white">{row.name}</td>
             <td className="py-4 px-4 text-center font-bold text-gray-300">{row.swim}</td>
-            <td className="py-4 px-4 text-center font-bold text-gray-300">{row.bike}</td>
+            <td className="py-4 px-2 text-center font-bold text-gray-300">{row.bike}</td>
             <td className="py-4 px-4 text-center font-bold text-gray-300">{row.run}</td>
           </tr>
         ))}
@@ -180,14 +180,12 @@ const FormatsSection: React.FC = () => {
 
         <FormatTable distances={activeTab === '1' ? TRITON_1_DISTANCES : TRITON_3_DISTANCES} />
 
-        {/* Formas competicao */}
         <div className="mt-8 border-t border-white/10 pt-12">
           <h4 className="text-2xl font-bold text-white mb-8 uppercase border-l-4 border-triton-red pl-4">
             Possibilidades de Competição
           </h4>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
 
-            {/* Individual */}
             <div className="bg-white/5 p-6 rounded-xl border border-white/10 hover:border-triton-red/50 transition-all group">
               <div className="bg-triton-red/10 w-12 h-12 rounded-lg flex items-center justify-center mb-4 group-hover:bg-triton-red transition-colors">
                 <User className="text-triton-red group-hover:text-white" size={24} />
@@ -200,10 +198,8 @@ const FormatsSection: React.FC = () => {
                 Sua posição no ranking final (após os três dias) será o somatório da sua classificação em cada modalidade:
                 <span className="text-white font-bold"> Natação + Ciclismo + Corrida.</span>
               </p>
-
             </div>
 
-            {/* Corporate */}
             <div className="bg-white/5 p-6 rounded-xl border border-white/10 hover:border-triton-red/50 transition-all group">
               <div className="bg-triton-red/10 w-12 h-12 rounded-lg flex items-center justify-center mb-4 group-hover:bg-triton-red transition-colors">
                 <Users className="text-triton-red group-hover:text-white" size={24} />

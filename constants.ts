@@ -22,15 +22,15 @@ export const DEMOGRAPHICS_STATS = [
 ];
 
 export const TRITON_1_DISTANCES: Distance[] = [
-  { name: 'SPRINT', swim: '1000m', bike: '30 km', run: '10 km' },
-  { name: 'MIDDLE', swim: '2000m', bike: '60 km', run: '20 km' },
-  { name: 'LONG', swim: '3000m', bike: '90 km', run: '30 km' },
+  { name: 'SPRINT', swim: '1000m', bike: '30km', run: '10km' },
+  { name: 'MIDDLE', swim: '2000m', bike: '60km', run: '20km' },
+  { name: 'LONG', swim: '3000m', bike: '90km', run: '30km' },
 ];
 
 export const TRITON_3_DISTANCES: Distance[] = [
-  { name: 'SPRINT', swim: '1000m', bike: '30 km', run: '10 km' },
-  { name: 'MIDDLE', swim: '2000m', bike: '60 km', run: '20 km' },
-  { name: 'LONG', swim: '3000m', bike: '90 km', run: '30 km' },
+  { name: 'SPRINT', swim: '1000m', bike: '30km', run: '10km' },
+  { name: 'MIDDLE', swim: '2000m', bike: '60km', run: '20km' },
+  { name: 'LONG', swim: '3000m', bike: '90km', run: '30km' },
 ];
 
 export const TRITON_FORMATO: Distance[] = [
