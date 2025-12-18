@@ -77,7 +77,7 @@ const LocationsSection: React.FC = () => {
                     Toda a estrutura do evento está localizada dentro do <strong>Portobello Resort & Safári</strong>.
                     Tanto o hotel quanto o evento estão sujeitos à capacidade máxima. <br></br><strong>Garanta sua vaga
                         o quanto antes e viva essa experiência imersíva!</strong>
-                </p>†
+                </p>
 
                 <div className='grid md:grid-cols-2 grid-cols-1 md:w-[1200px] justify-center mt-20 gap-10 mx-auto'>
                     <div className="relative h-80 rounded-2xl overflow-hidden mb-8 group">
@@ -86,7 +86,7 @@ const LocationsSection: React.FC = () => {
                             <h4 className="text-lg font-black italic text-white opacity-80">Mangaratiba-RJ</h4>
                         </div>
                     </div>
-                    <div className='text-left'>
+                    <div className='text-left p-4 md:p-0'>
                         <h1 className='text-2xl uppercase font-black mb-2'>Resort Portobello</h1>
                         <h2>
                             É o hotel oficial do evento e possui condições exclusivas para os atletas do TRITON
