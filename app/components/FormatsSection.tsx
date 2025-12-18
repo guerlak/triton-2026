@@ -64,19 +64,19 @@ const FormatsSection: React.FC = () => {
           <div className="bg-neutral-900 p-1 rounded-full inline-flex border border-white/10">
             <button
               onClick={() => setActiveTab('1')}
-              className={`px-6 py-3 rounded-full text-sm font-bold uppercase tracking-wider transition-all ${activeTab === '1' ? 'bg-triton-red text-white shadow-lg' : 'text-gray-400 hover:text-white'}`}
+              className={`cursor-pointer px-6 py-3 rounded-full text-sm font-bold uppercase tracking-wider transition-all ${activeTab === '1' ? 'bg-triton-red text-white shadow-lg' : 'text-gray-400 hover:text-white'}`}
             >
               Natação
             </button>
             <button
               onClick={() => setActiveTab('2')}
-              className={`px-6 py-3 rounded-full text-sm font-bold uppercase tracking-wider transition-all ${activeTab === '2' ? 'bg-triton-red text-white shadow-lg' : 'text-gray-400 hover:text-white'}`}
+              className={`cursor-pointer px-6 py-3 rounded-full text-sm font-bold uppercase tracking-wider transition-all ${activeTab === '2' ? 'bg-triton-red text-white shadow-lg' : 'text-gray-400 hover:text-white'}`}
             >
               ciclismo
             </button>
             <button
               onClick={() => setActiveTab('3')}
-              className={`px-6 py-3 rounded-full text-sm font-bold uppercase tracking-wider transition-all ${activeTab === '3' ? 'bg-triton-red text-white shadow-lg' : 'text-gray-400 hover:text-white'}`}
+              className={`cursor-pointer px-6 py-3 rounded-full text-sm font-bold uppercase tracking-wider transition-all ${activeTab === '3' ? 'bg-triton-red text-white shadow-lg' : 'text-gray-400 hover:text-white'}`}
             >
               Corrida
             </button>

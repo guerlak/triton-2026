@@ -77,7 +77,7 @@ const LocationsSection: React.FC = () => {
                     Toda a estrutura do evento está localizada dentro do <strong>Portobello Resort & Safári</strong>.
                     Tanto o hotel quanto o evento estão sujeitos à capacidade máxima. <br></br><strong>Garanta sua vaga
                         o quanto antes e viva essa experiência imersíva!</strong>
-                </p>
+                </p>†
 
                 <div className='grid md:grid-cols-2 grid-cols-1 md:w-[1200px] justify-center mt-20 gap-10 mx-auto'>
                     <div className="relative h-80 rounded-2xl overflow-hidden mb-8 group">
@@ -100,7 +100,7 @@ const LocationsSection: React.FC = () => {
                         <p className='italic'>* Desconto aplicado somente pela central de reservas</p>
                         <a href="https://api.whatsapp.com/send?phone=552127898000&text=Ol%C3%A1!%20Me%20inscrevi%20no%20TRITON%20e%20gostaria%20de%20informa%C3%A7%C3%B5es%20sobre%20a%20reserva%20em%20Portobello."
                             target='_blank'
-                            className="mt-4 w-105 bg-triton-red cursor-pointer hover:bg-red-700 text-white font-bold uppercase tracking-widest px-6 py-3 transition-all transform hover:scale-101 flex items-center">
+                            className="m-4 text-xs md:text-xl md:w-130 md:ml-0 bg-triton-red cursor-pointer hover:bg-red-700 text-white font-bold uppercase tracking-widest px-6 py-3 transition-all transform hover:scale-101 flex items-center">
                             <MessageCircle className="w-5 h-5 mr-2" />
                             Fale com a Central de Reservas
                         </a>
