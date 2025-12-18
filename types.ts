@@ -17,6 +17,7 @@ export interface CalendarEvent {
   flag: string; // Emoji or code
   status: 'Confirmed' | 'Planned';
   year: number;
+  format: string;
 }
 
 export interface Stat {

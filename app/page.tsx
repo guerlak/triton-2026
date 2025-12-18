@@ -8,6 +8,8 @@ import LocationsSection from "./components/LocationsSection";
 import StatsSection from "./components/StatsSection";
 import Testimonials from "./components/Testimonials";
 import CommunitySection from "./components/ComunitySection";
+import PicGallery from "./components/PicGallery";
+import Faq from "./components/Faq";
 
 export default function Home() {
   return (
@@ -19,8 +21,11 @@ export default function Home() {
         <FormatsSection />
         <LocationsSection />
         <Testimonials />
+        <PicGallery />
+        <Faq />
         <CalendarSection />
         <CommunitySection />
+
       </main>
       <Footer />
     </div>

@@ -72,7 +72,7 @@ const LocationsSection: React.FC = () => {
                                 Não é obrigatório se hospedar no hotel oficial do evento. Existem outras opções de hospedagem na região de Mangaratiba.
                             </p>
                         </div>
-                        <div className="grid grid-cols-1 sm:grid-cols-2 items-center justify-center ">
+                        <div className="flexitems-center ">
                             <div className='flex justify-around'>
                                 <a href='https://www.airbnb.com.br/s/mangaratiba/homes?refinement_paths%5B%5D=%2Fhomes&date_picker_type=calendar&checkin=2026-08-21&checkout=2026-08-23&adults=6&search_type=search_query'
                                     target='_blank'>

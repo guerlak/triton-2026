@@ -39,15 +39,12 @@ export const TRITON_FORMATO: Distance[] = [
   { name: 'INDIVIUAL', swim: '3000m', bike: '90 km', run: '30 km' },
 ];
 
-
-
 export const EVENTS: CalendarEvent[] = [
-  { date: '12 ABR', location: 'Salvador, BA', country: 'Brasil', flag: '🇧🇷', status: 'Confirmed', year: 2026 },
-  { date: '21-23 AGO', location: 'Rio de Janeiro, RJ', country: 'Brasil', flag: '🇧🇷', status: 'Confirmed', year: 2026 },
-  { date: '06 SET', location: 'Lisboa', country: 'Portugal', flag: '🇵🇹', status: 'Confirmed', year: 2026 },
-  { date: 'NOV', location: 'Final Mundial', country: 'TBD', flag: '🌍', status: 'Confirmed', year: 2026 },
-  { date: 'ABR', location: 'China', country: 'China', flag: '🇨🇳', status: 'Planned', year: 2027 },
-  { date: 'MAIO', location: 'EAU', country: 'Emirados Árabes', flag: '🇦🇪', status: 'Planned', year: 2027 },
-  { date: 'AGO', location: 'Irlanda', country: 'Irlanda', flag: '🇮🇪', status: 'Planned', year: 2027 },
-  { date: 'OUT', location: 'Estados Unidos', country: 'EUA', flag: '🇺🇸', status: 'Planned', year: 2027 },
+  { date: '12 ABR', location: 'Salvador, BA', country: 'Brasil', flag: '🇧🇷', status: 'Confirmed', year: 2026, format: 'Triton 1' },
+  { date: 'JUN', location: 'Jiangsu-qidong', country: 'China', flag: '🇨🇳', status: 'Confirmed', year: 2026, format: 'Triton 1' },
+  { date: '21-23 AGO', location: 'Rio de Janeiro, RJ', country: 'Brasil', flag: '🇧🇷', status: 'Confirmed', year: 2026, format: 'Triton 3' },
+  { date: '06 SET', location: 'Lisboa', country: 'Portugal', flag: '🇵🇹', status: 'Confirmed', year: 2026, format: 'Triton 1' },
+  { date: 'MAIO', location: 'EAU', country: 'Emirados Árabes', flag: '🇦🇪', status: 'Planned', year: 2027, format: 'Triton 1' },
+  { date: 'AGO', location: 'Irlanda', country: 'Irlanda', flag: '🇮🇪', status: 'Planned', year: 2027, format: 'Triton 1' },
+  { date: 'OUT', location: 'Estados Unidos', country: 'EUA', flag: '🇺🇸', status: 'Planned', year: 2027, format: 'Triton 1' },
 ];

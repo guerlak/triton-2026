@@ -8,7 +8,7 @@ const CalendarSection: React.FC = () => {
 
     return (
         <section id="calendar" className="py-24 bg-triton-gray relative">
-            <div className="absolute top-0 left-0 w-full h-20 bg-gradient-to-b from-black to-transparent"></div>
+            <div className="absolute top-0 left-0 w-full h-20 bg-linear-to-b from-black to-transparent"></div>
 
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                 <div className="flex flex-col md:flex-row justify-between items-end mb-16 gap-6">
@@ -17,7 +17,7 @@ const CalendarSection: React.FC = () => {
                         <h3 className="text-4xl md:text-6xl font-black uppercase text-white">Calendário</h3>
                     </div>
                     <div className="text-right">
-                        <p className="text-xl font-bold text-white">7 ETAPAS • 2 PAÍSES</p>
+                        <p className="text-xl font-bold text-white">4 ETAPAS • 3 PAÍSES</p>
                         <p className="text-gray-400 text-sm">+30 Nacionalidades na disputa</p>
                     </div>
                 </div>
@@ -25,7 +25,6 @@ const CalendarSection: React.FC = () => {
                 {/* 2026 Timeline */}
                 <div className="mb-20">
                     <h4 className="text-2xl font-bold text-white mb-8 border-l-4 border-triton-red pl-4">TEMPORADA 2026 <span className="text-sm font-normal text-gray-500 ml-2">*Datas confirmadas</span></h4>
-
                     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
                         {events2026.map((event, idx) => (
                             <div key={idx} className="bg-neutral-900 p-6 rounded-xl border-t-4 border-triton-red hover:transform hover:-translate-y-2 transition-transform duration-300 group">
@@ -42,7 +41,7 @@ const CalendarSection: React.FC = () => {
                                 </div>
                                 <h5 className="text-xl font-black text-white uppercase mb-1">{event.location}</h5>
                                 <p className="text-gray-500 text-sm">{event.country}</p>
-
+                                <span className="inline-block bg-white/10 text-white text-[10px] font-bold px-2 py-1 mt-4 rounded uppercase">{event.format}</span>
                                 <div className="mt-6 pt-4 border-t border-white/5 opacity-0 group-hover:opacity-100 transition-opacity">
                                     <button className="text-white text-xs font-bold uppercase hover:text-triton-red">Saiba mais &rarr;</button>
                                 </div>
@@ -60,6 +59,8 @@ const CalendarSection: React.FC = () => {
                                 <span className="mr-3 text-2xl">{event.flag}</span>
                                 <div>
                                     <p className="font-bold text-white uppercase text-sm">{event.location}</p>
+
+
                                     <p className="text-[10px] text-gray-400">{event.date}</p>
                                 </div>
                             </div>

@@ -180,7 +180,9 @@ const FormatsSection: React.FC = () => {
 
         <FormatTable distances={activeTab === '1' ? TRITON_1_DISTANCES : TRITON_3_DISTANCES} />
 
-        <div className="mt-8 border-t border-white/10 pt-12">
+
+
+        <div className="mt-8  pt-12">
           <h4 className="text-2xl font-bold text-white mb-8 uppercase border-l-4 border-triton-red pl-4">
             Possibilidades de Competição
           </h4>
