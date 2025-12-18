@@ -1,12 +1,6 @@
 import type { Metadata } from "next";
-import { Montserrat, Exo_2 } from "next/font/google";
+import { Montserrat } from "next/font/google";
 import "./globals.css";
-
-const geistSans = Exo_2({
-  subsets: ["latin"],
-  weight: ["400", "700"], // Escolha os pesos que vai usar
-  variable: "--font-geist-sans", // Opcional: define uma variável CSS
-});
 
 const montserrat = Montserrat({
   subsets: ['latin'],

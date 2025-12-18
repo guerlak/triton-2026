@@ -5,7 +5,7 @@
   --foreground: #171717;
   --triton-dark: #0A0A0A;
   --triton-gray: #1F1F1F;
-  --triton-red: #FF3B30;
+  --triton-red: #DF1F26;
 
 }
 
@@ -15,13 +15,12 @@
   --color-triton-dark: var(--triton-dark);
   --color-triton-gray: var(--triton-gray);
   --color-triton-red: var(--triton-red);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --font-sans: var(--font-montserrat);
 }
 
 
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-montserrat);
 }

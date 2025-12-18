@@ -79,7 +79,7 @@ const LocationsSection: React.FC = () => {
                         o quanto antes e viva essa experiência imersíva!</strong>
                 </p>
 
-                <div className='grid md:grid-cols-2 grid-cols-1 md:w-[1200px] justify-center mt-20 gap-10 mx-auto'>
+                <div className='md:max-w-[1200px] grid md:grid-cols-2 grid-cols-1 justify-center mt-20 gap-10 mx-auto'>
                     <div className="relative h-80 rounded-2xl overflow-hidden mb-8 group">
                         <Image src={fotoResort} alt="Cycling" className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" />
                         <div className="absolute inset-0 bg-linear-to-t from-black/80 to-transparent flex items-end p-8">
@@ -89,7 +89,7 @@ const LocationsSection: React.FC = () => {
                     <div className='text-left p-4 md:p-0'>
                         <h1 className='text-2xl uppercase font-black mb-2'>Resort Portobello</h1>
                         <h2>
-                            É o hotel oficial do evento e possui condições exclusivas para os atletas do TRITON
+                            É o hotel oficial do evento e possui condições exclusivas para <br></br>os atletas do TRITON
                             e seus familiares:
                         </h2>
                         <ul className="space-y-2 text-gray-300 mb-8 mt-4">
@@ -97,40 +97,41 @@ const LocationsSection: React.FC = () => {
                             <li className="flex items-center"><span className="w-2 h-2 bg-triton-red rounded-full mr-3"></span>Gratuidade para 2 crianças de até 7 anos</li>
                             <li className="flex items-center"><span className="w-2 h-2 bg-triton-red rounded-full mr-3"></span>Possibilidade de parcelamento</li>
                         </ul>
-                        <p className='italic'>* Desconto aplicado somente pela central de reservas</p>
+                        <p className='italic text-sm'>* Desconto aplicado somente pela central de reservas</p>
                         <a href="https://api.whatsapp.com/send?phone=552127898000&text=Ol%C3%A1!%20Me%20inscrevi%20no%20TRITON%20e%20gostaria%20de%20informa%C3%A7%C3%B5es%20sobre%20a%20reserva%20em%20Portobello."
                             target='_blank'
-                            className="m-4 text-xs md:text-xl md:w-130 md:ml-0 bg-triton-red cursor-pointer hover:bg-red-700 text-white font-bold uppercase tracking-widest px-6 py-3 transition-all transform hover:scale-101 flex items-center">
+                            className="mt-4 text-xs md:text-md md:w-85 md:ml-0 bg-triton-red cursor-pointer hover:bg-red-700 text-white font-bold uppercase tracking-widest px-6 py-3 transition-all transform hover:scale-101 flex items-center">
                             <MessageCircle className="w-5 h-5 mr-2" />
-                            Fale com a Central de Reservas
+                            Fale com  a Central de Reservas
                         </a>
                     </div>
                 </div>
 
-
-                <div className="md:w-[1200px] bg-linear-to-r from-neutral-900 to-neutral-800 rounded-2xl p-8 md:p-8 border-l-4 border-triton-red shadow-2xl m-auto">
-                    <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center text-center lg:text-left">
-                        <div>
-                            <h3 className="text-2xl font-black uppercase text-white mb-4">Outras opções</h3>
-                            <p className="text-gray-300 text-lg leading-relaxed">
-                                Não é obrigatório se hospedar no hotel oficial do evento. Existem outras opções de hospedagem na região de Mangaratiba.
-                            </p>
-                        </div>
-                        <div className="grid grid-cols-1 sm:grid-cols-2 items-center justify-center">
-                            <div className="flex flex-col items-center justify-center">
-
-                                <span className="text-3xl font-black text-triton-red"><House size={40} /></span>
-                                <span className="text-xs font-bold text-gray-400 uppercase text-center mt-1">Alugue uma casa</span>
-
+                <div className='px-10'>
+                    <div className="mx-auto md:max-w-[1200px] bg-linear-to-r from-neutral-900 to-neutral-800 rounded-2xl p-8 md:p-8 border-l-4 border-triton-red shadow-2xl m-4">
+                        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center text-center lg:text-left">
+                            <div>
+                                <h3 className="text-2xl font-black uppercase text-white mb-4">Outras opções</h3>
+                                <p className="text-gray-300 text-lg leading-relaxed">
+                                    Não é obrigatório se hospedar no hotel oficial do evento. Existem outras opções de hospedagem na região de Mangaratiba.
+                                </p>
                             </div>
-                            <div className="flex flex-col items-center justify-center">
+                            <div className="grid grid-cols-1 sm:grid-cols-2 items-center justify-center">
+                                <div className="flex flex-col items-center justify-center">
 
-                                <span className="text-3xl font-black text-triton-red"><BedDouble size={40} /></span>
-                                <span className="text-xs font-bold text-gray-400 uppercase text-center mt-1">Pousadas locais</span>
+                                    <span className="text-3xl font-black text-triton-red"><House size={40} /></span>
+                                    <span className="text-xs font-bold text-gray-400 uppercase text-center mt-1">Alugue uma casa</span>
+
+                                </div>
+                                <div className="flex flex-col items-center justify-center">
+
+                                    <span className="text-3xl font-black text-triton-red"><BedDouble size={40} /></span>
+                                    <span className="text-xs font-bold text-gray-400 uppercase text-center mt-1">Pousadas locais</span>
+                                </div>
                             </div>
+
+
                         </div>
-
-
                     </div>
                 </div>
 
