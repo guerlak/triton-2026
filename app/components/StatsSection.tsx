@@ -26,12 +26,11 @@ const StatsSection: React.FC = () => {
                 {stat.value}
               </div>
               <div className="text-xl font-bold text-triton-red uppercase mb-2">{stat.label}</div>
-              <p className="text-gray-400 text-sm font-medium max-w-xs mx-auto">{stat.description}</p>
+              <p className="text-gray-400 text-sm font-medium max-w-xs mx-auto uppercase">{stat.description}</p>
             </div>
           ))}
         </div>
 
-        {/* Pontuação Banner */}
         <div className="bg-linear-to-r from-neutral-900 to-neutral-800 rounded-2xl p-8 md:p-12 border-l-4 border-triton-red shadow-2xl">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center text-center lg:text-left">
             <div>
@@ -53,11 +52,8 @@ const StatsSection: React.FC = () => {
               ))}
               {/* <a href="" className='bg-triton-red hover:bg-red-700 text-white text-lg font-bold rounded-none uppercase tracking-widest transition-all transform hover:scale-105"'>Ranking</a> */}
             </div>
-
-
           </div>
         </div>
-
       </div>
     </section>
   );

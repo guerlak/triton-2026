@@ -49,7 +49,6 @@ const CalendarSection: React.FC = () => {
                         ))}
                     </div>
                 </div>
-
                 {/* Future Locations */}
                 <div>
                     <h4 className="text-xl font-bold text-gray-400 mb-8 pl-4">EM BREVE 2027</h4>

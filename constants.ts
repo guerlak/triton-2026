@@ -1,5 +1,6 @@
-import { Distance, CalendarEvent, Stat } from './types';
-import { Trophy, CircleStar, DollarSign } from 'lucide-react';
+import { Distance, CalendarEvent, Stat, TestimonialProps } from './types';
+import { Trophy, CircleStar } from 'lucide-react';
+
 
 export const NAVIGATION_LINKS = [
   { name: 'O Movimento', href: '#about' },
@@ -10,7 +11,7 @@ export const NAVIGATION_LINKS = [
 ];
 
 export const MARKET_STATS: Stat[] = [
-  { value: '3', label: 'dias', description: 'Em que a única escolha é a superação' },
+  { value: '3', label: 'dias', description: 'de estratégia e superação' },
   { value: '3', label: 'modalidades', description: 'Natação - Ciclismo - Corrida' },
   { value: '3', label: 'distâncias', description: 'Sprint - Middle - Long' },
 ];
@@ -47,4 +48,33 @@ export const EVENTS: CalendarEvent[] = [
   { date: 'MAIO', location: 'EAU', country: 'Emirados Árabes', flag: '🇦🇪', status: 'Planned', year: 2027, format: 'Triton 1' },
   { date: 'AGO', location: 'Irlanda', country: 'Irlanda', flag: '🇮🇪', status: 'Planned', year: 2027, format: 'Triton 1' },
   { date: 'OUT', location: 'Estados Unidos', country: 'EUA', flag: '🇺🇸', status: 'Planned', year: 2027, format: 'Triton 1' },
+];
+
+
+export const TESTIMONIALS: TestimonialProps[] = [
+  {
+    quote: "Quantas lições em um único final de semana. Foram 3 dias, 3 esportes, 3 humores e unimeras variações de sentimentos. No Triton 3 pude me testar, exercitar a paciência e também o carinho comigo mesma. ",
+    author: "Viviane",
+    role: "",
+    company: "TechFlow",
+    avatarUrl: "./images/atletas/viviane.jpeg",
+    linkSocial: "https://www.instagram.com/viviwigand/"
+  },
+  {
+    quote: "Que dia incrível e que dia forte! Obrigado TRITON pela prova top, segura e com visual fantástico",
+    author: "Bizarelo",
+    role: "",
+    company: "TechFlow",
+    avatarUrl: "./images/atletas/bizarelo.jpeg",
+    linkSocial: "https://www.instagram.com/bizarelocycling/"
+  },
+  {
+    quote: "Que fim de semana incrível! Obrigada Triton pela experiência única. Levo para casa uma recordação cheias de boas energias e momentos especiais.",
+    author: "Elida",
+    role: "",
+    company: "TechFlow",
+    avatarUrl: "./images/atletas/elida.jpeg",
+    linkSocial: "https://www.instagram.com/elidacordeiroo"
+  },
+
 ];

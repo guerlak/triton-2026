@@ -25,3 +25,12 @@ export interface Stat {
   label: string;
   description?: string;
 }
+
+export interface TestimonialProps {
+  quote: string;
+  author: string;
+  role: string;
+  company: string;
+  avatarUrl: string;
+  linkSocial?: string;
+}
