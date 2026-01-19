@@ -1,0 +1,227 @@
+{
+  "navigation": [
+    {
+      "name": "O Movimento",
+      "href": "#about"
+    },
+    {
+      "name": "Formatos",
+      "href": "#formats"
+    },
+    {
+      "name": "Calendário",
+      "href": "#calendar"
+    },
+    {
+      "name": "Destinos",
+      "href": "#locations"
+    },
+    {
+      "name": "Comunidade",
+      "href": "#community"
+    }
+  ],
+  "sign_up": "Inscreva-se",
+  "market_stats": [
+    {
+      "value": "3",
+      "label": "dias",
+      "description": "de estratégia e superação"
+    },
+    {
+      "value": "3",
+      "label": "modalidades",
+      "description": "Natação - Ciclismo - Corrida"
+    },
+    {
+      "value": "3",
+      "label": "distâncias",
+      "description": "Sprint - Middle - Long"
+    }
+  ],
+  "demographics_stats": [
+    {
+      "value": "Pontue",
+      "label": "para o ranking global",
+      "icon": "Trophy"
+    },
+    {
+      "value": "Conquiste",
+      "label": "sua vaga pra final mundial",
+      "icon": "CircleStar"
+    }
+  ],
+  "distances": {
+    "triton_1": [
+      {
+        "name": "SPRINT",
+        "swim": "1000m",
+        "bike": "30km",
+        "run": "10km"
+      },
+      {
+        "name": "MIDDLE",
+        "swim": "2000m",
+        "bike": "60km",
+        "run": "20km"
+      },
+      {
+        "name": "LONG",
+        "swim": "3000m",
+        "bike": "90km",
+        "run": "30km"
+      }
+    ],
+    "triton_formato": [
+      {
+        "name": "TRIATHLON",
+        "swim": "1000m",
+        "bike": "30 km",
+        "run": "10 km"
+      },
+      {
+        "name": "REVEZAMENTO",
+        "swim": "2000m",
+        "bike": "60 km",
+        "run": "20 km"
+      },
+      {
+        "name": "INDIVIDUAL",
+        "swim": "3000m",
+        "bike": "90 km",
+        "run": "30 km"
+      }
+    ]
+  },
+  "hero": {
+    "button": "Aceite o desafio"
+  },
+  "events_status": {
+    "confirmed": "Confirmado",
+    "planned": "Planeado"
+  },
+  "testimonials": [
+    {
+      "avatar_url": "/images/atletas/viviane.jpeg",
+      "quote": "Quantas lições em um único final de semana. Foram 3 dias, 3 esportes, 3 humores e unimeras variações de sentimentos...",
+      "author": "Viviane",
+      "company": "TechFlow",
+      "link_social": ""
+    },
+    {
+      "avatar_url": "/images/atletas/viviane.jpeg",
+      "quote": "Quantas lições em um único final de semana. Foram 3 dias, 3 esportes, 3 humores e unimeras variações de sentimentos...",
+      "author": "Viviane",
+      "company": "TechFlow",
+      "link_social": ""
+    },
+    {
+      "avatar_url": "/images/atletas/viviane.jpeg",
+      "quote": "Quantas lições em um único final de semana. Foram 3 dias, 3 esportes, 3 humores e unimeras variações de sentimentos...",
+      "author": "Viviane",
+      "company": "TechFlow",
+      "link_social": ""
+    }
+  ],
+  "stats_client_component": {
+    "date": "21. 22. 23. Agosto",
+    "title": "um evento que vai superar suas expectativas",
+    "title2": "Um Sistema de pontuação inovador",
+    "description2": "Ao contrário dos triathlons tradicionais, onde vence quem faz o menor tempo, no TRITON 3 o jogo é outro! Aqui, o campeão é quem soma menos pontos ao longo dos três dias. A pontuação é definida pela colocação diária. Isso coloca todas as modalidades com o mesmo peso e transforma a disputa em uma verdadeira prova de consistência, estratégia e resiliência."
+  },
+  "format_section": {
+    "title": "Inovação",
+    "subtitle": "Formatos que Redefinem a Experiência",
+    "description": "O TRITON 3 é uma prova realizada em 3 dias consecutivos. Uma experiência única que eleva o triathlon a outro nível. O formato permite que, além dos triatletas, nadadores ciclistas e corredores participem da prova de forma individual.",
+    "toogles": {
+      "swim": "Natação",
+      "bike": "Ciclismo",
+      "run": "Corrida"
+    },
+    "toogles_content": {
+      "day_1": {
+        "picture_url": "",
+        "picture_title": "Dia 1",
+        "title": "Natação",
+        "description": "Realizada na praia particular do Portobello Resort",
+        "date": "Data: 21 de agosto (sexta-feira)",
+        "start": "Largada: 15h30",
+        "award": "Premiação: 17h45"
+      },
+      "day_2": {
+        "picture_url": "",
+        "picture_title": "Dia 2",
+        "title": "Ciclismo",
+        "description": "Realizada na emblemática e desafiadora Serra do Piloto. A concentração da prova acontece no Parque de Exposições de Mangaratiba (EXPO)",
+        "date": "Data: 22 de agosto (sábado)",
+        "start": "Largada: 08h00",
+        "award": "Premiação: 16h00"
+      },
+      "day_3": {
+        "picture_url": "",
+        "picture_title": "Dia 3",
+        "title": "Corrida",
+        "description": "Realizada no interior do condomínio Portobello, essa prova parte de detro do resort em direção ao safári. Um percurso cinematográfico.",
+        "date": "Data: 23 de agosto (domingo)",
+        "start": "Largada: 08h00",
+        "award": "Premiação: 11h00"
+      }
+    },
+    "distance": {
+      "title": "Possibilidade de Distâncias"
+    },
+    "competition": {
+      "title": "Possibilidade de Competições",
+      "cards": {
+        "card_1": {
+          "title": "TRIATHLON",
+          "description": "Sua posição no ranking final (após os três dias) será o somatório da sua classificação em cada modalidade: Natação + Ciclismo + Corrida."
+        },
+        "card_2": {
+          "title": "Revezamento (Corporate)",
+          "description": "Monte sua equipe (dupla ou trio). Cada um faz uma modalidade. Em caso de dupla, um atleta terá de que fazer mais de uma modalidade."
+        },
+        "card_3": {
+          "title": "Modalidades Individuais",
+          "description": "Escolha entre natação, ciclismo e/ou corrida, defina a distância e se inscreva!",
+          "advise": "Não pontua para o ranking final (3 dias), mas concorre a premiação diária por modalidade."
+        }
+      }
+    }
+  },
+  "locations_section": {
+    "title": "GARANTA SUA INSCRIÇÃO",
+    "subtitle": "21, 22 e 23 DE AGOSTO",
+    "description": "A estrutura completa do evento está localizada dentro do Portobello Resort & Safári. Tanto o hotel quanto o evento estão sujeitos à capacidade máxima. Garanta sua vaga o mais rápido possível e viva essa experiência imersiva!",
+    "banner": {
+      "title": "TRANSFORMANDO O PARAÍSO EM SEU CAMPO DE PROVA",
+      "description": "Reviva os melhores momentos do TRITON 3 2025 e prepare-se para viver essa experiência única que desafia o corpo e renova a mente."
+    },
+    "resort": {
+      "title": "Portobello Resort",
+      "description": "É o hotel oficial do evento e oferece condições exclusivas para atletas do TRITON e seus familiares:",
+      "list_1": "Tarifa especial com todas as refeições incluídas",
+      "list_2": "Crianças até 7 anos não pagam",
+      "list_3": "Opções de parcelamento disponíveis",
+      "button": "Central de Reservas"
+    },
+    "other_options": {
+      "title": "Outras Opções",
+      "description": "Ficar hospedado no hotel oficial do evento não é obrigatório. Existem outras opções de hospedagem na região de Mangaratiba.",
+      "option_1": "ALUGUEL DE CASA",
+      "option_2": "LOCAL INNS"
+    }
+  },
+  "testimonials_section": {
+    "title": "Não é apenas uma prova",
+    "subtitle": "Ouça os participantes"
+  },
+  "calendar_section": {
+    "title": "WORLD SERIES",
+    "subtitle": "CALENDÁRIO"
+  },
+  "community_section": {
+    "title": "Englobando Toda a Comunidade",
+    "description": "Falamos com o triatleta, o nadador, o ciclista, o corredor e aqueles que buscam novos desafios. Somos um movimento que inova a experiência esportiva."
+  }
+}

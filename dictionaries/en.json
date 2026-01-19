@@ -1,0 +1,228 @@
+{
+  "navigation": [
+    {
+      "name": "The Movement",
+      "href": "#about"
+    },
+    {
+      "name": "Formats",
+      "href": "#formats"
+    },
+    {
+      "name": "Calendar",
+      "href": "#calendar"
+    },
+    {
+      "name": "Locations",
+      "href": "#locations"
+    },
+    {
+      "name": "Community",
+      "href": "#community"
+    }
+  ],
+  "sign_up": "Sign Up",
+  "market_stats": [
+    {
+      "value": "3",
+      "label": "days",
+      "description": "of strategy and overcoming"
+    },
+    {
+      "value": "3",
+      "label": "modalities",
+      "description": "Swimming - Cycling - Running"
+    },
+    {
+      "value": "3",
+      "label": "distances",
+      "description": "Sprint - Middle - Long"
+    }
+  ],
+  "demographics_stats": [
+    {
+      "value": "Score",
+      "label": "for the global ranking",
+      "icon": "Trophy"
+    },
+    {
+      "value": "Win",
+      "label": "your spot for the world final",
+      "icon": "CircleStar"
+    }
+  ],
+  "buyTickets": "Buy Tickets",
+  "distances": {
+    "triton_1": [
+      {
+        "name": "SPRINT",
+        "swim": "1000m",
+        "bike": "30km",
+        "run": "10km"
+      },
+      {
+        "name": "MIDDLE",
+        "swim": "2000m",
+        "bike": "60km",
+        "run": "20km"
+      },
+      {
+        "name": "LONG",
+        "swim": "3000m",
+        "bike": "90km",
+        "run": "30km"
+      }
+    ],
+    "triton_formato": [
+      {
+        "name": "TRIATHLON",
+        "swim": "1000m",
+        "bike": "30 km",
+        "run": "10 km"
+      },
+      {
+        "name": "RELAY",
+        "swim": "2000m",
+        "bike": "60 km",
+        "run": "20 km"
+      },
+      {
+        "name": "INDIVIDUAL",
+        "swim": "3000m",
+        "bike": "90 km",
+        "run": "30 km"
+      }
+    ]
+  },
+  "testimonials": [
+    {
+      "avatar_url": "/images/atletas/viviane.jpeg",
+      "quote": "So many lessons in a single weekend. It was 3 days, 3 sports, 3 moods and countless variations of feelings...",
+      "author": "Viviane",
+      "company": "TechFlow",
+      "link_social": ""
+    },
+    {
+      "avatar_url": "/images/atletas/elida.jpeg",
+      "quote": "So many lessons in a single weekend. It was 3 days, 3 sports, 3 moods and countless variations of feelings...",
+      "author": "Elida",
+      "company": "TechFlow",
+      "link_social": ""
+    },
+    {
+      "avatar_url": "/images/atletas/bizarelo.jpeg",
+      "quote": "So many lessons in a single weekend. It was 3 days, 3 sports, 3 moods and countless variations of feelings...",
+      "author": "Bizarelo",
+      "company": "TechFlow",
+      "link_social": ""
+    }
+  ],
+  "hero": {
+    "button": "Take the challenge"
+  },
+  "events_status": {
+    "confirmed": "Confirmed",
+    "planned": "Planned"
+  },
+  "stats_client_component": {
+    "date": "August 21, 22, 23",
+    "title": "an event that will exceed your expectations",
+    "title2": "An Innovative Scoring System",
+    "description2": " Instead of the traditional triathlons, where the winner is the one who makes the smallest time, in TRITON 3 the game is different! Here, the champion is the one who sums up the least points over the three days. The score is defined by daily placement. This puts all modalities on the same footing and transforms the competition into a true test of consistency, strategy and resilience."
+  },
+  "format_section": {
+    "title": "Innovation",
+    "subtitle": "Formats that redefine the experience",
+    "description": "The TRITON 3 is a race held over 3 consecutive days. An unique experience that elevates triathlon to another level. The format allows athletes, swimmers, cyclists, and runners to participate in the race individually.",
+    "toogles": {
+      "swim": "Swimming",
+      "bike": "Cycling",
+      "run": "Running"
+    },
+    "toogles_content": {
+      "day_1": {
+        "picture_url": "",
+        "picture_title": "Day 1",
+        "title": "Swimming",
+        "description": "Held on the private beach of the Portobello Resort",
+        "date": "Date: August 21 (Friday)",
+        "start": "Start: 15:30",
+        "award": "Award: 17:45"
+      },
+      "day_2": {
+        "picture_url": "",
+        "picture_title": "Day 2",
+        "title": "Cycling",
+        "description": "Held on the emblematic and challenging Serra do Piloto. The concentration of the race takes place at the Mangaratiba (EXPO) Exhibition Park",
+        "date": "Date: August 22 (Saturday)",
+        "start": "Start: 08:00",
+        "award": "Award: 16:00"
+      },
+      "day_3": {
+        "picture_url": "",
+        "picture_title": "Day 3",
+        "title": "Running",
+        "description": "Held within the Portobello condominium, this race starts from behind the resort heading to the safari. A cinematic route.",
+        "date": "Date: August 23 (Sunday)",
+        "start": "Start: 08:00",
+        "award": "Award: 11:00"
+      }
+    },
+    "distance": {
+      "title": "Distances"
+    },
+    "competition": {
+      "title": "Competitions",
+      "cards": {
+        "card_1": {
+          "title": "TRIATHLON",
+          "description": "Your final ranking position (after the three days) will be the sum of your classification in each modality: Swimming + Cycling + Running."
+        },
+        "card_2": {
+          "title": "RELAY (Corporate)",
+          "description": "Form your team (duo or trio). Each one does one modality. In case of a duo, an athlete will have to do more than one modality."
+        },
+        "card_3": {
+          "title": "INDIVIDUAL",
+          "description": "Choose between swimming, cycling and/or running, define the distance and sign up!",
+          "advise": "Does not score for the final ranking (3 days), but competes for daily awards by modality."
+        }
+      }
+    }
+  },
+  "locations_section": {
+    "title": "SECURE YOUR REGISTRATION",
+    "subtitle": "AUG 21, 22, 23",
+    "description": "The entire event structure is located within the Portobello Resort & Safári. Both the hotel and the event are subject to maximum capacity. Secure your spot as soon as possible and live this immersive experience!",
+    "banner": {
+      "title": "TRANSFORMING PARADISE INTO YOUR PROVING GROUND",
+      "description": "Relive the best moments of TRITON 3 2025 and get ready to experience this unique event that challenges your body and renews your mind."
+    },
+    "resort": {
+      "title": "Portobello Resort",
+      "description": "It is the official event hotel and offers exclusive conditions for TRITON athletes and their families:",
+      "list_1": "Special Rate with all meals included",
+      "list_2": "Free for 2 children up to 7 years old",
+      "list_3": "Installment payment options available",
+      "button": "Contact Reservations"
+    },
+    "other_options": {
+      "title": "Other Options",
+      "description": "Staying at the official event hotel is not mandatory. There are other accommodation options in the Mangaratiba region.",
+      "option_1": "RENT A HOUSE",
+      "option_2": "LOCAL INNS"
+    }
+  },
+  "testimonials_section": {
+    "title": "It is not just a race",
+    "subtitle": "Hear from the participants"
+  },
+  "calendar_section": {
+    "title": "WORLD SERIES",
+    "subtitle": "CALENDAR"
+  },
+  "community_section": {
+    "title": "Embracing the Entire Community",
+    "description": "We speak to the triathlete, the swimmer, the cyclist, the runner, and those seeking new challenges. We are a movement that innovates the sports experience."
+  }
+}

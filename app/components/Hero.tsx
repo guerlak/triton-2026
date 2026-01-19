@@ -1,11 +1,17 @@
+
+"use client";
 import React from 'react';
 import { ChevronDown } from 'lucide-react';
 import heroImg from '../../public/images/evento_start.jpg';
 import logoHero from '../../public/images/logo_triton_branco_02.png';
 import Image from 'next/image';
+import { useDictionary } from "./DictionaryProvider";
+
 
 
 const Hero: React.FC = () => {
+  const { dict } = useDictionary();
+
   return (
     <section className="relative h-screen w-full flex items-center justify-center overflow-hidden">
       {/* Background Image acting as video placeholder */}
@@ -38,7 +44,7 @@ const Hero: React.FC = () => {
           <a href="https://www.ticketsports.com.br/e/triton-3-rio-de-janeiro-2026-74526?termo=TRITON&periodo=0&mes=&inicio=&fim=&ordenacao=1&pais="
             className="bg-triton-red hover:bg-red-700 text-white text-lg font-bold py-4 px-10 rounded-none uppercase tracking-widest transition-all transform hover:scale-105"
             target="blank">
-            Aceite o desafio
+            {dict.hero.button}
           </a>
         </div>
       </div>
