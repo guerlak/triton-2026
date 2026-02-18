@@ -10,7 +10,6 @@ import swimMap from "../../public/images/maps/natacao-triton3-rj-2026.png";
 import bikeMap from "../../public/images/maps/ciclismo-triton3-rj-2026.jpg";
 import { useDictionary } from "./DictionaryProvider";
 
-
 const FormatTable: React.FC<{ distances: any[] }> = ({ distances }) => (
   <div className="w-full overflow-x-auto">
     <table className="w-full text-left border-collapse">
@@ -79,28 +78,31 @@ const FormatsSection: React.FC = () => {
           <div className="bg-neutral-900 p-1 rounded-full inline-flex border border-white/10">
             <button
               onClick={() => setActiveTab("1")}
-              className={`cursor-pointer px-6 py-3 rounded-full text-sm font-bold uppercase tracking-wider transition-all ${activeTab === "1"
-                ? "bg-triton-red text-white shadow-lg"
-                : "text-gray-400 hover:text-white"
-                }`}
+              className={`cursor-pointer px-6 py-3 rounded-full text-sm font-bold uppercase tracking-wider transition-all ${
+                activeTab === "1"
+                  ? "bg-triton-red text-white shadow-lg"
+                  : "text-gray-400 hover:text-white"
+              }`}
             >
               {dict.format_section.toogles.swim}
             </button>
             <button
               onClick={() => setActiveTab("2")}
-              className={`cursor-pointer px-6 py-3 rounded-full text-sm font-bold uppercase tracking-wider transition-all ${activeTab === "2"
-                ? "bg-triton-red text-white shadow-lg"
-                : "text-gray-400 hover:text-white"
-                }`}
+              className={`cursor-pointer px-6 py-3 rounded-full text-sm font-bold uppercase tracking-wider transition-all ${
+                activeTab === "2"
+                  ? "bg-triton-red text-white shadow-lg"
+                  : "text-gray-400 hover:text-white"
+              }`}
             >
               {dict.format_section.toogles.bike}
             </button>
             <button
               onClick={() => setActiveTab("3")}
-              className={`cursor-pointer px-6 py-3 rounded-full text-sm font-bold uppercase tracking-wider transition-all ${activeTab === "3"
-                ? "bg-triton-red text-white shadow-lg"
-                : "text-gray-400 hover:text-white"
-                }`}
+              className={`cursor-pointer px-6 py-3 rounded-full text-sm font-bold uppercase tracking-wider transition-all ${
+                activeTab === "3"
+                  ? "bg-triton-red text-white shadow-lg"
+                  : "text-gray-400 hover:text-white"
+              }`}
             >
               {dict.format_section.toogles.run}
             </button>
@@ -111,8 +113,9 @@ const FormatsSection: React.FC = () => {
         <div className="gap-16">
           {/* Left: Description & Image */}
           <div
-            className={`transition-opacity duration-500 ${activeTab === "1" ? "opacity-100" : "lg:block lg:opacity-100"
-              }`}
+            className={`transition-opacity duration-500 ${
+              activeTab === "1" ? "opacity-100" : "lg:block lg:opacity-100"
+            }`}
           >
             {(() => {
               switch (activeTab) {
@@ -128,7 +131,10 @@ const FormatsSection: React.FC = () => {
                           />
                           <div className="absolute inset-0 bg-linear-to-t from-black/80 to-transparent flex items-end p-8">
                             <h4 className="text-4xl font-black italic text-white">
-                              {dict.format_section.toogles_content.day_1.picture_title}{" "}
+                              {
+                                dict.format_section.toogles_content.day_1
+                                  .picture_title
+                              }{" "}
                               <span className="text-triton-red text-xl not-italic align-middle ml-2 font-bold border border-triton-red px-2 py-1 rounded">
                                 COMPETIÇÃO
                               </span>
@@ -139,7 +145,10 @@ const FormatsSection: React.FC = () => {
                           {dict.format_section.toogles_content.day_1.title}
                         </h4>
                         <p className="text-gray-400 mb-4">
-                          {dict.format_section.toogles_content.day_1.description}
+                          {
+                            dict.format_section.toogles_content.day_1
+                              .description
+                          }
                         </p>
                         <ul className="space-y-2 text-gray-300 mb-8">
                           <li className="flex items-center">
@@ -177,7 +186,10 @@ const FormatsSection: React.FC = () => {
                           />
                           <div className="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent flex items-end p-8">
                             <h4 className="text-4xl font-black italic text-white">
-                              {dict.format_section.toogles_content.day_2.picture_title}{" "}
+                              {
+                                dict.format_section.toogles_content.day_2
+                                  .picture_title
+                              }{" "}
                               <span className="text-triton-red text-xl not-italic align-middle ml-2 font-bold border border-triton-red px-2 py-1 rounded">
                                 COMPETIÇÃO
                               </span>
@@ -188,7 +200,10 @@ const FormatsSection: React.FC = () => {
                           {dict.format_section.toogles_content.day_2.title}{" "}
                         </h4>
                         <p className="text-gray-400 mb-4">
-                          {dict.format_section.toogles_content.day_2.description}
+                          {
+                            dict.format_section.toogles_content.day_2
+                              .description
+                          }
                         </p>
                         <ul className="space-y-2 text-gray-300">
                           <li className="flex items-center">
@@ -224,7 +239,10 @@ const FormatsSection: React.FC = () => {
                           />
                           <div className="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent flex items-end p-8">
                             <h4 className="text-4xl font-black italic text-white">
-                              {dict.format_section.toogles_content.day_3.picture_title}{" "}
+                              {
+                                dict.format_section.toogles_content.day_3
+                                  .picture_title
+                              }{" "}
                               <span className="text-triton-red text-xl not-italic align-middle ml-2 font-bold border border-triton-red px-2 py-1 rounded">
                                 COMPETIÇÃO
                               </span>
@@ -235,7 +253,10 @@ const FormatsSection: React.FC = () => {
                           {dict.format_section.toogles_content.day_3.title}
                         </h4>
                         <p className="text-gray-400 mb-4">
-                          {dict.format_section.toogles_content.day_3.description}
+                          {
+                            dict.format_section.toogles_content.day_3
+                              .description
+                          }
                         </p>
                         <ul className="space-y-2 text-gray-300">
                           <li className="flex items-center">

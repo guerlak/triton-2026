@@ -10,6 +10,9 @@ import Testimonials from "../components/Testimonials";
 import CommunitySection from "../components/ComunitySection";
 import PicGallery from "../components/PicGallery";
 import Faq from "../components/Faq";
+import CountdownSection from "../components/CountDownSection";
+import ShopSection from "../components/ShopSection";
+import NumerologySection from "../components/NimerologySection";
 
 export default async function Page({ params }: PageProps<"/[lang]">) {
   const { lang } = await params;
@@ -20,12 +23,15 @@ export default async function Page({ params }: PageProps<"/[lang]">) {
       <main>
         <Hero />
         <StatsSection />
+        <NumerologySection />
         <FormatsSection />
+        <CountdownSection />
         <LocationsSection />
         <Testimonials />
         <PicGallery />
         <Faq />
         <CalendarSection />
+        <ShopSection />
         <CommunitySection />
       </main>
       <Footer />
