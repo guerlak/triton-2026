@@ -27,7 +27,7 @@ const Navbar: React.FC<{ lang: string }> = ({ lang }) => {
           </div>
           <div className="hidden lg:block">
             <div className="flex items-baseline space-x-4">
-              {dict?.navigation?.map((link) => (
+              {dict?.navigation?.map((link: any) => (
                 <a
                   key={link.name}
                   href={link.href}
