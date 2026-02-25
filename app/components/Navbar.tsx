@@ -5,7 +5,7 @@ import Image from "next/image";
 import { useDictionary } from "./DictionaryProvider";
 import Link from "next/link";
 
-const Navbar: React.FC<{ lang: string }> = ({ lang }) => {
+const Navbar: React.FC<{ lang: string }> = () => {
   const [isOpen, setIsOpen] = useState(false);
   const { dict } = useDictionary();
 
@@ -27,18 +27,39 @@ const Navbar: React.FC<{ lang: string }> = ({ lang }) => {
           </div>
           <div className="hidden lg:block">
             <div className="flex items-baseline space-x-4">
-              {dict?.navigation?.map((link: any) => (
-                <a
-                  key={link.name}
-                  href={link.href}
-                  className="text-gray-300 hover:text-triton-red hover:bg-white/5 px-3 py-2 rounded-md text-sm font-bold uppercase transition-colors duration-300"
-                >
-                  {link.name}
-                </a>
-              ))}
+              <a
+                key="formats"
+                href="#formats"
+                className="text-gray-300 hover:text-triton-red hover:bg-white/5 px-3 py-2 rounded-md text-sm font-bold uppercase transition-colors duration-300"
+              >
+                Formats
+              </a>
+              <a
+                key="movement"
+                href="#moviment"
+                className="text-gray-300 hover:text-triton-red hover:bg-white/5 px-3 py-2 rounded-md text-sm font-bold uppercase transition-colors duration-300"
+              >
+                The Moviment
+              </a>
+
+              <a
+                key="calendar"
+                href="#calendar"
+                className="text-gray-300 hover:text-triton-red hover:bg-white/5 px-3 py-2 rounded-md text-sm font-bold uppercase transition-colors duration-300"
+              >
+                Calendar
+              </a>
+              <a
+                key="ranking"
+                href="#ranking"
+                className="text-gray-300 hover:text-triton-red hover:bg-white/5 px-3 py-2 rounded-md text-sm font-bold uppercase transition-colors duration-300"
+              >
+                Global Ranking
+              </a>
+
               <div className="flex gap-4 items-center">
                 <button className="bg-triton-red hover:bg-red-700 text-white px-5 py-2 rounded-full text-sm font-bold uppercase transition-colors">
-                  <Link href="/all-events">Find a race</Link>
+                  <Link href="/triton-events">Find a race</Link>
                 </button>
               </div>
             </div>

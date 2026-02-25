@@ -29,11 +29,10 @@ const StatsClientComponent: React.FC = () => {
           formats, <strong>TRITON 1</strong> and <strong>TRITON 3</strong>, our
           events score points for the global ranking and qualify athletes for
           the World Finals. From first-time competitors to elite performers,
-          TRITON takes athletes through the full journey of the sport.
+          TRITON takes athletes through the full journey of the sport.{" "}
+          <strong>Choose your challenge!</strong>
         </p>
       </div>
-
-      {/* Market Stats */}
     </>
   );
 };

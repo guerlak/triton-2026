@@ -3,6 +3,7 @@ import { Montserrat } from "next/font/google";
 import "../globals.css";
 import { DictionaryProvider } from "../components/DictionaryProvider";
 import { getDictionary } from "../lib/getDictionary";
+import Footer from "../components/Footer";
 
 const montserrat = Montserrat({
   subsets: ["latin"],
@@ -34,6 +35,7 @@ export default async function RootLayout({
       <body className={`${montserrat.variable} antialiased`}>
         <DictionaryProvider dict={dict} lang={lang}>
           {children}
+          <Footer />
         </DictionaryProvider>
       </body>
     </html>

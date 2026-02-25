@@ -16,7 +16,7 @@ const FormatTable: React.FC<{ distances: any[] }> = ({ distances }) => (
       <thead>
         <tr className="border-b border-white/20">
           <th className="py-4 px-4 text-sm font-bold uppercase text-gray-400">
-            Distâncias
+            Distance
           </th>
           <th className="py-4 px-4 text-center">
             <Waves className="mx-auto w-6 h-6 text-triton-red" />

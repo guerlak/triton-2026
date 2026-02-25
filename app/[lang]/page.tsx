@@ -1,3 +1,4 @@
+"use client";
 import Image from "next/image";
 import Navbar from "../components/Navbar";
 import CalendarSection from "../components/CalendarSection";
@@ -12,7 +13,10 @@ import PicGallery from "../components/PicGallery";
 import Faq from "../components/Faq";
 import CountdownSection from "../components/CountDownSection";
 import ShopSection from "../components/ShopSection";
-import NumerologySection from "../components/NimerologySection";
+import NumerologySection from "../components/NumerologySection";
+import NewsletterSection from "../components/NewsletterSection";
+import TritonExperienceCards from "../components/TritonCardsSection";
+import RankingSection from "../components/RankingSection";
 
 export default async function Page({ params }: PageProps<"/[lang]">) {
   const { lang } = await params;
@@ -22,19 +26,17 @@ export default async function Page({ params }: PageProps<"/[lang]">) {
       <Navbar lang={lang} />
       <main>
         <Hero />
-        <StatsSection />
-        <NumerologySection />
-        <FormatsSection />
+
+        <TritonExperienceCards />
+
         <CountdownSection />
-        <LocationsSection />
         <Testimonials />
-        <PicGallery />
-        <Faq />
+        <RankingSection />
         <CalendarSection />
         <ShopSection />
+        <NewsletterSection />
         <CommunitySection />
       </main>
-      <Footer />
     </div>
   );
 }

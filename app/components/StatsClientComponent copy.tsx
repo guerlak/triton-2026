@@ -17,7 +17,7 @@ const StatsClientComponent: React.FC = () => {
       {/* Header */}
       <div className="text-center mb-16">
         <h2 className="text-triton-red font-bold tracking-widest uppercase mb-2 text-lg">
-          Train . Race . Repeat
+          Choose your challenge
         </h2>
         <h3 className="text-3xl md:text-5xl font-black uppercase text-white leading-tight">
           More than a racing series

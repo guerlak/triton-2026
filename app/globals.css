@@ -3,10 +3,9 @@
 :root {
   --background: #ffffff;
   --foreground: #171717;
-  --triton-dark: #0A0A0A;
-  --triton-gray: #1F1F1F;
-  --triton-red: #DF1F26;
-
+  --triton-dark: #0a0a0a;
+  --triton-gray: #1f1f1f;
+  --triton-red: #df1f26;
 }
 
 @theme {
@@ -18,9 +17,12 @@
   --font-sans: var(--font-montserrat);
 }
 
-
 body {
   background: var(--background);
   color: var(--foreground);
   font-family: var(--font-montserrat);
+}
+
+button {
+  cursor: pointer;
 }

@@ -26,13 +26,13 @@ const NumerologySection: React.FC = () => {
               <div className="absolute inset-0 flex items-center justify-center">
                 <div className="relative w-full h-full">
                   {/* Positioned Numbers */}
-                  <span className="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-8 text-7xl md:text-9xl font-black text-white/90 drop-shadow-[0_0_15px_rgba(255,255,255,0.3)]">
+                  <span className="absolute top-0 left-5 text-7xl md:text-9xl font-black text-white/90 drop-shadow-[0_0_15px_rgba(255,255,255,0.3)]">
                     3
                   </span>
-                  <span className="absolute bottom-1/4 left-0 -translate-x-4 text-7xl md:text-9xl font-black text-triton-red drop-shadow-[0_0_15px_rgba(230,0,35,0.3)]">
+                  <span className="absolute top-0 right-0 text-7xl md:text-9xl font-black text-triton-red drop-shadow-[0_0_15px_rgba(230,0,35,0.3)]">
                     6
                   </span>
-                  <span className="absolute bottom-1/4 right-0 translate-x-4 text-7xl md:text-9xl font-black text-white/90 drop-shadow-[0_0_15px_rgba(255,255,255,0.3)]">
+                  <span className="absolute bottom-3 left-46 text-7xl md:text-9xl font-black text-white/90 drop-shadow-[0_0_15px_rgba(255,255,255,0.3)]">
                     9
                   </span>
                 </div>
@@ -44,31 +44,31 @@ const NumerologySection: React.FC = () => {
                 viewBox="0 0 100 100"
               >
                 <line
-                  x1="50"
+                  x1="10"
                   y1="10"
-                  x2="10"
+                  x2="50"
                   y2="75"
+                  stroke="currentColor"
+                  strokeWidth="0.5"
+                  className="text-triton-red"
+                />
+                <line
+                  x1="50"
+                  y1="75"
+                  x2="90"
+                  y2="10"
                   stroke="currentColor"
                   strokeWidth="0.5"
                   className="text-triton-red"
                 />
                 <line
                   x1="10"
-                  y1="75"
+                  y1="10"
                   x2="90"
-                  y2="75"
-                  stroke="currentColor"
-                  strokeWidth="0.5"
-                  className="text-white"
-                />
-                <line
-                  x1="90"
-                  y1="75"
-                  x2="50"
                   y2="10"
                   stroke="currentColor"
                   strokeWidth="0.5"
-                  className="text-triton-red"
+                  className="text-white"
                 />
               </svg>
             </div>

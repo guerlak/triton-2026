@@ -3,6 +3,7 @@ import React, { useState, useEffect } from "react";
 import { Timer, ArrowRight, MapPin } from "lucide-react";
 import Image from "next/image";
 import img from "@/public/images/bg-salvador.jpg";
+import Link from "next/link";
 
 const CountdownSection: React.FC = () => {
   const targetDate = new Date("2026-04-12T08:00:00").getTime();
@@ -34,7 +35,7 @@ const CountdownSection: React.FC = () => {
     }, 1000);
 
     return () => clearInterval(timer);
-  }, []);
+  }, [targetDate]);
 
   const TimeUnit = ({ value, label }: { value: number; label: string }) => (
     <div className="flex flex-col items-center px-6 py-4 bg-black/40 backdrop-blur-sm border border-white/10 rounded-xl min-w-[90px] md:min-w-[140px] shadow-2xl transform hover:scale-105 transition-transform duration-300">
@@ -82,11 +83,22 @@ const CountdownSection: React.FC = () => {
               <div className="text-white">12 April, 2026</div>
             </div>
 
-            <div className="mt-10 hidden lg:block">
-              <button className="group relative bg-triton-red hover:bg-white text-white hover:text-black font-black py-4 px-10 rounded-none flex items-center gap-3 uppercase tracking-widest transition-all duration-300">
-                <span>Subscribe</span>
+            <div className="mt-10 hidden lg:flex lg:gap-4">
+              <button className="bg-triton-red hover:bg-white text-white hover:text-black font-black py-4 px-10 rounded-none flex items-center gap-3 uppercase tracking-widest transition-all duration-300">
+                <span>Register</span>
                 <ArrowRight className="group-hover:translate-x-2 transition-transform" />
               </button>
+
+              <Link
+                href="/triton-events/salvador"
+                className="bg-white hover:bg-triton-red text-black hover:text-white font-black py-4 px-10 rounded-none flex items-center justify-center gap-3 uppercase tracking-widest transition-all duration-300"
+              >
+                <span>Website</span>
+                <ArrowRight
+                  size={18}
+                  className="group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform"
+                />
+              </Link>
             </div>
           </div>
 

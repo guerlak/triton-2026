@@ -6,8 +6,6 @@ import { Instagram } from "lucide-react";
 import Image from "next/image";
 import { useDictionary } from "./DictionaryProvider";
 
-
-
 const Testimonial = ({
   quote,
   author,
@@ -52,7 +50,7 @@ export default function TestimonialList() {
 
   return (
     <section
-      id="testimonials"
+      id="moviment"
       className="py-20 bg-triton-dark relative overflow-hidden text-center"
     >
       <h2 className="text-triton-red font-bold tracking-widest uppercase mb-2">
