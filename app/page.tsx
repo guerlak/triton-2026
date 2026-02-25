@@ -10,6 +10,7 @@ import ShopSection from "./components/ShopSection";
 import NewsletterSection from "./components/NewsletterSection";
 import TritonExperienceCards from "./components/TritonCardsSection";
 import RankingSection from "./components/RankingSection";
+import PartnersSection from "./components/PartnersSection";
 
 export default function Page() {
   return (
@@ -24,6 +25,7 @@ export default function Page() {
         <CalendarSection />
         <ShopSection />
         <NewsletterSection />
+        <PartnersSection />
         <CommunitySection />
       </main>
     </div>
