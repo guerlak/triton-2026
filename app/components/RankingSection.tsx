@@ -48,14 +48,14 @@ const RankingSection: React.FC = () => {
     fetchRankings();
   }, []);
 
-  const womenAthletes = athletes.filter(
-    (athlete: Athlete) =>
-      athlete.Gender === "Women" && athlete.Contest === "Middle Distance",
-  );
+  const athleteFilter = (gender: string, distance: string) => {
+    return athletes.filter(
+      (athlete: Athlete) =>
+        athlete.Gender === gender && athlete.Contest === distance,
+    );
+  };
 
-  const menAthletes = athletes.filter(
-    (athlete: Athlete) => athlete.Gender === "Men",
-  );
+  console.log("All Athletes:", athleteFilter("men", "Long Distance"));
 
   const renderFlag = (flagString: string) => {
     const match = flagString.match(/\[img:(.*?)\]/);
@@ -73,7 +73,7 @@ const RankingSection: React.FC = () => {
 
   const renderTable = (athletes: Athlete[]) => {
     return (
-      <div className="bg-neutral-900 border border-white/5 rounded-3xl overflow-hidden shadow-2xl mb-12">
+      <div className="bg-neutral-900 border border-white/5 rounded-3xl overflow-hidden shadow-2xl mb-12 w-full sm:w-140">
         <div className="overflow-x-auto">
           {loading ? (
             <div className="p-20 text-center text-gray-400 flex flex-col items-center">
@@ -87,12 +87,12 @@ const RankingSection: React.FC = () => {
               <p>Error: {error}</p>
             </div>
           ) : (
-            <table className="w-full text-left border-collapse min-w-[1000px]">
+            <table className="w-full text-left border-collapse ">
+              <caption className="p-2 font-bold">{athletes[0].Contest}</caption>
               <thead>
                 <tr className="bg-black/40 text-xs font-bold uppercase tracking-wider text-gray-500 border-b border-white/5">
                   <th className="py-5 px-6 w-20 text-center">Pos</th>
                   <th className="py-5 px-6">Athlete</th>
-
                   <th className="py-5 px-6 text-right text-triton-red">
                     Total Points
                   </th>
@@ -164,13 +164,20 @@ const RankingSection: React.FC = () => {
           </p>
         </div>
 
-        {renderTable(womenAthletes)}
-        {renderTable(menAthletes)}
+        <div className="flex flex-wrap gap-4">
+          {renderTable(athleteFilter("Women", "Long Distance"))}
+          {renderTable(athleteFilter("Men", "Long Distance"))}
+          {renderTable(athleteFilter("Women", "Middle Distance"))}
+          {renderTable(athleteFilter("Men", "Middle Distance"))}
+          {renderTable(athleteFilter("Women", "Sprint Distance"))}
 
-        <div className="p-6 text-center mt-5">
+          {renderTable(athleteFilter("Men", "Sprint Distance"))}
+        </div>
+
+        <div className="p-6 text-center">
           <Link
             href="/ranking"
-            className="text-sm font-bold uppercase tracking-widest text-triton-red hover:text-white transition-colors"
+            className="m-auto pointer w-sm bg-triton-red hover:text-black text-white  hover:bg-white font-black py-4 px-10 rounded-none flex items-center justify-center gap-3 uppercase tracking-widest transition-all duration-300"
           >
             Check The Full Ranking
           </Link>

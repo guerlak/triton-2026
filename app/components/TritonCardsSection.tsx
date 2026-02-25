@@ -39,7 +39,7 @@ const TritonExperienceCards: React.FC = () => {
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-12">
           {/* Triton 1 Card */}
           <motion.div
-            initial={{ opacity: 0, x: -50 }}
+            initial={{ opacity: 0, x: -70 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
             className="group relative bg-neutral-950 rounded-[2.5rem] p-10 lg:p-16 border border-white/5 hover:border-triton-red/30 transition-all duration-500 overflow-hidden"
@@ -113,7 +113,7 @@ const TritonExperienceCards: React.FC = () => {
 
           {/* Triton 3 Card */}
           <motion.div
-            initial={{ opacity: 0, x: 50 }}
+            initial={{ opacity: 0, x: 70 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
             className="group relative bg-neutral-900 rounded-[2.5rem] p-10 lg:p-16 border border-white/5 hover:border-triton-red/30 transition-all duration-500 overflow-hidden"
