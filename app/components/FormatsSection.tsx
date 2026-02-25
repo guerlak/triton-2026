@@ -8,7 +8,8 @@ import runPic from "../../public/images/triton-fotos-prova-run.jpeg";
 import runMap from "../../public/images/maps/corrida-triton3-rj-2026.jpg";
 import swimMap from "../../public/images/maps/natacao-triton3-rj-2026.png";
 import bikeMap from "../../public/images/maps/ciclismo-triton3-rj-2026.jpg";
-import { useDictionary } from "./DictionaryProvider";
+
+import dict from "../../dictionaries/en.json";
 
 const FormatTable: React.FC<{ distances: any[] }> = ({ distances }) => (
   <div className="w-full overflow-x-auto">
@@ -56,7 +57,6 @@ const FormatTable: React.FC<{ distances: any[] }> = ({ distances }) => (
 
 const FormatsSection: React.FC = () => {
   const [activeTab, setActiveTab] = useState<"1" | "2" | "3">("1");
-  const { dict, lang } = useDictionary();
 
   return (
     <section id="formats" className="py-24 bg-black">
