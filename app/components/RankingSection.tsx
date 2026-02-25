@@ -1,6 +1,6 @@
 "use client";
 import React, { useEffect, useState } from "react";
-import { Trophy, Medal, Search, Filter } from "lucide-react";
+import { Trophy } from "lucide-react";
 
 interface Athlete {
   Bib: number;

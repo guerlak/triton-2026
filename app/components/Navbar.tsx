@@ -1,14 +1,11 @@
 "use client";
-import React, { useState } from "react";
+
 import tritonLogo from "@/public/images/triton-ws-logo-01.png";
 import Image from "next/image";
-import { useDictionary } from "./DictionaryProvider";
+
 import Link from "next/link";
 
-const Navbar: React.FC<{ lang: string }> = () => {
-  const [isOpen, setIsOpen] = useState(false);
-  const { dict } = useDictionary();
-
+const Navbar = () => {
   return (
     <nav className="fixed top-0 w-full z-50 bg-black/90 backdrop-blur-md border-b border-white/10">
       <div className="flex justify-around max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">

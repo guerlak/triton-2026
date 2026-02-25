@@ -4,11 +4,8 @@ import { ChevronDown } from "lucide-react";
 import heroImg from "@/public/images/evento_start.jpg";
 import logoHero from "@/public/images/triton-ws-branco.png";
 import Image from "next/image";
-import { useDictionary } from "./DictionaryProvider";
 
 const Hero: React.FC = () => {
-  const { dict } = useDictionary();
-
   return (
     <section className="relative h-screen w-full flex items-center justify-center overflow-hidden">
       {/* Background Image acting as video placeholder */}

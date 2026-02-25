@@ -4,7 +4,7 @@ import { TestimonialProps } from "@/types";
 import TritonBox from "./TritonBox";
 import { Instagram } from "lucide-react";
 import Image from "next/image";
-import { useDictionary } from "./DictionaryProvider";
+import dict from "../../dictionaries/en.json";
 
 const Testimonial = ({
   quote,
@@ -46,8 +46,6 @@ const Testimonial = ({
 };
 
 export default function TestimonialList() {
-  const { dict } = useDictionary();
-
   return (
     <section
       id="moviment"

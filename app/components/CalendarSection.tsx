@@ -1,16 +1,14 @@
-'use client';
+"use client";
 import React from "react";
 import { EVENTS } from "../../constants";
 import { Calendar as CalendarIcon } from "lucide-react";
-import { useDictionary } from "./DictionaryProvider";
+import dict from "../../dictionaries/en.json";
 
 const CalendarSection: React.FC = () => {
   const events2026 = EVENTS.filter((e) => e.year === 2026);
   const eventsFuture = EVENTS.filter(
-    (e) => e.year > 2026 || e.status === "Planned"
+    (e) => e.year > 2026 || e.status === "Planned",
   );
-
-  const { dict } = useDictionary()
 
   return (
     <section id="calendar" className="py-24 bg-triton-gray relative">

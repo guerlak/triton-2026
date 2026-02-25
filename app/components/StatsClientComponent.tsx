@@ -2,11 +2,8 @@
 
 import React from "react";
 import { Trophy, CircleStar } from "lucide-react";
-import { useDictionary } from "./DictionaryProvider";
 
 const StatsClientComponent: React.FC = () => {
-  const { dict } = useDictionary();
-
   const iconMap: Record<string, React.ReactNode> = {
     Trophy: <Trophy className="text-triton-red mb-3 w-8 h-8" />,
     CircleStar: <CircleStar className="text-triton-red mb-3 w-8 h-8" />,
