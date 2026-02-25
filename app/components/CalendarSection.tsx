@@ -25,19 +25,19 @@ const CalendarSection: React.FC = () => {
             </h3>
           </div>
           <div className="text-right">
-            <p className="text-xl font-bold text-white">4 ETAPAS • 3 PAÍSES</p>
-            <p className="text-gray-400 text-sm">
-              +30 Nacionalidades na disputa
+            <p className="text-xl font-bold text-white">
+              4 RACES • 3 COUNTRIES
             </p>
+            <p className="text-gray-400 text-sm">+30 nationalities competing</p>
           </div>
         </div>
 
         {/* 2026 Timeline */}
         <div className="mb-20">
           <h4 className="text-2xl font-bold text-white mb-8 border-l-4 border-triton-red pl-4">
-            TEMPORADA 2026{" "}
+            2026 RACES{" "}
             <span className="text-sm font-normal text-gray-500 ml-2">
-              *Datas confirmadas
+              *Confirmed dates
             </span>
           </h4>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
@@ -68,7 +68,7 @@ const CalendarSection: React.FC = () => {
                 </span>
                 <div className="mt-6 pt-4 border-t border-white/5 opacity-0 group-hover:opacity-100 transition-opacity">
                   <button className="text-white text-xs font-bold uppercase hover:text-triton-red">
-                    Saiba mais &rarr;
+                    More Info &rarr;
                   </button>
                 </div>
               </div>
@@ -78,7 +78,7 @@ const CalendarSection: React.FC = () => {
         {/* Future Locations */}
         <div>
           <h4 className="text-xl font-bold text-gray-400 mb-8 pl-4">
-            EM BREVE 2027
+            COMIING SOON 2027
           </h4>
           <div className="flex flex-wrap gap-4">
             {eventsFuture.map((event, idx) => (

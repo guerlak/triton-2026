@@ -28,16 +28,17 @@ const ShopSection: React.FC = () => {
               <ShoppingBag size={12} /> Official Collection
             </div>
 
-            <h2 className="text-4xl md:text-5xl font-black text-white uppercase leading-tight mb-6 max-w-2/3">
-              Pro-level gear for <span className="text-triton-red">Elite</span>{" "}
-              athlete
-            </h2>
+            <div>
+              <h2 className="text-4xl md:text-4xl font-black text-white uppercase leading-tight mb-2 mt-50 max-w-2/3">
+                Pro-level gear for{" "}
+                <span className="text-triton-red">Elite</span> athlete
+              </h2>
+              <p className="text-gray-300 text-lg md:text-xl leading-relaxed mb-10 max-w-lg">
+                Bring TRITON excellence to your workouts.
+              </p>
+            </div>
 
-            <p className="text-gray-300 text-lg md:text-xl leading-relaxed mb-10 max-w-lg">
-              Bring TRITON excellence to your workouts.
-            </p>
-
-            <button className="group relative bg-white hover:bg-triton-red text-black hover:text-white font-black py-2 px-5 rounded-none flex items-center justify-center gap-3 uppercase tracking-widest transition-all duration-300">
+            <button className="absolute bottom-10 bg-white hover:bg-triton-red text-black hover:text-white font-black py-2 px-5 rounded-none flex items-center justify-center gap-3 uppercase tracking-widest transition-all duration-300">
               <span>Visit the Store</span>
               <ArrowUpRight
                 size={18}
@@ -66,19 +67,20 @@ const ShopSection: React.FC = () => {
           {/* Content */}
           <div className="relative py-10 md:p-10 max-w-2xl sm:min-h-[600px]">
             <div className="inline-flex items-center gap-2 bg-triton-red px-4 py-1.5 rounded-full text-white text-[10px] font-black uppercase tracking-widest mb-6">
-              <TabletSmartphone size={12} /> Application
+              <TabletSmartphone size={12} />
+              Application
             </div>
 
-            <h2 className="text-4xl md:text-5xl font-black text-white uppercase leading-tight mb-6 max-w-2/3">
-              Take Us With You. Unlock Exclusive{" "}
-              <span className="text-triton-red">Features</span>{" "}
+            <h2 className="text-3xl md:text-4xl font-black text-white uppercase leading-tight mb-2 mt-50 max-w-2/3">
+              Take Us With You.
+              <span className="text-triton-red"> Exclusive</span>{" "}
             </h2>
 
             <p className="text-gray-300 text-lg md:text-xl leading-relaxed mb-10 max-w-lg">
               Elevate Your Experience. Get the App.
             </p>
 
-            <button className="group relative bg-white hover:bg-triton-red text-black hover:text-white font-black py-2 px-5 rounded-none flex items-center justify-center gap-3 uppercase tracking-widest transition-all duration-300">
+            <button className="absolute bottom-10  bg-white hover:bg-triton-red text-black hover:text-white font-black py-2 px-5 rounded-none flex items-center justify-center gap-3 uppercase tracking-widest transition-all duration-300">
               <span>Download the App</span>
               <ArrowUpRight
                 size={18}
