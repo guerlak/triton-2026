@@ -3,7 +3,7 @@ import dict from "../../dictionaries/en.json";
 
 export default function CommunitySection() {
   return (
-    <section id="community" className="py-20 bg-neutral-900 text-center px-4">
+    <section id="community" className="py-20 text-center px-4">
       <div className="max-w-4xl mx-auto">
         <h2 className="text-3xl md:text-4xl font-black uppercase mb-6">
           {dict.community_section.title}

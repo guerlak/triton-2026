@@ -14,9 +14,9 @@ const PartnersSection: React.FC = () => {
   return (
     <section className="py-16 bg-neutral-950 border-y border-white/5">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <p className="text-center text-xs font-bold uppercase tracking-[0.3em] text-gray-500 mb-10">
+        <h2 className="text-triton-red font-bold tracking-widest uppercase mb-2 flex items-center justify-center gap-2 mb-10">
           Triton Partners
-        </p>
+        </h2>
         <div className="flex flex-wrap justify-center items-center gap-12 md:gap-20">
           {PARTNERS.map((partner, idx) => {
             const Icon = partner.icon;

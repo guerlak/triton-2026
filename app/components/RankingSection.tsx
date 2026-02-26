@@ -1,6 +1,7 @@
 "use client";
 import React, { useEffect, useState } from "react";
-import { Trophy } from "lucide-react";
+import { Info, Trophy } from "lucide-react";
+import { motion } from "framer-motion";
 import Link from "next/link";
 
 interface Athlete {
@@ -55,8 +56,6 @@ const RankingSection: React.FC = () => {
     );
   };
 
-  console.log("All Athletes:", athleteFilter("men", "Long Distance"));
-
   const renderFlag = (flagString: string) => {
     const match = flagString.match(/\[img:(.*?)\]/);
     if (match && match[1]) {
@@ -88,7 +87,9 @@ const RankingSection: React.FC = () => {
             </div>
           ) : (
             <table className="w-full text-left border-collapse ">
-              <caption className="p-2 font-bold">{athletes[0].Contest}</caption>
+              <caption className="p-2 font-bold">
+                {athletes[0].Gender} - {athletes[0].Contest}
+              </caption>
               <thead>
                 <tr className="bg-black/40 text-xs font-bold uppercase tracking-wider text-gray-500 border-b border-white/5">
                   <th className="py-5 px-6 w-20 text-center">Pos</th>
@@ -96,6 +97,7 @@ const RankingSection: React.FC = () => {
                   <th className="py-5 px-6 text-right text-triton-red">
                     Total Points
                   </th>
+                  <th></th>
                 </tr>
               </thead>
               <tbody>
@@ -137,6 +139,14 @@ const RankingSection: React.FC = () => {
                         {athlete.Final}
                       </span>
                     </td>
+                    <td className="py-4 px-6 text-right">
+                      <span className="font-black text-lg text-white">
+                        <Info
+                          size={18}
+                          className="text-gray-500 hover:text-triton-red transition-colors cursor-pointer"
+                        />
+                      </span>
+                    </td>
                   </tr>
                 ))}
               </tbody>
@@ -164,15 +174,18 @@ const RankingSection: React.FC = () => {
           </p>
         </div>
 
-        <div className="flex flex-wrap gap-4">
+        <motion.div
+          initial={{ opacity: 0, x: -170 }}
+          whileInView={{ opacity: 1, x: 0 }}
+          className="flex flex-wrap justify-around"
+        >
           {renderTable(athleteFilter("Women", "Long Distance"))}
           {renderTable(athleteFilter("Men", "Long Distance"))}
           {renderTable(athleteFilter("Women", "Middle Distance"))}
           {renderTable(athleteFilter("Men", "Middle Distance"))}
           {renderTable(athleteFilter("Women", "Sprint Distance"))}
-
           {renderTable(athleteFilter("Men", "Sprint Distance"))}
-        </div>
+        </motion.div>
 
         <div className="p-6 text-center">
           <Link

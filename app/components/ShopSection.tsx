@@ -68,7 +68,7 @@ const ShopSection: React.FC = () => {
           <div className="relative py-10 md:p-10 max-w-2xl sm:min-h-[600px]">
             <div className="inline-flex items-center gap-2 bg-triton-red px-4 py-1.5 rounded-full text-white text-[10px] font-black uppercase tracking-widest mb-6">
               <TabletSmartphone size={12} />
-              Application
+              Triton App
             </div>
 
             <h2 className="text-3xl md:text-4xl font-black text-white uppercase leading-tight mb-2 mt-50 max-w-2/3">
