@@ -12,7 +12,7 @@ export default function NavButton({ isRed, text, href }: NavButtonProps) {
       <Link href={href}>{text}</Link>
     </button>
   ) : (
-    <button className="bg-white hover:bg-triton-red text-black hover:text-white font-bold py-2 px-5 rounded-full text-sm uppercase transition-colors">
+    <button className="bg-white  text-black hover:text-triton-red font-bold py-2 px-5 rounded-full text-sm uppercase transition-colors">
       <Link href={href}>{text}</Link>
     </button>
   );
