@@ -190,7 +190,7 @@ const RankingSection: React.FC = () => {
         <div className="p-6 text-center">
           <Link
             href="/ranking"
-            className="m-auto pointer w-sm bg-triton-red hover:text-black text-white  hover:bg-white font-black py-4 px-10 rounded-none flex items-center justify-center gap-3 uppercase tracking-widest transition-all duration-300"
+            className="m-auto pointer md:w-sm bg-triton-red hover:text-black text-white  hover:bg-white font-black py-4 md:px-10 rounded-none flex items-center justify-center uppercase tracking-widest transition-all duration-300"
           >
             Check The Full Ranking
           </Link>

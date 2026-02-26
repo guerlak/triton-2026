@@ -8,9 +8,9 @@ const ShopSection: React.FC = () => {
   return (
     <section
       id="shop"
-      className="py-20 overflow-hidden bg-black flex max-w-[1200] mx-auto "
+      className="overflow-hidden bg-black md:flex max-w-[1200] mx-auto md:mt-20"
     >
-      <div className="max-w-1/2 px-4 sm:px-6 lg:px-8 ">
+      <div className="md:max-w-1/2 px-4 sm:px-6 lg:px-8 mb-5">
         <div className="relative rounded-4xl overflow-hidden group">
           {/* Background Image - Updated to high-performance athlete in gear */}
           <div className="absolute inset-0">
@@ -52,7 +52,7 @@ const ShopSection: React.FC = () => {
         </div>
       </div>
 
-      <div className="max-w-1/2 px-4 sm:px-6 lg:px-8">
+      <div className="md:max-w-1/2 px-4 sm:px-6 lg:px-8">
         <div className="relative rounded-4xl overflow-hidden group">
           {/* Background Image - Updated to high-performance athlete in gear */}
           <div className="absolute inset-0">

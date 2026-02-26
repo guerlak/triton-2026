@@ -15,16 +15,16 @@ const CalendarSection: React.FC = () => {
       <div className="absolute top-0 left-0 w-full h-20 bg-linear-to-b from-black to-transparent"></div>
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex flex-col md:flex-row justify-between items-end mb-16 gap-6">
+        <div className="flex flex-col md:flex-row md:justify-between md:items-end mb-20 gap-6 ">
           <div>
             <h2 className="text-triton-red font-bold tracking-widest uppercase mb-2">
-              {dict.calendar_section.title}
+              World Series
             </h2>
             <h3 className="text-4xl md:text-6xl font-black uppercase text-white">
-              {dict.calendar_section.subtitle}
+              Calendar
             </h3>
           </div>
-          <div className="text-right">
+          <div className="md:text-right">
             <p className="text-xl font-bold text-white">
               4 RACES • 3 COUNTRIES
             </p>
