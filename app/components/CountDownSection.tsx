@@ -4,6 +4,7 @@ import { Timer, ArrowRight, MapPin } from "lucide-react";
 import Image from "next/image";
 import img from "@/public/images/bg-salvador.jpg";
 import Link from "next/link";
+import { TimeUnit } from "./TimeUnit";
 
 const CountdownSection: React.FC = () => {
   const targetDate = new Date("2026-04-12T08:00:00").getTime();
@@ -37,19 +38,8 @@ const CountdownSection: React.FC = () => {
     return () => clearInterval(timer);
   }, [targetDate]);
 
-  const TimeUnit = ({ value, label }: { value: number; label: string }) => (
-    <div className="flex flex-col items-center px-6 py-4 bg-black/40 backdrop-blur-sm border border-white/10 rounded-xl min-w-[90px] md:min-w-[140px] shadow-2xl transform hover:scale-105 transition-transform duration-300">
-      <span className="text-4xl md:text-7xl font-black text-white tabular-nums tracking-tighter drop-shadow-md">
-        {value.toString().padStart(2, "0")}
-      </span>
-      <span className="text-triton-red text-[10px] md:text-xs font-black uppercase tracking-[0.2em] mt-1">
-        {label}
-      </span>
-    </div>
-  );
-
   return (
-    <section className="relative py-24 overflow-hidden bg-[url(] no=repeat bg-center bg-cover">
+    <section className="relative py-24 overflow-hidden no=repeat bg-center bg-cover min-w-full shrink-0 snap-center">
       <div className="absolute inset-0 z-0">
         <Image
           src={img}
@@ -103,7 +93,7 @@ const CountdownSection: React.FC = () => {
           </div>
 
           {/* Countdown Grid */}
-          <div className="flex-shrink-0">
+          <div className="shrink-0">
             <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-2 xl:grid-cols-4 gap-4">
               <TimeUnit value={timeLeft.days} label="Days" />
               <TimeUnit value={timeLeft.hours} label="Hours" />

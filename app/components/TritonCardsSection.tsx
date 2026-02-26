@@ -42,7 +42,7 @@ const TritonExperienceCards: React.FC = () => {
             initial={{ opacity: 0, x: -70 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
-            className="group relative bg-neutral-950 rounded-[2.5rem] p-10 lg:p-16 border border-white/5 hover:border-triton-red/30 transition-all duration-500 overflow-hidden"
+            className="group relative bg-neutral-900 rounded-[2.5rem] p-10 lg:p-16 border border-white/5 hover:border-triton-red/30 transition-all duration-500 overflow-hidden"
           >
             <div className="absolute top-0 right-0 p-8 opacity-10 group-hover:opacity-20 transition-opacity">
               <Zap size={120} className="text-triton-red" />

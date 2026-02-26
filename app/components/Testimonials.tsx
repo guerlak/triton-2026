@@ -5,6 +5,7 @@ import TritonBox from "./TritonBox";
 import { Instagram } from "lucide-react";
 import Image from "next/image";
 import dict from "../../dictionaries/en.json";
+import RedLine from "../ui/RedLine";
 
 const Testimonial = ({
   quote,
@@ -81,6 +82,7 @@ export default function TestimonialList() {
           allowFullScreen
         ></iframe>
       </div>
+      <RedLine />
     </section>
   );
 }

@@ -1,7 +1,5 @@
 import type { Metadata } from "next";
 import { Montserrat } from "next/font/google";
-import { DictionaryProvider } from "./components/DictionaryProvider";
-import { getDictionary } from "./lib/getDictionary";
 import Footer from "./components/Footer";
 
 import "./globals.css";

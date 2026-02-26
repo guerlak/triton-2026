@@ -4,6 +4,7 @@ import tritonLogo from "@/public/images/triton-ws-logo-01.png";
 import Image from "next/image";
 
 import Link from "next/link";
+import NavButton from "../ui/NavButton";
 
 const Navbar = () => {
   return (
@@ -53,13 +54,7 @@ const Navbar = () => {
               >
                 Global Ranking
               </a>
-              <a
-                key="live-results"
-                href="live-results"
-                className="text-gray-300 hover:text-triton-red hover:bg-white/5 px-3 py-2 rounded-md text-sm font-bold uppercase transition-colors duration-300"
-              >
-                Live Results
-              </a>
+              <NavButton text="Live Results" href="/live-results" />
 
               <div className="flex gap-4 items-center">
                 <button className="bg-triton-red hover:bg-red-700 text-white px-5 py-2 rounded-full text-sm font-bold uppercase transition-colors">

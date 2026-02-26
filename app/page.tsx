@@ -20,8 +20,8 @@ export default function Page() {
         <Hero />
         <TritonExperienceCards />
         <CountdownSection />
-        <Testimonials />
         <RankingSection />
+        <Testimonials />
         <CalendarSection />
         <ShopSection />
         <NewsletterSection />
