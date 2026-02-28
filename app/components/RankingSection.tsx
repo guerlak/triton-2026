@@ -1,8 +1,9 @@
 "use client";
 import React, { useEffect, useState } from "react";
-import { Info, Trophy } from "lucide-react";
+import { Gauge, Info, Trophy } from "lucide-react";
 import { motion } from "framer-motion";
 import Link from "next/link";
+import Modal from "../ui/Modal";
 
 interface Athlete {
   Bib: number;
@@ -94,7 +95,7 @@ const RankingSection: React.FC = () => {
                 <tr className="bg-black/40 text-xs font-bold uppercase tracking-wider text-gray-500 border-b border-white/5">
                   <th className="py-5 px-6 w-20 text-center">Pos</th>
                   <th className="py-5 px-6">Athlete</th>
-                  <th className="py-5 px-6 text-right text-triton-red">
+                  <th className="py-5 px-6 text-center text-triton-red">
                     Total Points
                   </th>
                   <th></th>
@@ -125,27 +126,30 @@ const RankingSection: React.FC = () => {
                         </span>
                       )}
                     </td>
-                    <td className="py-4 px-6">
+                    <td className="py-4 px-2">
                       <div className="flex items-center gap-3">
                         {renderFlag(athlete.Flag)}
-                        <span className="font-bold text-white group-hover:text-triton-red transition-colors">
+                        <span className="font-bold text-sm text-white group-hover:text-triton-red transition-colors">
                           {athlete.Name}
                         </span>
                       </div>
                     </td>
 
-                    <td className="py-4 px-6 text-right">
-                      <span className="font-black text-lg text-white">
+                    <td className="py-4 px-2 text-center">
+                      <span className="font-black text-sm text-white">
                         {athlete.Final}
                       </span>
                     </td>
                     <td className="py-4 px-6 text-right">
-                      <span className="font-black text-lg text-white">
-                        <Info
-                          size={18}
-                          className="text-gray-500 hover:text-triton-red transition-colors cursor-pointer"
+                      <button
+                        className="font-black text-lg"
+                        onClick={() => handleEditClick(athlete)}
+                      >
+                        <Gauge
+                          size={22}
+                          className="text-triton-red hover:text-triton-red transition-colors cursor-pointer"
                         />
-                      </span>
+                      </button>
                     </td>
                   </tr>
                 ))}
@@ -155,6 +159,16 @@ const RankingSection: React.FC = () => {
         </div>
       </div>
     );
+  };
+
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [selectedAthelete, setSelectedAthelete] = useState(
+    {} as Athlete | null,
+  );
+
+  const handleEditClick = (athlete: Athlete) => {
+    setSelectedAthelete(athlete);
+    setIsModalOpen(true);
   };
 
   return (
@@ -196,6 +210,44 @@ const RankingSection: React.FC = () => {
           </Link>
         </div>
       </div>
+
+      <Modal
+        isOpen={isModalOpen}
+        onClose={() => setIsModalOpen(false)}
+        title="Performance Details"
+      >
+        {selectedAthelete ? (
+          <div className="space-y-4">
+            <p>
+              <strong>Name:</strong> {selectedAthelete.Name}
+            </p>
+            <p>
+              <strong>Contest:</strong> {selectedAthelete.Contest}
+            </p>
+            <p>
+              <strong>Final Points:</strong> {selectedAthelete.Final}
+            </p>
+            <p>
+              <strong>Salvador Points:</strong> {selectedAthelete.Salvador}
+            </p>
+            <p>
+              <strong>China Points:</strong> {selectedAthelete.China}
+            </p>
+            <p>
+              <strong>Rio Points:</strong> {selectedAthelete.Rio}
+            </p>
+            <p>
+              <strong>Lisboa Points:</strong> {selectedAthelete.Lisboa}
+            </p>
+            <strong>Total Points: </strong>
+            <span className="text-triton-red font-bold">
+              {selectedAthelete.Total}
+            </span>
+          </div>
+        ) : (
+          <p>No athlete selected.</p>
+        )}
+      </Modal>
     </section>
   );
 };
