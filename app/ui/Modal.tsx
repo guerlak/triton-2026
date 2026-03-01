@@ -1,14 +1,14 @@
+import { CircleX } from "lucide-react";
 import React, { useEffect } from "react";
 import { createPortal } from "react-dom";
 
 interface ModalProps {
   isOpen: boolean;
   onClose: () => void;
-  title: string;
   children: React.ReactNode;
 }
 
-const Modal = ({ isOpen, onClose, title, children }: ModalProps) => {
+const Modal = ({ isOpen, onClose, children }: ModalProps) => {
   // Fecha o modal ao apertar ESC
   useEffect(() => {
     const handleEsc = (e: KeyboardEvent) => {
@@ -28,9 +28,8 @@ const Modal = ({ isOpen, onClose, title, children }: ModalProps) => {
           onClick={onClose}
           className="absolute top-0 right-0 text-triton-red hover:opacity-70 text-6xl"
         >
-          &times;
+          <CircleX />
         </button>
-
         <div className="modal-content">{children}</div>
       </div>
     </div>,

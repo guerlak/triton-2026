@@ -4,7 +4,6 @@ import { Gauge, Trophy } from "lucide-react";
 import { motion } from "framer-motion";
 import Link from "next/link";
 import Modal from "../ui/Modal";
-
 import fotoUrl from "../../public/images/shop-image.png";
 import Image from "next/image";
 
@@ -177,7 +176,7 @@ const RankingSection: React.FC = () => {
   };
 
   return (
-    <section id="ranking" className="py-24 bg-neutral-950">
+    <section id="ranking" className="py-14 bg-neutral-950">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-16">
           <h2 className="text-triton-red font-bold tracking-widest uppercase mb-2 flex items-center justify-center gap-2">
@@ -216,11 +215,7 @@ const RankingSection: React.FC = () => {
         </div>
       </div>
 
-      <Modal
-        isOpen={isModalOpen}
-        onClose={() => setIsModalOpen(false)}
-        title="Performance Details"
-      >
+      <Modal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)}>
         {selectedAthelete ? (
           <div className="max-w-sm bg-neutral-900 border border-neutral-800 rounded-2xl shadow-2xl overflow-hidden font-sans group hover:border-red-900/50 transition-all duration-300">
             {/* Cabeçalho do Card (Foto e Nome) */}
@@ -231,7 +226,7 @@ const RankingSection: React.FC = () => {
                 className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
               />
               {/* Overlay Gradiente para destacar o nome */}
-              <div className="absolute inset-0 bg-gradient-to-t from-neutral-900 via-neutral-900/20 to-transparent"></div>
+              <div className="absolute inset-0 bg-linear-to-t from-neutral-900 via-neutral-900/70 to-transparent"></div>
 
               {/* Informações Sobrepostas */}
               <div className="absolute bottom-4 left-5 right-5 flex justify-between items-end">
@@ -245,6 +240,9 @@ const RankingSection: React.FC = () => {
                       {isModalOpen && renderFlag(selectedAthelete.Flag)}
                     </span>
                   </h2>
+                  <h1 className="text-white text-sm mt-1">
+                    POSITION: {selectedAthelete.Pos}
+                  </h1>
                 </div>
               </div>
             </div>
@@ -266,7 +264,31 @@ const RankingSection: React.FC = () => {
               <div className="space-y-3">
                 <div className="flex justify-between items-center bg-neutral-800/50 p-3 rounded-xl border border-neutral-800 hover:bg-neutral-800 transition-colors">
                   <span className="text-sm font-medium text-neutral-300">
-                    {selectedAthelete.Contest}
+                    {Object.keys(selectedAthelete)[8]}
+                  </span>
+                  <span className="text-lg font-bold text-white bg-neutral-700/50 px-3 py-1 rounded-lg min-w-[50px] text-center">
+                    {selectedAthelete.Lisboa}
+                  </span>
+                </div>
+                <div className="flex justify-between items-center bg-neutral-800/50 p-3 rounded-xl border border-neutral-800 hover:bg-neutral-800 transition-colors">
+                  <span className="text-sm font-medium text-neutral-300">
+                    {Object.keys(selectedAthelete)[8]}
+                  </span>
+                  <span className="text-lg font-bold text-white bg-neutral-700/50 px-3 py-1 rounded-lg min-w-[50px] text-center">
+                    {selectedAthelete.Lisboa}
+                  </span>
+                </div>
+                <div className="flex justify-between items-center bg-neutral-800/50 p-3 rounded-xl border border-neutral-800 hover:bg-neutral-800 transition-colors">
+                  <span className="text-sm font-medium text-neutral-300">
+                    {Object.keys(selectedAthelete)[8]}
+                  </span>
+                  <span className="text-lg font-bold text-white bg-neutral-700/50 px-3 py-1 rounded-lg min-w-[50px] text-center">
+                    {selectedAthelete.Lisboa}
+                  </span>
+                </div>
+                <div className="flex justify-between items-center bg-neutral-800/50 p-3 rounded-xl border border-neutral-800 hover:bg-neutral-800 transition-colors">
+                  <span className="text-sm font-medium text-neutral-300">
+                    {Object.keys(selectedAthelete)[8]}
                   </span>
                   <span className="text-lg font-bold text-white bg-neutral-700/50 px-3 py-1 rounded-lg min-w-[50px] text-center">
                     {selectedAthelete.Lisboa}
