@@ -1,6 +1,6 @@
 "use client";
 import React, { useEffect, useState } from "react";
-import { Gauge, Info, Trophy } from "lucide-react";
+import { Gauge, Trophy } from "lucide-react";
 import { motion } from "framer-motion";
 import Link from "next/link";
 import Modal from "../ui/Modal";
@@ -64,9 +64,11 @@ const RankingSection: React.FC = () => {
     const match = flagString.match(/\[img:(.*?)\]/);
     if (match && match[1]) {
       return (
-        <img
+        <Image
           src={`https://my.raceresult.com${match[1]}`}
           alt="flag"
+          width={100}
+          height={100}
           className="w-6 h-4 object-cover rounded-sm inline-block"
         />
       );
@@ -239,7 +241,9 @@ const RankingSection: React.FC = () => {
                   </p>
                   <h2 className="text-2xl font-bold text-white leading-tight">
                     {selectedAthelete.Name}{" "}
-                    <span>{renderFlag(selectedAthelete.Flag)}</span>
+                    <span>
+                      {isModalOpen && renderFlag(selectedAthelete.Flag)}
+                    </span>
                   </h2>
                 </div>
               </div>
