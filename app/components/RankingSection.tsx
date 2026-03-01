@@ -5,7 +5,7 @@ import { motion } from "framer-motion";
 import Link from "next/link";
 import Modal from "../ui/Modal";
 
-import fotoUrl from "../../public/images/triton-fotos-prova-bike.jpeg";
+import fotoUrl from "../../public/images/shop-image.png";
 import Image from "next/image";
 
 interface Athlete {
