@@ -5,6 +5,9 @@ import { motion } from "framer-motion";
 import Link from "next/link";
 import Modal from "../ui/Modal";
 
+import fotoUrl from "../../public/images/triton-fotos-prova-bike.jpeg";
+import Image from "next/image";
+
 interface Athlete {
   Bib: number;
   Contest: string;
@@ -217,32 +220,56 @@ const RankingSection: React.FC = () => {
         title="Performance Details"
       >
         {selectedAthelete ? (
-          <div className="space-y-4">
-            <p>
-              <strong>Name:</strong> {selectedAthelete.Name}
-            </p>
-            <p>
-              <strong>Contest:</strong> {selectedAthelete.Contest}
-            </p>
-            <p>
-              <strong>Final Points:</strong> {selectedAthelete.Final}
-            </p>
-            <p>
-              <strong>Salvador Points:</strong> {selectedAthelete.Salvador}
-            </p>
-            <p>
-              <strong>China Points:</strong> {selectedAthelete.China}
-            </p>
-            <p>
-              <strong>Rio Points:</strong> {selectedAthelete.Rio}
-            </p>
-            <p>
-              <strong>Lisboa Points:</strong> {selectedAthelete.Lisboa}
-            </p>
-            <strong>Total Points: </strong>
-            <span className="text-triton-red font-bold">
-              {selectedAthelete.Total}
-            </span>
+          <div className="max-w-sm bg-neutral-900 border border-neutral-800 rounded-2xl shadow-2xl overflow-hidden font-sans group hover:border-red-900/50 transition-all duration-300">
+            {/* Cabeçalho do Card (Foto e Nome) */}
+            <div className="relative h-48 bg-neutral-800 overflow-hidden">
+              <Image
+                src={fotoUrl}
+                alt={`Foto de ${selectedAthelete.Lisboa}`}
+                className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+              />
+              {/* Overlay Gradiente para destacar o nome */}
+              <div className="absolute inset-0 bg-gradient-to-t from-neutral-900 via-neutral-900/20 to-transparent"></div>
+
+              {/* Informações Sobrepostas */}
+              <div className="absolute bottom-4 left-5 right-5 flex justify-between items-end">
+                <div>
+                  <p className="text-sm font-medium uppercase tracking-widest text-white mb-1">
+                    {selectedAthelete.Contest}
+                  </p>
+                  <h2 className="text-2xl font-bold text-white leading-tight">
+                    {selectedAthelete.Name}{" "}
+                    <span>{renderFlag(selectedAthelete.Flag)}</span>
+                  </h2>
+                </div>
+              </div>
+            </div>
+
+            {/* Corpo do Card (Pontuações) */}
+            <div className="p-6">
+              <div className="flex justify-between items-center mb-5">
+                <h3 className="text-lg font-semibold text-neutral-100">
+                  Total Points
+                </h3>
+                <div className="text-right">
+                  <p className="text-2xl font-black text-red-500">
+                    {selectedAthelete.Total}
+                  </p>
+                </div>
+              </div>
+
+              {/* Lista de Provas */}
+              <div className="space-y-3">
+                <div className="flex justify-between items-center bg-neutral-800/50 p-3 rounded-xl border border-neutral-800 hover:bg-neutral-800 transition-colors">
+                  <span className="text-sm font-medium text-neutral-300">
+                    {selectedAthelete.Contest}
+                  </span>
+                  <span className="text-lg font-bold text-white bg-neutral-700/50 px-3 py-1 rounded-lg min-w-[50px] text-center">
+                    {selectedAthelete.Lisboa}
+                  </span>
+                </div>
+              </div>
+            </div>
           </div>
         ) : (
           <p>No athlete selected.</p>

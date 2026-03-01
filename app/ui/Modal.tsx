@@ -22,16 +22,14 @@ const Modal = ({ isOpen, onClose, title, children }: ModalProps) => {
 
   return createPortal(
     <div className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-10 backdrop-blur-sm m-2">
-      <div className="bg-white rounded-lg shadow-xl w-full max-w-md p-6 relative">
+      <div className="rounded-lg shadow-xl w-full max-w-md p-6 relative">
         {/* Botão de Fechar (X) */}
         <button
           onClick={onClose}
-          className="absolute top-4 right-4 text-triton-red hover:text-black text-5xl"
+          className="absolute top-0 right-0 text-triton-red hover:opacity-70 text-6xl"
         >
           &times;
         </button>
-
-        <h2 className="text-xl font-bold mb-4">{title}</h2>
 
         <div className="modal-content">{children}</div>
       </div>
