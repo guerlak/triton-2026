@@ -1,4 +1,6 @@
+
 "use client";
+
 import { motion } from "framer-motion";
 import {
   Calendar,
@@ -63,19 +65,7 @@ const TritonExperienceCards: React.FC = () => {
               </p>
 
               <div className="space-y-6 mb-12">
-                <div className="flex items-start gap-4">
-                  <div className="w-10 h-10 rounded-xl bg-white/5 flex items-center justify-center shrink-0">
-                    <Zap className="text-triton-red w-5 h-5" />
-                  </div>
-                  <div>
-                    <p className="text-white font-bold uppercase tracking-wide">
-                      Mix & Match
-                    </p>
-                    <p className="text-gray-500 text-sm">
-                      Mix swim, bike, and run distances freely.
-                    </p>
-                  </div>
-                </div>
+
                 <div className="flex items-start gap-4">
                   <div className="w-10 h-10 rounded-xl bg-white/5 flex items-center justify-center shrink-0">
                     <Trophy className="text-triton-red w-5 h-5" />
@@ -87,6 +77,33 @@ const TritonExperienceCards: React.FC = () => {
                     <p className="text-gray-500 text-sm">
                       Ideal for those seeking to push their limits in an
                       explosive event.
+                    </p>
+                  </div>
+                </div>
+
+                <div className="flex items-start gap-4">
+                  <div className="w-10 h-10 rounded-xl bg-white/5 flex items-center justify-center shrink-0">
+                    <Zap className="text-triton-red w-5 h-5" />
+                  </div>
+                  <div>
+                    <p className="text-white font-bold uppercase tracking-wide">
+                      Competition Options
+                    </p>
+                    <p className="text-gray-500 text-sm">
+                      Individual / Corporate Relay / Mix & Match
+                    </p>
+                  </div>
+                </div>
+                <div className="flex items-start gap-4">
+                  <div className="w-10 h-10 rounded-xl bg-white/5 flex items-center justify-center shrink-0">
+                    <Zap className="text-triton-red w-5 h-5" />
+                  </div>
+                  <div>
+                    <p className="text-white font-bold uppercase tracking-wide">
+                      MIX & MATCH
+                    </p>
+                    <p className="text-gray-400 text-sm">
+                      Mix swim, bike, and run distances freely within the pre-set options.
                     </p>
                   </div>
                 </div>
@@ -105,9 +122,13 @@ const TritonExperienceCards: React.FC = () => {
                   </div>
                 </div>
                 <span className="text-xs font-bold text-gray-500 uppercase tracking-widest">
-                  Traditional Sequence
+                  LAP COURSE
                 </span>
+
               </div>
+              <p className="text-gray-400 text-sm mt-4">
+                All three distances take place simultaneously, on the same course
+              </p>
             </div>
           </motion.div>
 

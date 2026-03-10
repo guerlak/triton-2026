@@ -1,5 +1,19 @@
-import NumerologySection from "@/app/components/NumerologySection";
+import BrandEssenceSection from "@/app/components/about-page-components/BrandEssenceSection";
+import HistorySection from "@/app/components/about-page-components/HistorySection";
+import MissionSection from "@/app/components/about-page-components/MissionSection";
+import NumerologySection from "@/app/components/about-page-components/NumerologySection";
+import RaceFormatsSection from "@/app/components/about-page-components/RaceFormatsSection";
+import ValuesSection from "@/app/components/about-page-components/ValuesSection";
 
 export default function Page() {
-  return <NumerologySection />;
+  return (
+    <main className="bg-black pt-20">
+      <BrandEssenceSection />
+      <MissionSection />
+      <HistorySection />
+      <NumerologySection />
+      <RaceFormatsSection />
+      <ValuesSection />
+    </main>
+  );
 }

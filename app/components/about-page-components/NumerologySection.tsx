@@ -88,7 +88,7 @@ const NumerologySection: React.FC = () => {
           {/* Text Side */}
           <div className="order-1 lg:order-2">
             <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white/5 border border-white/10 text-gray-400 text-[10px] font-black uppercase tracking-widest mb-6">
-              Pilar TRITON #01
+              TRITON DNA
             </div>
 
             <h2 className="text-4xl md:text-6xl font-black text-white uppercase leading-tight mb-8">

@@ -21,7 +21,7 @@ const Modal = ({ isOpen, onClose, children }: ModalProps) => {
   if (!isOpen) return null;
 
   return createPortal(
-    <div className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-10 backdrop-blur-sm m-2">
+    <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/60 backdrop-blur-sm m-2">
       <div className="rounded-lg shadow-xl w-full max-w-md p-6 relative">
         {/* Botão de Fechar (X) */}
         <button

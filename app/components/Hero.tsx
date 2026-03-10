@@ -15,7 +15,7 @@ const Hero: React.FC = () => {
           alt="Triathlon Swimming"
           className="w-full h-full object-cover opacity-60"
         />
-        <div className="absolute inset-0 bg-linear-to-b from-black/70 via-black/20 to-black"></div>
+        <div className="absolute inset-0 bg-linear-to-b from-black/0 via-black/10 to-black"></div>
       </div>
 
       <div className="relative z-10 text-center px-2 max-w-6xl mx-auto">

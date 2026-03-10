@@ -17,17 +17,13 @@ const StatsClientComponent: React.FC = () => {
           Train . Race . Repeat
         </h2>
         <h3 className="text-3xl md:text-5xl font-black uppercase text-white leading-tight">
-          More than a racing series
+          NOT YOUR ORDINARY TRIATHLON SERIES
         </h3>
         <p className="text-gray-400 max-w-5xl mx-auto text-lg mt-4">
-          <strong>TRITON</strong> is a global triathlon platform built to unlock
-          the best version of every athlete. We believe everyone is an athlete
-          and that the mind is stronger than the body. With two official race
-          formats, <strong>TRITON 1</strong> and <strong>TRITON 3</strong>, our
-          events score points for the global ranking and qualify athletes for
-          the World Finals. From first-time competitors to elite performers,
-          TRITON takes athletes through the full journey of the sport.{" "}
-          <strong>Choose your challenge!</strong>
+          Built to unlock your best version, under the conviction that everyone is an athlete and that your mind is stronger
+          than your body. With two race formats, <strong>TRITON 1</strong> and <strong>TRITON 3</strong>, each offering three distances to choose from at every race,
+          a global ranking competition, and a championship event hosting three distances, <strong>TRITON</strong> is the future of triathlon racing
+          and training — all under one brand and platform.
         </p>
       </div>
     </>

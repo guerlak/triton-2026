@@ -1,5 +1,3 @@
-"use client";
-
 import Navbar from "./components/Navbar";
 import CalendarSection from "./components/CalendarSection";
 import Hero from "./components/Hero";
@@ -11,6 +9,7 @@ import NewsletterSection from "./components/NewsletterSection";
 import TritonExperienceCards from "./components/TritonCardsSection";
 import RankingSection from "./components/RankingSection";
 import PartnersSection from "./components/PartnersSection";
+import RedLine from "./ui/RedLine";
 
 export default function Page() {
   return (

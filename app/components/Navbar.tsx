@@ -27,22 +27,7 @@ const Navbar = () => {
             href="#formats"
             className="text-gray-300 hover:text-triton-red hover:bg-white/5 px-3 py-2 rounded-md text-sm font-bold uppercase transition-colors duration-300"
           >
-            Formats
-          </a>
-          <a
-            key="movement"
-            href="#moviment"
-            className="text-gray-300 hover:text-triton-red hover:bg-white/5 px-3 py-2 rounded-md text-sm font-bold uppercase transition-colors duration-300"
-          >
-            The Moviment
-          </a>
-
-          <a
-            key="calendar"
-            href="#calendar"
-            className="text-gray-300 hover:text-triton-red hover:bg-white/5 px-3 py-2 rounded-md text-sm font-bold uppercase transition-colors duration-300"
-          >
-            Calendar
+            About
           </a>
           <a
             key="ranking"
@@ -51,6 +36,32 @@ const Navbar = () => {
           >
             Global Ranking
           </a>
+
+
+          <a
+            key="calendar"
+            href="#calendar"
+            className="text-gray-300 hover:text-triton-red hover:bg-white/5 px-3 py-2 rounded-md text-sm font-bold uppercase transition-colors duration-300"
+          >
+            Calendar
+          </a>
+
+          <a
+            key="shop"
+            href="#shop"
+            className="text-gray-300 hover:text-triton-red hover:bg-white/5 px-3 py-2 rounded-md text-sm font-bold uppercase transition-colors duration-300"
+          >
+            Shop
+          </a>
+
+          <a
+            key="triton-app"
+            href="#triton-app"
+            className="text-gray-300 hover:text-triton-red hover:bg-white/5 px-3 py-2 rounded-md text-sm font-bold uppercase transition-colors duration-300"
+          >
+            Triton App
+          </a>
+
         </div>
 
         <div className="hidden lg:flex items-center gap-4">
