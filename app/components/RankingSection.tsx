@@ -49,8 +49,12 @@ export default async function RankingSection() {
             <Trophy className="w-5 h-5" /> Global Ranking
           </h2>
           <h3 className="text-3xl md:text-5xl font-black uppercase text-white mb-6">
-            The Best of Triton
+            TOP 3 LEADER BOARD
           </h3>
+          <p className="text-gray-400 max-w-5xl mx-auto text-lg mt-4">
+            Check your score, and ranking. The points competition rewards consistency rather
+            than single day performance making it a year long open race to the end that anyone can win.
+          </p>
         </div>
 
         {/* Passamos os dados para o componente Client que cuidará do Modal e Motion */}

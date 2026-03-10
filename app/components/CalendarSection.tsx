@@ -37,7 +37,7 @@ const CalendarSection: React.FC = () => {
           <h4 className="text-2xl font-bold text-white mb-8 border-l-4 border-triton-red pl-4">
             2026 RACES{" "}
             <span className="text-sm font-normal text-gray-500 ml-2">
-              *Confirmed dates
+              *Official series stages
             </span>
           </h4>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
@@ -78,7 +78,7 @@ const CalendarSection: React.FC = () => {
         {/* Future Locations */}
         <div>
           <h4 className="text-xl font-bold text-gray-400 mb-8 pl-4">
-            COMIING SOON 2027
+            COMIING SOON
           </h4>
           <div className="flex flex-wrap gap-4">
             {eventsFuture.map((event, idx) => (

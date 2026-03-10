@@ -11,6 +11,8 @@ import {
   Bike,
   PersonStanding,
   ArrowRight,
+  CheckCircle2,
+  CheckCircle,
 } from "lucide-react";
 import Link from "next/link";
 import StatsClientComponent from "./StatsClientComponent";
@@ -83,7 +85,7 @@ const TritonExperienceCards: React.FC = () => {
 
                 <div className="flex items-start gap-4">
                   <div className="w-10 h-10 rounded-xl bg-white/5 flex items-center justify-center shrink-0">
-                    <Zap className="text-triton-red w-5 h-5" />
+                    <CheckCircle className="text-triton-red w-5 h-5" />
                   </div>
                   <div>
                     <p className="text-white font-bold uppercase tracking-wide">
@@ -153,50 +155,55 @@ const TritonExperienceCards: React.FC = () => {
               </h4>
 
               <p className="text-xl text-gray-400 mb-10 leading-relaxed max-w-md">
-                An epic endurance journey. One discipline per day, allowing full
-                focus and strategic recovery.
+                An epic journey separating the three disciplines into individual events,
+                allowing for refocused recovery and strategy after each event.
               </p>
 
               <div className="grid grid-cols-1 gap-4 mb-12">
-                <div className="bg-white/5 rounded-2xl p-4 flex items-center gap-4 border border-white/5">
-                  <div className="w-10 h-10 rounded-xl bg-triton-red/20 flex items-center justify-center shrink-0">
-                    <span className="text-triton-red font-black">01</span>
+                <div className="flex items-start gap-4">
+                  <div className="w-10 h-10 rounded-xl bg-white/5 flex items-center justify-center shrink-0">
+                    <Trophy className="text-triton-red w-5 h-5" />
                   </div>
                   <div>
-                    <p className="text-white font-bold uppercase text-xs tracking-widest">
-                      Friday
+                    <p className="text-white font-bold uppercase tracking-wide">
+                      3 CONSECUTIVES RACE DAYS
+
                     </p>
-                    <p className="text-gray-300 font-black uppercase italic">
-                      Swimming
+                    <p className="text-gray-500 text-sm">
+                      Swim / Bike / Run
                     </p>
                   </div>
                 </div>
-                <div className="bg-white/5 rounded-2xl p-4 flex items-center gap-4 border border-white/5">
-                  <div className="w-10 h-10 rounded-xl bg-triton-red/20 flex items-center justify-center shrink-0">
-                    <span className="text-triton-red font-black">02</span>
+
+                <div className="flex items-start gap-4">
+                  <div className="w-10 h-10 rounded-xl bg-white/5 flex items-center justify-center shrink-0">
+                    <Zap className="text-triton-red w-5 h-5" />
                   </div>
                   <div>
-                    <p className="text-white font-bold uppercase text-xs tracking-widest">
-                      Saturday
+                    <p className="text-white font-bold uppercase tracking-wide">
+                      INNOVATIVE SCORING SYSTEM
+
                     </p>
-                    <p className="text-gray-300 font-black uppercase italic">
-                      Cycling
+                    <p className="text-gray-500 text-sm">
+                      Each discipline carries equal weight, rewarding the athlete who performs consistently across all three.
                     </p>
                   </div>
                 </div>
-                <div className="bg-white/5 rounded-2xl p-4 flex items-center gap-4 border border-white/5">
-                  <div className="w-10 h-10 rounded-xl bg-triton-red/20 flex items-center justify-center shrink-0">
-                    <span className="text-triton-red font-black">03</span>
+                <div className="flex items-start gap-4">
+                  <div className="w-10 h-10 rounded-xl bg-white/5 flex items-center justify-center shrink-0">
+                    <CheckCircle className="text-triton-red w-5 h-5" />
                   </div>
                   <div>
-                    <p className="text-white font-bold uppercase text-xs tracking-widest">
-                      Sunday
+                    <p className="text-white font-bold uppercase tracking-wide">
+                      COMPETITION OPTIONS
+
                     </p>
-                    <p className="text-gray-300 font-black uppercase italic">
-                      Running
+                    <p className="text-gray-400 text-sm">
+                      Individual Triathlon / Corporate Relay / Individual Disciplines - Compete in Swim, Bike or Run.
                     </p>
                   </div>
                 </div>
+
               </div>
 
               <div className="flex items-center gap-4 pt-8 border-t border-white/5">
@@ -204,6 +211,9 @@ const TritonExperienceCards: React.FC = () => {
                   Focus: Endurance & Recovery
                 </span>
               </div>
+              <p className="text-gray-400 text-sm mt-4">
+                All three distances take place simultaneously, on the same course
+              </p>
             </div>
           </motion.div>
         </div>
