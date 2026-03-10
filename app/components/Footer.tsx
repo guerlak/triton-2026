@@ -97,9 +97,6 @@ const Footer: React.FC = () => {
             <div className="flex items-center text-gray-400 text-sm mb-2">
               <Mail size={16} className="mr-2" /> contato@tritonworldseries.com
             </div>
-            <button className="mt-4 border border-triton-red text-triton-red hover:bg-triton-red hover:text-white px-6 py-2 text-sm font-bold uppercase transition-colors w-full md:w-auto">
-              Be a partner
-            </button>
           </div>
         </div>
 

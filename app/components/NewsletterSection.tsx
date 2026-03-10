@@ -31,7 +31,7 @@ const NewsletterSection: React.FC = () => {
               <h2 className="text-4xl md:text-6xl font-black uppercase tracking-tighter mb-6 leading-none">
                 Join the
                 <br />
-                <span className="text-triton-red">Moviment</span>
+                <span className="text-triton-red">Movement</span>
               </h2>
               <p className="text-xl text-gray-400 max-w-md leading-relaxed">
                 Be the first to receive event dates, expert training tips, and
