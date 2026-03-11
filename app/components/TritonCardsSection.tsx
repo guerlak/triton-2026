@@ -12,6 +12,7 @@ import {
   ArrowRight,
   Rotate3D,
   CheckCircle,
+  Blend,
 } from "lucide-react";
 import Link from "next/link";
 import StatsClientComponent from "./StatsClientComponent";
@@ -61,7 +62,7 @@ const TritonExperienceCards: React.FC = () => {
               </h4>
 
               <p className="text-xl text-gray-400 mb-10 leading-relaxed max-w-md">
-                Maximum triathlon intensity packed into a single day. The
+                Maximum triathlon intensity packed into a <strong>single day</strong>. The
                 classic format redefined by TRITON innovation.
               </p>
 
@@ -97,7 +98,7 @@ const TritonExperienceCards: React.FC = () => {
                 </div>
                 <div className="flex items-start gap-4">
                   <div className="w-10 h-10 rounded-xl bg-white/5 flex items-center justify-center shrink-0">
-                    <Zap className="text-triton-red w-5 h-5" />
+                    <Blend className="text-triton-red w-5 h-5" />
                   </div>
                   <div>
                     <p className="text-white font-bold uppercase tracking-wide">
@@ -167,7 +168,7 @@ const TritonExperienceCards: React.FC = () => {
                       3 CONSECUTIVES RACE DAYS
                     </p>
                     <p className="text-gray-500 text-sm">
-                      Swim / Bike / Run
+                      Swim - Friday / Bike - Saturday / Run - Sunday
                     </p>
                   </div>
                 </div>

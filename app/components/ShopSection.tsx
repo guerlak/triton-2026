@@ -8,7 +8,7 @@ const ShopSection: React.FC = () => {
   return (
     <section
       id="shop"
-      className="overflow-hidden bg-black md:flex max-w-[1200] mx-auto md:mt-20"
+      className="overflow-hidden bg-black md:flex max-w-[1300] mx-auto md:mt-20"
     >
       <div className="md:max-w-1/2 px-4 sm:px-6 lg:px-8 mb-5">
         <div className="relative rounded-4xl overflow-hidden group">
@@ -23,13 +23,13 @@ const ShopSection: React.FC = () => {
           </div>
 
           {/* Content */}
-          <div className="relative py-10 md:p-10 max-w-2xl sm:min-h-[600px]">
+          <div className="relative py-10 md:p-10 max-w-2xl sm:min-h-[600px] sm:min-w-[650px]">
             <div className="inline-flex items-center gap-2 bg-triton-red px-4 py-1.5 rounded-full text-white text-[10px] font-black uppercase tracking-widest mb-6">
               <ShoppingBag size={12} /> Official Collection
             </div>
 
             <div>
-              <h2 className="text-4xl md:text-4xl font-black text-white uppercase leading-tight mb-2 mt-50 max-w-2/3">
+              <h2 className="text-3xl md:text-3xl font-black text-white uppercase leading-tight mb-2 mt-70 max-w-2/3">
                 WEAR THE TRITON <span className="text-triton-red"> MINDSET</span>{" "}
               </h2>
               <p className="text-gray-300 text-lg md:text-xl leading-relaxed mb-10 max-w-lg">
@@ -64,19 +64,20 @@ const ShopSection: React.FC = () => {
           </div>
 
           {/* Content */}
-          <div className="relative py-10 md:p-10 max-w-2xl sm:min-h-[600px]">
+          <div className="relative py-10 md:p-10 max-w-2xl sm:min-h-[600px] min-w-[600px]">
             <div className="inline-flex items-center gap-2 bg-triton-red px-4 py-1.5 rounded-full text-white text-[10px] font-black uppercase tracking-widest mb-6">
               <TabletSmartphone size={12} />
               Triton App
             </div>
 
-            <h2 className="text-3xl md:text-4xl font-black text-white uppercase leading-tight mb-2 mt-50 max-w-2/3">
-              Take Us With You.
-              <span className="text-triton-red"> Exclusive</span>{" "}
+            <h2 className="text-3xl md:text-3xl font-black text-white uppercase leading-tight mb-2 mt-70 max-w-2/3">
+              Take Us<br></br>
+
+              <span className="text-triton-red">With You.</span>{" "}
             </h2>
 
-            <p className="text-gray-300 text-lg md:text-xl leading-relaxed mb-10 max-w-lg">
-              Elevate Your Experience. Get the App.
+            <p className="text-gray-300 text-lg md:text-md leading-relaxed mb-10 max-w-lg">
+              Elevate Your Experience.
             </p>
 
             <button className="absolute bottom-10  bg-white hover:bg-triton-red text-black hover:text-white font-black py-2 px-5 rounded-none flex items-center justify-center gap-3 uppercase tracking-widest transition-all duration-300">
