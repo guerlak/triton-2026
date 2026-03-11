@@ -3,6 +3,7 @@ import React from "react";
 import { EVENTS } from "../../constants";
 import { Calendar as CalendarIcon } from "lucide-react";
 import dict from "../../dictionaries/en.json";
+import Link from "next/link";
 
 const CalendarSection: React.FC = () => {
   const events2026 = EVENTS.filter((e) => e.year === 2026);
@@ -28,7 +29,10 @@ const CalendarSection: React.FC = () => {
             <p className="text-xl font-bold text-white">
               4 RACES • 3 COUNTRIES
             </p>
-            <p className="text-gray-400 text-sm">+30 nationalities competing</p>
+            <p className="text-gray-400 text-sm mb-2">+30 nationalities competing</p>
+            <Link href="/triton-events" className="text-white text-xs font-bold uppercase hover:text-triton-red">
+              Check Global Calendar &rarr;
+            </Link>
           </div>
         </div>
 
@@ -39,6 +43,7 @@ const CalendarSection: React.FC = () => {
             <span className="text-sm font-normal text-gray-500 ml-2">
               *Official series stages
             </span>
+
           </h4>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
             {events2026.map((event, idx) => (
