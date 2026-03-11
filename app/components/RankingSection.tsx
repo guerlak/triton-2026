@@ -8,20 +8,27 @@ import RankingClientWrapper from "./RankingClientWrapper"; // Vamos criar este a
 export interface Athlete {
   Bib: number;
   Contest: string;
-  Pos: number;
   Name: string;
   Gender: string;
-  Flag: string;
+  Country: string;
+  "Global Standings": number;
+  "National Standings": number;
+  "Swim Ranking": number;
+  "Bike Ranking": number;
+  "Run Ranking": number;
+  "Total Points": string;
   Salvador: string;
   China: string;
   Rio: string;
   Lisboa: string;
-  Total: string;
-  Final: string;
+  Event5?: string;
+  Event6?: string;
+  Event7?: string;
+  Event8?: string;
 }
 
 async function getRankings() {
-  const res = await fetch("https://api.raceresult.com/371805/AOGOXB8CKCWGHNE3BLXF2H00YR8YQ330", {
+  const res = await fetch("https://api.raceresult.com/371805/52CHLQ2F75QS7P4MFBU2J3AZIVFHXUUU", {
     // IMPORTANTE: Cache de 1 hora para evitar que SEU IP seja banido de novo
     next: { revalidate: 3600 },
     headers: {

@@ -49,8 +49,9 @@ const TritonExperienceCards: React.FC = () => {
             viewport={{ once: true }}
             className="group relative bg-neutral-900 rounded-[2.5rem] p-10 lg:p-16 border border-white/5 hover:border-triton-red/30 transition-all duration-500 overflow-hidden"
           >
-            <div className="absolute top-0 right-0 p-8 opacity-10 group-hover:opacity-20 transition-opacity">
-              <Zap size={120} className="text-triton-red" />
+            <div className="absolute top-[-140px] right-[-10px] p-8 opacity-7 group-hover:opacity-10 transition-opacity">
+              {/* <Zap size={120} className="text-triton-red" />  */}
+              <span className="text-triton-red text-[20em] italic font-black">1</span>
             </div>
 
             <div className="relative z-10">
@@ -141,8 +142,9 @@ const TritonExperienceCards: React.FC = () => {
             viewport={{ once: true }}
             className="group relative bg-neutral-900 rounded-[2.5rem] p-10 lg:p-16 border border-white/5 hover:border-triton-red/30 transition-all duration-500 overflow-hidden"
           >
-            <div className="absolute top-0 right-0 p-8 opacity-10 group-hover:opacity-20 transition-opacity">
-              <Rotate3D size={120} className="text-triton-red" />
+            <div className="absolute top-[-140px] right-[-10px] p-8 opacity-7 group-hover:opacity-20 transition-opacity">
+              {/* <Rotate3D size={120} className="text-triton-red" /> */}
+              <span className="text-triton-red text-[20em] italic font-black">3</span>
             </div>
 
             <div className="relative z-10">

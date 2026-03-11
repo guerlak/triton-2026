@@ -30,7 +30,7 @@ const ShopSection: React.FC = () => {
 
             <div>
               <h2 className="text-3xl md:text-3xl font-black text-white uppercase leading-tight mb-2 mt-70 max-w-2/3">
-                WEAR THE TRITON <span className="text-triton-red"> MINDSET</span>{" "}
+                WEAR THE  <br></br><span className="text-triton-red">TRITON MINDSET</span>{" "}
               </h2>
               <p className="text-gray-300 text-lg md:text-xl leading-relaxed mb-10 max-w-lg">
                 Official apparel inspired by endurance.

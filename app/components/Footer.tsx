@@ -41,7 +41,7 @@ const Footer: React.FC = () => {
           </div>
 
           <div>
-            <h4 className="text-white font-bold uppercase mb-4">Eventos</h4>
+            <h4 className="text-white font-bold uppercase mb-4">Events</h4>
             <ul className="space-y-2 text-sm text-gray-400">
               <li>
                 <a href="#" className="hover:text-white transition-colors">
@@ -67,7 +67,7 @@ const Footer: React.FC = () => {
           </div>
 
           <div>
-            <h4 className="text-white font-bold uppercase mb-4">Atleta</h4>
+            <h4 className="text-white font-bold uppercase mb-4">Athlete</h4>
             <ul className="space-y-2 text-sm text-gray-400">
               <li>
                 <a href="#" className="hover:text-white transition-colors">
@@ -93,7 +93,7 @@ const Footer: React.FC = () => {
           </div>
 
           <div>
-            <h4 className="text-white font-bold uppercase mb-4">Contato</h4>
+            <h4 className="text-white font-bold uppercase mb-4">Contact Us</h4>
             <div className="flex items-center text-gray-400 text-sm mb-2">
               <Mail size={16} className="mr-2" /> contato@tritonworldseries.com
             </div>
