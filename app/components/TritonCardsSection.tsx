@@ -16,6 +16,7 @@ import {
 } from "lucide-react";
 import Link from "next/link";
 import StatsClientComponent from "./StatsClientComponent";
+import MainButton from "../ui/MainButton";
 
 const TritonExperienceCards: React.FC = () => {
   return (
@@ -226,16 +227,9 @@ const TritonExperienceCards: React.FC = () => {
             </div>
           </motion.div>
         </div>
-        <Link
-          href="/about"
-          className="m-auto mt-10 pointer w-sm bg-triton-red hover:text-black text-white  hover:bg-white font-black py-4 px-10 rounded-none flex items-center justify-center gap-3 uppercase tracking-widest transition-all duration-300"
-        >
-          <span>More Information</span>
-          <ArrowRight
-            size={18}
-            className="group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform"
-          />
-        </Link>
+        <div className="mt-20 text-center">
+          <MainButton href="/about">More Information</MainButton>
+        </div>
       </div>
       <div className="absolute bottom-0 left-0 w-full h-1 bg-linear-to-r from-transparent via-triton-red to-transparent"></div>
     </section>

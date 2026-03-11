@@ -99,7 +99,7 @@ const CountdownSection: React.FC = () => {
   };
 
   return (
-    <section className="relative py-10 overflow-hidden bg-black min-h-[800px] flex items-center">
+    <section className="relative py-10 overflow-hidden min-h-[800px] flex items-center">
       <div className="absolute inset-0 bg-linear-to-t from-black/80 via-black/40 to-black"></div>
       {/* Background with Fade Transition */}
 
@@ -146,7 +146,7 @@ const CountdownSection: React.FC = () => {
                 x: { type: "spring", stiffness: 300, damping: 30 },
                 opacity: { duration: 0.2 }
               }}
-              className="flex flex-col lg:flex-row items-center  gap-8 lg:gap-16 bg-neutral-900/60 backdrop-blur-xl p-6 md:p-10 lg:p-12 rounded-[2rem] border border-white/10 shadow-[0_0_50px_rgba(0,0,0,0.5)]"
+              className="flex flex-col lg:flex-row items-center gap-8 lg:gap-16 bg-black-900/70 backdrop-blur-xl p-6 md:p-10 lg:p-12 rounded-4xl border border-white/10 shadow-[0_0_50px_rgba(0,0,0,0.5)]"
             >
               {/* Text Content */}
               <div className="">
@@ -159,7 +159,7 @@ const CountdownSection: React.FC = () => {
                   <h3 className="text-4xl md:text-6xl font-black text-white uppercase leading-tight">
                     {currentEvent.title}
                   </h3>
-                  <h2 className="text-3xl md:text-5xl text-triton-red ">{currentEvent.subtitle}</h2>
+                  <h2 className="text-3xl md:text-5xl text-triton-red font-bold">{currentEvent.subtitle}</h2>
                 </div>
 
                 <div className="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4 text-gray-400 font-bold uppercase tracking-widest text-sm md:text-base">

@@ -1,12 +1,13 @@
 "use client";
 import React, { useState } from "react";
-import { Gauge } from "lucide-react";
+import { Gauge, ArrowRight } from "lucide-react";
 import { motion } from "framer-motion";
 import Link from "next/link";
 import Image from "next/image";
 import Modal from "../ui/Modal";
 import fotoUrl from "../../public/images/ranking-modal.png";
 import { Athlete } from "./RankingSection"; // Importa a interface
+import MainButton from "../ui/MainButton";
 
 interface Props {
   initialAthletes: Athlete[];
@@ -60,21 +61,31 @@ const RankingClientWrapper: React.FC<Props> = ({ initialAthletes }) => {
             </tr>
           </thead>
           <tbody>
-            {athletes.slice(0, 3).map((athlete) => (
-              <tr key={athlete.Bib} className="border-b border-white/5 hover:bg-white/5 transition-colors group">
-                <td className="py-4 px-6 text-center font-bold text-white">{athlete.Pos}</td>
-                <td className="py-4 px-2 flex items-center gap-3">
-                  {renderFlag(athlete.Flag)}
-                  <span className="font-bold text-sm text-white">{athlete.Name}</span>
-                </td>
-                <td className="py-4 px-2 text-center font-black text-white">{athlete.Final}</td>
-                <td className="py-4 px-6 text-right">
-                  <button onClick={() => handleEditClick(athlete)}>
-                    <Gauge size={22} className="text-triton-red cursor-pointer" />
-                  </button>
-                </td>
-              </tr>
-            ))}
+            {athletes.slice(0, 3).map((athlete) => {
+              const pos = athlete.Pos;
+              let medalClass = "text-white";
+              if (pos == 1) medalClass = "bg-yellow-400 text-black rounded-full w-8 h-8 flex items-center justify-center mx-auto";
+              if (pos == 2) medalClass = "bg-gray-300 text-black rounded-full w-8 h-8 flex items-center justify-center mx-auto";
+              if (pos == 3) medalClass = "bg-amber-700 text-white rounded-full w-8 h-8 flex items-center justify-center mx-auto";
+
+              return (
+                <tr key={athlete.Bib} className="border-b border-white/5 hover:bg-white/5 transition-colors group">
+                  <td className="py-4 px-6 text-center font-bold">
+                    <span className={medalClass}>{athlete.Pos}</span>
+                  </td>
+                  <td className="py-4 px-2 flex items-center gap-3">
+                    {renderFlag(athlete.Flag)}
+                    <span className="font-bold text-sm text-white">{athlete.Name}</span>
+                  </td>
+                  <td className="py-4 px-2 text-center font-black text-white">{athlete.Final}</td>
+                  <td className="py-4 px-6 text-right">
+                    <button onClick={() => handleEditClick(athlete)}>
+                      <Gauge size={30} className="text-triton-red cursor-pointer" />
+                    </button>
+                  </td>
+                </tr>
+              );
+            })}
           </tbody>
         </table>
       </div>
@@ -97,10 +108,9 @@ const RankingClientWrapper: React.FC<Props> = ({ initialAthletes }) => {
         {/* ... outros filtros ... */}
       </motion.div>
 
-      <div className="p-6 text-center">
-        <Link href="/ranking" className="bg-triton-red text-white px-10 py-4 font-black uppercase inline-block">
-          Check The Full Ranking
-        </Link>
+      <div className="p-12 text-center">
+        <MainButton href="/ranking">Check The Full Ranking</MainButton>
+
       </div>
 
       <Modal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)}>
@@ -114,8 +124,6 @@ const RankingClientWrapper: React.FC<Props> = ({ initialAthletes }) => {
               <h2 className="text-2xl font-bold text-white">{selectedAthlete.Name}</h2>
               <p className="text-red-500 font-black text-xl">Points: {selectedAthlete.Total}</p>
               {/* Detalhes do modal aqui... */}
-
-
             </div>
           </div>
         )}
