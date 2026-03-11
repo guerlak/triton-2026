@@ -19,7 +19,7 @@ import StatsClientComponent from "./StatsClientComponent";
 
 const TritonExperienceCards: React.FC = () => {
   return (
-    <section className="py-24 bg-triton-dark overflow-hidden">
+    <section className="py-24 bg-triton-dark overflow-hidden relative">
       <StatsClientComponent />
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-10">
@@ -27,7 +27,7 @@ const TritonExperienceCards: React.FC = () => {
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="text-triton-red font-black tracking-[0.1em] uppercase text-lg mb-4 hidden"
+            className="text-triton-red font-black tracking-widest uppercase text-lg mb-4 hidden"
           >
             Choose your challenge
           </motion.h2>
@@ -237,7 +237,9 @@ const TritonExperienceCards: React.FC = () => {
           />
         </Link>
       </div>
+      <div className="absolute bottom-0 left-0 w-full h-1 bg-linear-to-r from-transparent via-triton-red to-transparent"></div>
     </section>
+
   );
 };
 

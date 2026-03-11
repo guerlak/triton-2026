@@ -100,33 +100,22 @@ const CountdownSection: React.FC = () => {
 
   return (
     <section className="relative py-10 overflow-hidden bg-black min-h-[800px] flex items-center">
+      <div className="absolute inset-0 bg-linear-to-t from-black/80 via-black/40 to-black"></div>
       {/* Background with Fade Transition */}
-      <AnimatePresence initial={false} custom={direction}>
-        <motion.div
-          key={currentEvent.id}
-          custom={direction}
-          variants={{
-            enter: { opacity: 0 },
-            center: { opacity: 0.6 },
-            exit: { opacity: 0 }
-          }}
-          initial="enter"
-          animate="center"
-          exit="exit"
-          transition={{ duration: 0.8 }}
-          className="absolute inset-0 z-0"
-        >
-          <Image
-            src={currentEvent.image}
-            alt={currentEvent.subtitle}
-            className="w-full h-full object-cover"
-            width={1920}
-            height={1080}
-            priority
-          />
-          <div className="absolute inset-0 bg-linear-to-b from-black/70 via-black/20 to-black"></div>
-        </motion.div>
-      </AnimatePresence>
+
+
+      <div className="absolute inset-0 z-0">
+        <video
+          src="https://res.cloudinary.com/dinqspvtp/video/upload/v1773243140/tritin-video-after_oq1nzs.mov"
+          autoPlay
+          loop
+          muted
+          playsInline
+          className="w-full h-full object-cover opacity-70"
+        />
+        <div className="absolute inset-0 bg-linear-to-b from-black/80 via-black/40 to-black"></div>
+      </div>
+
 
       <div className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8 relative z-10 w-full">
         <div className="relative">
@@ -157,16 +146,16 @@ const CountdownSection: React.FC = () => {
                 x: { type: "spring", stiffness: 300, damping: 30 },
                 opacity: { duration: 0.2 }
               }}
-              className="flex flex-col lg:flex-row items-center justify-center gap-8 lg:gap-16 bg-neutral-900/60 backdrop-blur-xl p-6 md:p-10 lg:p-12 rounded-[2rem] border border-white/10 shadow-[0_0_50px_rgba(0,0,0,0.5)]"
+              className="flex flex-col lg:flex-row items-center  gap-8 lg:gap-16 bg-neutral-900/60 backdrop-blur-xl p-6 md:p-10 lg:p-12 rounded-[2rem] border border-white/10 shadow-[0_0_50px_rgba(0,0,0,0.5)]"
             >
               {/* Text Content */}
-              <div className="flex-1 text-center">
+              <div className="">
                 <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-triton-red/20 border border-triton-red/30 text-triton-red text-xs font-black uppercase tracking-widest mb-6">
                   <Timer size={14} className="animate-pulse" />
                   Coming Next
                 </div>
 
-                <div className="mb-4">
+                <div className="mb-4 text-center sm:text-left">
                   <h3 className="text-4xl md:text-6xl font-black text-white uppercase leading-tight">
                     {currentEvent.title}
                   </h3>
