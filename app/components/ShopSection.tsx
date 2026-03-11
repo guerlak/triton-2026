@@ -1,8 +1,8 @@
 import React from "react";
 import { ShoppingBag, ArrowUpRight, TabletSmartphone } from "lucide-react";
 import Image from "next/image";
-import shopImage from "@/public/images/shop-image.png";
 import atletaMobile from "@/public/images/atleta-mobile.png";
+import atletaShop from "@/public/images/atleta-shop.png";
 
 const ShopSection: React.FC = () => {
   return (
@@ -15,7 +15,7 @@ const ShopSection: React.FC = () => {
           {/* Background Image - Updated to high-performance athlete in gear */}
           <div className="absolute inset-0">
             <Image
-              src={shopImage}
+              src={atletaShop}
               alt="Atleta Triton com Equipamento de Elite"
               className="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-105"
             />
