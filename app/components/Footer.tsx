@@ -110,7 +110,7 @@ const Footer: React.FC = () => {
 
         <div className="border-t border-white/10 pt-8 flex flex-col md:flex-row justify-between items-center">
           <p className="text-gray-600 text-xs">
-            © 2026 TRITON World Series. All rights reserved.
+            © {new Date().getFullYear()} TRITON World Series. All rights reserved.
           </p>
           <div className="flex space-x-6 mt-4 md:mt-0">
             <a href="/privacy-policy" className="text-gray-600 text-xs hover:text-white">
@@ -120,7 +120,7 @@ const Footer: React.FC = () => {
               Terms of use
             </a>
             <a href="/ip" className="text-gray-600 text-xs hover:text-white">
-              IP - intelectual Property
+              Intellectual Property
             </a>
           </div>
         </div>

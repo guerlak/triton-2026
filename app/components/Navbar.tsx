@@ -56,7 +56,7 @@ const Navbar = () => {
 
           <a
             key="triton-app"
-            href="#triton-app"
+            href="#shop"
             className="text-gray-300 hover:text-triton-red hover:bg-white/5 px-3 py-2 rounded-md text-sm font-bold uppercase transition-colors duration-300"
           >
             Triton App
