@@ -1,6 +1,4 @@
-# 🔱 TRITON World Series 2026
-
-![TRITON Banner](https://raw.githubusercontent.com/tritonworldseries/assets/main/banner.jpg) <!-- Note: Replace with actual banner URL if available -->
+# TRITON World Series 2026
 
 > A premium, high-performance landing page for the **TRITON World Series 2026**. Built with Next.js 16 and React 19, featuring a cutting-edge dark aesthetic and seamless user experience.
 
