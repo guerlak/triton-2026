@@ -22,8 +22,8 @@ const Modal = ({ isOpen, onClose, children, maxWidth = "max-w-md" }: ModalProps)
   if (!isOpen) return null;
 
   return createPortal(
-    <div className="fixed inset-0 z-[100] flex items-center justify-center bg-black/80 backdrop-blur-md p-4 sm:p-6">
-      <div 
+    <div className="fixed inset-0 z-100 flex items-center justify-center bg-black/80 backdrop-blur-md p-4 sm:p-6">
+      <div
         className={`bg-neutral-950 rounded-3xl shadow-2xl w-full ${maxWidth} relative overflow-hidden border border-white/10`}
         onClick={(e) => e.stopPropagation()}
       >

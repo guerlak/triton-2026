@@ -114,14 +114,14 @@ const RankingClientWrapper: React.FC<Props> = ({ initialAthletes }) => {
           <div className="grid grid-cols-1 md:grid-cols-2 h-full max-h-[90vh] md:max-h-none overflow-y-auto md:overflow-hidden bg-neutral-950">
             {/* Left Column: Image & Profile Summary */}
             <div className="relative h-[300px] md:h-auto border-b md:border-b-0 md:border-r border-white/10">
-              <Image 
-                src={fotoUrl} 
-                alt="Athlete" 
+              <Image
+                src={fotoUrl}
+                alt="Athlete"
                 className="w-full h-full object-cover"
                 priority
               />
               <div className="absolute inset-0 bg-linear-to-t from-neutral-950 via-neutral-950/20 to-transparent" />
-              
+
               <div className="absolute bottom-0 left-0 p-8 w-full">
                 <div className="flex items-center gap-4 mb-3">
                   {renderFlag(selectedAthlete.Country)}
@@ -142,15 +142,23 @@ const RankingClientWrapper: React.FC<Props> = ({ initialAthletes }) => {
             {/* Right Column: Detailed Stats */}
             <div className="p-6 md:p-10 flex flex-col gap-8 md:max-h-[85vh] md:overflow-y-auto custom-scrollbar">
               {/* Top Stats Cards */}
-              <div className="grid grid-cols-2 gap-4">
+              <div className="grid grid-cols-3 gap-4">
                 <div className="bg-white/5 border border-white/10 p-5 rounded-2xl">
                   <p className="text-[10px] text-gray-500 font-black uppercase tracking-[0.2em] mb-1">Global Standing</p>
                   <p className="text-3xl font-black text-white">#{selectedAthlete["Global Standings"]}</p>
+                </div>
+                <div className="bg-white/5 border border-white/10 p-5 rounded-2xl">
+                  <p className="text-[10px] text-gray-500 font-black uppercase tracking-[0.2em] mb-1">National Ranking:</p>
+                  <p className="text-2xl font-black text-white">#{selectedAthlete["National Standings"]} ({selectedAthlete.Country})</p>
                 </div>
                 <div className="bg-triton-red/10 border border-triton-red/20 p-5 rounded-2xl">
                   <p className="text-[10px] text-triton-red font-black uppercase tracking-[0.2em] mb-1">Total Points</p>
                   <p className="text-3xl font-black text-white">{selectedAthlete["Total Points"]}</p>
                 </div>
+
+
+
+
               </div>
 
               {/* Discipline Breakdown */}
@@ -178,7 +186,7 @@ const RankingClientWrapper: React.FC<Props> = ({ initialAthletes }) => {
               <div>
                 <h3 className="text-xs font-black text-white/30 uppercase tracking-[0.3em] mb-5 flex items-center gap-2">
                   <div className="h-px bg-white/10 grow" />
-                  Season Progress
+                  Points per Event
                   <div className="h-px bg-white/10 grow" />
                 </h3>
                 <div className="grid gap-2">
@@ -202,17 +210,7 @@ const RankingClientWrapper: React.FC<Props> = ({ initialAthletes }) => {
               </div>
 
               {/* National Standing Footer */}
-              <div className="mt-auto pt-6 border-t border-white/5 flex items-center justify-between opacity-60">
-                <div className="flex items-center gap-2">
-                  <Flag size={14} className="text-gray-500" />
-                  <span className="text-[10px] font-bold uppercase tracking-widest text-gray-500">
-                    National Ranking:
-                  </span>
-                </div>
-                <span className="text-sm font-black text-white">
-                  #{selectedAthlete["National Standings"]} ({selectedAthlete.Country})
-                </span>
-              </div>
+
             </div>
           </div>
         )}

@@ -24,13 +24,13 @@ export default function FAQ() {
                 animate={{ opacity: 1, y: 0 }}
                 className="text-center mb-16"
             >
-                <h1 className="text-4xl md:text-6xl font-black uppercase tracking-tighter mb-4 bg-gradient-to-b from-white to-gray-500 bg-clip-text text-transparent">
-                    TRITON FAQ
+
+
+                <h1 className="text-3xl md:text-5xl font-black uppercase tracking-tighter mb-4 bg-linear-to-b from-white to-gray-500 bg-clip-text text-transparent">
+                    TRITON FAQ <br className="hidden md:block" />
+                    <span className="text-triton-red italic text-xl md:text-2xl text-pretty tracking-wide" >Everything you need to know about the TRITON World Series ecosystem.</span>
                 </h1>
                 <div className="h-1 w-24 bg-triton-red mx-auto mb-8"></div>
-                <p className="text-gray-400 max-w-2xl mx-auto text-sm md:text-base">
-                    Everything you need to know about the TRITON World Series ecosystem.
-                </p>
             </motion.div>
 
             <div className="flex flex-col lg:flex-row gap-12 relative">

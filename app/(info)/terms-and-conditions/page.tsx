@@ -30,9 +30,9 @@ export default function TermsAndConditions() {
                 animate={{ opacity: 1, y: 0 }}
                 className="text-center mb-16"
             >
-                <h1 className="text-3xl md:text-5xl font-black uppercase tracking-tighter mb-4 bg-gradient-to-b from-white to-gray-500 bg-clip-text text-transparent">
+                <h1 className="text-3xl md:text-5xl font-black uppercase tracking-tighter mb-4 bg-linear-to-b from-white to-gray-500 bg-clip-text text-transparent">
                     TRITON RACES GLOBAL TERMS & CONDITIONS, <br className="hidden md:block" />
-                    <span className="text-triton-red italic text-xl md:text-2xl text-pretty">WAIVER AND RELEASE OF LIABILITY, ASSUMPTION OF RISK AND INDEMNITY</span>
+                    <span className="text-triton-red italic text-xl md:text-2xl text-pretty tracking-wide">WAIVER AND RELEASE OF LIABILITY, ASSUMPTION OF RISK AND INDEMNITY</span>
                 </h1>
                 <div className="h-1 w-24 bg-triton-red mx-auto mb-8"></div>
             </motion.div>
