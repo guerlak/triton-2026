@@ -2,7 +2,6 @@
 import React, { useState } from "react";
 import { Gauge, ArrowRight, Trophy, MapPin, User, Hash, Flag } from "lucide-react";
 import { motion } from "framer-motion";
-import Link from "next/link";
 import Image from "next/image";
 import Modal from "../ui/Modal";
 import fotoUrl from "../../public/images/ranking-modal.png";
@@ -102,7 +101,7 @@ const RankingClientWrapper: React.FC<Props> = ({ initialAthletes }) => {
         {renderTable(athleteFilter("Men", "Middle Distance"))}
         {renderTable(athleteFilter("Women", "Long Distance"))}
         {renderTable(athleteFilter("Men", "Long Distance"))}
-        {/* ... outros filtros ... */}
+
       </motion.div>
 
       <div className="p-12 text-center">
@@ -110,95 +109,115 @@ const RankingClientWrapper: React.FC<Props> = ({ initialAthletes }) => {
 
       </div>
 
-      <Modal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)}>
+      <Modal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} maxWidth="max-w-5xl">
         {selectedAthlete && (
-          <div className="max-w-sm bg-neutral-900 rounded-2xl overflow-hidden">
-            <div className="relative">
-              <Image src={fotoUrl} alt="Athlete" className="w-full" />
-              <div className="absolute inset-x-0 bottom-0 h-1/2 bg-linear-to-t from-neutral-900 to-transparent" />
-            </div>
-            <div className="p-6">
-              <div className="flex items-center justify-between mb-4">
-                <h2 className="text-2xl font-black text-white uppercase tracking-tight">{selectedAthlete.Name}</h2>
-                <div className="flex items-center gap-2">
+          <div className="grid grid-cols-1 md:grid-cols-2 h-full max-h-[90vh] md:max-h-none overflow-y-auto md:overflow-hidden bg-neutral-950">
+            {/* Left Column: Image & Profile Summary */}
+            <div className="relative h-[300px] md:h-auto border-b md:border-b-0 md:border-r border-white/10">
+              <Image 
+                src={fotoUrl} 
+                alt="Athlete" 
+                className="w-full h-full object-cover"
+                priority
+              />
+              <div className="absolute inset-0 bg-linear-to-t from-neutral-950 via-neutral-950/20 to-transparent" />
+              
+              <div className="absolute bottom-0 left-0 p-8 w-full">
+                <div className="flex items-center gap-4 mb-3">
                   {renderFlag(selectedAthlete.Country)}
+                  <span className="text-triton-red font-black uppercase tracking-widest text-sm">
+                    {selectedAthlete.Country} Athlete
+                  </span>
+                </div>
+                <h2 className="text-4xl md:text-5xl font-black text-white uppercase leading-none mb-2 break-words">
+                  {selectedAthlete.Name}
+                </h2>
+                <div className="flex items-center gap-2 text-white/60 font-bold uppercase tracking-wider text-xs bg-white/5 backdrop-blur-md px-3 py-1.5 rounded-full w-fit border border-white/10">
+                  <User size={14} className="text-triton-red" />
+                  {selectedAthlete.Contest}
+                </div>
+              </div>
+            </div>
+
+            {/* Right Column: Detailed Stats */}
+            <div className="p-6 md:p-10 flex flex-col gap-8 md:max-h-[85vh] md:overflow-y-auto custom-scrollbar">
+              {/* Top Stats Cards */}
+              <div className="grid grid-cols-2 gap-4">
+                <div className="bg-white/5 border border-white/10 p-5 rounded-2xl">
+                  <p className="text-[10px] text-gray-500 font-black uppercase tracking-[0.2em] mb-1">Global Standing</p>
+                  <p className="text-3xl font-black text-white">#{selectedAthlete["Global Standings"]}</p>
+                </div>
+                <div className="bg-triton-red/10 border border-triton-red/20 p-5 rounded-2xl">
+                  <p className="text-[10px] text-triton-red font-black uppercase tracking-[0.2em] mb-1">Total Points</p>
+                  <p className="text-3xl font-black text-white">{selectedAthlete["Total Points"]}</p>
                 </div>
               </div>
 
-              <div className="grid grid-cols-2 gap-4 mb-6">
-
-
-              </div>
-
-              <div className="space-y-3 mb-6">
-                <div className="flex items-center gap-3 text-gray-400">
-                  <User className="text-triton-red w-5 h-5" />
-                  <p className="font-bold uppercase text-sm tracking-wide">
-                    {selectedAthlete.Contest}
-                  </p>
-                </div>
-                <div className="flex items-center gap-3 text-gray-400">
-                  <Flag className="text-triton-red w-5 h-5" />
-                  <p className="font-bold uppercase text-sm tracking-wide">
-                    Global Standing: <span className="text-white">{selectedAthlete["Global Standings"]}</span>
-                  </p>
-                </div>
-                <div className="flex items-center gap-3 text-gray-400">
-                  <Flag className="text-triton-red w-5 h-5" />
-                  <p className="font-bold uppercase text-sm tracking-wide">
-                    National Standing ({selectedAthlete.Country}): <span className="text-white">{selectedAthlete["National Standings"]}</span>
-                  </p>
+              {/* Discipline Breakdown */}
+              <div>
+                <h3 className="text-xs font-black text-white/30 uppercase tracking-[0.3em] mb-5 flex items-center gap-2">
+                  <div className="h-px bg-white/10 grow" />
+                  Discipline Rankings
+                  <div className="h-px bg-white/10 grow" />
+                </h3>
+                <div className="grid grid-cols-3 gap-3">
+                  {[
+                    { label: "Swim", rank: selectedAthlete["Swim Ranking"], color: "blue" },
+                    { label: "Bike", rank: selectedAthlete["Bike Ranking"], color: "emerald" },
+                    { label: "Run", rank: selectedAthlete["Run Ranking"], color: "amber" }
+                  ].map((disc) => (
+                    <div key={disc.label} className="bg-black/40 p-4 rounded-2xl border border-white/5 text-center transition-transform hover:scale-105">
+                      <p className="text-[10px] text-gray-500 font-black uppercase mb-2 tracking-widest">{disc.label}</p>
+                      <p className="text-xl font-black text-white">#{disc.rank}</p>
+                    </div>
+                  ))}
                 </div>
               </div>
 
-              <div className="border-t border-white/5 pt-6 pb-4">
-                <h3 className="text-xs font-black text-gray-500 uppercase tracking-[0.2em] mb-4">Discipline Rankings</h3>
-                <div className="grid grid-cols-3 gap-2">
-                  <div className="bg-black/40 p-2 rounded-xl border border-white/5 text-center">
-                    <p className="text-xs text-gray-500 font-bold uppercase mb-1">Swim</p>
-                    <p className="text-white font-black text-md tracking-wider">#{selectedAthlete["Swim Ranking"]}</p>
-                  </div>
-                  <div className="bg-black/40 p-2 rounded-xl border border-white/5 text-center">
-                    <p className="text-xs text-gray-500 font-bold uppercase mb-1">Bike</p>
-                    <p className="text-white font-black text-md tracking-wider">#{selectedAthlete["Bike Ranking"]}</p>
-                  </div>
-                  <div className="bg-black/40 p-2 rounded-xl border border-white/5 text-center">
-                    <p className="text-xs text-gray-500 font-bold uppercase mb-1">Run</p>
-                    <p className="text-white font-black text-md tracking-wider">#{selectedAthlete["Run Ranking"]}</p>
-                  </div>
-                </div>
-              </div>
-
-              <div className="border-t border-white/5 pt-6">
-                <h3 className="text-xs font-black text-gray-500 uppercase tracking-[0.2em] mb-4">Season Performance</h3>
-                <div className="space-y-0 text-gray-400">
+              {/* Race History */}
+              <div>
+                <h3 className="text-xs font-black text-white/30 uppercase tracking-[0.3em] mb-5 flex items-center gap-2">
+                  <div className="h-px bg-white/10 grow" />
+                  Season Progress
+                  <div className="h-px bg-white/10 grow" />
+                </h3>
+                <div className="grid gap-2">
                   {[
                     { label: "Salvador, BA", value: selectedAthlete.Salvador },
                     { label: "Jiangsu-qidong", value: selectedAthlete.China },
                     { label: "Rio de Janeiro, RJ", value: selectedAthlete.Rio },
                     { label: "Lisboa", value: selectedAthlete.Lisboa },
                   ].map((race, i) => (
-                    <div key={i} className="flex justify-between items-center py-2.5 border-b border-white/5 last:border-0 transition-colors hover:bg-white/5 px-1">
-                      <span className="text-xs font-bold uppercase tracking-widest">{race.label}</span>
-                      <span className="text-white font-black text-sm">{(race.value && race.value !== "-") ? race.value : "---"}</span>
+                    <div key={i} className="flex justify-between items-center p-4 bg-white/5 rounded-xl border border-white/5 group transition-colors hover:bg-white/10">
+                      <div className="flex items-center gap-3">
+                        <MapPin size={16} className="text-triton-red opacity-50 group-hover:opacity-100 transition-opacity" />
+                        <span className="text-[11px] font-bold uppercase tracking-widest text-gray-400 group-hover:text-white transition-colors">{race.label}</span>
+                      </div>
+                      <span className="text-white font-black text-sm">
+                        {(race.value && race.value !== "-") ? race.value : "---"}
+                      </span>
                     </div>
                   ))}
                 </div>
               </div>
-              <div className="mt-8 bg-triton-red/10 border border-triton-red/20 p-4 rounded-xl flex items-center justify-between">
-                <div>
-                  <p className="text-[10px] text-triton-red font-black uppercase tracking-widest">Total Season Points</p>
-                  <p className="text-3xl font-black text-white">{selectedAthlete["Total Points"]}</p>
+
+              {/* National Standing Footer */}
+              <div className="mt-auto pt-6 border-t border-white/5 flex items-center justify-between opacity-60">
+                <div className="flex items-center gap-2">
+                  <Flag size={14} className="text-gray-500" />
+                  <span className="text-[10px] font-bold uppercase tracking-widest text-gray-500">
+                    National Ranking:
+                  </span>
                 </div>
-                <div className="text-right">
-                  <p className="text-[10px] text-gray-500 font-black uppercase tracking-widest">Overall</p>
-                  <p className="text-xl font-black text-white">#{selectedAthlete["Global Standings"]}</p>
-                </div>
+                <span className="text-sm font-black text-white">
+                  #{selectedAthlete["National Standings"]} ({selectedAthlete.Country})
+                </span>
               </div>
             </div>
           </div>
         )}
       </Modal>
+
     </>
   );
 };
