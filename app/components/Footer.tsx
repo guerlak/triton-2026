@@ -91,7 +91,10 @@ const Footer: React.FC = () => {
           <div>
             <h4 className="text-white font-bold uppercase mb-4">Contact Us</h4>
             <div className="flex items-center text-gray-400 text-sm mb-2">
-              <Mail size={16} className="mr-2" /> contato@tritonworldseries.com
+              <Mail size={16} className="mr-2" />
+              <a href="mailto:info@tritonworldseries.com" className="text-white hover:text-triton-red transition-colors font-medium">
+                info@tritonworldseries.com
+              </a>
             </div>
             <div className="flex items-center text-gray-400 text-sm mb-2">
               <ul className="space-y-2 text-gray-600 text-sm ">
