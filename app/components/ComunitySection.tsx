@@ -10,7 +10,7 @@ export default function CommunitySection() {
 
         </h2>
         <p className="text-xl text-gray-300 mb-8">
-          We are triathletes, swimmers, cyclists, runners, and those seeking new challenges. Step into our world.
+          We are triathletes, swimmers, cyclists, runners, and those seeking new challenges.<br /> Step into our world.
         </p>
         <div className="flex justify-center gap-4 flex-wrap">
           <span className="px-4 py-2 bg-black border border-white/10 rounded-full text-sm font-bold text-gray-400 tracking-widest uppercase">

@@ -126,37 +126,26 @@ const RankingClientWrapper: React.FC<Props> = ({ initialAthletes }) => {
               </div>
 
               <div className="grid grid-cols-2 gap-4 mb-6">
-                <div className="flex items-center gap-2 bg-white/5 p-3 rounded-xl border border-white/5">
-                  <Hash className="text-triton-red w-4 h-4" />
-                  <div>
-                    <p className="text-[10px] text-gray-500 font-bold uppercase tracking-widest">Bib</p>
-                    <p className="text-white font-black">{selectedAthlete.Bib}</p>
-                  </div>
-                </div>
-                <div className="flex items-center gap-2 bg-white/5 p-3 rounded-xl border border-white/5">
-                  <User className="text-triton-red w-4 h-4" />
-                  <div>
-                    <p className="text-[10px] text-gray-500 font-bold uppercase tracking-widest">Gender</p>
-                    <p className="text-white font-black uppercase text-xs">{selectedAthlete.Gender}</p>
-                  </div>
-                </div>
+
+
               </div>
 
               <div className="space-y-3 mb-6">
                 <div className="flex items-center gap-3 text-gray-400">
-                  <Trophy className="text-triton-red w-5 h-5" />
+                  <User className="text-triton-red w-5 h-5" />
                   <p className="font-bold uppercase text-sm tracking-wide">
                     {selectedAthlete.Contest}
                   </p>
                 </div>
                 <div className="flex items-center gap-3 text-gray-400">
                   <Flag className="text-triton-red w-5 h-5" />
-                  <p className="font-bold uppercase text-sm tracking-wide text-xs">
+                  <p className="font-bold uppercase text-sm tracking-wide">
                     Global Standing: <span className="text-white">{selectedAthlete["Global Standings"]}</span>
                   </p>
                 </div>
-                <div className="flex items-center gap-3 text-gray-400 pl-8">
-                  <p className="font-bold uppercase text-[10px] tracking-wide">
+                <div className="flex items-center gap-3 text-gray-400">
+                  <Flag className="text-triton-red w-5 h-5" />
+                  <p className="font-bold uppercase text-sm tracking-wide">
                     National Standing ({selectedAthlete.Country}): <span className="text-white">{selectedAthlete["National Standings"]}</span>
                   </p>
                 </div>
@@ -166,37 +155,36 @@ const RankingClientWrapper: React.FC<Props> = ({ initialAthletes }) => {
                 <h3 className="text-xs font-black text-gray-500 uppercase tracking-[0.2em] mb-4">Discipline Rankings</h3>
                 <div className="grid grid-cols-3 gap-2">
                   <div className="bg-black/40 p-2 rounded-xl border border-white/5 text-center">
-                    <p className="text-[8px] text-gray-500 font-bold uppercase mb-1">Swim</p>
-                    <p className="text-white font-black text-xs">#{selectedAthlete["Swim Ranking"]}</p>
+                    <p className="text-xs text-gray-500 font-bold uppercase mb-1">Swim</p>
+                    <p className="text-white font-black text-md tracking-wider">#{selectedAthlete["Swim Ranking"]}</p>
                   </div>
                   <div className="bg-black/40 p-2 rounded-xl border border-white/5 text-center">
-                    <p className="text-[8px] text-gray-500 font-bold uppercase mb-1">Bike</p>
-                    <p className="text-white font-black text-xs">#{selectedAthlete["Bike Ranking"]}</p>
+                    <p className="text-xs text-gray-500 font-bold uppercase mb-1">Bike</p>
+                    <p className="text-white font-black text-md tracking-wider">#{selectedAthlete["Bike Ranking"]}</p>
                   </div>
                   <div className="bg-black/40 p-2 rounded-xl border border-white/5 text-center">
-                    <p className="text-[8px] text-gray-500 font-bold uppercase mb-1">Run</p>
-                    <p className="text-white font-black text-xs">#{selectedAthlete["Run Ranking"]}</p>
+                    <p className="text-xs text-gray-500 font-bold uppercase mb-1">Run</p>
+                    <p className="text-white font-black text-md tracking-wider">#{selectedAthlete["Run Ranking"]}</p>
                   </div>
                 </div>
               </div>
 
               <div className="border-t border-white/5 pt-6">
                 <h3 className="text-xs font-black text-gray-500 uppercase tracking-[0.2em] mb-4">Season Performance</h3>
-                <div className="grid grid-cols-2 gap-3">
+                <div className="space-y-0 text-gray-400">
                   {[
                     { label: "Salvador, BA", value: selectedAthlete.Salvador },
                     { label: "Jiangsu-qidong", value: selectedAthlete.China },
                     { label: "Rio de Janeiro, RJ", value: selectedAthlete.Rio },
                     { label: "Lisboa", value: selectedAthlete.Lisboa },
                   ].map((race, i) => (
-                    <div key={i} className="bg-black/40 p-3 rounded-xl border border-white/5">
-                      <p className="text-[9px] text-gray-500 font-bold uppercase mb-1">{race.label}</p>
-                      <p className="text-white font-black text-sm">{race.value || "-"}</p>
+                    <div key={i} className="flex justify-between items-center py-2.5 border-b border-white/5 last:border-0 transition-colors hover:bg-white/5 px-1">
+                      <span className="text-xs font-bold uppercase tracking-widest">{race.label}</span>
+                      <span className="text-white font-black text-sm">{(race.value && race.value !== "-") ? race.value : "---"}</span>
                     </div>
                   ))}
                 </div>
               </div>
-
               <div className="mt-8 bg-triton-red/10 border border-triton-red/20 p-4 rounded-xl flex items-center justify-between">
                 <div>
                   <p className="text-[10px] text-triton-red font-black uppercase tracking-widest">Total Season Points</p>

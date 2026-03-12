@@ -20,7 +20,7 @@ const Footer: React.FC = () => {
             </p>
             <div className="flex space-x-4">
               <a
-                href="#"
+                href="https://www.instagram.com/triton_worldseries?igsh=MTBsZDhkdzY0dWJuMA=="
                 className="text-gray-400 hover:text-triton-red transition-colors"
               >
                 <Instagram size={20} />
@@ -44,22 +44,22 @@ const Footer: React.FC = () => {
             <h4 className="text-white font-bold uppercase mb-4">Events</h4>
             <ul className="space-y-2 text-sm text-gray-400">
               <li>
-                <a href="#" className="hover:text-white transition-colors">
-                  Salvador 2026
+                <a href="/triton-events " className="hover:text-white transition-colors">
+                  Brazil
                 </a>
               </li>
               <li>
-                <a href="#" className="hover:text-white transition-colors">
-                  Rio de Janeiro 2026
+                <a href="/triton-events" className="hover:text-white transition-colors">
+                  China
                 </a>
               </li>
               <li>
-                <a href="#" className="hover:text-white transition-colors">
-                  Lisboa 2026
+                <a href="/triton-events" className="hover:text-white transition-colors">
+                  Portugal
                 </a>
               </li>
               <li>
-                <a href="#" className="hover:text-white transition-colors">
+                <a href="/triton-events" className="hover:text-white transition-colors">
                   World Final
                 </a>
               </li>
@@ -67,25 +67,21 @@ const Footer: React.FC = () => {
           </div>
 
           <div>
-            <h4 className="text-white font-bold uppercase mb-4">Athlete</h4>
+            <h4 className="text-white font-bold uppercase mb-4">Info</h4>
             <ul className="space-y-2 text-sm text-gray-400">
               <li>
-                <a href="#" className="hover:text-white transition-colors">
-                  Results
+                <a href="/terms-and-conditions" className="hover:text-white transition-colors">
+                  Terms&Conditions
+                </a>
+              </li>
+
+              <li>
+                <a href="/score-system" className="hover:text-white transition-colors">
+                  Scoring System
                 </a>
               </li>
               <li>
-                <a href="#" className="hover:text-white transition-colors">
-                  Pictures
-                </a>
-              </li>
-              <li>
-                <a href="#" className="hover:text-white transition-colors">
-                  Regulation
-                </a>
-              </li>
-              <li>
-                <a href="#" className="hover:text-white transition-colors">
+                <a href="/faq" className="hover:text-white transition-colors">
                   FAQ
                 </a>
               </li>
@@ -97,6 +93,15 @@ const Footer: React.FC = () => {
             <div className="flex items-center text-gray-400 text-sm mb-2">
               <Mail size={16} className="mr-2" /> contato@tritonworldseries.com
             </div>
+            <div className="flex items-center text-gray-400 text-sm mb-2">
+              <ul className="space-y-2 text-gray-600 text-sm ">
+                <li>Host a TRITON Race</li>
+                <li>Become a Partner</li>
+                <li>Corporate Hospitality</li>
+                <li>Sugestions & Complaints</li>
+              </ul>
+            </div>
+
           </div>
         </div>
 
@@ -105,11 +110,14 @@ const Footer: React.FC = () => {
             © 2026 TRITON World Series. All rights reserved.
           </p>
           <div className="flex space-x-6 mt-4 md:mt-0">
-            <a href="#" className="text-gray-600 text-xs hover:text-white">
-              Privacy
+            <a href="/privacy-policy" className="text-gray-600 text-xs hover:text-white">
+              Privacy Policy
             </a>
-            <a href="#" className="text-gray-600 text-xs hover:text-white">
-              Terms
+            <a href="/terms-of-use" className="text-gray-600 text-xs hover:text-white">
+              Terms of use
+            </a>
+            <a href="/ip" className="text-gray-600 text-xs hover:text-white">
+              IP - intelectual Property
             </a>
           </div>
         </div>

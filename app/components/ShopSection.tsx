@@ -73,7 +73,7 @@ const ShopSection: React.FC = () => {
             <h2 className="text-3xl md:text-3xl font-black text-white uppercase leading-tight mb-2 mt-70 max-w-2/3">
               Take Us<br></br>
 
-              <span className="text-triton-red">With You.</span>{" "}
+              <span className="text-triton-red">With You</span>{" "}
             </h2>
 
             <p className="text-gray-300 text-lg md:text-md leading-relaxed mb-10 max-w-lg">

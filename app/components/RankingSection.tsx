@@ -21,10 +21,6 @@ export interface Athlete {
   China: string;
   Rio: string;
   Lisboa: string;
-  Event5?: string;
-  Event6?: string;
-  Event7?: string;
-  Event8?: string;
 }
 
 async function getRankings() {
@@ -45,7 +41,7 @@ export default async function RankingSection() {
   const data = await getRankings();
 
   if (!data) {
-    return <div className="text-white">API Limit reached. Please wait.</div>;
+    return <div className="text-white">Error loading data.</div>;
   }
 
   return (
