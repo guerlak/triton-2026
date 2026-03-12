@@ -61,9 +61,9 @@ const RankingClientWrapper: React.FC<Props> = ({ initialAthletes }) => {
             {athletes.slice(0, 3).map((athlete) => {
               const pos = athlete["Global Standings"];
               let medalClass = "text-white";
-              if (pos == 1) medalClass = "bg-yellow-400 text-black rounded-full w-8 h-8 flex items-center justify-center mx-auto";
-              if (pos == 2) medalClass = "bg-gray-300 text-black rounded-full w-8 h-8 flex items-center justify-center mx-auto";
-              if (pos == 3) medalClass = "bg-amber-700 text-white rounded-full w-8 h-8 flex items-center justify-center mx-auto";
+              if (pos == 1) medalClass = "bg-yellow-600 border border-yellow-400 text-black rounded-full w-8 h-8 flex items-center justify-center mx-auto";
+              if (pos == 2) medalClass = "bg-gray-500 border border-gray-300 text-black rounded-full w-8 h-8 flex items-center justify-center mx-auto";
+              if (pos == 3) medalClass = "bg-amber-900 border border-amber-700 text-white rounded-full w-8 h-8 flex items-center justify-center mx-auto";
 
               return (
                 <tr key={athlete.Bib} className="border-b border-white/5 hover:bg-white/5 transition-colors group">

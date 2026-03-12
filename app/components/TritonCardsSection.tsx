@@ -1,4 +1,3 @@
-
 "use client";
 
 import { motion } from "framer-motion";
@@ -9,18 +8,15 @@ import {
   Waves,
   Bike,
   PersonStanding,
-  ArrowRight,
-  Rotate3D,
   CheckCircle,
   Blend,
 } from "lucide-react";
-import Link from "next/link";
 import StatsClientComponent from "./StatsClientComponent";
 import MainButton from "../ui/MainButton";
 
 const TritonExperienceCards: React.FC = () => {
   return (
-    <section className="py-24 bg-triton-dark overflow-hidden relative">
+    <section className="py-24 bg-triton-dark overflow-hidden relative" id="formats">
       <StatsClientComponent />
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-10">
@@ -142,8 +138,7 @@ const TritonExperienceCards: React.FC = () => {
             viewport={{ once: true }}
             className="group relative bg-neutral-900 rounded-[2.5rem] p-10 lg:p-16 border border-white/5 hover:border-triton-red/30 transition-all duration-500 overflow-hidden"
           >
-            <div className="absolute top-[-140px] right-[-10px] p-8 opacity-7 group-hover:opacity-20 transition-opacity">
-              {/* <Rotate3D size={120} className="text-triton-red" /> */}
+            <div className="absolute top-[-140px] right-[-25px] p-8 opacity-7 group-hover:opacity-10 transition-opacity">
               <span className="text-triton-red text-[20em] italic font-black">3</span>
             </div>
 
@@ -183,7 +178,6 @@ const TritonExperienceCards: React.FC = () => {
                   <div>
                     <p className="text-white font-bold uppercase tracking-wide">
                       INNOVATIVE SCORING SYSTEM
-
                     </p>
                     <p className="text-gray-500 text-sm">
                       Each discipline carries equal weight, rewarding the athlete who performs consistently across all three.
@@ -197,7 +191,6 @@ const TritonExperienceCards: React.FC = () => {
                   <div>
                     <p className="text-white font-bold uppercase tracking-wide">
                       COMPETITION OPTIONS
-
                     </p>
                     <p className="text-gray-400 text-sm">
                       Individual Triathlon / Corporate Relay / Individual Disciplines - Compete in Swim, Bike or Run.
