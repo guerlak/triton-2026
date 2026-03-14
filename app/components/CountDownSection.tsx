@@ -172,14 +172,14 @@ const CountdownSection: React.FC = () => {
                 </div>
 
                 <div className="mt-10 flex gap-4 justify-center lg:justify-start">
-                  <button className="bg-triton-red hover:bg-white text-white hover:text-black font-black py-4 px-6 md:px-10 rounded-none flex items-center gap-3 uppercase tracking-widest transition-all duration-300">
+                  <button className="bg-triton-red hover:bg-white text-white hover:text-black font-black py-2 px-4 md:px-10 rounded-none flex items-center gap-3 uppercase tracking-widest transition-all duration-300">
                     <span>Register</span>
                     <ArrowRight size={18} />
                   </button>
 
                   <Link
                     href={currentEvent.href}
-                    className="bg-white hover:bg-triton-red text-black hover:text-white font-black py-4 px-6 md:px-10 rounded-none flex items-center justify-center gap-3 uppercase tracking-widest transition-all duration-300"
+                    className="bg-white hover:bg-triton-red text-black hover:text-white font-black py-2  px-4 md:px-10 rounded-none flex items-center justify-center gap-3 uppercase tracking-widest transition-all duration-300"
                   >
                     <span>Website</span>
                     <ArrowRight size={18} />

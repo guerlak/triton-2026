@@ -104,9 +104,8 @@ const RankingClientWrapper: React.FC<Props> = ({ initialAthletes }) => {
 
       </motion.div>
 
-      <div className="p-12 text-center">
-        <MainButton href="/ranking">Check The Full Ranking</MainButton>
-
+      <div className="text-center">
+        <MainButton href="/ranking">Full Ranking</MainButton>
       </div>
 
       <Modal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} maxWidth="max-w-5xl">
@@ -129,7 +128,7 @@ const RankingClientWrapper: React.FC<Props> = ({ initialAthletes }) => {
                     {selectedAthlete.Country} Athlete
                   </span>
                 </div>
-                <h2 className="text-4xl md:text-5xl font-black text-white uppercase leading-none mb-2 break-words">
+                <h2 className="text-4xl md:text-5xl font-black text-white uppercase leading-none mb-2 wrap-break-word">
                   {selectedAthlete.Name}
                 </h2>
                 <div className="flex items-center gap-2 text-white/60 font-bold uppercase tracking-wider text-xs bg-white/5 backdrop-blur-md px-3 py-1.5 rounded-full w-fit border border-white/10">
@@ -143,22 +142,18 @@ const RankingClientWrapper: React.FC<Props> = ({ initialAthletes }) => {
             <div className="p-6 md:p-10 flex flex-col gap-8 md:max-h-[85vh] md:overflow-y-auto custom-scrollbar">
               {/* Top Stats Cards */}
               <div className="grid grid-cols-3 gap-4">
-                <div className="bg-white/5 border border-white/10 p-5 rounded-2xl">
+                <div className="bg-white/5 border border-white/10 p-3 rounded-2xl">
                   <p className="text-[10px] text-gray-500 font-black uppercase tracking-[0.2em] mb-1">Global Standing</p>
-                  <p className="text-3xl font-black text-white">#{selectedAthlete["Global Standings"]}</p>
+                  <p className="text-3xl font-black text-white text-center">#{selectedAthlete["Global Standings"]}</p>
                 </div>
-                <div className="bg-white/5 border border-white/10 p-5 rounded-2xl">
+                <div className="bg-white/5 border border-white/10 p-3 rounded-2xl">
                   <p className="text-[10px] text-gray-500 font-black uppercase tracking-[0.2em] mb-1">National Ranking:</p>
-                  <p className="text-2xl font-black text-white">#{selectedAthlete["National Standings"]} ({selectedAthlete.Country})</p>
+                  <p className="text-xl sm:text-2xl font-black text-white text-center">#{selectedAthlete["National Standings"]} <span className="text-gray-400 text-sm">({selectedAthlete.Country})</span></p>
                 </div>
-                <div className="bg-triton-red/10 border border-triton-red/20 p-5 rounded-2xl">
+                <div className="bg-triton-red/10 border border-triton-red/20 p-3 rounded-2xl">
                   <p className="text-[10px] text-triton-red font-black uppercase tracking-[0.2em] mb-1">Total Points</p>
-                  <p className="text-3xl font-black text-white">{selectedAthlete["Total Points"]}</p>
+                  <p className="text-xl sm:text-3xl font-black text-white text-center">{selectedAthlete["Total Points"]}</p>
                 </div>
-
-
-
-
               </div>
 
               {/* Discipline Breakdown */}
@@ -186,7 +181,7 @@ const RankingClientWrapper: React.FC<Props> = ({ initialAthletes }) => {
               <div>
                 <h3 className="text-xs font-black text-white/30 uppercase tracking-[0.3em] mb-5 flex items-center gap-2">
                   <div className="h-px bg-white/10 grow" />
-                  Points per Event
+                  Top 3 Results
                   <div className="h-px bg-white/10 grow" />
                 </h3>
                 <div className="grid gap-2">

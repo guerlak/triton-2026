@@ -6,6 +6,7 @@ import { Instagram } from "lucide-react";
 import Image from "next/image";
 import dict from "../../dictionaries/en.json";
 import RedLine from "../ui/RedLine";
+import { div } from "framer-motion/client";
 
 const Testimonial = ({
   quote,
@@ -14,35 +15,37 @@ const Testimonial = ({
   linkSocial,
 }: Partial<TestimonialProps>) => {
   return (
-    <TritonBox>
-      <div className="flex flex-col justify-center items-center">
-        <div className="flex items-center gap-4 mb-4">
-          <Image
-            src={avatarUrl || ""}
-            alt={author || "Testimonial author"}
-            width={48}
-            height={48}
-            className="w-12 h-12 rounded-full object-cover"
-            unoptimized
-          />
-          <div>
-            <h4 className="font-bold text-gray-200">{author}</h4>
+    <div className="h-full flex flex-col">
+      <TritonBox>
+        <div className="flex flex-col sm:justify-between items-center justify-center h-full text-center min-h-[280px]">
+          <div className="flex items-center gap-4 mb-4">
+            <Image
+              src={avatarUrl || ""}
+              alt={author || "Testimonial author"}
+              width={48}
+              height={48}
+              className="w-12 h-12 rounded-full object-cover"
+              unoptimized
+            />
+            <div>
+              <h4 className="font-bold text-gray-200">{author}</h4>
+            </div>
+          </div>
+          <p className="text-base lg:text-lg italic mx-auto mb-4">"{quote}"</p>
+
+          <div className="mt-auto flex justify-center w-full">
+            <a
+              href={linkSocial || "#"}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-triton-red hover:text-red-400"
+            >
+              <Instagram className="w-6 h-6" />
+            </a>
           </div>
         </div>
-        <p className="text-lg italic mx-auto">"{quote}"</p>
-      </div>
-
-      <div className="w-10 mt-4">
-        <a
-          href={linkSocial || "#"}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="text-triton-red hover:text-red-400"
-        >
-          <Instagram className="w-6 h-6" />
-        </a>
-      </div>
-    </TritonBox>
+      </TritonBox>
+    </div>
   );
 };
 
@@ -59,17 +62,18 @@ export default function TestimonialList() {
         {dict.testimonials_section.subtitle}
       </h2>
 
-      <div className="p-2 flex flex-col-reverse gap-10 justify-between items-center max-w-[1200] mx-auto md:flex-row">
-        <div className="flex flex-col max-w-[700] gap-4">
+      <div className="p-2 flex flex-col-reverse gap-10 justify-between items-center max-w-[1200] mx-auto md:flex-row mt-8">
+        <div className="flex overflow-x-auto sm:flex-col snap-x snap-mandatory sm:snap-none w-full md:max-w-[700px] gap-4 pb-6 sm:pb-0 [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden">
           {dict?.testimonials?.map((item: any) => (
-            <Testimonial
-              key={item.author}
-              quote={item.quote}
-              author={item.author}
-              company={item.company}
-              avatarUrl={item.avatar_url || ""}
-              linkSocial={item.link_social || ""}
-            />
+            <div key={item.author} className="shrink-0 w-[90%] sm:w-full snap-center">
+              <Testimonial
+                quote={item.quote}
+                author={item.author}
+                company={item.company}
+                avatarUrl={item.avatar_url || ""}
+                linkSocial={item.link_social || ""}
+              />
+            </div>
           ))}
         </div>
         <iframe
@@ -80,6 +84,7 @@ export default function TestimonialList() {
           allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
           referrerPolicy="strict-origin-when-cross-origin"
           allowFullScreen
+          className="max-w-full rounded-2xl"
         ></iframe>
       </div>
       <RedLine />
