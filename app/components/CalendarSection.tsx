@@ -37,7 +37,7 @@ const CalendarSection: React.FC = () => {
         </div>
 
         {/* 2026 Timeline */}
-        <div className="mb-20">
+        <div className="mb-10">
           <h4 className="text-2xl font-bold text-white mb-8 border-l-4 border-triton-red pl-4">
             2026 RACES{" "}
             <span className="text-sm font-normal text-gray-500 ml-2">
@@ -81,21 +81,20 @@ const CalendarSection: React.FC = () => {
         </div>
         {/* Future Locations */}
         <div>
-          <h4 className="text-xl font-bold text-gray-400 mb-8 pl-4">
-            COMIING SOON
+          <h4 className="text-xl font-bold text-gray-400 mb-5 md:mb-8 pl-4">
+            COMING SOON
           </h4>
           <div className="flex flex-wrap gap-4">
             {eventsFuture.map((event, idx) => (
               <div
                 key={idx}
-                className="flex items-center bg-white/5 px-6 py-3 rounded-full border border-white/5"
+                className="flex items-center bg-white/5 px-6 py-1 md:py-4 rounded-full border border-white/5"
               >
-                <span className="mr-3 text-2xl">{event.flag}</span>
+                <span className="mr-3 text-3xl">{event.flag}</span>
                 <div>
-                  <p className="font-bold text-white uppercase text-sm">
+                  <p className="font-bold text-white uppercase text-xs md:text-sm">
                     {event.location}
                   </p>
-
                   <p className="text-[10px] text-gray-400">{event.date}</p>
                 </div>
               </div>

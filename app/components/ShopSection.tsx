@@ -8,7 +8,7 @@ const ShopSection: React.FC = () => {
   return (
     <section
       id="shop"
-      className="overflow-hidden bg-black flex flex-col md:flex-row max-w-[1300] mx-auto py-20 gap-5"
+      className="overflow-hidden bg-black flex flex-col md:flex-row max-w-[1300] mx-auto py-10 md:py-20 gap-5"
     >
       <div className="md:max-w-1/2 px-4 sm:px-6 lg:px-8">
         <div className="relative rounded-4xl overflow-hidden group">
@@ -23,16 +23,16 @@ const ShopSection: React.FC = () => {
           </div>
 
           {/* Content */}
-          <div className="relative py-10 md:p-10 max-w-2xl sm:min-h-[600px] sm:min-w-[650px]">
+          <div className="relative p-5 md:p-10 max-w-2xl sm:min-h-[600px] sm:min-w-[650px]">
 
             <div className="inline-flex items-center gap-2 bg-triton-red px-4 py-1.5 rounded-full
              text-white text-[10px] font-black uppercase tracking-widest mb-6">
               <ShoppingBag size={12} /> Official Collection
             </div>
 
-            <div>
+            <div className="mt-50">
               <h2 className="text-3xl md:text-3xl font-black text-white uppercase leading-tight 
-              mb-0 sm:mb-2 mt-70 max-w-2/3">
+              mb-0 sm:mb-2 max-w-2/3">
                 WEAR THE  <br></br><span className="text-triton-red">TRITON MINDSET</span>{" "}
               </h2>
               <p className="text-gray-300 text-lg md:text-xl leading-relaxed mb-10 max-w-lg">
@@ -40,14 +40,17 @@ const ShopSection: React.FC = () => {
               </p>
             </div>
 
-            <a href="https://scimitarevents.com/product-category/triton-world-series" target="_blank" className="absolute bottom-10 bg-white hover:bg-triton-red text-black hover:text-white font-black py-2 px-5 rounded-none flex items-center justify-center gap-3 uppercase tracking-widest transition-all duration-300">
+            <a href="https://scimitarevents.com/product-category/triton-world-series"
+              target="_blank"
+              className="bg-white hover:bg-triton-red text-black hover:text-white font-black
+               py-2 px-5 rounded-none inline-flex items-center justify-center gap-3 uppercase tracking-widest
+                transition-all duration-300">
               <span className="text-xs sm:text-sm">Visit the Store</span>
               <ArrowUpRight
                 size={18}
                 className="group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform"
               />
             </a>
-
           </div>
 
           {/* Decorative Corner Element */}
@@ -68,29 +71,31 @@ const ShopSection: React.FC = () => {
           </div>
 
           {/* Content */}
-          <div className="relative py-10 md:p-10 max-w-2xl sm:min-h-[600px] min-w-[600px]">
+          <div className="relative p-5 md:py-10 md:p-10 max-w-2xl sm:min-h-[600px] min-w-[600px]">
             <div className="inline-flex items-center gap-2 bg-triton-red px-4 py-1.5 rounded-full
              text-white text-[10px] font-black uppercase tracking-widest mb-6">
               <TabletSmartphone size={12} />
               Triton App
             </div>
 
-            <h2 className="text-3xl font-black text-white uppercase leading-tight mb-2 mt-70 max-w-2/3">
-              Take Us<br></br>
-              <span className="text-triton-red">With You</span>{" "}
-            </h2>
+            <div className="mt-50">
+              <h2 className="text-3xl font-black text-white uppercase leading-tight mb-2 max-w-2/3">
+                Take Us<br></br>
+                <span className="text-triton-red">With You</span>{" "}
+              </h2>
 
-            <p className="text-gray-300 text-lg md:text-md leading-relaxed mb-10 max-w-lg">
-              Elevate Your Experience.
-            </p>
+              <p className="text-gray-300 text-lg md:text-md leading-relaxed mb-10 max-w-lg">
+                Elevate Your Experience.
+              </p>
 
-            <button className="absolute bottom-10  bg-white hover:bg-triton-red text-black hover:text-white font-black py-2 px-5 rounded-none flex items-center justify-center gap-3 uppercase tracking-widest transition-all duration-300">
-              <span className="text-xs sm:text-sm">Download the App</span>
-              <ArrowUpRight
-                size={18}
-                className="group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform"
-              />
-            </button>
+              <a className="inline-flex bg-white hover:bg-triton-red text-black hover:text-white font-black py-2 px-5 rounded-none items-center justify-center gap-3 uppercase tracking-widest transition-all duration-300">
+                <span className="text-xs sm:text-sm">Download the App</span>
+                <ArrowUpRight
+                  size={18}
+                  className="group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform"
+                />
+              </a>
+            </div>
           </div>
 
           {/* Decorative Corner Element */}

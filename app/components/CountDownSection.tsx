@@ -150,7 +150,9 @@ const CountdownSection: React.FC = () => {
             >
               {/* Text Content */}
               <div className="">
-                <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-triton-red/20 border border-triton-red/30 text-triton-red text-xs font-black uppercase tracking-widest mb-6">
+                <div className="flex justify-center lg:justify-start items-center gap-2 px-4 py-1.5 rounded-full 
+                bg-triton-red/20 border border-triton-red/30 text-triton-red text-xs font-black uppercase 
+                tracking-widest mb-6">
                   <Timer size={14} className="animate-pulse" />
                   Coming Next
                 </div>

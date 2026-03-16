@@ -99,8 +99,8 @@ export const EVENTS: CalendarEvent[] = [
   },
   {
     date: "OCT",
-    location: "United States",
-    country: "EUA",
+    location: "USA",
+    country: "USA",
     flag: "🇺🇸",
     status: "Planned",
     year: 2027,

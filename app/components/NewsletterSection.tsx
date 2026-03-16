@@ -33,7 +33,7 @@ const NewsletterSection: React.FC = () => {
                 <br />
                 <span className="text-triton-red">Movement</span>
               </h2>
-              <p className="text-xl text-gray-400 max-w-md leading-relaxed">
+              <p className="text-md text-gray-400 max-w-md leading-relaxed">
                 Be the first to receive event dates, expert training tips, and
                 exclusive TRITON World Series offers.
               </p>
