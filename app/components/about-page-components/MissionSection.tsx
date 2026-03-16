@@ -1,5 +1,5 @@
-import React from "react";
 import { Target, Globe, Lightbulb } from "lucide-react";
+import Image from "next/image";
 
 const MissionSection: React.FC = () => {
   return (
@@ -13,7 +13,7 @@ const MissionSection: React.FC = () => {
             <p className="text-xl text-gray-300 leading-relaxed mb-8">
               To redefine the sport of triathlon through constant innovation and the introduction of groundbreaking race formats.
             </p>
-            
+
             <div className="space-y-6">
               <div className="flex gap-4">
                 <div className="shrink-0 w-12 h-12 rounded-full bg-triton-red/10 flex items-center justify-center">
@@ -24,7 +24,7 @@ const MissionSection: React.FC = () => {
                   <p className="text-gray-400">Build a global platform that inspires athletes of all levels to soar to new heights.</p>
                 </div>
               </div>
-              
+
               <div className="flex gap-4">
                 <div className="shrink-0 w-12 h-12 rounded-full bg-triton-red/10 flex items-center justify-center">
                   <Globe className="text-triton-red" size={24} />
@@ -48,8 +48,15 @@ const MissionSection: React.FC = () => {
           </div>
 
           <div className="relative">
-            <div className="aspect-square bg-linear-to-br from-triton-red to-black rounded-3xl overflow-hidden shadow-2xl shadow-triton-red/20 flex items-center justify-center p-12">
-              <div className="text-center">
+            <div className="relative aspect-square rounded-3xl overflow-hidden shadow-2xl shadow-triton-red/20 flex items-center justify-center p-12">
+              <Image
+                src="/images/triton-about-002.png"
+                alt="Mission"
+                fill
+                className="object-cover"
+              />
+              <div className="absolute inset-0 bg-black/80 z-10" />
+              <div className="relative z-20 text-center">
                 <blockquote className="text-3xl md:text-4xl font-black text-white italic leading-tight mb-6">
                   "Making Your Mind Stronger Than Your Body."
                 </blockquote>
