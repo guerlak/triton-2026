@@ -91,7 +91,7 @@ const RankingClientWrapper: React.FC<Props> = ({ initialAthletes }) => {
   return (
     <>
       <motion.div
-        initial={{ opacity: 0, y: 20 }}
+        initial={{ opacity: 0, y: 30 }}
         whileInView={{ opacity: 1, y: 0 }}
         className="flex flex-wrap justify-around"
       >

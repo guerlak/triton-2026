@@ -4,6 +4,7 @@ import { ChevronDown } from "lucide-react";
 import heroImg from "@/public/images/evento_start.jpg";
 import logoHero from "@/public/images/triton-ws-branco.png";
 import Image from "next/image";
+import { motion, delay } from "framer-motion";
 
 const Hero: React.FC = () => {
   return (
@@ -27,18 +28,51 @@ const Hero: React.FC = () => {
         />
 
         <div className="flex flex-col md:flex-row justify-center items-center gap-6 text-sm md:text-xl font-bold tracking-widest uppercase">
-          <span className="text-white">Be Eager.</span>
-          <span className="hidden md:block text-triton-red">•</span>
-          <span className="text-white">Be Brave.</span>
-          <span className="hidden md:block text-triton-red">•</span>
-          <span className="text-white">Be Strong.</span>
+          <motion.div initial={{ opacity: 0, scale: 0 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{
+              duration: 0.3,
+              delay: 0.1 // espera 2 segundos antes de iniciar
+            }}>
+            <span className="text-white">Be Eager.</span>
+          </motion.div>
+          <motion.div initial={{ opacity: 0, scale: 0 }}
+            animate={{ opacity: 1, scale: 1 }}>
+            <span className="hidden md:block text-triton-red">•</span>
+          </motion.div>
+          <motion.div
+            initial={{ opacity: 0, scale: 0 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{
+              duration: 0.3,
+              delay: 0.3 // espera 2 segundos antes de iniciar
+            }}>
+            <motion.div initial={{ opacity: 0, scale: 0 }}
+              animate={{ opacity: 1, scale: 1 }}>
+              <span className="text-white">Be Brave.</span>
+            </motion.div>
+          </motion.div>
+          <motion.div initial={{ opacity: 0, scale: 0 }}
+            animate={{ opacity: 1, scale: 1 }}>
+            <span className="hidden md:block text-triton-red">•</span>
+          </motion.div>
+          <motion.div
+            initial={{ opacity: 0, scale: 0 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{
+              duration: 0.3,
+              delay: 0.6 // espera 2 segundos antes de iniciar
+            }}>
+
+            <span className="text-white">Be Strong.</span>
+          </motion.div>
         </div>
       </div>
 
       <div className="absolute bottom-10 animate-bounce text-white/50">
         <ChevronDown size={32} />
       </div>
-    </section>
+    </section >
   );
 };
 

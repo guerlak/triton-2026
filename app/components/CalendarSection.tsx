@@ -43,13 +43,12 @@ const CalendarSection: React.FC = () => {
             <span className="text-sm font-normal text-gray-500 ml-2">
               *Official series stages
             </span>
-
           </h4>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+          <div className="flex overflow-x-auto snap-x snap-mandatory sm:snap-none sm:grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6 pb-6 sm:pb-0 [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden">
             {events2026.map((event, idx) => (
               <div
                 key={idx}
-                className="bg-neutral-900 p-6 rounded-xl border-t-4 border-triton-red hover:transform hover:-translate-y-2 transition-transform duration-300 group"
+                className="shrink-0 w-[85%] sm:w-auto snap-center bg-neutral-900 p-6 rounded-xl border-t-4 border-triton-red hover:transform hover:-translate-y-2 transition-transform duration-300 group"
               >
                 <div className="flex justify-between items-start mb-4">
                   <span className="text-3xl">{event.flag}</span>

@@ -19,7 +19,7 @@ const NewsletterSection: React.FC = () => {
   return (
     <section
       id="newsletter"
-      className="py-24 bg-black relative overflow-hidden"
+      className="py-10 bg-black relative overflow-hidden"
     >
       <div className="max-w-7xl mx-auto px-4 relative z-10">
         <div className="bg-neutral-900/50 border border-white/5 rounded-[2rem] p-8 md:p-16 lg:p-24 backdrop-blur-sm">

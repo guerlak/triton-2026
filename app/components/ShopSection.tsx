@@ -8,9 +8,9 @@ const ShopSection: React.FC = () => {
   return (
     <section
       id="shop"
-      className="overflow-hidden bg-black md:flex max-w-[1300] mx-auto md:mt-20"
+      className="overflow-hidden bg-black flex flex-col md:flex-row max-w-[1300] mx-auto py-20 gap-5"
     >
-      <div className="md:max-w-1/2 px-4 sm:px-6 lg:px-8 mb-5">
+      <div className="md:max-w-1/2 px-4 sm:px-6 lg:px-8">
         <div className="relative rounded-4xl overflow-hidden group">
           {/* Background Image - Updated to high-performance athlete in gear */}
           <div className="absolute inset-0">
@@ -24,12 +24,15 @@ const ShopSection: React.FC = () => {
 
           {/* Content */}
           <div className="relative py-10 md:p-10 max-w-2xl sm:min-h-[600px] sm:min-w-[650px]">
-            <div className="inline-flex items-center gap-2 bg-triton-red px-4 py-1.5 rounded-full text-white text-[10px] font-black uppercase tracking-widest mb-6">
+
+            <div className="inline-flex items-center gap-2 bg-triton-red px-4 py-1.5 rounded-full
+             text-white text-[10px] font-black uppercase tracking-widest mb-6">
               <ShoppingBag size={12} /> Official Collection
             </div>
 
             <div>
-              <h2 className="text-3xl md:text-3xl font-black text-white uppercase leading-tight mb-2 mt-70 max-w-2/3">
+              <h2 className="text-3xl md:text-3xl font-black text-white uppercase leading-tight 
+              mb-0 sm:mb-2 mt-70 max-w-2/3">
                 WEAR THE  <br></br><span className="text-triton-red">TRITON MINDSET</span>{" "}
               </h2>
               <p className="text-gray-300 text-lg md:text-xl leading-relaxed mb-10 max-w-lg">
@@ -38,12 +41,13 @@ const ShopSection: React.FC = () => {
             </div>
 
             <a href="https://scimitarevents.com/product-category/triton-world-series" target="_blank" className="absolute bottom-10 bg-white hover:bg-triton-red text-black hover:text-white font-black py-2 px-5 rounded-none flex items-center justify-center gap-3 uppercase tracking-widest transition-all duration-300">
-              <span>Visit the Store</span>
+              <span className="text-xs sm:text-sm">Visit the Store</span>
               <ArrowUpRight
                 size={18}
                 className="group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform"
               />
             </a>
+
           </div>
 
           {/* Decorative Corner Element */}
@@ -65,14 +69,14 @@ const ShopSection: React.FC = () => {
 
           {/* Content */}
           <div className="relative py-10 md:p-10 max-w-2xl sm:min-h-[600px] min-w-[600px]">
-            <div className="inline-flex items-center gap-2 bg-triton-red px-4 py-1.5 rounded-full text-white text-[10px] font-black uppercase tracking-widest mb-6">
+            <div className="inline-flex items-center gap-2 bg-triton-red px-4 py-1.5 rounded-full
+             text-white text-[10px] font-black uppercase tracking-widest mb-6">
               <TabletSmartphone size={12} />
               Triton App
             </div>
 
-            <h2 className="text-3xl md:text-3xl font-black text-white uppercase leading-tight mb-2 mt-70 max-w-2/3">
+            <h2 className="text-3xl font-black text-white uppercase leading-tight mb-2 mt-70 max-w-2/3">
               Take Us<br></br>
-
               <span className="text-triton-red">With You</span>{" "}
             </h2>
 
@@ -81,7 +85,7 @@ const ShopSection: React.FC = () => {
             </p>
 
             <button className="absolute bottom-10  bg-white hover:bg-triton-red text-black hover:text-white font-black py-2 px-5 rounded-none flex items-center justify-center gap-3 uppercase tracking-widest transition-all duration-300">
-              <span>Download the App</span>
+              <span className="text-xs sm:text-sm">Download the App</span>
               <ArrowUpRight
                 size={18}
                 className="group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform"

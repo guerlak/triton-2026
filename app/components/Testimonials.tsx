@@ -17,7 +17,7 @@ const Testimonial = ({
   return (
     <div className="h-full flex flex-col">
       <TritonBox>
-        <div className="flex flex-col sm:justify-between items-center justify-center h-full text-center min-h-[280px]">
+        <div className="flex flex-col sm:justify-between items-center justify-center text-center min-h-[280px] sm:min-h-[180px] ">
           <div className="flex items-center gap-4 mb-4">
             <Image
               src={avatarUrl || ""}

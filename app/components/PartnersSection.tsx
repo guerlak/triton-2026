@@ -23,9 +23,8 @@ const PartnersSection: React.FC = () => {
           <div className="group flex items-center gap-3 text-gray-500
            hover:text-white transition-all duration-500 opacity-50 hover:opacity-100 
            cursor-pointer grayscale hover:grayscale-0">
-            <Image src={lucidLogo} alt="Lucid Logo" width={300} height={300} />
+            <Image src={lucidLogo} alt="Lucid Logo" width={200} height={200} />
           </div>
-
         </div>
       </div>
     </section>

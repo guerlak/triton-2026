@@ -43,11 +43,13 @@ const TritonExperienceCards: React.FC = () => {
 
           {/* Triton 1 Card */}
           <motion.div
-            initial={{ opacity: 0, x: -70 }}
-            whileInView={{ opacity: 1, x: 0 }}
+            initial={{ opacity: 0, x: -150 }}
+            animate={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
+            transition={{ delay: 0.1 }}
             className="shrink-0 w-[90%] md:w-auto snap-center group relative bg-neutral-900 rounded-[2.5rem] 
-            p-8 sm:p-10 lg:p-16 border border-white/5 hover:border-triton-red/30 transition-all duration-500 overflow-hidden"
+            p-8 sm:p-10 lg:p-16 border border-white/5 hover:border-triton-red/30 transition-all
+             duration-500 overflow-hidden"
           >
             <div className="absolute top-[-140px] right-[-10px] p-8 opacity-7 group-hover:opacity-10 transition-opacity">
               {/* <Zap size={120} className="text-triton-red" />  */}
@@ -138,8 +140,8 @@ const TritonExperienceCards: React.FC = () => {
 
           {/* Triton 3 Card */}
           <motion.div
-            initial={{ opacity: 0, x: 70 }}
-            whileInView={{ opacity: 1, x: 0 }}
+            initial={{ opacity: 0, x: 150 }}
+            animate={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
             className="shrink-0 w-[85%] md:w-auto snap-center group relative bg-neutral-900 rounded-[2.5rem] p-8 sm:p-10 lg:p-16 border border-white/5 hover:border-triton-red/30 transition-all duration-500 overflow-hidden"
           >
@@ -232,7 +234,7 @@ const TritonExperienceCards: React.FC = () => {
         </div>
       </div>
       <div className="absolute bottom-0 left-0 w-full h-1 bg-linear-to-r from-transparent via-triton-red to-transparent"></div>
-    </section>
+    </section >
 
   );
 };
