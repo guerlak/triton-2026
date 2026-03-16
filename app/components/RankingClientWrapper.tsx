@@ -43,7 +43,7 @@ const RankingClientWrapper: React.FC<Props> = ({ initialAthletes }) => {
     if (athletes.length === 0) return null;
 
     return (
-      <div className="bg-neutral-900 border border-white/5 rounded-3xl overflow-hidden shadow-2xl mb-12 w-full sm:w-140">
+      <div className="bg-neutral-900 shrink-0 border border-white/5 rounded-3xl overflow-hidden shadow-2xl mb-12 w-[85vw] sm:w-140 snap-center">
         <table className="w-full text-left border-collapse">
           <caption className="p-4 font-bold text-white bg-white/5">
             {athletes[0]?.Gender} - {athletes[0]?.Contest}
@@ -95,16 +95,31 @@ const RankingClientWrapper: React.FC<Props> = ({ initialAthletes }) => {
         whileInView={{ opacity: 1, y: 0 }}
         className="flex flex-wrap justify-around"
       >
-        {renderTable(athleteFilter("Women", "Sprint Distance"))}
-        {renderTable(athleteFilter("Men", "Sprint Distance"))}
-        {renderTable(athleteFilter("Women", "Middle Distance"))}
-        {renderTable(athleteFilter("Men", "Middle Distance"))}
-        {renderTable(athleteFilter("Women", "Long Distance"))}
-        {renderTable(athleteFilter("Men", "Long Distance"))}
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 w-full max-w-full overflow-hidden">
+          {/* Women's Column */}
+          <div className="flex flex-col gap-2">
+            <h3 className="text-white font-black uppercase tracking-widest text-lg mb-4 px-4 md:px-0">Women</h3>
+            <div className="flex md:flex-col overflow-x-auto md:overflow-x-visible pb-6 md:pb-0 snap-x snap-mandatory gap-4 custom-scrollbar px-4 md:px-0">
+              {renderTable(athleteFilter("Women", "Sprint Distance"))}
+              {renderTable(athleteFilter("Women", "Middle Distance"))}
+              {renderTable(athleteFilter("Women", "Long Distance"))}
+            </div>
+          </div>
+
+          {/* Men's Column */}
+          <div className="flex flex-col gap-2">
+            <h3 className="text-white font-black uppercase tracking-widest text-lg mb-4 px-4 md:px-0">Men</h3>
+            <div className="flex md:flex-col overflow-x-auto md:overflow-x-visible pb-6 md:pb-0 snap-x snap-mandatory gap-4 custom-scrollbar px-4 md:px-0">
+              {renderTable(athleteFilter("Men", "Sprint Distance"))}
+              {renderTable(athleteFilter("Men", "Middle Distance"))}
+              {renderTable(athleteFilter("Men", "Long Distance"))}
+            </div>
+          </div>
+        </div>
 
       </motion.div>
 
-      <div className="text-center">
+      <div className="text-center mt-10">
         <MainButton href="/ranking">Full Ranking</MainButton>
       </div>
 
