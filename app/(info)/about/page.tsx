@@ -2,6 +2,7 @@ import BrandEssenceSection from "@/app/components/about-page-components/BrandEss
 import HistorySection from "@/app/components/about-page-components/HistorySection";
 import MissionSection from "@/app/components/about-page-components/MissionSection";
 import NumerologySection from "@/app/components/about-page-components/NumerologySection";
+import PauloSection from "@/app/components/about-page-components/PauloSection";
 import RaceFormatsSection from "@/app/components/about-page-components/RaceFormatsSection";
 import ValuesSection from "@/app/components/about-page-components/ValuesSection";
 
@@ -11,10 +12,8 @@ export default function Page() {
       <BrandEssenceSection />
       <MissionSection />
       <RaceFormatsSection />
-
       <NumerologySection />
-
-
+      <PauloSection />
       <HistorySection />
     </main>
   );

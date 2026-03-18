@@ -5,11 +5,11 @@ import Image from "next/image";
 
 const BrandEssenceSection: React.FC = () => {
   return (
-    <section className="py-20 bg-black overflow-hidden relative border-t border-white/5">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <section className="py-10 bg-black overflow-hidden relative border-t border-white/5">
+      <div className="max-w-7xl mx-auto px-6 lg:px-8">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
           {/* Visual Side: Left (Matching PDF Page 5) */}
-          <div className="relative order-1">
+          <div className="relative order-1 hidden md:block">
             <div className="h-180 overflow-hidden rounded-sm shadow-2xl"
             >
               <Image

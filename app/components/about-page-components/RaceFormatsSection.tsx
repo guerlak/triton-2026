@@ -14,11 +14,9 @@ const RaceFormatsSection: React.FC = () => {
           </p>
         </div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 mb-16">
-
-
+        <div className="flex lg:grid lg:grid-cols-2 gap-8 lg:gap-12 mb-16 overflow-x-auto snap-x snap-mandatory no-scrollbar -mx-4 px-4 md:mx-0 md:px-0">
           {/* TRITON 1 */}
-          <div className="bg-neutral-900/40 backdrop-blur-sm p-8 md:p-10 rounded-3xl border border-white/5 hover:border-triton-red/30 transition-all duration-500 flex flex-col h-full">
+          <div className="bg-neutral-900/40 backdrop-blur-sm p-8 md:p-10 rounded-3xl border border-white/5 hover:border-triton-red/30 transition-all duration-500 flex flex-col h-full shrink-0 w-[85vw] lg:w-auto snap-center">
             <div className="flex items-center gap-4 mb-8">
               <div className="w-12 h-12 bg-triton-red/10 rounded-xl flex items-center justify-center border border-triton-red/20 shadow-[0_0_15px_rgba(235,0,0,0.1)]">
                 <Zap className="text-triton-red w-6 h-6" />
@@ -106,7 +104,7 @@ const RaceFormatsSection: React.FC = () => {
           </div>
 
           {/* TRITON 3 */}
-          <div className="bg-neutral-900/40 backdrop-blur-sm p-8 md:p-10 rounded-3xl border border-white/5 hover:border-triton-red/30 transition-all duration-500 flex flex-col h-full">
+          <div className="bg-neutral-900/40 backdrop-blur-sm p-8 md:p-10 rounded-3xl border border-white/5 hover:border-triton-red/30 transition-all duration-500 flex flex-col h-full shrink-0 w-[85vw] lg:w-auto snap-center">
             <div className="flex items-center gap-4 mb-8">
               <div className="w-12 h-12 bg-triton-red/10 rounded-xl flex items-center justify-center border border-triton-red/20 shadow-[0_0_15px_rgba(235,0,0,0.1)]">
                 <Layers className="text-triton-red w-6 h-6" />
@@ -194,24 +192,22 @@ const RaceFormatsSection: React.FC = () => {
           </div>
         </div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-3 gap-6">
-
+        <div className="grid grid-cols-3 gap-2 md:gap-6">
           <div className="py-2 bg-white text-black border border-white/10 rounded-xl text-center hover:bg-white/10
              transition-all group">
-            <span className="text-black font-black tracking-[0.5em] text-xl 
+            <span className="text-black font-black tracking-[0.2em] md:tracking-[0.5em] text-[10px] md:text-xl 
               group-hover:text-triton-red transition-colors italic">SPRINT</span>
           </div>
           <div className="py-2 bg-triton-red text-white border border-white/10 rounded-xl text-center hover:bg-white/10
              transition-all group">
-            <span className="text-white font-black tracking-[0.5em] text-xl 
+            <span className="text-white font-black tracking-[0.2em] md:tracking-[0.5em] text-[10px] md:text-xl 
               group-hover:text-triton-red transition-colors italic">MIDDLE</span>
           </div>
           <div className="py-2 bg-white/5 border border-white/10 rounded-xl text-center hover:bg-white/10
              transition-all group">
-            <span className="text-white font-black tracking-[0.5em] text-xl 
+            <span className="text-white font-black tracking-[0.2em] md:tracking-[0.5em] text-[10px] md:text-xl 
               group-hover:text-triton-red transition-colors italic">LONG</span>
           </div>
-
         </div>
 
       </div>

@@ -29,7 +29,7 @@ const HistorySection: React.FC = () => {
   ];
 
   return (
-    <section className="py-16 bg-black border-b border-white/5 relative overflow-hidden">
+    <section className="py-16 bg-black border-t border-white/8 relative overflow-hidden">
       {/* Background Glow */}
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] bg-triton-red/5 rounded-full blur-[120px] pointer-events-none"></div>
 
@@ -45,20 +45,22 @@ const HistorySection: React.FC = () => {
 
         {/* Horizontal Timeline */}
         <div className="relative">
-          {/* Horizontal Line */}
-          <div className="absolute top-8 left-0 right-0 h-px bg-linear-to-r from-transparent via-triton-red/30 to-transparent"></div>
+          {/* Horizontal Line - Hidden on very small if needed, but here we keep it and ensure it aligns */}
+          <div className="absolute top-10 left-0 right-0 h-px bg-linear-to-r from-transparent via-triton-red/30 to-transparent"></div>
 
-          {/* Timeline Items */}
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6">
+          {/* Timeline Items - Flexbox for mobile scroll, Grid for desktop */}
+          <div className="flex md:grid md:grid-cols-4 gap-4 md:gap-6 overflow-x-auto snap-x snap-mandatory no-scrollbar
+           pb-8 -mx-4 px-4 md:mx-0 md:px-0">
             {milestones.map((item, index) => (
-              <div key={index} className="relative pt-20">
-                {/* Timeline Dot */}
-                <div className="absolute top-2 left-1/2 -translate-x-1/2 w-4 h-4
+              <div key={index} className="relative pt-20 shrink-0 w-[85vw] md:w-auto snap-center">
+                {/* Timeline Dot - Aligned with the horizontal line (top-8 = 32px + 8px radius = 40px center) */}
+                <div className="absolute top-8 left-1/2 -translate-x-1/2 w-4 h-4
                  bg-triton-red rounded-full border-2 border-black box-content z-20 shadow-[0_0_15px_rgba(230,0,35,0.6)]"></div>
 
                 {/* Year Badge */}
                 <div className="text-center mb-4">
-                  <span className="inline-block px-3 py-1 rounded bg-triton-red/10 border border-triton-red/30 text-triton-red text-md font-black uppercase tracking-widest">
+                  <span className="inline-block px-3 py-1 rounded bg-triton-red/10 border border-triton-red/30 
+                  text-triton-red text-md font-black uppercase tracking-widest">
                     {item.year}
                   </span>
                 </div>
