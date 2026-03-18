@@ -53,17 +53,19 @@ const HistorySection: React.FC = () => {
             {milestones.map((item, index) => (
               <div key={index} className="relative pt-20">
                 {/* Timeline Dot */}
-                <div className="absolute top-2 left-1/2 -translate-x-1/2 w-4 h-4 bg-triton-red rounded-full border-2 border-black box-content z-20 shadow-[0_0_15px_rgba(230,0,35,0.6)]"></div>
+                <div className="absolute top-2 left-1/2 -translate-x-1/2 w-4 h-4
+                 bg-triton-red rounded-full border-2 border-black box-content z-20 shadow-[0_0_15px_rgba(230,0,35,0.6)]"></div>
 
                 {/* Year Badge */}
                 <div className="text-center mb-4">
-                  <span className="inline-block px-3 py-1 rounded bg-triton-red/10 border border-triton-red/30 text-triton-red text-xs font-black uppercase tracking-widest">
+                  <span className="inline-block px-3 py-1 rounded bg-triton-red/10 border border-triton-red/30 text-triton-red text-md font-black uppercase tracking-widest">
                     {item.year}
                   </span>
                 </div>
 
                 {/* Content Card */}
-                <div className="bg-white/5 hover:bg-white/10 backdrop-blur-sm border border-white/10 hover:border-triton-red/50 rounded-lg p-4 transition-all duration-300">
+                <div className="bg-white/5 hover:bg-white/10 backdrop-blur-sm border
+                 border-white/10 hover:border-triton-red/50 rounded-lg p-4 transition-all duration-300 min-h-42">
                   <h3 className="text-lg md:text-xl font-black text-white uppercase mb-2 tracking-tight">
                     {item.title}
                   </h3>

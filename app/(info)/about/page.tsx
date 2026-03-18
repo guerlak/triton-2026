@@ -10,10 +10,12 @@ export default function Page() {
     <main className="bg-black pt-20">
       <BrandEssenceSection />
       <MissionSection />
-      <HistorySection />
-      <NumerologySection />
       <RaceFormatsSection />
-      <ValuesSection />
+
+      <NumerologySection />
+
+
+      <HistorySection />
     </main>
   );
 }

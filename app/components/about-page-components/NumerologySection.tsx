@@ -3,7 +3,7 @@ import { Sigma, Binary, Zap } from "lucide-react";
 
 const NumerologySection: React.FC = () => {
   return (
-    <section className="relative py-24 bg-black overflow-hidden border-y border-white/5">
+    <section className="relative py-24 bg-neutral-950 overflow-hidden border-y border-white/5">
       {/* Background Decorative Elements */}
       <div className="absolute inset-0 z-0 opacity-10">
         <div className="absolute top-0 left-0 w-full h-full bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-triton-red/20 via-transparent to-transparent"></div>
@@ -32,7 +32,8 @@ const NumerologySection: React.FC = () => {
                   <span className="absolute top-0 right-0 text-7xl md:text-9xl font-black text-triton-red drop-shadow-[0_0_15px_rgba(230,0,35,0.3)]">
                     6
                   </span>
-                  <span className="absolute bottom-3 left-46 text-7xl md:text-9xl font-black text-white/90 drop-shadow-[0_0_15px_rgba(255,255,255,0.3)]">
+                  <span className="absolute bottom-10 left-42 md:left-46 text-7xl md:text-9xl font-black text-white/90
+                   drop-shadow-[0_0_15px_rgba(255,255,255,0.3)]">
                     9
                   </span>
                 </div>

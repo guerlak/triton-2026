@@ -1,5 +1,7 @@
+"use client";
 import React from "react";
 import Image from "next/image";
+
 
 const BrandEssenceSection: React.FC = () => {
   return (
@@ -8,19 +10,22 @@ const BrandEssenceSection: React.FC = () => {
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
           {/* Visual Side: Left (Matching PDF Page 5) */}
           <div className="relative order-1">
-            <div className="h-130 relative overflow-hidden rounded-sm shadow-2xl">
+            <div className="h-180 overflow-hidden rounded-sm shadow-2xl"
+            >
               <Image
                 src="/images/triton-about-atleta-001.png"
                 alt="Athlete"
                 fill
                 className="object-contain relative z-10"
               />
-
               <div className="absolute inset-0 bg-linear-to-t from-black/40 to-transparent z-15"></div>
 
               {/* Decorative technical line typical of the brand bible */}
               {/* <div className="absolute top-10 left-10 w-20 h-px bg-white/20"></div>
               <div className="absolute bottom-10 right-10 w-20 h-px bg-white/20"></div> */}
+              <div className="absolute inset-0 bg-linear-to-t from-black/40 to-transparent z-15"></div>
+              <div className="bg-triton-red w-2/3 h-4/5"></div>
+
             </div>
 
             {/* Target Audience Floating Tag */}
@@ -44,15 +49,15 @@ const BrandEssenceSection: React.FC = () => {
           </div>
 
           {/* Text Side: Right (Matching PDF Page 5) */}
-          <div className="order-2 pl-0 lg:pl-10">
+          <div className="order-2 pl-0 lg:pl-10 mt-10 ">
             <div className="mb-8">
               <h2 className="text-4xl md:text-6xl font-black text-white uppercase mb-8 leading-tight">
                 ABOUT
               </h2>
               <div className="space-y-4 text-gray-400 text-lg leading-relaxed">
                 <p>
-                  TRITON is a triathlon series featuring two live race formats: TRITON 1, a traditional
-                  one-day triathlon format, and TRITON 3, a stage-like format taking place across 3 consecutive
+                  TRITON is a triathlon series featuring two live race formats: <strong>TRITON 1</strong>, a traditional
+                  one-day triathlon format, and <strong>TRITON 3</strong>, a stage-like format taking place across 3 consecutive
                   days, always in the same sequence — swim, bike and run.
                 </p>
                 <p>

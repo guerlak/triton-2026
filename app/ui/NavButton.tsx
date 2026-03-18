@@ -4,16 +4,21 @@ interface NavButtonProps {
   isRed?: boolean;
   text: string;
   href: string;
+  className?: string;
 }
 
-export default function NavButton({ isRed, text, href }: NavButtonProps) {
-  return isRed ? (
-    <button className="bg-triton-red hover:bg-red-700 text-white px-5 py-2 rounded-full text-sm font-bold uppercase transition-colors">
-      <Link href={href}>{text}</Link>
-    </button>
-  ) : (
-    <button className="bg-white  text-black hover:text-triton-red font-bold py-2 px-5 rounded-full text-sm uppercase transition-colors">
-      <Link href={href}>{text}</Link>
-    </button>
+export default function NavButton({ isRed, text, href, className = "" }: NavButtonProps) {
+  const baseStyles = "px-5 py-2 rounded-full text-sm font-bold uppercase transition-colors inline-block text-center";
+  const redStyles = "bg-triton-red hover:bg-red-700 text-white";
+  const whiteStyles = "bg-white text-black hover:text-triton-red";
+
+  return (
+    <Link 
+      href={href} 
+      className={`${baseStyles} ${isRed ? redStyles : whiteStyles} ${className}`}
+    >
+      {text}
+    </Link>
   );
 }
+
