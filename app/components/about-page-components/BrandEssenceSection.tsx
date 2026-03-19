@@ -19,13 +19,11 @@ const BrandEssenceSection: React.FC = () => {
                 className="object-contain relative z-10"
               />
               <div className="absolute inset-0 bg-linear-to-t from-black/40 to-transparent z-15"></div>
-
               {/* Decorative technical line typical of the brand bible */}
               {/* <div className="absolute top-10 left-10 w-20 h-px bg-white/20"></div>
               <div className="absolute bottom-10 right-10 w-20 h-px bg-white/20"></div> */}
               <div className="absolute inset-0 bg-linear-to-t from-black/40 to-transparent z-15"></div>
               <div className="bg-triton-red w-2/3 h-4/5"></div>
-
             </div>
 
             {/* Target Audience Floating Tag */}

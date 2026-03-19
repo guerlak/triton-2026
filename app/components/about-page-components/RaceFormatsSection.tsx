@@ -16,7 +16,7 @@ const RaceFormatsSection: React.FC = () => {
 
         <div className="flex lg:grid lg:grid-cols-2 gap-8 lg:gap-12 mb-16 overflow-x-auto snap-x snap-mandatory no-scrollbar -mx-4 px-4 md:mx-0 md:px-0">
           {/* TRITON 1 */}
-          <div className="bg-neutral-900/40 backdrop-blur-sm p-8 md:p-10 rounded-3xl border border-white/5 hover:border-triton-red/30 transition-all duration-500 flex flex-col h-full shrink-0 w-[85vw] lg:w-auto snap-center">
+          <div className="bg-neutral-900/40 min-h-[1480px] md:min-h-[500px] backdrop-blur-sm p-8 md:p-10 rounded-3xl border border-white/5 hover:border-triton-red/30 transition-all duration-500 flex flex-col h-full shrink-0 w-[85vw] lg:w-auto snap-center">
             <div className="flex items-center gap-4 mb-8">
               <div className="w-12 h-12 bg-triton-red/10 rounded-xl flex items-center justify-center border border-triton-red/20 shadow-[0_0_15px_rgba(235,0,0,0.1)]">
                 <Zap className="text-triton-red w-6 h-6" />
@@ -30,7 +30,7 @@ const RaceFormatsSection: React.FC = () => {
 
             <div className="space-y-8 flex-grow">
               <div className="flex gap-5">
-                <div className="flex-shrink-0 mt-1">
+                <div className="shrink-0 mt-1">
                   <Zap className="text-triton-red w-5 h-5" />
                 </div>
                 <div>
@@ -42,7 +42,7 @@ const RaceFormatsSection: React.FC = () => {
               </div>
 
               <div className="flex gap-5">
-                <div className="flex-shrink-0 mt-1">
+                <div className="shrink-0 mt-1">
                   <RefreshCcw className="text-triton-red w-5 h-5" />
                 </div>
                 <div>
@@ -54,7 +54,7 @@ const RaceFormatsSection: React.FC = () => {
               </div>
 
               <div className="flex gap-5">
-                <div className="flex-shrink-0 mt-1">
+                <div className="shrink-0 mt-1">
                   <Info className="text-triton-red w-5 h-5" />
                 </div>
                 <div>
@@ -91,9 +91,10 @@ const RaceFormatsSection: React.FC = () => {
             </div>
 
             <div className="mt-10 pt-8 border-t border-white/5 grid grid-cols-2 gap-4">
-              <div className="text-center p-3 bg-black/40 rounded-xl border border-white/5">
+              <div className="text-center p-3 bg-black/40 rounded-xl border border-white/5 flex flex-col items-center justify-center">
                 <p className="text-white font-black italic text-xl">
-                  S / M / L</p>
+                  S / M / L
+                </p>
                 <p className="text-[10px] text-gray-500 uppercase tracking-widest mt-1">Distances</p>
               </div>
               <div className="text-center p-3 bg-black/40 rounded-xl border border-white/5">
@@ -104,7 +105,7 @@ const RaceFormatsSection: React.FC = () => {
           </div>
 
           {/* TRITON 3 */}
-          <div className="bg-neutral-900/40 backdrop-blur-sm p-8 md:p-10 rounded-3xl border border-white/5 hover:border-triton-red/30 transition-all duration-500 flex flex-col h-full shrink-0 w-[85vw] lg:w-auto snap-center">
+          <div className="bg-neutral-900/40 min-h-[1480px] md:min-h-[500px] backdrop-blur-sm p-8 md:p-10 rounded-3xl border border-white/5 hover:border-triton-red/30 transition-all duration-500 flex flex-col h-full shrink-0 w-[85vw] lg:w-auto snap-center">
             <div className="flex items-center gap-4 mb-8">
               <div className="w-12 h-12 bg-triton-red/10 rounded-xl flex items-center justify-center border border-triton-red/20 shadow-[0_0_15px_rgba(235,0,0,0.1)]">
                 <Layers className="text-triton-red w-6 h-6" />
@@ -180,7 +181,7 @@ const RaceFormatsSection: React.FC = () => {
             </div>
 
             <div className="mt-10 pt-8 border-t border-white/5 grid grid-cols-2 gap-4">
-              <div className="text-center p-3 bg-black/40 rounded-xl border border-white/5">
+              <div className="text-center p-3 bg-black/40 rounded-xl border border-white/5 flex flex-col items-center justify-center">
                 <p className="text-white font-black italic text-xl">S / M / L</p>
                 <p className="text-[10px] text-gray-500 uppercase tracking-widest mt-1">Distances</p>
               </div>

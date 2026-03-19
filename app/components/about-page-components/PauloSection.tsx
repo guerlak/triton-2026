@@ -6,10 +6,15 @@ const PauloSection: React.FC = () => {
     <section className="md:py-20 bg-black overflow-hidden relative border-t border-white/5">
       <div className="max-w-7xl mx-auto px-6 lg:px-8">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
+
           {/* Visual Side: Left (Matching PDF Page 5) */}
           <div className="relative order-1 ">
-            <div className="h-150 overflow-hidden rounded-sm shadow-2xl relative md:mt-15"
-            >
+            <h2 className="text-4xl md:text-5xl font-black text-white uppercase mt-10 leading-tight tracking-tighter md:hidden">
+              THE <span className="text-triton-white ">FOUNDER</span>
+            </h2>
+
+            <div className="h-150 overflow-hidden rounded-sm shadow-2xl relative md:mt-15">
+
               <Image
                 src="/images/paulo.png"
                 alt="Paulo Passos Leite"
@@ -48,7 +53,7 @@ const PauloSection: React.FC = () => {
           {/* Text Side: Right (Matching PDF Page 5) */}
           <div className="order-2 pl-0 lg:pl-10 mt-10 ">
             <div className="">
-              <h2 className="text-4xl md:text-5xl font-black text-white uppercase mb-12 leading-tight tracking-tighter">
+              <h2 className="text-4xl md:text-5xl font-black text-white uppercase mb-12 leading-tight tracking-tighter md:block hidden">
                 THE <span className="text-triton-white">FOUNDER</span>
               </h2>
 

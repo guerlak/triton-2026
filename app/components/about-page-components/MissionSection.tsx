@@ -10,7 +10,7 @@ const MissionSection: React.FC = () => {
             <h2 className="text-4xl md:text-6xl font-black text-white uppercase mb-8 leading-tight">
               MISSION <br /> & <span className="text-triton-red">VISION</span>
             </h2>
-            <p className="text-xl text-gray-300 leading-relaxed mb-8">
+            <p className="text-lg text-gray-300 leading-relaxed mb-8">
               To redefine the sport of triathlon through constant innovation and the introduction of groundbreaking race formats.
             </p>
 
