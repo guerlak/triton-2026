@@ -6,7 +6,7 @@ import HeadLine from "../ui/HeadLine";
 async function getRankings() {
   const res = await fetch("https://api.raceresult.com/371805/52CHLQ2F75QS7P4MFBU2J3AZIVFHXUUU", {
     // Cache de 1 hora para evitar excesso de requisições e garantir boa performance
-    next: { revalidate: 3600 },
+    next: { revalidate: 1800 },
     headers: {
       'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36',
       'Accept': 'application/json'
@@ -17,7 +17,6 @@ async function getRankings() {
     console.error(`Failed to fetch rankings: ${res.status} ${res.statusText}`);
     return null;
   }
-
   return res.json();
 }
 
@@ -67,7 +66,7 @@ export default async function RankingPage() {
           </div>
 
           <div className="mt-12 bg-neutral-900/50 p-8 border border-white/5 rounded-sm">
-             <p className="text-gray-400 leading-relaxed italic font-sans">
+            <p className="text-gray-400 leading-relaxed italic font-sans">
               At the end of each season, the overall champions in each distance are officially crowned. Their names are engraved on the <span className="text-white font-bold">TRITON Global Ranking Trophy</span>, and each champion receives a replica of the trophy to commemorate their achievement.
             </p>
           </div>

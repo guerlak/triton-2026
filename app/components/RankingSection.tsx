@@ -24,24 +24,35 @@ export interface Athlete {
 }
 
 async function getRankings() {
-  const res = await fetch("https://api.raceresult.com/371805/52CHLQ2F75QS7P4MFBU2J3AZIVFHXUUU", {
-    // IMPORTANTE: Cache de 1 hora para evitar que SEU IP seja banido de novo
-    next: { revalidate: 3600 },
-    headers: {
-      'User-Agent': 'Mozilla/5.0...',
-      'Accept': 'application/json'
-    }
-  });
+  const url = process.env.RANKING_API_URL;
+  
+  if (!url) {
+    console.error("Missing RANKING_API_URL environment variable.");
+    return null;
+  }
 
-  if (!res.ok) return null;
-  return res.json();
+  try {
+    const res = await fetch(url, {
+      next: { revalidate: 1800 },
+      headers: {
+        'User-Agent': 'Mozilla/5.0...',
+        'Accept': 'application/json'
+      }
+    });
+
+    if (!res.ok) return null;
+    return res.json();
+  } catch (error) {
+    console.error(error);
+    return null;
+  }
 }
 
 export default async function RankingSection() {
   const data = await getRankings();
 
   if (!data) {
-    return <div className="text-white">Error loading data.</div>;
+    return <div className="text-white p-20 text-center "><span className="bg-triton-red/70 p-4 rounded-sm">Error loading ranking data...</span></div>;
   }
 
   return (
