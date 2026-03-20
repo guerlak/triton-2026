@@ -4,7 +4,15 @@ import Navbar from "../components/Navbar";
 import HeadLine from "../ui/HeadLine";
 
 async function getRankings() {
-  const res = await fetch("https://api.raceresult.com/371805/52CHLQ2F75QS7P4MFBU2J3AZIVFHXUUU", {
+
+  const url = process.env.RANKING_API_URL;
+
+  if (!url) {
+    console.error("RANKING_API_URL is not defined");
+    return null;
+  }
+
+  const res = await fetch(url, {
     // Cache de 1 hora para evitar excesso de requisições e garantir boa performance
     next: { revalidate: 1800 },
     headers: {

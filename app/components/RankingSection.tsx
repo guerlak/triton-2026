@@ -25,7 +25,7 @@ export interface Athlete {
 
 async function getRankings() {
   const url = process.env.RANKING_API_URL;
-  
+
   if (!url) {
     console.error("Missing RANKING_API_URL environment variable.");
     return null;
@@ -39,8 +39,10 @@ async function getRankings() {
         'Accept': 'application/json'
       }
     });
-
-    if (!res.ok) return null;
+    if (!res.ok) {
+      console.error(`Failed to fetch rankings: ${res.status} ${res.statusText}`);
+      return null;
+    }
     return res.json();
   } catch (error) {
     console.error(error);
@@ -52,7 +54,7 @@ export default async function RankingSection() {
   const data = await getRankings();
 
   if (!data) {
-    return <div className="text-white p-20 text-center "><span className="bg-triton-red/70 p-4 rounded-sm">Error loading ranking data...</span></div>;
+    return <div className="text-white p-20 text-center text-xs md:text-sm"><span className="bg-triton-red/70 p-4 rounded-sm">Error loading data...</span></div>;
   }
 
   return (
