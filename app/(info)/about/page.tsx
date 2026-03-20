@@ -1,10 +1,10 @@
-import BrandEssenceSection from "@/app/components/about-page-components/BrandEssenceSection";
-import HistorySection from "@/app/components/about-page-components/HistorySection";
-import MissionSection from "@/app/components/about-page-components/MissionSection";
-import NumerologySection from "@/app/components/about-page-components/NumerologySection";
-import PauloSection from "@/app/components/about-page-components/PauloSection";
-import RaceFormatsSection from "@/app/components/about-page-components/RaceFormatsSection";
-import ValuesSection from "@/app/components/about-page-components/ValuesSection";
+import BrandEssenceSection from "@/app/(info)/about/BrandEssenceSection";
+import HistorySection from "@/app/(info)/about/HistorySection";
+import MissionSection from "@/app/(info)/about/MissionSection";
+import NumerologySection from "@/app/(info)/about/NumerologySection";
+import PauloSection from "@/app/(info)/about/PauloSection";
+import RaceFormatsSection from "@/app/(info)/about/RaceFormatsSection";
+import ValuesSection from "@/app/(info)/about/ValuesSection";
 
 export default function Page() {
   return (
@@ -15,6 +15,7 @@ export default function Page() {
       <NumerologySection />
       <PauloSection />
       <HistorySection />
+
     </main>
   );
 }
