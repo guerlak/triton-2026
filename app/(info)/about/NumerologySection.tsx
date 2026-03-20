@@ -88,7 +88,8 @@ const NumerologySection: React.FC = () => {
 
           {/* Text Side */}
           <div className="order-1 lg:order-2">
-            <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white/5 border border-white/10 text-gray-400 text-[10px] font-black uppercase tracking-widest mb-6">
+            <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white/5 border
+             border-white/10 text-gray-400 text-[10px] font-black uppercase tracking-widest mb-6">
               TRITON DNA
             </div>
 
@@ -118,7 +119,7 @@ const NumerologySection: React.FC = () => {
                 global events..
               </p>
 
-              <div className="grid grid-cols-2 md:grid-cols-3 gap-4 pt-4">
+              {/* <div className="grid grid-cols-2 md:grid-cols-3 gap-4 pt-4">
                 <div className="flex flex-col">
                   <span className="text-white font-black text-xl">
                     DISTANCES
@@ -139,7 +140,7 @@ const NumerologySection: React.FC = () => {
                     Global Alignment
                   </span>
                 </div>
-              </div>
+              </div> */}
             </div>
           </div>
         </div>

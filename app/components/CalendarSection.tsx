@@ -27,7 +27,7 @@ const CalendarSection: React.FC = () => {
           </div>
           <div className="md:text-right">
             <p className="text-xl font-bold text-white">
-              4 RACES • 3 COUNTRIES
+              GET READY TO RACE
             </p>
             <p className="text-gray-400 text-sm mb-2">+30 nationalities competing</p>
             <Link href="/triton-events" className="text-triton-red text-md font-bold uppercase hover:opacity-75">

@@ -13,20 +13,19 @@ const PauloSection: React.FC = () => {
               THE <span className="text-triton-white ">FOUNDER</span>
             </h2>
 
-            <div className="h-150 overflow-hidden rounded-sm shadow-2xl relative md:mt-15">
+            <div className="h-170 w-130 mx-auto overflow-hidden rounded-sm shadow-[0_0_50px_rgba(255,0,0,0.15)] relative md:mt-15 border border-white/10 group">
 
               <Image
                 src="/images/paulo.png"
                 alt="Paulo Passos Leite"
                 fill
-                className="object-contain relative z-10"
+                className="rounded-sm object-cover relative z-10 transition-transform duration-700 group-hover:scale-105"
               />
-              <div className="absolute inset-0 bg-linear-to-t from-black/60 to-transparent z-15"></div>
+              <div className="absolute inset-0 bg-linear-to-t from-black/80 via-transparent to-transparent z-15"></div>
 
               {/* Decorative Red Box behind the athlete */}
-              <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-triton-red w-2/3 h-4/5 
-              z-0 opacity-20 blur-3xl"></div>
-              <div className="absolute bottom-10 left-10 w-24 h-24 border-l-2 border-b-2 border-triton-red z-20"></div>
+              <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-triton-red w-3/4 h-3/4 
+              z-0 opacity-30 blur-[100px]"></div>
             </div>
 
             {/* Target Audience Floating Tag */}
@@ -53,7 +52,8 @@ const PauloSection: React.FC = () => {
           {/* Text Side: Right (Matching PDF Page 5) */}
           <div className="order-2 pl-0 lg:pl-10 mt-10 ">
             <div className="">
-              <h2 className="text-4xl md:text-5xl font-black text-white uppercase mb-12 leading-tight tracking-tighter md:block hidden">
+              <h2 className="text-4xl md:text-5xl font-black text-white uppercase mb-12 
+              leading-tight tracking-tighter md:block hidden">
                 THE <span className="text-triton-white">FOUNDER</span>
               </h2>
 

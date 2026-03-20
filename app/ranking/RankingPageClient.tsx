@@ -1,13 +1,13 @@
 "use client";
 
 import React, { useState, useMemo } from "react";
-import { 
-  Search, 
-  Trophy, 
-  MapPin, 
-  User, 
-  ArrowUpDown, 
-  ChevronRight, 
+import {
+  Search,
+  Trophy,
+  MapPin,
+  User,
+  ArrowUpDown,
+  ChevronRight,
   FilterX,
   Plus
 } from "lucide-react";
@@ -55,10 +55,10 @@ export default function RankingPageClient({ initialAthletes }: Props) {
 
   const filteredAthletes = useMemo(() => {
     return initialAthletes.filter((athlete) => {
-      const matchesSearch = 
+      const matchesSearch =
         athlete.Name.toLowerCase().includes(search.toLowerCase()) ||
         athlete.Bib.toString().includes(search);
-      
+
       const matchesGender = genderFilter === "All" || athlete.Gender === genderFilter;
       const matchesContest = contestFilter === "All" || athlete.Contest === contestFilter;
 
@@ -83,10 +83,10 @@ export default function RankingPageClient({ initialAthletes }: Props) {
   };
 
   return (
-    <div className="min-h-screen bg-neutral-950 text-white pb-20 pt-32 px-4 sm:px-6 lg:px-8">
+    <div className="min-h-screen bg-neutral-950 text-white pb-20 pt-10 px-4 sm:px-6 lg:px-8">
       {/* Page Header */}
       <div className="max-w-7xl mx-auto mb-12">
-        <motion.div 
+        <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           className="text-center md:text-left mb-10"
@@ -104,7 +104,7 @@ export default function RankingPageClient({ initialAthletes }: Props) {
         </motion.div>
 
         {/* Filters Section */}
-        <motion.div 
+        <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.1 }}
@@ -118,8 +118,8 @@ export default function RankingPageClient({ initialAthletes }: Props) {
               </label>
               <div className="relative group">
                 <Search className="absolute left-4 top-1/2 -translate-y-1/2 text-gray-500 group-focus-within:text-triton-red transition-colors w-5 h-5" />
-                <input 
-                  type="text" 
+                <input
+                  type="text"
                   placeholder="Ex: John Doe or 3023"
                   className="w-full bg-black/40 border border-white/10 rounded-2xl py-4 pl-12 pr-4 text-white focus:outline-none focus:border-triton-red focus:ring-1 focus:ring-triton-red/50 transition-all font-bold"
                   value={search}
@@ -133,7 +133,7 @@ export default function RankingPageClient({ initialAthletes }: Props) {
               <label className="block text-xs font-black uppercase tracking-widest text-gray-500 mb-2 ml-1">
                 Gender
               </label>
-              <select 
+              <select
                 className="w-full bg-black/40 border border-white/10 rounded-2xl py-4 px-4 text-white focus:outline-none focus:border-triton-red transition-all font-bold appearance-none cursor-pointer"
                 value={genderFilter}
                 onChange={(e) => setGenderFilter(e.target.value)}
@@ -149,7 +149,7 @@ export default function RankingPageClient({ initialAthletes }: Props) {
               <label className="block text-xs font-black uppercase tracking-widest text-gray-500 mb-2 ml-1">
                 Distance
               </label>
-              <select 
+              <select
                 className="w-full bg-black/40 border border-white/10 rounded-2xl py-4 px-4 text-white focus:outline-none focus:border-triton-red transition-all font-bold appearance-none cursor-pointer"
                 value={contestFilter}
                 onChange={(e) => setContestFilter(e.target.value)}
@@ -160,14 +160,14 @@ export default function RankingPageClient({ initialAthletes }: Props) {
               </select>
             </div>
           </div>
-          
+
           {/* Results Summary & Clear Filters */}
           <div className="mt-6 flex flex-wrap items-center justify-between gap-4 pt-6 border-t border-white/5">
             <span className="text-gray-400 font-bold">
               Showing <span className="text-white">{filteredAthletes.length}</span> athletes
             </span>
             {(search || genderFilter !== "All" || contestFilter !== "All") && (
-              <button 
+              <button
                 onClick={() => {
                   setSearch("");
                   setGenderFilter("All");
@@ -203,21 +203,20 @@ export default function RankingPageClient({ initialAthletes }: Props) {
                 <AnimatePresence mode="popLayout">
                   {filteredAthletes.length > 0 ? (
                     filteredAthletes.map((athlete, index) => (
-                      <motion.tr 
+                      <motion.tr
                         layout
                         initial={{ opacity: 0 }}
                         animate={{ opacity: 1 }}
                         exit={{ opacity: 0 }}
-                        key={athlete.Bib} 
+                        key={athlete.Bib}
                         onClick={() => handleAthleteClick(athlete)}
                         className="group hover:bg-white/5 transition-all cursor-pointer"
                       >
                         <td className="py-5 px-4 sm:px-8 text-center">
-                          <span className={`inline-flex items-center justify-center w-8 h-8 rounded-full font-black text-xs border ${
-                            athlete["Global Standings"] <= 3 
-                              ? "bg-triton-red border-triton-red text-white" 
-                              : "border-white/10 text-gray-400"
-                          }`}>
+                          <span className={`inline-flex items-center justify-center w-8 h-8 rounded-full font-black text-xs border ${athlete["Global Standings"] <= 3
+                            ? "bg-triton-red border-triton-red text-white"
+                            : "border-white/10 text-gray-400"
+                            }`}>
                             {athlete["Global Standings"]}
                           </span>
                         </td>

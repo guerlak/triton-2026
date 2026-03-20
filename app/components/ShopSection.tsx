@@ -75,7 +75,7 @@ const ShopSection: React.FC = () => {
             <div className="inline-flex items-center gap-2 bg-triton-red px-4 py-1.5 rounded-full
              text-white text-[10px] font-black uppercase tracking-widest mb-6">
               <TabletSmartphone size={12} />
-              Triton App
+              WEB App
             </div>
 
             <div className="mt-50">
@@ -85,11 +85,11 @@ const ShopSection: React.FC = () => {
               </h2>
 
               <p className="text-gray-300 text-lg md:text-md leading-relaxed mb-10 max-w-lg">
-                Elevate Your Experience.
+                Save it in your screen<br></br> and use it like an app.
               </p>
 
               <a className="inline-flex bg-white hover:bg-triton-red text-black hover:text-white font-black py-2 px-5 rounded-none items-center justify-center gap-3 uppercase tracking-widest transition-all duration-300">
-                <span className="text-xs sm:text-sm">Download the App</span>
+                <span className="text-xs sm:text-sm">Use the App</span>
                 <ArrowUpRight
                   size={18}
                   className="group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform"
