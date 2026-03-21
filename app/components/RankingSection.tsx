@@ -3,6 +3,7 @@ import React from "react";
 import { Trophy } from "lucide-react";
 import RedLine from "../ui/RedLine";
 import RankingClientWrapper from "./RankingClientWrapper"; // Vamos criar este abaixo
+import MainButton from "../ui/MainButton";
 
 // Definimos a Interface aqui também
 export interface Athlete {
@@ -35,7 +36,7 @@ async function getRankings() {
     const res = await fetch(url, {
       next: { revalidate: 1800 },
       headers: {
-        'User-Agent': 'Mozilla/5.0...',
+        'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36',
         'Accept': 'application/json'
       }
     });
@@ -75,6 +76,12 @@ export default async function RankingSection() {
 
         {/* Passamos os dados para o componente Client que cuidará do Modal e Motion */}
         <RankingClientWrapper initialAthletes={data} />
+
+
+        <div className="text-center py-10">
+          <MainButton href="/#">Full Ranking</MainButton>
+        </div>
+
         <RedLine />
       </div>
     </section>

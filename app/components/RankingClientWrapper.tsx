@@ -117,9 +117,6 @@ const RankingClientWrapper: React.FC<Props> = ({ initialAthletes }) => {
 
       </motion.div>
 
-      <div className="text-center mt-10">
-        <MainButton href="/ranking">Full Ranking</MainButton>
-      </div>
 
       <Modal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} maxWidth="max-w-5xl">
         {selectedAthlete && (
