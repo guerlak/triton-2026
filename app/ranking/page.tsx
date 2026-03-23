@@ -2,31 +2,8 @@ import React from "react";
 import RankingPageClient from "./RankingPageClient";
 import Navbar from "../components/Navbar";
 import HeadLine from "../ui/HeadLine";
-
-async function getRankings() {
-
-  const url = process.env.RANKING_API_URL;
-
-  if (!url) {
-    console.error("RANKING_API_URL is not defined");
-    return null;
-  }
-
-  const res = await fetch(url, {
-    // Cache de 1 hora para evitar excesso de requisições e garantir boa performance
-    next: { revalidate: 1800 },
-    headers: {
-      'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36',
-      'Accept': 'application/json'
-    }
-  });
-
-  if (!res.ok) {
-    console.error(`Failed to fetch rankings: ${res.status} ${res.statusText}`);
-    return null;
-  }
-  return res.json();
-}
+import { ApiRankingRepo } from "@/repositories/ApiRankingRepo";
+import { fetchRankings } from "@/services/RankingService";
 
 export const metadata = {
   title: "Ranking | Triton World Series",
@@ -34,7 +11,7 @@ export const metadata = {
 };
 
 export default async function RankingPage() {
-  const data = await getRankings();
+  const data = await fetchRankings(new ApiRankingRepo());
 
   if (!data) {
     return (

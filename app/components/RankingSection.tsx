@@ -4,6 +4,8 @@ import { Trophy } from "lucide-react";
 import RedLine from "../ui/RedLine";
 import RankingClientWrapper from "./RankingClientWrapper"; // Vamos criar este abaixo
 import MainButton from "../ui/MainButton";
+import { fetchRankings } from "@/services/RankingService";
+import { ApiRankingRepo } from "@/repositories/ApiRankingRepo";
 
 // Definimos a Interface aqui também
 export interface Athlete {
@@ -24,35 +26,10 @@ export interface Athlete {
   Lisboa: string;
 }
 
-async function getRankings() {
-  const url = process.env.RANKING_API_URL;
 
-  if (!url) {
-    console.error("Missing RANKING_API_URL environment variable.");
-    return null;
-  }
-
-  try {
-    const res = await fetch(url, {
-      next: { revalidate: 1800 },
-      headers: {
-        'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36',
-        'Accept': 'application/json'
-      }
-    });
-    if (!res.ok) {
-      console.error(`Failed to fetch rankings: ${res.status} ${res.statusText}`);
-      return null;
-    }
-    return res.json();
-  } catch (error) {
-    console.error(error);
-    return null;
-  }
-}
 
 export default async function RankingSection() {
-  const data = await getRankings();
+  const data = await fetchRankings(new ApiRankingRepo());
 
   if (!data) {
     return <div className="text-white p-20 text-center text-xs md:text-sm"><span className="bg-triton-red/70 p-4 rounded-sm">Error loading data...</span></div>;

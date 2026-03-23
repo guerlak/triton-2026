@@ -1,4 +1,5 @@
 "use client";
+import { Athlete } from "@/model/ranking";
 
 import React, { useState, useMemo } from "react";
 import {
@@ -6,8 +7,6 @@ import {
   Trophy,
   MapPin,
   User,
-  ArrowUpDown,
-  ChevronRight,
   FilterX,
   Plus
 } from "lucide-react";
@@ -17,24 +16,7 @@ import Modal from "../ui/Modal";
 import MainButton from "../ui/MainButton";
 import fotoUrl from "../../public/images/ranking-modal.png";
 
-export interface Athlete {
-  Bib: number;
-  Contest: string;
-  Name: string;
-  Gender: string;
-  Country: string;
-  "Global Standings": number;
-  "National Standings": number;
-  "Swim Ranking": number;
-  "Bike Ranking": number;
-  "Run Ranking": number;
-  "Total Points": string;
-  Salvador: string;
-  China: string;
-  Rio: string;
-  Lisboa: string;
-  [key: string]: any; // Para outros campos possíveis
-}
+
 
 interface Props {
   initialAthletes: Athlete[];

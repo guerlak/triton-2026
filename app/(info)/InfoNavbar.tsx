@@ -28,8 +28,8 @@ const InfoNavbar = () => {
 
   return (
     <nav className={`fixed top-0 left-0 w-full z-[100] transition-all duration-300 border-b ${isScrolled || isOpen
-        ? "bg-black/95 backdrop-blur-md border-white/10 py-3"
-        : "bg-black/60 backdrop-blur-sm border-white/5 py-5"
+      ? "bg-black/95 backdrop-blur-md border-white/10 py-3"
+      : "bg-black/60 backdrop-blur-sm border-white/5 py-5"
       }`}>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between">
