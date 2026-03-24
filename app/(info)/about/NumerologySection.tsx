@@ -112,35 +112,28 @@ const NumerologySection: React.FC = () => {
                   theory.
                 </p>
               </div>
-
               <p>
-                The whole TRITON framework adheres to this rule: from race
-                distances and color palettes to the number of competitions and
-                global events..
+                <strong>TRITON</strong> reflects a structured progression that connects logic, performance, and human potential.
+                This philosophy is embedded into every race through a simple but meaningful system: athletes racing
+                the <strong>SPRINT  </strong> distance carry bib numbers starting with <strong>3</strong>, the <strong>MIDDLE</strong> distance with <strong>6</strong>,
+                and the <strong>LONG</strong> distance with <strong>9</strong>.
+              </p>
+              <p>
+
+                In numerology, <strong>3</strong> represents creation, energy, and the beginning of a journey—mirroring
+                the entry point into the sport. The number <strong>6</strong> symbolizes balance, development, and
+                commitment—reflecting the athlete’s progression and growing connection with endurance.
+                The number <strong>9</strong> represents mastery, completion, and achievement—the culmination of effort
+                and experience.
               </p>
 
-              {/* <div className="grid grid-cols-2 md:grid-cols-3 gap-4 pt-4">
-                <div className="flex flex-col">
-                  <span className="text-white font-black text-xl">
-                    DISTANCES
-                  </span>
-                  <span className="text-triton-red text-xs font-bold uppercase tracking-widest">
-                    Base 3-6-9
-                  </span>
-                </div>
-                <div className="flex flex-col">
-                  <span className="text-white font-black text-xl">COLORS</span>
-                  <span className="text-triton-red text-xs font-bold uppercase tracking-widest">
-                    Golden Section
-                  </span>
-                </div>
-                <div className="flex flex-col">
-                  <span className="text-white font-black text-xl">STAGES</span>
-                  <span className="text-triton-red text-xs font-bold uppercase tracking-widest">
-                    Global Alignment
-                  </span>
-                </div>
-              </div> */}
+              <p>
+
+                Together, these numbers form a natural pathway within TRITON: from entry, to progression,
+                to fulfillment—connecting every athlete to a deeper structure that exists both in sport and in nature.
+              </p>
+
+
             </div>
           </div>
         </div>

@@ -30,9 +30,8 @@ const Navbar = () => {
 
   return (
     <nav
-      className={`fixed top-0 w-full z-50 transition-all duration-300 ${
-        isScrolled || isOpen ? "bg-black/95 backdrop-blur-md" : "bg-transparent md:bg-black/80"
-      } border-b border-white/10`}
+      className={`fixed top-0 w-full z-50 transition-all duration-300 ${isScrolled || isOpen ? "bg-black/95 backdrop-blur-md" : "bg-transparent md:bg-black/80"
+        } border-b border-white/10`}
     >
       <div className="flex justify-between items-center mx-auto px-4 sm:px-6 lg:px-30 h-20 max-w-[1600px]">
         {/* Logo */}
@@ -68,8 +67,8 @@ const Navbar = () => {
 
         {/* Desktop Buttons */}
         <div className="hidden lg:flex items-center gap-4">
-          <NavButton text="Live Results" href="/live-results" />
-          <NavButton isRed text="Find a Race" href="/triton-events" />
+          <NavButton text="Live Results" href="#" />
+          <NavButton isRed text="Find a Race" href="#" />
         </div>
 
         {/* Mobile menu button */}
@@ -109,9 +108,8 @@ const Navbar = () => {
 
       {/* Mobile Menu Overlay */}
       <div
-        className={`md:hidden fixed inset-x-0 top-20 bg-black transition-all duration-500 ease-in-out overflow-y-auto ${
-          isOpen ? "h-[calc(100vh-80px)] opacity-100 translate-y-0" : "h-0 opacity-0 -translate-y-10 pointer-events-none"
-        }`}
+        className={`md:hidden fixed inset-x-0 top-20 bg-black transition-all duration-500 ease-in-out overflow-y-auto ${isOpen ? "h-[calc(100vh-80px)] opacity-100 translate-y-0" : "h-0 opacity-0 -translate-y-10 pointer-events-none"
+          }`}
       >
         <div className="px-6 py-12 flex flex-col items-center gap-8 min-h-full">
           {navLinks.map((link) => (

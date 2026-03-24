@@ -44,8 +44,8 @@ export default function RankingPageClient({ initialAthletes }: Props) {
       const matchesGender = genderFilter === "All" || athlete.Gender === genderFilter;
       const matchesContest = contestFilter === "All" || athlete.Contest === contestFilter;
 
-      return matchesSearch && matchesGender && matchesContest;
-    });
+      return (matchesSearch && matchesGender && matchesContest);
+    }).slice(0, 20);
   }, [initialAthletes, search, genderFilter, contestFilter]);
 
   const handleAthleteClick = (athlete: Athlete) => {

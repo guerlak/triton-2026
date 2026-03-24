@@ -4,6 +4,8 @@ import Navbar from "../components/Navbar";
 import HeadLine from "../ui/HeadLine";
 import { ApiRankingRepo } from "@/repositories/ApiRankingRepo";
 import { fetchRankings } from "@/services/RankingService";
+import HallOfFame from "./HallOfFame";
+
 
 export const metadata = {
   title: "Ranking | Triton World Series",
@@ -27,7 +29,15 @@ export default async function RankingPage() {
     <div className="bg-neutral-950">
       <Navbar />
       <main className="pt-20 pb-20">
+
+
+
+        <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <RankingPageClient initialAthletes={data} />
+        </section>
+
         <HeadLine text1="GLOBAL RANKING" text2="TWS Global Standings" />
+
 
         <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-16">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-x-16 gap-y-8">
@@ -57,9 +67,11 @@ export default async function RankingPage() {
           </div>
         </section>
 
-        <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <RankingPageClient initialAthletes={data} />
-        </section>
+        <HallOfFame />
+
+
+
+
       </main>
     </div>
   );
