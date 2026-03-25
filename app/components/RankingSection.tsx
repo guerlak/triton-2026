@@ -4,7 +4,7 @@ import { Trophy } from "lucide-react";
 import RedLine from "../ui/RedLine";
 import RankingClientWrapper from "./RankingClientWrapper"; // Vamos criar este abaixo
 import MainButton from "../ui/MainButton";
-import { fetchDetails, fetchGeneralRanking, fetchLeaderboard } from "@/services/RankingService";
+import { fetchGeneralRanking } from "@/services/RankingService";
 import { ApiRankingRepo } from "@/repositories/ApiRankingRepo";
 
 export default async function RankingSection() {

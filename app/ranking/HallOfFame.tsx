@@ -1,24 +1,15 @@
 "use client";
 
 import React, { useState } from "react";
-import Image from "next/image";
 import { motion, AnimatePresence } from "framer-motion";
 import { Trophy, Medal, MapPin, Award } from "lucide-react";
 import { Athlete } from "@/model/ranking";
 
-interface HallOfFameData {
-
-  Rank: number;
-  Bib: number;
-  Nation: string;
-  Athlete: string;
-  Gender: string;
-  Distance: string;
-  Points: string;
-}
 
 
-const HallOfFame = ({ hallFameData }: { hallFameData: HallOfFameData[] }) => {
+
+
+const HallOfFame = ({ hallFameData }: { hallFameData: Athlete[] }) => {
 
   const [selectedYear, setSelectedYear] = useState(2025);
 
@@ -44,7 +35,7 @@ const HallOfFame = ({ hallFameData }: { hallFameData: HallOfFameData[] }) => {
     }
   };
 
-  const AthleteCard = ({ athlete }: { athlete: HallOfFameData }) => (
+  const AthleteCard = ({ athlete }: { athlete: Athlete }) => (
     <motion.div
       layout
       initial={{ opacity: 0, scale: 0.95 }}

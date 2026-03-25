@@ -5,7 +5,7 @@ import { motion } from "framer-motion";
 import Image from "next/image";
 import Modal from "../ui/Modal";
 import fotoUrl from "../../public/images/ranking-modal.png";
-import { Athlete } from "./RankingSection"; // Importa a interface
+import { Athlete } from "../../model/ranking";
 import MainButton from "../ui/MainButton";
 
 interface Props {

@@ -4,6 +4,10 @@ export interface Athlete {
   Name: string;
   Gender: string;
   Country: string;
+  Rank: number;
+  Points: string;
+  Distance: string;
+  Nation: string;
   "Global Standings": number;
   "National Standings": number;
   "Swim Ranking": number;
@@ -16,3 +20,5 @@ export interface Athlete {
   Lisboa: string;
   [key: string]: any; // Para outros campos possíveis
 }
+
+
