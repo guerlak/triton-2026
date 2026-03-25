@@ -9,7 +9,6 @@ import NewsletterSection from "./components/NewsletterSection";
 import TritonExperienceCards from "./components/TritonCardsSection";
 import RankingSection from "./components/RankingSection";
 import PartnersSection from "./components/PartnersSection";
-import RedLine from "./ui/RedLine";
 
 export default function Page() {
   return (

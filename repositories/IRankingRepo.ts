@@ -1,5 +1,7 @@
 import { Athlete } from "@/model/ranking";
 
 export interface IRankingRepo {
-    getRankings(): Promise<Athlete[]>;
+  getGeneralRankings(): Promise<Athlete[]>;
+  getLeaderboard(): Promise<Athlete[]>;
+  getDetails(): Promise<Athlete[]>;
 }

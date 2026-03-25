@@ -4,32 +4,11 @@ import { Trophy } from "lucide-react";
 import RedLine from "../ui/RedLine";
 import RankingClientWrapper from "./RankingClientWrapper"; // Vamos criar este abaixo
 import MainButton from "../ui/MainButton";
-import { fetchRankings } from "@/services/RankingService";
+import { fetchDetails, fetchGeneralRanking, fetchLeaderboard } from "@/services/RankingService";
 import { ApiRankingRepo } from "@/repositories/ApiRankingRepo";
 
-// Definimos a Interface aqui também
-export interface Athlete {
-  Bib: number;
-  Contest: string;
-  Name: string;
-  Gender: string;
-  Country: string;
-  "Global Standings": number;
-  "National Standings": number;
-  "Swim Ranking": number;
-  "Bike Ranking": number;
-  "Run Ranking": number;
-  "Total Points": string;
-  Salvador: string;
-  China: string;
-  Rio: string;
-  Lisboa: string;
-}
-
-
-
 export default async function RankingSection() {
-  const data = await fetchRankings(new ApiRankingRepo());
+  const data = await fetchGeneralRanking(new ApiRankingRepo());
 
   if (!data) {
     return <div className="text-white p-20 text-center text-xs md:text-sm"><span className="bg-triton-red/70 p-4 rounded-sm">Error loading data...</span></div>;
@@ -53,7 +32,6 @@ export default async function RankingSection() {
 
         {/* Passamos os dados para o componente Client que cuidará do Modal e Motion */}
         <RankingClientWrapper initialAthletes={data} />
-
 
         <div className="text-center py-10">
           <MainButton href="/#">Full Ranking</MainButton>

@@ -3,8 +3,9 @@ import RankingPageClient from "./RankingPageClient";
 import Navbar from "../components/Navbar";
 import HeadLine from "../ui/HeadLine";
 import { ApiRankingRepo } from "@/repositories/ApiRankingRepo";
-import { fetchRankings } from "@/services/RankingService";
+import { fetchDetails, fetchGeneralRanking, fetchLeaderboard } from "@/services/RankingService";
 import HallOfFame from "./HallOfFame";
+import { Award } from "lucide-react";
 
 
 export const metadata = {
@@ -13,9 +14,12 @@ export const metadata = {
 };
 
 export default async function RankingPage() {
-  const data = await fetchRankings(new ApiRankingRepo());
+  const data = await fetchGeneralRanking(new ApiRankingRepo());
+  const details = await fetchDetails(new ApiRankingRepo());
 
-  if (!data) {
+  const leaderBoard = await fetchLeaderboard(new ApiRankingRepo());
+
+  if (!data || !leaderBoard) {
     return (
       <div className="bg-neutral-950 min-h-screen text-white flex flex-col items-center justify-center p-4">
         <h1 className="text-2xl font-black uppercase mb-4">Error loading ranking data</h1>
@@ -23,6 +27,15 @@ export default async function RankingPage() {
         <a href="/" className="mt-8 text-triton-red font-bold hover:underline">Return to Home</a>
       </div>
     );
+  }
+
+  const hallFameData = {
+    menSprint: leaderBoard.filter(a => a.Gender === 'Men' && a.Rank <= 3 && a.Distance === 'Sprint Distance'),
+    womenSprint: leaderBoard.filter(a => a.Gender === 'Women' && a.Rank <= 3 && a.Distance === 'Sprint Distance'),
+    menMiddle: leaderBoard.filter(a => a.Gender === 'Men' && a.Rank <= 3 && a.Distance === 'Middle Distance'),
+    womenMiddle: leaderBoard.filter(a => a.Gender === 'Women' && a.Rank <= 3 && a.Distance === 'Middle Distance'),
+    menLong: leaderBoard.filter(a => a.Gender === 'Men' && a.Rank <= 3 && a.Distance === 'Long Distance'),
+    womenLong: leaderBoard.filter(a => a.Gender === 'Women' && a.Rank <= 3 && a.Distance === 'Long Distance'),
   }
 
   return (
@@ -67,9 +80,25 @@ export default async function RankingPage() {
           </div>
         </section>
 
-        <HallOfFame />
+        <div className="max-w-xl">
+          <div className="flex items-center gap-3 text-triton-red mb-4">
+            <Award className="w-8 h-8" />
+            <span className="font-black uppercase tracking-[0.3em] text-sm">Historical Data</span>
+          </div>
+          <h2 className="text-5xl md:text-7xl font-black text-white uppercase leading-none mb-4">
+            Hall of <span className="text-triton-red italic">Fame</span>
+          </h2>
+          <p className="text-gray-400 text-lg">
+            Honoring the champions who define the Triton legacy. Explore the top performers from each season.
+          </p>
+        </div>
 
-
+        <HallOfFame hallFameData={hallFameData.womenSprint} />
+        <HallOfFame hallFameData={hallFameData.menSprint} />
+        <HallOfFame hallFameData={hallFameData.womenMiddle} />
+        <HallOfFame hallFameData={hallFameData.menMiddle} />
+        <HallOfFame hallFameData={hallFameData.womenLong} />
+        <HallOfFame hallFameData={hallFameData.menLong} />
 
 
       </main>
