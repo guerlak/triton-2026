@@ -106,7 +106,7 @@ const CountdownSection: React.FC = () => {
 
       <div className="absolute inset-0 z-0">
         <video
-          src="https://res.cloudinary.com/dinqspvtp/video/upload/v1773243140/tritin-video-after_oq1nzs.mov"
+          src="https://qolo99gl9iwxsw5k.public.blob.vercel-storage.com/video-web-triton.mp4"
           autoPlay
           loop
           muted
