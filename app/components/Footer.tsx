@@ -44,22 +44,22 @@ const Footer: React.FC = () => {
             <h4 className="text-white font-bold uppercase mb-4">Events</h4>
             <ul className="space-y-2 text-sm text-gray-400">
               <li>
-                <a href="/triton-events " className="hover:text-white transition-colors">
+                <a href="# " className="hover:text-white transition-colors">
                   Brazil
                 </a>
               </li>
               <li>
-                <a href="/triton-events" className="hover:text-white transition-colors">
+                <a href="#" className="hover:text-white transition-colors">
                   China
                 </a>
               </li>
               <li>
-                <a href="/triton-events" className="hover:text-white transition-colors">
+                <a href="#" className="hover:text-white transition-colors">
                   Portugal
                 </a>
               </li>
               <li>
-                <a href="/triton-events" className="hover:text-white transition-colors">
+                <a href="#" className="hover:text-white transition-colors">
                   World Final
                 </a>
               </li>
@@ -76,7 +76,7 @@ const Footer: React.FC = () => {
               </li>
 
               <li>
-                <a href="/score-system" className="hover:text-white transition-colors">
+                <a href="#" className="hover:text-white transition-colors">
                   Scoring System
                 </a>
               </li>
