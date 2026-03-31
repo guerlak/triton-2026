@@ -184,7 +184,7 @@ export default function ScoreSystemPage() {
                             <div className="grid grid-cols-1 gap-6">
                                 {assumptions.map((text, i) => (
                                     <div key={i} className="flex gap-4 group">
-                                        <div className="mt-1 flex-shrink-0">
+                                        <div className="mt-1 shrink-0">
                                             <CheckCircle2 className="w-5 h-5 text-triton-red/40 group-hover:text-triton-red transition-colors" />
                                         </div>
                                         <p className="text-gray-400 leading-relaxed font-sans">{text}</p>

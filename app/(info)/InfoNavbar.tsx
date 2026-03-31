@@ -23,6 +23,7 @@ const InfoNavbar = () => {
     { name: "About", href: "/about" },
     { name: "FAQ", href: "/faq" },
     { name: "Terms", href: "/terms-and-conditions" },
+    { name: "Privacy", href: "/privacy-policy" },
 
   ];
 

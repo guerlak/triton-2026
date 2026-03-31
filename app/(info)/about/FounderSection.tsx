@@ -1,7 +1,7 @@
 import React from "react";
 import Image from "next/image";
 
-const PauloSection: React.FC = () => {
+const FounderSection: React.FC = () => {
   return (
     <section className="py-12 md:py-20 bg-black overflow-hidden relative border-t border-white/5">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -86,4 +86,4 @@ const PauloSection: React.FC = () => {
   );
 };
 
-export default PauloSection;
+export default FounderSection;

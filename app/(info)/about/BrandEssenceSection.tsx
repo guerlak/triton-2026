@@ -5,7 +5,7 @@ import Image from "next/image";
 
 const BrandEssenceSection: React.FC = () => {
   return (
-    <section className="pb-10 bg-black overflow-hidden relative border-t border-white/5">
+    <section className="pb-10 bg-black overflow-hidden relative">
       <div className="max-w-7xl mx-auto px-6 lg:px-8">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
           {/* Visual Side: Left (Matching PDF Page 5) */}

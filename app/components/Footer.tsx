@@ -85,6 +85,7 @@ const Footer: React.FC = () => {
                   FAQ
                 </a>
               </li>
+
             </ul>
           </div>
 

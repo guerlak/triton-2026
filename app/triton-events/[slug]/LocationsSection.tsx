@@ -1,9 +1,10 @@
 "use client";
 import React from "react";
 import Image from "next/image";
-import fotoResort from "../../public/images/foto-portobelo-ampla.jpeg";
+import fotoResort from "@/public/images/foto-portobelo-ampla.jpeg";
 import { MessageCircle, House, BedDouble } from "lucide-react";
-import dict from "../../dictionaries/en.json";
+import dict from "../../../dictionaries/en.json";
+import Script from "next/script";
 
 const LocationsSection: React.FC = () => {
   return (
@@ -28,6 +29,8 @@ const LocationsSection: React.FC = () => {
           {dict.locations_section.banner.description}
         </p>
       </div>
+
+
       <div className="text-center py-14 px-4">
         <h2 className="text-triton-red font-bold tracking-widest uppercase mb-2">
           {dict.locations_section.title}

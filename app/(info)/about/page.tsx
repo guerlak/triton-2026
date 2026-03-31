@@ -2,7 +2,7 @@ import BrandEssenceSection from "@/app/(info)/about/BrandEssenceSection";
 import HistorySection from "@/app/(info)/about/HistorySection";
 import MissionSection from "@/app/(info)/about/MissionSection";
 import NumerologySection from "@/app/(info)/about/NumerologySection";
-import PauloSection from "@/app/(info)/about/PauloSection";
+import FounderSection from "@/app/(info)/about/FounderSection";
 import RaceFormatsSection from "@/app/(info)/about/RaceFormatsSection";
 import ValuesSection from "@/app/(info)/about/ValuesSection";
 
@@ -13,7 +13,7 @@ export default function Page() {
       <MissionSection />
       <RaceFormatsSection />
       <NumerologySection />
-      <PauloSection />
+      <FounderSection />
       <HistorySection />
     </main>
   );

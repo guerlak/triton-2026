@@ -10,6 +10,7 @@ import swimMap from "../../public/images/maps/natacao-triton3-rj-2026.png";
 import bikeMap from "../../public/images/maps/ciclismo-triton3-rj-2026.jpg";
 
 import dict from "../../dictionaries/en.json";
+import Script from "next/script";
 
 const FormatTable: React.FC<{ distances: any[] }> = ({ distances }) => (
   <div className="w-full overflow-x-auto">
@@ -78,31 +79,28 @@ const FormatsSection: React.FC = () => {
           <div className="bg-neutral-900 p-1 rounded-full inline-flex border border-white/10">
             <button
               onClick={() => setActiveTab("1")}
-              className={`cursor-pointer px-6 py-3 rounded-full text-sm font-bold uppercase tracking-wider transition-all ${
-                activeTab === "1"
-                  ? "bg-triton-red text-white shadow-lg"
-                  : "text-gray-400 hover:text-white"
-              }`}
+              className={`cursor-pointer px-6 py-3 rounded-full text-sm font-bold uppercase tracking-wider transition-all ${activeTab === "1"
+                ? "bg-triton-red text-white shadow-lg"
+                : "text-gray-400 hover:text-white"
+                }`}
             >
               {dict.format_section.toogles.swim}
             </button>
             <button
               onClick={() => setActiveTab("2")}
-              className={`cursor-pointer px-6 py-3 rounded-full text-sm font-bold uppercase tracking-wider transition-all ${
-                activeTab === "2"
-                  ? "bg-triton-red text-white shadow-lg"
-                  : "text-gray-400 hover:text-white"
-              }`}
+              className={`cursor-pointer px-6 py-3 rounded-full text-sm font-bold uppercase tracking-wider transition-all ${activeTab === "2"
+                ? "bg-triton-red text-white shadow-lg"
+                : "text-gray-400 hover:text-white"
+                }`}
             >
               {dict.format_section.toogles.bike}
             </button>
             <button
               onClick={() => setActiveTab("3")}
-              className={`cursor-pointer px-6 py-3 rounded-full text-sm font-bold uppercase tracking-wider transition-all ${
-                activeTab === "3"
-                  ? "bg-triton-red text-white shadow-lg"
-                  : "text-gray-400 hover:text-white"
-              }`}
+              className={`cursor-pointer px-6 py-3 rounded-full text-sm font-bold uppercase tracking-wider transition-all ${activeTab === "3"
+                ? "bg-triton-red text-white shadow-lg"
+                : "text-gray-400 hover:text-white"
+                }`}
             >
               {dict.format_section.toogles.run}
             </button>
@@ -113,9 +111,8 @@ const FormatsSection: React.FC = () => {
         <div className="gap-16">
           {/* Left: Description & Image */}
           <div
-            className={`transition-opacity duration-500 ${
-              activeTab === "1" ? "opacity-100" : "lg:block lg:opacity-100"
-            }`}
+            className={`transition-opacity duration-500 ${activeTab === "1" ? "opacity-100" : "lg:block lg:opacity-100"
+              }`}
           >
             {(() => {
               switch (activeTab) {
@@ -167,11 +164,31 @@ const FormatsSection: React.FC = () => {
                         {/* <button onClick={teste} href="" rel="noopener noreferrer" className="m bg-triton-red hover:bg-red-700 text-white text-sm font-bold rounded-full uppercase tracking-widest px-4 py-2 transition-all transform hover:scale-105">Percurso em vídeo</button> */}
                       </div>
 
-                      <Image
-                        src={swimMap}
-                        alt="swim picture"
-                        className="rounded-2xl"
-                      />
+                      <div className="">
+                        <div className="w-full bg-neutral-900 shadow-2xl ">
+                          <div
+                            id="strava-route-map"
+                            className="strava-embed-placeholder w-full max-h-[300px]"
+                            data-embed-type="route"
+                            data-embed-id="2989446402175334832"
+                            data-style="dark"
+                            data-from-embed="true"
+                          />
+
+                          <Script
+                            src="https://strava-embeds.com/embed.js"
+                            strategy="lazyOnload"
+                            onLoad={() => {
+                              // @ts-ignore
+                              if (window.StravaEmbeds) {
+                                // @ts-ignore
+                                window.StravaEmbeds.init();
+                              }
+                            }}
+                          />
+                        </div>
+
+                      </div>
                     </div>
                   );
                 case "2":
