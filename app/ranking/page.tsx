@@ -18,6 +18,8 @@ export default async function RankingPage() {
   const details = await fetchDetails(new ApiRankingRepo());
   const leaderBoard = await fetchLeaderboard(new ApiRankingRepo());
 
+  const rankingPosition = 1;
+
   if (!data || !leaderBoard) {
     return (
       <div className="bg-neutral-950 min-h-screen text-white flex flex-col items-center justify-center p-4">
@@ -29,12 +31,12 @@ export default async function RankingPage() {
   }
 
   const hallFameData = {
-    menSprint: leaderBoard.filter(a => a.Gender === 'Men' && a.Rank <= 3 && a.Distance === 'Sprint Distance'),
-    womenSprint: leaderBoard.filter(a => a.Gender === 'Women' && a.Rank <= 3 && a.Distance === 'Sprint Distance'),
-    menMiddle: leaderBoard.filter(a => a.Gender === 'Men' && a.Rank <= 3 && a.Distance === 'Middle Distance'),
-    womenMiddle: leaderBoard.filter(a => a.Gender === 'Women' && a.Rank <= 3 && a.Distance === 'Middle Distance'),
-    menLong: leaderBoard.filter(a => a.Gender === 'Men' && a.Rank <= 3 && a.Distance === 'Long Distance'),
-    womenLong: leaderBoard.filter(a => a.Gender === 'Women' && a.Rank <= 3 && a.Distance === 'Long Distance'),
+    menSprint: leaderBoard.filter(a => a.Gender === 'Men' && a.Rank <= rankingPosition && a.Distance === 'Sprint Distance'),
+    womenSprint: leaderBoard.filter(a => a.Gender === 'Women' && a.Rank <= rankingPosition && a.Distance === 'Sprint Distance'),
+    menMiddle: leaderBoard.filter(a => a.Gender === 'Men' && a.Rank <= rankingPosition && a.Distance === 'Middle Distance'),
+    womenMiddle: leaderBoard.filter(a => a.Gender === 'Women' && a.Rank <= rankingPosition && a.Distance === 'Middle Distance'),
+    menLong: leaderBoard.filter(a => a.Gender === 'Men' && a.Rank <= rankingPosition && a.Distance === 'Long Distance'),
+    womenLong: leaderBoard.filter(a => a.Gender === 'Women' && a.Rank <= rankingPosition && a.Distance === 'Long Distance'),
   }
 
   return (
@@ -49,7 +51,6 @@ export default async function RankingPage() {
         </section>
 
         <HeadLine text1="GLOBAL RANKING" text2="TWS Global Standings" />
-
 
         <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-16">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-x-16 gap-y-8">
@@ -79,26 +80,22 @@ export default async function RankingPage() {
           </div>
         </section>
 
-        <div className="max-w-xl">
-          <div className="flex items-center gap-3 text-triton-red mb-4">
-            <Award className="w-8 h-8" />
-            <span className="font-black uppercase tracking-[0.3em] text-sm">Historical Data</span>
+        <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-16">
+          <div className="max-w-xl">
+            <div className="flex items-center gap-3 text-triton-red mb-4">
+              <Award className="w-8 h-8" />
+              <span className="font-black uppercase tracking-[0.3em] text-sm">Historical Data</span>
+            </div>
+            <h2 className="text-5xl md:text-7xl font-black text-white uppercase leading-none mb-4">
+              Hall of <span className="text-triton-red italic">Fame</span>
+            </h2>
+            <p className="text-gray-400 text-lg">
+              Honoring the champions who define the Triton legacy. Explore the top performers from each season.
+            </p>
           </div>
-          <h2 className="text-5xl md:text-7xl font-black text-white uppercase leading-none mb-4">
-            Hall of <span className="text-triton-red italic">Fame</span>
-          </h2>
-          <p className="text-gray-400 text-lg">
-            Honoring the champions who define the Triton legacy. Explore the top performers from each season.
-          </p>
-        </div>
+        </section>
 
-        <HallOfFame hallFameData={hallFameData.womenSprint} />
-        <HallOfFame hallFameData={hallFameData.menSprint} />
-        <HallOfFame hallFameData={hallFameData.womenMiddle} />
-        <HallOfFame hallFameData={hallFameData.menMiddle} />
-        <HallOfFame hallFameData={hallFameData.womenLong} />
-        <HallOfFame hallFameData={hallFameData.menLong} />
-
+        <HallOfFame hallFameData={hallFameData} />
 
       </main>
     </div>

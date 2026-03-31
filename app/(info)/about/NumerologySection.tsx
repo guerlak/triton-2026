@@ -84,6 +84,14 @@ const NumerologySection: React.FC = () => {
                 would have the key to the universe."
               </p>
             </div>
+            <div className=" flex gap-4 p-6 mt-4 bg-neutral-900/50 border-l-4 border-triton-red">
+              <Sigma className="text-triton-red shrink-0" size={32} />
+              <p className="text-sm md:text-base italic text-gray-400">
+                Everything in <strong>TRITON</strong> falls under the mathematical trifecta
+                that manifests in the magnificence of Nikola Tesla's 3, 6, 9
+                theory.
+              </p>
+            </div>
           </div>
 
           {/* Text Side */}
@@ -99,40 +107,22 @@ const NumerologySection: React.FC = () => {
 
             <div className="space-y-6 text-gray-300 text-lg leading-relaxed">
               <p>
-                Mathematics is everywhere around us and manifests in all the
-                wonders of nature, providing a logical framework for the
-                physical world.
-              </p>
-
-              <div className="flex gap-4 p-6 bg-neutral-900/50 border-l-4 border-triton-red">
-                <Sigma className="text-triton-red flex-shrink-0" size={32} />
-                <p className="text-sm md:text-base italic">
-                  Everything in TRITON falls under the mathematical trifecta
-                  that manifests in the magnificence of Nikola Tesla's 3, 6, 9
-                  theory.
-                </p>
-              </div>
-              <p>
                 <strong>TRITON</strong> reflects a structured progression that connects logic, performance, and human potential.
                 This philosophy is embedded into every race through a simple but meaningful system: athletes racing
                 the <strong>SPRINT  </strong> distance carry bib numbers starting with <strong>3</strong>, the <strong>MIDDLE</strong> distance with <strong>6</strong>,
                 and the <strong>LONG</strong> distance with <strong>9</strong>.
               </p>
               <p>
-
                 In numerology, <strong>3</strong> represents creation, energy, and the beginning of a journey—mirroring
                 the entry point into the sport. The number <strong>6</strong> symbolizes balance, development, and
                 commitment—reflecting the athlete’s progression and growing connection with endurance.
                 The number <strong>9</strong> represents mastery, completion, and achievement—the culmination of effort
                 and experience.
               </p>
-
               <p>
-
-                Together, these numbers form a natural pathway within TRITON: from entry, to progression,
+                Together, these numbers form a natural pathway within <strong>TRITON</strong>: from entry, to progression,
                 to fulfillment—connecting every athlete to a deeper structure that exists both in sport and in nature.
               </p>
-
 
             </div>
           </div>

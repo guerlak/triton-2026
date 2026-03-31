@@ -44,7 +44,7 @@ const Footer: React.FC = () => {
             <h4 className="text-white font-bold uppercase mb-4">Events</h4>
             <ul className="space-y-2 text-sm text-gray-400">
               <li>
-                <a href="# " className="hover:text-white transition-colors">
+                <a href="#" className="hover:text-white transition-colors">
                   Brazil
                 </a>
               </li>
