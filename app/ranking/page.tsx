@@ -6,6 +6,7 @@ import { ApiRankingRepo } from "@/repositories/ApiRankingRepo";
 import { fetchDetails, fetchGeneralRanking, fetchLeaderboard } from "@/services/RankingService";
 import HallOfFame from "./HallOfFame";
 import { Award } from "lucide-react";
+import Image from "next/image";
 
 
 export const metadata = {
@@ -107,30 +108,62 @@ export default async function RankingPage() {
 
         <HeadLine text1="GLOBAL RANKING" text2="TWS Global Standings" />
 
-        <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-16">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-x-16 gap-y-8">
-            <div className="max-w-xl">
-              <p className="text-xl text-white font-medium leading-relaxed mb-6 font-sans">
-                The TRITON Global Ranking is an annual, by-points competition that you score at every race.
-              </p>
-              <p className="text-gray-400 leading-relaxed font-sans">
-                Throughout the season, athletes who compete in any TRITON event worldwide earn points that contribute to their position in the ranking. At the end of the year, the results of all races are consolidated to determine the final standings.
-              </p>
+        <section className="relative w-full overflow-hidden mb-24 py-24 group">
+          {/* Background Image with Creative Effects */}
+          <div className="absolute inset-0 z-0">
+            <Image
+              src="/images/triton-trophy.jpg"
+              alt="Triton Global Ranking Trophy"
+              fill
+              className="object-cover object-center opacity-40 grayscale group-hover:grayscale-0 transition-all duration-1000 scale-105 group-hover:scale-100"
+            />
+            {/* Elegant Overlays */}
+            <div className="absolute inset-0 bg-linear-to-r from-neutral-950 via-neutral-950/80 to-transparent" />
+            <div className="absolute inset-0 bg-linear-to-t from-neutral-950 via-transparent to-neutral-950/50" />
+          </div>
+
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-x-16 gap-y-12 items-center">
+              <div className="space-y-8">
+                <div className="inline-flex items-center gap-3 px-4 py-2 rounded-full border border-white/10 bg-white/5 backdrop-blur-md">
+                   <div className="w-2 h-2 rounded-full bg-triton-red animate-pulse" />
+                   <span className="text-[10px] font-black uppercase tracking-[0.3em] text-white">The competition</span>
+                </div>
+                
+                <div className="space-y-6">
+                  <p className="text-2xl md:text-3xl text-white font-black leading-tight uppercase font-sans">
+                    The TRITON Global Ranking is an annual, by-points competition that you score at every race.
+                  </p>
+                  <p className="text-gray-400 text-lg leading-relaxed font-sans max-w-lg">
+                    Throughout the season, athletes who compete in any TRITON event worldwide earn points that contribute to their position in the ranking. At the end of the year, the results of all races are consolidated to determine the final standings.
+                  </p>
+                </div>
+              </div>
+
+              <div className="grid grid-cols-1 gap-6">
+                <div className="bg-white/5 backdrop-blur-xl p-8 border border-white/10 rounded-2xl group/card hover:border-white/20 transition-all">
+                  <p className="text-gray-300 leading-relaxed font-sans">
+                    The ranking is achieved by combining the points achieved at both: <span className="text-white font-bold">TRITON 1</span> and <span className="text-white font-bold">TRITON 3</span> races, giving the two formats equal relevance and equal rewards across the series.
+                  </p>
+                </div>
+                
+                <div className="bg-white/5 backdrop-blur-xl p-8 border border-white/10 rounded-2xl group/card hover:border-white/20 transition-all">
+                   <p className="text-gray-300 leading-relaxed border-l-2 border-triton-red pl-6 font-sans">
+                    Rankings are organized by distance — <span className="text-white">SPRINT, MIDDLE and LONG</span> — as well as by gender, overall classification, and age group, ensuring fair competition.
+                  </p>
+                </div>
+              </div>
             </div>
 
-            <div className="max-w-xl space-y-6">
-              <p className="text-gray-400 leading-relaxed font-sans">
-                The ranking is achieved by combining the points achieved at both: <span className="text-white font-bold">TRITON 1</span> and <span className="text-white font-bold">TRITON 3</span> races, giving the two formats equal relevance and equal rewards across the series.
-              </p>
-              <p className="text-gray-400 leading-relaxed border-l-2 border-triton-red pl-6 font-sans">
-                Rankings are organized by distance — <span className="text-white">SPRINT, MIDDLE and LONG</span> — as well as by gender, overall classification, and age group, ensuring fair competition and a meaningful comparison among peers within the global TRITON community.
+            {/* Trophy Highlight Box */}
+            <div className="mt-20 bg-linear-to-r from-triton-red/20 to-transparent backdrop-blur-2xl p-10 border border-white/10 rounded-2xl overflow-hidden relative">
+              <div className="absolute right-0 top-0 w-32 h-full opacity-10 pointer-events-none">
+                 <Award className="w-full h-full text-white" />
+              </div>
+              <p className="text-xl text-white leading-relaxed italic font-sans max-w-4xl relative z-10">
+                At the end of each season, the overall champions in each distance are officially crowned. Their names are engraved on the <span className="text-white font-black underline decoration-triton-red underline-offset-8">TRITON Global Ranking Trophy</span>, and each champion receives a replica of the trophy to commemorate their achievement.
               </p>
             </div>
-          </div>
-          <div className="mt-12 bg-neutral-900/50 p-8 border border-white/5 rounded-sm">
-            <p className="text-gray-400 leading-relaxed italic font-sans">
-              At the end of each season, the overall champions in each distance are officially crowned. Their names are engraved on the <span className="text-white font-bold">TRITON Global Ranking Trophy</span>, and each champion receives a replica of the trophy to commemorate their achievement.
-            </p>
           </div>
         </section>
 

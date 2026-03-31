@@ -183,23 +183,24 @@ const HallOfFame = ({ athletes }: { athletes: HallOfFameAthlete[] }) => {
             return (
               <div key={label}>
                 {/* Gender Section Header */}
-                <div className="flex flex-col md:flex-row md:items-end justify-between gap-8 mb-16">
+                <div className="flex flex-col md:flex-row md:items-end justify-between gap-8 mb-8">
                   <div className="flex flex-col">
-                    <div className="flex items-center gap-4 mb-4">
-                      <div className={`h-[2px] w-12 ${accentText.replace('text-', 'bg-')}`} />
-                      <span className={`text-sm font-black uppercase tracking-[0.4em] ${accentText}`}>
-                        THE CHAMPIONS
-                      </span>
-                    </div>
-                    <h2 className="text-6xl md:text-8xl font-black text-white uppercase leading-[0.8] mb-2">
+                    <h2 className="text-6xl md:text-8xl font-black text-white uppercase leading-[0.8] mb-6">
                       {label}<span className={`${accentText} animate-pulse`}>.</span>
                     </h2>
+                    <div className="flex items-center gap-4 mb-4">
+                      {/* <div className={`h-[2px] w-12 ${accentText.replace('text-', 'bg-')}`} /> */}
+                      <span className={`text-sm font-black uppercase tracking-[0.4em] ${accentText}`}>
+                        2025 RANKING COMPETITION CHAMPIONS
+                      </span>
+                    </div>
+
                   </div>
-                  <div className="max-w-xs md:text-right">
+                  {/* <div className="max-w-xs md:text-right">
                     <p className="text-gray-500 text-sm font-medium leading-relaxed uppercase tracking-wide">
                       Crowned athletes of the global circuit representing the peak of the {label.toLowerCase()}'s division.
                     </p>
-                  </div>
+                  </div> */}
                 </div>
 
                 {/* Grid Layout */}
