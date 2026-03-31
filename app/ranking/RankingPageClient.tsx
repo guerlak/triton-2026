@@ -1,7 +1,7 @@
 "use client";
 import { Athlete } from "@/model/ranking";
 
-import React, { useState, useMemo } from "react";
+import React, { useState, useMemo, useRef, useEffect } from "react";
 import {
   Search,
   Trophy,
@@ -13,16 +13,14 @@ import {
 import { motion, AnimatePresence } from "framer-motion";
 import Image from "next/image";
 import Modal from "../ui/Modal";
-import MainButton from "../ui/MainButton";
 import fotoUrl from "../../public/images/ranking-modal.png";
+import CustomSelect from "../components/CustomSelect";
 
-
-
-interface Props {
+interface RankingPageClientProps {
   initialAthletes: Athlete[];
 }
 
-export default function RankingPageClient({ initialAthletes }: Props) {
+export default function RankingPageClient({ initialAthletes }: RankingPageClientProps) {
   const [search, setSearch] = useState("");
   const [genderFilter, setGenderFilter] = useState("All");
   const [contestFilter, setContestFilter] = useState("All");
@@ -68,11 +66,7 @@ export default function RankingPageClient({ initialAthletes }: Props) {
     <div className="min-h-screen bg-neutral-950 text-white pb-20 pt-10 px-4 sm:px-6 lg:px-8">
       {/* Page Header */}
       <div className="max-w-7xl mx-auto mb-12">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          className="text-center md:text-left mb-10"
-        >
+        <div className="text-center md:text-left mb-10">
           <div className="flex items-center justify-center md:justify-start gap-3 text-triton-red mb-4">
             <Trophy className="w-8 h-8" />
             <span className="font-black uppercase tracking-[0.3em] text-sm">Global Ranking</span>
@@ -81,13 +75,14 @@ export default function RankingPageClient({ initialAthletes }: Props) {
             Leaderboard <span className="text-triton-red italic">2026</span>
           </h1>
           <p className="text-gray-400 max-w-2xl text-lg">
-            Complete ranking of all Triton World Series participants. Use the filters below to find athletes by name, BIB number, category, or distance.
+            Complete ranking of all Triton World Series participants. Use the filters below to find athletes by name,
+            BIB number, category, or distance.
           </p>
-        </motion.div>
+        </div>
 
         {/* Filters Section */}
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
+          initial={{ opacity: 0, y: 0 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.1 }}
           className="bg-neutral-900/50 backdrop-blur-xl border border-white/5 rounded-3xl p-6 md:p-8"
@@ -99,11 +94,13 @@ export default function RankingPageClient({ initialAthletes }: Props) {
                 Search Athlete / BIB
               </label>
               <div className="relative group">
-                <Search className="absolute left-4 top-1/2 -translate-y-1/2 text-gray-500 group-focus-within:text-triton-red transition-colors w-5 h-5" />
+                <Search className="absolute left-4 top-1/2 -translate-y-1/2 text-gray-500 group-focus-within:text-triton-red 
+                transition-colors w-5 h-5" />
                 <input
                   type="text"
                   placeholder="Ex: John Doe or 3023"
-                  className="w-full bg-black/40 border border-white/10 rounded-2xl py-4 pl-12 pr-4 text-white focus:outline-none focus:border-triton-red focus:ring-1 focus:ring-triton-red/50 transition-all font-bold"
+                  className="w-full bg-black/40 border border-white/10 rounded-2xl py-4 pl-12 pr-4 text-white 
+                  focus:outline-none focus:border-triton-red focus:ring-1 focus:ring-triton-red/50 transition-all font-bold"
                   value={search}
                   onChange={(e) => setSearch(e.target.value)}
                 />
@@ -115,15 +112,15 @@ export default function RankingPageClient({ initialAthletes }: Props) {
               <label className="block text-xs font-black uppercase tracking-widest text-gray-500 mb-2 ml-1">
                 Gender
               </label>
-              <select
-                className="w-full bg-black/40 border border-white/10 rounded-2xl py-4 px-4 text-white focus:outline-none focus:border-triton-red transition-all font-bold appearance-none cursor-pointer"
+              <CustomSelect
                 value={genderFilter}
-                onChange={(e) => setGenderFilter(e.target.value)}
-              >
-                <option value="All">All Genders</option>
-                <option value="Men">Men</option>
-                <option value="Women">Women</option>
-              </select>
+                onChange={setGenderFilter}
+                options={[
+                  { value: "All", label: "All Genders" },
+                  { value: "Men", label: "Men" },
+                  { value: "Women", label: "Women" },
+                ]}
+              />
             </div>
 
             {/* Contest Filter */}
@@ -131,15 +128,14 @@ export default function RankingPageClient({ initialAthletes }: Props) {
               <label className="block text-xs font-black uppercase tracking-widest text-gray-500 mb-2 ml-1">
                 Distance
               </label>
-              <select
-                className="w-full bg-black/40 border border-white/10 rounded-2xl py-4 px-4 text-white focus:outline-none focus:border-triton-red transition-all font-bold appearance-none cursor-pointer"
+              <CustomSelect
                 value={contestFilter}
-                onChange={(e) => setContestFilter(e.target.value)}
-              >
-                {contestOptions.map(option => (
-                  <option key={option} value={option}>{option === "All" ? "All Distances" : option}</option>
-                ))}
-              </select>
+                onChange={setContestFilter}
+                options={contestOptions.map((opt) => ({
+                  value: opt,
+                  label: opt === "All" ? "All Distances" : opt,
+                }))}
+              />
             </div>
           </div>
 

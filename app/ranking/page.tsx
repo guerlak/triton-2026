@@ -18,8 +18,6 @@ export default async function RankingPage() {
   const details = await fetchDetails(new ApiRankingRepo());
   const leaderBoard = await fetchLeaderboard(new ApiRankingRepo());
 
-  const rankingPosition = 1;
-
   if (!data || !leaderBoard) {
     return (
       <div className="bg-neutral-950 min-h-screen text-white flex flex-col items-center justify-center p-4">
@@ -30,22 +28,79 @@ export default async function RankingPage() {
     );
   }
 
-  const hallFameData = {
-    menSprint: leaderBoard.filter(a => a.Gender === 'Men' && a.Rank <= rankingPosition && a.Distance === 'Sprint Distance'),
-    womenSprint: leaderBoard.filter(a => a.Gender === 'Women' && a.Rank <= rankingPosition && a.Distance === 'Sprint Distance'),
-    menMiddle: leaderBoard.filter(a => a.Gender === 'Men' && a.Rank <= rankingPosition && a.Distance === 'Middle Distance'),
-    womenMiddle: leaderBoard.filter(a => a.Gender === 'Women' && a.Rank <= rankingPosition && a.Distance === 'Middle Distance'),
-    menLong: leaderBoard.filter(a => a.Gender === 'Men' && a.Rank <= rankingPosition && a.Distance === 'Long Distance'),
-    womenLong: leaderBoard.filter(a => a.Gender === 'Women' && a.Rank <= rankingPosition && a.Distance === 'Long Distance'),
-  }
+  const hallOfFameAthletes = [
+    {
+      Bib: 1,
+      Contest: "Triton World Series",
+      Name: "Antônio Barreto",
+      Gender: "Men",
+      Rank: 1,
+      Points: "1000",
+      Distance: "Sprint Distance",
+      Nation: "Brazil",
+      imgUrl: "/images/hall-of-fame/antonio-barreto.png"
+    },
+    {
+      Bib: 2,
+      Contest: "Triton World Series",
+      Name: "Cora Dorst",
+      Gender: "Women",
+      Rank: 1,
+      Points: "1000",
+      Distance: "Sprint Distance",
+      Nation: "USA",
+      imgUrl: "/images/hall-of-fame/cora-dorst.png"
+    },
+    {
+      Bib: 3,
+      Contest: "Triton World Series",
+      Name: "Marcos Salamonde ",
+      Gender: "Men",
+      Rank: 1,
+      Points: "1000",
+      Distance: "Middle Distance",
+      Nation: "Brazil",
+      imgUrl: "/images/hall-of-fame/marcos-salamonde.png"
+    },
+    {
+      Bib: 4,
+      Contest: "Triton World Series",
+      Name: "Carla Abrunhosa",
+      Gender: "Women",
+      Rank: 1,
+      Points: "1000",
+      Distance: "Middle Distance",
+      Nation: "Brazil",
+      imgUrl: "/images/hall-of-fame/carla-abrunhosa.png"
+    },
+    {
+      Bib: 5,
+      Contest: "Triton World Series",
+      Name: "Rui Velez",
+      Gender: "Men",
+      Rank: 1,
+      Points: "1000",
+      Distance: "Long Distance",
+      Nation: "Brazil",
+      imgUrl: "/images/hall-of-fame/rui-velez.png"
+    },
+    {
+      Bib: 6,
+      Contest: "Triton World Series",
+      Name: "Alba Rodriguez",
+      Gender: "Women",
+      Rank: 1,
+      Points: "1000",
+      Distance: "Long Distance",
+      Nation: "Spain",
+      imgUrl: "/images/hall-of-fame/alba-rodriguez.png"
+    }
+  ];
 
   return (
     <div className="bg-neutral-950">
       <Navbar />
       <main className="pt-20 pb-20">
-
-
-
         <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <RankingPageClient initialAthletes={data} />
         </section>
@@ -72,7 +127,6 @@ export default async function RankingPage() {
               </p>
             </div>
           </div>
-
           <div className="mt-12 bg-neutral-900/50 p-8 border border-white/5 rounded-sm">
             <p className="text-gray-400 leading-relaxed italic font-sans">
               At the end of each season, the overall champions in each distance are officially crowned. Their names are engraved on the <span className="text-white font-bold">TRITON Global Ranking Trophy</span>, and each champion receives a replica of the trophy to commemorate their achievement.
@@ -90,13 +144,13 @@ export default async function RankingPage() {
               Hall of <span className="text-triton-red italic">Fame</span>
             </h2>
             <p className="text-gray-400 text-lg">
-              Honoring the champions who define the Triton legacy. Explore the top performers from each season.
+              Honoring the athletes who define legacy.
+              Explore <strong>TRITON’s ranking competition champions</strong> from each season.
             </p>
           </div>
+
+          <HallOfFame athletes={hallOfFameAthletes} />
         </section>
-
-        <HallOfFame hallFameData={hallFameData} />
-
       </main>
     </div>
   );
