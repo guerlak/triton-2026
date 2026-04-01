@@ -18,7 +18,7 @@ export default function FAQ() {
 
     return (
         <div className="bg-neutral-950 min-h-screen text-white flex flex-col pt-20 font-sans">
-            
+
 
             <main className="grow">
                 {/* Header Section */}
@@ -27,7 +27,7 @@ export default function FAQ() {
                         <HelpCircle className="w-6 h-6 ml-[-4px]" />
                         <span className="font-black uppercase tracking-[0.4em] text-xs">Support</span>
                     </div>
-                    <h1 className="text-5xl md:text-7xl font-black uppercase text-white leading-none mb-8">
+                    <h1 className="text-5xl md:text-6xl font-black uppercase text-white leading-none mb-8">
                         Everything You <span className="text-triton-red italic">Need to Know</span>
                     </h1>
                     <p className="text-lg text-gray-500 max-w-2xl leading-relaxed">
@@ -37,7 +37,7 @@ export default function FAQ() {
 
                 <div className="max-w-7xl mx-auto px-6 py-20">
                     <div className="flex flex-col lg:flex-row gap-16 relative">
-                        
+
                         {/* Aside Navigation */}
                         <aside className="lg:w-72 shrink-0 lg:sticky lg:top-32 h-fit order-2 lg:order-1">
                             <div className="bg-white/5 border border-white/10 rounded-2xl p-6 backdrop-blur-sm">
@@ -59,7 +59,7 @@ export default function FAQ() {
 
                         {/* Content Area */}
                         <article className="grow space-y-24 order-1 lg:order-2 max-w-4xl">
-                            
+
                             {/* General Info */}
                             <section id="general" className="space-y-12 scroll-mt-32">
                                 <h2 className="text-2xl font-black uppercase text-white border-l-4 border-triton-red pl-6 mb-12">

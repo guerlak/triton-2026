@@ -1,5 +1,5 @@
 "use client";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Image from "next/image";
 import { Waves, Bike, PersonStanding, Users, Layers, User } from "lucide-react";
 import bikePic from "../../public/images/triton-fotos-prova-bike.jpeg";
@@ -10,9 +10,12 @@ import swimMap from "../../public/images/maps/natacao-triton3-rj-2026.png";
 import bikeMap from "../../public/images/maps/ciclismo-triton3-rj-2026.jpg";
 
 import dict from "../../dictionaries/en.json";
+import { motion, AnimatePresence } from "framer-motion";
+import { Calendar, Clock, Trophy, Map as MapIcon, ChevronRight } from "lucide-react";
 import Script from "next/script";
 
 const FormatTable: React.FC<{ distances: any[] }> = ({ distances }) => (
+
   <div className="w-full overflow-x-auto">
     <table className="w-full text-left border-collapse">
       <thead>
@@ -59,8 +62,9 @@ const FormatTable: React.FC<{ distances: any[] }> = ({ distances }) => (
 const FormatsSection: React.FC = () => {
   const [activeTab, setActiveTab] = useState<"1" | "2" | "3">("1");
 
+
   return (
-    <section id="formats" className="py-24 bg-black">
+    <section id="formats" className="py-24 bg-triton-dark">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-16">
           <h2 className="text-triton-red font-bold tracking-widest uppercase mb-2">
@@ -74,239 +78,58 @@ const FormatsSection: React.FC = () => {
           </p>
         </div>
 
-        {/* Toggles */}
-        <div className="flex justify-center mb-12">
-          <div className="bg-neutral-900 p-1 rounded-full inline-flex border border-white/10">
-            <button
-              onClick={() => setActiveTab("1")}
-              className={`cursor-pointer px-6 py-3 rounded-full text-sm font-bold uppercase tracking-wider transition-all ${activeTab === "1"
-                ? "bg-triton-red text-white shadow-lg"
-                : "text-gray-400 hover:text-white"
-                }`}
-            >
-              {dict.format_section.toogles.swim}
-            </button>
-            <button
-              onClick={() => setActiveTab("2")}
-              className={`cursor-pointer px-6 py-3 rounded-full text-sm font-bold uppercase tracking-wider transition-all ${activeTab === "2"
-                ? "bg-triton-red text-white shadow-lg"
-                : "text-gray-400 hover:text-white"
-                }`}
-            >
-              {dict.format_section.toogles.bike}
-            </button>
-            <button
-              onClick={() => setActiveTab("3")}
-              className={`cursor-pointer px-6 py-3 rounded-full text-sm font-bold uppercase tracking-wider transition-all ${activeTab === "3"
-                ? "bg-triton-red text-white shadow-lg"
-                : "text-gray-400 hover:text-white"
-                }`}
-            >
-              {dict.format_section.toogles.run}
-            </button>
+        {/* Toggles - Premium Segmented Control */}
+        <div className="flex justify-center mb-16 px-4">
+          <div className="bg-white/5 backdrop-blur-xl p-1.5 rounded-2xl inline-flex border border-white/10 shadow-2xl relative overflow-hidden">
+            {["1", "2", "3"].map((tab) => (
+              <button
+                key={tab}
+                onClick={() => setActiveTab(tab as "1" | "2" | "3")}
+                className={`relative px-6 md:px-10 py-3 md:py-4 rounded-xl text-xs md:text-sm font-black uppercase tracking-widest transition-all duration-300 z-10 ${activeTab === tab ? "text-white" : "text-gray-500 hover:text-white"}`}
+              >
+                {activeTab === tab && (
+                  <motion.div
+                    layoutId="activeTabFormats"
+                    className="absolute inset-0 bg-triton-red rounded-xl shadow-[0_0_30px_rgba(223,31,38,0.4)]"
+                    transition={{ type: "spring", bounce: 0.2, duration: 0.6 }}
+                  />
+                )}
+                <span className="relative z-20">
+                  {tab === "1" ? "Swimming" : tab === "2" ? "Cycling" : "Running"}
+                  <p className="text-[10px]">{tab === "1" ? "Day 1" : tab === "2" ? "Day 2" : "Day 3"}</p>
+                </span>
+              </button>
+            ))}
           </div>
         </div>
 
-        {/* Content Container */}
-        <div className="gap-16">
-          {/* Left: Description & Image */}
-          <div
-            className={`transition-opacity duration-500 ${activeTab === "1" ? "opacity-100" : "lg:block lg:opacity-100"
-              }`}
-          >
-            {(() => {
-              switch (activeTab) {
-                case "1":
-                  return (
-                    <div className="grid sm:grid-cols-2 gap-6">
-                      <div>
-                        <div className="relative h-80 rounded-2xl overflow-hidden mb-8 group">
-                          <Image
-                            src={swimPic}
-                            alt="Cycling"
-                            className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
-                          />
-                          <div className="absolute inset-0 bg-linear-to-t from-black/80 to-transparent flex items-end p-8">
-                            <h4 className="text-4xl font-black italic text-white">
-                              {
-                                dict.format_section.toogles_content.day_1
-                                  .picture_title
-                              }{" "}
-                              <span className="text-triton-red text-xl not-italic align-middle ml-2 font-bold border border-triton-red px-2 py-1 rounded">
-                                COMPETIÇÃO
-                              </span>
-                            </h4>
-                          </div>
-                        </div>
-                        <h4 className="text-2xl font-bold text-white mb-4">
-                          {dict.format_section.toogles_content.day_1.title}
-                        </h4>
-                        <p className="text-gray-400 mb-4">
-                          {
-                            dict.format_section.toogles_content.day_1
-                              .description
-                          }
-                        </p>
-                        <ul className="space-y-2 text-gray-300 mb-8">
-                          <li className="flex items-center">
-                            <span className="w-2 h-2 bg-triton-red rounded-full mr-3"></span>
-                            {dict.format_section.toogles_content.day_1.date}
-                          </li>
-                          <li className="flex items-center">
-                            <span className="w-2 h-2 bg-triton-red rounded-full mr-3"></span>
-                            {dict.format_section.toogles_content.day_1.start}
-                          </li>
-                          <li className="flex items-center">
-                            <span className="w-2 h-2 bg-triton-red rounded-full mr-3"></span>
-                            Premiação: 17h45
-                          </li>
-                        </ul>
-                        {/* <button onClick={teste} href="" rel="noopener noreferrer" className="m bg-triton-red hover:bg-red-700 text-white text-sm font-bold rounded-full uppercase tracking-widest px-4 py-2 transition-all transform hover:scale-105">Percurso em vídeo</button> */}
-                      </div>
-
-                      <div className="">
-                        <div className="w-full bg-neutral-900 shadow-2xl ">
-                          <div
-                            id="strava-route-map"
-                            className="strava-embed-placeholder w-full max-h-[300px]"
-                            data-embed-type="route"
-                            data-embed-id="2989446402175334832"
-                            data-style="dark"
-                            data-from-embed="true"
-                          />
-
-                          <Script
-                            src="https://strava-embeds.com/embed.js"
-                            strategy="lazyOnload"
-                            onLoad={() => {
-                              // @ts-ignore
-                              if (window.StravaEmbeds) {
-                                // @ts-ignore
-                                window.StravaEmbeds.init();
-                              }
-                            }}
-                          />
-                        </div>
-
-                      </div>
-                    </div>
-                  );
-                case "2":
-                  return (
-                    <div className="grid sm:grid-cols-2 gap-6 ">
-                      <div>
-                        <div className="relative h-80 rounded-2xl overflow-hidden mb-8 group">
-                          <Image
-                            src={bikePic}
-                            alt="Cycling"
-                            className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
-                          />
-                          <div className="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent flex items-end p-8">
-                            <h4 className="text-4xl font-black italic text-white">
-                              {
-                                dict.format_section.toogles_content.day_2
-                                  .picture_title
-                              }{" "}
-                              <span className="text-triton-red text-xl not-italic align-middle ml-2 font-bold border border-triton-red px-2 py-1 rounded">
-                                COMPETIÇÃO
-                              </span>
-                            </h4>
-                          </div>
-                        </div>
-                        <h4 className="text-2xl font-bold text-white mb-4">
-                          {dict.format_section.toogles_content.day_2.title}{" "}
-                        </h4>
-                        <p className="text-gray-400 mb-4">
-                          {
-                            dict.format_section.toogles_content.day_2
-                              .description
-                          }
-                        </p>
-                        <ul className="space-y-2 text-gray-300">
-                          <li className="flex items-center">
-                            <span className="w-2 h-2 bg-triton-red rounded-full mr-3"></span>
-                            {dict.format_section.toogles_content.day_2.date}
-                          </li>
-                          <li className="flex items-center">
-                            <span className="w-2 h-2 bg-triton-red rounded-full mr-3"></span>
-                            {dict.format_section.toogles_content.day_2.start}
-                          </li>
-                          <li className="flex items-center">
-                            <span className="w-2 h-2 bg-triton-red rounded-full mr-3"></span>
-                            {dict.format_section.toogles_content.day_2.award}
-                          </li>
-                        </ul>
-                      </div>
-                      <Image
-                        src={bikeMap}
-                        alt="Bike Picture"
-                        className="rounded-2xl"
-                      />
-                    </div>
-                  );
-                case "3":
-                  return (
-                    <div className="grid  sm:grid-cols-2 gap-6">
-                      <div>
-                        <div className="relative h-80 rounded-2xl overflow-hidden mb-8 group">
-                          <Image
-                            src={runPic}
-                            alt="Running"
-                            className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
-                          />
-                          <div className="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent flex items-end p-8">
-                            <h4 className="text-4xl font-black italic text-white">
-                              {
-                                dict.format_section.toogles_content.day_3
-                                  .picture_title
-                              }{" "}
-                              <span className="text-triton-red text-xl not-italic align-middle ml-2 font-bold border border-triton-red px-2 py-1 rounded">
-                                COMPETIÇÃO
-                              </span>
-                            </h4>
-                          </div>
-                        </div>
-                        <h4 className="text-2xl font-bold text-white mb-4">
-                          {dict.format_section.toogles_content.day_3.title}
-                        </h4>
-                        <p className="text-gray-400 mb-4">
-                          {
-                            dict.format_section.toogles_content.day_3
-                              .description
-                          }
-                        </p>
-                        <ul className="space-y-2 text-gray-300">
-                          <li className="flex items-center">
-                            <span className="w-2 h-2 bg-triton-red rounded-full mr-3"></span>
-                            {dict.format_section.toogles_content.day_3.date}
-                          </li>
-                          <li className="flex items-center">
-                            <span className="w-2 h-2 bg-triton-red rounded-full mr-3"></span>
-                            {dict.format_section.toogles_content.day_3.start}
-                          </li>
-                          <li className="flex items-center">
-                            <span className="w-2 h-2 bg-triton-red rounded-full mr-3"></span>
-                            {dict.format_section.toogles_content.day_3.award}
-                          </li>
-                        </ul>
-                      </div>
-
-                      <Image
-                        src={runMap}
-                        alt="runner picture"
-                        className="rounded-2xl"
-                      />
-                    </div>
-                  );
-                default:
-                  return null;
-              }
-            })()}
+        {/* Content Container - Day Spotlight Decorator */}
+        <div className="relative min-h-[600px]">
+          <div className={`bg-white/5 text-white block w-full h-full ${activeTab === "1" ? "block" : "hidden"}`}>
+            <div
+              className="strava-embed-placeholder w-full h-full"
+              data-full-width="true"
+              data-embed-type="route"
+              data-embed-id="2989446402175334832"
+              data-style="standard"
+              data-terrain="3d"
+              data-from-embed="true"
+            ></div>
+            <Script
+              id="strava-script"
+              src="https://strava-embeds.com/embed.js"
+            />
           </div>
+
+          <div className={`bg-white/5 text-white block w-full h-full ${activeTab === "2" ? "block" : "hidden"}`}>2</div>
+
+          <div className={`bg-white/5 text-white block w-full h-full ${activeTab === "3" ? "block" : "hidden"}`}>3</div>
+
+
         </div>
 
         <h4 className="text-2xl font-bold text-white mb-8 uppercase border-l-4 border-triton-red pl-4 mt-20">
-          {dict.format_section.distance.title}
+          distances
         </h4>
 
         <FormatTable distances={dict?.distances?.triton_1} />
@@ -395,3 +218,25 @@ const FormatsSection: React.FC = () => {
 };
 
 export default FormatsSection;
+
+function renderStrava() {
+  return (
+    <>
+      <div
+        className="strava-embed-placeholder w-full h-full"
+        data-embed-type="route"
+        data-embed-id="2989446402175334832"
+        data-style="standard"
+        data-terrain="3d"
+        data-from-embed="true"
+      ></div>
+      <Script
+        id="strava-script"
+        src="https://strava-embeds.com/embed.js"
+        strategy="afterInteractive"
+      />
+
+    </>
+  )
+}
+

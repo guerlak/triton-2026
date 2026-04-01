@@ -22,7 +22,7 @@ export default function PrivacyPolicyPage() {
 
     return (
         <div className="bg-neutral-950 min-h-screen text-white flex flex-col pt-20">
-            
+
 
             <main className="grow">
                 {/* Header Section */}
@@ -31,7 +31,7 @@ export default function PrivacyPolicyPage() {
                         <Lock className="w-6 h-6 ml-[-4px]" />
                         <span className="font-black uppercase tracking-[0.4em] text-xs">Security</span>
                     </div>
-                    <h1 className="text-5xl md:text-7xl font-black uppercase text-white leading-none mb-8">
+                    <h1 className="text-5xl md:text-6xl font-black uppercase text-white leading-none mb-8">
                         Privacy <span className="text-triton-red italic">Policy</span>
                     </h1>
                     <p className="text-sm text-gray-500 uppercase tracking-widest font-bold">
@@ -41,7 +41,7 @@ export default function PrivacyPolicyPage() {
 
                 <div className="max-w-7xl mx-auto px-6 py-20">
                     <div className="flex flex-col lg:flex-row gap-16 relative">
-                        
+
                         {/* Aside Navigation */}
                         <aside className="lg:w-72 shrink-0 lg:sticky lg:top-32 h-fit order-2 lg:order-1">
                             <div className="bg-white/5 border border-white/10 rounded-2xl p-6 backdrop-blur-sm">
@@ -63,7 +63,7 @@ export default function PrivacyPolicyPage() {
 
                         {/* Content Area */}
                         <article className="grow space-y-24 order-1 lg:order-2 max-w-4xl">
-                            
+
                             {/* Introduction */}
                             <div id="intro" className="bg-white/5 p-8 border border-white/10 rounded-2xl scroll-mt-32 font-sans italic">
                                 <p className="text-lg text-gray-300 leading-relaxed font-sans italic">
@@ -256,7 +256,7 @@ export default function PrivacyPolicyPage() {
                                 <div className="space-y-6 text-gray-400 leading-relaxed font-sans text-md">
                                     <p>The Services uses cookies, flash objects, web beacons, file information and similar technologies to distinguish you from other users of the Services. This helps us to provide you with a good experience when you browse the Services and also allows us to improve the Services.</p>
                                     <p>Cookies are pieces of code that allow for personalization of the Services experience by saving your data such as user ID and other preferences. A cookie is a small data file that we transfer to your device's hard disk (such as your computer or smartphone) for record-keeping purposes.</p>
-                                    
+
                                     <p className="text-white font-bold uppercase tracking-widest text-sm">We use the following types of cookies:</p>
                                     <ul className="space-y-4 list-disc pl-6">
                                         <li><strong className="text-white">Strictly necessary cookies:</strong> These are cookies that are required for the essential operation of the Services such as to authenticate users and prevent fraudulent use.</li>
@@ -290,7 +290,7 @@ export default function PrivacyPolicyPage() {
                                 <div className="space-y-6 text-gray-400 leading-relaxed font-sans">
                                     <p>We want you to understand your rights and choices regarding how we may use your personal data. Depending on how you use your data, these rights and choices may include the following:</p>
                                     <p><strong className="text-white font-bold">Individual Rights:</strong> You have specific rights under applicable privacy law in respect to your personal data that we hold, including a right of access and erasure and a right to prevent certain processing activities.</p>
-                                    
+
                                     <p className="text-white font-bold uppercase tracking-widest text-sm">If you are a resident in the European Union, you have the following rights:</p>
                                     <ul className="space-y-4 list-disc pl-6">
                                         <li><strong className="text-white">Right of access:</strong> The right to obtain access to your personal data.</li>

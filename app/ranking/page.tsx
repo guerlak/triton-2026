@@ -106,11 +106,7 @@ export default async function RankingPage() {
           <RankingPageClient initialAthletes={data} />
         </section>
 
-
-
-
-
-        <section className="relative w-full overflow-hidden my-10  group bg-triton-gray">
+        <section className="relative w-full overflow-hidden my-10 group bg-triton-gray py-15">
           {/* Background Image with Creative Effects */}
 
           <HeadLine text1="GLOBAL RANKING" text2="TWS Global Standings" />

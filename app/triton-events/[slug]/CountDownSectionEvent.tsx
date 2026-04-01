@@ -5,13 +5,15 @@ import Link from "next/link";
 import { motion, AnimatePresence } from "framer-motion";
 import { TimeUnit } from "../../components/TimeUnit";
 
-const COUNTDOWN_EVENTS = [
+
+//data fetch
+const EVENT = [
   {
     id: 1,
     title: "TRITON 1",
-    subtitle: "SALVADOR",
-    location: "Piatã, Bahia",
-    date: "12 April, 2026",
+    subtitle: "SÃO PAULO",
+    location: "Portobello, São Paulo",
+    date: "12 Agosto, 2026",
     targetDate: "2026-10-12T08:00:00",
     image: "/images/bg-salvador.jpg",
     href: "/triton-events/salvador",
@@ -21,7 +23,7 @@ const COUNTDOWN_EVENTS = [
 const CountdownSection: React.FC = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [direction, setDirection] = useState(0);
-  const currentEvent = COUNTDOWN_EVENTS[currentIndex];
+  const currentEvent = EVENT[currentIndex];
 
   const [timeLeft, setTimeLeft] = useState({
     days: 0,
@@ -57,7 +59,7 @@ const CountdownSection: React.FC = () => {
 
   const paginate = (newDirection: number) => {
     setDirection(newDirection);
-    setCurrentIndex((prev) => (prev + newDirection + COUNTDOWN_EVENTS.length) % COUNTDOWN_EVENTS.length);
+    setCurrentIndex((prev) => (prev + newDirection + EVENT.length) % EVENT.length);
   };
 
   const variants = {
@@ -81,8 +83,6 @@ const CountdownSection: React.FC = () => {
     <section className="relative py-10 overflow-hidden min-h-[800px] flex items-center">
       <div className="absolute inset-0 bg-linear-to-t from-black/80 via-black/40 to-black"></div>
       {/* Background with Fade Transition */}
-
-
       <div className="absolute inset-0 z-0">
         <video
           src="https://qolo99gl9iwxsw5k.public.blob.vercel-storage.com/video-web-triton.mp4"
@@ -99,8 +99,6 @@ const CountdownSection: React.FC = () => {
       <div className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8 relative z-10 w-full">
         <div className="relative">
           {/* Navigation Arrows */}
-
-
           <AnimatePresence initial={false} custom={direction} mode="wait">
             <motion.div
               key={currentEvent.id}
@@ -113,7 +111,8 @@ const CountdownSection: React.FC = () => {
                 x: { type: "spring", stiffness: 300, damping: 30 },
                 opacity: { duration: 0.2 }
               }}
-              className="flex flex-col lg:flex-row items-center gap-8 lg:gap-16 bg-black-900/70 backdrop-blur-xl p-6 md:p-10 lg:p-12 rounded-4xl border border-white/10 shadow-[0_0_50px_rgba(0,0,0,0.5)]"
+              className="flex flex-col lg:flex-row items-center gap-8 lg:gap-16 bg-black-900/70 backdrop-blur-xl 
+              p-6 md:p-10 lg:p-12 rounded-4xl border border-white/10 shadow-[0_0_50px_rgba(0,0,0,0.5)]"
             >
               {/* Text Content */}
               <div className="">
@@ -131,7 +130,8 @@ const CountdownSection: React.FC = () => {
                   <h2 className="text-3xl md:text-5xl text-triton-red font-bold">{currentEvent.subtitle}</h2>
                 </div>
 
-                <div className="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4 text-gray-400 font-bold uppercase tracking-widest text-sm md:text-base">
+                <div className="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4
+                min-w-sm text-gray-400 font-bold uppercase tracking-widest text-sm md:text-base">
                   <div className="flex items-center gap-2">
                     <MapPin size={18} className="text-triton-red" />
                     {currentEvent.location}
@@ -145,15 +145,6 @@ const CountdownSection: React.FC = () => {
                     <span>Register</span>
                     <ArrowRight size={18} />
                   </button>
-
-                  <Link
-                    //href={currentEvent.href}
-                    href="#"
-                    className="bg-white hover:bg-triton-red text-black hover:text-white font-black py-2  px-4 md:px-10 rounded-none flex items-center justify-center gap-3 uppercase tracking-widest transition-all duration-300"
-                  >
-                    <span>Website</span>
-                    <ArrowRight size={18} />
-                  </Link>
                 </div>
               </div>
 
@@ -169,21 +160,7 @@ const CountdownSection: React.FC = () => {
             </motion.div>
           </AnimatePresence>
 
-          {/* Mobile Navigation */}
-          <div className="flex justify-center gap-4 mt-8 md:hidden">
-            <button
-              onClick={() => paginate(-1)}
-              className="p-4 rounded-full bg-neutral-900 border border-white/10 text-white"
-            >
-              <ChevronLeft size={24} />
-            </button>
-            <button
-              onClick={() => paginate(1)}
-              className="p-4 rounded-full bg-neutral-900 border border-white/10 text-white"
-            >
-              <ChevronRight size={24} />
-            </button>
-          </div>
+
         </div>
       </div>
 
