@@ -1,7 +1,7 @@
 import React from "react";
 import RankingPageClient from "./RankingPageClient";
 import Navbar from "../components/Navbar";
-import HeadLine from "../ui/HeadLine";
+import Heading from "../ui/Heading";
 import { ApiRankingRepo } from "@/repositories/ApiRankingRepo";
 import { fetchDetails, fetchGeneralRanking, fetchLeaderboard } from "@/services/RankingService";
 import HallOfFame from "./HallOfFame";
@@ -109,7 +109,7 @@ export default async function RankingPage() {
         <section className="relative w-full overflow-hidden my-10 group bg-triton-gray py-15">
           {/* Background Image with Creative Effects */}
 
-          <HeadLine text1="GLOBAL RANKING" text2="TWS Global Standings" />
+          <Heading text1="GLOBAL RANKING" text2="TWS Global Standings" />
 
 
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">

@@ -4,9 +4,8 @@ import tritonLogo from "@/public/images/triton-ws-logo-01.png";
 import Image from "next/image";
 import NavButton from "@/app/ui/NavButton";
 import { useState, useEffect } from "react";
-import Link from "next/link";
 
-const EventNavBar = () => {
+const Navbar = () => {
     const [isOpen, setIsOpen] = useState(false);
     const [isScrolled, setIsScrolled] = useState(false);
 
@@ -21,11 +20,10 @@ const EventNavBar = () => {
     const toggleMenu = () => setIsOpen(!isOpen);
 
     const navLinks = [
-        { name: "About", href: "#formats" },
+        { name: "Schedule", href: "#schedule" },
         { name: "Global Ranking", href: "#ranking" },
-        { name: "Course", href: "#calendar" },
-        { name: "Calendar", href: "#calendar" },
-
+        { name: "Shop", href: "#shop" },
+        { name: "Triton App", href: "#shop" },
     ];
 
     return (
@@ -47,7 +45,7 @@ const EventNavBar = () => {
                         width={80}
                         height={40}
                         alt="Triton logo"
-                        className="w-auto h-12 md:h-22 mt-10"
+                        className="w-auto h-12 md:h-16"
                         priority
                     />
                 </div>
@@ -58,8 +56,7 @@ const EventNavBar = () => {
                         <a
                             key={link.name}
                             href={link.href}
-                            className="text-gray-300 hover:text-triton-red hover:bg-white/5 px-3 py-2 
-                            rounded-md text-sm font-bold uppercase transition-colors duration-300"
+                            className="text-gray-300 hover:text-triton-red hover:bg-white/5 px-3 py-2 rounded-md text-sm font-bold uppercase transition-colors duration-300"
                         >
                             {link.name}
                         </a>
@@ -68,7 +65,7 @@ const EventNavBar = () => {
 
                 {/* Desktop Buttons */}
                 <div className="hidden lg:flex items-center gap-4">
-                    <NavButton text="Live Results" href="#" />
+                    <NavButton text="Triton Global" href="#" />
                     <NavButton isRed text="Find a Race" href="#" />
                 </div>
 
@@ -76,8 +73,7 @@ const EventNavBar = () => {
                 <div className="md:hidden flex items-center">
                     <button
                         onClick={toggleMenu}
-                        className="inline-flex items-center justify-center p-2 rounded-md text-gray-400
-                         hover:text-white hover:bg-white/10 focus:outline-none transition-colors"
+                        className="inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-white hover:bg-white/10 focus:outline-none transition-colors"
                         aria-expanded="false"
                     >
                         <span className="sr-only">Open main menu</span>
@@ -90,8 +86,7 @@ const EventNavBar = () => {
                                 stroke="currentColor"
                                 aria-hidden="true"
                             >
-                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 
-                                6h16M4 12h16M4 18h16" />
+                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h16M4 18h16" />
                             </svg>
                         ) : (
                             <svg
@@ -120,14 +115,15 @@ const EventNavBar = () => {
                             key={link.name}
                             href={link.href}
                             onClick={() => setIsOpen(false)}
-                            className="text-white block px-3 py-2 text-2xl font-bold uppercase hover:text-triton-red transition-all duration-300 active:scale-95"
+                            className="text-white block px-3 py-2 text-2xl font-bold uppercase hover:text-triton-red 
+                            transition-all duration-300 active:scale-95"
                         >
                             {link.name}
                         </a>
                     ))}
                     <div className="mt-8 flex flex-col items-center gap-6 w-full max-w-xs">
-                        <NavButton text="Live Results" href="/live-results" className="w-full" />
-                        <NavButton isRed text="Find a Race" href="/triton-events" className="w-full" />
+                        <NavButton text="Triton Global" href="/live-results" className="w-full" />
+                        <NavButton isRed text="Race Guide" href="/triton-events" className="w-full" />
                     </div>
                 </div>
             </div>
@@ -135,6 +131,6 @@ const EventNavBar = () => {
     );
 };
 
-export default EventNavBar;
+export default Navbar;
 
 

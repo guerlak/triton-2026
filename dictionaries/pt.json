@@ -223,5 +223,204 @@
   "community_section": {
     "title": "Englobando Toda a Comunidade",
     "description": "Falamos com o triatleta, o nadador, o ciclista, o corredor e aqueles que buscam novos desafios. Somos um movimento que inova a experiência esportiva."
+  },
+  "schedule_section": {
+    "title": "CRONOGRAMA",
+    "subtitle": "Planeje sua jornada",
+    "days": [
+      {
+        "id": "thursday",
+        "date": "20 Ago",
+        "title": "Quinta-feira",
+        "subtitle": "Entrega de Kits",
+        "events": [
+          {
+            "time": "08:00 – 19:00",
+            "title": "ENTREGA DE KITS",
+            "description": "Secretaria da Prova",
+            "location": "A definir"
+          }
+        ]
+      },
+      {
+        "id": "friday",
+        "date": "21 Ago",
+        "title": "Sexta-feira",
+        "subtitle": "DIA DE PROVA 1 - A NATAÇÃO",
+        "events": [
+          {
+            "time": "12:00 – 18:00",
+            "title": "Secretaria da Prova (Sala Araras)",
+            "location": "Portobello Resort"
+          },
+          {
+            "time": "15:00",
+            "title": "Abertura Oficial da “Arena TRITON”",
+            "location": "Portobello Resort"
+          },
+          {
+            "time": "15:15 – 15:30",
+            "title": "Alinhamento para Largada da Natação",
+            "location": "Praia do Portobello Resort"
+          },
+          {
+            "time": "15:33",
+            "title": "Largada Natação SPRINT"
+          },
+          {
+            "time": "15:36",
+            "title": "Largada Natação MIDDLE"
+          },
+          {
+            "time": "15:39",
+            "title": "Largada Natação LONG"
+          },
+          {
+            "isCutoff": true,
+            "title": "TEMPOS DE CORTE",
+            "details": [
+              {
+                "label": "SPRINT",
+                "value": "40 min"
+              },
+              {
+                "label": "MIDDLE",
+                "value": "80 min"
+              },
+              {
+                "label": "LONG",
+                "value": "120 min"
+              }
+            ]
+          },
+          {
+            "time": "17:00 – 18:00",
+            "title": "Cerimônia de Premiação da Natação",
+            "location": "Arena TRITON – Portobello Resort"
+          }
+        ]
+      },
+      {
+        "id": "saturday",
+        "date": "22 Ago",
+        "title": "Sábado",
+        "subtitle": "DIA DE PROVA 2 – O CICLISMO",
+        "events": [
+          {
+            "time": "06:00 – 07:30",
+            "title": "Entrega de Kits Ciclismo + Bag Drop",
+            "description": "Para quem não retirou na sexta-feira",
+            "location": "Parque de Exposições de Mangaratiba (EXPO)"
+          },
+          {
+            "time": "06:30 – 07:45",
+            "title": "Alinhamento para Largada do Ciclismo",
+            "location": "Serra do Piloto em frente ao Parque de Exposições de Mangaratiba (EXPO)"
+          },
+          {
+            "time": "08:00",
+            "title": "Largada do Ciclismo",
+            "location": "Serra do Piloto em frente ao Parque de Exposições de Mangaratiba (EXPO)"
+          },
+          {
+            "isCutoff": true,
+            "title": "TEMPOS DE CORTE",
+            "details": [
+              {
+                "label": "SPRINT",
+                "value": "2h"
+              },
+              {
+                "label": "MIDDLE",
+                "value": "4h"
+              },
+              {
+                "label": "LONG",
+                "value": "6h"
+              }
+            ]
+          },
+          {
+            "time": "08:30",
+            "title": "Abertura da Arena TRITON",
+            "location": "Portobello Resort"
+          },
+          {
+            "time": "15:00 – 16:00",
+            "title": "Corrida Kids",
+            "location": "Portobello Resort"
+          },
+          {
+            "time": "16:00 – 17:00",
+            "title": "Cerimônia de Premiação do Ciclismo",
+            "location": "Arena TRITON – Portobello Resort"
+          },
+          {
+            "time": "17:00 – 18:30",
+            "title": "TRITON Talks",
+            "location": "Arena TRITON – Portobello Resort"
+          }
+        ]
+      },
+      {
+        "id": "sunday",
+        "date": "23 Ago",
+        "title": "Domingo",
+        "subtitle": "DIA DE PROVA 3 - A CORRIDA",
+        "events": [
+          {
+            "time": "06:00 – 06:45",
+            "title": "Entrega de Kits Corrida + Bag Drop",
+            "description": "Para quem não retirou anteriormente",
+            "location": "Portobello Resort"
+          },
+          {
+            "time": "07:00",
+            "title": "Largada da Corrida",
+            "location": "Portobello Resort"
+          },
+          {
+            "isCutoff": true,
+            "title": "TEMPOS DE CORTE",
+            "details": [
+              {
+                "label": "SPRINT",
+                "value": "1h15"
+              },
+              {
+                "label": "MIDDLE",
+                "value": "2h30"
+              },
+              {
+                "label": "LONG",
+                "value": "3h45"
+              }
+            ]
+          },
+          {
+            "time": "09:00 – 10:30",
+            "title": "Show ao Vivo (Arena TRITON)"
+          },
+          {
+            "time": "10:50 – 11:50",
+            "title": "Cerimônia de Premiação da Corrida"
+          },
+          {
+            "time": "12:00 – 13:00",
+            "title": "Premiação Geral TRITON 3"
+          },
+          {
+            "time": "13:00 – 14:00",
+            "title": "Premiação por Faixa Etária TRITON",
+            "location": "Arena TRITON – Portobello Resort"
+          },
+          {
+            "time": "15:00",
+            "title": "Encerramento Final"
+          }
+        ]
+      }
+    ],
+    "important_note": "Nota Importante: Todo o cronograma está sujeito a alterações sem aviso prévio devido a circunstâncias imprevistas. Os horários e a ordem de largada também podem ser ajustados. Por favor, verifique o programa da prova regularmente para se manter informado sobre quaisquer atualizações de última hora."
   }
 }

@@ -1,26 +1,5 @@
 {
-  "navigation": [
-    {
-      "name": "The Movement",
-      "href": "#about"
-    },
-    {
-      "name": "Formats",
-      "href": "#formats"
-    },
-    {
-      "name": "Calendar",
-      "href": "#calendar"
-    },
-    {
-      "name": "Locations",
-      "href": "#locations"
-    },
-    {
-      "name": "Community",
-      "href": "#community"
-    }
-  ],
+
   "sign_up": "Sign Up",
   "market_stats": [
     {
@@ -224,5 +203,204 @@
   "community_section": {
     "title": "Embracing the Entire Community",
     "description": "We speak to the triathlete, the swimmer, the cyclist, the runner, and those seeking new challenges. We are a movement that innovates the sports experience."
+  },
+  "schedule_section": {
+    "title": "SCHEDULE",
+    "subtitle": "Planning your journey",
+    "days": [
+      {
+        "id": "thursday",
+        "date": "Aug 20th",
+        "title": "Thursday",
+        "subtitle": "Registration",
+        "events": [
+          {
+            "time": "8:00 am – 7:00 pm",
+            "title": "RACE KIT PICK-UP",
+            "description": "Race Office",
+            "location": "TBC"
+          }
+        ]
+      },
+      {
+        "id": "friday",
+        "date": "Aug 21st",
+        "title": "Friday",
+        "subtitle": "RACE DAY 1 - THE SWIM",
+        "events": [
+          {
+            "time": "12:00 pm – 6:00 pm",
+            "title": "Race Office (Araras Room)",
+            "location": "Portobello Resort"
+          },
+          {
+            "time": "3:00 pm",
+            "title": "Official Opening of the “TRITON Arena”",
+            "location": "Portobello Resort"
+          },
+          {
+            "time": "3:15 pm – 3:30 pm",
+            "title": "Swim Start Line Staging",
+            "location": "Beach at Portobello Resort"
+          },
+          {
+            "time": "3:33 pm",
+            "title": "SPRINT Swim Start"
+          },
+          {
+            "time": "3:36 pm",
+            "title": "MIDDLE Swim Start"
+          },
+          {
+            "time": "3:39 pm",
+            "title": "LONG Swim Start"
+          },
+          {
+            "isCutoff": true,
+            "title": "CUT-OFF TIMES",
+            "details": [
+              {
+                "label": "SPRINT",
+                "value": "40 min"
+              },
+              {
+                "label": "MIDDLE",
+                "value": "80 min"
+              },
+              {
+                "label": "LONG",
+                "value": "120 min"
+              }
+            ]
+          },
+          {
+            "time": "5:00 pm – 6:00 pm",
+            "title": "Swim Awards Ceremony",
+            "location": "TRITON Arena – Portobello Resort"
+          }
+        ]
+      },
+      {
+        "id": "saturday",
+        "date": "Aug 22nd",
+        "title": "Saturday",
+        "subtitle": "RACE DAY 2 – THE BIKE",
+        "events": [
+          {
+            "time": "6:00 am – 7:30 am",
+            "title": "Bike Race Kit Pick-up + Bag Drop",
+            "description": "For those who didn't pick up on Friday",
+            "location": "Mangaratiba Exhibition Park (EXPO)"
+          },
+          {
+            "time": "6:30 am – 7:45 am",
+            "title": "Bike Start Line Staging",
+            "location": "Serra do Piloto in front of the Mangaratiba Exhibition Park (EXPO)"
+          },
+          {
+            "time": "8:00 am",
+            "title": "Bike Race Start",
+            "location": "Serra do Piloto in front of the Mangaratiba Exhibition Park (EXPO)"
+          },
+          {
+            "isCutoff": true,
+            "title": "CUT-OFF TIMES",
+            "details": [
+              {
+                "label": "SPRINT",
+                "value": "2h"
+              },
+              {
+                "label": "MIDDLE",
+                "value": "4h"
+              },
+              {
+                "label": "LONG",
+                "value": "6h"
+              }
+            ]
+          },
+          {
+            "time": "8:30 am",
+            "title": "TRITON Arena Opens",
+            "location": "Portobello Resort"
+          },
+          {
+            "time": "3:00 pm – 4:00 pm",
+            "title": "Kids Race",
+            "location": "Portobello Resort"
+          },
+          {
+            "time": "4:00 pm – 5:00 pm",
+            "title": "Bike Awards Ceremony",
+            "location": "TRITON Arena – Portobello Resort"
+          },
+          {
+            "time": "5:00 pm – 6:30 pm",
+            "title": "TRITON Talks",
+            "location": "TRITON Arena – Portobello Resort"
+          }
+        ]
+      },
+      {
+        "id": "sunday",
+        "date": "Aug 23rd",
+        "title": "Sunday",
+        "subtitle": "RACE DAY 3 - THE RUN",
+        "events": [
+          {
+            "time": "6:00 am – 6:45 am",
+            "title": "Run Race Kit Pick-up + Bag Drop",
+            "description": "For those who didn't pick up previously",
+            "location": "Portobello Resort"
+          },
+          {
+            "time": "7:00 am",
+            "title": "Run Race Start",
+            "location": "Portobello Resort"
+          },
+          {
+            "isCutoff": true,
+            "title": "CUT-OFF TIMES",
+            "details": [
+              {
+                "label": "SPRINT",
+                "value": "1h15"
+              },
+              {
+                "label": "MIDDLE",
+                "value": "2h30"
+              },
+              {
+                "label": "LONG",
+                "value": "3h45"
+              }
+            ]
+          },
+          {
+            "time": "09:00 am – 10:30 am",
+            "title": "Live Show (Arena TRITON)"
+          },
+          {
+            "time": "10:50 am – 11:50 am",
+            "title": "Run Awards Ceremony"
+          },
+          {
+            "time": "12:00 pm – 1:00 pm",
+            "title": "Overall TRITON Award"
+          },
+          {
+            "time": "1:00 pm – 2:00 pm",
+            "title": "TRITON Age Group Awards",
+            "location": "TRITON Arena – Portobello Resort"
+          },
+          {
+            "time": "3:00 pm",
+            "title": "Final Closing"
+          }
+        ]
+      }
+    ],
+    "important_note": "Important Note: All schedules are subject to change without prior notice due to unforeseen circumstances. Race start times and start order may also be adjusted. Please check the race program regularly to stay informed of any last-minute updates."
   }
 }

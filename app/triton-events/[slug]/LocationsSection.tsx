@@ -55,12 +55,12 @@ const LocationsSection: React.FC = () => {
               </h4>
             </div>
           </div>
-          <div className="text-left p-4 md:p-0">
+          <div className="text-left p-4 md:p-0 text-gray-300">
             <h1 className="text-2xl uppercase font-black mb-2">
               {dict.locations_section.resort.title}
             </h1>
             <h2>{dict.locations_section.resort.description}</h2>
-            <ul className="space-y-2 text-gray-300 mb-8 mt-4">
+            <ul className="space-y-2  mb-8 mt-4">
               <li className="flex items-center">
                 <span className="w-2 h-2 bg-triton-red rounded-full mr-3"></span>
                 {dict.locations_section.resort.list_1}

@@ -1,18 +1,29 @@
-import FormatsSection from "@/app/components/FormatsSection";
+import FormatsSection from "@/app/triton-events/[slug]/FormatsSection";
 import LocationsSection from "./LocationsSection";
 import CountdownSectionEvent from "./CountDownSectionEvent";
 import EventNavBar from "./EventNavBar";
 import InfoSection from "./InfoSection";
+import ScheduleSection from "./ScheduleSection";
+import Testimonials from "@/app/components/Testimonials";
+import NewsletterSection from "@/app/components/NewsletterSection";
+import PartnersSection from "@/app/components/PartnersSection";
+import ShopSection from "@/app/components/ShopSection";
 
 export default function Page() {
   return (
-    <div>
+    <>
       <EventNavBar />
-      <CountdownSectionEvent />
-      <InfoSection />
-      <FormatsSection />
-      <LocationsSection />
-
-    </div>
+      <main className="text-white">
+        <InfoSection />
+        <CountdownSectionEvent />
+        <FormatsSection />
+        <LocationsSection />
+        <ScheduleSection />
+        <Testimonials />
+        <ShopSection />
+        <NewsletterSection />
+        <PartnersSection />
+      </main>
+    </>
   );
 }

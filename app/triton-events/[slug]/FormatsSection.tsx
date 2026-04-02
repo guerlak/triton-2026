@@ -9,9 +9,8 @@ import runMap from "../../public/images/maps/corrida-triton3-rj-2026.jpg";
 import swimMap from "../../public/images/maps/natacao-triton3-rj-2026.png";
 import bikeMap from "../../public/images/maps/ciclismo-triton3-rj-2026.jpg";
 
-import dict from "../../dictionaries/en.json";
-import { motion, AnimatePresence } from "framer-motion";
-import { Calendar, Clock, Trophy, Map as MapIcon, ChevronRight } from "lucide-react";
+import dict from "../../../dictionaries/en.json";
+import { motion } from "framer-motion";
 import Script from "next/script";
 
 const FormatTable: React.FC<{ distances: any[] }> = ({ distances }) => (
@@ -121,9 +120,37 @@ const FormatsSection: React.FC = () => {
             />
           </div>
 
-          <div className={`bg-white/5 text-white block w-full h-full ${activeTab === "2" ? "block" : "hidden"}`}>2</div>
+          <div className={`bg-white/5 text-white block w-full h-full ${activeTab === "2" ? "block" : "hidden"}`}>
+            <div
+              className="strava-embed-placeholder w-full h-full"
+              data-full-width="true"
+              data-embed-type="route"
+              data-embed-id="3321031030011067804"
+              data-style="standard"
+              data-terrain="3d"
+              data-from-embed="true"
+            ></div>
+            <Script
+              id="strava-script"
+              src="https://strava-embeds.com/embed.js"
+            />
+          </div>
 
-          <div className={`bg-white/5 text-white block w-full h-full ${activeTab === "3" ? "block" : "hidden"}`}>3</div>
+          <div className={`bg-white/5 text-white block w-full h-full ${activeTab === "3" ? "block" : "hidden"}`}>
+            <div
+              className="strava-embed-placeholder w-full h-full"
+              data-full-width="true"
+              data-embed-type="route"
+              data-embed-id="3321032819934834822"
+              data-style="standard"
+              data-terrain="3d"
+              data-from-embed="true"
+            ></div>
+            <Script
+              id="strava-script"
+              src="https://strava-embeds.com/embed.js"
+            />
+          </div>
 
 
         </div>

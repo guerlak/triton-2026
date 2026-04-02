@@ -19,16 +19,16 @@ const TritonExperienceCards: React.FC = () => {
     <section className="py-12 bg-triton-dark overflow-hidden relative" id="formats">
       <div className="text-center mb-16">
         <h2 className="text-triton-red font-bold tracking-widest uppercase mb-2 text-lg">
-          Train . Race . Repeat
+          the future of triathlon racing
         </h2>
-        <h3 className="text-3xl md:text-5xl font-black uppercase text-white leading-tight">
+        <h3 className="text-3xl md:text-5xl font-black uppercase text-white leading-tight ">
           NOT YOUR ORDINARY TRIATHLON SERIES
         </h3>
         <p className="text-gray-400 max-w-5xl mx-auto text-lg mt-4 px-8">
-          Built to unlock your best version, under the conviction that everyone is an athlete and that your mind is stronger
-          than your body. With two race formats, <strong>TRITON 1</strong> and <strong>TRITON 3</strong>, each offering three distances to choose from at every race,
-          a global ranking competition, and a championship event hosting three distances, <strong>TRITON</strong> is the future of triathlon racing
-          and training — all under one brand and platform.
+          <strong>TRITON</strong> is built on 2 race formats, <strong>TRITON 1</strong> and <strong>TRITON 3</strong>.
+          Both offer 3 distances to choose from. Both score points for the Global Ranking Points Competition.
+          Both qualify for the Championship event, in all 3 distances.  <strong>TRITON</strong> is the future of triathlon racing, and training - all under one brand and one platform.
+
         </p>
       </div>
 

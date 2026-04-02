@@ -1,4 +1,5 @@
 import { MARKET_STATS, DEMOGRAPHICS_STATS } from "@/constants";
+import { Trophy } from "lucide-react";
 
 export default function InfoSection() {
   return (
@@ -8,8 +9,7 @@ export default function InfoSection() {
         <div className="text-center mb-16">
           <h2 className="text-triton-red font-bold tracking-widest uppercase mb-2">O Mercado</h2>
           <h3 className="text-3xl md:text-5xl font-black uppercase text-white leading-tight">
-            Tendência Global de<br />
-            Estilo de Vida & Performance
+            Tendência Global de Estilo de Vida & Performance
           </h3>
         </div>
 
@@ -27,24 +27,28 @@ export default function InfoSection() {
         </div>
 
         {/* Demographics Banner */}
-        <div className="bg-linear-to-r from-neutral-900 to-neutral-800 rounded-2xl p-8 md:p-12 border-l-4 border-triton-red shadow-2xl">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-            <div>
+        <div className="bg-linear-to-r from-neutral-900 to-neutral-950 rounded-2xl p-8 md:p-12 border-l-4 border-triton-red
+         shadow-2xl">
+          <div className="grid grid-cols-1 lg:grid-cols-5 gap-12 items-center">
+            <div className="col-span-3">
               <h3 className="text-3xl font-black uppercase text-white mb-4">Impulsionado por um Público Qualificado</h3>
               <p className="text-gray-300 text-lg leading-relaxed">
                 O Triathlon segue sendo uma tendência global. Nossos atletas não buscam apenas competição, mas um estilo de vida premium que une viagens, equipamentos de ponta e networking.
               </p>
             </div>
-            <div className="grid grid-cols-1 sm:grid-cols-3 gap-6">
-              {DEMOGRAPHICS_STATS.map((stat, index) => (
-                <div key={index} className="flex flex-col items-center justify-center p-4">
-                  <stat.icon className="text-triton-red mb-3 w-8 h-8" />
-                  <span className="text-3xl font-black text-white">{stat.value}</span>
-                  <span className="text-xs font-bold text-gray-400 uppercase text-center mt-1">{stat.label}</span>
-                </div>
-              ))}
+
+            <div className="flex flex-col items-center justify-center p-4">
+              <Trophy className="text-triton-red mb-3 w-8 h-8" />
+              <span className="text-3xl font-black text-white">exemplo</span>
+              <span className="text-xs font-bold text-gray-400 uppercase text-center mt-1">label</span>
+            </div>
+            <div className="flex flex-col items-center justify-center p-4">
+              <Trophy className="text-triton-red mb-3 w-8 h-8" />
+              <span className="text-3xl font-black text-white">exemplo</span>
+              <span className="text-xs font-bold text-gray-400 uppercase text-center mt-1">label</span>
             </div>
           </div>
+
         </div>
       </div>
     </section >

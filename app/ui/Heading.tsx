@@ -1,13 +1,12 @@
-import React from "react";
 
-interface HeadLineProps {
+interface HeadingProps {
     text1: string;
     text2: string;
 }
 
-export default function HeadLine({ text1, text2 }: HeadLineProps) {
+export default function Heading({ text1, text2 }: HeadingProps) {
     return (
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 flex flex-col items-center">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col items-center">
             <h2 className="text-triton-red font-bold tracking-widest uppercase mb-2 font-sans">
                 {text1}
             </h2>

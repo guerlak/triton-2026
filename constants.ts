@@ -2,26 +2,26 @@ import { Distance, CalendarEvent, Stat, TestimonialProps } from "./types";
 import { Trophy, CircleStar } from "lucide-react";
 
 export const NAVIGATION_LINKS = [
-  { name: "O Movimento", href: "#about" },
-  { name: "Formatos", href: "#formats" },
-  { name: "Calendário", href: "#calendar" },
-  { name: "Destinos", href: "#locations" },
-  { name: "Comunidade", href: "#community" },
+  { name: "The Movement", href: "#about" },
+  { name: "Formats", href: "#formats" },
+  { name: "Calendar", href: "#calendar" },
+  { name: "Locations", href: "#locations" },
+  { name: "Community", href: "#community" },
 ];
 
 export const MARKET_STATS: Stat[] = [
-  { value: "3", label: "dias", description: "de estratégia e superação" },
+  { value: "3", label: "days", description: "of strategy and overcoming" },
   {
     value: "3",
-    label: "modalidades",
-    description: "Natação - Ciclismo - Corrida",
+    label: "modalities",
+    description: "Swimming - Cycling - Running",
   },
-  { value: "3", label: "distâncias", description: "Sprint - Middle - Long" },
+  { value: "3", label: "distances", description: "Sprint - Middle - Long" },
 ];
 
 export const DEMOGRAPHICS_STATS = [
-  { value: "Pontue", label: "para o ranking global", icon: Trophy },
-  { value: "Conquiste", label: "sua vaga pra final mundial", icon: CircleStar },
+  { value: "Score", label: "for the global ranking", icon: Trophy },
+  { value: "Win", label: "your spot for the world final", icon: CircleStar },
 ];
 
 export const TRITON_1_DISTANCES: Distance[] = [
@@ -38,8 +38,8 @@ export const TRITON_3_DISTANCES: Distance[] = [
 
 export const TRITON_FORMATO: Distance[] = [
   { name: "TRIATHLON", swim: "1000m", bike: "30 km", run: "10 km" },
-  { name: "REVEZAMENTO", swim: "2000m", bike: "60 km", run: "20 km" },
-  { name: "INDIVIUAL", swim: "3000m", bike: "90 km", run: "30 km" },
+  { name: "RELAY", swim: "2000m", bike: "60 km", run: "20 km" },
+  { name: "INDIVIDUAL", swim: "3000m", bike: "90 km", run: "30 km" },
 ];
 
 export const EVENTS: CalendarEvent[] = [

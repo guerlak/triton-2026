@@ -8,7 +8,7 @@ const ShopSection: React.FC = () => {
   return (
     <section
       id="shop"
-      className="overflow-hidden bg-black flex flex-col md:flex-row max-w-[1300] mx-auto py-10 md:py-20 gap-5"
+      className="overflow-hidden bg-black flex flex-col md:flex-row justify-center items-center py-10 md:py-20 gap-5"
     >
       <div className="md:max-w-1/2 px-4 sm:px-6 lg:px-8">
         <div className="relative rounded-4xl overflow-hidden group">

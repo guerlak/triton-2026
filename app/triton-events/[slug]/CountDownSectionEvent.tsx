@@ -57,10 +57,7 @@ const CountdownSection: React.FC = () => {
     return () => clearInterval(timer);
   }, [currentIndex]);
 
-  const paginate = (newDirection: number) => {
-    setDirection(newDirection);
-    setCurrentIndex((prev) => (prev + newDirection + EVENT.length) % EVENT.length);
-  };
+
 
   const variants = {
     enter: (direction: number) => ({
@@ -80,7 +77,7 @@ const CountdownSection: React.FC = () => {
   };
 
   return (
-    <section className="relative py-10 overflow-hidden min-h-[800px] flex items-center">
+    <section className="relative py-10 overflow-hidden min-h-[600px] flex items-center">
       <div className="absolute inset-0 bg-linear-to-t from-black/80 via-black/40 to-black"></div>
       {/* Background with Fade Transition */}
       <div className="absolute inset-0 z-0">
@@ -93,6 +90,7 @@ const CountdownSection: React.FC = () => {
           className="w-full h-full object-cover opacity-70"
         />
         <div className="absolute inset-0 bg-linear-to-b from-black/80 via-black/40 to-black"></div>
+        <span className="absolute -top-70 -right-10 text-triton-red italic text-[900px] font-black opacity-25">3</span>
       </div>
 
 
@@ -159,8 +157,6 @@ const CountdownSection: React.FC = () => {
               </div>
             </motion.div>
           </AnimatePresence>
-
-
         </div>
       </div>
 

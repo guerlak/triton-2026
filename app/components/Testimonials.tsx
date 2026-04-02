@@ -31,7 +31,7 @@ const Testimonial = ({
               <h4 className="font-bold text-gray-200">{author}</h4>
             </div>
           </div>
-          <p className="text-base lg:text-lg italic mx-auto mb-4">"{quote}"</p>
+          <p className="text-base text-white/80 lg:text-lg italic mx-auto mb-4">"{quote}"</p>
 
           <div className="mt-auto flex justify-center w-full">
             <a
