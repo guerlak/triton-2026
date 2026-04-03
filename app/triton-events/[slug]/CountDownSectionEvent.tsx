@@ -4,6 +4,7 @@ import { Timer, ArrowRight, MapPin, ChevronLeft, ChevronRight } from "lucide-rea
 import Link from "next/link";
 import { motion, AnimatePresence } from "framer-motion";
 import { TimeUnit } from "../../components/TimeUnit";
+import RedLine from "@/app/ui/RedLine";
 
 
 //data fetch
@@ -77,7 +78,8 @@ const CountdownSection: React.FC = () => {
   };
 
   return (
-    <section className="relative py-10 overflow-hidden min-h-[600px] flex items-center">
+    <section className="relative py-10 overflow-hidden min-h-[400px] flex items-center">
+
       <div className="absolute inset-0 bg-linear-to-t from-black/80 via-black/40 to-black"></div>
       {/* Background with Fade Transition */}
       <div className="absolute inset-0 z-0">
@@ -90,7 +92,7 @@ const CountdownSection: React.FC = () => {
           className="w-full h-full object-cover opacity-70"
         />
         <div className="absolute inset-0 bg-linear-to-b from-black/80 via-black/40 to-black"></div>
-        <span className="absolute -top-70 -right-10 text-triton-red italic text-[900px] font-black opacity-25">3</span>
+        <span className="absolute -top-45 right-0 text-triton-red italic text-[500px] font-black opacity-25">3</span>
       </div>
 
 
@@ -114,28 +116,28 @@ const CountdownSection: React.FC = () => {
             >
               {/* Text Content */}
               <div className="">
-                <div className="inline-flex justify-center lg:justify-start items-center gap-2 px-4 py-1.5 rounded-full 
+                {/* <div className="inline-flex justify-center lg:justify-start items-center gap-2 px-4 py-1.5 rounded-full 
                 bg-triton-red/20 border border-triton-red/30 text-triton-red text-xs font-black uppercase 
                 tracking-widest mb-6">
                   <Timer size={14} className="animate-pulse" />
                   Coming Next
-                </div>
+                </div> */}
 
                 <div className="mb-4 text-center sm:text-left">
-                  <h3 className="text-4xl md:text-6xl font-black text-white uppercase leading-tight">
+                  {/* <h3 className="text-4xl md:text-4xl font-black text-white uppercase leading-tight">
                     {currentEvent.title}
-                  </h3>
-                  <h2 className="text-3xl md:text-5xl text-triton-red font-bold">{currentEvent.subtitle}</h2>
+                  </h3> */}
+                  <h2 className="text-3xl md:text-5xl text-triton-red font-bold">Rio de Janeiro</h2>
                 </div>
 
                 <div className="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4
                 min-w-sm text-gray-400 font-bold uppercase tracking-widest text-sm md:text-base">
                   <div className="flex items-center gap-2">
                     <MapPin size={18} className="text-triton-red" />
-                    {currentEvent.location}
+                    Portobello
                   </div>
                   <span className="hidden sm:block opacity-30">|</span>
-                  <div className="text-white">{currentEvent.date}</div>
+                  <div className="text-white">AGO 21 . 22 . 23</div>
                 </div>
 
                 <div className="mt-10 flex gap-4 justify-center lg:justify-start">

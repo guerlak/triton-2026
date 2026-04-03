@@ -20,8 +20,10 @@ const Navbar = () => {
     const toggleMenu = () => setIsOpen(!isOpen);
 
     const navLinks = [
+        { name: "Race Info", href: "#formats" },
         { name: "Schedule", href: "#schedule" },
-        { name: "Global Ranking", href: "#ranking" },
+        { name: "Travel", href: "#schedule" },
+        { name: "Global Ranking", href: "/ranking" },
         { name: "Shop", href: "#shop" },
         { name: "Triton App", href: "#shop" },
     ];
@@ -65,8 +67,8 @@ const Navbar = () => {
 
                 {/* Desktop Buttons */}
                 <div className="hidden lg:flex items-center gap-4">
-                    <NavButton text="Triton Global" href="#" />
-                    <NavButton isRed text="Find a Race" href="#" />
+                    <NavButton text="Triton Global" href="/" />
+                    <NavButton isRed text="Race Guide" href="/race-guide" />
                 </div>
 
                 {/* Mobile menu button */}

@@ -48,7 +48,7 @@ const ScheduleSection: React.FC = () => {
   };
 
   return (
-    <section id="schedule" className="py-20 bg-triton-dark overflow-hidden">
+    <section id="schedule" className="py-20 bg-black overflow-hidden">
       <div className="container mx-auto px-4 md:px-8 lg:px-16">
         <div className="text-center mb-16">
           <Heading text1={scheduleData.title} text2={scheduleData.subtitle} />
