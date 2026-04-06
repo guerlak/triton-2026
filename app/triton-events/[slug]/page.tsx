@@ -8,9 +8,7 @@ import Testimonials from "@/app/components/Testimonials";
 import NewsletterSection from "@/app/components/NewsletterSection";
 import PartnersSection from "@/app/components/PartnersSection";
 import ShopSection from "@/app/components/ShopSection";
-import Hero from "@/app/components/Hero";
 import HeroEvent from "./HeroEvent";
-import RedLine from "@/app/ui/RedLine";
 
 export default function Page() {
   return (

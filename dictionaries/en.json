@@ -123,28 +123,28 @@
         "picture_url": "",
         "picture_title": "Day 1",
         "title": "Swimming",
-        "description": "Held on the private beach of the Portobello Resort",
-        "date": "Date: August 21 (Friday)",
-        "start": "Start: 15:30",
+        "description": "The swim takes place at Portobello Resort beach, just a few meters from the race arena. The sheltered waters typically provide calm conditions and good visibility.",
+        "date": "August 21 (Friday)",
+        "start": "15:30",
         "award": "Award: 17:45"
       },
       "day_2": {
         "picture_url": "",
         "picture_title": "Day 2",
         "title": "Cycling",
-        "description": "Held on the emblematic and challenging Serra do Piloto. The concentration of the race takes place at the Mangaratiba (EXPO) Exhibition Park",
-        "date": "Date: August 22 (Saturday)",
-        "start": "Start: 08:00",
-        "award": "Award: 16:00"
+        "description": "The bike course takes place on Serra do Piloto, one of the most iconic cycling routes in Rio de Janeiro. The race starts in front of the Mangaratiba Exhibition Park (Expo area), where secure parking is available.",
+        "date": "August 22 (Saturday)",
+        "start": "08:00",
+        "award": "16:00"
       },
       "day_3": {
         "picture_url": "",
         "picture_title": "Day 3",
         "title": "Running",
-        "description": "Held within the Portobello condominium, this race starts from behind the resort heading to the safari. A cinematic route.",
-        "date": "Date: August 23 (Sunday)",
-        "start": "Start: 08:00",
-        "award": "Award: 11:00"
+        "description": "The run course starts and finishes at the event arena, located at Portobello Resort. The entire course takes place within the resort complex, offering a scenic and visually striking setting.",
+        "date": "August 23 (Sunday)",
+        "start": "08:00",
+        "award": "11:00"
       }
     },
     "distance": {

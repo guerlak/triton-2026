@@ -2,7 +2,7 @@
 import React from "react";
 import Image from "next/image";
 import fotoResort from "@/public/images/foto-portobelo-ampla.jpeg";
-import { MessageCircle, House, BedDouble, Plane, Car, MapPin, Navigation, Hotel, ShieldCheck, Infinity, ExternalLink, Compass, Utensils, Anchor, Palmtree, Waves } from "lucide-react";
+import { MessageCircle, House, BedDouble, Plane, Car, MapPin, Navigation, Hotel, ShieldCheck, ExternalLink, Compass, Utensils, Anchor, Palmtree, Waves } from "lucide-react";
 import touristCoast from "@/public/images/mangaratiba-coast.png";
 import dict from "../../../dictionaries/en.json";
 import Script from "next/script";
@@ -12,13 +12,15 @@ const LocationsSection: React.FC = () => {
     <section id="locations" className="py-24 bg-triton-dark overflow-hidden">
       <div className="text-center mb-20">
         <h2 className="text-triton-red font-bold tracking-[0.3em] uppercase mb-4 text-sm md:text-base">
-          Transform paradise into your experience
+          Travel smart. Race in paradise.
         </h2>
         <h3 className="text-4xl md:text-7xl font-black uppercase text-white leading-[0.9] italic mb-8">
-          {dict.locations_section.subtitle}
+          Travel & Destination
+
         </h3>
         <p className="text-gray-400 max-w-3xl mx-auto text-lg md:text-xl leading-relaxed">
-          {dict.locations_section.description}
+          Plan your trip and make the most of your TRITON experience. Discover how to get there, explore nearby airports, and find the best accommodation options around the race venue. Set in one of Brazil’s most stunning coastal locations, this is where world-class racing meets an unforgettable destination.
+
         </p>
       </div>
       {/* Intro Video Section */}

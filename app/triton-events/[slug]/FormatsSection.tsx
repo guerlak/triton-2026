@@ -95,7 +95,6 @@ const FormatsSection: React.FC = () => {
                 )}
                 <span className="relative z-20">
                   {tab === "1" ? "Swimming" : tab === "2" ? "Cycling" : "Running"}
-                  {/* <p className="text-[10px]">{tab === "1" ? "Day 1" : tab === "2" ? "Day 2" : "Day 3"}</p> */}
                 </span>
               </button>
             ))}
@@ -144,21 +143,7 @@ const FormatsSection: React.FC = () => {
                     </div>
                   </div>
                 </div>
-              </div>
 
-              {/* Right Column: Descriptions & available Distances (The "Graph" part) */}
-              <div className="flex flex-col justify-between space-y-6">
-                <div>
-                  <div className="flex items-center gap-3 mb-4">
-                    <MapPin className="text-triton-red" size={24} />
-                    <h4 className="text-2xl font-black uppercase italic text-white leading-none">
-                      {dict.format_section.toogles_content.day_1.title}
-                    </h4>
-                  </div>
-                  <p className="text-gray-400 text-base leading-relaxed mb-6">
-                    {dict.format_section.toogles_content.day_1.description}
-                  </p>
-                </div>
 
                 <div className="bg-white/5 p-6 rounded-2xl border border-white/10 space-y-6">
                   <div className="flex items-center gap-2 mb-2">
@@ -191,9 +176,30 @@ const FormatsSection: React.FC = () => {
                   </div>
                 </div>
               </div>
+              {/* Right Column: Descriptions & available Distances (The "Graph" part) */}
+              <div className="flex flex-col justify-between space-y-6">
+                <div>
+                  <div className="flex items-center gap-3 mb-4">
+                    <MapPin className="text-triton-red" size={24} />
+                    <h4 className="text-2xl font-black uppercase italic text-white leading-none">
+                      {dict.format_section.toogles_content.day_1.title}
+                    </h4>
+                  </div>
+                  <p className="text-gray-400 text-base leading-relaxed mb-6">
+                    {dict.format_section.toogles_content.day_1.description}
+                  </p>
+
+                  <p className="text-gray-400 text-base leading-relaxed mb-6">
+                    The swim takes place at Portobello Resort beach, just a few meters from the race arena. The sheltered waters typically provide calm conditions and good visibility.
+                    The race features a beach start and a lap-based course: SPRINT (1 lap), MIDDLE (2 laps), and LONG (3 laps). MIDDLE and LONG distances include Australian exits — MIDDLE (1x) and LONG (2x)
+                  </p>
+                </div>
+
+
+              </div>
             </div>
 
-            <div className="relative rounded-2xl overflow-hidden mb-6 border border-white/10 group">
+            <div className="relative rounded-2xl overflow-hidden mb-6 border border-white /10 group">
               <div
                 className="strava-embed-placeholder w-full h-[400px]"
                 data-full-width="true"
@@ -255,21 +261,6 @@ const FormatsSection: React.FC = () => {
                     </div>
                   </div>
                 </div>
-              </div>
-
-              {/* Right Column: Descriptions & available Distances (The "Graph" part) */}
-              <div className="flex flex-col justify-between space-y-6">
-                <div>
-                  <div className="flex items-center gap-3 mb-4">
-                    <MapPin className="text-triton-red" size={24} />
-                    <h4 className="text-2xl font-black uppercase italic text-white leading-none">
-                      {dict.format_section.toogles_content.day_2.title}
-                    </h4>
-                  </div>
-                  <p className="text-gray-400 text-base leading-relaxed mb-6">
-                    {dict.format_section.toogles_content.day_2.description}
-                  </p>
-                </div>
 
                 <div className="bg-white/5 p-6 rounded-2xl border border-white/10 space-y-6">
                   <div className="flex items-center gap-2 mb-2">
@@ -302,7 +293,39 @@ const FormatsSection: React.FC = () => {
                   </div>
                 </div>
               </div>
+
+              {/* Right Column: Descriptions & available Distances (The "Graph" part) */}
+              <div className="flex flex-col justify-between space-y-6">
+                <div>
+                  <div className="flex items-center gap-3 mb-4">
+                    <MapPin className="text-triton-red" size={24} />
+                    <h4 className="text-2xl font-black uppercase italic text-white leading-none">
+                      {dict.format_section.toogles_content.day_2.title}
+                    </h4>
+                  </div>
+                  <p className="text-gray-400 text-base leading-relaxed mb-6">
+                    {dict.format_section.toogles_content.day_2.description}
+                  </p>
+                  <div className="text-gray-400 text-base leading-relaxed mb-6">The bike course takes place on Serra do Piloto, one of the most iconic cycling routes in Rio de Janeiro. The race starts in front of the Mangaratiba Exhibition Park (Expo area), where secure parking is available.
+                    A support station with hydration and special needs is available in Macundu, approximately 18 km from the start.
+                    <ul className="list-disc list-inside mt-10">
+                      <li>Sprint turnaround: ~4.5 km after Macundu</li>
+                      <li>Middle & Long hydration: ~10 km after Macundu</li>
+                      <li>Middle & Long turnaround (Rio Claro): ~7.5 km after the hydration point</li>
+                      <li>Finish: ~3 km after Macundu (towards Mangaratiba)</li>
+                      <li>Neutralized descent: ~14 km</li>
+                      <li>Drafting allowed (TT bike prohibited)</li>
+                    </ul>
+                  </div>
+
+                </div>
+
+              </div>
+
+
             </div>
+
+
 
             <div className="relative rounded-2xl overflow-hidden mb-6 border border-white/10 group">
               <div
@@ -366,21 +389,6 @@ const FormatsSection: React.FC = () => {
                     </div>
                   </div>
                 </div>
-              </div>
-
-              {/* Right Column: Descriptions & available Distances (The "Graph" part) */}
-              <div className="flex flex-col justify-between space-y-6">
-                <div>
-                  <div className="flex items-center gap-3 mb-4">
-                    <MapPin className="text-triton-red" size={24} />
-                    <h4 className="text-2xl font-black uppercase italic text-white leading-none">
-                      {dict.format_section.toogles_content.day_3.title}
-                    </h4>
-                  </div>
-                  <p className="text-gray-400 text-base leading-relaxed mb-6">
-                    {dict.format_section.toogles_content.day_3.description}
-                  </p>
-                </div>
 
                 <div className="bg-white/5 p-6 rounded-2xl border border-white/10 space-y-6">
                   <div className="flex items-center gap-2 mb-2">
@@ -412,6 +420,25 @@ const FormatsSection: React.FC = () => {
                     ))}
                   </div>
                 </div>
+              </div>
+
+              {/* Right Column: Descriptions & available Distances (The "Graph" part) */}
+              <div className="flex flex-col justify-between space-y-6">
+                <div>
+                  <div className="flex items-center gap-3 mb-4">
+                    <MapPin className="text-triton-red" size={24} />
+                    <h4 className="text-2xl font-black uppercase italic text-white leading-none">
+                      {dict.format_section.toogles_content.day_3.title}
+                    </h4>
+                  </div>
+                  <p className="text-gray-400 text-base leading-relaxed mb-6">
+                    {dict.format_section.toogles_content.day_3.description}
+                  </p>
+
+                  <p className="text-gray-400 text-base leading-relaxed mb-6">The run course starts and finishes at the event arena, located at Portobello Resort. The entire course takes place within the resort complex, offering a scenic and visually striking setting.The course is lap-based: SPRINT (1 lap), MIDDLE (2 laps), and LONG (3 laps). Aid stations are available every 2.5 km, serving athletes in both directions.</p>
+
+                </div>
+
               </div>
             </div>
 

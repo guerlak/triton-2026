@@ -120,9 +120,7 @@ const HallOfFame = ({ athletes }: { athletes: HallOfFameAthlete[] }) => {
             <span className={`text-[10px] font-black uppercase tracking-[0.25em] ${accentText}`}>
               GLOBAL SERIES
             </span>
-            <span className="text-[10px] font-bold text-white/40 uppercase tracking-widest bg-white/5 px-2 py-0.5 rounded border border-white/5">
-              <CountryFlag countryCode={athlete.Nation} />
-            </span>
+            <CountryFlag countryCode={athlete.Nation} />
           </div>
 
           <h3 className="text-2xl font-black text-white uppercase leading-none mb-6 group-hover:text-triton-red transition-colors duration-300">
@@ -191,18 +189,11 @@ const HallOfFame = ({ athletes }: { athletes: HallOfFameAthlete[] }) => {
                     </h2>
                     <div className="flex items-center gap-4 mb-4">
                       {/* <div className={`h-[2px] w-12 ${accentText.replace('text-', 'bg-')}`} /> */}
-
                     </div>
                     <span className={`text-sm font-black uppercase tracking-[0.4em] text-triton-red`}>
                       2025 RANKING COMPETITION CHAMPIONS
                     </span>
-
                   </div>
-                  {/* <div className="max-w-xs md:text-right">
-                    <p className="text-gray-500 text-sm font-medium leading-relaxed uppercase tracking-wide">
-                      Crowned athletes of the global circuit representing the peak of the {label.toLowerCase()}'s division.
-                    </p>
-                  </div> */}
                 </div>
 
                 {/* Grid Layout */}

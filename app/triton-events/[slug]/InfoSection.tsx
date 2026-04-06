@@ -1,5 +1,17 @@
-import { MARKET_STATS } from "@/constants";
 import { Trophy } from "lucide-react";
+import { Stat } from "@/types";
+import Link from "next/link";
+
+export const MARKET_STATS: Stat[] = [
+  { value: "3", label: "consectutive days", description: "Swim - Fri / Bike - Sat / Run - Sun" },
+  {
+    value: "3",
+    label: "distances options",
+    description: "Sprint - Middle - Long",
+  },
+  { value: "3", label: "competition options", description: "Individual Triathlon / Corporate Relay / Individual Disciplines" },
+];
+
 
 export default function InfoSection() {
   return (
@@ -35,24 +47,19 @@ export default function InfoSection() {
         <div className="bg-linear-to-r from-neutral-900 to-neutral-950 rounded-2xl p-8 md:p-12 border-l-4 border-triton-red
          shadow-2xl">
           <div className="grid grid-cols-1 lg:grid-cols-5 gap-12 items-center">
-            <div className="col-span-3">
-              <h3 className="text-3xl font-black uppercase text-white mb-4">Impulsionado por um Público Qualificado</h3>
+            <div className="col-span-4">
+              <h3 className="text-3xl font-black uppercase text-white mb-4">INNOVATIVE SCORING SYSTEM</h3>
               <p className="text-gray-300 text-lg leading-relaxed">
-                O Triathlon segue sendo uma tendência global. Nossos atletas não buscam apenas competição, mas um estilo
-                de vida premium que une viagens, equipamentos de ponta e networking.
+                Each discipline carries equal weight, rewarding athletes who perform consistently across all three. This race also contributes points to the TRITON World global ranking and serves as a qualifying event for the World Championship.
               </p>
             </div>
 
-            <div className="flex flex-col items-center justify-center p-4">
+            <Link href="/ranking" className="flex flex-col items-center justify-center p-4">
               <Trophy className="text-triton-red mb-3 w-8 h-8" />
-              <span className="text-3xl font-black text-white">exemplo</span>
-              <span className="text-xs font-bold text-gray-400 uppercase text-center mt-1">label</span>
-            </div>
-            <div className="flex flex-col items-center justify-center p-4">
-              <Trophy className="text-triton-red mb-3 w-8 h-8" />
-              <span className="text-3xl font-black text-white">exemplo</span>
-              <span className="text-xs font-bold text-gray-400 uppercase text-center mt-1">label</span>
-            </div>
+              <span className="text-3xl font-black text-white">Global</span>
+              <span className="text-xs font-bold text-gray-400 uppercase text-center mt-1">Ranking</span>
+            </Link>
+
           </div>
 
         </div>

@@ -9,15 +9,6 @@ export const NAVIGATION_LINKS = [
   { name: "Community", href: "#community" },
 ];
 
-export const MARKET_STATS: Stat[] = [
-  { value: "3", label: "days", description: "of strategy and overcoming" },
-  {
-    value: "3",
-    label: "modalities",
-    description: "Swimming - Cycling - Running",
-  },
-  { value: "3", label: "distances", description: "Sprint - Middle - Long" },
-];
 
 export const DEMOGRAPHICS_STATS = [
   { value: "Score", label: "for the global ranking", icon: Trophy },

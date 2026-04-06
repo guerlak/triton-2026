@@ -58,30 +58,28 @@ const ScheduleSection: React.FC = () => {
         </div>
 
         {/* Day Tabs */}
-        <div className="flex flex-wrap justify-center gap-3 mb-16">
-          {scheduleData.days.map((day) => (
-            <button
-              key={day.id}
-              onClick={() => setActiveDay(day.id)}
-              className={`relative px-3 sm:px-8 py-4 rounded-xl font-black uppercase tracking-widest transition-all
-                 duration-300 ${activeDay === day.id
-                  ? "text-white"
-                  : "text-gray-500 hover:text-gray-300 bg-white/5"
-                }`}
-            >
-              {activeDay === day.id && (
-                <motion.div
-                  layoutId="activeTab"
-                  className="absolute inset-0 bg-triton-red rounded-xl shadow-[0_0_20px_rgba(223,31,38,0.4)]"
-                  transition={{ type: "spring", bounce: 0.2, duration: 0.6 }}
-                />
-              )}
-              <span className="relative z-10 block text-xs">{day.title}</span>
-              <span className="relative z-10 block text-[10px] opacity-70">
-                {day.date}
-              </span>
-            </button>
-          ))}
+        <div className="flex justify-center mb-16 px-4">
+          <div className="bg-white/5 backdrop-blur-xl p-1.5 rounded-2xl inline-flex border border-white/10 shadow-2xl relative overflow-hidden">
+            {scheduleData.days.map((day) => (
+              <button
+                key={day.id}
+                onClick={() => setActiveDay(day.id)}
+                className={`relative px-6 md:px-10 py-3 md:py-4 rounded-xl font-black uppercase tracking-widest transition-all duration-300 z-10 ${activeDay === day.id ? "text-white" : "text-gray-500 hover:text-white"}`}
+              >
+                {activeDay === day.id && (
+                  <motion.div
+                    layoutId="activeTabSchedule"
+                    className="absolute inset-0 bg-triton-red rounded-xl shadow-[0_0_30px_rgba(223,31,38,0.4)]"
+                    transition={{ type: "spring", bounce: 0.2, duration: 0.6 }}
+                  />
+                )}
+                <div className="relative z-20 flex flex-col items-center">
+                  <span className="text-xs md:text-sm">{day.title}</span>
+                  <span className="text-[10px] opacity-60 font-bold">{day.date}</span>
+                </div>
+              </button>
+            ))}
+          </div>
         </div>
 
         {/* Schedule Content */}

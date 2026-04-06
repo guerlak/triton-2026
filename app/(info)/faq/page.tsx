@@ -420,11 +420,11 @@ export default function FAQ() {
                                         <p className="text-gray-400 mb-6">All athletes must be capable of maintaining at least:</p>
                                         <div className="space-y-6">
                                             <div>
-                                                <p className="text-white font-bold mb-1 underline decoration-triton-red">Swim: 2:45 min / 100m</p>
+                                                <p className="text-white font-bold mb-1 underline decoration-triton-red">Swim: 3:30 min / 100m</p>
                                                 <p className="text-sm text-gray-500">Swim final cut-off: max swim time</p>
                                             </div>
                                             <div>
-                                                <p className="text-white font-bold mb-1 underline decoration-triton-red">Bike: 18 km/h average speed</p>
+                                                <p className="text-white font-bold mb-1 underline decoration-triton-red">Bike: 16 km / h average speed</p>
                                                 <p className="text-sm text-gray-500">Bike final cut-off: max swim time + 3 min transition 1 + max bike time</p>
                                             </div>
                                             <div>
