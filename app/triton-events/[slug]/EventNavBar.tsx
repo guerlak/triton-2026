@@ -30,7 +30,8 @@ const Navbar = () => {
 
     return (
         <nav
-            className={`fixed top-0 w-full z-50 transition-all duration-300 ${isScrolled || isOpen ? "bg-black/95 backdrop-blur-md" : "bg-transparent md:bg-black/80"
+            className={`fixed top-0 w-full z-50 transition-all duration-300 
+                ${isScrolled || isOpen ? "bg-black/95 backdrop-blur-md" : "bg-transparent md:bg-black/80"
                 } border-b border-white/10`}
         >
             <div className="flex justify-between items-center mx-auto px-4 sm:px-6 lg:px-30 h-20 max-w-[1600px]">

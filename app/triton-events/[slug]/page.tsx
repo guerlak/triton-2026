@@ -16,16 +16,13 @@ export default function Page() {
   return (
     <>
       <EventNavBar />
-
       <main className="text-white bg-black/90">
-
         <HeroEvent />
         <CountdownSectionEvent />
         <InfoSection />
         <FormatsSection />
         <ScheduleSection />
         <LocationsSection />
-
         <Testimonials />
         <ShopSection />
         <NewsletterSection />

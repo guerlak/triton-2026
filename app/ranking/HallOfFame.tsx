@@ -3,6 +3,7 @@
 import { motion, AnimatePresence } from "framer-motion";
 import { Trophy, Award, Zap, Activity, Timer } from "lucide-react";
 import Image from "next/image";
+import { CountryFlag } from "../utils/CountryFlag";
 
 type HallOfFameAthlete = {
   Bib: number,
@@ -120,7 +121,7 @@ const HallOfFame = ({ athletes }: { athletes: HallOfFameAthlete[] }) => {
               GLOBAL SERIES
             </span>
             <span className="text-[10px] font-bold text-white/40 uppercase tracking-widest bg-white/5 px-2 py-0.5 rounded border border-white/5">
-              {athlete.Nation}
+              <CountryFlag countryCode={athlete.Nation} />
             </span>
           </div>
 

@@ -1,10 +1,9 @@
 "use client";
 import { Athlete } from "@/model/ranking";
 
-import React, { useState, useMemo, useRef, useEffect } from "react";
+import { useState, useMemo } from "react";
 import {
   Search,
-  Trophy,
   MapPin,
   User,
   FilterX,
@@ -15,6 +14,7 @@ import Image from "next/image";
 import Modal from "../ui/Modal";
 import fotoUrl from "../../public/images/ranking-modal.png";
 import CustomSelect from "../components/CustomSelect";
+import { CountryFlag } from "../utils/CountryFlag";
 
 interface RankingPageClientProps {
   initialAthletes: Athlete[];
@@ -26,6 +26,7 @@ export default function RankingPageClient({ initialAthletes }: RankingPageClient
   const [contestFilter, setContestFilter] = useState("All");
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [selectedAthlete, setSelectedAthlete] = useState<Athlete | null>(null);
+
 
   // Extrair opções únicas para os filtros
   const contestOptions = useMemo(() => {
@@ -51,34 +52,10 @@ export default function RankingPageClient({ initialAthletes }: RankingPageClient
     setIsModalOpen(true);
   };
 
-  const renderFlag = (countryCode: string) => {
-    if (!countryCode) return null;
-    return (
-      <img
-        src={`https://flagcdn.com/w40/${countryCode.toLowerCase()}.png`}
-        alt={countryCode}
-        className="w-6 h-4 object-contain rounded-sm inline-block"
-      />
-    );
-  };
-
   return (
-    <div className="min-h-screen bg-neutral-950 text-white pb-20 pt-10 px-4 sm:px-6 lg:px-8">
+    <div className="  text-white pb-20 pt-10 px-4 sm:px-6 lg:px-8">
       {/* Page Header */}
       <div className="max-w-7xl mx-auto mb-12">
-        <div className="text-center md:text-left mb-10">
-          <div className="flex items-center justify-center md:justify-start gap-3 text-triton-red mb-4">
-            <Trophy className="w-8 h-8" />
-            <span className="font-black uppercase tracking-[0.3em] text-sm">Global Ranking</span>
-          </div>
-          <h1 className="text-5xl md:text-7xl font-black uppercase leading-none mb-6">
-            Leaderboard <span className="text-triton-red italic">2026</span>
-          </h1>
-          <p className="text-gray-400 max-w-2xl text-lg">
-            Complete ranking of all Triton World Series participants. Use the filters below to find athletes by name,
-            BIB number, category, or distance.
-          </p>
-        </div>
 
         {/* Filters Section */}
         <motion.div
@@ -201,7 +178,7 @@ export default function RankingPageClient({ initialAthletes }: RankingPageClient
                         <td className="py-5 px-4 font-mono text-xs text-gray-500">#{athlete.Bib}</td>
                         <td className="py-5 px-4">
                           <div className="flex items-center gap-3">
-                            {renderFlag(athlete.Country)}
+                            <CountryFlag countryCode={athlete.Country} />
                             <span className="font-bold text-white uppercase tracking-wider">{athlete.Name}</span>
                           </div>
                         </td>
@@ -257,7 +234,7 @@ export default function RankingPageClient({ initialAthletes }: RankingPageClient
 
               <div className="absolute bottom-0 left-0 p-8 w-full">
                 <div className="flex items-center gap-4 mb-3">
-                  {renderFlag(selectedAthlete.Country)}
+                  <CountryFlag countryCode={selectedAthlete.Country} />
                   <span className="text-triton-red font-black uppercase tracking-widest text-sm">
                     {selectedAthlete.Country} Athlete
                   </span>
