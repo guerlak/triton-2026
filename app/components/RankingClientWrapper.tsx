@@ -1,16 +1,15 @@
 "use client";
 import React, { useState } from "react";
-import { Gauge, ArrowRight, Trophy, MapPin, User, Hash, Flag } from "lucide-react";
+import { Gauge, ArrowRight, Trophy, MapPin, User, Hash, Flag, Plus } from "lucide-react";
 import { motion } from "framer-motion";
 import Image from "next/image";
 import Modal from "../ui/Modal";
 import fotoUrl from "../../public/images/ranking-modal.png";
 import { Athlete } from "../../model/ranking";
-import MainButton from "../ui/MainButton";
+import { CountryFlag } from "@/app/utils/CountryFlag";
 
 interface Props {
   initialAthletes: Athlete[];
-
 }
 
 const RankingClientWrapper: React.FC<Props> = ({ initialAthletes }) => {
@@ -28,16 +27,6 @@ const RankingClientWrapper: React.FC<Props> = ({ initialAthletes }) => {
     setIsModalOpen(true);
   };
 
-  const renderFlag = (countryCode: string) => {
-    if (!countryCode) return null;
-    return (
-      <img
-        src={`https://flagcdn.com/w40/${countryCode.toLowerCase()}.png`}
-        alt={countryCode}
-        className="w-6 h-4 object-contain rounded-sm inline-block"
-      />
-    );
-  };
 
   const renderTable = (athletes: Athlete[]) => {
     if (athletes.length === 0) return null;
@@ -65,20 +54,23 @@ const RankingClientWrapper: React.FC<Props> = ({ initialAthletes }) => {
               if (pos == 3) medalClass = "bg-amber-900 border border-amber-700 text-white rounded-full w-8 h-8 flex items-center justify-center mx-auto";
 
               return (
+
                 <tr key={athlete.Bib} onClick={() => handleEditClick(athlete)} className="cursor-pointer border-b border-white/5 hover:bg-white/5 transition-colors group">
                   <td className="py-4 px-6 text-center font-bold">
                     <span className={medalClass}>{pos}</span>
                   </td>
                   <td className="py-4 px-2">
-                    {renderFlag(athlete.Country)}
+                    {CountryFlag({ countryCode: athlete.Country })}
                     <span className="font-bold text-sm text-white ml-2">{athlete.Name}</span>
                   </td>
                   <td className="py-4 px-2 text-center font-black text-white">{athlete["Total Points"]}</td>
-                  <td className="py-4 px-6 text-right hidden md:block">
-                    <Gauge size={30} className="text-triton-red" />
+                  <td className="py-4 px-4 text-right hidden md:block">
+                    <div className="inline-flex items-center justify-center w-10 h-10 rounded-xl bg-triton-red/10 text-triton-red group-hover:bg-triton-red group-hover:text-white transition-all shadow-lg shadow-triton-red/0 group-hover:shadow-triton-red/20">
+                      <Plus size={20} />
+                    </div>
                   </td>
                 </tr>
-              );
+              )
             })}
           </tbody>
         </table>
@@ -133,7 +125,7 @@ const RankingClientWrapper: React.FC<Props> = ({ initialAthletes }) => {
 
               <div className="absolute bottom-0 left-0 p-8 w-full">
                 <div className="flex items-center gap-4 mb-3">
-                  {renderFlag(selectedAthlete.Country)}
+                  {CountryFlag({ countryCode: selectedAthlete.Country })}
                   <span className="text-triton-red font-black uppercase tracking-widest text-sm">
                     {selectedAthlete.Country} Athlete
                   </span>
@@ -213,8 +205,6 @@ const RankingClientWrapper: React.FC<Props> = ({ initialAthletes }) => {
                   ))}
                 </div>
               </div>
-
-              {/* National Standing Footer */}
 
             </div>
           </div>
