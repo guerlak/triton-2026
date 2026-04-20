@@ -19,12 +19,12 @@ export default async function LiveResultsPage() {
     const thisEvent = "Salvador"
 
     return (
-        <main className="min-h-screen bg-neutral-950 text-white py-40">
+        <main className="min-h-screen bg-neutral-950 text-white pb-40" id="start-list">
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                 <div className="flex flex-col md:flex-row md:items-end justify-between gap-8 mb-16">
                     <div className="max-w-3xl">
 
-                        <h1 className="text-5xl md:text-7xl font-black uppercase mb-6 leading-none">
+                        <h1 className="text-5xl md:text-6xl font-black uppercase mb-6 leading-none">
                             Start<span className="text-triton-red ">List</span>
                         </h1>
                         <p className="text-gray-400 text-lg">

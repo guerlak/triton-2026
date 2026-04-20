@@ -1,7 +1,4 @@
-import MainButton from "@/app/ui/MainButton";
-import LiveResultsClientWrapper from "./LiveResultsClientWrapper copy";
-import { div } from "framer-motion/client";
-import { Radio } from "lucide-react";
+import LiveResultsClientWrapper from "./LiveResultsClientWrapper";
 import TopFiveAthletes from "./TopFIveAthletes";
 
 export default async function LiveResultsPage() {
@@ -10,7 +7,7 @@ export default async function LiveResultsPage() {
   const resultsAgeGroupUrl = "https://api.raceresult.com/371805/9WXOB72R7FJ8XA4UU1DW4NC11DJYIZG0"
 
   const res = await fetch(resultsAgeGroupUrl, {
-    next: { revalidate: 60 } // Revalidate every 60 seconds
+    next: { revalidate: 2000 } // Revalidate every 33 minutes
   });
 
   if (!res.ok) {
@@ -18,24 +15,20 @@ export default async function LiveResultsPage() {
   }
 
   const data = await res.json();
-  const urlLiveResults = "https://resultscui.active.com/events/TRITONSALVADOR2026"
-  const activeEvent = true;
+
 
   return (
-    <main className="min-h-screen bg-neutral-950 text-white py-40">
+    <main className="min-h-screen bg-black text-white" id="results">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex flex-col md:flex-row md:items-end justify-between gap-8 mb-16">
-          <div className="max-w-3xl">
+          {/* <div className="max-w-3xl">
             <h1 className="text-5xl md:text-7xl font-black uppercase mb-6 leading-none">
-              All <span className="text-triton-red italic">Results</span>
+              RESULTS
             </h1>
             <p className="text-gray-400 text-lg">
               Check the results of the <strong>TRITON 1 </strong>Salvador.
             </p>
-          </div>
-          <div className="shrink-0">
-            {activeEvent ? <a href={urlLiveResults} target="_blank" className="flex items-center gap-2 text-2xl font-black"><span className="text-triton-red animate-pulse text-4xl font-black flex items-center gap-2"><Radio size={34} /></span><span className="hover:opacity-80 transition-opacity">Check Live Results</span></a> : <></>}
-          </div>
+          </div> */}
         </div>
         <div className="flex flex-col gap-20">
           <TopFiveAthletes initialAthletes={data} />

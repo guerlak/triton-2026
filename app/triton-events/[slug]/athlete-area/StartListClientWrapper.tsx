@@ -71,7 +71,7 @@ const StartListClientWrapper: React.FC<Props> = ({ initialAthletes }) => {
                     className="border-b border-white/5 hover:bg-white/5 transition-colors group"
                   >
                     <td className="py-5 px-8 text-center font-bold text-gray-400">
-                      #{athlete.Bib}
+                      {athlete.Bib}
                     </td>
                     <td className="py-5 px-6">
                       <div className="flex items-center gap-4">
