@@ -1,7 +1,8 @@
 import MainButton from "@/app/ui/MainButton";
-import LiveResultsClientWrapper from "./LiveResultsClientWrapper";
+import LiveResultsClientWrapper from "./LiveResultsClientWrapper copy";
 import { div } from "framer-motion/client";
 import { Radio } from "lucide-react";
+import TopFiveAthletes from "./TopFIveAthletes";
 
 export default async function LiveResultsPage() {
 
@@ -25,7 +26,6 @@ export default async function LiveResultsPage() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex flex-col md:flex-row md:items-end justify-between gap-8 mb-16">
           <div className="max-w-3xl">
-
             <h1 className="text-5xl md:text-7xl font-black uppercase mb-6 leading-none">
               All <span className="text-triton-red italic">Results</span>
             </h1>
@@ -34,11 +34,13 @@ export default async function LiveResultsPage() {
             </p>
           </div>
           <div className="shrink-0">
-            {activeEvent ? <a href={urlLiveResults} target="_blank" className="flex items-center gap-2 text-2xl font-black"><span className="text-triton-red animate-pulse text-4xl font-black flex items-center gap-2"><Radio size={34} /></span><span>Check Live Results</span></a> : <></>}
+            {activeEvent ? <a href={urlLiveResults} target="_blank" className="flex items-center gap-2 text-2xl font-black"><span className="text-triton-red animate-pulse text-4xl font-black flex items-center gap-2"><Radio size={34} /></span><span className="hover:opacity-80 transition-opacity">Check Live Results</span></a> : <></>}
           </div>
         </div>
-
-        <LiveResultsClientWrapper initialAthletes={data} />
+        <div className="flex flex-col gap-20">
+          <TopFiveAthletes initialAthletes={data} />
+          <LiveResultsClientWrapper initialAthletes={data} />
+        </div>
       </div>
     </main>
   );

@@ -179,7 +179,7 @@ const FormatsSection: React.FC = () => {
               {/* Right Column: Descriptions & available Distances (The "Graph" part) */}
               <div className="flex flex-col justify-between space-y-6">
                 <div>
-                  <div className="flex items-center gap-3 mb-4">
+                  <div className="flex items-center gap-3 mb-8">
                     <MapPin className="text-triton-red" size={24} />
                     <h4 className="text-2xl font-black uppercase italic text-white leading-none">
                       {dict.format_section.toogles_content.day_1.title}
@@ -438,7 +438,6 @@ const FormatsSection: React.FC = () => {
                   <p className="text-gray-400 text-base leading-relaxed mb-6">The run course starts and finishes at the event arena, located at Portobello Resort. The entire course takes place within the resort complex, offering a scenic and visually striking setting.The course is lap-based: SPRINT (1 lap), MIDDLE (2 laps), and LONG (3 laps). Aid stations are available every 2.5 km, serving athletes in both directions.</p>
 
                 </div>
-
               </div>
             </div>
 

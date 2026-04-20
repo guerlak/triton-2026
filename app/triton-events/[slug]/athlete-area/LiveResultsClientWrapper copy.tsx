@@ -1,7 +1,7 @@
 "use client";
 import React, { useState, useMemo } from "react";
 import { motion } from "framer-motion";
-import { Search, Filter } from "lucide-react";
+import { Search, Clock, ClockArrowUp } from "lucide-react";
 
 interface LiveAthlete {
   Contest: string;
@@ -40,20 +40,43 @@ const LiveResultsClientWrapper: React.FC<Props> = ({ initialAthletes }) => {
     };
   }, [initialAthletes]);
 
-  const filteredAthletes = initialAthletes.filter((athlete) => {
-    const query = searchQuery.toLowerCase();
-    const nameMatch =
-      athlete.Name.toLowerCase().includes(query) ||
-      athlete.Bib.toString().includes(query);
-    const ageGroupMatch = selectedAgeGroup === "" || athlete.AgeGroup === selectedAgeGroup;
-    const distanceMatch = selectedDistance === "" || athlete.Contest === selectedDistance;
-    const genderMatch = selectedGender === "" || athlete.Gender === selectedGender;
+  const filteredAthletes = useMemo(() => {
+    let result = initialAthletes.filter((athlete) => {
+      const query = searchQuery.toLowerCase();
+      const nameMatch =
+        athlete.Name.toLowerCase().includes(query) ||
+        athlete.Bib.toString().includes(query);
+      const ageGroupMatch = selectedAgeGroup === "" || athlete.AgeGroup === selectedAgeGroup;
+      const distanceMatch = selectedDistance === "" || athlete.Contest === selectedDistance;
+      const genderMatch = selectedGender === "" || athlete.Gender === selectedGender;
 
-    return nameMatch && ageGroupMatch && distanceMatch && genderMatch;
-  });
+      return nameMatch && ageGroupMatch && distanceMatch && genderMatch;
+    });
+
+    // Always sort by time (fastest first)
+    return [...result].sort((a, b) => {
+      // Handle empty or placeholder times
+      const timeA = !a.Time || a.Time === "--:--:--" || a.Time === "" ? "99:99:99" : a.Time;
+      const timeB = !b.Time || b.Time === "--:--:--" || b.Time === "" ? "99:99:99" : b.Time;
+      return timeA.localeCompare(timeB);
+    });
+  }, [initialAthletes, searchQuery, selectedAgeGroup, selectedDistance, selectedGender]);
 
   return (
     <div className="mt-12 space-y-8">
+      <div className="flex flex-col items-center text-center space-y-4">
+        <div className="flex items-center gap-4 text-triton-red">
+          <div className="h-px w-12 bg-triton-red/30" />
+          <ClockArrowUp className="w-8 h-8" />
+          <div className="h-px w-12 bg-triton-red/30" />
+        </div>
+        <h2 className="text-4xl font-black uppercase tracking-[0.2em] text-white">
+          Full <span className="text-triton-red italic">Results</span>
+        </h2>
+        <p className="text-gray-500 text-xs font-bold uppercase tracking-widest max-w-md italic">
+          Check all the  results of athletes participating in the event.
+        </p>
+      </div>
       {/* Filters Header */}
       <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-6">
         {/* Search Bar */}
@@ -125,7 +148,7 @@ const LiveResultsClientWrapper: React.FC<Props> = ({ initialAthletes }) => {
         className="bg-neutral-900 border border-white/5 rounded-3xl overflow-hidden shadow-2xl"
       >
         <div className="overflow-x-auto scrollbar-hide">
-          <table className="w-full text-left border-collapse min-w-[800px]">
+          <table className="w-full text-left border-collapse min-w-[900px]">
             <thead>
               <tr className="bg-black/40 text-[10px] font-black uppercase text-gray-500 border-b border-white/5 tracking-widest">
                 <th className="py-6 px-8 text-center w-24">Pos</th>
@@ -133,17 +156,23 @@ const LiveResultsClientWrapper: React.FC<Props> = ({ initialAthletes }) => {
                 <th className="py-6 px-6">Distance</th>
                 <th className="py-6 px-6">Gender</th>
                 <th className="py-6 px-6">Age Group</th>
+                <th className="py-6 px-8 text-right text-triton-red">
+                  <div className="flex items-center justify-end gap-2 text-triton-red">
+                    <Clock size={14} />
+                    <span>Time</span>
+                  </div>
+                </th>
               </tr>
             </thead>
             <tbody>
               {filteredAthletes.length > 0 ? (
-                filteredAthletes.map((athlete) => (
+                filteredAthletes.map((athlete, i) => (
                   <tr
                     key={athlete.Bib}
                     className="border-b border-white/5 hover:bg-white/5 transition-colors group"
                   >
                     <td className="py-5 px-8 text-center font-bold text-gray-400">
-                      #{athlete.Pos}
+                      # {i + 1}
                     </td>
                     <td className="py-5 px-6">
                       <div className="flex items-center gap-4">
@@ -169,24 +198,25 @@ const LiveResultsClientWrapper: React.FC<Props> = ({ initialAthletes }) => {
                       </span>
                     </td>
                     <td className="py-5 px-6">
-                      <span className={`text-[10px] font-black uppercase px-2 py-1 rounded-md border 
-                        ${athlete.Gender === "Men"
-                          ? "border-blue-500/20 text-blue-400 bg-blue-500/5"
-                          : "border-pink-500/20 text-pink-400 bg-pink-500/5"
-                        }`}>
+                      <span className="text-[10px] font-black uppercase px-2 py-1 tracking-widest text-gray-400">
                         {athlete.Gender}
                       </span>
                     </td>
-                    <td className="py-5 px-6 text-center">
-                      <span className="font-black text-xs uppercase tracking-widest px-3 py-1">
+                    <td className="py-5 px-6">
+                      <span className="font-black text-xs uppercase tracking-widest px-3 py-1 text-gray-300">
                         {athlete.AgeGroup}
+                      </span>
+                    </td>
+                    <td className="py-5 px-8 text-right">
+                      <span className="font-black text-sm text-white tabular-nums tracking-widest">
+                        {athlete.Time || "--:--:--"}
                       </span>
                     </td>
                   </tr>
                 ))
               ) : (
                 <tr>
-                  <td colSpan={5} className="py-20 text-center text-gray-500 font-bold uppercase tracking-widest">
+                  <td colSpan={6} className="py-20 text-center text-gray-500 font-bold uppercase tracking-widest">
                     No athletes found matching your filters.
                   </td>
                 </tr>

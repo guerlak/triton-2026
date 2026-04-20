@@ -97,11 +97,7 @@ const StartListClientWrapper: React.FC<Props> = ({ initialAthletes }) => {
                       </span>
                     </td>
                     <td className="py-5 px-6">
-                      <span className={`text-[10px] font-black uppercase px-2 py-1 rounded-md border 
-                        ${athlete.Gender === "Men"
-                          ? "border-blue-500/20 text-blue-400 bg-blue-500/5"
-                          : "border-pink-500/20 text-pink-400 bg-pink-500/5"
-                        }`}>
+                      <span className={`text-[10px] font-black uppercase px-2 py-1 text-white/60 tracking-wider`}>
                         {athlete.Gender}
                       </span>
                     </td>
