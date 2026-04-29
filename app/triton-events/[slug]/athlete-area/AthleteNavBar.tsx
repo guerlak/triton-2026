@@ -21,10 +21,11 @@ const Navbar = () => {
     const toggleMenu = () => setIsOpen(!isOpen);
 
     const navLinks = [
-        { name: "Race Kit", href: "#kit" },
+        { name: "Race Kit", href: "#race-kit" },
+        { name: "Race Guide", href: "#race-guide" },
         { name: "Start List", href: "#start-list" },
         { name: "Results", href: "#results" },
-        { name: "Race Guide", href: "#race-guide" },
+
     ];
 
     const urlLiveResults = "https://resultscui.active.com/events/TRITONSALVADOR2026"

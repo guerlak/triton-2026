@@ -30,7 +30,7 @@ const CalendarSection: React.FC = () => {
               GET READY TO RACE
             </p>
             <p className="text-gray-400 text-sm mb-2">+30 nationalities competing</p>
-            <Link href="#" className="text-triton-red text-md font-bold uppercase hover:opacity-75">
+            <Link href="/triton-events" className="text-triton-red text-md font-bold uppercase hover:opacity-75">
               Check Global Calendar &rarr;
             </Link>
           </div>

@@ -11,7 +11,7 @@ export default async function RaceGuide() {
                     src="/images/triton-about-002.png"
                     alt="Race Start"
                     fill
-                    className="object-cover opacity-60 scale-105"
+                    className="object-cover opacity-90 scale-105"
                 />
                 <div className="absolute inset-0 bg-linear-to-b from-black via-black/80 to-black" />
             </div>
@@ -60,8 +60,8 @@ export default async function RaceGuide() {
                         viewport={{ once: true }}
                         transition={{ delay: 0.3, duration: 0.8 }}
                     >
-                        <MainButton href="https://tritonworldseries.com" external>
-                            Check the Full Guide
+                        <MainButton href="./race-guide">
+                            Download the Race Guide
                         </MainButton>
                     </motion.div>
 

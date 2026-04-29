@@ -80,7 +80,7 @@ export default async function RankingPage() {
       Rank: 1,
       Points: "1000",
       Distance: "Long Distance",
-      Nation: "BR",
+      Nation: "PT",
       imgUrl: "/images/hall-of-fame/rui-velez.png"
     },
     {

@@ -11,30 +11,33 @@ const COUNTDOWN_EVENTS = [
     title: "TRITON 1",
     subtitle: "SALVADOR",
     location: "Piatã, Bahia",
-    date: "12 April, 2026",
-    targetDate: "2026-10-12T08:00:00",
+    date: "11 Apr, 2027",
+    targetDate: "2027-10-11T08:00:00",
     image: "/images/bg-salvador.jpg",
     href: "/triton-events/salvador",
+    registerUrl: "https://ticketsports.com.br/e/triton1salvador"
   },
   {
     id: 2,
     title: "TRITON 3",
     subtitle: "RIO DE JANEIRO",
-    location: "Aterro do Flamengo, RJ",
-    date: "21 April, 2026",
-    targetDate: "2026-04-21T08:00:00",
+    location: "Aterro Flamengo, RJ",
+    date: "21 Aug, 2027",
+    targetDate: "2027-08-21T08:00:00",
     image: "/images/triton-fotos-prova-run.jpeg",
     href: "/triton-events/rio",
+    registerUrl: "https://www.ticketsports.com.br/e/triton-3-rio-de-janeiro-2026-74526"
   },
   {
     id: 3,
     title: "TRITON 1",
     subtitle: "LISBOA",
-    location: "Lisboa, Portugal",
-    date: "06 September, 2026",
+    location: "Parque das Nações, Lisboa",
+    date: "06 Sep, 2026",
     targetDate: "2026-09-06T08:00:00",
     image: "/images/triton-fotos-prova-bike.jpeg",
     href: "/triton-events/lisboa",
+    registerUrl: "https://register.hakuapp.com/?event=9ce0f9c87c1b43a8b97a"
   }
 ];
 
@@ -173,10 +176,10 @@ const CountdownSection: React.FC = () => {
                 </div>
 
                 <div className="mt-10 flex gap-4 justify-center lg:justify-start">
-                  <button className="bg-triton-red hover:bg-white text-white hover:text-black font-black py-2 px-4 md:px-10 rounded-none flex items-center gap-3 uppercase tracking-widest transition-all duration-300">
+                  <a href={currentEvent.registerUrl} target="_blank" className="bg-triton-red hover:bg-white text-white hover:text-black font-black py-2 px-4 md:px-10 rounded-none flex items-center gap-3 uppercase tracking-widest transition-all duration-300">
                     <span>Register</span>
                     <ArrowRight size={18} />
-                  </button>
+                  </a>
 
                   <Link
                     //href={currentEvent.href}

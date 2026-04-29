@@ -34,7 +34,7 @@ export default async function RankingSection() {
         <RankingClientWrapper initialAthletes={data} />
 
         <div className="text-center py-10">
-          <MainButton href="/#">Full Ranking</MainButton>
+          <MainButton href="/ranking">Full Ranking</MainButton>
         </div>
 
         <RedLine />
