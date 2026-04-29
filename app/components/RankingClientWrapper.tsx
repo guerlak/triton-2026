@@ -32,7 +32,7 @@ const RankingClientWrapper: React.FC<Props> = ({ initialAthletes }) => {
     if (athletes.length === 0) return null;
 
     return (
-      <div className="bg-neutral-900 shrink-0 w-[80vw] border border-white/5 rounded-3xl overflow-hidden shadow-2xl mb-12 sm:w-140 snap-center">
+      <div className="bg-neutral-900 shrink-0 w-[80vw] border border-white/5 rounded-3xl overflow-hidden shadow-2xl mb-12 sm:w-140 snap-center min-h-[340px]">
         <table className="w-full text-left border-collapse">
           <caption className="p-4 font-bold text-white bg-white/5">
             {athletes[0]?.Gender} - {athletes[0]?.Contest}
@@ -54,7 +54,6 @@ const RankingClientWrapper: React.FC<Props> = ({ initialAthletes }) => {
               if (pos == 3) medalClass = "bg-amber-900 border border-amber-700 text-white rounded-full w-8 h-8 flex items-center justify-center mx-auto";
 
               return (
-
                 <tr key={athlete.Bib} onClick={() => handleEditClick(athlete)} className="cursor-pointer border-b border-white/5 hover:bg-white/5 transition-colors group">
                   <td className="py-4 px-6 text-center font-bold">
                     <span className={medalClass}>{pos}</span>
