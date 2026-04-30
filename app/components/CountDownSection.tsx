@@ -9,10 +9,21 @@ const COUNTDOWN_EVENTS = [
   {
     id: 1,
     title: "TRITON 1",
+    subtitle: "LISBOA",
+    location: "Parque das Nações, Lisboa",
+    date: "06 Sep, 2026",
+    targetDate: "2026-09-06T08:00:00",
+    image: "/images/triton-fotos-prova-bike.jpeg",
+    href: "/triton-events/lisboa",
+    registerUrl: "https://register.hakuapp.com/?event=9ce0f9c87c1b43a8b97a"
+  },
+  {
+    id: 2,
+    title: "TRITON 1",
     subtitle: "SALVADOR",
     location: "Piatã, Bahia",
     date: "11 Apr, 2027",
-    targetDate: "2027-10-11T08:00:00",
+    targetDate: "2027-04-11T08:00:00",
     image: "/images/bg-salvador.jpg",
     href: "/triton-events/salvador",
     registerUrl: "https://ticketsports.com.br/e/triton1salvador"
@@ -21,24 +32,14 @@ const COUNTDOWN_EVENTS = [
     id: 2,
     title: "TRITON 3",
     subtitle: "RIO DE JANEIRO",
-    location: "Aterro Flamengo, RJ",
+    location: "Mangaratiba, RJ",
     date: "21 Aug, 2027",
     targetDate: "2027-08-21T08:00:00",
     image: "/images/triton-fotos-prova-run.jpeg",
     href: "/triton-events/rio",
     registerUrl: "https://www.ticketsports.com.br/e/triton-3-rio-de-janeiro-2026-74526"
   },
-  {
-    id: 3,
-    title: "TRITON 1",
-    subtitle: "LISBOA",
-    location: "Parque das Nações, Lisboa",
-    date: "06 Sep, 2026",
-    targetDate: "2026-09-06T08:00:00",
-    image: "/images/triton-fotos-prova-bike.jpeg",
-    href: "/triton-events/lisboa",
-    registerUrl: "https://register.hakuapp.com/?event=9ce0f9c87c1b43a8b97a"
-  }
+
 ];
 
 const CountdownSection: React.FC = () => {

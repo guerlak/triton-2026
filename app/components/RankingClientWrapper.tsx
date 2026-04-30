@@ -34,7 +34,7 @@ const RankingClientWrapper: React.FC<Props> = ({ initialAthletes }) => {
     return (
       <div className="bg-neutral-900 shrink-0 w-[80vw] border border-white/5 rounded-3xl overflow-hidden shadow-2xl mb-12 sm:w-140 snap-center min-h-[340px]">
         <table className="w-full text-left border-collapse">
-          <caption className="p-4 font-bold text-white bg-white/5">
+          <caption className="p-4 font-bold text-white bg-white/5 uppercase">
             {athletes[0]?.Gender} - {athletes[0]?.Contest}
           </caption>
           <thead>
