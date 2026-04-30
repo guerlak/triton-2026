@@ -33,6 +33,80 @@ export const TRITON_FORMATO: Distance[] = [
   { name: "INDIVIDUAL", swim: "3000m", bike: "90 km", run: "30 km" },
 ];
 
+export const EVENTS: CalendarEvent[] = [
+  {
+    date: "21-23 AUG",
+    location: "Rio de Janeiro, RJ",
+    country: "Brazil",
+    flag: "🇧🇷",
+    status: "Confirmed",
+    year: 2026,
+    format: "Triton 3",
+    eventUrl: "triton-events/rio-2026",
+  },
+
+  {
+    date: "06 SEP",
+    location: "Lisboa",
+    country: "Portugal",
+    flag: "🇵🇹",
+    status: "Confirmed",
+    year: 2026,
+    format: "Triton 1",
+    eventUrl: "triton-events/qindong-2026",
+  },
+  {
+    date: "07 OCT",
+    location: "Jiangsu-qidong",
+    country: "China",
+    flag: "🇨🇳",
+    status: "Confirmed",
+    year: 2026,
+    format: "Triton 1",
+    eventUrl: "triton-events/qindong-2026",
+  },
+  {
+    date: "11 APR",
+    location: "Salvador, BA",
+    country: "Brazil",
+    flag: "🇧🇷",
+    status: "Confirmed",
+    year: 2027,
+    format: "Triton 1",
+    eventUrl: "triton-events/salvador-2027",
+  },
+  {
+    date: "MAY",
+    location: "UAE",
+    country: "United Arab Emirates",
+    flag: "🇦🇪",
+    status: "Planned",
+    year: 2027,
+    format: "Triton 1",
+    eventUrl: "triton-events/uae-2027",
+  },
+  {
+    date: "AUG",
+    location: "Ireland",
+    country: "Ireland",
+    flag: "🇮🇪",
+    status: "Planned",
+    year: 2027,
+    format: "Triton 1",
+    eventUrl: "triton-events/ireland-2027",
+  },
+  {
+    date: "OCT",
+    location: "USA",
+    country: "USA",
+    flag: "🇺🇸",
+    status: "Planned",
+    year: 2027,
+    format: "Triton 1",
+    eventUrl: "triton-events/usa-2027",
+  },
+];
+
 
 export const TESTIMONIALS: TestimonialProps[] = [
   {
