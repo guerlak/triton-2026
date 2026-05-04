@@ -18,7 +18,7 @@ export interface CalendarEvent {
   status: 'Confirmed' | 'Planned';
   year: number;
   format: string;
-  eventUrl: string;
+  slug: string;
 }
 
 export interface Stat {

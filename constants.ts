@@ -42,7 +42,7 @@ export const EVENTS: CalendarEvent[] = [
     status: "Confirmed",
     year: 2026,
     format: "Triton 3",
-    eventUrl: "triton-events/rio-2026",
+    slug: "rio-2026",
   },
 
   {
@@ -53,7 +53,7 @@ export const EVENTS: CalendarEvent[] = [
     status: "Confirmed",
     year: 2026,
     format: "Triton 1",
-    eventUrl: "triton-events/qindong-2026",
+    slug: "lisboa-2026",
   },
   {
     date: "07 OCT",
@@ -63,7 +63,7 @@ export const EVENTS: CalendarEvent[] = [
     status: "Confirmed",
     year: 2026,
     format: "Triton 1",
-    eventUrl: "triton-events/qindong-2026",
+    slug: "qindong-2026",
   },
   {
     date: "11 APR",
@@ -73,7 +73,7 @@ export const EVENTS: CalendarEvent[] = [
     status: "Confirmed",
     year: 2027,
     format: "Triton 1",
-    eventUrl: "triton-events/salvador-2027",
+    slug: "salvador-2027",
   },
   {
     date: "MAY",
@@ -83,7 +83,7 @@ export const EVENTS: CalendarEvent[] = [
     status: "Planned",
     year: 2027,
     format: "Triton 1",
-    eventUrl: "triton-events/uae-2027",
+    slug: "uae-2027",
   },
   {
     date: "AUG",
@@ -93,7 +93,7 @@ export const EVENTS: CalendarEvent[] = [
     status: "Planned",
     year: 2027,
     format: "Triton 1",
-    eventUrl: "triton-events/ireland-2027",
+    slug: "triton-events/ireland-2027",
   },
   {
     date: "OCT",
@@ -103,7 +103,7 @@ export const EVENTS: CalendarEvent[] = [
     status: "Planned",
     year: 2027,
     format: "Triton 1",
-    eventUrl: "triton-events/usa-2027",
+    slug: "usa-2027",
   },
 ];
 

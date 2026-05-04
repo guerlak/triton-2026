@@ -11,10 +11,10 @@ import {
 } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import Image from "next/image";
-import Modal from "../ui/Modal";
-import fotoUrl from "../../public/images/ranking-modal.png";
-import CustomSelect from "../components/CustomSelect";
-import { CountryFlag } from "../utils/CountryFlag";
+import Modal from "@/app/ui/Modal";
+import fotoUrl from "@/public/images/ranking-modal.png";
+import CustomSelect from "@/app/components/CustomSelect";
+import { CountryFlag } from "@/app/utils/CountryFlag"
 
 interface RankingPageClientProps {
   initialAthletes: Athlete[];

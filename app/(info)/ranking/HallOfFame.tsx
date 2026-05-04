@@ -3,7 +3,7 @@
 import { motion, AnimatePresence } from "framer-motion";
 import { Trophy, Award, Zap, Activity, Timer } from "lucide-react";
 import Image from "next/image";
-import { CountryFlag } from "../utils/CountryFlag";
+import { CountryFlag } from "@/app/utils/CountryFlag";
 
 type HallOfFameAthlete = {
   Bib: number,

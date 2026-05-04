@@ -1,6 +1,4 @@
 import React from "react";
-import Navbar from "../../components/Navbar";
-import Footer from "../../components/Footer";
 import { Trophy, Activity, Award, CheckCircle2 } from "lucide-react";
 
 export default function ScoreSystemPage() {

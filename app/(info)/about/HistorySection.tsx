@@ -26,6 +26,12 @@ const HistorySection: React.FC = () => {
       description:
         "The TRITON World Series was officially launched, ushering in a new era of global triathlon competition.",
     },
+    {
+      year: "2026",
+      title: "The Expansion",
+      description:
+        "TRITON reaches its third continent: Asia. With the confirmation of a new race in Qidong of Jiangsu Province in eastern China.",
+    },
   ];
 
   return (
@@ -49,7 +55,7 @@ const HistorySection: React.FC = () => {
           <div className="absolute top-10 left-0 right-0 h-px bg-linear-to-r from-transparent via-triton-red/30 to-transparent"></div>
 
           {/* Timeline Items - Flexbox for mobile scroll, Grid for desktop */}
-          <div className="flex md:grid md:grid-cols-4 gap-4 md:gap-6 overflow-x-auto snap-x snap-mandatory no-scrollbar
+          <div className="flex md:grid md:grid-cols-5 gap-4 md:gap-6 overflow-x-auto snap-x snap-mandatory no-scrollbar
            pb-8 -mx-4 px-4 md:mx-0 md:px-0">
             {milestones.map((item, index) => (
               <div key={index} className="relative pt-20 shrink-0 w-[85vw] md:w-auto snap-center">

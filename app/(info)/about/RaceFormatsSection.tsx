@@ -10,7 +10,7 @@ const RaceFormatsSection: React.FC = () => {
             INNOVATIVE <span className="text-triton-red">FORMATS</span>
           </h2>
           <p className="text-gray-400 max-w-2xl mx-auto">
-            TRITON offers two primary live race formats, each available in Sprint, Middle, and Long distances.
+            TRITON offers two primary live race formats, each available in  SPRINT, MIDDLE, and LONG distances.
           </p>
         </div>
 
@@ -28,7 +28,7 @@ const RaceFormatsSection: React.FC = () => {
               A regular one-day triathlon race following the traditional format across multiple distances and divisions.
             </p>
 
-            <div className="space-y-8 flex-grow">
+            <div className="space-y-8 grow">
               <div className="flex gap-5">
                 <div className="shrink-0 mt-1">
                   <Zap className="text-triton-red w-5 h-5" />

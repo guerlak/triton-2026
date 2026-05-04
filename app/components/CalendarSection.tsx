@@ -2,7 +2,6 @@
 import React from "react";
 import { Calendar as CalendarIcon } from "lucide-react";
 import Link from "next/link";
-import { CalendarEvent } from "@/types";
 import { EVENTS } from "@/constants";
 
 
@@ -72,7 +71,7 @@ const CalendarSection: React.FC = () => {
                   {event.format}
                 </span>
                 <div className="mt-6 pt-4 border-t border-white/5 opacity-0 group-hover:opacity-100 transition-opacity">
-                  <Link href={event.eventUrl} className="text-white text-xs font-bold uppercase hover:text-triton-red">
+                  <Link href={`/triton-events/${event.slug}`} className="text-white text-xs font-bold uppercase hover:text-triton-red">
                     More Info &rarr;
                   </Link>
                 </div>

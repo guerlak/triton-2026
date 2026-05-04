@@ -1,6 +1,6 @@
 "use client";
 import React, { useState } from "react";
-import { Gauge, ArrowRight, Trophy, MapPin, User, Hash, Flag, Plus } from "lucide-react";
+import { Plus } from "lucide-react";
 import { motion } from "framer-motion";
 import Image from "next/image";
 import Modal from "../ui/Modal";

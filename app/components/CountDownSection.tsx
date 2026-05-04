@@ -29,7 +29,7 @@ const COUNTDOWN_EVENTS = [
     registerUrl: "https://ticketsports.com.br/e/triton1salvador"
   },
   {
-    id: 2,
+    id: 3,
     title: "TRITON 3",
     subtitle: "RIO DE JANEIRO",
     location: "Mangaratiba, RJ",

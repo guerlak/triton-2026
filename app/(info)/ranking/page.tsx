@@ -1,5 +1,5 @@
 import RankingPageClient from "./RankingPageClient";
-import Heading from "../ui/Heading";
+import Heading from "../../ui/Heading";
 import { ApiRankingRepo } from "@/repositories/ApiRankingRepo";
 import { fetchDetails, fetchGeneralRanking } from "@/services/RankingService";
 import HallOfFame from "./HallOfFame";
@@ -34,7 +34,7 @@ export default async function RankingPage() {
       Name: "Antônio Barreto",
       Gender: "Men",
       Rank: 1,
-      Points: "1000",
+      Points: "11580",
       Distance: "Sprint Distance",
       Nation: "BR",
       imgUrl: "/images/hall-of-fame/antonio-barreto.png"
@@ -45,7 +45,7 @@ export default async function RankingPage() {
       Name: "Cora Dorst",
       Gender: "Women",
       Rank: 1,
-      Points: "1000",
+      Points: "11820",
       Distance: "Sprint Distance",
       Nation: "NL",
       imgUrl: "/images/hall-of-fame/cora-dorst.png"
@@ -56,7 +56,7 @@ export default async function RankingPage() {
       Name: "Marcos Salamonde ",
       Gender: "Men",
       Rank: 1,
-      Points: "1000",
+      Points: "11910",
       Distance: "Middle Distance",
       Nation: "BR",
       imgUrl: "/images/hall-of-fame/marcos-salamonde.png"
@@ -67,7 +67,7 @@ export default async function RankingPage() {
       Name: "Carla Abrunhosa",
       Gender: "Women",
       Rank: 1,
-      Points: "1000",
+      Points: "11880",
       Distance: "Middle Distance",
       Nation: "BR",
       imgUrl: "/images/hall-of-fame/carla-abrunhosa.png"
@@ -78,7 +78,7 @@ export default async function RankingPage() {
       Name: "Rui Velez",
       Gender: "Men",
       Rank: 1,
-      Points: "1000",
+      Points: "10290",
       Distance: "Long Distance",
       Nation: "PT",
       imgUrl: "/images/hall-of-fame/rui-velez.png"
@@ -89,7 +89,7 @@ export default async function RankingPage() {
       Name: "Alba Rodriguez",
       Gender: "Women",
       Rank: 1,
-      Points: "1000",
+      Points: "11880",
       Distance: "Long Distance",
       Nation: "ES",
       imgUrl: "/images/hall-of-fame/alba-rodriguez.png"
