@@ -1,5 +1,6 @@
 import React from "react";
 import { Trophy, Activity, Award, CheckCircle2 } from "lucide-react";
+import Footer from "@/app/components/Footer";
 
 export default function ScoreSystemPage() {
     const assumptions = [

@@ -1,6 +1,6 @@
 "use client";
 import React, { useState } from "react";
-import { Plus } from "lucide-react";
+import { Plus, User, MapPin } from "lucide-react";
 import { motion } from "framer-motion";
 import Image from "next/image";
 import Modal from "../ui/Modal";

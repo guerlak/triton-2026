@@ -1,4 +1,4 @@
-import MainButton from "../ui/MainButton";
+import MainButton from "@/app/ui/MainButton";
 import LiveResultsClientWrapper from "./LiveResultsClientWrapper";
 
 export default async function LiveResultsPage() {
