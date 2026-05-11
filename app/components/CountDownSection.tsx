@@ -8,6 +8,17 @@ import { TimeUnit } from "./TimeUnit";
 const COUNTDOWN_EVENTS = [
   {
     id: 1,
+    title: "TRITON 3",
+    subtitle: "RIO DE JANEIRO",
+    location: "Mangaratiba, RJ",
+    date: "21 Aug, 2026",
+    targetDate: "2026-08-21T08:00:00",
+    image: "/images/triton-fotos-prova-run.jpeg",
+    href: "/triton-events/rio-2026",
+    registerUrl: "https://www.ticketsports.com.br/e/triton-3-rio-de-janeiro-2026-74526"
+  },
+  {
+    id: 2,
     title: "TRITON 1",
     subtitle: "LISBOA",
     location: "Parque das Nações, Lisboa",
@@ -18,7 +29,18 @@ const COUNTDOWN_EVENTS = [
     registerUrl: "https://register.hakuapp.com/?event=9ce0f9c87c1b43a8b97a"
   },
   {
-    id: 2,
+    id: 3,
+    title: "TRITON 1",
+    subtitle: "QINDONG",
+    location: "Qingdao, China",
+    date: "31 Oct, 2026",
+    targetDate: "2026-10-31T08:00:00",
+    image: "/images/bg-qindong.jpg",
+    href: "/triton-events/qindong",
+    registerUrl: "https://ticketsports.com.br/e/triton1salvador"
+  },
+  {
+    id: 4,
     title: "TRITON 1",
     subtitle: "SALVADOR",
     location: "Piatã, Bahia",
@@ -28,18 +50,6 @@ const COUNTDOWN_EVENTS = [
     href: "/triton-events/salvador",
     registerUrl: "https://ticketsports.com.br/e/triton1salvador"
   },
-  {
-    id: 3,
-    title: "TRITON 3",
-    subtitle: "RIO DE JANEIRO",
-    location: "Mangaratiba, RJ",
-    date: "21 Aug, 2027",
-    targetDate: "2027-08-21T08:00:00",
-    image: "/images/triton-fotos-prova-run.jpeg",
-    href: "/triton-events/rio",
-    registerUrl: "https://www.ticketsports.com.br/e/triton-3-rio-de-janeiro-2026-74526"
-  },
-
 ];
 
 const CountdownSection: React.FC = () => {
@@ -184,7 +194,7 @@ const CountdownSection: React.FC = () => {
 
                   <Link
                     //href={currentEvent.href}
-                    href="#"
+                    href={currentEvent.href}
                     className="bg-white hover:bg-triton-red text-black hover:text-white font-black py-2  px-4 md:px-10 rounded-none flex items-center justify-center gap-3 uppercase tracking-widest transition-all duration-300"
                   >
                     <span>Website</span>

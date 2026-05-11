@@ -5,6 +5,7 @@ import heroImg from "@/public/images/evento_start.jpg";
 import logoHero from "@/public/images/triton-ws-branco.png";
 import Image from "next/image";
 import { motion, delay } from "framer-motion";
+import RedLine from "../ui/RedLine";
 
 const Hero: React.FC = () => {
   return (
@@ -80,6 +81,7 @@ const Hero: React.FC = () => {
       <div className="absolute bottom-10 animate-bounce text-white/50">
         <ChevronDown size={32} />
       </div>
+      <RedLine />
     </section >
   );
 };

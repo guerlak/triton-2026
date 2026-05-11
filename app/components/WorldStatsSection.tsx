@@ -12,6 +12,7 @@ import {
   Star,
 
 } from "lucide-react";
+import RedLine from "../ui/RedLine";
 
 const stats = [
   { label: "CONTINENTS", value: 3, icon: Map },
@@ -122,9 +123,11 @@ function StatCard({ stat, index }: { stat: { label: string; value: number; icon:
 
 export default function WorldStatsSection() {
   return (
-    <section className="relative py-32 px-6 overflow-hidden bg-black border-y border-white/5">
+
+    <section className="relative py-32 px-6 overflow-hidden bg-triton-dark border-y border-white/5">
+      <RedLine />
       {/* Background Large Text */}
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full text-center pointer-events-none select-none opacity-[0.08] whitespace-nowrap hidden lg:block">
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full text-center pointer-events-none select-none opacity-[0.04] whitespace-nowrap hidden lg:block">
         <span className="text-[25vw] font-black italic leading-none tracking-tighter text-white">
           TRITON WORLD
         </span>
