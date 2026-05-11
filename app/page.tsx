@@ -7,6 +7,7 @@ import CountdownSection from "./components/CountDownSection";
 import ShopSection from "./components/ShopSection";
 import NewsletterSection from "./components/NewsletterSection";
 import TritonExperienceCards from "./components/TritonCardsSection";
+import WorldStatsSection from "./components/WorldStatsSection";
 import RankingSection from "./components/RankingSection";
 import PartnersSection from "./components/PartnersSection";
 
@@ -16,7 +17,9 @@ export default function Page() {
       <Navbar />
       <main>
         <Hero />
+        <WorldStatsSection />
         <TritonExperienceCards />
+
         <CountdownSection />
         <RankingSection />
         <Testimonials />
