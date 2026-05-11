@@ -89,7 +89,7 @@ function StatCard({ stat, index }: { stat: { label: string; value: number; icon:
           ? "bg-triton-red border-triton-red shadow-[0_0_20px_rgba(223,31,38,0.4)]"
           : "bg-white/5 border-white/10 group-hover:border-white/30 group-hover:bg-white/10"
           }`}>
-          <stat.icon className={`w-6 h-6 ${isHighlighted ? "text-white" : "text-white/60 group-hover:text-white"}`} />
+          <stat.icon className={`w-6 h-6 ${isHighlighted ? "text-white" : "text-triton-red"}`} />
         </div>
       </div>
 
@@ -124,7 +124,7 @@ export default function WorldStatsSection() {
   return (
     <section className="relative py-32 px-6 overflow-hidden bg-black border-y border-white/5">
       {/* Background Large Text */}
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full text-center pointer-events-none select-none opacity-[0.02] whitespace-nowrap hidden lg:block">
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full text-center pointer-events-none select-none opacity-[0.08] whitespace-nowrap hidden lg:block">
         <span className="text-[25vw] font-black italic leading-none tracking-tighter text-white">
           TRITON WORLD
         </span>
@@ -143,8 +143,8 @@ export default function WorldStatsSection() {
             transition={{ duration: 0.8 }}
             className="flex-1"
           >
-            <h2 className="text-6xl md:text-8xl font-black tracking-tighter mb-4 italic leading-none">
-              OUR <span className="text-triton-red">WORLD</span>
+            <h2 className="text-6xl md:text-7xl font-black tracking-tighter mb-4 italic leading-none">
+              WE <span className="text-triton-red">ARE IN</span>
             </h2>
             <div className="h-1.5 w-32 bg-triton-red rounded-full" />
           </motion.div>

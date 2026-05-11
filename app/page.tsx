@@ -19,7 +19,6 @@ export default function Page() {
         <Hero />
         <WorldStatsSection />
         <TritonExperienceCards />
-
         <CountdownSection />
         <RankingSection />
         <Testimonials />
