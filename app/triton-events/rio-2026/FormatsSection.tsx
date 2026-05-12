@@ -1,17 +1,11 @@
 "use client";
-import React, { useEffect, useState } from "react";
-import Image from "next/image";
-import { Waves, Bike, PersonStanding, Users, Layers, User, Calendar, Clock, MapPin, Trophy } from "lucide-react";
-import bikePic from "@/public/images/triton-fotos-prova-bike.jpeg";
-import swimPic from "@/public/images/triton-fotos-prova-swim.jpeg";
-import runPic from "@/public/images/triton-fotos-prova-run.jpeg";
-import runMap from "@/public/images/maps/corrida-triton3-rj-2026.jpg";
-import swimMap from "@/public/images/maps/natacao-triton3-rj-2026.png";
-import bikeMap from "@/public/images/maps/ciclismo-triton3-rj-2026.jpg";
-
-import dict from "../../../dictionaries/en.json";
+import React, { useState } from "react";
+import { Waves, Bike, PersonStanding, Users, Layers, User } from "lucide-react";
 import { motion } from "framer-motion";
-import Script from "next/script";
+
+import EventTabContent from "@/app/components/event/EventTabContent";
+import { EventData } from "@/eventdata";
+import dict from "../../../dictionaries/en.json";
 
 const FormatTable: React.FC<{ distances: any[] }> = ({ distances }) => (
 
@@ -20,7 +14,7 @@ const FormatTable: React.FC<{ distances: any[] }> = ({ distances }) => (
       <thead>
         <tr className="border-b border-white/20">
           <th className="py-4 px-4 text-sm font-bold uppercase text-gray-400">
-            Distance
+            Distancia
           </th>
           <th className="py-4 px-4 text-center">
             <Waves className="mx-auto w-6 h-6 text-triton-red" />
@@ -58,22 +52,21 @@ const FormatTable: React.FC<{ distances: any[] }> = ({ distances }) => (
   </div>
 );
 
-const FormatsSection: React.FC = () => {
+const FormatsSection: React.FC<{ eventData: EventData }> = ({ eventData }) => {
   const [activeTab, setActiveTab] = useState<"1" | "2" | "3">("1");
-
 
   return (
     <section id="formats" className="py-24 bg-triton-dark">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-16">
           <h2 className="text-triton-red font-bold tracking-widest uppercase mb-2">
-            {dict.format_section.title}
+            INOVAÇÃO
           </h2>
           <h3 className="text-3xl md:text-5xl font-black uppercase text-white leading-tight mb-6">
-            {dict.format_section.subtitle}
+            UM FORMATO QUE REDEFINE A EXPERIÊNCIA
           </h3>
-          <p className="text-gray-400 max-w-2xl mx-auto text-lg">
-            {dict.format_section.description}
+          <p className="text-gray-400 max-w-6xl mx-auto text-lg">
+            O TRITON 3 é uma prova disputada ao longo de três dias consecutivos — Uma proposta única que eleva o triathlon a outro nível de experiência. Seu formato inovador abre espaço tanto para triatletas quanto para especialistas de cada modalidade: nadadores, ciclistas e corredores podem competir individualmente, criando um cenário dinâmico e imprevisível. Triatletas são desafiados por atletas de alto nível em suas especialidades, elevando a competitividade e tornando cada prova ainda mais intensa e fora do comum.
           </p>
         </div>
 
@@ -94,7 +87,7 @@ const FormatsSection: React.FC = () => {
                   />
                 )}
                 <span className="relative z-20">
-                  {tab === "1" ? "Swimming" : tab === "2" ? "Cycling" : "Running"}
+                  {tab === "1" ? "Natação" : tab === "2" ? "Ciclismo" : "Corrida"}
                 </span>
               </button>
             ))}
@@ -103,367 +96,29 @@ const FormatsSection: React.FC = () => {
 
         {/* Content Container - Day Spotlight Decorator */}
         <div className="relative min-h-[600px]">
-          <div className={`bg-white/5 text-white p-6 block w-full h-full rounded-2xl border border-white/10 backdrop-blur-md
-            ${activeTab === "1" ? "block" : "hidden"}`}>
-
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-8">
-              {/* Left Column: Image and Key Info */}
-              <div className="space-y-6">
-                <div className="w-full h-[300px] mb-4 rounded-2xl relative overflow-hidden group shadow-2xl">
-                  <Image
-                    src={swimPic}
-                    alt="Swimming"
-                    className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
-                  />
-                  <div className="absolute inset-0 bg-linear-to-t from-black/80 via-transparent to-transparent" />
-                  <div className="absolute bottom-6 left-6" >
-                    <span className="bg-triton-red text-white font-black px-4 py-1.5 rounded-lg text-sm uppercase italic tracking-widest shadow-xl">
-                      Day 1
-                    </span>
-                  </div>
-                </div>
-
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                  <div className="bg-white/5 p-4 rounded-xl border border-white/10 flex items-center gap-4">
-                    <div className="bg-triton-red/10 p-3 rounded-lg">
-                      <Calendar className="text-triton-red" size={20} />
-                    </div>
-                    <div>
-                      <p className="text-[10px] text-gray-500 uppercase font-bold tracking-widest">Date</p>
-                      <p className="text-sm font-black uppercase text-white">{dict.format_section.toogles_content.day_1.date}</p>
-                    </div>
-                  </div>
-                  <div className="bg-white/5 p-4 rounded-xl border border-white/10 flex items-center gap-4">
-                    <div className="bg-triton-red/10 p-3 rounded-lg">
-                      <Clock className="text-triton-red" size={20} />
-                    </div>
-                    <div>
-                      <p className="text-[10px] text-gray-500 uppercase font-bold tracking-widest">Start Time</p>
-                      <p className="text-sm font-black uppercase text-white">{dict.format_section.toogles_content.day_1.start}</p>
-                    </div>
-                  </div>
-                </div>
-
-
-                <div className="bg-white/5 p-6 rounded-2xl border border-white/10 space-y-6">
-                  <div className="flex items-center gap-2 mb-2">
-                    <Trophy className="text-triton-red" size={18} />
-                    <span className="text-xs font-black uppercase tracking-widest text-gray-300">Available Distances</span>
-                  </div>
-
-                  {/* Distance Visualization Graph */}
-                  <div className="space-y-5">
-                    {[
-                      { label: "Sprint", val: "1000m", p: 33 },
-                      { label: "Middle", val: "2000m", p: 66 },
-                      { label: "Long", val: "3000m", p: 100 }
-                    ].map((d, i) => (
-                      <div key={i} className="space-y-2">
-                        <div className="flex justify-between items-end">
-                          <span className="text-[10px] font-bold text-gray-500 uppercase italic tracking-tighter">{d.label}</span>
-                          <span className="text-lg font-black text-white italic">{d.val}</span>
-                        </div>
-                        <div className="w-full h-1.5 bg-white/10 rounded-full overflow-hidden">
-                          <motion.div
-                            initial={{ width: 0 }}
-                            whileInView={{ width: `${d.p}%` }}
-                            transition={{ duration: 1, delay: i * 0.1 }}
-                            className="h-full bg-triton-red shadow-[0_0_10px_rgba(223,31,38,0.5)]"
-                          />
-                        </div>
-                      </div>
-                    ))}
-                  </div>
-                </div>
-              </div>
-              {/* Right Column: Descriptions & available Distances (The "Graph" part) */}
-              <div className="flex flex-col justify-between space-y-6">
-                <div>
-                  <div className="flex items-center gap-3 mb-8">
-                    <MapPin className="text-triton-red" size={24} />
-                    <h4 className="text-2xl font-black uppercase italic text-white leading-none">
-                      {dict.format_section.toogles_content.day_1.title}
-                    </h4>
-                  </div>
-                  <p className="text-gray-400 text-base leading-relaxed mb-6">
-                    {dict.format_section.toogles_content.day_1.description}
-                  </p>
-
-                  <p className="text-gray-400 text-base leading-relaxed mb-6">
-                    The swim takes place at Portobello Resort beach, just a few meters from the race arena. The sheltered waters typically provide calm conditions and good visibility.
-                    The race features a beach start and a lap-based course: SPRINT (1 lap), MIDDLE (2 laps), and LONG (3 laps). MIDDLE and LONG distances include Australian exits — MIDDLE (1x) and LONG (2x)
-                  </p>
-                </div>
-
-
-              </div>
-            </div>
-
-            <div className="relative rounded-2xl overflow-hidden mb-6 border border-white /10 group">
-              <div
-                className="strava-embed-placeholder w-full h-[400px]"
-                data-full-width="true"
-                data-embed-type="route"
-                data-embed-id="2989446402175334832"
-                data-style="standard"
-                data-terrain="3d"
-                data-from-embed="true"
-              ></div>
-              <div className="absolute inset-0 bg-black/50 pointer-events-none group-hover:bg-black/30 transition-colors duration-300" />
-              <div className="absolute top-4 right-4 bg-black/60 backdrop-blur-md px-3 py-1 rounded-full border border-white/10 flex items-center gap-2">
-                <MapPin size={12} className="text-triton-red" />
-                <span className="text-[10px] font-bold uppercase text-white tracking-widest italic">Course Map</span>
-              </div>
-            </div>
-            <Script
-              id="strava-script"
-              src="https://strava-embeds.com/embed.js"
+          {eventData.formats?.swim && (
+            <EventTabContent
+              activeTab={activeTab}
+              tabId="1"
+              data={eventData.formats.swim}
             />
-          </div>
+          )}
 
-          <div className={`bg-white/5 text-white p-6 block w-full h-full rounded-2xl border border-white/10 backdrop-blur-md
-            ${activeTab === "2" ? "block" : "hidden"}`}>
-
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-8">
-              {/* Left Column: Image and Key Info */}
-              <div className="space-y-6">
-                <div className="w-full h-[300px] mb-4 rounded-2xl relative overflow-hidden group shadow-2xl">
-                  <Image
-                    src={bikePic}
-                    alt="Cycling"
-                    className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
-                  />
-                  <div className="absolute inset-0 bg-linear-to-t from-black/80 via-transparent to-transparent" />
-                  <div className="absolute bottom-6 left-6" >
-                    <span className="bg-triton-red text-white font-black px-4 py-1.5 rounded-lg text-sm uppercase italic tracking-widest shadow-xl">
-                      Day 2
-                    </span>
-                  </div>
-                </div>
-
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                  <div className="bg-white/5 p-4 rounded-xl border border-white/10 flex items-center gap-4">
-                    <div className="bg-triton-red/10 p-3 rounded-lg">
-                      <Calendar className="text-triton-red" size={20} />
-                    </div>
-                    <div>
-                      <p className="text-[10px] text-gray-500 uppercase font-bold tracking-widest">Date</p>
-                      <p className="text-sm font-black uppercase text-white">{dict.format_section.toogles_content.day_2.date}</p>
-                    </div>
-                  </div>
-                  <div className="bg-white/5 p-4 rounded-xl border border-white/10 flex items-center gap-4">
-                    <div className="bg-triton-red/10 p-3 rounded-lg">
-                      <Clock className="text-triton-red" size={20} />
-                    </div>
-                    <div>
-                      <p className="text-[10px] text-gray-500 uppercase font-bold tracking-widest">Start Time</p>
-                      <p className="text-sm font-black uppercase text-white">{dict.format_section.toogles_content.day_2.start}</p>
-                    </div>
-                  </div>
-                </div>
-
-                <div className="bg-white/5 p-6 rounded-2xl border border-white/10 space-y-6">
-                  <div className="flex items-center gap-2 mb-2">
-                    <Trophy className="text-triton-red" size={18} />
-                    <span className="text-xs font-black uppercase tracking-widest text-gray-300">Available Distances</span>
-                  </div>
-
-                  {/* Distance Visualization Graph */}
-                  <div className="space-y-5">
-                    {[
-                      { label: "Sprint", val: "30km", p: 33 },
-                      { label: "Middle", val: "60km", p: 66 },
-                      { label: "Long", val: "90km", p: 100 }
-                    ].map((d, i) => (
-                      <div key={i} className="space-y-2">
-                        <div className="flex justify-between items-end">
-                          <span className="text-[10px] font-bold text-gray-500 uppercase italic tracking-tighter">{d.label}</span>
-                          <span className="text-lg font-black text-white italic">{d.val}</span>
-                        </div>
-                        <div className="w-full h-1.5 bg-white/10 rounded-full overflow-hidden">
-                          <motion.div
-                            initial={{ width: 0 }}
-                            whileInView={{ width: `${d.p}%` }}
-                            transition={{ duration: 1, delay: i * 0.1 }}
-                            className="h-full bg-triton-red shadow-[0_0_10px_rgba(223,31,38,0.5)]"
-                          />
-                        </div>
-                      </div>
-                    ))}
-                  </div>
-                </div>
-              </div>
-
-              {/* Right Column: Descriptions & available Distances (The "Graph" part) */}
-              <div className="flex flex-col justify-between space-y-6">
-                <div>
-                  <div className="flex items-center gap-3 mb-4">
-                    <MapPin className="text-triton-red" size={24} />
-                    <h4 className="text-2xl font-black uppercase italic text-white leading-none">
-                      {dict.format_section.toogles_content.day_2.title}
-                    </h4>
-                  </div>
-                  <p className="text-gray-400 text-base leading-relaxed mb-6">
-                    {dict.format_section.toogles_content.day_2.description}
-                  </p>
-                  <div className="text-gray-400 text-base leading-relaxed mb-6">The bike course takes place on Serra do Piloto, one of the most iconic cycling routes in Rio de Janeiro. The race starts in front of the Mangaratiba Exhibition Park (Expo area), where secure parking is available.
-                    A support station with hydration and special needs is available in Macundu, approximately 18 km from the start.
-                    <ul className="list-disc list-inside mt-10">
-                      <li>Sprint turnaround: ~4.5 km after Macundu</li>
-                      <li>Middle & Long hydration: ~10 km after Macundu</li>
-                      <li>Middle & Long turnaround (Rio Claro): ~7.5 km after the hydration point</li>
-                      <li>Finish: ~3 km after Macundu (towards Mangaratiba)</li>
-                      <li>Neutralized descent: ~14 km</li>
-                      <li>Drafting allowed (TT bike prohibited)</li>
-                    </ul>
-                  </div>
-
-                </div>
-
-              </div>
-
-
-            </div>
-
-
-
-            <div className="relative rounded-2xl overflow-hidden mb-6 border border-white/10 group">
-              <div
-                className="strava-embed-placeholder w-full h-[400px]"
-                data-full-width="true"
-                data-embed-type="route"
-                data-embed-id="3321031030011067804"
-                data-style="standard"
-                data-terrain="3d"
-                data-from-embed="true"
-              ></div>
-              <div className="absolute inset-0 bg-black/50 pointer-events-none group-hover:bg-black/30 transition-colors duration-300" />
-              <div className="absolute top-4 right-4 bg-black/60 backdrop-blur-md px-3 py-1 rounded-full border border-white/10 flex items-center gap-2">
-                <MapPin size={12} className="text-triton-red" />
-                <span className="text-[10px] font-bold uppercase text-white tracking-widest italic">Course Map</span>
-              </div>
-            </div>
-            <Script
-              id="strava-script"
-              src="https://strava-embeds.com/embed.js"
+          {eventData.formats?.bike && (
+            <EventTabContent
+              activeTab={activeTab}
+              tabId="2"
+              data={eventData.formats.bike}
             />
-          </div>
+          )}
 
-          <div className={`bg-white/5 text-white p-6 block w-full h-full rounded-2xl border border-white/10 backdrop-blur-md
-            ${activeTab === "3" ? "block" : "hidden"}`}>
-
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-8">
-              {/* Left Column: Image and Key Info */}
-              <div className="space-y-6">
-                <div className="w-full h-[300px] mb-4 rounded-2xl relative overflow-hidden group shadow-2xl">
-                  <Image
-                    src={runPic}
-                    alt="Running"
-                    className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
-                  />
-                  <div className="absolute inset-0 bg-linear-to-t from-black/80 via-transparent to-transparent" />
-                  <div className="absolute bottom-6 left-6" >
-                    <span className="bg-triton-red text-white font-black px-4 py-1.5 rounded-lg text-sm uppercase italic tracking-widest shadow-xl">
-                      Day 3
-                    </span>
-                  </div>
-                </div>
-
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                  <div className="bg-white/5 p-4 rounded-xl border border-white/10 flex items-center gap-4">
-                    <div className="bg-triton-red/10 p-3 rounded-lg">
-                      <Calendar className="text-triton-red" size={20} />
-                    </div>
-                    <div>
-                      <p className="text-[10px] text-gray-500 uppercase font-bold tracking-widest">Date</p>
-                      <p className="text-sm font-black uppercase text-white">{dict.format_section.toogles_content.day_3.date}</p>
-                    </div>
-                  </div>
-                  <div className="bg-white/5 p-4 rounded-xl border border-white/10 flex items-center gap-4">
-                    <div className="bg-triton-red/10 p-3 rounded-lg">
-                      <Clock className="text-triton-red" size={20} />
-                    </div>
-                    <div>
-                      <p className="text-[10px] text-gray-500 uppercase font-bold tracking-widest">Start Time</p>
-                      <p className="text-sm font-black uppercase text-white">{dict.format_section.toogles_content.day_3.start}</p>
-                    </div>
-                  </div>
-                </div>
-
-                <div className="bg-white/5 p-6 rounded-2xl border border-white/10 space-y-6">
-                  <div className="flex items-center gap-2 mb-2">
-                    <Trophy className="text-triton-red" size={18} />
-                    <span className="text-xs font-black uppercase tracking-widest text-gray-300">Available Distances</span>
-                  </div>
-
-                  {/* Distance Visualization Graph */}
-                  <div className="space-y-5">
-                    {[
-                      { label: "Sprint", val: "10km", p: 33 },
-                      { label: "Middle", val: "20km", p: 66 },
-                      { label: "Long", val: "30km", p: 100 }
-                    ].map((d, i) => (
-                      <div key={i} className="space-y-2">
-                        <div className="flex justify-between items-end">
-                          <span className="text-[10px] font-bold text-gray-500 uppercase italic tracking-tighter">{d.label}</span>
-                          <span className="text-lg font-black text-white italic">{d.val}</span>
-                        </div>
-                        <div className="w-full h-1.5 bg-white/10 rounded-full overflow-hidden">
-                          <motion.div
-                            initial={{ width: 0 }}
-                            whileInView={{ width: `${d.p}%` }}
-                            transition={{ duration: 1, delay: i * 0.1 }}
-                            className="h-full bg-triton-red shadow-[0_0_10px_rgba(223,31,38,0.5)]"
-                          />
-                        </div>
-                      </div>
-                    ))}
-                  </div>
-                </div>
-              </div>
-
-              {/* Right Column: Descriptions & available Distances (The "Graph" part) */}
-              <div className="flex flex-col justify-between space-y-6">
-                <div>
-                  <div className="flex items-center gap-3 mb-4">
-                    <MapPin className="text-triton-red" size={24} />
-                    <h4 className="text-2xl font-black uppercase italic text-white leading-none">
-                      {dict.format_section.toogles_content.day_3.title}
-                    </h4>
-                  </div>
-                  <p className="text-gray-400 text-base leading-relaxed mb-6">
-                    {dict.format_section.toogles_content.day_3.description}
-                  </p>
-
-                  <p className="text-gray-400 text-base leading-relaxed mb-6">The run course starts and finishes at the event arena, located at Portobello Resort. The entire course takes place within the resort complex, offering a scenic and visually striking setting.The course is lap-based: SPRINT (1 lap), MIDDLE (2 laps), and LONG (3 laps). Aid stations are available every 2.5 km, serving athletes in both directions.</p>
-
-                </div>
-              </div>
-            </div>
-
-            <div className="relative rounded-2xl overflow-hidden mb-6 border border-white/10 group">
-              <div
-                className="strava-embed-placeholder w-full h-[400px]"
-                data-full-width="true"
-                data-embed-type="route"
-                data-embed-id="3321032819934834822"
-                data-style="standard"
-                data-terrain="3d"
-                data-from-embed="true"
-              ></div>
-              <div className="absolute inset-0 bg-black/50 pointer-events-none group-hover:bg-black/30 transition-colors duration-300" />
-              <div className="absolute top-4 right-4 bg-black/60 backdrop-blur-md px-3 py-1 rounded-full border border-white/10 flex items-center gap-2">
-                <MapPin size={12} className="text-triton-red" />
-                <span className="text-[10px] font-bold uppercase text-white tracking-widest italic">Course Map</span>
-              </div>
-            </div>
-            <Script
-              id="strava-script"
-              src="https://strava-embeds.com/embed.js"
+          {eventData.formats?.run && (
+            <EventTabContent
+              activeTab={activeTab}
+              tabId="3"
+              data={eventData.formats.run}
             />
-          </div>
-
-
+          )}
         </div>
 
         <h4 className="text-2xl font-bold text-white mb-8 uppercase border-l-4 border-triton-red pl-4 mt-20">
@@ -548,36 +203,9 @@ const FormatsSection: React.FC = () => {
             </div>
           </div>
         </div>
-
-        {/* Mapas */}
       </div>
-    </section>
+    </section >
   );
 };
 
 export default FormatsSection;
-
-function renderStrava() {
-  return (
-    <>
-      <div className="relative rounded-2xl overflow-hidden">
-        <div
-          className="strava-embed-placeholder w-full h-full"
-          data-embed-type="route"
-          data-embed-id="2989446402175334832"
-          data-style="standard"
-          data-terrain="3d"
-          data-from-embed="true"
-        ></div>
-        <div className="absolute inset-0 bg-black/30 pointer-events-none" />
-      </div>
-      <Script
-        id="strava-script"
-        src="https://strava-embeds.com/embed.js"
-        strategy="afterInteractive"
-      />
-
-    </>
-  )
-}
-

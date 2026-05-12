@@ -38,7 +38,7 @@ export default function RankingPageClient({ initialAthletes }: RankingPageClient
     return initialAthletes.filter((athlete) => {
       const matchesSearch =
         athlete.Name.toLowerCase().includes(search.toLowerCase()) ||
-        athlete.Bib.toString().includes(search);
+        athlete.Bib?.toString().includes(search);
 
       const matchesGender = genderFilter === "All" || athlete.Gender === genderFilter;
       const matchesContest = contestFilter === "All" || athlete.Contest === contestFilter;
@@ -163,7 +163,7 @@ export default function RankingPageClient({ initialAthletes }: RankingPageClient
                         initial={{ opacity: 0 }}
                         animate={{ opacity: 1 }}
                         exit={{ opacity: 0 }}
-                        key={athlete.Bib}
+                        key={athlete.Name}
                         onClick={() => handleAthleteClick(athlete)}
                         className="group hover:bg-white/5 transition-all cursor-pointer"
                       >

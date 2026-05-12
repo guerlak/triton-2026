@@ -193,7 +193,6 @@ const CountdownSection: React.FC = () => {
                   </a>
 
                   <Link
-                    //href={currentEvent.href}
                     href={currentEvent.href}
                     className="bg-white hover:bg-triton-red text-black hover:text-white font-black py-2  px-4 md:px-10 rounded-none flex items-center justify-center gap-3 uppercase tracking-widest transition-all duration-300"
                   >

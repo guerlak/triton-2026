@@ -46,9 +46,23 @@ export interface ScheduleDay {
   events: ScheduleEvent[];
 }
 
+export interface EventFormatDetail {
+  day: string;
+  date: string;
+  startTime: string;
+  image: any;
+  title: string;
+  description: string;
+  distances: { label: string; val: string; p: number }[];
+  stravaId: string;
+  details?: string[];
+  extraDescription?: string;
+}
+
 export interface EventData {
   id: string;
   slug: string;
+  language: "pt-BR" | "en";
   title: string;
   subtitle: string;
   location: string;
@@ -58,6 +72,7 @@ export interface EventData {
   targetDate: string;
   hero: EventHero;
   stats: Stat[];
+  registrationLink: string;
   info: {
     title: string;
     subtitle: string;
@@ -81,6 +96,11 @@ export interface EventData {
     days: ScheduleDay[];
     importantNote: string;
   };
+  formats?: {
+    swim: EventFormatDetail;
+    bike: EventFormatDetail;
+    run: EventFormatDetail;
+  };
 }
 
 // Data Imports
@@ -88,6 +108,10 @@ import heroImg from "@/public/images/triton-fotos-prova-bike.jpeg";
 import logoHero from "@/public/images/logo_triton3_branco_h.png";
 import fotoResort from "@/public/images/foto-portobelo-ampla.jpeg";
 import touristCoast from "@/public/images/mangaratiba-coast.png";
+
+import bikePic from "@/public/images/triton-fotos-prova-bike.jpeg";
+import swimPic from "@/public/images/triton-fotos-prova-swim.jpeg";
+import runPic from "@/public/images/triton-fotos-prova-run.jpeg";
 
 const COMMON_STATS: Stat[] = [
   { value: "3", label: "consectutive days", description: "Swim - Fri / Bike - Sat / Run - Sun" },
@@ -97,6 +121,7 @@ const COMMON_STATS: Stat[] = [
 
 export const EVENT_DATA_MAP: Record<string, EventData> = {
   "rio-2026": {
+    language: "pt-BR",
     id: "rio-2026",
     slug: "rio-2026",
     title: "Rio de Janeiro",
@@ -110,15 +135,21 @@ export const EVENT_DATA_MAP: Record<string, EventData> = {
       backgroundImage: heroImg,
       logoImage: logoHero,
     },
-    stats: COMMON_STATS,
+    registrationLink: "https://www.ticketsports.com.br/e/triton-3-rio-de-janeiro-2026-74526",
+    stats: [
+      { value: "3", label: "dias consecutivos", description: "Natação - Sex / Ciclismo - Sáb / Corrida - Dom" },
+      { value: "3", label: "opções de distância", description: "SPRINT - MIDDLE - LONG" },
+      { value: "3", label: "opções de competição", description: "Triathlon Individual / Revezamento / Modalidades Individuais" },
+    ],
     info: {
-      title: "An innovative format",
-      subtitle: "Beyond expectations starts here",
-      description: "TRITON 3 redefines the traditional triathlon. Instead of compressing all three disciplines into a single day, each becomes its own race—across three consecutive days. Swim on Friday. Bike on Saturday. Run on Sunday. This format demands more than endurance. It challenges athletes to perform at their peak, day after day—where consistency, resilience, and strategy are pushed to the limit."
+      title: "Um formato inovador",
+      subtitle: "Permita-se viver esse desafio",
+      description: "O TRITON 3 redefine o triathlon tradicional, oferecendo uma experiência surpreendente para quem topa o desafio. Em vez de concentrar as três modalidades em um único dia, cada uma se torna uma prova independente — ao longo de três dias consecutivos: natação na sexta-feira, ciclismo no sábado e corrida no domingo. Esse formato exige mais do que resistência. Ele desafia os atletas a performar no mais alto nível, dia após dia — onde consistência, resiliência e estratégia são levadas ao limite."
+
     },
     scoring: {
-      title: "INNOVATIVE SCORING SYSTEM",
-      description: "Each discipline carries equal weight, rewarding athletes who perform consistently across all three. This race also contributes points to the TRITON World global ranking and serves as a qualifying event for the World Championship."
+      title: "Um sistema de pontuação inovador",
+      description: "O TRITON adota um sistema de pontuação inovador, com peso igual para as três modalidades. No formato TRITON 3, vence o atleta que somar a menor pontuação ao longo dos três dias de competição. A lógica é simples: a colocação em cada prova corresponde diretamente aos pontos (quanto melhor a colocação, menor a pontuação). Esse modelo valoriza consistência e performance contínua nas três disciplinas. Além disso, a prova soma pontos para o ranking global do TRITON World Series e funciona como etapa classificatória para o Campeonato Mundial."
     },
     locations: {
       coastExperience: {
@@ -208,6 +239,58 @@ export const EVENT_DATA_MAP: Record<string, EventData> = {
         }
       ],
       importantNote: "Important Note: All schedules are subject to change without prior notice due to unforeseen circumstances. Race start times and start order may also be adjusted. Please check the race program regularly to stay informed of any last-minute updates."
+    },
+    formats: {
+      swim: {
+        day: "Dia 1",
+        date: "21 de Agosto (sexta)",
+        startTime: "15:30",
+        image: swimPic,
+        title: "Natação",
+        description: "A natação acontece na praia do Portobello Resort, a poucos metros da arena montada no gramado. O mar abrigado costuma oferecer condições ideais, com boa visibilidade e pouca correnteza — cenário perfeito para performance.\n\nA largada será em ondas, iniciando pelo SPRINT, seguido do MIDDLE e do LONG, com saída diretamente da areia. O percurso será delimitado por boias e realizado em voltas:\n\nSPRINT — 1 volta\nMIDDLE — 2 voltas\nLONG — 3 voltas\n\nAs distâncias MIDDLE e LONG contam com saídas australianas, adicionando ainda mais dinâmica à prova:\n\nMIDDLE — 1 saída\nLONG — 2 saídas\n\nTodos os atletas que concluírem a prova de natação receberão medalha de finisher, e os cinco primeiros colocados, masculino e feminino, de cada distância serão premiados.",
+        distances: [
+          { label: "Sprint", val: "1000m", p: 33 },
+          { label: "Middle", val: "2000m", p: 66 },
+          { label: "Long", val: "3000m", p: 100 }
+        ],
+        stravaId: "2989446402175334832"
+      },
+      bike: {
+        day: "Dia 2",
+        date: "22 de Agosto (sábado)",
+        startTime: "08:00",
+        image: bikePic,
+        title: "Ciclismo",
+        description: "O percurso de ciclismo acontece na Serra do Piloto, uma das rotas mais icônicas para ciclistas no Rio de Janeiro. A prova larga em frente ao Parque de Exposições de Mangaratiba (área da Expo), onde há estacionamento seguro disponível.\n\nUm ponto de apoio com hidratação e special needs está disponível em Macundu, a aproximadamente 18 km da largada.",
+        distances: [
+          { label: "Sprint", val: "30km", p: 33 },
+          { label: "Middle", val: "60km", p: 66 },
+          { label: "Long", val: "90km", p: 100 }
+        ],
+        stravaId: "3321031030011067804",
+        details: [
+          "Retorno Sprint: ~4,5 km após Macundu",
+          "Hidratação Middle & Long: ~10 km após Macundu",
+          "Retorno Middle & Long (Rio Claro): ~7,5 km após o ponto de hidratação",
+          "Chegada: ~3 km após Macundu (sentido Mangaratiba)",
+          "Descida neutralizada: ~14 km",
+          "Vácuo liberado (Proibido bike de TT)"
+        ]
+      },
+      run: {
+        day: "Dia 3",
+        date: "23 de Agosto (domingo)",
+        startTime: "08:00",
+        image: runPic,
+        title: "Corrida",
+        description: "O percurso de corrida tem largada e chegada na arena do evento, localizada no Portobello Resort. Todo o trajeto ocorre dentro do complexo do resort, oferecendo um cenário privilegiado e visualmente marcante.\n\nO percurso é realizado em voltas: SPRINT (1 volta), MIDDLE (2 voltas) e LONG (3 voltas). Postos de hidratação estão disponíveis a cada 2,5 km, atendendo os atletas nos dois sentidos.",
+        distances: [
+          { label: "Sprint", val: "10km", p: 33 },
+          { label: "Middle", val: "20km", p: 66 },
+          { label: "Long", val: "30km", p: 100 }
+        ],
+        stravaId: "3321032819934834822"
+      }
     }
   },
   "salvador-2027": {
@@ -220,6 +303,8 @@ export const EVENT_DATA_MAP: Record<string, EventData> = {
     dateText: "ABR 11",
     fullDateText: "11 de Abril, 2027",
     targetDate: "2027-04-11T08:00:00",
+    language: "en",
+    registrationLink: "https://www.ticketsports.com.br/e/triton-1-salvador-2027-75925",
     hero: {
       backgroundImage: heroImg, // Placeholder
       logoImage: logoHero,
@@ -276,6 +361,8 @@ export const EVENT_DATA_MAP: Record<string, EventData> = {
     dateText: "OCT 07",
     fullDateText: "October 7, 2026",
     targetDate: "2026-10-07T08:00:00",
+    language: "en",
+    registrationLink: "https://www.ticketsports.com.br/e/triton-1-salvador-2027-75925",
     hero: {
       backgroundImage: heroImg, // Placeholder
       logoImage: logoHero,

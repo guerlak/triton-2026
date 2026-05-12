@@ -1,4 +1,4 @@
-import FormatsSection from "@/app/triton-events/[slug]/FormatsSection";
+import FormatsSection from "@/app/triton-events/rio-2026/FormatsSection";
 import LocationsSection from "@/app/components/event/LocationsSection";
 import CountdownSectionEvent from "@/app/components/event/CountDownSectionEvent";
 import EventNavBar from "@/app/components/event/EventNavBar";
@@ -21,7 +21,7 @@ export default function Page() {
         <HeroEvent data={data.hero} />
         <CountdownSectionEvent data={data} />
         <InfoSection stats={data.stats} info={data.info} scoring={data.scoring} />
-        <FormatsSection />
+        <FormatsSection eventData={data} />
         <ScheduleSection schedule={data.schedule} />
         <LocationsSection locations={data.locations} />
         <Testimonials />

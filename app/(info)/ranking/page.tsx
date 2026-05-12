@@ -14,7 +14,6 @@ export const metadata = {
 
 export default async function RankingPage() {
   const data = await fetchGeneralRanking(new ApiRankingRepo());
-  const details = await fetchDetails(new ApiRankingRepo());
 
 
   if (!data) {
