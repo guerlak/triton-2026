@@ -1,6 +1,6 @@
 import StartListClientWrapper from "./StartListClientWrapper";
 
-export default async function LiveResultsPage() {
+export default async function StartList() {
 
     const url = "https://api.raceresult.com/371805/RQDKNSO0GU02BW4IF4X1G7AF12S073FW"
 

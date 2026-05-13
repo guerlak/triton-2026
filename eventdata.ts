@@ -90,6 +90,10 @@ export interface EventData {
     logistics: LogisticItem[];
     resort: ResortInfo;
   };
+  country: string;
+  flag: string;
+  status: 'Confirmed' | 'Planned';
+  year: number;
   schedule: {
     title: string;
     subtitle: string;
@@ -128,6 +132,10 @@ export const EVENT_DATA_MAP: Record<string, EventData> = {
     subtitle: "TRITON 1",
     location: "Portobello",
     venue: "Portobello, Rio de Janeiro",
+    country: "Brazil",
+    flag: "🇧🇷",
+    status: "Confirmed",
+    year: 2026,
     dateText: "AGO 21 . 22 . 23",
     fullDateText: "21, 22 e 23 de Agosto, 2026",
     targetDate: "2026-08-21T08:00:00",
@@ -137,7 +145,7 @@ export const EVENT_DATA_MAP: Record<string, EventData> = {
     },
     registrationLink: "https://www.ticketsports.com.br/e/triton-3-rio-de-janeiro-2026-74526",
     stats: [
-      { value: "3", label: "dias consecutivos", description: "Natação - Sex / Ciclismo - Sáb / Corrida - Dom" },
+      { value: "3", label: "dias consecutivos", description: "Swim - Sex / Bike - Sáb / Run - Dom" },
       { value: "3", label: "opções de distância", description: "SPRINT - MIDDLE - LONG" },
       { value: "3", label: "opções de competição", description: "Triathlon Individual / Revezamento / Modalidades Individuais" },
     ],
@@ -145,7 +153,6 @@ export const EVENT_DATA_MAP: Record<string, EventData> = {
       title: "Um formato inovador",
       subtitle: "Permita-se viver esse desafio",
       description: "O TRITON 3 redefine o triathlon tradicional, oferecendo uma experiência surpreendente para quem topa o desafio. Em vez de concentrar as três modalidades em um único dia, cada uma se torna uma prova independente — ao longo de três dias consecutivos: natação na sexta-feira, ciclismo no sábado e corrida no domingo. Esse formato exige mais do que resistência. Ele desafia os atletas a performar no mais alto nível, dia após dia — onde consistência, resiliência e estratégia são levadas ao limite."
-
     },
     scoring: {
       title: "Um sistema de pontuação inovador",
@@ -247,13 +254,14 @@ export const EVENT_DATA_MAP: Record<string, EventData> = {
         startTime: "15:30",
         image: swimPic,
         title: "Natação",
-        description: "A natação acontece na praia do Portobello Resort, a poucos metros da arena montada no gramado. O mar abrigado costuma oferecer condições ideais, com boa visibilidade e pouca correnteza — cenário perfeito para performance.\n\nA largada será em ondas, iniciando pelo SPRINT, seguido do MIDDLE e do LONG, com saída diretamente da areia. O percurso será delimitado por boias e realizado em voltas:\n\nSPRINT — 1 volta\nMIDDLE — 2 voltas\nLONG — 3 voltas\n\nAs distâncias MIDDLE e LONG contam com saídas australianas, adicionando ainda mais dinâmica à prova:\n\nMIDDLE — 1 saída\nLONG — 2 saídas\n\nTodos os atletas que concluírem a prova de natação receberão medalha de finisher, e os cinco primeiros colocados, masculino e feminino, de cada distância serão premiados.",
+        description: "A natação acontece na praia do Portobello Resort, a poucos metros da arena montada no gramado. O mar abrigado costuma oferecer condições ideais, com boa visibilidade e pouca correnteza.\n\nA largada será em ondas, iniciando pelo SPRINT, seguido do MIDDLE e do LONG, com saída diretamente da areia. O percurso será delimitado por boias e realizado em voltas:\n\nSPRINT — 1 volta\nMIDDLE — 2 voltas\nLONG — 3 voltas\n\nAs distâncias MIDDLE e LONG contam com saídas australianas, adicionando ainda mais dinâmica à prova:\n\nMIDDLE — 1 saída\nLONG — 2 saídas\n\nTodos os atletas que concluírem a prova de natação receberão medalha de finisher, e os cinco primeiros colocados, masculino e feminino, de cada distância serão premiados.",
         distances: [
           { label: "Sprint", val: "1000m", p: 33 },
           { label: "Middle", val: "2000m", p: 66 },
           { label: "Long", val: "3000m", p: 100 }
         ],
-        stravaId: "2989446402175334832"
+       
+        stravaId: "2989446402175334832",
       },
       bike: {
         day: "Dia 2",
@@ -300,6 +308,10 @@ export const EVENT_DATA_MAP: Record<string, EventData> = {
     subtitle: "TRITON 1",
     location: "Salvador",
     venue: "Salvador, Bahia",
+    country: "Brazil",
+    flag: "🇧🇷",
+    status: "Confirmed",
+    year: 2027,
     dateText: "ABR 11",
     fullDateText: "11 de Abril, 2027",
     targetDate: "2027-04-11T08:00:00",
@@ -358,6 +370,10 @@ export const EVENT_DATA_MAP: Record<string, EventData> = {
     subtitle: "TRITON 1",
     location: "Qidong",
     venue: "Qidong, China",
+    country: "China",
+    flag: "🇨🇳",
+    status: "Confirmed",
+    year: 2026,
     dateText: "OCT 07",
     fullDateText: "October 7, 2026",
     targetDate: "2026-10-07T08:00:00",
@@ -407,6 +423,214 @@ export const EVENT_DATA_MAP: Record<string, EventData> = {
       subtitle: "Race Day Timeline",
       days: [], // To be populated
       importantNote: "Note: Qidong event is a TRITON 1 format."
+    }
+  },
+  "lisboa-2026": {
+    id: "lisboa-2026",
+    slug: "lisboa-2026",
+    title: "Lisboa",
+    subtitle: "TRITON 1",
+    location: "Lisboa",
+    venue: "Lisbon, Portugal",
+    country: "Portugal",
+    flag: "🇵🇹",
+    status: "Confirmed",
+    year: 2026,
+    dateText: "SEP 06",
+    fullDateText: "September 6, 2026",
+    targetDate: "2026-09-06T08:00:00",
+    language: "en",
+    registrationLink: "#",
+    hero: {
+      backgroundImage: heroImg,
+      logoImage: logoHero,
+    },
+    stats: COMMON_STATS,
+    info: {
+      title: "Lisbon Triton",
+      subtitle: "Race in the heart of Portugal",
+      description: "Experience the beautiful coast of Lisbon in this epic TRITON 1 event."
+    },
+    scoring: {
+      title: "GLOBAL POINTS",
+      description: "Earn points for the global ranking."
+    },
+    locations: {
+      coastExperience: {
+        image: touristCoast,
+        pois: []
+      },
+      logistics: [],
+      resort: {
+        image: fotoResort,
+        title: "Lisbon Partner Hotel",
+        description: "Official accommodation in Lisbon.",
+        benefits: [],
+        buttonText: "Book Now",
+        whatsappLink: "#"
+      }
+    },
+    schedule: {
+      title: "SCHEDULE",
+      subtitle: "Race Day Timeline",
+      days: [],
+      importantNote: ""
+    }
+  },
+  "uae-2027": {
+    id: "uae-2027",
+    slug: "uae-2027",
+    title: "UAE",
+    subtitle: "TRITON 1",
+    location: "UAE",
+    venue: "United Arab Emirates",
+    country: "United Arab Emirates",
+    flag: "🇦🇪",
+    status: "Planned",
+    year: 2027,
+    dateText: "MAY",
+    fullDateText: "May, 2027",
+    targetDate: "2027-05-01T08:00:00",
+    language: "en",
+    registrationLink: "#",
+    hero: {
+      backgroundImage: heroImg,
+      logoImage: logoHero,
+    },
+    stats: COMMON_STATS,
+    info: {
+      title: "UAE Triton",
+      subtitle: "The Desert Challenge",
+      description: "Coming soon to the United Arab Emirates."
+    },
+    scoring: {
+      title: "GLOBAL POINTS",
+      description: "Earn points for the global ranking."
+    },
+    locations: {
+      coastExperience: {
+        image: touristCoast,
+        pois: []
+      },
+      logistics: [],
+      resort: {
+        image: fotoResort,
+        title: "UAE Partner Hotel",
+        description: "Official accommodation.",
+        benefits: [],
+        buttonText: "Contact Us",
+        whatsappLink: "#"
+      }
+    },
+    schedule: {
+      title: "SCHEDULE",
+      subtitle: "TBA",
+      days: [],
+      importantNote: ""
+    }
+  },
+  "ireland-2027": {
+    id: "ireland-2027",
+    slug: "ireland-2027",
+    title: "Ireland",
+    subtitle: "TRITON 1",
+    location: "Ireland",
+    venue: "Ireland",
+    country: "Ireland",
+    flag: "🇮🇪",
+    status: "Planned",
+    year: 2027,
+    dateText: "AUG",
+    fullDateText: "August, 2027",
+    targetDate: "2027-08-01T08:00:00",
+    language: "en",
+    registrationLink: "#",
+    hero: {
+      backgroundImage: heroImg,
+      logoImage: logoHero,
+    },
+    stats: COMMON_STATS,
+    info: {
+      title: "Ireland Triton",
+      subtitle: "The Emerald Isle Challenge",
+      description: "Experience the rugged beauty of Ireland."
+    },
+    scoring: {
+      title: "GLOBAL POINTS",
+      description: "Earn points for the global ranking."
+    },
+    locations: {
+      coastExperience: {
+        image: touristCoast,
+        pois: []
+      },
+      logistics: [],
+      resort: {
+        image: fotoResort,
+        title: "Ireland Partner Hotel",
+        description: "Official accommodation.",
+        benefits: [],
+        buttonText: "Contact Us",
+        whatsappLink: "#"
+      }
+    },
+    schedule: {
+      title: "SCHEDULE",
+      subtitle: "TBA",
+      days: [],
+      importantNote: ""
+    }
+  },
+  "usa-2027": {
+    id: "usa-2027",
+    slug: "usa-2027",
+    title: "USA",
+    subtitle: "TRITON 1",
+    location: "USA",
+    venue: "USA",
+    country: "USA",
+    flag: "🇺🇸",
+    status: "Planned",
+    year: 2027,
+    dateText: "OCT",
+    fullDateText: "October, 2027",
+    targetDate: "2027-10-01T08:00:00",
+    language: "en",
+    registrationLink: "#",
+    hero: {
+      backgroundImage: heroImg,
+      logoImage: logoHero,
+    },
+    stats: COMMON_STATS,
+    info: {
+      title: "USA Triton",
+      subtitle: "The American Dream",
+      description: "TRITON comes to the United States."
+    },
+    scoring: {
+      title: "GLOBAL POINTS",
+      description: "Earn points for the global ranking."
+    },
+    locations: {
+      coastExperience: {
+        image: touristCoast,
+        pois: []
+      },
+      logistics: [],
+      resort: {
+        image: fotoResort,
+        title: "USA Partner Hotel",
+        description: "Official accommodation.",
+        benefits: [],
+        buttonText: "Contact Us",
+        whatsappLink: "#"
+      }
+    },
+    schedule: {
+      title: "SCHEDULE",
+      subtitle: "TBA",
+      days: [],
+      importantNote: ""
     }
   }
 };

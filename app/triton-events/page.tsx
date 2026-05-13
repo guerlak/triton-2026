@@ -1,6 +1,6 @@
 import { MapPin, Calendar, ArrowLeft } from "lucide-react";
 import { CalendarEvent } from "@/types";
-import { EVENTS } from "@/constants";
+import { EVENT_DATA_MAP } from "@/eventdata";
 import Link from "next/link";
 
 interface EventsPageProps {
@@ -9,7 +9,18 @@ interface EventsPageProps {
 }
 
 const EventsPage: React.FC<EventsPageProps> = () => {
-  const groupedEvents = EVENTS.reduce(
+  const eventsList: CalendarEvent[] = Object.values(EVENT_DATA_MAP).map((event) => ({
+    date: event.dateText,
+    location: event.title,
+    country: event.country,
+    flag: event.flag,
+    status: event.status,
+    year: event.year,
+    format: event.subtitle,
+    slug: event.slug,
+  }));
+
+  const groupedEvents = eventsList.reduce(
     (acc, event) => {
       if (!acc[event.country]) {
         acc[event.country] = [];

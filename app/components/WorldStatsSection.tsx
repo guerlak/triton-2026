@@ -10,15 +10,18 @@ import {
 
   Medal,
   Star,
+  Trophy,
+  Globe,
+  Globe2,
 
 } from "lucide-react";
 import RedLine from "../ui/RedLine";
 
 const stats = [
-  { label: "CONTINENTS", value: 3, icon: Map },
+  { label: "CONTINENTS", value: 3, icon: Globe2 },
   { label: "EVENTS", value: 8, icon: Calendar },
-  { label: "RACES", value: 24, icon: Star },
-  { label: "CHAMPIONSHIP", value: 1, icon: Medal },
+  { label: "RACES", value: 24, icon: Medal },
+  { label: "CHAMPIONSHIP", value: 1, icon: Trophy },
 ];
 
 function Counter({ value, duration = 2.5 }: { value: number; duration?: number }) {

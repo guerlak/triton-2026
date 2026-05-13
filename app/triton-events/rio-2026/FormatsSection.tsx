@@ -1,7 +1,13 @@
 "use client";
 import React, { useState } from "react";
-import { Waves, Bike, PersonStanding, Users, Layers, User } from "lucide-react";
+import { Waves, Bike, PersonStanding, Users, Layers, User, Calendar, Clock, MapPin, Trophy } from "lucide-react";
 import { motion } from "framer-motion";
+import Image from "next/image";
+import swimPic from "@/public/images/triton-fotos-prova-swim.jpeg";
+import runPic from "@/public/images/triton-fotos-prova-run.jpeg";
+import bikePic from "@/public/images/triton-fotos-prova-bike.jpeg";
+
+import Script from "next/script";
 
 import EventTabContent from "@/app/components/event/EventTabContent";
 import { EventData } from "@/eventdata";
@@ -66,7 +72,7 @@ const FormatsSection: React.FC<{ eventData: EventData }> = ({ eventData }) => {
             UM FORMATO QUE REDEFINE A EXPERIÊNCIA
           </h3>
           <p className="text-gray-400 max-w-6xl mx-auto text-lg">
-            O TRITON 3 é uma prova disputada ao longo de três dias consecutivos — Uma proposta única que eleva o triathlon a outro nível de experiência. Seu formato inovador abre espaço tanto para triatletas quanto para especialistas de cada modalidade: nadadores, ciclistas e corredores podem competir individualmente, criando um cenário dinâmico e imprevisível. Triatletas são desafiados por atletas de alto nível em suas especialidades, elevando a competitividade e tornando cada prova ainda mais intensa e fora do comum.
+            O <strong>TRITON 3</strong> é uma prova disputada ao longo de três dias consecutivos — Uma proposta única que eleva o triathlon a outro nível de experiência. Seu formato inovador abre espaço tanto para triatletas quanto para especialistas de cada modalidade: nadadores, ciclistas e corredores podem competir individualmente, criando um cenário dinâmico e imprevisível. Triatletas são desafiados por atletas de alto nível em suas especialidades, elevando a competitividade e tornando cada prova ainda mais intensa e fora do comum.
           </p>
         </div>
 
@@ -95,41 +101,416 @@ const FormatsSection: React.FC<{ eventData: EventData }> = ({ eventData }) => {
         </div>
 
         {/* Content Container - Day Spotlight Decorator */}
+
         <div className="relative min-h-[600px]">
-          {eventData.formats?.swim && (
-            <EventTabContent
-              activeTab={activeTab}
-              tabId="1"
-              data={eventData.formats.swim}
-            />
-          )}
 
-          {eventData.formats?.bike && (
-            <EventTabContent
-              activeTab={activeTab}
-              tabId="2"
-              data={eventData.formats.bike}
-            />
-          )}
+          <div className={`bg-white/5 text-white p-6 block w-full h-full rounded-2xl border border-white/10 backdrop-blur-md
+            ${activeTab === "1" ? "block" : "hidden"}`}>
 
-          {eventData.formats?.run && (
-            <EventTabContent
-              activeTab={activeTab}
-              tabId="3"
-              data={eventData.formats.run}
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-8">
+              {/* Left Column: Image and Key Info */}
+              <div className="space-y-6">
+                <div className="w-full h-[300px] mb-4 rounded-2xl relative overflow-hidden group shadow-2xl">
+                  <Image
+                    src={swimPic}
+                    alt="Swimming"
+                    className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                  />
+                  <div className="absolute inset-0 bg-linear-to-t from-black/80 via-transparent to-transparent" />
+                  <div className="absolute bottom-6 left-6" >
+                    <span className="bg-triton-red text-white font-black px-4 py-1.5 rounded-lg text-sm uppercase italic tracking-widest shadow-xl">
+                      Dia 1
+                    </span>
+                  </div>
+                </div>
+
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                  <div className="bg-white/5 p-4 rounded-xl border border-white/10 flex items-center gap-4">
+                    <div className="bg-triton-red/10 p-3 rounded-lg">
+                      <Calendar className="text-triton-red" size={20} />
+                    </div>
+                    <div>
+                      <p className="text-[10px] text-gray-500 uppercase font-bold tracking-widest">Data</p>
+                      <p className="text-sm font-black uppercase text-white">21 AGO (SEXTA)</p>
+                    </div>
+                  </div>
+                  <div className="bg-white/5 p-4 rounded-xl border border-white/10 flex items-center gap-4">
+                    <div className="bg-triton-red/10 p-3 rounded-lg">
+                      <Clock className="text-triton-red" size={20} />
+                    </div>
+                    <div>
+                      <p className="text-[10px] text-gray-500 uppercase font-bold tracking-widest">Largada</p>
+                      <p className="text-sm font-black uppercase text-white">15:30</p>
+                    </div>
+                  </div>
+                </div>
+
+
+                <div className="bg-white/5 p-6 rounded-2xl border border-white/10 space-y-6">
+                  <div className="flex items-center gap-2 mb-2">
+                    <Trophy className="text-triton-red" size={18} />
+                    <span className="text-xs font-black uppercase tracking-widest text-gray-300">Distâncias</span>
+                  </div>
+
+                  {/* Distance Visualization Graph */}
+                  <div className="space-y-5">
+                    {[
+                      { label: "Sprint", val: "1000m", p: 33 },
+                      { label: "Middle", val: "2000m", p: 66 },
+                      { label: "Long", val: "3000m", p: 100 }
+                    ].map((d, i) => (
+                      <div key={i} className="space-y-2">
+                        <div className="flex justify-between items-end">
+                          <span className="text-[10px] font-bold text-gray-500 uppercase italic tracking-tighter">{d.label}</span>
+                          <span className="text-lg font-black text-white italic">{d.val}</span>
+                        </div>
+                        <div className="w-full h-1.5 bg-white/10 rounded-full overflow-hidden">
+                          <motion.div
+                            initial={{ width: 0 }}
+                            whileInView={{ width: `${d.p}%` }}
+                            transition={{ duration: 1, delay: i * 0.1 }}
+                            className="h-full bg-triton-red shadow-[0_0_10px_rgba(223,31,38,0.5)]"
+                          />
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              </div>
+
+
+              {/* Right Column: Descriptions & available Distances (The "Graph" part) */}
+
+
+
+              <div className="flex flex-col justify-between space-y-6">
+                <div>
+                  <div className="flex items-center gap-3 mb-8">
+                    <MapPin className="text-triton-red" size={24} />
+                    <h4 className="text-2xl font-black uppercase italic text-white leading-none">
+                      Natação
+                    </h4>
+                  </div>
+
+                  <p className="text-gray-400 text-base leading-relaxed mb-6">A natação acontece na praia do Portobello Resort, a poucos metros da arena montada no gramado. O mar abrigado costuma oferecer condições ideais, com boa visibilidade e pouca correnteza.</p>
+                  <p className="text-gray-400 text-base leading-relaxed mb-6">A largada será em ondas, iniciando pelo SPRINT, seguido do MIDDLE e do LONG, com saída diretamente da areia. O percurso será delimitado por boias e realizado em voltas:</p>
+                  <ul className="list-disc list-inside text-gray-400 text-base leading-relaxed mb-6">
+                    <li>
+                      SPRINT — 1 volta
+                    </li>
+                    <li>
+                      MIDDLE — 2 voltas
+                    </li>
+                    <li>
+                      LONG — 3 voltas
+                    </li>
+                  </ul>
+                  <p className="text-gray-400 text-base leading-relaxed mb-6">As distâncias MIDDLE e LONG contam com saídas australianas, adicionando ainda mais dinâmica à prova:</p>
+                  <ul className="list-disc list-inside text-gray-400 text-base leading-relaxed mb-6">
+                    <li>MIDDLE — 1 saída</li>
+                    <li>LONG — 2 saídas</li>
+                  </ul>
+                  <p className="text-gray-400 text-base leading-relaxed mb-6">Todos os atletas que concluírem a prova de natação receberão medalha de finisher, e os cinco primeiros colocados, masculino e feminino, de cada distância serão premiados.</p>
+
+                </div>
+
+
+              </div>
+            </div>
+
+            <div className="relative rounded-2xl overflow-hidden mb-6 border border-white /10 group">
+              <div
+                className="strava-embed-placeholder w-full h-[400px]"
+                data-full-width="true"
+                data-embed-type="route"
+                data-embed-id="2989446402175334832"
+                data-style="standard"
+                data-terrain="3d"
+                data-from-embed="true"
+              ></div>
+              <div className="absolute inset-0 bg-black/50 pointer-events-none group-hover:bg-black/30 transition-colors duration-300" />
+              <div className="absolute top-4 right-4 bg-black/60 backdrop-blur-md px-3 py-1 rounded-full border border-white/10 flex items-center gap-2">
+                <MapPin size={12} className="text-triton-red" />
+                <span className="text-[10px] font-bold uppercase text-white tracking-widest italic">Course Map</span>
+              </div>
+            </div>
+            <Script
+              id="strava-script"
+              src="https://strava-embeds.com/embed.js"
             />
-          )}
+          </div>
+
+          <div className={`bg-white/5 text-white p-6 block w-full h-full rounded-2xl border border-white/10 backdrop-blur-md
+            ${activeTab === "2" ? "block" : "hidden"}`}>
+
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-8">
+              {/* Left Column: Image and Key Info */}
+              <div className="space-y-6">
+                <div className="w-full h-[300px] mb-4 rounded-2xl relative overflow-hidden group shadow-2xl">
+                  <Image
+                    src={bikePic}
+                    alt="Cycling"
+                    className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                  />
+                  <div className="absolute inset-0 bg-linear-to-t from-black/80 via-transparent to-transparent" />
+                  <div className="absolute bottom-6 left-6" >
+                    <span className="bg-triton-red text-white font-black px-4 py-1.5 rounded-lg text-sm uppercase italic tracking-widest shadow-xl">
+                      Dia 2
+                    </span>
+                  </div>
+                </div>
+
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                  <div className="bg-white/5 p-4 rounded-xl border border-white/10 flex items-center gap-4">
+                    <div className="bg-triton-red/10 p-3 rounded-lg">
+                      <Calendar className="text-triton-red" size={20} />
+                    </div>
+                    <div>
+                      <p className="text-[10px] text-gray-500 uppercase font-bold tracking-widest">Data</p>
+                      <p className="text-sm font-black uppercase text-white">22 AGO (SáBADO)</p>
+                    </div>
+                  </div>
+                  <div className="bg-white/5 p-4 rounded-xl border border-white/10 flex items-center gap-4">
+                    <div className="bg-triton-red/10 p-3 rounded-lg">
+                      <Clock className="text-triton-red" size={20} />
+                    </div>
+                    <div>
+                      <p className="text-[10px] text-gray-500 uppercase font-bold tracking-widest">Largada</p>
+                      <p className="text-sm font-black uppercase text-white">08:00</p>
+                    </div>
+                  </div>
+                </div>
+
+                <div className="bg-white/5 p-6 rounded-2xl border border-white/10 space-y-6">
+                  <div className="flex items-center gap-2 mb-2">
+                    <Trophy className="text-triton-red" size={18} />
+                    <span className="text-xs font-black uppercase tracking-widest text-gray-300">Distâncias</span>
+                  </div>
+
+                  {/* Distance Visualization Graph */}
+                  <div className="space-y-5">
+                    {[
+                      { label: "Sprint", val: "30km", p: 33 },
+                      { label: "Middle", val: "60km", p: 66 },
+                      { label: "Long", val: "90km", p: 100 }
+                    ].map((d, i) => (
+                      <div key={i} className="space-y-2">
+                        <div className="flex justify-between items-end">
+                          <span className="text-[10px] font-bold text-gray-500 uppercase italic tracking-tighter">{d.label}</span>
+                          <span className="text-lg font-black text-white italic">{d.val}</span>
+                        </div>
+                        <div className="w-full h-1.5 bg-white/10 rounded-full overflow-hidden">
+                          <motion.div
+                            initial={{ width: 0 }}
+                            whileInView={{ width: `${d.p}%` }}
+                            transition={{ duration: 1, delay: i * 0.1 }}
+                            className="h-full bg-triton-red shadow-[0_0_10px_rgba(223,31,38,0.5)]"
+                          />
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              </div>
+
+              {/* Right Column: Descriptions & available Distances (The "Graph" part) */}
+              <div className="flex flex-col justify-between space-y-6">
+                <div className="text-gray-400 text-base leading-relaxed">
+                  <div className="flex items-center gap-3 mb-4">
+                    <MapPin className="text-triton-red" size={24} />
+                    <h4 className="text-2xl font-black uppercase italic text-white leading-none">
+                      Ciclismo
+                    </h4>
+                  </div>
+
+                  <p className="mb-6 mt-8">
+                    O percurso de ciclismo acontece na Serra do Piloto, uma das rotas mais icônicas do ciclismo no Rio de Janeiro. A largada será em frente ao Parque de Exposições de Mangaratiba (EXPO), onde há estacionamento seguro disponível. Haverá um ponto de apoio em Macundu, aproximadamente 18 km após a largada, com hidratação e suporte para os atletas.
+                  </p>
+                  <p className="mb-2 font-black">Pontos do percurso:</p>
+                  <ul className="list-disc list-inside mt-4">
+                    <li>Retorno do SPRINT: ~4,5 km após Macundu</li>
+                    <li>AID Station (MIDDLE e LONG): ~10 km após Macundu</li>
+                    <li>Retorno Rio Claro (MIDDLE e LONG): ~7,5 km após o AID Station</li>
+                    <li>Chegada: ~3 km após Macundu (sentido Mangaratiba)</li>
+                  </ul>
+
+                  <p className="mb-2 mt-4 font-black">Informações adicionais:</p>
+                  <ul className="list-disc list-inside mt-4">
+                    <li>Descida neutralizada: ~14 km</li>
+                    <li>Permitido vácuo (uso de bicicleta TT não permitido)</li>
+                  </ul>
+                  <p className="text-gray-400 text-base leading-relaxed mt-4">
+                    Todos os atletas que concluírem a prova de ciclismo receberão medalha de finisher, e os cinco primeiros colocados, masculino e feminino, de cada distância serão premiados.
+                  </p>
+                </div>
+              </div>
+            </div>
+            <div className="relative rounded-2xl overflow-hidden mb-6 border border-white/10 group">
+              <div
+                className="strava-embed-placeholder w-full h-[400px]"
+                data-full-width="true"
+                data-embed-type="route"
+                data-embed-id="3321031030011067804"
+                data-style="standard"
+                data-terrain="3d"
+                data-from-embed="true"
+              ></div>
+              <div className="absolute inset-0 bg-black/50 pointer-events-none group-hover:bg-black/30 transition-colors duration-300" />
+              <div className="absolute top-4 right-4 bg-black/60 backdrop-blur-md px-3 py-1 rounded-full border border-white/10 flex items-center gap-2">
+                <MapPin size={12} className="text-triton-red" />
+                <span className="text-[10px] font-bold uppercase text-white tracking-widest italic">Course Map</span>
+              </div>
+            </div>
+            <Script
+              id="strava-script"
+              src="https://strava-embeds.com/embed.js"
+            />
+          </div>
+
+          <div className={`bg-white/5 text-white p-6 block w-full h-full rounded-2xl border border-white/10 backdrop-blur-md
+            ${activeTab === "3" ? "block" : "hidden"}`}>
+
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-8">
+              {/* Left Column: Image and Key Info */}
+              <div className="space-y-6">
+                <div className="w-full h-[300px] mb-4 rounded-2xl relative overflow-hidden group shadow-2xl">
+                  <Image
+                    src={runPic}
+                    alt="Running"
+                    className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                  />
+                  <div className="absolute inset-0 bg-linear-to-t from-black/80 via-transparent to-transparent" />
+                  <div className="absolute bottom-6 left-6" >
+                    <span className="bg-triton-red text-white font-black px-4 py-1.5 rounded-lg text-sm uppercase italic tracking-widest shadow-xl">
+                      Dia 3
+                    </span>
+                  </div>
+                </div>
+
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                  <div className="bg-white/5 p-4 rounded-xl border border-white/10 flex items-center gap-4">
+                    <div className="bg-triton-red/10 p-3 rounded-lg">
+                      <Calendar className="text-triton-red" size={20} />
+                    </div>
+                    <div>
+                      <p className="text-[10px] text-gray-500 uppercase font-bold tracking-widest">Data</p>
+                      <p className="text-sm font-black uppercase text-white">23 AGO (DOMINGO)</p>
+                    </div>
+                  </div>
+                  <div className="bg-white/5 p-4 rounded-xl border border-white/10 flex items-center gap-4">
+                    <div className="bg-triton-red/10 p-3 rounded-lg">
+                      <Clock className="text-triton-red" size={20} />
+                    </div>
+                    <div>
+                      <p className="text-[10px] text-gray-500 uppercase font-bold tracking-widest">Largada</p>
+                      <p className="text-sm font-black uppercase text-white">07:00</p>
+                    </div>
+                  </div>
+                </div>
+
+                <div className="bg-white/5 p-6 rounded-2xl border border-white/10 space-y-6">
+                  <div className="flex items-center gap-2 mb-2">
+                    <Trophy className="text-triton-red" size={18} />
+                    <span className="text-xs font-black uppercase tracking-widest text-gray-300">DISTÂNCIAS</span>
+                  </div>
+
+                  {/* Distance Visualization Graph */}
+                  <div className="space-y-5">
+                    {[
+                      { label: "Sprint", val: "10km", p: 33 },
+                      { label: "Middle", val: "20km", p: 66 },
+                      { label: "Long", val: "30km", p: 100 }
+                    ].map((d, i) => (
+                      <div key={i} className="space-y-2">
+                        <div className="flex justify-between items-end">
+                          <span className="text-[10px] font-bold text-gray-500 uppercase italic tracking-tighter">{d.label}</span>
+                          <span className="text-lg font-black text-white italic">{d.val}</span>
+                        </div>
+                        <div className="w-full h-1.5 bg-white/10 rounded-full overflow-hidden">
+                          <motion.div
+                            initial={{ width: 0 }}
+                            whileInView={{ width: `${d.p}%` }}
+                            transition={{ duration: 1, delay: i * 0.1 }}
+                            className="h-full bg-triton-red shadow-[0_0_10px_rgba(223,31,38,0.5)]"
+                          />
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              </div>
+
+              {/* Right Column: Descriptions & available Distances (The "Graph" part) */}
+              <div className="flex flex-col justify-between space-y-6">
+                <div className="text-gray-400 text-base leading-relaxed ">
+                  <div className="flex items-center gap-3 mb-4">
+                    <MapPin className="text-triton-red" size={24} />
+                    <h4 className="text-2xl font-black uppercase italic text-white leading-none">
+                      CORRIDA
+                    </h4>
+                  </div>
+
+                  <p className="mb-6">
+                    O percurso da corrida tem largada e chegada na arena do evento, localizada no Portobello Resort. Todo o trajeto acontece dentro do complexo do Portobello, e é marcado por uma paisagem cinematográfica com longas retas, perfeitas para performar bem na corrida.
+                  </p>
+
+                  <p className="mb-6 font-black">O percurso é em voltas:</p>
+                  <ul className="list-disc list-inside mb-6">
+                    <li>
+                      SPRINT — 1 volta
+                    </li>
+                    <li>
+                      MIDDLE — 2 voltas
+                    </li>
+                    <li>
+                      LONG — 3 voltas
+                    </li>
+                  </ul>
+
+                  <p className="mb-6">Haverá pontos de hidratação a cada 2,5 km, atendendo os atletas em ambos os sentidos do percurso.</p>
+                  <p className="mb-6">Todos os atletas que concluírem a prova de corrida receberão medalha de finisher, e os cinco primeiros colocados, masculino e feminino, de cada distância serão premiados.</p>
+
+
+                </div>
+              </div>
+            </div>
+
+            <div className="relative rounded-2xl overflow-hidden mb-6 border border-white/10 group">
+              <div
+                className="strava-embed-placeholder w-full h-[400px]"
+                data-full-width="true"
+                data-embed-type="route"
+                data-embed-id="3321032819934834822"
+                data-style="standard"
+                data-terrain="3d"
+                data-from-embed="true"
+              ></div>
+              <div className="absolute inset-0 bg-black/50 pointer-events-none group-hover:bg-black/30 transition-colors duration-300" />
+              <div className="absolute top-4 right-4 bg-black/60 backdrop-blur-md px-3 py-1 rounded-full border border-white/10 flex items-center gap-2">
+                <MapPin size={12} className="text-triton-red" />
+                <span className="text-[10px] font-bold uppercase text-white tracking-widest italic">Course Map</span>
+              </div>
+            </div>
+            <Script
+              id="strava-script"
+              src="https://strava-embeds.com/embed.js"
+            />
+          </div>
+
         </div>
 
+
+
+
         <h4 className="text-2xl font-bold text-white mb-8 uppercase border-l-4 border-triton-red pl-4 mt-20">
-          choose your distance
+          Escolha sua distância
         </h4>
 
         <FormatTable distances={dict?.distances?.triton_1} />
 
         <div className="mt-8  pt-12">
           <h4 className="text-2xl font-bold text-white mb-8 uppercase border-l-4 border-triton-red pl-4">
-            Competition Options
+            Opções de Competição
           </h4>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             <div className="bg-white/5 p-6 rounded-xl border border-white/10 hover:border-triton-red/50 transition-all group">

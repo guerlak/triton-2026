@@ -67,8 +67,8 @@ const Navbar = () => {
 
         {/* Desktop Buttons */}
         <div className="hidden lg:flex items-center gap-4">
-          <NavButton text="Live Results" href="#" />
-          <NavButton isRed text="Find a Race" href="#" />
+          <NavButton text="Live Results" href="/live-results" />
+          <NavButton isRed text="Find a Race" href="/triton-events" />
         </div>
 
         {/* Mobile menu button */}

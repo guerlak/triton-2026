@@ -27,7 +27,7 @@ export default function InfoSection({ stats, info, scoring }: InfoSectionProps) 
           <h3 className="text-3xl md:text-5xl font-black uppercase text-white leading-tight">
             {info.subtitle}
           </h3>
-          <p className="text-gray-400 max-w-3xl mx-auto text-lg text-center mt-10">
+          <p className="text-gray-400 max-w-5xl mx-auto text-lg text-center mt-10">
             {info.description}
           </p>
         </div>

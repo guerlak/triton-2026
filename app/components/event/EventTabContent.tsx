@@ -1,9 +1,9 @@
 "use client";
+
 import React from "react";
 import Image from "next/image";
 import { Calendar, Clock, MapPin, Trophy } from "lucide-react";
 import { motion } from "framer-motion";
-import Script from "next/script";
 import { EventFormatDetail } from "@/eventdata";
 
 interface EventTabContentProps {
@@ -17,10 +17,9 @@ const EventTabContent: React.FC<EventTabContentProps> = ({
   tabId,
   data,
 }) => {
-  if (activeTab !== tabId) return null;
-
   return (
-    <div className="bg-white/5 text-white p-6 block w-full h-full rounded-2xl border border-white/10 backdrop-blur-md">
+    <div className={activeTab === tabId ? "block" : "hidden"}>
+      <div className="bg-white/5 text-white p-6 block w-full h-full rounded-2xl border border-white/10 backdrop-blur-md">
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-8">
         {/* Left Column: Image and Key Info */}
         <div className="space-y-6">
@@ -114,28 +113,25 @@ const EventTabContent: React.FC<EventTabContentProps> = ({
         </div>
       </div>
 
-      <div className="relative rounded-2xl overflow-hidden mb-6 border border-white/10 group">
-        <div
-          className="strava-embed-placeholder w-full h-[400px]"
-          data-full-width="true"
-          data-embed-type="route"
-          data-embed-id={data.stravaId}
-          data-style="standard"
-          data-terrain="3d"
-          data-from-embed="true"
-        ></div>
-        <div className="absolute inset-0 bg-black/50 pointer-events-none group-hover:bg-black/30 transition-colors duration-300" />
+      <div className="relative rounded-2xl overflow-hidden mb-6 border border-white/10 group h-[400px]">
+        <iframe
+          src={`https://www.strava.com/routes/${data.stravaId}/embed?style=standard&terrain=3d`}
+          width="100%"
+          height="400"
+          frameBorder="0"
+          allowTransparency={true}
+          scrolling="no"
+          className="w-full h-full"
+          title={`Strava Route - ${data.title}`}
+        ></iframe>
+        <div className="absolute inset-0 bg-black/10 pointer-events-none group-hover:bg-transparent transition-colors duration-300" />
         <div className="absolute top-4 right-4 bg-black/60 backdrop-blur-md px-3 py-1 rounded-full border border-white/10 flex items-center gap-2">
           <MapPin size={12} className="text-triton-red" />
           <span className="text-[10px] font-bold uppercase text-white tracking-widest italic">Course Map</span>
         </div>
       </div>
-      <Script
-        id={`strava-script-${tabId}`}
-        src="https://strava-embeds.com/embed.js"
-        strategy="afterInteractive"
-      />
     </div>
+  </div>
   );
 };
 

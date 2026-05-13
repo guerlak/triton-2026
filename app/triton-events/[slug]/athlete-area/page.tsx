@@ -4,12 +4,12 @@ import AthleteNavBar from "./AthleteNavBar"
 import RaceKit from "./RaceKit"
 import RaceGuide from "./RaceGuide"
 
-export default function Page() {
+export default function AthleteArePage() {
 	return (
 		<>
 			<AthleteNavBar />
-			<RaceKit />
 			<RaceGuide />
+			<RaceKit />
 			<StartList />
 			<LiveResults />
 		</>
