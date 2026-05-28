@@ -109,6 +109,7 @@ export const EVENTS: CalendarEvent[] = [
 
 
 export const TESTIMONIALS: TestimonialProps[] = [
+
   {
     quote:
       "Quantas lições em um único final de semana. Foram 3 dias, 3 esportes, 3 humores e unimeras variações de sentimentos. No Triton 3 pude me testar, exercitar a paciência e também o carinho comigo mesma. ",

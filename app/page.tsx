@@ -21,10 +21,10 @@ export default function Page() {
         <TritonExperienceCards />
         <CountdownSection />
         <RankingSection />
-        <Testimonials />
+        <Testimonials language='en' />
         <CalendarSection />
-        <ShopSection />
-        <NewsletterSection />
+        <ShopSection language='en' />
+        <NewsletterSection language='en' />
         <PartnersSection />
         <CommunitySection />
       </main>

@@ -2,8 +2,21 @@
 import React from "react";
 import Image from "next/image";
 import {
-  MessageCircle, House, BedDouble, Hotel, ShieldCheck, ExternalLink, Waves,
-  Compass, Utensils, Anchor, Palmtree, Plane, Navigation, Car, MapPin
+  MessageCircle,
+  House,
+  BedDouble,
+  Hotel,
+  ShieldCheck,
+  ExternalLink,
+  Waves,
+  Compass,
+  Utensils,
+  Anchor,
+  Palmtree,
+  Plane,
+  Navigation,
+  Car,
+  MapPin,
 } from "lucide-react";
 import dict from "../../../dictionaries/en.json";
 import { POI, LogisticItem, ResortInfo } from "@/eventdata";
@@ -21,43 +34,44 @@ const ICON_MAP: Record<string, any> = {
 
 interface LocationsSectionProps {
   locations: {
-    coastExperience: {
+    experience: {
       image: any;
       pois: POI[];
     };
     logistics: LogisticItem[];
     resort: ResortInfo;
   };
+  language: string;
 }
 
-const LocationsSection: React.FC<LocationsSectionProps> = ({ locations }) => {
+const LocationsSection: React.FC<LocationsSectionProps> = ({ locations, language }) => {
   return (
     <section id="locations" className="py-24 bg-triton-dark overflow-hidden">
       <div className="text-center mb-20">
         <h2 className="text-triton-red font-bold tracking-[0.3em] uppercase mb-4 text-sm md:text-base">
-          Travel smart. Race in paradise.
+          SEU PRÓXIMO DESAFIO É NO PARAÍSO
         </h2>
         <h3 className="text-4xl md:text-7xl font-black uppercase text-white leading-[0.9] italic mb-8">
-          Travel & Destination
-
+          VIAGEM E DESTINO
         </h3>
-        <p className="text-gray-400 max-w-3xl mx-auto text-lg md:text-xl leading-relaxed">
-          Plan your trip and make the most of your TRITON experience. Discover how to get there, explore nearby airports, and find the best accommodation options around the race venue. Set in one of Brazil’s most stunning coastal locations, this is where world-class racing meets an unforgettable destination.
-
+        <p className="text-gray-400 max-w-7xl mx-auto text-lg md:text-xl leading-relaxed">
+          Planeje sua viagem e aproveite ao máximo sua jornada no TRITON.
+          Descubra como chegar, explore os aeroportos próximos e encontre as
+          melhores opções de hospedagem para você e sua família. Localizado em
+          um dos cenários costeiros mais deslumbrantes do Brasil, este é o ponto
+          de encontro entre uma competição de alto nível e um destino
+          inesquecível.
         </p>
       </div>
       {/* Intro Video Section */}
 
       {/* Main Destination Selling Points */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-
-
-
         {/* Tourism Experience - Beyond the Race */}
         <div className="relative mb-24 group rounded-4xl overflow-hidden border border-white/10 bg-neutral-950 min-h-[550px] flex items-center shadow-[0_40px_100px_rgba(0,0,0,0.8)]">
           <div className="absolute inset-0 z-0">
             <Image
-              src={locations.coastExperience.image}
+              src={locations.experience.image}
               alt="Destination Coast"
               className="w-full h-full object-cover opacity-20 lg:opacity-40 group-hover:scale-105 transition-all duration-1000 grayscale-[0.3]"
             />
@@ -70,20 +84,31 @@ const LocationsSection: React.FC<LocationsSectionProps> = ({ locations }) => {
               Costa Verde Experience
             </div>
             <h3 className="text-4xl lg:text-7xl font-black text-white uppercase italic mb-10 leading-[0.9] tracking-tighter">
-              Beyond the <br /> <span className="text-triton-red underline decoration-red-900/30">Competition</span>
+              Para além da
+              <br />{" "}
+              <span className="text-triton-red underline decoration-red-900/30">
+                Competição
+              </span>
             </h3>
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-8">
-              {locations.coastExperience.pois.map((poi, idx) => {
+              {locations.experience.pois.map((poi, idx) => {
                 const Icon = ICON_MAP[poi.icon] || Compass;
                 return (
                   <div key={idx} className="flex gap-5 group/item">
                     <div className="bg-triton-red/10 w-12 h-12 rounded-xl flex items-center justify-center shrink-0 border border-triton-red/10 group-hover/item:bg-triton-red transition-all duration-300">
-                      <Icon className="text-triton-red group-hover/item:text-white" size={24} />
+                      <Icon
+                        className="text-triton-red group-hover/item:text-white"
+                        size={24}
+                      />
                     </div>
                     <div>
-                      <h5 className="text-white font-black uppercase text-lg italic mb-2 tracking-tight group-hover/item:text-triton-red transition-colors">{poi.title}</h5>
-                      <p className="text-gray-400 text-xs font-bold leading-relaxed">{poi.desc}</p>
+                      <h5 className="text-white font-black uppercase text-lg italic mb-2 tracking-tight group-hover/item:text-triton-red transition-colors">
+                        {poi.title}
+                      </h5>
+                      <p className="text-gray-400 text-xs font-bold leading-relaxed">
+                        {poi.desc}
+                      </p>
                     </div>
                   </div>
                 );
@@ -97,14 +122,26 @@ const LocationsSection: React.FC<LocationsSectionProps> = ({ locations }) => {
           {locations.logistics.map((item, idx) => {
             const Icon = ICON_MAP[item.icon] || MapPin;
             return (
-              <div key={idx} className="bg-white/5 backdrop-blur-xl p-5 rounded-3xl border border-white/10 relative overflow-hidden group hover:border-triton-red/50 transition-all duration-500">
-                <div className={`absolute inset-0 bg-linear-to-br ${item.color} to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500`} />
+              <div
+                key={idx}
+                className="bg-white/5 backdrop-blur-xl p-5 rounded-3xl border border-white/10 relative overflow-hidden group hover:border-triton-red/50 transition-all duration-500"
+              >
+                <div
+                  className={`absolute inset-0 bg-linear-to-br ${item.color} to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500`}
+                />
                 <div className="relative z-10 text-center">
                   <div className="bg-triton-red/10 w-16 h-16 rounded-2xl flex items-center justify-center mx-auto mb-6 group-hover:bg-triton-red group-hover:scale-110 transition-all duration-500">
-                    <Icon className="text-triton-red group-hover:text-white" size={32} />
+                    <Icon
+                      className="text-triton-red group-hover:text-white"
+                      size={32}
+                    />
                   </div>
-                  <h4 className="text-gray-400 text-xs font-bold uppercase tracking-widest mb-1">{item.title}</h4>
-                  <p className="text-2xl font-black text-white italic mb-1 uppercase tracking-tighter">{item.detail}</p>
+                  <h4 className="text-gray-400 text-xs font-bold uppercase tracking-widest mb-1">
+                    {item.title}
+                  </h4>
+                  <p className="text-2xl font-black text-white italic mb-1 uppercase tracking-tighter">
+                    {item.detail}
+                  </p>
                   <p className="text-sm text-gray-500 font-bold">{item.sub}</p>
                 </div>
               </div>
@@ -129,7 +166,9 @@ const LocationsSection: React.FC<LocationsSectionProps> = ({ locations }) => {
               <div className="lg:col-span-2 p-8 lg:p-12 flex flex-col justify-center">
                 <div className="flex items-center gap-2 mb-4">
                   <Hotel size={16} className="text-triton-red" />
-                  <span className="text-triton-red uppercase tracking-[0.2em] text-xs font-black">Official Event Hotel</span>
+                  <span className="text-triton-red uppercase tracking-[0.2em] text-xs font-black">
+                    Hotel Oficial
+                  </span>
                 </div>
                 <h3 className="text-3xl lg:text-5xl font-black text-white uppercase italic mb-6 leading-tight">
                   {locations.resort.title}
@@ -138,13 +177,18 @@ const LocationsSection: React.FC<LocationsSectionProps> = ({ locations }) => {
                   {locations.resort.description}
                 </p>
 
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-y-4 mb-10">
+                <div className="grid grid-cols-1 gap-y-4 mb-10">
                   {locations.resort.benefits.map((benefit, i) => (
                     <div key={i} className="flex items-center gap-3">
-                      <div className="w-5 h-5 rounded-full bg-triton-red/20 flex items-center justify-center border border-triton-red/30">
+                      <div
+                        className="w-5 h-5 rounded-full bg-triton-red/20 flex items-center justify-center 
+                      border border-triton-red/30"
+                      >
                         <ShieldCheck className="text-triton-red" size={12} />
                       </div>
-                      <span className="text-sm font-bold text-gray-300 uppercase tracking-tighter">{benefit}</span>
+                      <span className="text-sm font-bold text-gray-300 uppercase tracking-tighter">
+                        {benefit}
+                      </span>
                     </div>
                   ))}
                 </div>
@@ -158,7 +202,8 @@ const LocationsSection: React.FC<LocationsSectionProps> = ({ locations }) => {
                   {locations.resort.buttonText}
                 </a>
                 <p className="mt-4 text-[10px] text-gray-500 uppercase font-bold text-center lg:text-left italic">
-                  * Discount applied only via reservation center
+                  * Desconto válido apenas via atendimento com consultor. Não
+                  aplicável no atendimento automático.
                 </p>
               </div>
             </div>
@@ -169,10 +214,10 @@ const LocationsSection: React.FC<LocationsSectionProps> = ({ locations }) => {
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
           <div className="lg:col-span-1 bg-white/5 rounded-4xl p-10 border border-white/10 flex flex-col justify-center">
             <h3 className="text-2xl font-black text-white uppercase italic mb-4">
-              {dict.locations_section.other_options.title}
+              {language === "pt-BR" ? "Outras opções" : "Other Options"}
             </h3>
             <p className="text-gray-400 text-sm leading-relaxed mb-6 font-bold">
-              {dict.locations_section.other_options.description}
+              {language === "pt-BR" ? "Encontre as melhores opções de hospedagem para você e sua família" : "Find the best accommodation options for you and your family"}
             </p>
             <div className="w-12 h-1 bg-triton-red rounded-full"></div>
           </div>
@@ -186,12 +231,17 @@ const LocationsSection: React.FC<LocationsSectionProps> = ({ locations }) => {
               <ExternalLink size={24} />
             </div>
             <div className="bg-neutral-900 w-16 h-16 rounded-2xl flex items-center justify-center mb-6 group-hover:bg-triton-red transition-all duration-500">
-              <House size={32} className="text-triton-red group-hover:text-white" />
+              <House
+                size={32}
+                className="text-triton-red group-hover:text-white"
+              />
             </div>
             <h4 className="text-2xl font-black text-white uppercase italic mb-2 tracking-tighter">
-              {dict.locations_section.other_options.option_1}
+              {language === "pt-BR" ? "ALUGUE UMA CASA" : "RENT A HOUSE"}
             </h4>
-            <p className="text-gray-500 text-xs font-bold uppercase tracking-widest">Find perfect homes for teams</p>
+            <p className="text-gray-500 text-xs font-bold uppercase tracking-widest">
+              {language === "pt-BR" ? "Encontre casas para equipes" : "Find perfect homes for teams"}
+            </p>
           </a>
 
           <a
@@ -203,12 +253,17 @@ const LocationsSection: React.FC<LocationsSectionProps> = ({ locations }) => {
               <ExternalLink size={24} />
             </div>
             <div className="bg-neutral-900 w-16 h-16 rounded-2xl flex items-center justify-center mb-6 group-hover:bg-triton-red transition-all duration-500">
-              <BedDouble size={32} className="text-triton-red group-hover:text-white" />
+              <BedDouble
+                size={32}
+                className="text-triton-red group-hover:text-white"
+              />
             </div>
             <h4 className="text-2xl font-black text-white uppercase italic mb-2 tracking-tighter">
-              {dict.locations_section.other_options.option_2}
+              {language === "pt-BR" ? "POUSADAS LOCAIS" : "LOCAL INNS"}
             </h4>
-            <p className="text-gray-500 text-xs font-bold uppercase tracking-widest">Browse nearby hotels & inns</p>
+            <p className="text-gray-500 text-xs font-bold uppercase tracking-widest">
+              {language === "pt-BR" ? "Encontre pousadas próximas" : "Browse nearby hotels & inns"}
+            </p>
           </a>
         </div>
 
@@ -228,11 +283,7 @@ const LocationsSection: React.FC<LocationsSectionProps> = ({ locations }) => {
             <div className="absolute inset-0 pointer-events-none border-12 border-black/20 rounded-4xl"></div>
           </div>
         </div>
-
-
       </div>
-
-
     </section>
   );
 };

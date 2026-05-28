@@ -2,7 +2,7 @@
 
 import React, { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Clock, MapPin, AlertCircle, Calendar, ChevronRight } from "lucide-react";
+import { Clock, MapPin, AlertCircle } from "lucide-react";
 import Heading from "@/app/ui/Heading";
 import { ScheduleDay, ScheduleEvent } from "@/eventdata";
 interface ScheduleSectionProps {
@@ -15,7 +15,9 @@ interface ScheduleSectionProps {
 }
 
 const ScheduleSection: React.FC<ScheduleSectionProps> = ({ schedule }) => {
-  const [activeDay, setActiveDay] = useState<string>(schedule.days[0]?.id || "");
+  const [activeDay, setActiveDay] = useState<string>(
+    schedule.days[0]?.id || "",
+  );
 
   const containerVariants = {
     hidden: { opacity: 0 },
@@ -36,9 +38,10 @@ const ScheduleSection: React.FC<ScheduleSectionProps> = ({ schedule }) => {
     <section id="schedule" className="py-20 bg-black overflow-hidden">
       <div className="container mx-auto px-4 md:px-8 lg:px-16">
         <div className="text-center mb-16">
-          <Heading text1={schedule.title} text2={schedule.subtitle} />
+          <Heading text1={"programa"} text2={"FIQUE POR DENTRO DOS HORÁRIOS"} />
           <p className="text-gray-400 mx-auto text-lg">
-            Stay organized and don&apos;t miss a beat. Here is the full schedule for the race weekend.
+            Organize-se e não perca nenhum momento. Confira a programação
+            completa do fim de semana de prova.
           </p>
         </div>
 
@@ -60,7 +63,9 @@ const ScheduleSection: React.FC<ScheduleSectionProps> = ({ schedule }) => {
                 )}
                 <div className="relative z-20 flex flex-col items-center">
                   <span className="text-xs md:text-sm">{day.title}</span>
-                  <span className="text-[10px] opacity-60 font-bold">{day.date}</span>
+                  <span className="text-[10px] opacity-60 font-bold">
+                    {day.date}
+                  </span>
                 </div>
               </button>
             ))}
@@ -68,7 +73,7 @@ const ScheduleSection: React.FC<ScheduleSectionProps> = ({ schedule }) => {
         </div>
 
         {/* Schedule Content */}
-        <AnimatePresence mode="wait">
+        <div>
           {schedule.days.map((day) =>
             activeDay === day.id ? (
               <motion.div
@@ -79,63 +84,57 @@ const ScheduleSection: React.FC<ScheduleSectionProps> = ({ schedule }) => {
                 exit="hidden"
                 className="max-w-4xl mx-auto"
               >
-                <div className="mb-12 text-center md:text-left">
-                  <h3 className="text-2xl md:text-3xl font-black text-triton-red uppercase">
-                    {day.subtitle}
-                  </h3>
-                </div>
+                {/* <div className="mb-12 text-center md:text-left"></div> */}
 
-                <div className="space-y-4">
-                  {day.events.map((event, idx) => (
-                    <motion.div
-                      key={`${day.id}-event-${idx}`}
-                      variants={itemVariants}
-                      className={`group relative grid grid-cols-1 md:grid-cols-[180px,1fr] gap-4 md:gap-8 p-6 rounded-2xl border transition-all duration-300 ${event.isCutoff
-                        ? "bg-triton-red/5 border-triton-red/20"
-                        : "bg-white/5 border-white/10 hover:bg-white/8 hover:border-white/20"
-                        }`}
-                    >
-                      {/* Time Column */}
-                      <div className="flex flex-col justify-center">
-                        {event.isCutoff ? (
-                          <div className="flex items-center gap-2 text-triton-red font-black uppercase text-sm">
-                            <AlertCircle className="w-4 h-4" />
-                            <span>Cut-off</span>
+                <motion.div
+                  variants={itemVariants}
+                  className="bg-white/5 border border-white/10 rounded-3xl p-8 md:p-12 backdrop-blur-xl"
+                >
+                  <div className="space-y-6">
+                    {day.events.map((event, idx) => (
+                      <div
+                        key={`${day.id}-event-${idx}`}
+                        className={`pb-6 ${idx !== day.events.length - 1 ? "border-b border-white/10" : ""}`}
+                      >
+                        {/* Time & Title Row */}
+                        <div className="flex flex-col md:flex-row md:items-start md:justify-between gap-4 mb-3">
+                          <div className="flex items-center gap-3">
+                            {!event.isCutoff && event.time && (
+                              <div className="flex items-center gap-2 text-gray-400 font-bold text-sm">
+                                <Clock className="w-4 h-4 text-triton-red" />
+                                <span>{event.time}</span>
+                              </div>
+                            )}
                           </div>
-                        ) : (
-                          <div className="flex items-center gap-2 text-gray-400 font-bold text-sm">
-                            <Clock className="w-4 h-4 text-triton-red" />
-                            <span>{event.time}</span>
-                          </div>
-                        )}
-                      </div>
+                          <h4 className="text-md md:text-md font-black uppercase tracking-wide text-white">
+                            {event.title}
+                          </h4>
+                        </div>
 
-                      {/* Content Column */}
-                      <div className="flex flex-col gap-2">
-                        <h4 className={`text-xl font-black uppercase ${event.isCutoff ? "text-triton-red" : "text-white"
-                          }`}>
-                          {event.title}
-                        </h4>
+                        {/* Description & Location */}
+                        <div className="space-y-2">
+                          {event.description && (
+                            <p className="text-gray-400 text-sm">
+                              {event.description}
+                            </p>
+                          )}
+                          {event.location && (
+                            <div className="flex items-center gap-2 text-gray-500 text-sm">
+                              <MapPin className="w-3 h-3" />
+                              <span>{event.location}</span>
+                            </div>
+                          )}
+                        </div>
 
-                        {event.description && (
-                          <p className="text-gray-400 text-sm">{event.description}</p>
-                        )}
-
-                        {event.location && (
-                          <div className="flex items-center gap-2 text-gray-500 text-sm mt-1">
-                            <MapPin className="w-3 h-3" />
-                            <span>{event.location}</span>
-                          </div>
-                        )}
-
+                        {/* Cutoff Details */}
                         {event.isCutoff && event.details && (
-                          <div className="grid grid-cols-3 gap-4 mt-4">
+                          <div className="mt-4 grid grid-cols-3 gap-3">
                             {event.details.map((detail, dIdx) => (
                               <div
                                 key={dIdx}
-                                className="bg-black/40 rounded-lg p-3 border border-triton-red/10"
+                                className="text-center p-3 rounded-lg bg-black/30"
                               >
-                                <div className="text-[10px] text-gray-500 font-bold uppercase mb-1">
+                                <div className="text-[10px] text-gray-400 font-bold uppercase mb-1">
                                   {detail.label}
                                 </div>
                                 <div className="text-sm font-black text-white">
@@ -146,28 +145,27 @@ const ScheduleSection: React.FC<ScheduleSectionProps> = ({ schedule }) => {
                           </div>
                         )}
                       </div>
-                    </motion.div>
-                  ))}
-                </div>
+                    ))}
+                  </div>
+                </motion.div>
               </motion.div>
-            ) : null
+            ) : null,
           )}
-        </AnimatePresence>
+        </div>
 
         {/* Bottom Note */}
-        <motion.div
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          viewport={{ once: true }}
-          className="mt-20 max-w-4xl mx-auto p-6 md:p-8 rounded-2xl bg-linear-to-r from-triton-dark to-triton-gray border border-white/5 flex flex-col md:flex-row items-center gap-6"
-        >
+        <div className="mt-5 max-w-4xl mx-auto p-6 md:p-8 rounded-2xl bg-linear-to-r from-triton-dark to-triton-gray border border-white/5 flex flex-col md:flex-row items-center gap-6">
           <div className="w-12 h-12 rounded-xl bg-triton-red/10 flex items-center justify-center shrink-0">
             <AlertCircle className="w-6 h-6 text-triton-red" />
           </div>
           <p className="text-gray-400 text-sm leading-relaxed italic text-center md:text-left">
-            {schedule.importantNote}
+            Todos os horários estão sujeitos a alteração sem aviso prévio devido
+            a circunstâncias imprevistas. Os horários e a ordem de largada
+            também poderão ser ajustados. Recomendamos acompanhar a programação
+            regularmente para se manter atualizado sobre possíveis mudanças de
+            última hora.
           </p>
-        </motion.div>
+        </div>
       </div>
     </section>
   );

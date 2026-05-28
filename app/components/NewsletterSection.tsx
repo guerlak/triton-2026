@@ -2,7 +2,7 @@
 import React, { useState } from "react";
 import { CheckCircle2 } from "lucide-react";
 
-const NewsletterSection: React.FC = () => {
+const NewsletterSection: React.FC<{ language: string }> = ({ language }) => {
   const [email, setEmail] = useState("");
   const [status, setStatus] = useState<"idle" | "loading" | "success">("idle");
 
@@ -29,13 +29,12 @@ const NewsletterSection: React.FC = () => {
                 Newsletter
               </span>
               <h2 className="text-4xl md:text-6xl font-black uppercase tracking-tighter mb-6 leading-none">
-                Join the
+                {language === "pt-BR" ? "Junte-se ao" : "Join the"}
                 <br />
-                <span className="text-triton-red">Movement</span>
+                <span className="text-triton-red">{language === "pt-BR" ? "Movimento" : "Movement"}</span>
               </h2>
               <p className="text-md text-gray-400 max-w-md leading-relaxed">
-                Be the first to receive event dates, expert training tips, and
-                exclusive TRITON World Series offers.
+                {language === "pt-BR" ? "Seja o primeiro a receber as datas dos eventos, dicas de treinamento de especialistas e ofertas exclusivas da TRITON World Series." : "Be the first to receive event dates, expert training tips, and exclusive TRITON World Series offers."}
               </p>
             </div>
             <div className="relative">
@@ -60,7 +59,7 @@ const NewsletterSection: React.FC = () => {
                     required
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
-                    placeholder="Your best e-mail"
+                    placeholder={language === "pt-BR" ? "Seu melhor e-mail" : "Your best e-mail"}
                     className="w-full bg-black border-2 border-white/10 rounded-2xl px-8 py-6 text-lg focus:outline-none focus:border-triton-red transition-all"
                   />
                   <button
@@ -68,7 +67,7 @@ const NewsletterSection: React.FC = () => {
                     disabled={status === "loading"}
                     className="w-full bg-white text-black font-black uppercase py-6 rounded-2xl tracking-[0.2em] hover:bg-triton-red hover:text-white transition-all"
                   >
-                    {status === "loading" ? "Sending..." : "Subscribe Now"}
+                    {status === "loading" ? "Sending..." : language === "pt-BR" ? "Inscreva-se agora" : "Subscribe Now"}
                   </button>
                 </form>
               )}

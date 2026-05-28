@@ -13,6 +13,7 @@ const Testimonial = ({
   author,
   avatarUrl,
   linkSocial,
+
 }: Partial<TestimonialProps>) => {
   return (
     <div className="h-full flex flex-col">
@@ -49,17 +50,17 @@ const Testimonial = ({
   );
 };
 
-export default function TestimonialList() {
+export default function TestimonialList({ language }: { language: string }) {
   return (
     <section
       id="moviment"
       className="py-20 bg-triton-dark relative overflow-hidden text-center"
     >
       <h2 className="text-triton-red font-bold tracking-widest uppercase mb-2">
-        {dict.testimonials_section.title}
+        {language === "pt-BR" ? "NÃO É APENAS UMA PROVA" : "Is not just a race"}
       </h2>
       <h2 className="text-3xl md:text-5xl font-black uppercase text-white leading-tight mb-6 ">
-        {dict.testimonials_section.subtitle}
+        {language === "pt-BR" ? "OUÇA QUEM JÁ VIVEU ESSA EXPERIÊNCIA." : "Hear from the participants"}
       </h2>
 
       <div className="p-2 flex flex-col-reverse gap-10 justify-between items-center max-w-[1200] mx-auto md:flex-row mt-8">

@@ -21,9 +21,9 @@ export default function Page() {
         <FormatsSection />
         <ScheduleSection />
         <LocationsSection />
-        <Testimonials />
-        <ShopSection />
-        <NewsletterSection />
+        <Testimonials language="en" />
+        <ShopSection language="en" />
+        <NewsletterSection language="en" />
         <PartnersSection />
       </main>
     </>

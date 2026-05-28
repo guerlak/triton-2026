@@ -9,16 +9,18 @@ interface EventsPageProps {
 }
 
 const EventsPage: React.FC<EventsPageProps> = () => {
-  const eventsList: CalendarEvent[] = Object.values(EVENT_DATA_MAP).map((event) => ({
-    date: event.dateText,
-    location: event.title,
-    country: event.country,
-    flag: event.flag,
-    status: event.status,
-    year: event.year,
-    format: event.subtitle,
-    slug: event.slug,
-  }));
+  const eventsList: CalendarEvent[] = Object.values(EVENT_DATA_MAP).map(
+    (event) => ({
+      date: event.dateText,
+      location: event.title,
+      country: event.country,
+      flag: event.flag,
+      status: event.status,
+      year: event.year,
+      format: event.subtitle,
+      slug: event.slug,
+    }),
+  );
 
   const groupedEvents = eventsList.reduce(
     (acc, event) => {
@@ -76,16 +78,7 @@ const EventsPage: React.FC<EventsPageProps> = () => {
                     className="group relative h-[450px] rounded-3xl overflow-hidden bg-neutral-900 border
                      border-white/5 hover:border-triton-red/30 transition-all duration-500 shadow-2xl"
                   >
-                    <div className="absolute inset-0 z-0">
-                      <img
-                        src={`https://picsum.photos/seed/${event.location.replace(/\s/g, "")}/800/800`}
-                        alt={event.location}
-                        className="w-full h-full object-cover opacity-50 group-hover:scale-110 transition-transform 
-                        duration-1000 ease-out"
-                        referrerPolicy="no-referrer"
-                      />
-                      <div className="absolute inset-0 bg-gradient-to-t from-black via-black/40 to-transparent"></div>
-                    </div>
+
 
                     <div className="absolute inset-0 z-10 p-10 flex flex-col justify-end">
                       <div className="mb-6">
@@ -100,8 +93,10 @@ const EventsPage: React.FC<EventsPageProps> = () => {
                         </span>
                       </div>
 
-                      <h3 className="text-4xl font-black uppercase leading-[0.9] mb-6 group-hover:text-triton-red 
-                      transition-colors duration-300">
+                      <h3
+                        className="text-4xl font-black uppercase leading-[0.9] mb-6 group-hover:text-triton-red 
+                      transition-colors duration-300"
+                      >
                         {event.location}
                       </h3>
 
