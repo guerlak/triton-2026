@@ -17,7 +17,7 @@ interface InfoSectionProps {
 
 export default function InfoSection({ stats, info, scoring }: InfoSectionProps) {
   return (
-    <section id="formats" className="py-24 bg-black">
+    <section id="info" className="py-24 bg-black">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
         <div className="text-center mb-16">

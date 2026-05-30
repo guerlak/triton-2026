@@ -5,7 +5,7 @@ import Image from "next/image";
 import NavButton from "@/app/ui/NavButton";
 import { useState, useEffect } from "react";
 
-const Navbar = () => {
+const Navbar = ({ language }: { language: string }) => {
     const [isOpen, setIsOpen] = useState(false);
     const [isScrolled, setIsScrolled] = useState(false);
 
@@ -19,14 +19,26 @@ const Navbar = () => {
 
     const toggleMenu = () => setIsOpen(!isOpen);
 
-    const navLinks = [
-        { name: "Race Info", href: "#formats" },
-        { name: "Schedule", href: "#schedule" },
-        { name: "Travel", href: "#schedule" },
-        { name: "Global Ranking", href: "/ranking" },
-        { name: "Shop", href: "#shop" },
-        { name: "Triton App", href: "#shop" },
-    ];
+    let navLinks = [];
+    if (language === "pt-BR") {
+        navLinks = [
+            { name: "O Formato", href: "#info" },
+            { name: "Percursos", href: "#formats" },
+            { name: "Programação", href: "#schedule" },
+            { name: "Viagem", href: "#locations" },
+            { name: "Ranking Global", href: "/ranking" },
+
+        ];
+    } else {
+        navLinks = [
+            { name: "Race Info", href: "#info" },
+            { name: "Formats", href: "#formats" },
+            { name: "Schedule", href: "#schedule" },
+            { name: "Travel", href: "#locations" },
+            { name: "Global Ranking", href: "/ranking" },
+        ];
+    }
+
 
     return (
         <nav

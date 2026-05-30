@@ -193,11 +193,6 @@ export const EVENT_DATA_MAP: Record<string, EventData> = {
       description:
         "O TRITON adota um sistema de pontuação inovador, com peso igual para as três modalidades. No formato TRITON 3, vence o atleta que somar a menor pontuação ao longo dos três dias de competição. A lógica é simples: a colocação em cada prova corresponde diretamente aos pontos (quanto melhor a colocação, menor a pontuação). Esse modelo valoriza consistência e performance contínua nas três disciplinas. Além disso, a prova soma pontos para o ranking global do TRITON World Series e funciona como etapa classificatória para o Campeonato Mundial.",
     },
-    stravaIds: {
-      swim: "3489878661225659880",
-      bike: "3489885320405280498",
-      run: "3489885320403923698",
-    },
 
     locations: {
       experience: {
@@ -419,7 +414,7 @@ export const EVENT_DATA_MAP: Record<string, EventData> = {
           { label: "Long", val: "3000m", p: 100 },
         ],
 
-        stravaId: "2989446402175334832",
+        stravaId: "3489878661225659880",
       },
       bike: {
         day: "Dia 2",
@@ -434,7 +429,7 @@ export const EVENT_DATA_MAP: Record<string, EventData> = {
           { label: "Middle", val: "60km", p: 66 },
           { label: "Long", val: "90km", p: 100 },
         ],
-        stravaId: "3321031030011067804",
+        stravaId: "3489885320405280498",
         details: [
           "Retorno Sprint: ~4,5 km após Macundu",
           "Hidratação Middle & Long: ~10 km após Macundu",
@@ -457,7 +452,7 @@ export const EVENT_DATA_MAP: Record<string, EventData> = {
           { label: "Middle", val: "20km", p: 66 },
           { label: "Long", val: "30km", p: 100 },
         ],
-        stravaId: "3321032819934834822",
+        stravaId: "3489885320403923698",
       },
     },
     

@@ -83,7 +83,7 @@ const LocationsSection: React.FC<LocationsSectionProps> = ({ locations, language
             <div className="inline-block bg-triton-red/20 text-triton-red px-3 py-1 rounded-full text-[10px] uppercase font-black tracking-[0.2em] mb-6 border border-triton-red/20 backdrop-blur-md">
               Costa Verde Experience
             </div>
-            <h3 className="text-4xl lg:text-7xl font-black text-white uppercase italic mb-10 leading-[0.9] tracking-tighter">
+            <h3 className="text-4xl lg:text-6xl font-black text-white uppercase italic mb-10 leading-[0.9] tracking-tighter">
               Para além da
               <br />{" "}
               <span className="text-triton-red underline decoration-red-900/30">
@@ -211,60 +211,43 @@ const LocationsSection: React.FC<LocationsSectionProps> = ({ locations, language
         </div>
 
         {/* Other Options Section */}
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
-          <div className="lg:col-span-1 bg-white/5 rounded-4xl p-10 border border-white/10 flex flex-col justify-center">
-            <h3 className="text-2xl font-black text-white uppercase italic mb-4">
-              {language === "pt-BR" ? "Outras opções" : "Other Options"}
-            </h3>
-            <p className="text-gray-400 text-sm leading-relaxed mb-6 font-bold">
-              {language === "pt-BR" ? "Encontre as melhores opções de hospedagem para você e sua família" : "Find the best accommodation options for you and your family"}
-            </p>
-            <div className="w-12 h-1 bg-triton-red rounded-full"></div>
+        <div className="relative group mb-12">
+          <div className="absolute -inset-0.5 bg-linear-to-r from-triton-red/30 to-red-900/30 rounded-4xl blur-md opacity-40 group-hover:opacity-80 transition duration-500"></div>
+          <div className="relative bg-neutral-950/80 backdrop-blur-xl rounded-4xl overflow-hidden border border-white/10 p-8 lg:p-12 flex flex-col lg:flex-row items-center justify-between gap-8">
+            <div className="flex-1">
+              <div className="flex items-center gap-2 mb-4">
+                <BedDouble size={16} className="text-triton-red" />
+                <span className="text-triton-red uppercase tracking-[0.2em] text-xs font-black">
+                  {language === "pt-BR" ? "Hospedagem Alternativa" : "Alternative Lodging"}
+                </span>
+              </div>
+              <h3 className="text-3xl lg:text-4xl font-black text-white uppercase italic mb-4">
+                {language === "pt-BR" ? "Outras Opções de Acomodação" : "Other Accommodation Options"}
+              </h3>
+              <p className="text-gray-400 text-sm lg:text-base leading-relaxed max-w-3xl font-bold">
+                {language === "pt-BR" ? (
+                  <>
+                    Se hospedar no hotel oficial do evento não é obrigatório. Existem outras excelentes opções de acomodação próximas ao local da prova. Acesse o nosso parceiro <span className="text-white  uppercase italic tracking-wider border-b-2 border-triton-red">Lucid Travel</span> e confira e compare as melhores tarifas!
+                  </>
+                ) : (
+                  <>
+                    Staying at the official hotel is not mandatory. Discover other great accommodation options near the race venue. Access our partner <span className="text-white  uppercase italic tracking-wider border-b-2 border-triton-red">Lucid Travel</span> and find and compare the best rates!
+                  </>
+                )}
+              </p>
+            </div>
+            <div className="shrink-0 w-full lg:w-auto">
+              <a
+                href="https://triton.hotelplanner.com/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="w-full lg:w-auto inline-flex items-center justify-center bg-triton-red hover:bg-white text-white hover:text-black px-10 py-5 rounded-2xl font-black uppercase italic tracking-widest transition-all duration-300 shadow-[0_20px_40px_rgba(223,31,38,0.3)] hover:scale-105 transform"
+              >
+                {language === "pt-BR" ? "Buscar Outras Opções" : "Search Other Options"}
+                <ExternalLink className="w-5 h-5 ml-3" />
+              </a>
+            </div>
           </div>
-
-          <a
-            href="https://www.airbnb.com.br/s/mangaratiba/homes..."
-            target="_blank"
-            className="group relative bg-white/5 rounded-4xl p-10 border border-white/10 hover:border-triton-red/50 transition-all py-16"
-          >
-            <div className="absolute top-6 right-6 text-white/20 group-hover:text-triton-red transition-colors">
-              <ExternalLink size={24} />
-            </div>
-            <div className="bg-neutral-900 w-16 h-16 rounded-2xl flex items-center justify-center mb-6 group-hover:bg-triton-red transition-all duration-500">
-              <House
-                size={32}
-                className="text-triton-red group-hover:text-white"
-              />
-            </div>
-            <h4 className="text-2xl font-black text-white uppercase italic mb-2 tracking-tighter">
-              {language === "pt-BR" ? "ALUGUE UMA CASA" : "RENT A HOUSE"}
-            </h4>
-            <p className="text-gray-500 text-xs font-bold uppercase tracking-widest">
-              {language === "pt-BR" ? "Encontre casas para equipes" : "Find perfect homes for teams"}
-            </p>
-          </a>
-
-          <a
-            href="https://www.booking.com/searchresults..."
-            target="_blank"
-            className="group relative bg-white/5 rounded-4xl p-10 border border-white/10 hover:border-triton-red/50 transition-all py-16"
-          >
-            <div className="absolute top-6 right-6 text-white/20 group-hover:text-triton-red transition-colors">
-              <ExternalLink size={24} />
-            </div>
-            <div className="bg-neutral-900 w-16 h-16 rounded-2xl flex items-center justify-center mb-6 group-hover:bg-triton-red transition-all duration-500">
-              <BedDouble
-                size={32}
-                className="text-triton-red group-hover:text-white"
-              />
-            </div>
-            <h4 className="text-2xl font-black text-white uppercase italic mb-2 tracking-tighter">
-              {language === "pt-BR" ? "POUSADAS LOCAIS" : "LOCAL INNS"}
-            </h4>
-            <p className="text-gray-500 text-xs font-bold uppercase tracking-widest">
-              {language === "pt-BR" ? "Encontre pousadas próximas" : "Browse nearby hotels & inns"}
-            </p>
-          </a>
         </div>
 
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-24">
