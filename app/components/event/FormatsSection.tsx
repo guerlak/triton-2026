@@ -469,7 +469,7 @@ const FormatsSection: React.FC<{ language: string, formats: any }> = ({ language
                 Long
               </span>
               <p className="text-gray-400 text-sm leading-relaxed mb-4 mt-2">
-                {dict.format_section.competition.cards.card_1.description}
+                {language === "pt-BR" ? "Sua posição final na classificação (após os três dias) será a soma da sua classificação em cada modalidade: Natação + Ciclismo + Corrida" : "Your final ranking position (after the three days) will be the sum of your classification in each modality: Swimming + Cycling + Running."}
               </p>
             </div>
 
@@ -486,8 +486,7 @@ const FormatsSection: React.FC<{ language: string, formats: any }> = ({ language
               <span className="inline-block bg-white/10 text-white text-[10px] font-bold px-2 py-1 rounded uppercase mb-3">
                 Sprint
               </span>
-              <p className="text-gray-400 text-sm leading-relaxed mt-2">
-                {dict.format_section.competition.cards.card_2.description}
+              <p className="text-gray-400 text-sm leading-relaxed mt-2">{language === "pt-BR" ? "Forme sua equipe (dupla ou trio). Cada um faz uma modalidade. No caso de dupla, um atleta terá que fazer mais de uma modalidade." : "Form your team (duo or trio). Each one does one modality. In case of a duo, an athlete will have to do more than one modality."}
               </p>
             </div>
 
@@ -512,44 +511,19 @@ const FormatsSection: React.FC<{ language: string, formats: any }> = ({ language
                 Long
               </span>
               <p className="text-gray-400 text-sm leading-relaxed mb-4 mt-2">
-                {dict.format_section.competition.cards.card_3.description}
+                {language === "pt-BR" ? "Escolha entre natação, ciclismo e/ou corrida, defina a distância e inscreva-se!" : "Choose between swimming, cycling and/or running, define the distance and sign up!"}
               </p>
               <p className="text-gray-500 text-xs leading-relaxed">
-                {dict.format_section.competition.cards.card_3.advise}
+                {language === "pt-BR" ? "Não pontua para o ranking geral (3 dias), mas concorre à premiação diária por modalidade." : "Does not score for the final ranking (3 days), but competes for daily awards by modality."}
               </p>
             </div>
           </div>
         </div>
 
-        {/* Mapas */}
+
       </div>
     </section>
   );
 };
 
 export default FormatsSection;
-
-function renderStrava() {
-  return (
-    <>
-      <div className="relative rounded-2xl overflow-hidden">
-        <div
-          className="strava-embed-placeholder w-full h-full"
-          data-embed-type="route"
-          data-embed-id="2989446402175334832"
-          data-style="standard"
-          data-terrain="3d"
-          data-from-embed="true"
-        ></div>
-        <div className="absolute inset-0 bg-black/30 pointer-events-none" />
-      </div>
-      <Script
-        id="strava-script"
-        src="https://strava-embeds.com/embed.js"
-        strategy="afterInteractive"
-      />
-
-    </>
-  )
-}
-

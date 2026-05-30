@@ -1,7 +1,7 @@
 "use client";
 import React, { useState, useEffect } from "react";
-import { Timer, ArrowRight, MapPin } from "lucide-react";
-import { motion, AnimatePresence } from "framer-motion";
+import { ArrowRight, MapPin } from "lucide-react";
+import { motion } from "framer-motion";
 import { TimeUnit } from "../../components/TimeUnit";
 import { EventData } from "@/eventdata";
 
@@ -19,7 +19,6 @@ const CountdownSection: React.FC<CountdownSectionProps> = ({ data }) => {
 
   useEffect(() => {
     const target = new Date(data.targetDate).getTime();
-
     const calculateTime = () => {
       const now = new Date().getTime();
       const distance = target - now;
@@ -55,7 +54,7 @@ const CountdownSection: React.FC<CountdownSectionProps> = ({ data }) => {
           className="w-full h-full object-cover opacity-60"
         />
         <div className="absolute inset-0 bg-linear-to-b from-black/90 via-black/50 to-black"></div>
-        <span className="absolute -top-40 -right-20 text-triton-red italic text-[600px] font-black opacity-10 select-none">
+        <span className="absolute -top-50 right-10 text-triton-red italic text-[600px] font-black opacity-10 select-none">
           {data.subtitle.slice(-1)}
         </span>
       </div>

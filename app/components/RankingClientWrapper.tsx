@@ -54,7 +54,7 @@ const RankingClientWrapper: React.FC<Props> = ({ initialAthletes }) => {
               if (pos == 3) medalClass = "bg-amber-900 border border-amber-700 text-white rounded-full w-8 h-8 flex items-center justify-center mx-auto";
 
               return (
-                <tr key={athlete.Bib} onClick={() => handleEditClick(athlete)} className="cursor-pointer border-b border-white/5 hover:bg-white/5 transition-colors group">
+                <tr key={athlete.Name} onClick={() => handleEditClick(athlete)} className="cursor-pointer border-b border-white/5 hover:bg-white/5 transition-colors group">
                   <td className="py-4 px-6 text-center font-bold">
                     <span className={medalClass}>{pos}</span>
                   </td>

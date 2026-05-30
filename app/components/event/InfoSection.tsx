@@ -2,8 +2,87 @@ import { Trophy } from "lucide-react";
 import { Stat } from "@/types";
 import Link from "next/link";
 
+const STATS_DATA = {
+  en: {
+    triton3: [
+      {
+        value: "3",
+        label: "consecutive days",
+        description: "Swim - Fri / Bike - Sat / Run - Sun",
+      },
+      {
+        value: "3",
+        label: "distances options",
+        description: "Sprint - Middle - Long",
+      },
+      {
+        value: "3",
+        label: "competition options",
+        description:
+          "Individual Triathlon / Corporate Relay / Individual Disciplines",
+      },
+    ],
+    triton1: [
+      {
+        value: "1",
+        label: "day of racing",
+        description: "Swim + Bike + Run - Single Day",
+      },
+      {
+        value: "3",
+        label: "distances options",
+        description: "Sprint - Middle - Long",
+      },
+      {
+        value: "3",
+        label: "competition options",
+        description:
+          "Individual Triathlon / Corporate Relay / Individual Disciplines",
+      },
+    ],
+  },
+  "pt-BR": {
+    triton3: [
+      {
+        value: "3",
+        label: "dias consecutivos",
+        description: "Natação - Sex / Ciclismo - Sáb / Corrida - Dom",
+      },
+      {
+        value: "3",
+        label: "opções de distância",
+        description: "Sprint - Middle - Long",
+      },
+      {
+        value: "3",
+        label: "opções de competição",
+        description:
+          "Triathlon Individual / Revezamento / Modalidades Individuais",
+      },
+    ],
+    triton1: [
+      {
+        value: "3",
+        label: "OPÇÕES DE DISTÂNCIAS",
+        description: "SPRINT - MIDDLE - LONG",
+      },
+      {
+        value: "3",
+        label: "OPÇÕES DE COMPETIÇÃO",
+        description: "Triathlon individual / Revezamento / Mix&Match",
+      },
+      {
+        value: "1",
+        label: "MIX&MATCH",
+        description:
+          "Personalize a sua prova de acordo com as opções de distâncias",
+      },
+    ],
+  },
+};
+
+
 interface InfoSectionProps {
-  stats: Stat[];
   info: {
     title: string;
     subtitle: string;
@@ -13,9 +92,14 @@ interface InfoSectionProps {
     title: string;
     description: string;
   };
+  eventFormat: "triton1" | "triton3";
+  language: "pt-BR" | "en";
 }
 
-export default function InfoSection({ stats, info, scoring }: InfoSectionProps) {
+export default function InfoSection({ info, scoring, eventFormat, language }: InfoSectionProps) {
+  const currentLanguage = language === "pt-BR" ? "pt-BR" : "en";
+  const stats = STATS_DATA[currentLanguage][eventFormat];
+
   return (
     <section id="info" className="py-24 bg-black">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">

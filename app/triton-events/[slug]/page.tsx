@@ -26,7 +26,7 @@ export default async function Page({ params }: { params: Promise<{ slug: string 
       <main className="text-white bg-black/90">
         <HeroEvent data={data.hero} />
         <CountdownSectionEvent data={data} />
-        <InfoSection stats={data.stats} info={data.info} scoring={data.scoring} />
+        <InfoSection info={data.info} scoring={data.scoring} eventFormat={data.eventFormat} language={data.language} />
         <FormatsSection language={data.language} formats={data.formats} />
         <ScheduleSection schedule={data.schedule} />
         <LocationsSection locations={data.locations} language={data.language} />

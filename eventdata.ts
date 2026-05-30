@@ -63,6 +63,7 @@ export interface EventData {
   id: string;
   slug: string;
   language: "pt-BR" | "en";
+  eventFormat: "triton1" | "triton3";
   title: string;
   subtitle: string;
   location: string;
@@ -71,7 +72,7 @@ export interface EventData {
   fullDateText: string;
   targetDate: string;
   hero: EventHero;
-  stats: Stat[];
+
   registrationLink: string;
   info: {
     title: string;
@@ -105,11 +106,6 @@ export interface EventData {
     bike: EventFormatDetail;
     run: EventFormatDetail;
   };
-  stravaIds?: {
-    swim: string;
-    bike: string;
-    run: string;
-  };
   
 }
 
@@ -123,30 +119,17 @@ import swimPic from "@/public/images/triton-fotos-prova-swim.jpeg";
 import runPic from "@/public/images/triton-fotos-prova-run.jpeg";
 import { StaticImageData } from "next/image";
 
-const COMMON_STATS: Stat[] = [
-  {
-    value: "3",
-    label: "consectutive days",
-    description: "Swim - Fri / Bike - Sat / Run - Sun",
-  },
-  {
-    value: "3",
-    label: "distances options",
-    description: "Sprint - Middle - Long",
-  },
-  {
-    value: "3",
-    label: "competition options",
-    description:
-      "Individual Triathlon / Corporate Relay / Individual Disciplines",
-  },
-];
+import heroImgSalvador from "@/public/images/eventos/salvador-2027/foto-hero.jpg";
+import logoSalvador from "@/public/images/eventos/salvador-2027/logo-salvador.png"
+
+
 
 export const EVENT_DATA_MAP: Record<string, EventData> = {
   "rio-2026": {
     language: "pt-BR",
     id: "rio-2026",
     slug: "rio-2026",
+    eventFormat: "triton3",
     title: "Rio de Janeiro",
     subtitle: "TRITON 1",
     location: "Portobello",
@@ -164,24 +147,7 @@ export const EVENT_DATA_MAP: Record<string, EventData> = {
     },
     registrationLink:
       "https://www.ticketsports.com.br/e/triton-3-rio-de-janeiro-2026-74526",
-    stats: [
-      {
-        value: "3",
-        label: "dias consecutivos",
-        description: "Swim - Sex / Bike - Sáb / Run - Dom",
-      },
-      {
-        value: "3",
-        label: "opções de distância",
-        description: "SPRINT - MIDDLE - LONG",
-      },
-      {
-        value: "3",
-        label: "opções de competição",
-        description:
-          "Triathlon Individual / Revezamento / Modalidades Individuais",
-      },
-    ],
+    
     info: {
       title: "Um formato inovador",
       subtitle: "Permita-se viver esse desafio",
@@ -460,10 +426,11 @@ export const EVENT_DATA_MAP: Record<string, EventData> = {
   "salvador-2027": {
     id: "salvador-2027",
     slug: "salvador-2027",
+    eventFormat: "triton1",
     title: "Salvador",
     subtitle: "TRITON 1",
-    location: "Salvador",
-    venue: "Salvador, Bahia",
+    location: "Piatã",
+    venue: "Piatã, Salvador, Bahia",
     country: "Brazil",
     flag: "🇧🇷",
     status: "Confirmed",
@@ -473,12 +440,12 @@ export const EVENT_DATA_MAP: Record<string, EventData> = {
     targetDate: "2027-04-11T08:00:00",
     language: "pt-BR",
     registrationLink:
-      "https://www.ticketsports.com.br/e/triton-1-salvador-2027-75925",
+      "https://www.ticketsports.com.br/e/triton-1-salvador-86852",
     hero: {
-      backgroundImage: heroImg, // Placeholder
-      logoImage: logoHero,
+      backgroundImage: heroImgSalvador, // Placeholder
+      logoImage: logoSalvador,
     },
-    stats: COMMON_STATS,
+   
     info: {
       title: "The Ultimate Challenge in Bahia",
       subtitle: "Race through History",
@@ -561,6 +528,62 @@ export const EVENT_DATA_MAP: Record<string, EventData> = {
         whatsappLink: "https://api.whatsapp.com/send?phone=55...",
       },
     },
+    formats: {
+      swim: {
+        day: "Dia 1",
+        date: "21 de Agosto (sexta)",
+        startTime: "15:30",
+        image: swimPic,
+        title: "Natação",
+        description:
+          "A natação acontece na praia do Portobello Resort, a poucos metros da arena montada no gramado. O mar abrigado costuma oferecer condições ideais, com boa visibilidade e pouca correnteza.\n\nA largada será em ondas, iniciando pelo SPRINT, seguido do MIDDLE e do LONG, com saída diretamente da areia. O percurso será delimitado por boias e realizado em voltas:\n\nSPRINT — 1 volta\nMIDDLE — 2 voltas\nLONG — 3 voltas\n\nAs distâncias MIDDLE e LONG contam com saídas australianas, adicionando ainda mais dinâmica à prova:\n\nMIDDLE — 1 saída\nLONG — 2 saídas\n\nTodos os atletas que concluírem a prova de natação receberão medalha de finisher, e os cinco primeiros colocados, masculino e feminino, de cada distância serão premiados.",
+        distances: [
+          { label: "Sprint", val: "1000m", p: 33 },
+          { label: "Middle", val: "2000m", p: 66 },
+          { label: "Long", val: "3000m", p: 100 },
+        ],
+
+        stravaId: "3489878661225659880",
+      },
+      bike: {
+        day: "Dia 2",
+        date: "22 de Agosto (sábado)",
+        startTime: "08:00",
+        image: bikePic,
+        title: "Ciclismo",
+        description:
+          "O percurso de ciclismo acontece na Serra do Piloto, uma das rotas mais icônicas para ciclistas no Rio de Janeiro. A prova larga em frente ao Parque de Exposições de Mangaratiba (área da Expo), onde há estacionamento seguro disponível.\n\nUm ponto de apoio com hidratação e special needs está disponível em Macundu, a aproximadamente 18 km da largada.",
+        distances: [
+          { label: "Sprint", val: "30km", p: 33 },
+          { label: "Middle", val: "60km", p: 66 },
+          { label: "Long", val: "90km", p: 100 },
+        ],
+        stravaId: "3489885320405280498",
+        details: [
+          "Retorno Sprint: ~4,5 km após Macundu",
+          "Hidratação Middle & Long: ~10 km após Macundu",
+          "Retorno Middle & Long (Rio Claro): ~7,5 km após o ponto de hidratação",
+          "Chegada: ~3 km após Macundu (sentido Mangaratiba)",
+          "Descida neutralizada: ~14 km",
+          "Vácuo liberado (Proibido bike de TT)",
+        ],
+      },
+      run: {
+        day: "Dia 3",
+        date: "23 de Agosto (domingo)",
+        startTime: "08:00",
+        image: runPic,
+        title: "Corrida",
+        description:
+          "O percurso de corrida tem largada e chegada na arena do evento, localizada no Portobello Resort. Todo o trajeto ocorre dentro do complexo do resort, oferecendo um cenário privilegiado e visualmente marcante.\n\nO percurso é realizado em voltas: SPRINT (1 volta), MIDDLE (2 voltas) e LONG (3 voltas). Postos de hidratação estão disponíveis a cada 2,5 km, atendendo os atletas nos dois sentidos.",
+        distances: [
+          { label: "Sprint", val: "10km", p: 33 },
+          { label: "Middle", val: "20km", p: 66 },
+          { label: "Long", val: "30km", p: 100 },
+        ],
+        stravaId: "3489885320403923698",
+      },
+    },
     schedule: {
       title: "SCHEDULE",
       subtitle: "Race Day Timeline",
@@ -572,6 +595,7 @@ export const EVENT_DATA_MAP: Record<string, EventData> = {
   "qindong-2026": {
     id: "qindong-2026",
     slug: "qindong-2026",
+    eventFormat: "triton1",
     title: "Jiangsu-qidong",
     subtitle: "TRITON 1",
     location: "Qidong",
@@ -590,7 +614,6 @@ export const EVENT_DATA_MAP: Record<string, EventData> = {
       backgroundImage: heroImg, // Placeholder
       logoImage: logoHero,
     },
-    stats: COMMON_STATS,
     info: {
       title: "Experience the Orient Coast",
       subtitle: "Where Rivers meet the Sea",
@@ -683,6 +706,7 @@ export const EVENT_DATA_MAP: Record<string, EventData> = {
   "lisboa-2026": {
     id: "lisboa-2026",
     slug: "lisboa-2026",
+    eventFormat: "triton1",
     title: "Lisboa",
     subtitle: "TRITON 1",
     location: "Lisboa",
@@ -700,7 +724,7 @@ export const EVENT_DATA_MAP: Record<string, EventData> = {
       backgroundImage: heroImg,
       logoImage: logoHero,
     },
-    stats: COMMON_STATS,
+
     info: {
       title: "Lisbon Triton",
       subtitle: "Race in the heart of Portugal",
@@ -736,6 +760,7 @@ export const EVENT_DATA_MAP: Record<string, EventData> = {
   "uae-2027": {
     id: "uae-2027",
     slug: "uae-2027",
+    eventFormat: "triton1",
     title: "UAE",
     subtitle: "TRITON 1",
     location: "UAE",
@@ -753,7 +778,6 @@ export const EVENT_DATA_MAP: Record<string, EventData> = {
       backgroundImage: heroImg,
       logoImage: logoHero,
     },
-    stats: COMMON_STATS,
     info: {
       title: "UAE Triton",
       subtitle: "The Desert Challenge",
@@ -788,6 +812,7 @@ export const EVENT_DATA_MAP: Record<string, EventData> = {
   "ireland-2027": {
     id: "ireland-2027",
     slug: "ireland-2027",
+    eventFormat: "triton1",
     title: "Ireland",
     subtitle: "TRITON 1",
     location: "Ireland",
@@ -805,7 +830,6 @@ export const EVENT_DATA_MAP: Record<string, EventData> = {
       backgroundImage: heroImg,
       logoImage: logoHero,
     },
-    stats: COMMON_STATS,
     info: {
       title: "Ireland Triton",
       subtitle: "The Emerald Isle Challenge",
@@ -840,6 +864,7 @@ export const EVENT_DATA_MAP: Record<string, EventData> = {
   "usa-2027": {
     id: "usa-2027",
     slug: "usa-2027",
+    eventFormat: "triton1",
     title: "USA",
     subtitle: "TRITON 1",
     location: "USA",
@@ -857,7 +882,6 @@ export const EVENT_DATA_MAP: Record<string, EventData> = {
       backgroundImage: heroImg,
       logoImage: logoHero,
     },
-    stats: COMMON_STATS,
     info: {
       title: "USA Triton",
       subtitle: "The American Dream",
