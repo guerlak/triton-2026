@@ -16,7 +16,7 @@ import PartnersSectionEvent from "@/app/components/event/PartnersSectionEvent";
 import { redirect } from "next/navigation";
 
 export default async function Page({ params }: { params: Promise<{ slug: string }> }) {
-  redirect("/under-development");
+
 
   const { slug } = await params;
   const data = EVENT_DATA_MAP[slug];
