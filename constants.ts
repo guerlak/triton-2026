@@ -43,6 +43,7 @@ export const EVENTS: CalendarEvent[] = [
     year: 2026,
     format: "Triton 3",
     slug: "rio-2026",
+    eventFormat: ""
   },
 
   {

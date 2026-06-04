@@ -14,7 +14,7 @@ const STATS_DATA = {
       {
         value: "3",
         label: "distances options",
-        description: "Sprint - Middle - Long",
+        description: "SPRINT - MIDDLE - LONG",
         icon: MapPin,
       },
       {
@@ -35,7 +35,7 @@ const STATS_DATA = {
       {
         value: "3",
         label: "distances options",
-        description: "Sprint - Middle - Long",
+        description: "SPRINT - MIDDLE - LONG",
         icon: MapPin,
       },
       {
@@ -58,7 +58,7 @@ const STATS_DATA = {
       {
         value: "3",
         label: "opções de distância",
-        description: "Sprint - Middle - Long",
+        description: "SPRINT - MIDDLE - LONG",
         icon: MapPin,
       },
       {

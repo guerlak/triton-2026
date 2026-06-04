@@ -2,8 +2,12 @@ import React from "react";
 import Image from "next/image";
 import marathonLogo from "@/public/images/partners/marathon-photos-logo.png";
 import hotelPlannerLogo from "@/public/images/partners/hotel-planner-logo.png";
-
-
+import ahotoLogo from "@/public/images/partners/ahoto-logo.png";
+import hakuLogo from "@/public/images/partners/haku-logo.png";
+import smitarLogo from "@/public/images/partners/smitar-logo.png";
+import lucidTravelLogo from "@/public/images/partners/lucid-logo.png";
+import prouderLogo from "@/public/images/partners/prouder-logo.png";
+import icarusLogo from "@/public/images/partners/icarus-logo.png";
 
 const PartnersSection: React.FC = () => {
   return (
@@ -16,12 +20,42 @@ const PartnersSection: React.FC = () => {
           <a href="https://www.marathon-photos.com/" target="_blank" className="group flex items-center gap-3 text-gray-500
            hover:text-white transition-all duration-500 opacity-50 hover:opacity-100 
            cursor-pointer grayscale hover:grayscale-0">
-            <Image src={marathonLogo} alt="Marathon Photos" width={240} height={100} className="h-10 w-auto" />
+            <Image src={marathonLogo} alt="Marathon Photos" width={240} height={100} className="h-8 w-auto" />
           </a>
           <a href="https://www.hotelplanner.com/" target="_blank" className="group flex items-center gap-3 text-gray-500
            hover:text-white transition-all duration-500 opacity-50 hover:opacity-100 
            cursor-pointer grayscale hover:grayscale-0">
-            <Image src={hotelPlannerLogo} alt="Hotel Planner" width={240} height={100} className="h-10 w-auto" />
+            <Image src={hotelPlannerLogo} alt="Hotel Planner" width={240} height={100} className="h-6 w-auto" />
+          </a>
+          <a href="https://www.ahotu.com/" target="_blank" className="group flex items-center gap-3 text-gray-500
+           hover:text-white transition-all duration-500 opacity-50 hover:opacity-100 
+           cursor-pointer grayscale hover:grayscale-0">
+            <Image src={ahotoLogo} alt="ahoto" width={240} height={100} className="h-7 w-auto" />
+          </a>
+          <a href="https://www.haku.com/" target="_blank" className="group flex items-center gap-3 text-gray-500
+           hover:text-white transition-all duration-500 opacity-50 hover:opacity-100 
+           cursor-pointer grayscale hover:grayscale-0">
+            <Image src={hakuLogo} alt="haku" width={340} height={200} className="h-15 w-auto" />
+          </a>
+          <a href="https://www.smitarsports.com/" target="_blank" className="group flex items-center gap-3 text-gray-500
+           hover:text-white transition-all duration-500 opacity-50 hover:opacity-100 
+           cursor-pointer grayscale hover:grayscale-0">
+            <Image src={smitarLogo} alt="haku" width={340} height={200} className="h-15 w-auto" />
+          </a>
+          <a href="https://www.lucidtravel.com/" target="_blank" className="group flex items-center gap-3 text-gray-500
+           hover:text-white transition-all duration-500 opacity-50 hover:opacity-100 
+           cursor-pointer grayscale hover:grayscale-0">
+            <Image src={lucidTravelLogo} alt="haku" width={340} height={200} className="h-16 w-auto" />
+          </a>
+          <a href="#" className="group flex items-center gap-3 text-gray-500
+           hover:text-white transition-all duration-500 opacity-50 hover:opacity-100 
+           cursor-pointer grayscale hover:grayscale-0">
+            <Image src={prouderLogo} alt="haku" width={340} height={200} className="h-7 w-auto" />
+          </a>
+          <a href="https://www.icarus-sports.com/" target="_blank" className="group flex items-center gap-3 text-gray-500
+           hover:text-white transition-all duration-500 opacity-50 hover:opacity-100 
+           cursor-pointer grayscale hover:grayscale-0">
+            <Image src={icarusLogo} alt="haku" width={340} height={200} className="h-15 w-auto" />
           </a>
         </div>
       </div>

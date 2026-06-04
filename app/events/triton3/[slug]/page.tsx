@@ -6,13 +6,11 @@ import InfoSection from "@/app/components/event/InfoSection";
 import ScheduleSection from "@/app/components/event/ScheduleSection";
 import Testimonials from "@/app/components/Testimonials";
 import NewsletterSection from "@/app/components/NewsletterSection";
-import PartnersSection from "@/app/components/PartnersSection";
 import ShopSection from "@/app/components/ShopSection";
 import HeroEvent from "@/app/components/event/HeroEvent";
 import { EVENT_DATA_MAP } from "@/eventdata";
 import { notFound } from "next/navigation";
-import InfoSectionTriton1 from "@/app/components/event/InfoSectionTriton1";
-import FormatsSectionTriton1 from "@/app/components/event/FormatsSectionTriton1";
+import PartnersSectionEvent from "@/app/components/event/PartnersSectionEvent";
 
 export default async function Page({ params }: { params: Promise<{ slug: string }> }) {
   const { slug } = await params;
@@ -35,7 +33,7 @@ export default async function Page({ params }: { params: Promise<{ slug: string 
         <Testimonials language={data.language} />
         <ShopSection language={data.language} />
         <NewsletterSection language={data.language} />
-        <PartnersSection />
+        <PartnersSectionEvent partners={data.partners} />
       </main>
     </>
   );

@@ -62,13 +62,13 @@ const FormatsSection: React.FC<{ language: string, formats: any }> = ({ language
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-16">
           <h2 className="text-triton-red font-bold tracking-widest uppercase mb-2">
-            {language === "pt-BR" ? "Inovação" : "Innovation"}
+            {language === "pt-BR" ? "PERCURSOS" : "COURSES"}
           </h2>
           <h3 className="text-3xl md:text-5xl font-black uppercase text-white leading-tight mb-6">
             {language === "pt-BR" ? "Novos formatos para um novo desafio" : "Formats that redefine the experience"}
           </h3>
-          <p className="text-gray-400 max-w-2xl mx-auto text-lg">
-            {language === "pt-BR" ? "O TRITON 3 é uma prova realizada em 3 dias consecutivos. Uma experiência única que eleva o triathlon a outro nível. O formato permite que atletas, nadadores, ciclistas e corredores participem da prova individualmente." : "The TRITON 3 is a race held over 3 consecutive days. An unique experience that elevates triathlon to another level. The format allows athletes, swimmers, cyclists, and runners to participate in the race individually."}
+          <p className="text-gray-400 max-w-5xl mx-auto text-lg">
+            {language === "pt-BR" ? "O TRITON 3 é uma prova realizada em 3 dias consecutivos. Uma experiência única que eleva o triathlon a outro nível. O formato permite que atletas, nadadores, ciclistas e corredores participem da prova individualmente. Confira os percursos de cada modalidade e prepare-se para a prova." : "The TRITON 3 is a race held over 3 consecutive days. An unique experience that elevates triathlon to another level. The format allows athletes, swimmers, cyclists, and runners to participate in the race individually."}
           </p>
         </div>
 
@@ -187,7 +187,7 @@ const FormatsSection: React.FC<{ language: string, formats: any }> = ({ language
                       {language === "pt-BR" ? "Natação" : "Swimming"}
                     </h4>
                   </div>
-                  <div 
+                  <div
                     className="text-gray-400 text-base leading-relaxed mb-6"
                     dangerouslySetInnerHTML={{ __html: formats.swim.description }}
                   />
@@ -301,7 +301,7 @@ const FormatsSection: React.FC<{ language: string, formats: any }> = ({ language
                     </h4>
                   </div>
 
-                  <div 
+                  <div
                     className="text-gray-400 text-base leading-relaxed mb-6"
                     dangerouslySetInnerHTML={{ __html: formats.bike.description }}
                   />
@@ -413,7 +413,7 @@ const FormatsSection: React.FC<{ language: string, formats: any }> = ({ language
                       {language === "pt-BR" ? "Corrida" : "Run"}
                     </h4>
                   </div>
-                  <div 
+                  <div
                     className="text-gray-400 text-base leading-relaxed mb-6"
                     dangerouslySetInnerHTML={{ __html: formats.run.description }}
                   />

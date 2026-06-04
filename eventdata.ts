@@ -108,9 +108,11 @@ export interface EventData {
     run: EventFormatDetail;
     distanceTable: Array<{ name: string; swim: string; bike: string; run: string }>;
   };
-  partners?: {
-    images: Array<string>
-  }
+  partners: Array<{
+    name: string;
+    logo: StaticImageData | string;
+    url: string;
+  }>;
 }
 
 // Data Imports
@@ -231,6 +233,7 @@ export const EVENT_DATA_MAP: Record<string, EventData> = {
         ],
         buttonText: "Contact Reservations",
         whatsappLink: "https://api.whatsapp.com/send?phone=55...",
+
       },
     },
     formats: {
@@ -442,11 +445,18 @@ export const EVENT_DATA_MAP: Record<string, EventData> = {
       importantNote:
         "Todos os horários estão sujeitos a alteração sem aviso prévio devido a circunstâncias imprevistas. Os horários e a ordem de largada também poderão ser ajustados. Recomendamos acompanhar a programação regularmente para se manter atualizado sobre possíveis mudanças de última hora.",
     },
+    partners: [
+      {
+        name: "Prouder",
+        logo: "/images/partners/prouder.png",
+        url: "#"
+      },
+    ]
   },
   "rio-2026": {
+    slug: "rio-2026",
     language: "pt-BR",
     id: "rio-2026",
-    slug: "rio-2026",
     eventFormat: "triton3",
     title: "Rio de Janeiro",
     subtitle: "TRITON 1",
@@ -553,7 +563,7 @@ export const EVENT_DATA_MAP: Record<string, EventData> = {
     formats: {
       swim: {
         day: "Dia 1",
-        date: "21 de Agosto (sexta)",
+        date: "21 Ago (sexta)",
         startTime: "15:30",
         image: swimPic,
         title: "Natação",
@@ -590,7 +600,7 @@ export const EVENT_DATA_MAP: Record<string, EventData> = {
       },
       bike: {
         day: "Dia 2",
-        date: "22 de Agosto (sábado)",
+        date: "22 Ago (sábado)",
         startTime: "08:00",
         image: bikePic,
         title: "Ciclismo",
@@ -634,7 +644,7 @@ export const EVENT_DATA_MAP: Record<string, EventData> = {
       },
       run: {
         day: "Dia 3",
-        date: "23 de Agosto (domingo)",
+        date: "23 Ago (domingo)",
         startTime: "08:00",
         image: runPic,
         title: "Corrida",
@@ -813,7 +823,30 @@ export const EVENT_DATA_MAP: Record<string, EventData> = {
       importantNote:
         "Todos os horários estão sujeitos a alteração sem aviso prévio devido a circunstâncias imprevistas. Os horários e a ordem de largada também poderão ser ajustados. Recomendamos acompanhar a programação regularmente para se manter atualizado sobre possíveis mudanças de última hora.",
     },
-    
+    partners: [
+      {
+        name: "Lei de Insentivo ao Esporte",
+        logo: "/images/partners/events/rio2026/lei-incentivo-logo.png",
+        url: "#"
+      },
+      {
+        name: "Instituto Bons Ventos",
+        logo: "/images/partners/events/rio2026/instituto-bons-ventos-logo.png",
+        url: "#"
+      },
+      {
+        name: "My Safe",
+        logo: "/images/partners/events/rio2026/my-safe-logo.png",
+        url: "https://triton.mysafesport.com.br/"
+      },
+      {
+        name: "Governo Federal",
+        logo: "/images/partners/events/rio2026/governo-federal-logo.png",
+        url: "#"
+      },
+    ]
+
+  
   },
   "salvador-2027": {
     id: "salvador-2027",
@@ -1130,6 +1163,13 @@ export const EVENT_DATA_MAP: Record<string, EventData> = {
       importantNote:
         "Todos os horários estão sujeitos a alteração sem aviso prévio devido a circunstâncias imprevistas. Os horários e a ordem de largada também poderão ser ajustados. Recomendamos acompanhar a programação regularmente para se manter atualizado sobre possíveis mudanças de última hora.",
     },
+    partners: [
+      {
+        name: "Prouder",
+        logo: "/images/partners/prouder.png",
+        url: "#"
+      },
+    ]
   },
   "qindong-2026": {
     id: "qindong-2026",
@@ -1241,6 +1281,13 @@ export const EVENT_DATA_MAP: Record<string, EventData> = {
       days: [], // To be populated
       importantNote: "Note: Qidong event is a TRITON 1 format.",
     },
+    partners: [
+      {
+        name: "Prouder",
+        logo: "/images/partners/prouder.png",
+        url: "#"
+      },
+    ]
   },
   "lisboa-2026": {
     id: "lisboa-2026",
@@ -1295,6 +1342,13 @@ export const EVENT_DATA_MAP: Record<string, EventData> = {
       days: [],
       importantNote: "",
     },
+    partners: [
+      {
+        name: "Prouder",
+        logo: "/images/partners/prouder.png",
+        url: "#"
+      },
+    ]
   },
   "uae-2027": {
     id: "uae-2027",
@@ -1347,6 +1401,13 @@ export const EVENT_DATA_MAP: Record<string, EventData> = {
       days: [],
       importantNote: "",
     },
+    partners: [
+      {
+        name: "Prouder",
+        logo: "/images/partners/prouder.png",
+        url: "#"
+      },
+    ]
   },
   "ireland-2027": {
     id: "ireland-2027",
@@ -1399,6 +1460,13 @@ export const EVENT_DATA_MAP: Record<string, EventData> = {
       days: [],
       importantNote: "",
     },
+    partners: [
+      {
+        name: "Prouder",
+        logo: "/images/partners/prouder.png",
+        url: "#"
+      },
+    ]
   },
   "usa-2027": {
     id: "usa-2027",
@@ -1451,5 +1519,12 @@ export const EVENT_DATA_MAP: Record<string, EventData> = {
       days: [],
       importantNote: "",
     },
+    partners: [
+      {
+        name: "Prouder",
+        logo: "/images/partners/prouder.png",
+        url: "#"
+      },
+    ]
   },
 };

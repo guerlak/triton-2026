@@ -106,7 +106,7 @@ const LocationsSection: React.FC<LocationsSectionProps> = ({ locations, language
                       <h5 className="text-white font-black uppercase text-lg italic mb-2 tracking-tight group-hover/item:text-triton-red transition-colors">
                         {poi.title}
                       </h5>
-                      <p className="text-gray-400 text-xs font-bold leading-relaxed">
+                      <p className="text-gray-400 text-sm font-bold leading-relaxed">
                         {poi.desc}
                       </p>
                     </div>
@@ -227,7 +227,7 @@ const LocationsSection: React.FC<LocationsSectionProps> = ({ locations, language
               <p className="text-gray-400 text-sm lg:text-base leading-relaxed max-w-3xl font-bold">
                 {language === "pt-BR" ? (
                   <>
-                    Se hospedar no hotel oficial do evento não é obrigatório. Existem outras excelentes opções de acomodação próximas ao local da prova. Acesse o nosso parceiro <span className="text-white  uppercase italic tracking-wider border-b-2 border-triton-red">Lucid Travel</span> e confira e compare as melhores tarifas!
+                    Se hospedar no hotel oficial do evento não é obrigatório. Existem outras opções de acomodação próximas ao local da prova. Acesse o nosso parceiro <span className="text-white  uppercase italic tracking-wider border-b-2 border-triton-red">Lucid Travel</span> e confira e compare as melhores tarifas!
                   </>
                 ) : (
                   <>
