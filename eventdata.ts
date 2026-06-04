@@ -84,14 +84,7 @@ export interface EventData {
     title: string;
     description: string;
   };
-  locations: {
-    experience: {
-      image: StaticImageData | string;
-      pois: POI[];
-    };
-    logistics: LogisticItem[];
-    resort: ResortInfo;
-  };
+  
   country: string;
   flag: string;
   status: "Confirmed" | "Planned" | "Completed";
@@ -108,11 +101,23 @@ export interface EventData {
     run: EventFormatDetail;
     distanceTable: Array<{ name: string; swim: string; bike: string; run: string }>;
   };
+  locations: {
+    description: string;
+    experience: {
+      image: StaticImageData | string;
+      pois: POI[];
+    };
+    logistics: LogisticItem[];
+    resort: ResortInfo;
+  };
   partners: Array<{
     name: string;
     logo: StaticImageData | string;
     url: string;
   }>;
+  afterMovie?: {
+    youtubeSrc: string;
+  };
 }
 
 // Data Imports
@@ -125,8 +130,14 @@ import swimPic from "@/public/images/triton-fotos-prova-swim.jpeg";
 import runPic from "@/public/images/triton-fotos-prova-run.jpeg";
 import { StaticImageData } from "next/image";
 
+//imports SALVADOR
 import heroImgSalvador from "@/public/images/eventos/salvador-2027/hero-salvador.jpeg";
 import logoSalvador from "@/public/images/eventos/salvador-2027/logo-salvador.png"
+import bikePicSalvador from "@/public/images/eventos/salvador-2027/bike-salvador.jpeg"
+import runPicSalvador from "@/public/images/eventos/salvador-2027/run-salvador.jpeg"
+import salvadorExperienceImage from "@/public/images/eventos/salvador-2027/salvador-experience.jpeg"
+import fotoResortSalvador from "@/public/images/eventos/salvador-2027/salvador-hotel.jpeg"
+
 
 export const EVENT_DATA_MAP: Record<string, EventData> = {
   "salvador-2026": {
@@ -165,6 +176,7 @@ export const EVENT_DATA_MAP: Record<string, EventData> = {
         "Compete for points in the global ranking while enjoying the unique energy of Salvador.",
     },
     locations: {
+      description: "Planeje sua viagem e aproveite ao máximo sua jornada no TRITON. Localizada em um dos destinos mais vibrantes e históricos do Brasil, Salvador combina praias, cultura, gastronomia e energia única, tornando a experiência do TRITON ainda mais inesquecível.",
       experience: {
         image: touristCoast, // Placeholder
         pois: [
@@ -489,6 +501,7 @@ export const EVENT_DATA_MAP: Record<string, EventData> = {
     },
 
     locations: {
+      description: "O TRITON Rio 26 acontece em Mangaratiba, um destino que combina o melhor da Serra do Mar com a Costa Verde. Planeje sua viagem, escolha seu hotel parceiro e prepare-se para uma experiência que vai além da competição.",
       experience: {
         image: touristCoast,
         pois: [
@@ -498,12 +511,12 @@ export const EVENT_DATA_MAP: Record<string, EventData> = {
             desc: "Eleita uma das ilhas mais bonitas do mundo. Barcos com saídas diárias do centro de Mangaratiba levam você a praias paradisíacas como Lopes Mendes.",
           },
           {
-            icon: "Utensils",
+            icon: "Anchor",
             title: "VIDA MARINHA E TRILHAS",
             desc: "Agende localmente passeios para mergulhar em águas calmas e explore trilhas em meio à mata preservada, que levam a cachoeiras escondidas na Serra do Piloto.",
           },
           {
-            icon: "Anchor",
+            icon: "Utensils",
             title: "JORNADA GASTRONÔMICA",
             desc: "Experimente frutos do mar frescos e receitas tradicionais nos restaurantes à beira-mar ao longo da costa. Uma ótima dica é o Toca da Garoupa. Ou desfrute das delícias culinárias servidas no próprio Portobello Resort.",
           },
@@ -689,7 +702,12 @@ export const EVENT_DATA_MAP: Record<string, EventData> = {
         }
       ],
     },
-     schedule: {
+
+    afterMovie: {
+      youtubeSrc: "z7xHxVVnkjU?si=6GShK1msGCTy7LDH",
+    },
+
+    schedule: {
       title: "AGENDA",
       subtitle: "Planning your journey",
       days: [
@@ -845,8 +863,6 @@ export const EVENT_DATA_MAP: Record<string, EventData> = {
         url: "#"
       },
     ]
-
-  
   },
   "salvador-2027": {
     id: "salvador-2027",
@@ -883,77 +899,6 @@ export const EVENT_DATA_MAP: Record<string, EventData> = {
       description:
         "Compete for points in the global ranking while enjoying the unique energy of Salvador.",
     },
-    locations: {
-      experience: {
-        image: touristCoast, // Placeholder
-        pois: [
-          {
-            icon: "Compass",
-            title: "Pelourinho",
-            desc: "The historic heart of Salvador, famous for its colorful colonial architecture and vibrant culture.",
-          },
-          {
-            icon: "Utensils",
-            title: "Bahian Cuisine",
-            desc: "Try the famous Acarajé and Moqueca in the local markets.",
-          },
-          {
-            icon: "Anchor",
-            title: "Farol da Barra",
-            desc: "One of Brazil's most iconic lighthouses, perfect for sunset views.",
-          },
-          {
-            icon: "Palmtree",
-            title: "Beach Culture",
-            desc: "Enjoy the warm waters of Porto da Barra and Flamengo beaches.",
-          },
-        ],
-      },
-      logistics: [
-        {
-          icon: "Plane",
-          title: "SSA Airport",
-          detail: "25 km",
-          sub: "~30min",
-          color: "from-blue-500/20",
-        },
-        {
-          icon: "Navigation",
-          title: "City Center",
-          detail: "5 km",
-          sub: "~10min",
-          color: "from-green-500/20",
-        },
-        {
-          icon: "Car",
-          title: "Access",
-          detail: "Litoral Norte",
-          sub: "Scenic Drive",
-          color: "from-purple-500/20",
-        },
-        {
-          icon: "MapPin",
-          title: "Location",
-          detail: "Bahia Coast",
-          sub: "Salvador",
-          color: "from-red-500/20",
-        },
-      ],
-      resort: {
-        image: fotoResort, // Placeholder
-        title: "Salvador Official Hotel",
-        description:
-          "Stay in the heart of the action with our partner hotels in Salvador, offering special rates for TRITON athletes.",
-        benefits: [
-          "Proximity to start",
-          "Athlete Breakfast",
-          "Late Checkout",
-          "Bike Storage",
-        ],
-        buttonText: "Contact Reservations",
-        whatsappLink: "https://api.whatsapp.com/send?phone=55...",
-      },
-    },
     formats: {
       swim: {
         day: "Dia 1",
@@ -961,8 +906,28 @@ export const EVENT_DATA_MAP: Record<string, EventData> = {
         startTime: "15:30",
         image: swimPic,
         title: "Natação",
-        description:
-          "A natação acontece na praia de Placaford, a poucos metros da arena montada na praça de Piatã. A largada será em ondas, iniciando pelo SPRINT, seguido do MIDDLE e do LONG, com saída diretamente da areia. O percurso será delimitado por bóias e realizado em voltas: SPRINT — 1 volta MIDDLE — 2 voltas LONG — 3 voltas As distâncias MIDDLE e LONG contam com saídas australianas, adicionando ainda mais dinâmica à prova: MIDDLE — 1 saída LONG — 2 saídas Informações adicionais: Touca oficial obrigatória. Proibido usar equipamentos de auxílio (exceto óculos; wetsuit apenas se liberado). Wetsuit permitido se a água estiver  < 22ºC (quando liberado). Bóia de segurança permitida somente no ⚪ SPRINT (corda até 40 cm).",
+        description:`
+            <p>A natação acontece na praia de Placaford, a poucos metros da arena montada na praça de Piatã. A largada será em ondas, iniciando pelo SPRINT, seguido do MIDDLE e do LONG, com saída diretamente da areia. O percurso será delimitado por boias e realizado em voltas.</p>
+            <br>
+            <ul style="list-style-type: disc; padding-left: 20px;">
+                <li><span class="highlight">SPRINT</span> — 1 volta</li>
+                <li><span class="highlight">MIDDLE</span> — 2 voltas</li>
+                <li><span class="highlight">LONG</span> — 3 voltas</li>
+            </ul>
+            <br>
+          
+            <p>As distâncias MIDDLE e LONG contam com saídas australianas, adicionando ainda mais dinâmica à prova, sendo 1 saída para o MIDDLE e 2 saídas para o LONG.</p>
+            
+            <br>
+            <strong>Informações Adicionais:</strong><br>
+            <br>
+            <ul style="list-style-type: disc; padding-left: 20px;">
+
+                <li>Wetsuit permitido se a água estiver < 22ºC (quando liberado).</li>
+                <li>Bóia de segurança permitida somente no SPRINT (corda até 40 cm).</li>
+            </ul>
+          
+            `,
         distances: [
           { label: "Sprint", val: "500m", p: 33 },
           { label: "Middle", val: "1000m", p: 66 },
@@ -975,10 +940,34 @@ export const EVENT_DATA_MAP: Record<string, EventData> = {
         day: "Dia 2",
         date: "22 de Agosto (sábado)",
         startTime: "08:00",
-        image: bikePic,
+        image: bikePicSalvador,
         title: "Ciclismo",
-        description:
-          "Saindo da área de transição, localizada a poucos metros da arena de prova, o triatleta seguirá em direção à Av. Orlando Gomes, passando pela Av. 29 de Março e realizando o retorno na Via Regional. O percurso será realizado em voltas: SPRINT — 1 volta MIDDLE — 2 voltas LONG — 3 voltas. Haverá um ponto de abastecimento na entrada da Av. Orlando Gomes. Nesse mesmo local, também estará disponível um ponto de apoio mecânico. Informações adicionais: Bikes permitidas: TT, speed ou MTB. Capacete duro e afivelado obrigatório sempre com a bike. Regra de vácuo: 12 m; 25s para ultrapassagem (infração = cartão azul). Proibido descartar lixo fora das áreas indicadas (cartão azul).",
+        description:`
+            <p>Saindo da área de transição, localizada a poucos metros da arena de prova, o triatleta seguirá em direção à Av. Orlando Gomes, passando pela Av. 29 de Março e realizando o retorno na Via Regional.</p>
+            <br>
+            <strong>O percurso será realizado em voltas:</strong>
+            <br><br>
+            <ul style="list-style-type: disc; padding-left: 20px;">
+                <li><span class="highlight">SPRINT</span> — 1 volta</li>
+                <li><span class="highlight">MIDDLE</span> — 2 voltas</li>
+                <li><span class="highlight">LONG</span> — 3 voltas</li>
+            </ul>
+            <br>
+          
+            <p>Haverá um ponto de abastecimento na entrada da Av. Orlando Gomes. Nesse mesmo local, também estará disponível um ponto de apoio mecânico.</p>
+            
+            <br>
+            <strong>Informações Adicionais:</strong><br>
+            <br>
+            <ul style="list-style-type: disc; padding-left: 20px;">
+
+                <li>Bikes permitidas: TT, speed ou MTB.</li>
+                <li>Capacete duro e afivelado obrigatório sempre com a bike.</li>
+                <li>Vácuo: 12 m; 25s para ultrapassagem (infração = cartão azul).</li>
+                <li>Proibido descartar lixo fora das áreas indicadas (cartão azul).</li>
+            </ul>
+          
+            `,
         distances: [
           { label: "Sprint", val: "20km", p: 33 },
           { label: "Middle", val: "40km", p: 66 },
@@ -998,9 +987,29 @@ export const EVENT_DATA_MAP: Record<string, EventData> = {
         day: "Dia 3",
         date: "23 de Agosto (domingo)",
         startTime: "08:00",
-        image: runPic,
+        image: runPicSalvador,
         title: "Corrida",
-        description: "Caracterizado por um percurso totalmente plano e 100% à beira-mar, pela orla da Praia de Piatã, o trajeto de corrida proporciona uma experiência dinâmica e com grande presença de público ao longo do caminho, permitindo que os atletas recebam apoio e torcida de perto durante toda a prova. Ao sair da área de transição, o triatleta seguirá em direção ao ponto de retorno, localizado na Av. Oceânica, após a 3ª ponte. Serão dois pontos de abastecimento, sendo um logo na saída da transição e outro a 500m antes do retorno.O percurso será realizado em voltas: SPRINT — 1 volta, MIDDLE — 2 voltas, LONG — 3 voltas. Com altimetria plana, esse é um percurso ideal para manter um ritmo forte e buscar velocidade nos quilômetros finais da prova. Informações adicionais: Número de peito obrigatório e visível na frente. Atletas masculinos: camiseta obrigatória (sem camiseta = desclassificação). Proibido fones/equipamentos de som (cartão amarelo e pode evoluir para desclassificação).",
+        description: `
+            <p>Caracterizado por um percurso totalmente plano e 100% à beira-mar. Ao sair da área de transição, o triatleta seguirá em direção ao ponto de retorno, localizado na Av. Oceânica, após a 3ª ponte. Serão dois pontos de abastecimento, sendo um logo na saída da transição e outro a 500m antes do retorno.</p>
+            <br>
+            <strong>O percurso será realizado em voltas:</strong>
+<br>
+            <br>
+            <ul style="list-style-type: disc; padding-left: 20px;">
+                <li><span class="highlight">SPRINT</span> — 1 volta</li>
+                <li><span class="highlight">MIDDLE</span> — 2 voltas</li>
+                <li><span class="highlight">LONG</span> — 3 voltas</li>
+            </ul>
+            <br>
+            <strong>Informações Adicionais:</strong><br>
+            <br>
+            <ul style="list-style-type: disc; padding-left: 20px;">
+                <li>Número de peito obrigatório e visível na frente.</li>
+                <li>Atletas masculinos: camiseta obrigatória (sem camiseta = desclassificação).</li>
+                <li>Proibido fones/equipamentos de som (cartão amarelo e pode evoluir para desclassificação).</li>
+            </ul>
+          
+            `,
         distances: [
           { label: "Sprint", val: "5km", p: 33 },
           { label: "Middle", val: "10km", p: 66 },
@@ -1035,133 +1044,190 @@ export const EVENT_DATA_MAP: Record<string, EventData> = {
       days: [
         {
           id: "friday",
-          date: "21 Ago",
+          date: "9 Abr",
           title: "Sexta-feira",
           subtitle: "RACE DAY 1 - THE SWIM",
           events: [
             {
-              time: "12:00 – 15:00",
+              time: "09:00 – 18:00",
               title: "Entrega de Kits",
-              location: "Sala Araras, Portobello Resort",
-            },
-            {
-              time: "15:00",
-              title: "Abertura Arena TRITON",
-              location: "Portobello Resort",
-            },
-            {
-              time: "15:15 – 15:30",
-              title: "Concentração largada Natação",
-              location: "Praia do Portobello Resort",
-            },
-            { time: "15:33", title: "Largada SPRINT" },
-            { time: "15:36", title: "Largada MIDDLE" },
-            { time: "15:39", title: "Largada LONG" },
-            {
-              isCutoff: true,
-              title: "Tempos de Corte da Prova",
-              details: [
-                { label: "SPRINT", value: "40 min" },
-                { label: "MIDDLE", value: "80 min" },
-                { label: "LONG", value: "120 min" },
-              ],
-            },
-            {
-              time: "17:15 – 18:00",
-              title: "Premiação Natação",
-              location: "Portobello Resort",
+              location: "A confirmar",
             },
           ],
         },
         {
           id: "saturday",
-          date: "22 Ago",
+          date: "10 Abr",
           title: "Sábado",
           subtitle: "RACE DAY 2 – THE BIKE",
           events: [
             {
-              time: "06:00 – 07:30",
-              title: "Entrega de kit do ciclismo",
-              location: "Parque de Exposições de Mangaratiba (EXPO)",
+              time: "09:00 – 12:00",
+              title: "Entrega de kit",
+              location: "A confirmar",
             },
             {
-              time: "06:30 – 07:45",
-              title: "Concentração largada Ciclismo",
+              time: "14:00 – 18:00",
+              title: "Bike Check In",
               location:
-                "Serra do Piloto em frente ao Parque de Exposições de Mangaratiba (EXPO)",
-            },
-            {
-              time: "08:00",
-              title: "Largada Prova Ciclismo",
-              location:
-                "Serra do Piloto em frente ao Parque de Exposições de Mangaratiba (EXPO)",
-            },
-            {
-              isCutoff: true,
-              title: "Tempos de Corte da Prova",
-              details: [
-                { label: "SPRINT", value: "2h" },
-                { label: "MIDDLE", value: "4h" },
-                { label: "LONG", value: "6h" },
-              ],
-            },
-            {
-              time: "08:30",
-              title: "Abertura Arena TRITON",
-              location: "Portobello Resort",
-            },
-            {
-              time: "15:00 – 16:00",
-              title: "Premiação Ciclismo",
-              location: "Portobello Resort",
+                "Arena TRITON - Praça Piatã - Av. Octávio Mangabeira 1988",
             },
           ],
         },
         {
           id: "sunday",
-          date: "23 Ago",
+          date: "11 Abr",
           title: "Domingo",
           subtitle: "RACE DAY 3 - THE RUN",
           events: [
             {
-              time: "06:00 – 06:45",
-              title: "Entrega de kit corrida",
-              location: "Sala Araras, Portobelo Resort",
+              time: "04:10 – 05:40",
+              title: "Minutos Finais Bike Check In ",
+              location:  "Arena TRITON - Praça Piatã - Av. Octávio Mangabeira 1988",
             },
             {
-              time: "07:00",
-              title: "Largada Prova Corrida",
-              location: "Portobello Resort",
+              time: "05:45",
+              title: "Largada Atletas PCDs",
+              location: "Praia de Placaford",
+            },
+            {
+              time: "06:00",
+              title: "Largada SPRINT",
+              location: "Praia de Placaford",
+            },
+             {
+              time: "06:03",
+              title: "Largada MIDDLE",
+              location: "Praia de Placaford",
+            },
+            {
+              time: "06:06",
+              title: "Largada LONG",
+              location: "Praia de Placaford",
             },
             {
               isCutoff: true,
-              title: "Tempos de Corte da Prova",
+              title: "Tempos de Corte da Natação",
               details: [
-                { label: "SPRINT", value: "1h15" },
-                { label: "MIDDLE", value: "2h30" },
-                { label: "LONG", value: "3h45" },
+                { label: "SPRINT", value: "20min" },
+                { label: "MIDDLE", value: "40min" },
+                { label: "LONG", value: "1h00" },
               ],
             },
             {
-              time: "10:50 – 11:50",
-              title: "Premiação Corrida",
-              location: "Portobello Resort",
+              isCutoff: true,
+              title: "Tempos de Corte da Ciclismo",
+              details: [
+                { label: "SPRINT", value: "1h00" },
+                { label: "MIDDLE", value: "2h00" },
+                { label: "LONG", value: "3h00" },
+              ],
             },
             {
-              time: "12:00 – 13:00",
-              title: "Premiação TRITON Geral",
-              location: "Portobello Resort",
+              isCutoff: true,
+              title: "Tempos de Corte da Corrida",
+              details: [
+                { label: "SPRINT", value: "40min" },
+                { label: "MIDDLE", value: "1h00" },
+                { label: "LONG", value: "2h00" },
+              ],
+            },
+            
+            {
+              time: "08:30",
+              title: "Premiação SPRINT",
+              location: "Arena TRITON - Praça Piatã - Av. Octávio Mangabeira 1988",
             },
             {
-              time: "13:00 – 14:00",
-              title: "Premiação TRITON Age Group",
-              location: "Portobello Resort",
+              time: "10:30",
+              title: "Premiação MIDDLE",
+              location: "Arena TRITON - Praça Piatã - Av. Octávio Mangabeira 1988",
+            },
+            {
+              time: "12:30",
+              title: "Premiação LONG",
+              location: "Arena TRITON - Praça Piatã - Av. Octávio Mangabeira 1988",
             },
           ],
         },
       ],
       importantNote:
         "Todos os horários estão sujeitos a alteração sem aviso prévio devido a circunstâncias imprevistas. Os horários e a ordem de largada também poderão ser ajustados. Recomendamos acompanhar a programação regularmente para se manter atualizado sobre possíveis mudanças de última hora.",
+    },
+    locations: {
+      description: "Planeje sua viagem e aproveite ao máximo sua jornada no TRITON. Localizada em um dos destinos mais vibrantes e históricos do Brasil, Salvador combina praias, cultura, gastronomia e energia única, tornando a experiência do TRITON ainda mais inesquecível.",
+      experience: {
+        image: salvadorExperienceImage, // Placeholder
+        pois: [
+          {
+            icon: "Compass",
+            title: "Explore Salvador",
+            desc: "Explore o Centro Histórico, o Pelourinho e os principais cartões-postais da primeira capital do Brasil, mergulhando na energia e na cultura baiana.",
+          },
+          {
+            icon: "Utensils",
+            title: "PRAIAS & ORLA",
+            desc: "Aproveite a extensa orla de Salvador, com praias urbanas, calçadões e cenários perfeitos para relaxar, treinar ou curtir com a família.",
+          },
+          {
+            icon: "Anchor",
+            title: "JORNADA GASTRONÔMICA",
+            desc: "Descubra os sabores únicos da culinária baiana, com restaurantes à beira-mar, frutos do mar frescos e pratos típicos como acarajé, moqueca e abará. ",
+          },
+          {
+            icon: "Palmtree",
+            title: "MÚSICA & EXPERIÊNCIAS LOCAIS",
+            desc: "Viva a atmosfera vibrante da cidade com música ao vivo, pôr do sol à beira-mar e experiências que fazem de Salvador um destino inesquecível dentro e fora da prova.",
+          },
+        ],
+      },
+      logistics: [
+        {
+          icon: "Plane",
+          title: "SSA Aeroporto",
+          detail: "13 km",
+          sub: "~25min",
+          color: "from-blue-500/20",
+        },
+        {
+          icon: "Navigation",
+          title: "Acesso",
+          detail: "Via Rola",
+          sub: "Fácil Conexão",
+          color: "from-green-500/20",
+        },
+        {
+          icon: "Car",
+          title: "Uber",
+          detail: "Custo",
+          sub: "R$25 - R$50",
+          color: "from-purple-500/20",
+        },
+        {
+          icon: "MapPin",
+          title: "Localização",
+          detail: "Praia de Piatã",
+          sub: "Salvador",
+          color: "from-red-500/20",
+        },
+      ],
+      resort: {
+        image: fotoResortSalvador,
+        title: "Vila Bahia",
+        description:
+          "Agência oficial de turismo do TRITON Salvador. ",
+        benefits: [
+          "Passagem Aérea",
+          "Transfer",
+          "Hospedagem",
+          "Suporte Local",
+        ],
+        buttonText: "Entre em contato",
+        whatsappLink: "https://api.whatsapp.com/send/?phone=5571991468904&text&type=phone_number&app_absent=0",
+      },
+    },
+    afterMovie: {
+      youtubeSrc: "l1qDnK5J-QM?si=B1vCXdQWVo_rL-hc",
     },
     partners: [
       {
@@ -1205,6 +1271,7 @@ export const EVENT_DATA_MAP: Record<string, EventData> = {
         "Earn your spot in the World Championship at our premier Asian series stop.",
     },
     locations: {
+      description: "Plan your trip and make the most of your TRITON experience in Qidong. Enjoy a fast-growing coastal destination with unique local culture, fresh seafood, and scenic courses where the rivers meet the sea.",
       experience: {
         image: touristCoast, // Placeholder
         pois: [
@@ -1322,6 +1389,7 @@ export const EVENT_DATA_MAP: Record<string, EventData> = {
       description: "Earn points for the global ranking.",
     },
     locations: {
+      description: "Plan your trip to the historic city of Lisbon. Discover local attractions, official accommodations, and transport options to make your TRITON Lisboa experience seamless and memorable.",
       experience: {
         image: touristCoast,
         pois: [],
@@ -1381,6 +1449,7 @@ export const EVENT_DATA_MAP: Record<string, EventData> = {
       description: "Earn points for the global ranking.",
     },
     locations: {
+      description: "Plan your trip to the United Arab Emirates. Discover local attractions, official accommodations, and transport options to make your TRITON UAE experience seamless and memorable.",
       experience: {
         image: touristCoast,
         pois: [],
@@ -1440,6 +1509,7 @@ export const EVENT_DATA_MAP: Record<string, EventData> = {
       description: "Earn points for the global ranking.",
     },
     locations: {
+      description: "Plan your trip to Ireland. Discover the rugged beauty of the Emerald Isle, official accommodations, and transport options to make your TRITON Ireland experience seamless and memorable.",
       experience: {
         image: touristCoast,
         pois: [],
@@ -1499,6 +1569,7 @@ export const EVENT_DATA_MAP: Record<string, EventData> = {
       description: "Earn points for the global ranking.",
     },
     locations: {
+      description: "Plan your trip to the USA. Discover local attractions, official accommodations, and transport options to make your TRITON USA experience seamless and memorable.",
       experience: {
         image: touristCoast,
         pois: [],

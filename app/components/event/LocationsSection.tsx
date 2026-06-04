@@ -34,6 +34,7 @@ const ICON_MAP: Record<string, any> = {
 
 interface LocationsSectionProps {
   locations: {
+    description: string;
     experience: {
       image: any;
       pois: POI[];
@@ -42,9 +43,10 @@ interface LocationsSectionProps {
     resort: ResortInfo;
   };
   language: string;
+  description?: string;
 }
 
-const LocationsSection: React.FC<LocationsSectionProps> = ({ locations, language }) => {
+const LocationsSection: React.FC<LocationsSectionProps> = ({ locations, language, description }) => {
   return (
     <section id="locations" className="py-24 bg-triton-dark overflow-hidden">
       <div className="text-center mb-20">
@@ -55,12 +57,7 @@ const LocationsSection: React.FC<LocationsSectionProps> = ({ locations, language
           VIAGEM E DESTINO
         </h3>
         <p className="text-gray-400 max-w-7xl mx-auto text-lg md:text-xl leading-relaxed">
-          Planeje sua viagem e aproveite ao máximo sua jornada no TRITON.
-          Descubra como chegar, explore os aeroportos próximos e encontre as
-          melhores opções de hospedagem para você e sua família. Localizado em
-          um dos cenários costeiros mais deslumbrantes do Brasil, este é o ponto
-          de encontro entre uma competição de alto nível e um destino
-          inesquecível.
+          {description}
         </p>
       </div>
       {/* Intro Video Section */}
@@ -81,7 +78,7 @@ const LocationsSection: React.FC<LocationsSectionProps> = ({ locations, language
 
           <div className="relative z-10 p-8 lg:p-20 max-w-4xl">
             <div className="inline-block bg-triton-red/20 text-triton-red px-3 py-1 rounded-full text-[10px] uppercase font-black tracking-[0.2em] mb-6 border border-triton-red/20 backdrop-blur-md">
-              Costa Verde Experience
+              Experience
             </div>
             <h3 className="text-4xl lg:text-5xl font-black text-white uppercase italic mb-10 leading-[0.9] tracking-tighter">
               Para além da
@@ -201,10 +198,12 @@ const LocationsSection: React.FC<LocationsSectionProps> = ({ locations, language
                   <MessageCircle className="w-6 h-6 mr-3" />
                   {locations.resort.buttonText}
                 </a>
-                <p className="mt-4 text-[10px] text-gray-500 uppercase font-bold text-center lg:text-left italic">
-                  * Desconto válido apenas via atendimento com consultor. Não
-                  aplicável no atendimento automático.
-                </p>
+                {locations.resort.title === "Portobello Resort" && (
+                  <p className="mt-4 text-[10px] text-gray-500 uppercase font-bold text-center lg:text-left italic">
+                    * Desconto válido apenas via atendimento com consultor. Não
+                    aplicável no atendimento automático.
+                  </p>
+                )}
               </div>
             </div>
           </div>
@@ -222,12 +221,12 @@ const LocationsSection: React.FC<LocationsSectionProps> = ({ locations, language
                 </span>
               </div>
               <h3 className="text-3xl lg:text-4xl font-black text-white uppercase italic mb-4">
-                {language === "pt-BR" ? "Outras Opções de Acomodação" : "Other Accommodation Options"}
+                {language === "pt-BR" ? "Opções de Acomodação" : "Other Accommodation Options"}
               </h3>
               <p className="text-gray-400 text-sm lg:text-base leading-relaxed max-w-3xl font-bold">
                 {language === "pt-BR" ? (
                   <>
-                    Se hospedar no hotel oficial do evento não é obrigatório. Existem outras opções de acomodação próximas ao local da prova. Acesse o nosso parceiro <span className="text-white  uppercase italic tracking-wider border-b-2 border-triton-red">Lucid Travel</span> e confira e compare as melhores tarifas!
+                    Confira algumas opções de acomodação próximas ao local da prova. Acesse o nosso parceiro  <span className="text-white  uppercase italic tracking-wider border-b-2 border-triton-red">Lucid Travel</span> e faça a sua pesquisa!
                   </>
                 ) : (
                   <>
@@ -243,27 +242,10 @@ const LocationsSection: React.FC<LocationsSectionProps> = ({ locations, language
                 rel="noopener noreferrer"
                 className="w-full lg:w-auto inline-flex items-center justify-center bg-triton-red hover:bg-white text-white hover:text-black px-10 py-5 rounded-2xl font-black uppercase italic tracking-widest transition-all duration-300 shadow-[0_20px_40px_rgba(223,31,38,0.3)] hover:scale-105 transform"
               >
-                {language === "pt-BR" ? "Buscar Outras Opções" : "Search Other Options"}
+                {language === "pt-BR" ? "Buscar" : "Search"}
                 <ExternalLink className="w-5 h-5 ml-3" />
               </a>
             </div>
-          </div>
-        </div>
-
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-24">
-          <div className="relative rounded-4xl overflow-hidden shadow-[0_0_50px_rgba(223,31,38,0.2)] border border-white/10 group">
-            <div className="aspect-video w-full">
-              <iframe
-                className="w-full h-full"
-                src="https://www.youtube.com/embed/HRkcLP078Hs?si=mmRw6_3vgriOajq3"
-                title="Triton Mangaratiba"
-                frameBorder="0"
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                referrerPolicy="strict-origin-when-cross-origin"
-                allowFullScreen
-              ></iframe>
-            </div>
-            <div className="absolute inset-0 pointer-events-none border-12 border-black/20 rounded-4xl"></div>
           </div>
         </div>
       </div>

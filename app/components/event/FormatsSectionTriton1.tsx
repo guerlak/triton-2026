@@ -159,7 +159,7 @@ const FormatsSection: React.FC<{ language: string, formats: any }> = ({ language
                       {language === "pt-BR" ? "Natação" : "Swimming"}
                     </h4>
                   </div>
-                  <div 
+                  <div
                     className="text-gray-400 text-base leading-relaxed mb-6"
                     dangerouslySetInnerHTML={{ __html: formats.swim.description }}
                   />
@@ -212,7 +212,7 @@ const FormatsSection: React.FC<{ language: string, formats: any }> = ({ language
               <div className="space-y-6">
                 <div className="w-full h-[300px] mb-4 rounded-2xl relative overflow-hidden group shadow-2xl">
                   <Image
-                    src={bikePic}
+                    src={formats.bike.image}
                     alt="Cycling"
                     className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
                   />
@@ -262,7 +262,7 @@ const FormatsSection: React.FC<{ language: string, formats: any }> = ({ language
                     </h4>
                   </div>
 
-                  <div 
+                  <div
                     className="text-gray-400 text-base leading-relaxed mb-6"
                     dangerouslySetInnerHTML={{ __html: formats.bike.description }}
                   />
@@ -314,7 +314,7 @@ const FormatsSection: React.FC<{ language: string, formats: any }> = ({ language
               <div className="space-y-6">
                 <div className="w-full h-[300px] mb-4 rounded-2xl relative overflow-hidden group shadow-2xl">
                   <Image
-                    src={runPic}
+                    src={formats.run.image}
                     alt="Running"
                     className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
                   />
@@ -361,7 +361,7 @@ const FormatsSection: React.FC<{ language: string, formats: any }> = ({ language
                       {language === "pt-BR" ? "Corrida" : "Run"}
                     </h4>
                   </div>
-                  <div 
+                  <div
                     className="text-gray-400 text-base leading-relaxed mb-6"
                     dangerouslySetInnerHTML={{ __html: formats.run.description }}
                   />

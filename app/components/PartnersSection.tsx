@@ -32,12 +32,12 @@ const PartnersSection: React.FC = () => {
            cursor-pointer grayscale hover:grayscale-0">
             <Image src={ahotoLogo} alt="ahoto" width={240} height={100} className="h-7 w-auto" />
           </a>
-          <a href="https://www.haku.com/" target="_blank" className="group flex items-center gap-3 text-gray-500
+          <a href="" target="_blank" className="group flex items-center gap-3 text-gray-500
            hover:text-white transition-all duration-500 opacity-50 hover:opacity-100 
            cursor-pointer grayscale hover:grayscale-0">
             <Image src={hakuLogo} alt="haku" width={340} height={200} className="h-15 w-auto" />
           </a>
-          <a href="https://www.smitarsports.com/" target="_blank" className="group flex items-center gap-3 text-gray-500
+          <a href="https://www.scmitarsports.com/" target="_blank" className="group flex items-center gap-3 text-gray-500
            hover:text-white transition-all duration-500 opacity-50 hover:opacity-100 
            cursor-pointer grayscale hover:grayscale-0">
             <Image src={smitarLogo} alt="haku" width={340} height={200} className="h-15 w-auto" />
@@ -47,7 +47,7 @@ const PartnersSection: React.FC = () => {
            cursor-pointer grayscale hover:grayscale-0">
             <Image src={lucidTravelLogo} alt="haku" width={340} height={200} className="h-16 w-auto" />
           </a>
-          <a href="#" className="group flex items-center gap-3 text-gray-500
+          <a href="" className="group flex items-center gap-3 text-gray-500
            hover:text-white transition-all duration-500 opacity-50 hover:opacity-100 
            cursor-pointer grayscale hover:grayscale-0">
             <Image src={prouderLogo} alt="haku" width={340} height={200} className="h-7 w-auto" />

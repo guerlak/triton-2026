@@ -11,11 +11,9 @@ import HeroEvent from "@/app/components/event/HeroEvent";
 import { EVENT_DATA_MAP } from "@/eventdata";
 import { notFound } from "next/navigation";
 import PartnersSectionEvent from "@/app/components/event/PartnersSectionEvent";
-import { redirect } from "next/navigation";
+import AfterMovie from "@/app/components/AfterMovie";
 
 export default async function Page({ params }: { params: Promise<{ slug: string }> }) {
-
-
   const { slug } = await params;
   const data = EVENT_DATA_MAP[slug];
 
@@ -33,6 +31,7 @@ export default async function Page({ params }: { params: Promise<{ slug: string 
         <FormatsSection formats={data.formats} language={data.language} />
         <ScheduleSection schedule={data.schedule} />
         <LocationsSection locations={data.locations} language={data.language} />
+        {data.afterMovie && <AfterMovie youtubeSrc={data.afterMovie.youtubeSrc} language={data.language} />}
         <Testimonials language={data.language} />
         <ShopSection language={data.language} />
         <NewsletterSection language={data.language} />

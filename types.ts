@@ -19,6 +19,7 @@ export interface CalendarEvent {
   year: number;
   format: string;
   eventFormat?: string;
+  image?: any;
   slug: string;
 }
 

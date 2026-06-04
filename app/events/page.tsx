@@ -2,6 +2,7 @@ import { MapPin, Calendar, ArrowLeft } from "lucide-react";
 import { CalendarEvent } from "@/types";
 import { EVENT_DATA_MAP } from "@/eventdata";
 import Link from "next/link";
+import Image from "next/image";
 
 interface EventsPageProps {
   events: CalendarEvent[];
@@ -15,6 +16,7 @@ const EventsPage: React.FC<EventsPageProps> = () => {
       (event) => ({
         date: event.dateText,
         location: event.title,
+        image: event.locations.experience.image,
         country: event.country,
         flag: event.flag,
         status: event.status,
@@ -81,6 +83,26 @@ const EventsPage: React.FC<EventsPageProps> = () => {
                   className="group relative h-[450px] rounded-3xl overflow-hidden bg-neutral-900 border
                    border-white/5 hover:border-triton-red/30 transition-all duration-500 shadow-2xl block"
                 >
+                  {/* Card Background Image */}
+                  {event.image && (
+                    <Image
+                      src={event.image}
+                      alt={event.location}
+                      fill
+                      sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                      className="object-cover absolute inset-0 opacity-40 group-hover:scale-105 group-hover:opacity-50 transition-all duration-700 pointer-events-none"
+                    />
+                  )}
+                  {/* Bottom Gradient Overlay */}
+                  <div className="absolute inset-0 bg-gradient-to-t from-black via-black/45 to-transparent z-1" />
+
+                  {/* Triton Format Badge on Top Right */}
+                  <div className="absolute top-8 right-8 z-10">
+                    <span className="px-4 py-1.5 rounded-md text-[10px] font-black uppercase tracking-[0.2em] bg-triton-red text-white shadow-lg">
+                      {event.eventFormat === "triton3" ? "Triton 3" : "Triton 1"}
+                    </span>
+                  </div>
+
                   <div className="absolute inset-0 z-10 p-10 flex flex-col justify-end">
                     <div className="mb-6">
                       <span

@@ -60,7 +60,7 @@ export default function TestimonialList({ language }: { language: string }) {
         {language === "pt-BR" ? "NÃO É APENAS UMA PROVA" : "Is not just a race"}
       </h2>
       <h2 className="text-3xl md:text-5xl font-black uppercase text-white leading-tight mb-6 ">
-        {language === "pt-BR" ? "OUÇA QUEM JÁ VIVEU ESSA EXPERIÊNCIA." : "Hear from the participants"}
+        {language === "pt-BR" ? "OUÇA QUEM JÁ VIVEU ESSA EXPERIÊNCIA" : "Hear from the participants"}
       </h2>
 
       <div className="p-2 flex flex-col-reverse gap-10 justify-between items-center max-w-[1200] mx-auto md:flex-row mt-8">
