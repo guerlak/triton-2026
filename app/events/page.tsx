@@ -9,18 +9,21 @@ interface EventsPageProps {
 }
 
 const EventsPage: React.FC<EventsPageProps> = () => {
-  const eventsList: CalendarEvent[] = Object.values(EVENT_DATA_MAP).map(
-    (event) => ({
-      date: event.dateText,
-      location: event.title,
-      country: event.country,
-      flag: event.flag,
-      status: event.status,
-      year: event.year,
-      format: event.subtitle,
-      slug: event.slug,
-    }),
-  );
+  const eventsList: CalendarEvent[] = Object.values(EVENT_DATA_MAP)
+    .filter((event) => event.status !== "Completed" && event.status !== "Planned")
+    .map(
+      (event) => ({
+        date: event.dateText,
+        location: event.title,
+        country: event.country,
+        flag: event.flag,
+        status: event.status,
+        year: event.year,
+        format: event.subtitle,
+        eventFormat: event.eventFormat,
+        slug: event.slug,
+      }),
+    );
 
   const groupedEvents = eventsList.reduce(
     (acc, event) => {
@@ -73,7 +76,7 @@ const EventsPage: React.FC<EventsPageProps> = () => {
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
               {groupedEvents[country].map((event) => (
                 <Link
-                  href={`/triton-events/${event.slug}`}
+                  href={`/events/${event.eventFormat}/${event.slug}`}
                   key={`${event.location}-${event.date}`}
                   className="group relative h-[450px] rounded-3xl overflow-hidden bg-neutral-900 border
                    border-white/5 hover:border-triton-red/30 transition-all duration-500 shadow-2xl block"

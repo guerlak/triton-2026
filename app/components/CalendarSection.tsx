@@ -2,13 +2,26 @@
 import React from "react";
 import { Calendar as CalendarIcon } from "lucide-react";
 import Link from "next/link";
-import { EVENTS } from "@/constants";
-
+import { EVENT_DATA_MAP } from "@/eventdata";
 
 const CalendarSection: React.FC = () => {
-  const events2026 = EVENTS.filter((e) => e.year === 2026);
-  const eventsFuture = EVENTS.filter(
-    (e) => e.year > 2026 || e.status === "Planned",
+  const calendarEvents = Object.values(EVENT_DATA_MAP)
+    .sort((a, b) => a.targetDate.localeCompare(b.targetDate))
+    .map((event) => ({
+      date: event.dateText,
+      location: event.title === "Rio de Janeiro" ? "Rio de Janeiro, RJ" : event.title === "Salvador" ? "Salvador, BA" : event.title,
+      country: event.country,
+      flag: event.flag,
+      status: event.status,
+      year: event.year,
+      format: event.eventFormat === "triton3" ? "Triton 3" : "Triton 1",
+      eventFormat: event.eventFormat,
+      slug: event.slug,
+    }));
+
+  const events2026 = calendarEvents.filter((e) => e.year === 2026);
+  const eventsFuture = calendarEvents.filter(
+    (e) => e.year > 2026 || e.status === "Planned"
   );
 
   return (
@@ -52,11 +65,18 @@ const CalendarSection: React.FC = () => {
               >
                 <div className="flex justify-between items-start mb-4">
                   <span className="text-3xl">{event.flag}</span>
-                  {event.location.includes("Final") && (
-                    <span className="bg-yellow-500 text-black text-[10px] font-bold px-2 py-1 rounded uppercase">
-                      Final Mundial
-                    </span>
-                  )}
+                  <div className="flex gap-1.5">
+                    {event.status === "Completed" && (
+                      <span className="bg-emerald-600 text-white text-[10px] font-bold px-2 py-1 rounded uppercase">
+                        Completed
+                      </span>
+                    )}
+                    {event.location.includes("Final") && (
+                      <span className="bg-yellow-500 text-black text-[10px] font-bold px-2 py-1 rounded uppercase">
+                        Final Mundial
+                      </span>
+                    )}
+                  </div>
                 </div>
                 <div className="mb-2">
                   <span className="text-triton-red font-bold text-sm flex items-center gap-2">
@@ -70,11 +90,13 @@ const CalendarSection: React.FC = () => {
                 <span className="inline-block bg-white/10 text-white text-[10px] font-bold px-2 py-1 mt-4 rounded uppercase">
                   {event.format}
                 </span>
-                <div className="mt-6 pt-4 border-t border-white/5 opacity-0 group-hover:opacity-100 transition-opacity">
-                  <Link href={`/triton-events/${event.slug}`} className="text-white text-xs font-bold uppercase hover:text-triton-red">
-                    More Info &rarr;
-                  </Link>
-                </div>
+                {event.status !== "Completed" && (
+                  <div className="mt-6 pt-4 border-t border-white/5 opacity-0 group-hover:opacity-100 transition-opacity">
+                    <Link href={`/events/${event.eventFormat}/${event.slug}`} className="text-white text-xs font-bold uppercase hover:text-triton-red">
+                      More Info &rarr;
+                    </Link>
+                  </div>
+                )}
               </div>
             ))}
           </div>

@@ -2,7 +2,8 @@ import Image from "next/image";
 import * as motion from "framer-motion/client";
 import MainButton from "@/app/ui/MainButton";
 
-export default async function RaceGuide() {
+export default async function RaceGuide({ slug }: { slug: string }) {
+
     return (
         <section id="race-guide" className="relative py-48 overflow-hidden">
             {/* Background Image */}
@@ -60,7 +61,7 @@ export default async function RaceGuide() {
                         viewport={{ once: true }}
                         transition={{ delay: 0.3, duration: 0.8 }}
                     >
-                        <MainButton href="./race-guide">
+                        <MainButton href="#">
                             Download the Race Guide
                         </MainButton>
                     </motion.div>

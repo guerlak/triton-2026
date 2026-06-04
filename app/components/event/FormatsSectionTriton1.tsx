@@ -1,11 +1,10 @@
 "use client";
 import React, { useState } from "react";
 import Image from "next/image";
-import { Waves, Bike, PersonStanding, Users, Layers, User, Calendar, Clock, MapPin, Trophy } from "lucide-react";
+import { Waves, Bike, PersonStanding, Users, User, Shuffle, MapPin, Trophy } from "lucide-react";
 import bikePic from "@/public/images/triton-fotos-prova-bike.jpeg";
 import swimPic from "@/public/images/triton-fotos-prova-swim.jpeg";
 import runPic from "@/public/images/triton-fotos-prova-run.jpeg";
-import dict from "../../../dictionaries/en.json";
 import { motion } from "framer-motion";
 import Script from "next/script";
 
@@ -62,13 +61,13 @@ const FormatsSection: React.FC<{ language: string, formats: any }> = ({ language
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-16">
           <h2 className="text-triton-red font-bold tracking-widest uppercase mb-2">
-            {language === "pt-BR" ? "Inovação" : "Innovation"}
+            {language === "pt-BR" ? "Percursos" : "Innovation"}
           </h2>
           <h3 className="text-3xl md:text-5xl font-black uppercase text-white leading-tight mb-6">
-            {language === "pt-BR" ? "Novos formatos para um novo desafio" : "Formats that redefine the experience"}
+            {language === "pt-BR" ? "Explore cada trecho da prova" : "Formats that redefine the experience"}
           </h3>
-          <p className="text-gray-400 max-w-2xl mx-auto text-lg">
-            {language === "pt-BR" ? "O TRITON 3 é uma prova realizada em 3 dias consecutivos. Uma experiência única que eleva o triathlon a outro nível. O formato permite que atletas, nadadores, ciclistas e corredores participem da prova individualmente." : "The TRITON 3 is a race held over 3 consecutive days. An unique experience that elevates triathlon to another level. The format allows athletes, swimmers, cyclists, and runners to participate in the race individually."}
+          <p className="text-gray-400 max-w-5xl mx-auto text-lg">
+            {language === "pt-BR" ? "Conhecer os percursos é parte fundamental da preparação para o TRITON. Estudar cada segmento permite que você desenvolva melhor sua estratégia, gerencie seu ritmo e chegue mais preparado para os desafios da competição. Todos os percursos do TRITON são realizados em voltas, proporcionando maior controle operacional, melhor experiência para o público e máxima segurança para os atletas ao longo de toda a prova." : "TRITON 1 DEscription"}
           </p>
         </div>
 
@@ -119,30 +118,7 @@ const FormatsSection: React.FC<{ language: string, formats: any }> = ({ language
                   />
                   <div className="absolute inset-0 bg-linear-to-t from-black/80 via-transparent to-transparent" />
                   <div className="absolute bottom-6 left-6" >
-                    <span className="bg-triton-red text-white font-black px-4 py-1.5 rounded-lg text-sm uppercase italic tracking-widest shadow-xl">
-                      {language === "pt-BR" ? "Dia 1" : "Day 1"}
-                    </span>
-                  </div>
-                </div>
 
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                  <div className="bg-white/5 p-4 rounded-xl border border-white/10 flex items-center gap-4">
-                    <div className="bg-triton-red/10 p-3 rounded-lg">
-                      <Calendar className="text-triton-red" size={20} />
-                    </div>
-                    <div>
-                      <p className="text-[10px] text-gray-500 uppercase font-bold tracking-widest">{language === "pt-BR" ? "Data" : "Date"}</p>
-                      <p className="text-sm font-black uppercase text-white">{formats.swim.date}</p>
-                    </div>
-                  </div>
-                  <div className="bg-white/5 p-4 rounded-xl border border-white/10 flex items-center gap-4">
-                    <div className="bg-triton-red/10 p-3 rounded-lg">
-                      <Clock className="text-triton-red" size={20} />
-                    </div>
-                    <div>
-                      <p className="text-[10px] text-gray-500 uppercase font-bold tracking-widest">{language === "pt-BR" ? "Horário de largada" : "Start Time"}</p>
-                      <p className="text-sm font-black uppercase text-white">{formats.swim.startTime}</p>
-                    </div>
                   </div>
                 </div>
 
@@ -155,11 +131,7 @@ const FormatsSection: React.FC<{ language: string, formats: any }> = ({ language
 
                   {/* Distance Visualization Graph */}
                   <div className="space-y-5">
-                    {[
-                      { label: "Sprint", val: "1000m", p: 33 },
-                      { label: "Middle", val: "2000m", p: 66 },
-                      { label: "Long", val: "3000m", p: 100 }
-                    ].map((d, i) => (
+                    {formats.swim.distances.map((d: { label: string; val: string; p: number }, i: number) => (
                       <div key={i} className="space-y-2">
                         <div className="flex justify-between items-end">
                           <span className="text-[10px] font-bold text-gray-500 uppercase italic tracking-tighter">{d.label}</span>
@@ -196,22 +168,36 @@ const FormatsSection: React.FC<{ language: string, formats: any }> = ({ language
               </div>
             </div>
 
-            <div className="relative rounded-2xl overflow-hidden mb-6 border border-white /10 group">
-              <div
-                className="strava-embed-placeholder w-full h-[400px]"
-                data-full-width="true"
-                data-embed-type="route"
-                data-embed-id={formats.swim.stravaId}
-                data-style="standard"
-                data-terrain="3d"
-                data-from-embed="true"
-              ></div>
-              <div className="absolute inset-0 pointer-events-none  transition-colors duration-300" />
-              <div className="absolute top-4 right-4 bg-black/60 backdrop-blur-md px-3 py-1 rounded-full border border-white/10 flex items-center gap-2">
-                <MapPin size={12} className="text-triton-red" />
-                <span className="text-[10px] font-bold uppercase text-white tracking-widest italic">Course Map</span>
+            {formats.swim.stravaId ? (
+              <div className="relative rounded-2xl overflow-hidden mb-6 border border-white/10 group">
+                <div
+                  className="strava-embed-placeholder w-full h-[400px]"
+                  data-full-width="true"
+                  data-embed-type="route"
+                  data-embed-id={formats.swim.stravaId}
+                  data-style="standard"
+                  data-terrain="3d"
+                  data-from-embed="true"
+                ></div>
+                <div className="absolute inset-0 pointer-events-none transition-colors duration-300" />
+                <div className="absolute top-4 right-4 bg-black/60 backdrop-blur-md px-3 py-1 rounded-full border border-white/10 flex items-center gap-2">
+                  <MapPin size={12} className="text-triton-red" />
+                  <span className="text-[10px] font-bold uppercase text-white tracking-widest italic">Course Map</span>
+                </div>
               </div>
-            </div>
+            ) : (
+              <div className="relative rounded-2xl overflow-hidden mb-6 border border-white/10 bg-white/5 p-12 text-center flex flex-col items-center justify-center min-h-[300px] group hover:border-triton-red/30 transition-all duration-300">
+                <MapPin className="text-triton-red/40 w-12 h-12 mb-4 animate-pulse" />
+                <h4 className="text-white font-black uppercase text-xl mb-2">
+                  {language === "pt-BR" ? "Em breve" : "Course map coming soon"}
+                </h4>
+                <p className="text-gray-400 text-sm max-w-sm">
+                  {language === "pt-BR"
+                    ? "Estamos finalizando os detalhes do percurso."
+                    : "We are finalizing the route details."}
+                </p>
+              </div>
+            )}
             <Script
               id="strava-script"
               src="https://strava-embeds.com/embed.js"
@@ -232,32 +218,11 @@ const FormatsSection: React.FC<{ language: string, formats: any }> = ({ language
                   />
                   <div className="absolute inset-0 bg-linear-to-t from-black/80 via-transparent to-transparent" />
                   <div className="absolute bottom-6 left-6" >
-                    <span className="bg-triton-red text-white font-black px-4 py-1.5 rounded-lg text-sm uppercase italic tracking-widest shadow-xl">
-                      {language === "pt-BR" ? "Dia 2" : "Day 2"}
-                    </span>
+
                   </div>
                 </div>
 
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                  <div className="bg-white/5 p-4 rounded-xl border border-white/10 flex items-center gap-4">
-                    <div className="bg-triton-red/10 p-3 rounded-lg">
-                      <Calendar className="text-triton-red" size={20} />
-                    </div>
-                    <div>
-                      <p className="text-[10px] text-gray-500 uppercase font-bold tracking-widest">{language === "pt-BR" ? "Data" : "Date"}</p>
-                      <p className="text-sm font-black uppercase text-white">{formats.bike.date}</p>
-                    </div>
-                  </div>
-                  <div className="bg-white/5 p-4 rounded-xl border border-white/10 flex items-center gap-4">
-                    <div className="bg-triton-red/10 p-3 rounded-lg">
-                      <Clock className="text-triton-red" size={20} />
-                    </div>
-                    <div>
-                      <p className="text-[10px] text-gray-500 uppercase font-bold tracking-widest">{language === "pt-BR" ? "Horário de largada" : "Start Time"}</p>
-                      <p className="text-sm font-black uppercase text-white">{formats.bike.startTime}</p>
-                    </div>
-                  </div>
-                </div>
+
 
                 <div className="bg-white/5 p-6 rounded-2xl border border-white/10 space-y-6">
                   <div className="flex items-center gap-2 mb-2">
@@ -267,11 +232,7 @@ const FormatsSection: React.FC<{ language: string, formats: any }> = ({ language
 
                   {/* Distance Visualization Graph */}
                   <div className="space-y-5">
-                    {[
-                      { label: "Sprint", val: "30km", p: 33 },
-                      { label: "Middle", val: "60km", p: 66 },
-                      { label: "Long", val: "90km", p: 100 }
-                    ].map((d, i) => (
+                    {formats.bike.distances.map((d: { label: string; val: string; p: number }, i: number) => (
                       <div key={i} className="space-y-2">
                         <div className="flex justify-between items-end">
                           <span className="text-[10px] font-bold text-gray-500 uppercase italic tracking-tighter">{d.label}</span>
@@ -309,22 +270,36 @@ const FormatsSection: React.FC<{ language: string, formats: any }> = ({ language
               </div>
             </div>
 
-            <div className="relative rounded-2xl overflow-hidden mb-6 border border-white/10 group">
-              <div
-                className="strava-embed-placeholder w-full h-[400px]"
-                data-full-width="true"
-                data-embed-type="route"
-                data-embed-id={formats.bike.stravaId}
-                data-style="standard"
-                data-terrain="3d"
-                data-from-embed="true"
-              ></div>
-              <div className="absolute inset-0  pointer-events-none  transition-colors duration-300" />
-              <div className="absolute top-4 right-4 bg-black/60 backdrop-blur-md px-3 py-1 rounded-full border border-white/10 flex items-center gap-2">
-                <MapPin size={12} className="text-triton-red" />
-                <span className="text-[10px] font-bold uppercase text-white tracking-widest italic">Course Map</span>
+            {formats.bike.stravaId ? (
+              <div className="relative rounded-2xl overflow-hidden mb-6 border border-white/10 group">
+                <div
+                  className="strava-embed-placeholder w-full h-[400px]"
+                  data-full-width="true"
+                  data-embed-type="route"
+                  data-embed-id={formats.bike.stravaId}
+                  data-style="standard"
+                  data-terrain="3d"
+                  data-from-embed="true"
+                ></div>
+                <div className="absolute inset-0 pointer-events-none transition-colors duration-300" />
+                <div className="absolute top-4 right-4 bg-black/60 backdrop-blur-md px-3 py-1 rounded-full border border-white/10 flex items-center gap-2">
+                  <MapPin size={12} className="text-triton-red" />
+                  <span className="text-[10px] font-bold uppercase text-white tracking-widest italic">Course Map</span>
+                </div>
               </div>
-            </div>
+            ) : (
+              <div className="relative rounded-2xl overflow-hidden mb-6 border border-white/10 bg-white/5 p-12 text-center flex flex-col items-center justify-center min-h-[300px] group hover:border-triton-red/30 transition-all duration-300">
+                <MapPin className="text-triton-red/40 w-12 h-12 mb-4 animate-pulse" />
+                <h4 className="text-white font-black uppercase text-xl mb-2">
+                  {language === "pt-BR" ? "Em breve" : "Course map coming soon"}
+                </h4>
+                <p className="text-gray-400 text-sm max-w-sm">
+                  {language === "pt-BR"
+                    ? "Estamos finalizando os detalhes do percurso."
+                    : "We are finalizing the route details."}
+                </p>
+              </div>
+            )}
             <Script
               id="strava-script"
               src="https://strava-embeds.com/embed.js"
@@ -344,33 +319,10 @@ const FormatsSection: React.FC<{ language: string, formats: any }> = ({ language
                     className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
                   />
                   <div className="absolute inset-0 bg-linear-to-t from-black/80 via-transparent to-transparent" />
-                  <div className="absolute bottom-6 left-6" >
-                    <span className="bg-triton-red text-white font-black px-4 py-1.5 rounded-lg text-sm uppercase italic tracking-widest shadow-xl">
-                      {language === "pt-BR" ? "Dia 3" : "Day 3"}
-                    </span>
-                  </div>
+
                 </div>
 
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                  <div className="bg-white/5 p-4 rounded-xl border border-white/10 flex items-center gap-4">
-                    <div className="bg-triton-red/10 p-3 rounded-lg">
-                      <Calendar className="text-triton-red" size={20} />
-                    </div>
-                    <div>
-                      <p className="text-[10px] text-gray-500 uppercase font-bold tracking-widest">{language === "pt-BR" ? "Data" : "Date"}</p>
-                      <p className="text-sm font-black uppercase text-white">{formats.run.date}</p>
-                    </div>
-                  </div>
-                  <div className="bg-white/5 p-4 rounded-xl border border-white/10 flex items-center gap-4">
-                    <div className="bg-triton-red/10 p-3 rounded-lg">
-                      <Clock className="text-triton-red" size={20} />
-                    </div>
-                    <div>
-                      <p className="text-[10px] text-gray-500 uppercase font-bold tracking-widest">{language === "pt-BR" ? "Horário de largada" : "Start Time"}</p>
-                      <p className="text-sm font-black uppercase text-white">{dict.format_section.toogles_content.day_3.start}</p>
-                    </div>
-                  </div>
-                </div>
+
 
                 <div className="bg-white/5 p-6 rounded-2xl border border-white/10 space-y-6">
                   <div className="flex items-center gap-2 mb-2">
@@ -380,11 +332,7 @@ const FormatsSection: React.FC<{ language: string, formats: any }> = ({ language
 
                   {/* Distance Visualization Graph */}
                   <div className="space-y-5">
-                    {[
-                      { label: "Sprint", val: "10km", p: 33 },
-                      { label: "Middle", val: "20km", p: 66 },
-                      { label: "Long", val: "30km", p: 100 }
-                    ].map((d, i) => (
+                    {formats.run.distances.map((d: { label: string; val: string; p: number }, i: number) => (
                       <div key={i} className="space-y-2">
                         <div className="flex justify-between items-end">
                           <span className="text-[10px] font-bold text-gray-500 uppercase italic tracking-tighter">{d.label}</span>
@@ -421,22 +369,36 @@ const FormatsSection: React.FC<{ language: string, formats: any }> = ({ language
               </div>
             </div>
 
-            <div className="relative rounded-2xl overflow-hidden mb-6 border border-white/10 group">
-              <div
-                className="strava-embed-placeholder w-full h-[400px]"
-                data-full-width="true"
-                data-embed-type="route"
-                data-embed-id={formats.run.stravaId}
-                data-style="standard"
-                data-terrain="3d"
-                data-from-embed="true"
-              ></div>
-              <div className="absolute inset-0  pointer-events-none  transition-colors duration-300" />
-              <div className="absolute top-4 right-4 backdrop-blur-md px-3 py-1 rounded-full border border-white/10 flex items-center gap-2">
-                <MapPin size={12} className="text-triton-red" />
-                <span className="text-[10px] font-bold uppercase text-white tracking-widest italic">Course Map</span>
+            {formats.run.stravaId ? (
+              <div className="relative rounded-2xl overflow-hidden mb-6 border border-white/10 group">
+                <div
+                  className="strava-embed-placeholder w-full h-[400px]"
+                  data-full-width="true"
+                  data-embed-type="route"
+                  data-embed-id={formats.run.stravaId}
+                  data-style="standard"
+                  data-terrain="3d"
+                  data-from-embed="true"
+                ></div>
+                <div className="absolute inset-0 pointer-events-none transition-colors duration-300" />
+                <div className="absolute top-4 right-4 backdrop-blur-md px-3 py-1 rounded-full border border-white/10 flex items-center gap-2">
+                  <MapPin size={12} className="text-triton-red" />
+                  <span className="text-[10px] font-bold uppercase text-white tracking-widest italic">Course Map</span>
+                </div>
               </div>
-            </div>
+            ) : (
+              <div className="relative rounded-2xl overflow-hidden mb-6 border border-white/10 bg-white/5 p-12 text-center flex flex-col items-center justify-center min-h-[300px] group hover:border-triton-red/30 transition-all duration-300">
+                <MapPin className="text-triton-red/40 w-12 h-12 mb-4 animate-pulse" />
+                <h4 className="text-white font-black uppercase text-xl mb-2">
+                  {language === "pt-BR" ? "Em breve" : "Course map coming soon"}
+                </h4>
+                <p className="text-gray-400 text-sm max-w-sm">
+                  {language === "pt-BR"
+                    ? "Estamos finalizando os detalhes do percurso."
+                    : "We are finalizing the route details."}
+                </p>
+              </div>
+            )}
             <Script
               id="strava-script"
               src="https://strava-embeds.com/embed.js"
@@ -449,7 +411,7 @@ const FormatsSection: React.FC<{ language: string, formats: any }> = ({ language
           {language === "pt-BR" ? "Escolha a sua distância" : "Choose your distance"}
         </h4>
 
-        <FormatTable distances={dict?.distances?.triton_1} />
+        <FormatTable distances={formats.distanceTable} />
 
         <div className="mt-8  pt-12">
           <h4 className="text-2xl font-bold text-white mb-8 uppercase border-l-4 border-triton-red pl-4">
@@ -476,7 +438,7 @@ const FormatsSection: React.FC<{ language: string, formats: any }> = ({ language
                 Long
               </span>
               <p className="text-gray-400 text-sm leading-relaxed mb-4 mt-2">
-                {language === "pt-BR" ? "Sua posição final na classificação (após os três dias) será a soma da sua classificação em cada modalidade: Natação + Ciclismo + Corrida" : "Your final ranking position (after the three days) will be the sum of your classification in each modality: Swimming + Cycling + Running."}
+                {language === "pt-BR" ? "Encare sozinho o triathlon completo, escolhendo uma das 3 distâncias disponíveis. Esse formato conta com premiação no dia e também é classificatório para a final mundial, além de somar pontos para o ranking global do TRITON." : "Take on the complete triathlon by yourself, choosing one of the 3 available distances. This format includes awards on the day and is also a qualifier for the world final, as well as adding points to the global TRITON ranking."}
               </p>
             </div>
 
@@ -488,25 +450,25 @@ const FormatsSection: React.FC<{ language: string, formats: any }> = ({ language
                 />
               </div>
               <h5 className="text-white font-black uppercase mb-2 text-lg">
-                {dict.format_section.competition.cards.card_2.title}
+                {language === "pt-BR" ? "Revezamento" : "Relay"}
               </h5>
               <span className="inline-block bg-white/10 text-white text-[10px] font-bold px-2 py-1 rounded uppercase mb-3">
-                Sprint
+                Middle
               </span>
-              <p className="text-gray-400 text-sm leading-relaxed mt-2">{language === "pt-BR" ? "Forme sua equipe (dupla ou trio). Cada um faz uma modalidade. No caso de dupla, um atleta terá que fazer mais de uma modalidade." : "Form your team (duo or trio). Each one does one modality. In case of a duo, an athlete will have to do more than one modality."}
+              <p className="text-gray-400 text-sm leading-relaxed mt-2">{language === "pt-BR" ? "Forme sua equipe (dupla ou trio). Cada um faz uma modalidade. No caso de dupla, um atleta terá que fazer mais de uma modalidade. Esse formato conta com premiação no dia, mas não classifica para a final mundial" : "Form your team (duo or trio). Each one does one modality. In case of a duo, an athlete will have to do more than one modality."}
               </p>
             </div>
 
             {/* Modalidades Individuais */}
             <div className="bg-white/5 p-6 rounded-xl border border-white/10 hover:border-triton-red/50 transition-all group">
               <div className="bg-triton-red/10 w-12 h-12 rounded-lg flex items-center justify-center mb-4 group-hover:bg-triton-red transition-colors">
-                <Layers
+                <Shuffle
                   className="text-triton-red group-hover:text-white"
                   size={24}
                 />
               </div>
               <h5 className="text-white font-black uppercase mb-2 text-lg">
-                {dict.format_section.competition.cards.card_3.title}
+                MIX&MATCH
               </h5>
               <span className="inline-block bg-white/10 text-white text-[10px] font-bold px-2 py-1 rounded uppercase m-0.5">
                 Sprint
@@ -518,16 +480,14 @@ const FormatsSection: React.FC<{ language: string, formats: any }> = ({ language
                 Long
               </span>
               <p className="text-gray-400 text-sm leading-relaxed mb-4 mt-2">
-                {language === "pt-BR" ? "Escolha entre natação, ciclismo e/ou corrida, defina a distância e inscreva-se!" : "Choose between swimming, cycling and/or running, define the distance and sign up!"}
+                {language === "pt-BR" ? "Personalize a sua prova com as distancias pré-estabelecidas. Mescle as modalidades de acordo com o seu interesse. Exemplo: Natação SPRINT - Bike MIDDLE - Corrida LONG." : "Choose between swimming, cycling and/or running, define the distance and sign up!"}
               </p>
               <p className="text-gray-500 text-xs leading-relaxed">
-                {language === "pt-BR" ? "Não pontua para o ranking geral (3 dias), mas concorre à premiação diária por modalidade." : "Does not score for the final ranking (3 days), but competes for daily awards by modality."}
+                {language === "pt-BR" ? "Formato participativo, não concorre a premiação." : "Does not score for the final ranking (3 days), but competes for daily awards by modality."}
               </p>
             </div>
           </div>
         </div>
-
-
       </div>
     </section>
   );

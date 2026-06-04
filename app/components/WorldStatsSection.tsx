@@ -9,9 +9,7 @@ import {
   Calendar,
 
   Medal,
-  Star,
   Trophy,
-  Globe,
   Globe2,
 
 } from "lucide-react";

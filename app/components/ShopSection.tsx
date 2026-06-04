@@ -30,14 +30,14 @@ const ShopSection: React.FC<{ language: string }> = ({ language }) => {
 
             <div className="inline-flex items-center gap-2 bg-triton-red px-4 py-1.5 rounded-full
              text-white text-[10px] font-black uppercase tracking-widest mb-6">
-              <ShoppingBag size={12} /> {language == 'pt-BR' ? 'Coleção Oficial' : 'Official Collection'}
+              <ShoppingBag size={12} />  OFFICIAL COLLECTION
             </div>
 
             <div className="mt-50">
               <h2 className="text-3xl md:text-3xl font-black text-white uppercase leading-tight 
               mb-0 sm:mb-2 max-w-2/3">
-                {language == 'pt-BR' ? 'VISTA A ' : 'WEAR THE'}  <br></br><span className="text-triton-red">
-                  {language == 'pt-BR' ? 'MENTALIDADE TRITON' : 'TRITON MINDSET'}</span>{" "}
+                WEAR THE <br></br><span className="text-triton-red">
+                  TRITON MINDSET</span>{" "}
               </h2>
               <p className="text-gray-300 text-lg md:text-xl leading-relaxed mb-10 max-w-lg">
                 {language == 'pt' ? 'Roupa oficial inspirada na resistência.' : 'Official apparel inspired by endurance.'}
@@ -49,7 +49,7 @@ const ShopSection: React.FC<{ language: string }> = ({ language }) => {
               className="bg-white hover:bg-triton-red text-black hover:text-white font-black
                py-2 px-5 rounded-none inline-flex items-center justify-center gap-3 uppercase tracking-widest
                 transition-all duration-300">
-              <span className="text-xs sm:text-sm">{language == 'pt-BR' ? 'Visite a Loja' : 'Visit the Store'}</span>
+              <span className="text-xs sm:text-sm">Visit the Store</span>
               <ArrowUpRight
                 size={18}
                 className="group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform"
@@ -84,16 +84,16 @@ const ShopSection: React.FC<{ language: string }> = ({ language }) => {
 
             <div className="mt-50">
               <h2 className="text-3xl font-black text-white uppercase leading-tight mb-2 max-w-2/3">
-                {language == "pt-BR" ? "Leve o Triton" : "Take us"}<br></br>
-                <span className="text-triton-red">{language == "pt-BR" ? "com Você" : "With You"}</span>{" "}
+                TAKE US WITH YOU <br></br>
+                <span className="text-triton-red">WITH YOU</span>{" "}
               </h2>
 
               <p className="text-gray-300 text-lg md:text-md leading-relaxed mb-10 max-w-lg">
-                {language == "pt-BR" ? "Salve na tela do seu celular e use como um app." : "Save it in your screen<br></br> and use it like an app."}
+                Save it in your screen<br></br> and use it like an app.
               </p>
 
               <a className="inline-flex bg-white hover:bg-triton-red text-black hover:text-white font-black py-2 px-5 rounded-none items-center justify-center gap-3 uppercase tracking-widest transition-all duration-300">
-                <span className="text-xs sm:text-sm">{language == "pt-BR" ? "Use o App" : "Use the App"}</span>
+                <span className="text-xs sm:text-sm">Use the App</span>
                 <ArrowUpRight
                   size={18}
                   className="group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform"

@@ -10,11 +10,11 @@ const COUNTDOWN_EVENTS = [
     id: 1,
     title: "TRITON 3",
     subtitle: "RIO DE JANEIRO",
-    location: "Mangaratiba, RJ",
+    location: "Portobello, RJ",
     date: "21 Aug, 2026",
     targetDate: "2026-08-21T08:00:00",
     image: "/images/triton-fotos-prova-run.jpeg",
-    href: "/triton-events/rio-2026",
+    href: "/events/triton3/rio-2026",
     registerUrl: "https://www.ticketsports.com.br/e/triton-3-rio-de-janeiro-2026-74526"
   },
   {
@@ -25,18 +25,18 @@ const COUNTDOWN_EVENTS = [
     date: "06 Sep, 2026",
     targetDate: "2026-09-06T08:00:00",
     image: "/images/triton-fotos-prova-bike.jpeg",
-    href: "/triton-events/lisboa",
+    href: "/events/triton1/lisboa",
     registerUrl: "https://register.hakuapp.com/?event=9ce0f9c87c1b43a8b97a"
   },
   {
     id: 3,
     title: "TRITON 1",
-    subtitle: "QINDONG",
-    location: "Qingdao, China",
+    subtitle: "QIDONG",
+    location: "JIANGSU, China",
     date: "31 Oct, 2026",
     targetDate: "2026-10-31T08:00:00",
     image: "/images/bg-qindong.jpg",
-    href: "/triton-events/qindong",
+    href: "/events/triton1/qindong",
     registerUrl: "https://ticketsports.com.br/e/triton1salvador"
   },
   {
@@ -47,7 +47,7 @@ const COUNTDOWN_EVENTS = [
     date: "11 Apr, 2027",
     targetDate: "2027-04-11T08:00:00",
     image: "/images/bg-salvador.jpg",
-    href: "/triton-events/salvador",
+    href: "/events/triton1/salvador",
     registerUrl: "https://ticketsports.com.br/e/triton1salvador"
   },
 ];

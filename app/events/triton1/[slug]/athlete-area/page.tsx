@@ -4,13 +4,14 @@ import AthleteNavBar from "./AthleteNavBar"
 import RaceKit from "./RaceKit"
 import RaceGuide from "./RaceGuide"
 
-export default function Page() {
+export default async function AthleteArePage({ params }: { params: Promise<{ slug: string }> }) {
+	const { slug } = await params;
 	return (
 		<>
 			<AthleteNavBar />
-			<RaceKit />
 			<RaceGuide />
-			<StartList />
+			<RaceKit />
+			<StartList slug={slug} />
 			<LiveResults />
 		</>
 	)

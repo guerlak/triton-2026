@@ -11,6 +11,8 @@ import ShopSection from "@/app/components/ShopSection";
 import HeroEvent from "@/app/components/event/HeroEvent";
 import { EVENT_DATA_MAP } from "@/eventdata";
 import { notFound } from "next/navigation";
+import InfoSectionTriton1 from "@/app/components/event/InfoSectionTriton1";
+import FormatsSectionTriton1 from "@/app/components/event/FormatsSectionTriton1";
 
 export default async function Page({ params }: { params: Promise<{ slug: string }> }) {
   const { slug } = await params;
@@ -27,7 +29,7 @@ export default async function Page({ params }: { params: Promise<{ slug: string 
         <HeroEvent data={data.hero} />
         <CountdownSectionEvent data={data} />
         <InfoSection info={data.info} scoring={data.scoring} eventFormat={data.eventFormat} language={data.language} />
-        <FormatsSection language={data.language} formats={data.formats} />
+        <FormatsSection formats={data.formats} language={data.language} />
         <ScheduleSection schedule={data.schedule} />
         <LocationsSection locations={data.locations} language={data.language} />
         <Testimonials language={data.language} />

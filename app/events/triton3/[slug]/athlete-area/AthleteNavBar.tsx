@@ -5,6 +5,7 @@ import Image from "next/image";
 import NavButton from "@/app/ui/NavButton";
 import { useState, useEffect } from "react";
 import { Radio } from "lucide-react";
+import Link from "next/link";
 
 const Navbar = () => {
     const [isOpen, setIsOpen] = useState(false);
@@ -39,7 +40,8 @@ const Navbar = () => {
         >
             <div className="flex justify-between items-center mx-auto px-4 sm:px-6 lg:px-30 h-20 max-w-[1600px]">
                 {/* Logo */}
-                <div
+                <Link
+                    href={`./`}
                     className="shrink-0 cursor-pointer flex items-center h-full"
                     onClick={() => {
                         window.scrollTo({ top: 0, behavior: "smooth" });
@@ -54,7 +56,7 @@ const Navbar = () => {
                         className="w-auto h-12 md:h-16"
                         priority
                     />
-                </div>
+                </Link>
 
                 {/* Desktop Navigation */}
                 <div className="hidden md:flex gap-6 items-center">

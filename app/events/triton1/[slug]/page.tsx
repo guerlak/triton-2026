@@ -1,4 +1,4 @@
-
+import FormatsSection from "@/app/components/event/FormatsSection";
 import LocationsSection from "@/app/components/event/LocationsSection";
 import CountdownSectionEvent from "@/app/components/event/CountDownSectionEvent";
 import EventNavBar from "@/app/components/event/EventNavBar";
@@ -10,10 +10,17 @@ import PartnersSection from "@/app/components/PartnersSection";
 import ShopSection from "@/app/components/ShopSection";
 import HeroEvent from "@/app/components/event/HeroEvent";
 import { EVENT_DATA_MAP } from "@/eventdata";
-import FormatsSection from "@/app/components/event/FormatsSection";
+import { notFound } from "next/navigation";
+import InfoSectionTriton1 from "@/app/components/event/InfoSectionTriton1";
+import FormatsSectionTriton1 from "@/app/components/event/FormatsSectionTriton1";
 
-export default function Page() {
-  const data = EVENT_DATA_MAP["rio-2026"];
+export default async function Page({ params }: { params: Promise<{ slug: string }> }) {
+  const { slug } = await params;
+  const data = EVENT_DATA_MAP[slug];
+
+  if (!data) {
+    notFound();
+  }
 
   return (
     <>
@@ -22,7 +29,7 @@ export default function Page() {
         <HeroEvent data={data.hero} />
         <CountdownSectionEvent data={data} />
         <InfoSection info={data.info} scoring={data.scoring} eventFormat={data.eventFormat} language={data.language} />
-        <FormatsSection language={data.language} formats={data.formats} />
+        <FormatsSection formats={data.formats} language={data.language} />
         <ScheduleSection schedule={data.schedule} />
         <LocationsSection locations={data.locations} language={data.language} />
         <Testimonials language={data.language} />

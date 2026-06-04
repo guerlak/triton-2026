@@ -51,7 +51,7 @@ const LocationsSection: React.FC<LocationsSectionProps> = ({ locations, language
         <h2 className="text-triton-red font-bold tracking-[0.3em] uppercase mb-4 text-sm md:text-base">
           SEU PRÓXIMO DESAFIO É NO PARAÍSO
         </h2>
-        <h3 className="text-4xl md:text-7xl font-black uppercase text-white leading-[0.9] italic mb-8">
+        <h3 className="text-4xl md:text-5xl font-black uppercase text-white leading-[0.9] italic mb-8">
           VIAGEM E DESTINO
         </h3>
         <p className="text-gray-400 max-w-7xl mx-auto text-lg md:text-xl leading-relaxed">
@@ -83,7 +83,7 @@ const LocationsSection: React.FC<LocationsSectionProps> = ({ locations, language
             <div className="inline-block bg-triton-red/20 text-triton-red px-3 py-1 rounded-full text-[10px] uppercase font-black tracking-[0.2em] mb-6 border border-triton-red/20 backdrop-blur-md">
               Costa Verde Experience
             </div>
-            <h3 className="text-4xl lg:text-6xl font-black text-white uppercase italic mb-10 leading-[0.9] tracking-tighter">
+            <h3 className="text-4xl lg:text-5xl font-black text-white uppercase italic mb-10 leading-[0.9] tracking-tighter">
               Para além da
               <br />{" "}
               <span className="text-triton-red underline decoration-red-900/30">

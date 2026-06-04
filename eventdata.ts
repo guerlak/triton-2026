@@ -72,6 +72,7 @@ export interface EventData {
   fullDateText: string;
   targetDate: string;
   hero: EventHero;
+  startListApiUrl?: string;
 
   registrationLink: string;
   info: {
@@ -93,7 +94,7 @@ export interface EventData {
   };
   country: string;
   flag: string;
-  status: "Confirmed" | "Planned";
+  status: "Confirmed" | "Planned" | "Completed";
   year: number;
   schedule: {
     title: string;
@@ -105,8 +106,11 @@ export interface EventData {
     swim: EventFormatDetail;
     bike: EventFormatDetail;
     run: EventFormatDetail;
+    distanceTable: Array<{ name: string; swim: string; bike: string; run: string }>;
   };
-  
+  partners?: {
+    images: Array<string>
+  }
 }
 
 // Data Imports
@@ -119,117 +123,190 @@ import swimPic from "@/public/images/triton-fotos-prova-swim.jpeg";
 import runPic from "@/public/images/triton-fotos-prova-run.jpeg";
 import { StaticImageData } from "next/image";
 
-import heroImgSalvador from "@/public/images/eventos/salvador-2027/foto-hero.jpg";
+import heroImgSalvador from "@/public/images/eventos/salvador-2027/hero-salvador.jpeg";
 import logoSalvador from "@/public/images/eventos/salvador-2027/logo-salvador.png"
 
-
-
 export const EVENT_DATA_MAP: Record<string, EventData> = {
-  "rio-2026": {
-    language: "pt-BR",
-    id: "rio-2026",
-    slug: "rio-2026",
-    eventFormat: "triton3",
-    title: "Rio de Janeiro",
+  "salvador-2026": {
+    id: "salvador-2026",
+    slug: "salvador-2026",
+    eventFormat: "triton1",
+    title: "Salvador",
     subtitle: "TRITON 1",
-    location: "Portobello",
-    venue: "Portobello, Rio de Janeiro",
+    location: "Piatã, Bahia",
+    venue: "Piatã, Salvador, Bahia",
     country: "Brazil",
     flag: "🇧🇷",
-    status: "Confirmed",
+    status: "Completed",
     year: 2026,
-    dateText: "AGO 21 . 22 . 23",
-    fullDateText: "21, 22 e 23 de Agosto, 2026",
-    targetDate: "2026-08-21T08:00:00",
-    hero: {
-      backgroundImage: heroImg,
-      logoImage: logoHero,
-    },
+    dateText: "ABR 12",
+    fullDateText: "12 de Abril, 2026",
+    targetDate: "2026-04-12T08:00:00",
+    language: "pt-BR",
     registrationLink:
-      "https://www.ticketsports.com.br/e/triton-3-rio-de-janeiro-2026-74526",
-    
+      "https://www.ticketsports.com.br/e/triton-1-salvador-86852",
+    startListApiUrl: "https://api.raceresult.com/371805/RQDKNSO0GU02BW4IF4X1G7AF12S073FW",
+    hero: {
+      backgroundImage: heroImgSalvador, // Placeholder
+      logoImage: logoSalvador,
+    },
+   
     info: {
-      title: "Um formato inovador",
-      subtitle: "Permita-se viver esse desafio",
+      title: "The Ultimate Challenge in Bahia",
+      subtitle: "Race through History",
       description:
-        "O TRITON 3 redefine o triathlon tradicional, oferecendo uma experiência surpreendente para quem topa o desafio. Em vez de concentrar as três modalidades em um único dia, cada uma se torna uma prova independente — ao longo de três dias consecutivos: natação na sexta-feira, ciclismo no sábado e corrida no domingo. Esse formato exige mais do que resistência. Ele desafia os atletas a performar no mais alto nível, dia após dia — onde consistência, resiliência e estratégia são levadas ao limite.",
+        "Experience the magic of Salvador, where history meets endurance. Our TRITON 1 format brings all the excitement into one epic day of racing along the beautiful Brazilian coast.",
     },
     scoring: {
-      title: "Um sistema de pontuação inovador",
+      title: "SCORING IN THE HEART OF BRAZIL",
       description:
-        "O TRITON adota um sistema de pontuação inovador, com peso igual para as três modalidades. No formato TRITON 3, vence o atleta que somar a menor pontuação ao longo dos três dias de competição. A lógica é simples: a colocação em cada prova corresponde diretamente aos pontos (quanto melhor a colocação, menor a pontuação). Esse modelo valoriza consistência e performance contínua nas três disciplinas. Além disso, a prova soma pontos para o ranking global do TRITON World Series e funciona como etapa classificatória para o Campeonato Mundial.",
+        "Compete for points in the global ranking while enjoying the unique energy of Salvador.",
     },
-
     locations: {
       experience: {
-        image: touristCoast,
+        image: touristCoast, // Placeholder
         pois: [
           {
             icon: "Compass",
-            title: "Explore a Ilha Grande",
-            desc: "Eleita uma das ilhas mais bonitas do mundo. Barcos com saídas diárias do centro de Mangaratiba levam você a praias paradisíacas como Lopes Mendes.",
+            title: "Pelourinho",
+            desc: "The historic heart of Salvador, famous for its colorful colonial architecture and vibrant culture.",
           },
           {
             icon: "Utensils",
-            title: "VIDA MARINHA E TRILHAS",
-            desc: "Agende localmente passeios para mergulhar em águas calmas e explore trilhas em meio à mata preservada, que levam a cachoeiras escondidas na Serra do Piloto.",
+            title: "Bahian Cuisine",
+            desc: "Try the famous Acarajé and Moqueca in the local markets.",
           },
           {
             icon: "Anchor",
-            title: "JORNADA GASTRONÔMICA",
-            desc: "Experimente frutos do mar frescos e receitas tradicionais nos restaurantes à beira-mar ao longo da costa. Uma ótima dica é o Toca da Garoupa. Ou desfrute das delícias culinárias servidas no próprio Portobello Resort.",
+            title: "Farol da Barra",
+            desc: "One of Brazil's most iconic lighthouses, perfect for sunset views.",
           },
           {
             icon: "Palmtree",
-            title: "Portobello Safari",
-            desc: "Uma experiência única para toda a família, dentro do próprio Resort Portobello. Visite o maior safári resort do Brasil, com mais de 500 animais em habitats naturais.",
+            title: "Beach Culture",
+            desc: "Enjoy the warm waters of Porto da Barra and Flamengo beaches.",
           },
         ],
       },
       logistics: [
         {
           icon: "Plane",
-          title: "GIG Aeroporto",
-          detail: "115 km",
-          sub: "~1h 45min",
+          title: "SSA Airport",
+          detail: "25 km",
+          sub: "~30min",
           color: "from-blue-500/20",
         },
         {
           icon: "Navigation",
-          title: "SDU Aeroporto",
-          detail: "110 km",
-          sub: "~1h 50min",
+          title: "City Center",
+          detail: "5 km",
+          sub: "~10min",
           color: "from-green-500/20",
         },
         {
           icon: "Car",
-          title: "Accesso",
-          detail: "BR-101",
-          sub: "Fácil Conexão",
+          title: "Access",
+          detail: "Litoral Norte",
+          sub: "Scenic Drive",
           color: "from-purple-500/20",
         },
         {
           icon: "MapPin",
-          title: "Localização",
-          detail: "Mangaratiba",
-          sub: "Rio de Janeiro",
+          title: "Location",
+          detail: "Bahia Coast",
+          sub: "Salvador",
           color: "from-red-500/20",
         },
       ],
       resort: {
-        image: fotoResort,
-        title: "Portobello Resort",
+        image: fotoResort, // Placeholder
+        title: "Salvador Official Hotel",
         description:
-          "É o hotel oficial do evento e oferece condições exclusivas para atletas TRITON e suas famílias:",
+          "Stay in the heart of the action with our partner hotels in Salvador, offering special rates for TRITON athletes.",
         benefits: [
-          "Todas as refeições incluídas",
-          "Gratuidade para 2 crianças de até 7 anos",
-          "Opções de pagamento parcelado",
+          "Proximity to start",
+          "Athlete Breakfast",
+          "Late Checkout",
+          "Bike Storage",
         ],
-        buttonText: "Central de Reservas",
-        whatsappLink:
-          "https://api.whatsapp.com/send?phone=552127898000&text=Ol%C3%A1!%20Me%20inscrevi%20no%20TRITON%20e%20gostaria%20de%20informa%C3%A7%C3%B5es%20sobre%20a%20reserva%20em%20Portobello.",
+        buttonText: "Contact Reservations",
+        whatsappLink: "https://api.whatsapp.com/send?phone=55...",
       },
+    },
+    formats: {
+      swim: {
+        day: "Dia 1",
+        date: "21 de Agosto (sexta)",
+        startTime: "15:30",
+        image: swimPic,
+        title: "Natação",
+        description:
+          "A natação acontece na praia de Placaford, a poucos metros da arena montada na praça de Piatã. A largada será em ondas, iniciando pelo SPRINT, seguido do MIDDLE e do LONG, com saída diretamente da areia. O percurso será delimitado por bóias e realizado em voltas: SPRINT — 1 volta MIDDLE — 2 voltas LONG — 3 voltas As distâncias MIDDLE e LONG contam com saídas australianas, adicionando ainda mais dinâmica à prova: MIDDLE — 1 saída LONG — 2 saídas Informações adicionais: Touca oficial obrigatória. Proibido usar equipamentos de auxílio (exceto óculos; wetsuit apenas se liberado). Wetsuit permitido se a água estiver  < 22ºC (quando liberado). Bóia de segurança permitida somente no ⚪ SPRINT (corda até 40 cm).",
+        distances: [
+          { label: "Sprint", val: "500m", p: 33 },
+          { label: "Middle", val: "1000m", p: 66 },
+          { label: "Long", val: "1500m", p: 100 },
+        ],
+
+        stravaId: "",
+      },
+      bike: {
+        day: "Dia 2",
+        date: "22 de Agosto (sábado)",
+        startTime: "08:00",
+        image: bikePic,
+        title: "Ciclismo",
+        description:
+          "Saindo da área de transição, localizada a poucos metros da arena de prova, o triatleta seguirá em direção à Av. Orlando Gomes, passando pela Av. 29 de Março e realizando o retorno na Via Regional. O percurso será realizado em voltas: SPRINT — 1 volta MIDDLE — 2 voltas LONG — 3 voltas. Haverá um ponto de abastecimento na entrada da Av. Orlando Gomes. Nesse mesmo local, também estará disponível um ponto de apoio mecânico. Informações adicionais: Bikes permitidas: TT, speed ou MTB. Capacete duro e afivelado obrigatório sempre com a bike. Regra de vácuo: 12 m; 25s para ultrapassagem (infração = cartão azul). Proibido descartar lixo fora das áreas indicadas (cartão azul).",
+        distances: [
+          { label: "Sprint", val: "20km", p: 33 },
+          { label: "Middle", val: "40km", p: 66 },
+          { label: "Long", val: "60km", p: 100 },
+        ],
+        stravaId: "",
+        details: [
+          "Retorno Sprint: ~4,5 km após Macundu",
+          "Hidratação Middle & Long: ~10 km após Macundu",
+          "Retorno Middle & Long (Rio Claro): ~7,5 km após o ponto de hidratação",
+          "Chegada: ~3 km após Macundu (sentido Mangaratiba)",
+          "Descida neutralizada: ~14 km",
+          "Vácuo liberado (Proibido bike de TT)",
+        ],
+      },
+      run: {
+        day: "Dia 3",
+        date: "23 de Agosto (domingo)",
+        startTime: "08:00",
+        image: runPic,
+        title: "Corrida",
+        description: "Caracterizado por um percurso totalmente plano e 100% à beira-mar, pela orla da Praia de Piatã, o trajeto de corrida proporciona uma experiência dinâmica e com grande presença de público ao longo do caminho, permitindo que os atletas recebam apoio e torcida de perto durante toda a prova. Ao sair da área de transição, o triatleta seguirá em direção ao ponto de retorno, localizado na Av. Oceânica, após a 3ª ponte. Serão dois pontos de abastecimento, sendo um logo na saída da transição e outro a 500m antes do retorno.O percurso será realizado em voltas: SPRINT — 1 volta, MIDDLE — 2 voltas, LONG — 3 voltas. Com altimetria plana, esse é um percurso ideal para manter um ritmo forte e buscar velocidade nos quilômetros finais da prova. Informações adicionais: Número de peito obrigatório e visível na frente. Atletas masculinos: camiseta obrigatória (sem camiseta = desclassificação). Proibido fones/equipamentos de som (cartão amarelo e pode evoluir para desclassificação).",
+        distances: [
+          { label: "Sprint", val: "5km", p: 33 },
+          { label: "Middle", val: "10km", p: 66 },
+          { label: "Long", val: "15km", p: 100 },
+        ],
+        stravaId: "",
+      },
+      distanceTable: [
+      {
+        "name": "SPRINT",
+        "swim": "500m",
+        "bike": "20km",
+        "run": "5km"
+      },
+      {
+        "name": "MIDDLE",
+        "swim": "1000m",
+        "bike": "40km",
+        "run": "10km"
+      },
+      {
+        "name": "LONG",
+        "swim": "1500m",
+        "bike": "60km",
+        "run": "15km"
+      }
+    ],
     },
     schedule: {
       title: "AGENDA",
@@ -365,6 +442,114 @@ export const EVENT_DATA_MAP: Record<string, EventData> = {
       importantNote:
         "Todos os horários estão sujeitos a alteração sem aviso prévio devido a circunstâncias imprevistas. Os horários e a ordem de largada também poderão ser ajustados. Recomendamos acompanhar a programação regularmente para se manter atualizado sobre possíveis mudanças de última hora.",
     },
+  },
+  "rio-2026": {
+    language: "pt-BR",
+    id: "rio-2026",
+    slug: "rio-2026",
+    eventFormat: "triton3",
+    title: "Rio de Janeiro",
+    subtitle: "TRITON 1",
+    location: "Portobello",
+    venue: "Portobello, Rio de Janeiro",
+    country: "Brazil",
+    flag: "🇧🇷",
+    status: "Confirmed",
+    year: 2026,
+    dateText: "AGO 21 . 22 . 23",
+    fullDateText: "21, 22 e 23 de Agosto, 2026",
+    targetDate: "2026-08-21T08:00:00",
+    hero: {
+      backgroundImage: heroImg,
+      logoImage: logoHero,
+    },
+    registrationLink:
+      "https://www.ticketsports.com.br/e/triton-3-rio-de-janeiro-2026-74526",
+    
+    info: {
+      title: "Um formato inovador",
+      subtitle: "Permita-se viver esse desafio",
+      description:
+        "O TRITON 3 redefine o triathlon tradicional, oferecendo uma experiência surpreendente para quem topa o desafio. Em vez de concentrar as três modalidades em um único dia, cada uma se torna uma prova independente — ao longo de três dias consecutivos: natação na sexta-feira, ciclismo no sábado e corrida no domingo. Esse formato exige mais do que resistência. Ele desafia os atletas a performar no mais alto nível, dia após dia — onde consistência, resiliência e estratégia são levadas ao limite.",
+    },
+    scoring: {
+      title: "Um sistema de pontuação inovador",
+      description:
+        "O TRITON adota um sistema de pontuação inovador, com peso igual para as três modalidades. No formato TRITON 3, vence o atleta que somar a menor pontuação ao longo dos três dias de competição. A lógica é simples: a colocação em cada prova corresponde diretamente aos pontos (quanto melhor a colocação, menor a pontuação). Esse modelo valoriza consistência e performance contínua nas três disciplinas. Além disso, a prova soma pontos para o ranking global do TRITON World Series e funciona como etapa classificatória para o Campeonato Mundial.",
+    },
+
+    locations: {
+      experience: {
+        image: touristCoast,
+        pois: [
+          {
+            icon: "Compass",
+            title: "Explore a Ilha Grande",
+            desc: "Eleita uma das ilhas mais bonitas do mundo. Barcos com saídas diárias do centro de Mangaratiba levam você a praias paradisíacas como Lopes Mendes.",
+          },
+          {
+            icon: "Utensils",
+            title: "VIDA MARINHA E TRILHAS",
+            desc: "Agende localmente passeios para mergulhar em águas calmas e explore trilhas em meio à mata preservada, que levam a cachoeiras escondidas na Serra do Piloto.",
+          },
+          {
+            icon: "Anchor",
+            title: "JORNADA GASTRONÔMICA",
+            desc: "Experimente frutos do mar frescos e receitas tradicionais nos restaurantes à beira-mar ao longo da costa. Uma ótima dica é o Toca da Garoupa. Ou desfrute das delícias culinárias servidas no próprio Portobello Resort.",
+          },
+          {
+            icon: "Palmtree",
+            title: "Portobello Safari",
+            desc: "Uma experiência única para toda a família, dentro do próprio Resort Portobello. Visite o maior safári resort do Brasil, com mais de 500 animais em habitats naturais.",
+          },
+        ],
+      },
+      logistics: [
+        {
+          icon: "Plane",
+          title: "GIG Aeroporto",
+          detail: "115 km",
+          sub: "~1h 45min",
+          color: "from-blue-500/20",
+        },
+        {
+          icon: "Navigation",
+          title: "SDU Aeroporto",
+          detail: "110 km",
+          sub: "~1h 50min",
+          color: "from-green-500/20",
+        },
+        {
+          icon: "Car",
+          title: "Accesso",
+          detail: "BR-101",
+          sub: "Fácil Conexão",
+          color: "from-purple-500/20",
+        },
+        {
+          icon: "MapPin",
+          title: "Localização",
+          detail: "Mangaratiba",
+          sub: "Rio de Janeiro",
+          color: "from-red-500/20",
+        },
+      ],
+      resort: {
+        image: fotoResort,
+        title: "Portobello Resort",
+        description:
+          "É o hotel oficial do evento e oferece condições exclusivas para atletas TRITON e suas famílias:",
+        benefits: [
+          "Todas as refeições incluídas",
+          "Gratuidade para 2 crianças de até 7 anos",
+          "Opções de pagamento parcelado",
+        ],
+        buttonText: "Central de Reservas",
+        whatsappLink:
+          "https://api.whatsapp.com/send?phone=552127898000&text=Ol%C3%A1!%20Me%20inscrevi%20no%20TRITON%20e%20gostaria%20de%20informa%C3%A7%C3%B5es%20sobre%20a%20reserva%20em%20Portobello.",
+      },
+    },
+   
     formats: {
       swim: {
         day: "Dia 1",
@@ -372,8 +557,29 @@ export const EVENT_DATA_MAP: Record<string, EventData> = {
         startTime: "15:30",
         image: swimPic,
         title: "Natação",
-        description:
-          "A natação acontece na praia do Portobello Resort, a poucos metros da arena montada no gramado. O mar abrigado costuma oferecer condições ideais, com boa visibilidade e pouca correnteza.\n\nA largada será em ondas, iniciando pelo SPRINT, seguido do MIDDLE e do LONG, com saída diretamente da areia. O percurso será delimitado por boias e realizado em voltas:\n\nSPRINT — 1 volta\nMIDDLE — 2 voltas\nLONG — 3 voltas\n\nAs distâncias MIDDLE e LONG contam com saídas australianas, adicionando ainda mais dinâmica à prova:\n\nMIDDLE — 1 saída\nLONG — 2 saídas\n\nTodos os atletas que concluírem a prova de natação receberão medalha de finisher, e os cinco primeiros colocados, masculino e feminino, de cada distância serão premiados.",
+        description: `
+            <p>A natação acontece na praia do <span class="highlight">Portobello Resort</span>, a poucos metros da arena montada no gramado. O mar abrigado costuma oferecer condições ideais, com boa visibilidade e pouca correnteza.</p><br>
+            
+            <p>A largada será em ondas, iniciando pelo <span class="highlight">SPRINT</span>, seguido do <span class="highlight">MIDDLE</span> e do <span class="highlight">LONG</span>, com saída diretamente da areia. O percurso será delimitado por boias e realizado em voltas.</p>
+            <br>
+            <ul style="list-style-type: disc; padding-left: 20px;">
+                <li><span class="highlight">SPRINT</span> — 1 volta</li>
+                <li><span class="highlight">MIDDLE</span> — 2 voltas</li>
+                <li><span class="highlight">LONG</span> — 3 voltas</li>
+            </ul>
+            <br>
+          
+            <p>As distâncias MIDDLE e LONG contam com saídas australianas, adicionando ainda mais dinâmica à prova:</p>
+            <br>
+            <ul style="list-style-type: disc; padding-left: 20px;">
+                <li><span class="highlight">MIDDLE</span> — 1 saída</li>
+                <li><span class="highlight">LONG</span> — 2 saídas</li>
+            </ul>
+            <br>
+            <div>
+                Todos os atletas que concluírem a prova de natação receberão medalha de finisher, e os cinco primeiros colocados, masculino e feminino, de cada distância serão premiados.
+            </div>
+            `,
         distances: [
           { label: "Sprint", val: "1000m", p: 33 },
           { label: "Middle", val: "2000m", p: 66 },
@@ -389,7 +595,28 @@ export const EVENT_DATA_MAP: Record<string, EventData> = {
         image: bikePic,
         title: "Ciclismo",
         description:
-          "O percurso de ciclismo acontece na Serra do Piloto, uma das rotas mais icônicas para ciclistas no Rio de Janeiro. A prova larga em frente ao Parque de Exposições de Mangaratiba (área da Expo), onde há estacionamento seguro disponível.\n\nUm ponto de apoio com hidratação e special needs está disponível em Macundu, a aproximadamente 18 km da largada.",
+          `<p>O percurso de ciclismo acontece na <span class="destaque">Serra do Piloto</span>.
+
+    Localizada a aproximadamente 12 km do Resort Portobello, a prova tem início em frente ao <span class="destaque">Parque de Exposições de Mangaratiba (EXPO)</span>, onde os atletas contam com estacionamento seguro e estrutura de apoio antes da largada.</p>
+    <br>
+    <p><strong>Destaques do Percurso:</strong></p>
+    <br>
+    <ul style="list-style-type: disc; padding-left: 20px;">
+        <li><strong>Primeiro Trecho:</strong> ~ 11 km de subida contínua, em um ritmo constante.</li>
+        <li><strong>Da Base até Macundu:</strong> Após a escalada, o percurso segue por ~ 18 km até a região de Macundu, onde estará localizada uma base de suporte para os atletas.</li>
+        <li><strong>Retorno SPRINT:</strong> ~ 4,5 km após Macundu.</li>
+        <li><strong>AID STATION (MIDDLE e LONG):</strong> ~ 10 km após Macundu.</li>
+        <li><strong>Retorno Rio Claro (MIDDLE e LONG):</strong> ~ 7,5 km após o AID STATION.</li>
+        <li><strong>Chegada:</strong> ~ 3 km após Macundu, no sentido Mangaratiba.</li>
+    </ul>
+    <br>
+        <strong>Notas Importantes:</strong>
+        <br><br>
+        <ul style="list-style-type: disc; padding-left: 20px;">
+            <li><strong>Descida neutralizada:</strong> ~ 14 km.</li>
+            <li><strong>Vácuo permitido</strong> (Draft Legal).</li>
+            <li>Bicicletas de contrarrelógio (TT Bikes) e extensores de guidão (clip-on aerobars) <strong style="color: #c53030;">não são permitidos</strong>.</li>
+        </ul>`,
         distances: [
           { label: "Sprint", val: "30km", p: 33 },
           { label: "Middle", val: "60km", p: 66 },
@@ -411,8 +638,19 @@ export const EVENT_DATA_MAP: Record<string, EventData> = {
         startTime: "08:00",
         image: runPic,
         title: "Corrida",
-        description:
-          "O percurso de corrida tem largada e chegada na arena do evento, localizada no Portobello Resort. Todo o trajeto ocorre dentro do complexo do resort, oferecendo um cenário privilegiado e visualmente marcante.\n\nO percurso é realizado em voltas: SPRINT (1 volta), MIDDLE (2 voltas) e LONG (3 voltas). Postos de hidratação estão disponíveis a cada 2,5 km, atendendo os atletas nos dois sentidos.",
+        description: `<p>O percurso de corrida tem largada e chegada na arena do evento, localizada no Portobello Resort. Todo o trajeto ocorre dentro do complexo do resort, oferecendo um cenário privilegiado e visualmente marcante.</p><br>
+          <p class="highlight">O percurso é realizado em voltas: </p><br>
+          <ul style="list-style-type: disc; padding-left: 20px;">
+            <li><span class="highlight">SPRINT</span> — 1 volta</li>
+            <li><span class="highlight">MIDDLE</span> — 2 voltas</li>
+            <li><span class="highlight">LONG</span> — 3 voltas</li>
+          </ul>
+          <br>
+            <p>Postos de hidratação estão disponíveis a cada 2,5 km, atendendo os atletas nos dois sentidos.</p>
+            <br>
+            <div>
+                Todos os atletas que concluírem a prova de natação receberão medalha de finisher, e os cinco primeiros colocados, masculino e feminino, de cada distância serão premiados.
+            </div>`,
         distances: [
           { label: "Sprint", val: "10km", p: 33 },
           { label: "Middle", val: "20km", p: 66 },
@@ -420,6 +658,160 @@ export const EVENT_DATA_MAP: Record<string, EventData> = {
         ],
         stravaId: "3489885320403923698",
       },
+      distanceTable: [
+        {
+          "name": "SPRINT",
+          "swim": "750m",
+          "bike": "30km",
+          "run": "10km"
+        },
+        {
+          "name": "MIDDLE",
+          "swim": "1500m",
+          "bike": "60km",
+          "run": "20km"
+        },
+        {
+          "name": "LONG",
+          "swim": "2250m",
+          "bike": "90km",
+          "run": "30km"
+        }
+      ],
+    },
+     schedule: {
+      title: "AGENDA",
+      subtitle: "Planning your journey",
+      days: [
+        {
+          id: "friday",
+          date: "21 Ago",
+          title: "Sexta-feira",
+          subtitle: "RACE DAY 1 - THE SWIM",
+          events: [
+            {
+              time: "12:00 – 15:00",
+              title: "Entrega de Kits",
+              location: "Sala Araras, Portobello Resort",
+            },
+            {
+              time: "15:00",
+              title: "Abertura Arena TRITON",
+              location: "Portobello Resort",
+            },
+            {
+              time: "15:15 – 15:30",
+              title: "Concentração largada Natação",
+              location: "Praia do Portobello Resort",
+            },
+            { time: "15:33", title: "Largada SPRINT" },
+            { time: "15:36", title: "Largada MIDDLE" },
+            { time: "15:39", title: "Largada LONG" },
+            {
+              isCutoff: true,
+              title: "Tempos de Corte da Prova",
+              details: [
+                { label: "SPRINT", value: "40 min" },
+                { label: "MIDDLE", value: "80 min" },
+                { label: "LONG", value: "120 min" },
+              ],
+            },
+            {
+              time: "17:15 – 18:00",
+              title: "Premiação Natação",
+              location: "Portobello Resort",
+            },
+          ],
+        },
+        {
+          id: "saturday",
+          date: "22 Ago",
+          title: "Sábado",
+          subtitle: "RACE DAY 2 – THE BIKE",
+          events: [
+            {
+              time: "06:00 – 07:30",
+              title: "Entrega de kit do ciclismo",
+              location: "Parque de Exposições de Mangaratiba (EXPO)",
+            },
+            {
+              time: "06:30 – 07:45",
+              title: "Concentração largada Ciclismo",
+              location:
+                "Serra do Piloto em frente ao Parque de Exposições de Mangaratiba (EXPO)",
+            },
+            {
+              time: "08:00",
+              title: "Largada Prova Ciclismo",
+              location:
+                "Serra do Piloto em frente ao Parque de Exposições de Mangaratiba (EXPO)",
+            },
+            {
+              isCutoff: true,
+              title: "Tempos de Corte da Prova",
+              details: [
+                { label: "SPRINT", value: "2h" },
+                { label: "MIDDLE", value: "4h" },
+                { label: "LONG", value: "6h" },
+              ],
+            },
+            {
+              time: "08:30",
+              title: "Abertura Arena TRITON",
+              location: "Portobello Resort",
+            },
+            {
+              time: "15:00 – 16:00",
+              title: "Premiação Ciclismo",
+              location: "Portobello Resort",
+            },
+          ],
+        },
+        {
+          id: "sunday",
+          date: "23 Ago",
+          title: "Domingo",
+          subtitle: "RACE DAY 3 - THE RUN",
+          events: [
+            {
+              time: "06:00 – 06:45",
+              title: "Entrega de kit corrida",
+              location: "Sala Araras, Portobelo Resort",
+            },
+            {
+              time: "07:00",
+              title: "Largada Prova Corrida",
+              location: "Portobello Resort",
+            },
+            {
+              isCutoff: true,
+              title: "Tempos de Corte da Prova",
+              details: [
+                { label: "SPRINT", value: "1h15" },
+                { label: "MIDDLE", value: "2h30" },
+                { label: "LONG", value: "3h45" },
+              ],
+            },
+            {
+              time: "10:50 – 11:50",
+              title: "Premiação Corrida",
+              location: "Portobello Resort",
+            },
+            {
+              time: "12:00 – 13:00",
+              title: "Premiação TRITON Geral",
+              location: "Portobello Resort",
+            },
+            {
+              time: "13:00 – 14:00",
+              title: "Premiação TRITON Age Group",
+              location: "Portobello Resort",
+            },
+          ],
+        },
+      ],
+      importantNote:
+        "Todos os horários estão sujeitos a alteração sem aviso prévio devido a circunstâncias imprevistas. Os horários e a ordem de largada também poderão ser ajustados. Recomendamos acompanhar a programação regularmente para se manter atualizado sobre possíveis mudanças de última hora.",
     },
     
   },
@@ -429,7 +821,7 @@ export const EVENT_DATA_MAP: Record<string, EventData> = {
     eventFormat: "triton1",
     title: "Salvador",
     subtitle: "TRITON 1",
-    location: "Piatã",
+    location: "Piatã, Bahia",
     venue: "Piatã, Salvador, Bahia",
     country: "Brazil",
     flag: "🇧🇷",
@@ -441,6 +833,7 @@ export const EVENT_DATA_MAP: Record<string, EventData> = {
     language: "pt-BR",
     registrationLink:
       "https://www.ticketsports.com.br/e/triton-1-salvador-86852",
+    startListApiUrl: "https://api.raceresult.com/371805/RQDKNSO0GU02BW4IF4X1G7AF12S073FW",
     hero: {
       backgroundImage: heroImgSalvador, // Placeholder
       logoImage: logoSalvador,
@@ -536,14 +929,14 @@ export const EVENT_DATA_MAP: Record<string, EventData> = {
         image: swimPic,
         title: "Natação",
         description:
-          "A natação acontece na praia do Portobello Resort, a poucos metros da arena montada no gramado. O mar abrigado costuma oferecer condições ideais, com boa visibilidade e pouca correnteza.\n\nA largada será em ondas, iniciando pelo SPRINT, seguido do MIDDLE e do LONG, com saída diretamente da areia. O percurso será delimitado por boias e realizado em voltas:\n\nSPRINT — 1 volta\nMIDDLE — 2 voltas\nLONG — 3 voltas\n\nAs distâncias MIDDLE e LONG contam com saídas australianas, adicionando ainda mais dinâmica à prova:\n\nMIDDLE — 1 saída\nLONG — 2 saídas\n\nTodos os atletas que concluírem a prova de natação receberão medalha de finisher, e os cinco primeiros colocados, masculino e feminino, de cada distância serão premiados.",
+          "A natação acontece na praia de Placaford, a poucos metros da arena montada na praça de Piatã. A largada será em ondas, iniciando pelo SPRINT, seguido do MIDDLE e do LONG, com saída diretamente da areia. O percurso será delimitado por bóias e realizado em voltas: SPRINT — 1 volta MIDDLE — 2 voltas LONG — 3 voltas As distâncias MIDDLE e LONG contam com saídas australianas, adicionando ainda mais dinâmica à prova: MIDDLE — 1 saída LONG — 2 saídas Informações adicionais: Touca oficial obrigatória. Proibido usar equipamentos de auxílio (exceto óculos; wetsuit apenas se liberado). Wetsuit permitido se a água estiver  < 22ºC (quando liberado). Bóia de segurança permitida somente no ⚪ SPRINT (corda até 40 cm).",
         distances: [
-          { label: "Sprint", val: "1000m", p: 33 },
-          { label: "Middle", val: "2000m", p: 66 },
-          { label: "Long", val: "3000m", p: 100 },
+          { label: "Sprint", val: "500m", p: 33 },
+          { label: "Middle", val: "1000m", p: 66 },
+          { label: "Long", val: "1500m", p: 100 },
         ],
 
-        stravaId: "3489878661225659880",
+        stravaId: "",
       },
       bike: {
         day: "Dia 2",
@@ -552,13 +945,13 @@ export const EVENT_DATA_MAP: Record<string, EventData> = {
         image: bikePic,
         title: "Ciclismo",
         description:
-          "O percurso de ciclismo acontece na Serra do Piloto, uma das rotas mais icônicas para ciclistas no Rio de Janeiro. A prova larga em frente ao Parque de Exposições de Mangaratiba (área da Expo), onde há estacionamento seguro disponível.\n\nUm ponto de apoio com hidratação e special needs está disponível em Macundu, a aproximadamente 18 km da largada.",
+          "Saindo da área de transição, localizada a poucos metros da arena de prova, o triatleta seguirá em direção à Av. Orlando Gomes, passando pela Av. 29 de Março e realizando o retorno na Via Regional. O percurso será realizado em voltas: SPRINT — 1 volta MIDDLE — 2 voltas LONG — 3 voltas. Haverá um ponto de abastecimento na entrada da Av. Orlando Gomes. Nesse mesmo local, também estará disponível um ponto de apoio mecânico. Informações adicionais: Bikes permitidas: TT, speed ou MTB. Capacete duro e afivelado obrigatório sempre com a bike. Regra de vácuo: 12 m; 25s para ultrapassagem (infração = cartão azul). Proibido descartar lixo fora das áreas indicadas (cartão azul).",
         distances: [
-          { label: "Sprint", val: "30km", p: 33 },
-          { label: "Middle", val: "60km", p: 66 },
-          { label: "Long", val: "90km", p: 100 },
+          { label: "Sprint", val: "20km", p: 33 },
+          { label: "Middle", val: "40km", p: 66 },
+          { label: "Long", val: "60km", p: 100 },
         ],
-        stravaId: "3489885320405280498",
+        stravaId: "",
         details: [
           "Retorno Sprint: ~4,5 km após Macundu",
           "Hidratação Middle & Long: ~10 km após Macundu",
@@ -574,22 +967,168 @@ export const EVENT_DATA_MAP: Record<string, EventData> = {
         startTime: "08:00",
         image: runPic,
         title: "Corrida",
-        description:
-          "O percurso de corrida tem largada e chegada na arena do evento, localizada no Portobello Resort. Todo o trajeto ocorre dentro do complexo do resort, oferecendo um cenário privilegiado e visualmente marcante.\n\nO percurso é realizado em voltas: SPRINT (1 volta), MIDDLE (2 voltas) e LONG (3 voltas). Postos de hidratação estão disponíveis a cada 2,5 km, atendendo os atletas nos dois sentidos.",
+        description: "Caracterizado por um percurso totalmente plano e 100% à beira-mar, pela orla da Praia de Piatã, o trajeto de corrida proporciona uma experiência dinâmica e com grande presença de público ao longo do caminho, permitindo que os atletas recebam apoio e torcida de perto durante toda a prova. Ao sair da área de transição, o triatleta seguirá em direção ao ponto de retorno, localizado na Av. Oceânica, após a 3ª ponte. Serão dois pontos de abastecimento, sendo um logo na saída da transição e outro a 500m antes do retorno.O percurso será realizado em voltas: SPRINT — 1 volta, MIDDLE — 2 voltas, LONG — 3 voltas. Com altimetria plana, esse é um percurso ideal para manter um ritmo forte e buscar velocidade nos quilômetros finais da prova. Informações adicionais: Número de peito obrigatório e visível na frente. Atletas masculinos: camiseta obrigatória (sem camiseta = desclassificação). Proibido fones/equipamentos de som (cartão amarelo e pode evoluir para desclassificação).",
         distances: [
-          { label: "Sprint", val: "10km", p: 33 },
-          { label: "Middle", val: "20km", p: 66 },
-          { label: "Long", val: "30km", p: 100 },
+          { label: "Sprint", val: "5km", p: 33 },
+          { label: "Middle", val: "10km", p: 66 },
+          { label: "Long", val: "15km", p: 100 },
         ],
-        stravaId: "3489885320403923698",
+        stravaId: "",
       },
+      distanceTable: [
+      {
+        "name": "SPRINT",
+        "swim": "500m",
+        "bike": "20km",
+        "run": "5km"
+      },
+      {
+        "name": "MIDDLE",
+        "swim": "1000m",
+        "bike": "40km",
+        "run": "10km"
+      },
+      {
+        "name": "LONG",
+        "swim": "1500m",
+        "bike": "60km",
+        "run": "15km"
+      }
+    ],
     },
     schedule: {
-      title: "SCHEDULE",
-      subtitle: "Race Day Timeline",
-      days: [], // To be populated
+      title: "AGENDA",
+      subtitle: "Planning your journey",
+      days: [
+        {
+          id: "friday",
+          date: "21 Ago",
+          title: "Sexta-feira",
+          subtitle: "RACE DAY 1 - THE SWIM",
+          events: [
+            {
+              time: "12:00 – 15:00",
+              title: "Entrega de Kits",
+              location: "Sala Araras, Portobello Resort",
+            },
+            {
+              time: "15:00",
+              title: "Abertura Arena TRITON",
+              location: "Portobello Resort",
+            },
+            {
+              time: "15:15 – 15:30",
+              title: "Concentração largada Natação",
+              location: "Praia do Portobello Resort",
+            },
+            { time: "15:33", title: "Largada SPRINT" },
+            { time: "15:36", title: "Largada MIDDLE" },
+            { time: "15:39", title: "Largada LONG" },
+            {
+              isCutoff: true,
+              title: "Tempos de Corte da Prova",
+              details: [
+                { label: "SPRINT", value: "40 min" },
+                { label: "MIDDLE", value: "80 min" },
+                { label: "LONG", value: "120 min" },
+              ],
+            },
+            {
+              time: "17:15 – 18:00",
+              title: "Premiação Natação",
+              location: "Portobello Resort",
+            },
+          ],
+        },
+        {
+          id: "saturday",
+          date: "22 Ago",
+          title: "Sábado",
+          subtitle: "RACE DAY 2 – THE BIKE",
+          events: [
+            {
+              time: "06:00 – 07:30",
+              title: "Entrega de kit do ciclismo",
+              location: "Parque de Exposições de Mangaratiba (EXPO)",
+            },
+            {
+              time: "06:30 – 07:45",
+              title: "Concentração largada Ciclismo",
+              location:
+                "Serra do Piloto em frente ao Parque de Exposições de Mangaratiba (EXPO)",
+            },
+            {
+              time: "08:00",
+              title: "Largada Prova Ciclismo",
+              location:
+                "Serra do Piloto em frente ao Parque de Exposições de Mangaratiba (EXPO)",
+            },
+            {
+              isCutoff: true,
+              title: "Tempos de Corte da Prova",
+              details: [
+                { label: "SPRINT", value: "2h" },
+                { label: "MIDDLE", value: "4h" },
+                { label: "LONG", value: "6h" },
+              ],
+            },
+            {
+              time: "08:30",
+              title: "Abertura Arena TRITON",
+              location: "Portobello Resort",
+            },
+            {
+              time: "15:00 – 16:00",
+              title: "Premiação Ciclismo",
+              location: "Portobello Resort",
+            },
+          ],
+        },
+        {
+          id: "sunday",
+          date: "23 Ago",
+          title: "Domingo",
+          subtitle: "RACE DAY 3 - THE RUN",
+          events: [
+            {
+              time: "06:00 – 06:45",
+              title: "Entrega de kit corrida",
+              location: "Sala Araras, Portobelo Resort",
+            },
+            {
+              time: "07:00",
+              title: "Largada Prova Corrida",
+              location: "Portobello Resort",
+            },
+            {
+              isCutoff: true,
+              title: "Tempos de Corte da Prova",
+              details: [
+                { label: "SPRINT", value: "1h15" },
+                { label: "MIDDLE", value: "2h30" },
+                { label: "LONG", value: "3h45" },
+              ],
+            },
+            {
+              time: "10:50 – 11:50",
+              title: "Premiação Corrida",
+              location: "Portobello Resort",
+            },
+            {
+              time: "12:00 – 13:00",
+              title: "Premiação TRITON Geral",
+              location: "Portobello Resort",
+            },
+            {
+              time: "13:00 – 14:00",
+              title: "Premiação TRITON Age Group",
+              location: "Portobello Resort",
+            },
+          ],
+        },
+      ],
       importantNote:
-        "Note: Salvador event is a TRITON 1 format (one-day event).",
+        "Todos os horários estão sujeitos a alteração sem aviso prévio devido a circunstâncias imprevistas. Os horários e a ordem de largada também poderão ser ajustados. Recomendamos acompanhar a programação regularmente para se manter atualizado sobre possíveis mudanças de última hora.",
     },
   },
   "qindong-2026": {
@@ -604,9 +1143,9 @@ export const EVENT_DATA_MAP: Record<string, EventData> = {
     flag: "🇨🇳",
     status: "Confirmed",
     year: 2026,
-    dateText: "OCT 07",
-    fullDateText: "October 7, 2026",
-    targetDate: "2026-10-07T08:00:00",
+    dateText: "OCT 31",
+    fullDateText: "October 31, 2026",
+    targetDate: "2026-10-31T08:00:00",
     language: "en",
     registrationLink:
       "https://www.ticketsports.com.br/e/triton-1-salvador-2027-75925",

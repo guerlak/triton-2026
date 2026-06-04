@@ -2,10 +2,13 @@
 
 import tritonLogo from "@/public/images/triton-ws-logo-01.png";
 import Image from "next/image";
+import Link from "next/link";
+import { usePathname } from "next/navigation";
 import NavButton from "@/app/ui/NavButton";
 import { useState, useEffect } from "react";
 
 const Navbar = ({ language }: { language: string }) => {
+    const pathname = usePathname();
     const [isOpen, setIsOpen] = useState(false);
     const [isScrolled, setIsScrolled] = useState(false);
 
@@ -48,10 +51,10 @@ const Navbar = ({ language }: { language: string }) => {
         >
             <div className="flex justify-between items-center mx-auto px-4 sm:px-6 lg:px-30 h-20 max-w-[1600px]">
                 {/* Logo */}
-                <div
+                <Link
+                    href="/"
                     className="shrink-0 cursor-pointer flex items-center h-full"
                     onClick={() => {
-                        window.scrollTo({ top: 0, behavior: "smooth" });
                         setIsOpen(false);
                     }}
                 >
@@ -63,7 +66,7 @@ const Navbar = ({ language }: { language: string }) => {
                         className="w-auto h-12 md:h-16"
                         priority
                     />
-                </div>
+                </Link>
 
                 {/* Desktop Navigation */}
                 <div className="hidden md:flex gap-6 items-center">
@@ -81,7 +84,7 @@ const Navbar = ({ language }: { language: string }) => {
                 {/* Desktop Buttons */}
                 <div className="hidden lg:flex items-center gap-4">
                     <NavButton text="Triton Global" href="/" />
-                    <NavButton isRed text="Athlete Area" href="./athlete-area" />
+                    <NavButton isRed text="Athlete Area" href={`${pathname}/athlete-area`} />
                 </div>
 
                 {/* Mobile menu button */}

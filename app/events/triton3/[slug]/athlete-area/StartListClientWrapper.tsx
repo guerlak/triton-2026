@@ -41,6 +41,7 @@ const StartListClientWrapper: React.FC<Props> = ({ initialAthletes }) => {
   const displayedAthletes = showAll ? filteredAthletes : filteredAthletes.slice(0, 20);
 
   return (
+
     <div className="mt-12 space-y-6">
       {/* Search & Filter Bar */}
       <div className="flex flex-col lg:flex-row gap-4 items-start lg:items-center">

@@ -55,7 +55,7 @@ const CountdownSection: React.FC<CountdownSectionProps> = ({ data }) => {
         />
         <div className="absolute inset-0 bg-linear-to-b from-black/90 via-black/50 to-black"></div>
         <span className="absolute -top-50 right-10 text-triton-red italic text-[600px] font-black opacity-10 select-none">
-          {data.subtitle.slice(-1)}
+          {data.eventFormat.slice(-1)}
         </span>
       </div>
 

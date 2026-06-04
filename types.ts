@@ -15,9 +15,10 @@ export interface CalendarEvent {
   location: string;
   country: string;
   flag: string; // Emoji or code
-  status: 'Confirmed' | 'Planned';
+  status: 'Confirmed' | 'Planned' | 'Completed';
   year: number;
   format: string;
+  eventFormat?: string;
   slug: string;
 }
 
@@ -25,6 +26,7 @@ export interface Stat {
   value: string;
   label: string;
   description?: string;
+  icon?: any;
 }
 
 export interface TestimonialProps {
