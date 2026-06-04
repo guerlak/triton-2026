@@ -1,8 +1,12 @@
 import Navbar from "@/app/components/Navbar";
 import MainButton from "@/app/ui/MainButton";
 import { Activity, Calendar, Trophy } from "lucide-react";
+import { redirect } from "next/navigation";
 
 export default function LiveResultsPage() {
+
+  redirect("/under-development");
+
   return (
     <div className="bg-black min-h-screen text-white font-sans selection:bg-triton-red selection:text-white flex flex-col justify-between">
 

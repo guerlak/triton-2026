@@ -3,8 +3,10 @@ import StartList from "./StartList"
 import AthleteNavBar from "./AthleteNavBar"
 import RaceKit from "./RaceKit"
 import RaceGuide from "./RaceGuide"
+import { redirect } from "next/navigation";
 
 export default async function AthleteArePage({ params }: { params: Promise<{ slug: string }> }) {
+	redirect("/under-development");
 	const { slug } = await params;
 	return (
 		<>

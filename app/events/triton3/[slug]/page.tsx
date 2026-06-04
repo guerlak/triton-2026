@@ -11,8 +11,11 @@ import HeroEvent from "@/app/components/event/HeroEvent";
 import { EVENT_DATA_MAP } from "@/eventdata";
 import { notFound } from "next/navigation";
 import PartnersSectionEvent from "@/app/components/event/PartnersSectionEvent";
+import { redirect } from "next/navigation";
 
 export default async function Page({ params }: { params: Promise<{ slug: string }> }) {
+
+
   const { slug } = await params;
   const data = EVENT_DATA_MAP[slug];
 

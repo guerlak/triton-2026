@@ -13,8 +13,11 @@ import { notFound } from "next/navigation";
 import InfoSectionTriton1 from "@/app/components/event/InfoSectionTriton1";
 import FormatsSectionTriton1 from "@/app/components/event/FormatsSectionTriton1";
 import PartnersSectionEvent from "@/app/components/event/PartnersSectionEvent";
+import { redirect } from "next/navigation";
 
 export default async function Page({ params }: { params: Promise<{ slug: string }> }) {
+  redirect("/under-development");
+
   const { slug } = await params;
   const data = EVENT_DATA_MAP[slug];
 
