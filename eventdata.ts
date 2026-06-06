@@ -1192,7 +1192,7 @@ export const EVENT_DATA_MAP: Record<string, EventData> = {
         {
           icon: "Navigation",
           title: "Acesso",
-          detail: "Via Rola",
+          detail: "Via Orla",
           sub: "Fácil Conexão",
           color: "from-green-500/20",
         },
