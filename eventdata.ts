@@ -146,6 +146,7 @@ import fotoResortSalvador from "@/public/images/eventos/salvador-2027/salvador-h
 import heroImgLisboa from "@/public/images/eventos/lisboa-2026/hero-lisboa.jpeg";
 import logoLisboa from "@/public/images/eventos/lisboa-2026/triton-lisboa-logo.png"
 import bikePicLisboa from "@/public/images/eventos/lisboa-2026/bike-lisboa.jpeg"
+import runPicLisboa from "@/public/images/eventos/lisboa-2026/run-lisboa.jpeg"
 
 import swimPicLisboa from "@/public/images/eventos/lisboa-2026/swim-lisboa.jpeg"
 import lisboaExperienceImage from "@/public/images/eventos/lisboa-2026/lisboa-experience.jpeg"
@@ -866,7 +867,7 @@ export const EVENT_DATA_MAP: Record<string, EventData> = {
           "É o hotel oficial do evento e oferece condições exclusivas para atletas TRITON e suas famílias:",
         benefits: [
           "Todas as refeições incluídas",
-          "Gratuidade para 2 crianças de até 7 anos",
+          "Gratuidade p/ 2 crianças de até 7 anos",
           "Opções de pagamento parcelado",
         ],
         buttonText: "Central de Reservas",
@@ -1293,8 +1294,8 @@ export const EVENT_DATA_MAP: Record<string, EventData> = {
     },
     partners: [
       {
-        name: "Prouder",
-        logo: "/images/partners/prouder.png",
+        name: "Esportiva Bet",
+        logo: "/images/eventos/salvador-2027/esportiva-bet-logo.png",
         url: "#"
       },
     ]
@@ -1521,7 +1522,7 @@ export const EVENT_DATA_MAP: Record<string, EventData> = {
         day: "Dia 3",
         date: "23 de Agosto (domingo)",
         startTime: "08:00",
-        image: bikePicLisboa,
+        image: runPicLisboa,
         title: "Corrida",
         description: `
         <p>The run course starts from the Transition Zone and follows a flat, multi-lap route, creating an exciting and spectator-friendly atmosphere throughout the race.</p><br>

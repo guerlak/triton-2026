@@ -57,6 +57,12 @@ const FormatTable: React.FC<{ distances: any[] }> = ({ distances }) => (
 const FormatsSection: React.FC<{ language: string, formats: any }> = ({ language, formats }) => {
   const [activeTab, setActiveTab] = useState<"1" | "2" | "3">("1");
 
+  React.useEffect(() => {
+    if (typeof window !== "undefined" && typeof (window as any).__STRAVA_EMBED_BOOTSTRAP__ === "function") {
+      (window as any).__STRAVA_EMBED_BOOTSTRAP__();
+    }
+  }, [formats, activeTab]);
+
   return (
     <section id="formats" className="py-24 bg-triton-dark">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">

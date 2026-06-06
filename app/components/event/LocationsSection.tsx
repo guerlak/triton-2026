@@ -182,7 +182,7 @@ const LocationsSection: React.FC<LocationsSectionProps> = ({ locations, language
                       >
                         <ShieldCheck className="text-triton-red" size={12} />
                       </div>
-                      <span className="text-sm font-bold text-gray-300 uppercase tracking-tighter">
+                      <span className="text-sm font-bold text-gray-300 uppercase tracking-wider">
                         {benefit}
                       </span>
                     </div>
