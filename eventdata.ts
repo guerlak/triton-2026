@@ -512,8 +512,6 @@ export const EVENT_DATA_MAP: Record<string, EventData> = {
       description:
         "O TRITON adota um sistema de pontuação inovador, com peso igual para as três modalidades. No formato TRITON 3, vence o atleta que somar a menor pontuação ao longo dos três dias de competição. A lógica é simples: a colocação em cada prova corresponde diretamente aos pontos (quanto melhor a colocação, menor a pontuação). Esse modelo valoriza consistência e performance contínua nas três disciplinas. Além disso, a prova soma pontos para o ranking global do TRITON World Series e funciona como etapa classificatória para o Campeonato Mundial.",
     },
-
-   
     formats: {
       swim: {
         day: "Dia 1",
@@ -643,7 +641,6 @@ export const EVENT_DATA_MAP: Record<string, EventData> = {
         }
       ],
     },
-
     afterMovie: {
       youtubeSrc: "z7xHxVVnkjU?si=6GShK1msGCTy7LDH",
     },
@@ -654,24 +651,23 @@ export const EVENT_DATA_MAP: Record<string, EventData> = {
       "quote": "Quantas lições em um único final de semana. Foram 3 dias, 3 esportes, 3 humores e unimeras variações de sentimentos. No Triton 3 pude me testar, exercitar a paciência e também o carinho comigo mesma. ",
       "author": "Viviane",
       "company": "TechFlow",
-      "link_social": ""
+      "link_social": "https://www.instagram.com/"
     },
     {
       "avatar_url": "/images/atletas/elida.jpeg",
       "quote": "Que fim de semana incrível! Obrigada Triton pela experiência única. Levo para casa uma recordação cheias de boas energias e momentos especiais...",
       "author": "Elida",
       "company": "TechFlow",
-      "link_social": ""
+      "link_social": "https://www.instagram.com"
     },
     {
       "avatar_url": "/images/atletas/bizarelo.jpeg",
       "quote": "Que dia incrível e que dia forte! Obrigado TRITON pela prova top, segura e com visual fantástico",
       "author": "Bizarelo",
       "company": "TechFlow",
-      "link_social": ""
+      "link_social": "https://www.instagram.com"
     }]
     },
-
     schedule: {
       title: "AGENDA",
       subtitle: "Planning your journey",
@@ -806,7 +802,6 @@ export const EVENT_DATA_MAP: Record<string, EventData> = {
       importantNote:
         "Todos os horários estão sujeitos a alteração sem aviso prévio devido a circunstâncias imprevistas. Os horários e a ordem de largada também poderão ser ajustados. Recomendamos acompanhar a programação regularmente para se manter atualizado sobre possíveis mudanças de última hora.",
     },
-
     locations: {
       description: "O TRITON Rio 26 acontece em Mangaratiba, um destino que combina o melhor da Serra do Mar com a Costa Verde. Planeje sua viagem, escolha seu hotel parceiro e prepare-se para uma experiência que vai além da competição.",
       experience: {
@@ -879,7 +874,6 @@ export const EVENT_DATA_MAP: Record<string, EventData> = {
           "https://api.whatsapp.com/send?phone=552127898000&text=Ol%C3%A1!%20Me%20inscrevi%20no%20TRITON%20e%20gostaria%20de%20informa%C3%A7%C3%B5es%20sobre%20a%20reserva%20em%20Portobello.",
       },
     },
-   
     partners: [
       {
         name: "Lei de Insentivo ao Esporte",

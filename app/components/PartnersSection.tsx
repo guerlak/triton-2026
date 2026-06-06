@@ -17,46 +17,46 @@ const PartnersSection: React.FC = () => {
           Triton Partners
         </h2>
         <div className="flex flex-wrap justify-center items-center gap-12 md:gap-20">
-          <a href="https://www.marathon-photos.com/" target="_blank" className="group flex items-center gap-3 text-gray-500
+          <div className="group flex items-center gap-3 text-gray-500
            hover:text-white transition-all duration-500 opacity-50 hover:opacity-100 
-           cursor-pointer grayscale hover:grayscale-0">
+            grayscale hover:grayscale-0">
             <Image src={marathonLogo} alt="Marathon Photos" width={240} height={100} className="h-8 w-auto" />
-          </a>
-          <a href="https://www.hotelplanner.com/" target="_blank" className="group flex items-center gap-3 text-gray-500
+          </div>
+          <div className="group flex items-center gap-3 text-gray-500
            hover:text-white transition-all duration-500 opacity-50 hover:opacity-100 
-           cursor-pointer grayscale hover:grayscale-0">
+            grayscale hover:grayscale-0">
             <Image src={hotelPlannerLogo} alt="Hotel Planner" width={240} height={100} className="h-6 w-auto" />
-          </a>
-          <a href="https://www.ahotu.com/" target="_blank" className="group flex items-center gap-3 text-gray-500
+          </div>
+          <div className="group flex items-center gap-3 text-gray-500
            hover:text-white transition-all duration-500 opacity-50 hover:opacity-100 
-           cursor-pointer grayscale hover:grayscale-0">
+            grayscale hover:grayscale-0">
             <Image src={ahotoLogo} alt="ahoto" width={240} height={100} className="h-7 w-auto" />
-          </a>
-          <a href="" target="_blank" className="group flex items-center gap-3 text-gray-500
+          </div>
+          <div className="group flex items-center gap-3 text-gray-500
            hover:text-white transition-all duration-500 opacity-50 hover:opacity-100 
-           cursor-pointer grayscale hover:grayscale-0">
+            grayscale hover:grayscale-0">
             <Image src={hakuLogo} alt="haku" width={340} height={200} className="h-15 w-auto" />
-          </a>
-          <a href="https://www.scmitarsports.com/" target="_blank" className="group flex items-center gap-3 text-gray-500
+          </div>
+          <div className="group flex items-center gap-3 text-gray-500
            hover:text-white transition-all duration-500 opacity-50 hover:opacity-100 
-           cursor-pointer grayscale hover:grayscale-0">
+            grayscale hover:grayscale-0">
             <Image src={smitarLogo} alt="haku" width={340} height={200} className="h-15 w-auto" />
-          </a>
-          <a href="https://www.lucidtravel.com/" target="_blank" className="group flex items-center gap-3 text-gray-500
+          </div>
+          <div className="group flex items-center gap-3 text-gray-500
            hover:text-white transition-all duration-500 opacity-50 hover:opacity-100 
-           cursor-pointer grayscale hover:grayscale-0">
+            grayscale hover:grayscale-0">
             <Image src={lucidTravelLogo} alt="haku" width={340} height={200} className="h-16 w-auto" />
-          </a>
-          <a href="" className="group flex items-center gap-3 text-gray-500
+          </div>
+          <div className="group flex items-center gap-3 text-gray-500
            hover:text-white transition-all duration-500 opacity-50 hover:opacity-100 
-           cursor-pointer grayscale hover:grayscale-0">
+            grayscale hover:grayscale-0">
             <Image src={prouderLogo} alt="haku" width={340} height={200} className="h-7 w-auto" />
-          </a>
-          <a href="https://www.icarus-sports.com/" target="_blank" className="group flex items-center gap-3 text-gray-500
+          </div>
+          <div className="group flex items-center gap-3 text-gray-500
            hover:text-white transition-all duration-500 opacity-50 hover:opacity-100 
-           cursor-pointer grayscale hover:grayscale-0">
+            grayscale hover:grayscale-0">
             <Image src={icarusLogo} alt="haku" width={340} height={200} className="h-15 w-auto" />
-          </a>
+          </div>
         </div>
       </div>
     </section>

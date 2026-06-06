@@ -132,11 +132,9 @@ export default function InfoSection({ info, scoring, eventFormat, language }: In
         <div className="grid grid-cols-1 md:grid-cols-3 gap-10 mb-24">
           {stats.map((stat, index) => (
             <div key={index} className="text-center p-8 border border-white/10 bg-white/5 rounded-lg hover:border-triton-red/50 transition-all duration-300 group">
-
               <div className="font-black text-5xl w-12 h-12 rounded-xl flex items-center justify-center mx-auto mb-4 ">
                 3
               </div>
-
               <div className="text-xl font-bold text-triton-red uppercase mb-2">{stat.label}</div>
               <p className="text-gray-400 text-sm font-medium max-w-xs mx-auto">{stat.description}</p>
             </div>
@@ -159,9 +157,7 @@ export default function InfoSection({ info, scoring, eventFormat, language }: In
               <span className="text-3xl font-black text-white">Global</span>
               <span className="text-xs font-bold text-gray-400 uppercase text-center mt-1">Ranking</span>
             </Link>
-
           </div>
-
         </div>
       </div>
     </section>

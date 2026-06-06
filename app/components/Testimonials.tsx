@@ -35,7 +35,7 @@ const Testimonial = ({
 
           <div className="mt-auto flex justify-center w-full">
             <a
-              href={linkSocial || "#"}
+              href={linkSocial || ""}
               target="_blank"
               rel="noopener noreferrer"
               className="text-triton-red hover:text-red-400"

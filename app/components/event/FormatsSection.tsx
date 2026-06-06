@@ -476,7 +476,7 @@ const FormatsSection: React.FC<{ language: string, formats: any }> = ({ language
                 Long
               </span>
               <p className="text-gray-400 text-sm leading-relaxed mb-4 mt-2">
-                {language === "pt-BR" ? "Sua posição final na classificação (após os três dias) será a soma da sua classificação em cada modalidade: Natação + Ciclismo + Corrida" : "Your final ranking position (after the three days) will be the sum of your classification in each modality: Swimming + Cycling + Running."}
+                {language === "pt-BR" ? "Escolha uma das 3 distâncias e encare os 3 dias de competição. Sua posição final no ranking (após os três dias) será a soma da sua colocação em cada modalidade: Natação + Ciclismo + Corrida" : "Choose one of the 3 distances and face the 3 days of competition. Your final ranking position (after the three days) will be the sum of your placement in each modality: Swimming + Cycling + Running."}
               </p>
             </div>
 
@@ -488,7 +488,7 @@ const FormatsSection: React.FC<{ language: string, formats: any }> = ({ language
                 />
               </div>
               <h5 className="text-white font-black uppercase mb-2 text-lg">
-                {dict.format_section.competition.cards.card_2.title}
+                {language === "pt-BR" ? "Revezamento" : "Relay"}
               </h5>
               <span className="inline-block bg-white/10 text-white text-[10px] font-bold px-2 py-1 rounded uppercase mb-3">
                 Sprint
@@ -506,7 +506,7 @@ const FormatsSection: React.FC<{ language: string, formats: any }> = ({ language
                 />
               </div>
               <h5 className="text-white font-black uppercase mb-2 text-lg">
-                {dict.format_section.competition.cards.card_3.title}
+                {language === "pt-BR" ? "Modalidade Individual" : "Individual Modality"}
               </h5>
               <span className="inline-block bg-white/10 text-white text-[10px] font-bold px-2 py-1 rounded uppercase m-0.5">
                 Sprint
