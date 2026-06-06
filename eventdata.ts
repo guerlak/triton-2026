@@ -1495,7 +1495,7 @@ export const EVENT_DATA_MAP: Record<string, EventData> = {
             <ul class="list-disc pl-5">
                 <li>SPRINT — 1 lap</li>
                 <li>MIDDLE — 2 laps</li>
-                <li>LONG — 3 laps</li>
+                <li>LONG — 4 laps</li>
             </ul>
             <br>
 <p>Starting from Transition, athletes head north along Avenida D. João II before joining the IC2 highway. The course is predominantly flat and fast, featuring gentle rolling terrain and a gradual 1 km climb near the turnaround point.</p><br>
@@ -1526,6 +1526,15 @@ export const EVENT_DATA_MAP: Record<string, EventData> = {
         title: "Corrida",
         description: `
         <p>The run course starts from the Transition Zone and follows a flat, multi-lap route, creating an exciting and spectator-friendly atmosphere throughout the race.</p><br>
+
+        <strong>The course is a 5 km multi-lap circuit:</strong><br><br>
+
+        <ul class="list-disc pl-5">
+                <li>SPRINT — 1 lap</li>
+                <li>MIDDLE — 2 laps</li>
+                <li>LONG — 4 laps</li>
+            </ul>
+            <br>
         <p>Athletes will find one aid station approximately every 2.5 km, located near the midpoint of the course. One turnaround point is positioned near the iconic Vasco da Gama Bridge, one of the longest bridges in Europe, while the other is located closer to the Transition Zone.</p><br>
         <p>The Finish Line is located on Rossio dos Olivais, directly in front of Doca dos Olivais and the Vasco da Gama Mall, where the Recovery Zone awaits finishers.</p><br>
         

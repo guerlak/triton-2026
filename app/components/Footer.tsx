@@ -120,7 +120,7 @@ const Footer: React.FC = () => {
             <a href="/terms-of-use" className="text-gray-600 text-xs hover:text-white">
               Terms of use
             </a>
-            <a href="/ip" className="text-gray-600 text-xs hover:text-white">
+            <a href="/intellectual-property" className="text-gray-600 text-xs hover:text-white">
               Intellectual Property
             </a>
           </div>
