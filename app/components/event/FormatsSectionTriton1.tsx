@@ -2,9 +2,6 @@
 import React, { useState } from "react";
 import Image from "next/image";
 import { Waves, Bike, PersonStanding, Users, User, Shuffle, MapPin, Trophy } from "lucide-react";
-import bikePic from "@/public/images/triton-fotos-prova-bike.jpeg";
-import swimPic from "@/public/images/triton-fotos-prova-swim.jpeg";
-import runPic from "@/public/images/triton-fotos-prova-run.jpeg";
 import { motion } from "framer-motion";
 import Script from "next/script";
 
@@ -61,13 +58,13 @@ const FormatsSection: React.FC<{ language: string, formats: any }> = ({ language
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-16">
           <h2 className="text-triton-red font-bold tracking-widest uppercase mb-2">
-            {language === "pt-BR" ? "Percursos" : "Innovation"}
+            {language === "pt-BR" ? "Percursos" : "COURSES"}
           </h2>
           <h3 className="text-3xl md:text-5xl font-black uppercase text-white leading-tight mb-6">
-            {language === "pt-BR" ? "Explore cada trecho da prova" : "Formats that redefine the experience"}
+            {language === "pt-BR" ? "Explore cada trecho da prova" : "EXPLORE EVERY SECTION OF THE COURSE"}
           </h3>
           <p className="text-gray-400 max-w-5xl mx-auto text-lg">
-            {language === "pt-BR" ? "Conhecer os percursos é parte fundamental da preparação para o TRITON. Estudar cada segmento permite que você desenvolva melhor sua estratégia, gerencie seu ritmo e chegue mais preparado para os desafios da competição. Todos os percursos do TRITON são realizados em voltas, proporcionando maior controle operacional, melhor experiência para o público e máxima segurança para os atletas ao longo de toda a prova." : "TRITON 1 DEscription"}
+            {language === "pt-BR" ? "Conhecer os percursos é parte fundamental da preparação para o TRITON. Estudar cada segmento permite que você desenvolva melhor sua estratégia, gerencie seu ritmo e chegue mais preparado para os desafios da competição. Todos os percursos do TRITON são realizados em voltas, proporcionando maior controle operacional, melhor experiência para o público e máxima segurança para os atletas ao longo de toda a prova." : "Understanding the course is a fundamental part of your TRITON preparation. Studying each segment allows you to refine your race strategy, manage your pace effectively, and arrive fully prepared for the challenges ahead. All TRITON courses are designed as multi-lap circuits, providing greater operational control, an enhanced spectator experience, and maximum athlete safety throughout the race."}
           </p>
         </div>
 
@@ -112,7 +109,7 @@ const FormatsSection: React.FC<{ language: string, formats: any }> = ({ language
               <div className="space-y-6">
                 <div className="w-full h-[300px] mb-4 rounded-2xl relative overflow-hidden group shadow-2xl">
                   <Image
-                    src={swimPic}
+                    src={formats.swim.image}
                     alt="Swimming"
                     className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
                   />
@@ -438,7 +435,7 @@ const FormatsSection: React.FC<{ language: string, formats: any }> = ({ language
                 Long
               </span>
               <p className="text-gray-400 text-sm leading-relaxed mb-4 mt-2">
-                {language === "pt-BR" ? "Encare sozinho o triathlon completo, escolhendo uma das 3 distâncias disponíveis. Esse formato conta com premiação no dia e também é classificatório para a final mundial, além de somar pontos para o ranking global do TRITON." : "Take on the complete triathlon by yourself, choosing one of the 3 available distances. This format includes awards on the day and is also a qualifier for the world final, as well as adding points to the global TRITON ranking."}
+                {language === "pt-BR" ? "Encare sozinho o triathlon completo, escolhendo uma das 3 distâncias disponíveis. Esse formato conta com premiação no dia e também é classificatório para a final mundial, além de somar pontos para o ranking global do TRITON." : "Take on the full triathlon challenge on your own by choosing one of the three available distances. This format includes age-group awards, earns points toward the TRITON Global Ranking, and serves as a qualifier for the TRITON World Finals."}
               </p>
             </div>
 
@@ -450,12 +447,12 @@ const FormatsSection: React.FC<{ language: string, formats: any }> = ({ language
                 />
               </div>
               <h5 className="text-white font-black uppercase mb-2 text-lg">
-                {language === "pt-BR" ? "Revezamento" : "Relay"}
+                {language === "pt-BR" ? "Revezamento" : "Corporate Relay"}
               </h5>
               <span className="inline-block bg-white/10 text-white text-[10px] font-bold px-2 py-1 rounded uppercase mb-3">
-                Middle
+                SPRINT
               </span>
-              <p className="text-gray-400 text-sm leading-relaxed mt-2">{language === "pt-BR" ? "Forme sua equipe (dupla ou trio). Cada um faz uma modalidade. No caso de dupla, um atleta terá que fazer mais de uma modalidade. Esse formato conta com premiação no dia, mas não classifica para a final mundial" : "Form your team (duo or trio). Each one does one modality. In case of a duo, an athlete will have to do more than one modality."}
+              <p className="text-gray-400 text-sm leading-relaxed mt-2">{language === "pt-BR" ? "Forme sua equipe (dupla ou trio). Cada um faz uma modalidade. No caso de dupla, um atleta terá que fazer mais de uma modalidade. Esse formato conta com premiação no dia, mas não classifica para a final mundial" : "Build your team of two or three athletes, with each participant completing one or more disciplines. This format includes age-group awards and serves as a qualifier for the TRITON World Finals."}
               </p>
             </div>
 
@@ -480,10 +477,10 @@ const FormatsSection: React.FC<{ language: string, formats: any }> = ({ language
                 Long
               </span>
               <p className="text-gray-400 text-sm leading-relaxed mb-4 mt-2">
-                {language === "pt-BR" ? "Personalize a sua prova com as distancias pré-estabelecidas. Mescle as modalidades de acordo com o seu interesse. Exemplo: Natação SPRINT - Bike MIDDLE - Corrida LONG." : "Choose between swimming, cycling and/or running, define the distance and sign up!"}
+                {language === "pt-BR" ? "Personalize a sua prova com as distancias pré-estabelecidas. Mescle as modalidades de acordo com o seu interesse. Exemplo: Natação SPRINT - Bike MIDDLE - Corrida LONG." : "Create your own race experience by combining predefined distances across the three disciplines. For example: SPRINT Swim • MIDDLE Bike • LONG Run."}
               </p>
               <p className="text-gray-500 text-xs leading-relaxed">
-                {language === "pt-BR" ? "Formato participativo, não concorre a premiação." : "Does not score for the final ranking (3 days), but competes for daily awards by modality."}
+                {language === "pt-BR" ? "Formato participativo, não concorre a premiação." : "This is a participation-based format and is not eligible for awards or rankings."}
               </p>
             </div>
           </div>

@@ -18,7 +18,6 @@ import {
   Car,
   MapPin,
 } from "lucide-react";
-import dict from "../../../dictionaries/en.json";
 import { POI, LogisticItem, ResortInfo } from "@/eventdata";
 
 const ICON_MAP: Record<string, any> = {
@@ -51,10 +50,10 @@ const LocationsSection: React.FC<LocationsSectionProps> = ({ locations, language
     <section id="locations" className="py-24 bg-triton-dark overflow-hidden">
       <div className="text-center mb-20">
         <h2 className="text-triton-red font-bold tracking-[0.3em] uppercase mb-4 text-sm md:text-base">
-          SEU PRÓXIMO DESAFIO É NO PARAÍSO
+          {language === "pt-BR" ? "SEU PRÓXIMO DESAFIO É NO PARAÍSO" : "YOUR NEXT CHALLENGE IS IN PARADISE"}
         </h2>
         <h3 className="text-4xl md:text-5xl font-black uppercase text-white leading-[0.9] italic mb-8">
-          VIAGEM E DESTINO
+          {language === "pt-BR" ? "VIAGEM & DESTINO" : "TRAVEL & DESTINATION"}
         </h3>
         <p className="text-gray-400 max-w-7xl mx-auto text-lg md:text-xl leading-relaxed">
           {description}
@@ -81,10 +80,10 @@ const LocationsSection: React.FC<LocationsSectionProps> = ({ locations, language
               Experience
             </div>
             <h3 className="text-4xl lg:text-5xl font-black text-white uppercase italic mb-10 leading-[0.9] tracking-tighter">
-              Para além da
+              {language === "pt-BR" ? "Para além da" : "Beyond the"}
               <br />{" "}
               <span className="text-triton-red underline decoration-red-900/30">
-                Competição
+                {language === "pt-BR" ? "Competição" : "Race"}
               </span>
             </h3>
 
@@ -164,7 +163,7 @@ const LocationsSection: React.FC<LocationsSectionProps> = ({ locations, language
                 <div className="flex items-center gap-2 mb-4">
                   <Hotel size={16} className="text-triton-red" />
                   <span className="text-triton-red uppercase tracking-[0.2em] text-xs font-black">
-                    Hotel Oficial
+                    {language === "pt-BR" ? "Hotel Oficial" : "OFFICIAL HOTEL"}
                   </span>
                 </div>
                 <h3 className="text-3xl lg:text-5xl font-black text-white uppercase italic mb-6 leading-tight">

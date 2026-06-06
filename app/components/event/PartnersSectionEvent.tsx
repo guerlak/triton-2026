@@ -21,8 +21,8 @@ const PartnersSectionEvent = ({ partners = [] }: { partners: Partner[] }) => {
           {partners.map((partner: any) => (
             <a href={partner.url} target="_blank" className="group flex items-center gap-3 text-gray-500
            hover:text-white transition-all duration-500 opacity -50 hover:opacity-100 
-           cursor-pointer grayscale hover:grayscale-0">
-              <Image src={partner.logo} alt={partner.name} width={240} height={100} className="h-16 w-auto" />
+           cursor-pointer grayscale hover:grayscale-0" key={partner.name} >
+              <Image src={partner.logo} alt={partner.name} width={240} height={100} className="h-10 w-auto" />
             </a>
           ))}
         </div>

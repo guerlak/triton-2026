@@ -33,8 +33,10 @@ export interface Stat {
 export interface TestimonialProps {
   quote: string;
   author: string;
-  role: string;
+  role?: string;
   company: string;
-  avatarUrl: string;
+  avatarUrl?: string;
+  avatar_url?: string;
   linkSocial?: string;
+  link_social?: string;
 }

@@ -1,13 +1,16 @@
+import RedLine from "../ui/RedLine";
 
 export default function AfterMovie({ youtubeSrc, language }: { youtubeSrc: string, language: string }) {
 
 	const src = youtubeSrc ? youtubeSrc : "HRkcLP078Hs";
 
 	return (
-		<>
+		<section className="relative">
+			<RedLine isAbsolute={false} />
+
 			<div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-20 mb-20">
 				<h2 className="text-triton-red font-bold tracking-widest uppercase mb-2 text-center">
-					{language === "pt-BR" ? "Transformando o paraíso no seu campo de prova" : "Transforming paradise into your race course"}
+					{language === "pt-BR" ? "Transformando o paraíso no seu campo de prova" : "Turning paradise into your racing ground"}
 				</h2>
 				<h2 className="text-3xl md:text-5xl font-black uppercase text-white leading-tight mb-6 text-center">
 					{language === "pt-BR" ? "Uma jornada inesquecível" : "An unforgettable journey"}
@@ -28,6 +31,8 @@ export default function AfterMovie({ youtubeSrc, language }: { youtubeSrc: strin
 				</div>
 			</div>
 
-		</>
+			<RedLine isAbsolute={false} />
+
+		</section>
 	)
 }

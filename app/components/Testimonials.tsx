@@ -4,16 +4,15 @@ import { TestimonialProps } from "@/types";
 import TritonBox from "./TritonBox";
 import { Instagram } from "lucide-react";
 import Image from "next/image";
-import dict from "../../dictionaries/en.json";
+import enDict from "../../dictionaries/en.json";
+import ptDict from "../../dictionaries/pt.json";
 import RedLine from "../ui/RedLine";
-import { div } from "framer-motion/client";
 
 const Testimonial = ({
   quote,
   author,
   avatarUrl,
   linkSocial,
-
 }: Partial<TestimonialProps>) => {
   return (
     <div className="h-full flex flex-col">
@@ -50,7 +49,10 @@ const Testimonial = ({
   );
 };
 
-export default function TestimonialList({ language }: { language: string }) {
+export default function TestimonialList({ language, testimonials, youtubeSrc }: { language: string, testimonials?: TestimonialProps[], youtubeSrc?: string }) {
+  const dict = language === "pt-BR" ? ptDict : enDict;
+  const list = testimonials || dict.testimonials || [];
+
   return (
     <section
       id="moviment"
@@ -65,14 +67,14 @@ export default function TestimonialList({ language }: { language: string }) {
 
       <div className="p-2 flex flex-col-reverse gap-10 justify-between items-center max-w-[1200] mx-auto md:flex-row mt-8">
         <div className="flex overflow-x-auto sm:flex-col snap-x snap-mandatory sm:snap-none w-full md:max-w-[700px] gap-4 pb-6 sm:pb-0 [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden">
-          {dict?.testimonials?.map((item: any) => (
+          {list.map((item: TestimonialProps) => (
             <div key={item.author} className="shrink-0 w-[90%] sm:w-full snap-center">
               <Testimonial
                 quote={item.quote}
                 author={item.author}
                 company={item.company}
-                avatarUrl={item.avatar_url || ""}
-                linkSocial={item.link_social || ""}
+                avatarUrl={item.avatarUrl || item.avatar_url || ""}
+                linkSocial={item.linkSocial || item.link_social || ""}
               />
             </div>
           ))}
@@ -80,7 +82,7 @@ export default function TestimonialList({ language }: { language: string }) {
         <iframe
           width="425"
           height="750"
-          src="https://www.youtube.com/embed/u8iIBGmxq9Q"
+          src={youtubeSrc || "https://www.youtube.com/embed/u8iIBGmxq9Q"}
           title="TRITON 3 RIO DE JANEIRO | DAY 3 - RACE"
           allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
           referrerPolicy="strict-origin-when-cross-origin"
@@ -92,3 +94,4 @@ export default function TestimonialList({ language }: { language: string }) {
     </section>
   );
 }
+

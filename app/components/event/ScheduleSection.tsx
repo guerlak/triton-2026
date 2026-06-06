@@ -12,9 +12,10 @@ interface ScheduleSectionProps {
     days: ScheduleDay[];
     importantNote: string;
   };
+  language: "pt-BR" | "en";
 }
 
-const ScheduleSection: React.FC<ScheduleSectionProps> = ({ schedule }) => {
+const ScheduleSection: React.FC<ScheduleSectionProps> = ({ schedule, language }) => {
   const [activeDay, setActiveDay] = useState<string>(
     schedule.days[0]?.id || "",
   );
@@ -38,10 +39,9 @@ const ScheduleSection: React.FC<ScheduleSectionProps> = ({ schedule }) => {
     <section id="schedule" className="py-20 bg-black overflow-hidden">
       <div className="container mx-auto px-4 md:px-8 lg:px-16">
         <div className="text-center mb-16">
-          <Heading text1={"programa"} text2={"FIQUE POR DENTRO DOS HORÁRIOS"} />
+          <Heading text1={language === "pt-BR" ? "programa" : "RACE SCHEDULE"} text2={language === "pt-BR" ? "FIQUE POR DENTRO DOS HORÁRIOS" : "Plan your weekend"} />
           <p className="text-gray-400 mx-auto text-lg">
-            Organize-se e não perca nenhum momento. Confira a programação
-            completa do fim de semana de prova.
+            {language === "pt-BR" ? "Organize-se e não perca nenhum momento. Confira a programação completa do fim de semana de prova." : "Plan ahead and make the most of every moment. Explore the full schedule for an unforgettable TRITON race weekend."}
           </p>
         </div>
 
@@ -159,11 +159,11 @@ const ScheduleSection: React.FC<ScheduleSectionProps> = ({ schedule }) => {
             <AlertCircle className="w-6 h-6 text-triton-red" />
           </div>
           <p className="text-gray-400 text-sm leading-relaxed italic text-center md:text-left">
-            Todos os horários estão sujeitos a alteração sem aviso prévio devido
-            a circunstâncias imprevistas. Os horários e a ordem de largada
-            também poderão ser ajustados. Recomendamos acompanhar a programação
-            regularmente para se manter atualizado sobre possíveis mudanças de
-            última hora.
+            {language === "pt-BR" ? (
+              "Todos os horários estão sujeitos a alteração sem aviso prévio devido a circunstâncias imprevistas. Os horários e a ordem de largada também poderão ser ajustados. Recomendamos acompanhar a programação regularmente para se manter atualizado sobre possíveis mudanças de última hora."
+            ) : (
+              "All times are subject to change without notice due to unforeseen circumstances. Start times and order may also be adjusted. We recommend following the schedule regularly to stay updated on any last-minute changes."
+            )}
           </p>
         </div>
       </div>

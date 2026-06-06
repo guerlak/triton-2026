@@ -32,10 +32,10 @@ export default async function Page({ params }: { params: Promise<{ slug: string 
         <CountdownSectionEvent data={data} />
         <InfoSectionTriton1 info={data.info} scoring={data.scoring} eventFormat={data.eventFormat} language={data.language} />
         <FormatsSectionTriton1 formats={data.formats} language={data.language} />
-        <ScheduleSection schedule={data.schedule} />
+        <ScheduleSection schedule={data.schedule} language={data.language} />
         <LocationsSection locations={data.locations} language={data.language} />
         {data.afterMovie && <AfterMovie youtubeSrc={data.afterMovie.youtubeSrc} language={data.language} />}
-        <Testimonials language={data.language} />
+        <Testimonials testimonials={data.testimonial?.testimonials} youtubeSrc={data.testimonial?.youtubeSrc} language={data.language} />
         <ShopSection language={data.language} />
         <NewsletterSection language={data.language} />
         <PartnersSectionEvent partners={data.partners} />

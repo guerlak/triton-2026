@@ -29,7 +29,7 @@ export default async function Page({ params }: { params: Promise<{ slug: string 
         <CountdownSectionEvent data={data} />
         <InfoSection info={data.info} scoring={data.scoring} eventFormat={data.eventFormat} language={data.language} />
         <FormatsSection formats={data.formats} language={data.language} />
-        <ScheduleSection schedule={data.schedule} />
+        <ScheduleSection schedule={data.schedule} language={data.language} />
         <LocationsSection locations={data.locations} language={data.language} />
         {data.afterMovie && <AfterMovie youtubeSrc={data.afterMovie.youtubeSrc} language={data.language} />}
         <Testimonials language={data.language} />

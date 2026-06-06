@@ -28,21 +28,21 @@ const STATS_DATA = {
     triton1: [
       {
         value: "1",
-        label: "day of racing",
-        description: "Swim + Bike + Run - Single Day",
+        label: "DISTANCE OPTIONS",
+        description: "SPRINT · MIDDLE · LONG",
         icon: Calendar,
       },
       {
         value: "3",
-        label: "distances options",
-        description: "Sprint - Middle - Long",
+        label: "RACE FORMATS",
+        description: "Individual Triathlon · Relay · Mix&Match",
         icon: MapPin,
       },
       {
         value: "3",
-        label: "competition options",
+        label: "MIX&MATCH",
         description:
-          "Individual Triathlon / Corporate Relay / Individual Disciplines",
+          "Customize your race experience by combining different distance options.",
         icon: Users,
       },
     ],
@@ -93,7 +93,6 @@ const STATS_DATA = {
   },
 };
 
-
 interface InfoSectionProps {
   info: {
     title: string;
@@ -121,10 +120,10 @@ export default function InfoSection({ info, scoring, eventFormat, language }: In
             {language === "pt-BR" ? "O formato clássico do triathlon" : "The classic triathlon format"}
           </h2>
           <h3 className="text-3xl md:text-5xl font-black uppercase text-white leading-tight">
-            {language === "pt-BR" ? "impulsionado pela essência TRITON" : "Take on the challenge"}
+            {language === "pt-BR" ? "impulsionado pela essência TRITON" : "POWERED BY THE TRITON ESSENCE"}
           </h3>
           <p className="text-gray-400 max-w-5xl mx-auto text-lg text-center mt-10">
-            {language === "pt-BR" ? "O TRITON 1 representa a essência do triathlon em sua forma mais intensa e clássica: um desafio de um único dia, onda cada segundo importa. Parte do circuito internacional do TRITON Wolrd Series, o formato combina natação, ciclismo e corrida, com as respectivas transições em uma experiência dinâmica e desafiadora, que une a intensidade do triathlon tradional à inovação e a experiência única do universo TRITON." : "TRITON 1 embodies the essence of triathlon in its purest and most intense form: a one-day challenge where every second counts. As part of the international TRITON World Series circuit, this format brings together swimming, cycling, and running—along with the critical transitions between disciplines—into a dynamic and demanding race experience. Combining the intensity of traditional triathlon with innovation and the distinctive TRITON atmosphere, TRITON 1 delivers a unique racing experience for athletes seeking performance, excitement, and achievement."}
+            {language === "pt-BR" ? "O TRITON 1 representa a essência do triathlon em sua forma mais intensa e clássica: um desafio de um único dia, onde cada segundo importa. Parte do circuito internacional do TRITON Wolrd Series, o formato combina natação, ciclismo e corrida, com as respectivas transições em uma experiência dinâmica e desafiadora, que une a intensidade do triathlon tradional à inovação e a experiência única do universo TRITON." : "TRITON 1 embodies the essence of triathlon in its purest and most intense form: a one-day challenge where every second counts. As part of the international TRITON World Series circuit, this format combines swimming, cycling, and running—with their respective transitions—into a dynamic and demanding race experience that blends the tradition of triathlon with the innovation and unique atmosphere of the TRITON universe."}
           </p>
         </div>
 
@@ -148,9 +147,9 @@ export default function InfoSection({ info, scoring, eventFormat, language }: In
          shadow-2xl">
           <div className="grid grid-cols-1 lg:grid-cols-5 gap-12 items-center">
             <div className="col-span-4">
-              <h3 className="text-3xl font-black uppercase text-white mb-4">{language === "pt-BR" ? "Uma disputa que ultrapassa os limites da etapa" : "A race that goes beyond the limits of the stage"}</h3>
+              <h3 className="text-3xl font-black uppercase text-white mb-4">{language === "pt-BR" ? "Uma disputa que ultrapassa os limites da etapa" : "A COMPETITION THAT GOES BEYOND A SINGLE RACE"}</h3>
               <p className="text-gray-300 text-lg leading-relaxed">
-                {language === "pt-BR" ? "Mais do que uma competição de um único dia, o TRITON 1 é uma experiência conectada a um circuito global. A prova soma pontos para o ranking internacional do TRITON World Series, que reúne atletas de mais de 40 nacionalidades e premia, ao final da temporada, os melhores competidores de cada distância. Além disso, a etapa também é classificatória para o TRITON World Finals." : "More than a one-day competition, TRITON 1 is an experience connected to a global circuit. The race awards points for the international TRITON World Series ranking, which brings together athletes from over 40 nationalities and rewards the best competitors in each distance at the end of the season. Furthermore, the stage also serves as a qualifier for the TRITON World Finals."}
+                {language === "pt-BR" ? "Mais do que uma competição de um único dia, o TRITON 1 é uma experiência conectada a um circuito global. A prova soma pontos para o ranking internacional do TRITON World Series, que reúne atletas de mais de 40 nacionalidades e premia, ao final da temporada, os melhores competidores de cada distância. Além disso, a etapa também é classificatória para o TRITON World Finals." : "More than just a one-day competition, TRITON 1 is part of a global racing circuit. Athletes earn points toward the international TRITON World Series ranking, which brings together competitors from over 40 nationalities and rewards the season’s top performers in each distance category. In addition, each race serves as a qualifying event for the TRITON World Finals."}
               </p>
             </div>
 

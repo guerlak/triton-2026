@@ -1,4 +1,4 @@
-import { Stat } from "@/types";
+import { Stat, TestimonialProps } from "@/types";
 
 // Types for Event Data
 export interface EventHero {
@@ -45,7 +45,6 @@ export interface ScheduleDay {
   subtitle: string;
   events: ScheduleEvent[];
 }
-
 export interface EventFormatDetail {
   day: string;
   date: string;
@@ -110,6 +109,10 @@ export interface EventData {
     logistics: LogisticItem[];
     resort: ResortInfo;
   };
+  testimonial?: {
+    testimonials: TestimonialProps[];
+    youtubeSrc: string;
+  };
   partners: Array<{
     name: string;
     logo: StaticImageData | string;
@@ -137,6 +140,16 @@ import bikePicSalvador from "@/public/images/eventos/salvador-2027/bike-salvador
 import runPicSalvador from "@/public/images/eventos/salvador-2027/run-salvador.jpeg"
 import salvadorExperienceImage from "@/public/images/eventos/salvador-2027/salvador-experience.jpeg"
 import fotoResortSalvador from "@/public/images/eventos/salvador-2027/salvador-hotel.jpeg"
+
+
+//imports LISBOA
+import heroImgLisboa from "@/public/images/eventos/lisboa-2026/hero-lisboa.jpeg";
+import logoLisboa from "@/public/images/eventos/lisboa-2026/triton-lisboa-logo.png"
+import bikePicLisboa from "@/public/images/eventos/lisboa-2026/bike-lisboa.jpeg"
+
+import swimPicLisboa from "@/public/images/eventos/lisboa-2026/swim-lisboa.jpeg"
+import lisboaExperienceImage from "@/public/images/eventos/lisboa-2026/lisboa-experience.jpeg"
+import fotoResortLisboa from "@/public/images/eventos/lisboa-2026/hotel-lisboa.jpeg"
 
 
 export const EVENT_DATA_MAP: Record<string, EventData> = {
@@ -500,78 +513,6 @@ export const EVENT_DATA_MAP: Record<string, EventData> = {
         "O TRITON adota um sistema de pontuação inovador, com peso igual para as três modalidades. No formato TRITON 3, vence o atleta que somar a menor pontuação ao longo dos três dias de competição. A lógica é simples: a colocação em cada prova corresponde diretamente aos pontos (quanto melhor a colocação, menor a pontuação). Esse modelo valoriza consistência e performance contínua nas três disciplinas. Além disso, a prova soma pontos para o ranking global do TRITON World Series e funciona como etapa classificatória para o Campeonato Mundial.",
     },
 
-    locations: {
-      description: "O TRITON Rio 26 acontece em Mangaratiba, um destino que combina o melhor da Serra do Mar com a Costa Verde. Planeje sua viagem, escolha seu hotel parceiro e prepare-se para uma experiência que vai além da competição.",
-      experience: {
-        image: touristCoast,
-        pois: [
-          {
-            icon: "Compass",
-            title: "Explore a Ilha Grande",
-            desc: "Eleita uma das ilhas mais bonitas do mundo. Barcos com saídas diárias do centro de Mangaratiba levam você a praias paradisíacas como Lopes Mendes.",
-          },
-          {
-            icon: "Anchor",
-            title: "VIDA MARINHA E TRILHAS",
-            desc: "Agende localmente passeios para mergulhar em águas calmas e explore trilhas em meio à mata preservada, que levam a cachoeiras escondidas na Serra do Piloto.",
-          },
-          {
-            icon: "Utensils",
-            title: "JORNADA GASTRONÔMICA",
-            desc: "Experimente frutos do mar frescos e receitas tradicionais nos restaurantes à beira-mar ao longo da costa. Uma ótima dica é o Toca da Garoupa. Ou desfrute das delícias culinárias servidas no próprio Portobello Resort.",
-          },
-          {
-            icon: "Palmtree",
-            title: "Portobello Safari",
-            desc: "Uma experiência única para toda a família, dentro do próprio Resort Portobello. Visite o maior safári resort do Brasil, com mais de 500 animais em habitats naturais.",
-          },
-        ],
-      },
-      logistics: [
-        {
-          icon: "Plane",
-          title: "GIG Aeroporto",
-          detail: "115 km",
-          sub: "~1h 45min",
-          color: "from-blue-500/20",
-        },
-        {
-          icon: "Navigation",
-          title: "SDU Aeroporto",
-          detail: "110 km",
-          sub: "~1h 50min",
-          color: "from-green-500/20",
-        },
-        {
-          icon: "Car",
-          title: "Accesso",
-          detail: "BR-101",
-          sub: "Fácil Conexão",
-          color: "from-purple-500/20",
-        },
-        {
-          icon: "MapPin",
-          title: "Localização",
-          detail: "Mangaratiba",
-          sub: "Rio de Janeiro",
-          color: "from-red-500/20",
-        },
-      ],
-      resort: {
-        image: fotoResort,
-        title: "Portobello Resort",
-        description:
-          "É o hotel oficial do evento e oferece condições exclusivas para atletas TRITON e suas famílias:",
-        benefits: [
-          "Todas as refeições incluídas",
-          "Gratuidade para 2 crianças de até 7 anos",
-          "Opções de pagamento parcelado",
-        ],
-        buttonText: "Central de Reservas",
-        whatsappLink:
-          "https://api.whatsapp.com/send?phone=552127898000&text=Ol%C3%A1!%20Me%20inscrevi%20no%20TRITON%20e%20gostaria%20de%20informa%C3%A7%C3%B5es%20sobre%20a%20reserva%20em%20Portobello.",
-      },
-    },
    
     formats: {
       swim: {
@@ -669,10 +610,10 @@ export const EVENT_DATA_MAP: Record<string, EventData> = {
             <li><span class="highlight">LONG</span> — 3 voltas</li>
           </ul>
           <br>
-            <p>Postos de hidratação estão disponíveis a cada 2,5 km, atendendo os atletas nos dois sentidos.</p>
+            <p>Postos de hidratação estão disponíveis a cada 2,5km, atendendo os atletas nos dois sentidos.</p>
             <br>
             <div>
-                Todos os atletas que concluírem a prova de natação receberão medalha de finisher, e os cinco primeiros colocados, masculino e feminino, de cada distância serão premiados.
+                Todos os atletas que concluírem a prova de corrida receberão medalha de finisher, e os cinco primeiros colocados, masculino e feminino, de cada distância serão premiados.
             </div>`,
         distances: [
           { label: "Sprint", val: "10km", p: 33 },
@@ -705,6 +646,30 @@ export const EVENT_DATA_MAP: Record<string, EventData> = {
 
     afterMovie: {
       youtubeSrc: "z7xHxVVnkjU?si=6GShK1msGCTy7LDH",
+    },
+    testimonial: {
+      youtubeSrc: "https://www.youtube.com/embed/x0J6xM96QhQ",
+      testimonials: [{
+      "avatar_url": "/images/atletas/viviane.jpeg",
+      "quote": "Quantas lições em um único final de semana. Foram 3 dias, 3 esportes, 3 humores e unimeras variações de sentimentos. No Triton 3 pude me testar, exercitar a paciência e também o carinho comigo mesma. ",
+      "author": "Viviane",
+      "company": "TechFlow",
+      "link_social": ""
+    },
+    {
+      "avatar_url": "/images/atletas/elida.jpeg",
+      "quote": "Que fim de semana incrível! Obrigada Triton pela experiência única. Levo para casa uma recordação cheias de boas energias e momentos especiais...",
+      "author": "Elida",
+      "company": "TechFlow",
+      "link_social": ""
+    },
+    {
+      "avatar_url": "/images/atletas/bizarelo.jpeg",
+      "quote": "Que dia incrível e que dia forte! Obrigado TRITON pela prova top, segura e com visual fantástico",
+      "author": "Bizarelo",
+      "company": "TechFlow",
+      "link_social": ""
+    }]
     },
 
     schedule: {
@@ -841,6 +806,80 @@ export const EVENT_DATA_MAP: Record<string, EventData> = {
       importantNote:
         "Todos os horários estão sujeitos a alteração sem aviso prévio devido a circunstâncias imprevistas. Os horários e a ordem de largada também poderão ser ajustados. Recomendamos acompanhar a programação regularmente para se manter atualizado sobre possíveis mudanças de última hora.",
     },
+
+    locations: {
+      description: "O TRITON Rio 26 acontece em Mangaratiba, um destino que combina o melhor da Serra do Mar com a Costa Verde. Planeje sua viagem, escolha seu hotel parceiro e prepare-se para uma experiência que vai além da competição.",
+      experience: {
+        image: touristCoast,
+        pois: [
+          {
+            icon: "Compass",
+            title: "Explore a Ilha Grande",
+            desc: "Eleita uma das ilhas mais bonitas do mundo. Barcos com saídas diárias do centro de Mangaratiba levam você a praias paradisíacas como Lopes Mendes.",
+          },
+          {
+            icon: "Anchor",
+            title: "VIDA MARINHA E TRILHAS",
+            desc: "Agende localmente passeios para mergulhar em águas calmas e explore trilhas em meio à mata preservada, que levam a cachoeiras escondidas na Serra do Piloto.",
+          },
+          {
+            icon: "Utensils",
+            title: "JORNADA GASTRONÔMICA",
+            desc: "Experimente frutos do mar frescos e receitas tradicionais nos restaurantes à beira-mar ao longo da costa. Uma ótima dica é o Toca da Garoupa. Ou desfrute das delícias culinárias servidas no próprio Portobello Resort.",
+          },
+          {
+            icon: "Palmtree",
+            title: "Portobello Safari",
+            desc: "Uma experiência única para toda a família, dentro do próprio Resort Portobello. Visite o maior safári resort do Brasil, com mais de 500 animais em habitats naturais.",
+          },
+        ],
+      },
+      logistics: [
+        {
+          icon: "Plane",
+          title: "GIG Aeroporto",
+          detail: "115 km",
+          sub: "~1h 45min",
+          color: "from-blue-500/20",
+        },
+        {
+          icon: "Navigation",
+          title: "SDU Aeroporto",
+          detail: "110 km",
+          sub: "~1h 50min",
+          color: "from-green-500/20",
+        },
+        {
+          icon: "Car",
+          title: "Accesso",
+          detail: "BR-101",
+          sub: "Fácil Conexão",
+          color: "from-purple-500/20",
+        },
+        {
+          icon: "MapPin",
+          title: "Localização",
+          detail: "Mangaratiba",
+          sub: "Rio de Janeiro",
+          color: "from-red-500/20",
+        },
+      ],
+      resort: {
+        image: fotoResort,
+        title: "Portobello Resort",
+        description:
+          "É o hotel oficial do evento e oferece condições exclusivas para atletas TRITON e suas famílias:",
+        benefits: [
+          "Todas as refeições incluídas",
+          "Gratuidade para 2 crianças de até 7 anos",
+          "Opções de pagamento parcelado",
+        ],
+        buttonText: "Central de Reservas",
+        whatsappLink:
+          "https://api.whatsapp.com/send?phone=552127898000&text=Ol%C3%A1!%20Me%20inscrevi%20no%20TRITON%20e%20gostaria%20de%20informa%C3%A7%C3%B5es%20sobre%20a%20reserva%20em%20Portobello.",
+      },
+    },
+   
     partners: [
       {
         name: "Lei de Insentivo ao Esporte",
@@ -857,11 +896,17 @@ export const EVENT_DATA_MAP: Record<string, EventData> = {
         logo: "/images/partners/events/rio2026/my-safe-logo.png",
         url: "https://triton.mysafesport.com.br/"
       },
+       {
+        name: "Prefeitura de Mangaratiba",
+        logo: "/images/partners/events/rio2026/mangaratiba-logo.png",
+        url: "#"
+      },
       {
         name: "Governo Federal",
         logo: "/images/partners/events/rio2026/governo-federal-logo.png",
         url: "#"
       },
+     
     ]
   },
   "salvador-2027": {
@@ -887,7 +932,6 @@ export const EVENT_DATA_MAP: Record<string, EventData> = {
       backgroundImage: heroImgSalvador, // Placeholder
       logoImage: logoSalvador,
     },
-   
     info: {
       title: "The Ultimate Challenge in Bahia",
       subtitle: "Race through History",
@@ -1229,6 +1273,30 @@ export const EVENT_DATA_MAP: Record<string, EventData> = {
     afterMovie: {
       youtubeSrc: "l1qDnK5J-QM?si=B1vCXdQWVo_rL-hc",
     },
+    testimonial: {
+      youtubeSrc: "https://www.youtube.com/embed/rTUEVYYoyjE",
+      testimonials: [{
+      "avatar_url": "/images/atletas/debora-mares.jpeg",
+      "quote": "Que experiência absurda foi o Triton. @triton1salvador Obrigada, foi simplesmente incrível fazer parte disso! 💙🏊‍♀️🚴‍♀️🏃‍♀️",
+      "author": "Débora Mares",
+      "company": "TechFlow",
+      "link_social": "https://www.instagram.com/deboramares_/"
+    },
+    {
+      "avatar_url": "/images/atletas/bruno-doria.jpeg",
+      "quote": "Mais uma vez impecável @triton1salvador , que prova incrível! É um enorme prazer em ser embaixador @tritonws_br Brasil!",
+      "author": "Bruno Doria",
+      "company": "TechFlow",
+      "link_social": "https://www.instagram.com/brunodoria_/"
+    },
+    {
+      "avatar_url": "/images/atletas/diego-fonseca.jpeg",
+      "quote": "Foi sensacional competir em salvador ao lado de muita gente bruta. Prova que testou minha mente a cada minuto!",
+      "author": "Diego Fonseca",
+      "company": "TechFlow",
+      "link_social": "https://www.instagram.com/bucodiegofonseca/"
+    }]
+    },
     partners: [
       {
         name: "Prouder",
@@ -1362,7 +1430,7 @@ export const EVENT_DATA_MAP: Record<string, EventData> = {
     eventFormat: "triton1",
     title: "Lisboa",
     subtitle: "TRITON 1",
-    location: "Lisboa",
+    location: "Parque das Nações",
     venue: "Lisbon, Portugal",
     country: "Portugal",
     flag: "🇵🇹",
@@ -1372,12 +1440,11 @@ export const EVENT_DATA_MAP: Record<string, EventData> = {
     fullDateText: "September 6, 2026",
     targetDate: "2026-09-06T08:00:00",
     language: "en",
-    registrationLink: "#",
+    registrationLink: "https://register.hakuapp.com/?event=9ce0f9c87c1b43a8b97a",
     hero: {
-      backgroundImage: heroImg,
-      logoImage: logoHero,
+      backgroundImage: heroImgLisboa,
+      logoImage: logoLisboa,
     },
-
     info: {
       title: "Lisbon Triton",
       subtitle: "Race in the heart of Portugal",
@@ -1388,32 +1455,339 @@ export const EVENT_DATA_MAP: Record<string, EventData> = {
       title: "GLOBAL POINTS",
       description: "Earn points for the global ranking.",
     },
-    locations: {
-      description: "Plan your trip to the historic city of Lisbon. Discover local attractions, official accommodations, and transport options to make your TRITON Lisboa experience seamless and memorable.",
-      experience: {
-        image: touristCoast,
-        pois: [],
+    formats: {
+      swim: {
+        day: "Dia 1",
+        date: "21 de Agosto (sexta)",
+        startTime: "15:30",
+        image: swimPicLisboa,
+        title: "Natação",
+        description:`
+            <p>The swim takes place in Doca dos Olivais, a man-made lake located next to Lisbon’s iconic waterfront. Athletes enter the water from the Oceanário de Lisboa side, with the course positioned just a short distance from the transition area for a smooth race experience.</p>
+            <br>
+            <p>With calm, still waters and an average temperature of 18°C to 19°C (64°F–66°F), the venue offers excellent conditions for athletes. </p>
+            <br>
+            <p>The swim course is designed as a loop format</p>
+            <ul class="list-disc pl-5 pt-4">
+                <li>SPRINT — 1 lap</li>
+                <li>MIDDLE — 2 laps</li>
+                <li>LONG — 3 laps</li>
+            </ul>
+            <br>
+            <p>Waves are, SPRINT  first, MIDDLE second and LONG, third. The number of waves for each distance may vary according to the number of participants.</p>
+
+          
+            `,
+        distances: [
+          { label: "Sprint", val: "600m", p: 33 },
+          { label: "Middle", val: "1200m", p: 66 },
+          { label: "Long", val: "1800m", p: 100 },
+        ],
+
+        stravaId: "3442186454436027514",
       },
-      logistics: [],
-      resort: {
-        image: fotoResort,
-        title: "Lisbon Partner Hotel",
-        description: "Official accommodation in Lisbon.",
-        benefits: [],
-        buttonText: "Book Now",
-        whatsappLink: "#",
+      bike: {
+        day: "Dia 2",
+        date: "22 de Agosto (sábado)",
+        startTime: "08:00",
+        image: bikePicLisboa,
+        title: "Ciclismo",
+        description:`
+             <strong>100% CLOSED TO TRAFFIC</strong>
+             <br><br>
+            <p>One of the few urban triathlon bike courses in Lisbon that is fully closed to traffic, providing a safe and fast racing experience.</p>
+            <p>The course is a 21.5 km multi-lap circuit:</p><br>
+            <ul class="list-disc pl-5">
+                <li>SPRINT — 1 lap</li>
+                <li>MIDDLE — 2 laps</li>
+                <li>LONG — 3 laps</li>
+            </ul>
+            <br>
+<p>Starting from Transition, athletes head north along Avenida D. João II before joining the IC2 highway. The course is predominantly flat and fast, featuring gentle rolling terrain and a gradual 1 km climb near the turnaround point.</p><br>
+<p>A Bike Aid Station is located at the turnaround area and is accessible at the start of each new lap. Please note that littering is only permitted within the designated aid station zone and may result in disqualification if done elsewhere.</p>
+
+
+            `,
+        distances: [  
+          { label: "Sprint", val: "21.5km", p: 33 },
+          { label: "Middle", val: "43km", p: 66 },
+          { label: "Long", val: "86km", p: 100 },
+        ],
+        stravaId: "3442190057377176544",
+        details: [
+          "Retorno Sprint: ~4,5 km após Macundu",
+          "Hidratação Middle & Long: ~10 km após Macundu",
+          "Retorno Middle & Long (Rio Claro): ~7,5 km após o ponto de hidratação",
+          "Chegada: ~3 km após Macundu (sentido Mangaratiba)",
+          "Descida neutralizada: ~14 km",
+          "Vácuo liberado (Proibido bike de TT)",
+        ],
       },
+      run: {
+        day: "Dia 3",
+        date: "23 de Agosto (domingo)",
+        startTime: "08:00",
+        image: bikePicLisboa,
+        title: "Corrida",
+        description: `
+        <p>The run course starts from the Transition Zone and follows a flat, multi-lap route, creating an exciting and spectator-friendly atmosphere throughout the race.</p><br>
+        <p>Athletes will find one aid station approximately every 2.5 km, located near the midpoint of the course. One turnaround point is positioned near the iconic Vasco da Gama Bridge, one of the longest bridges in Europe, while the other is located closer to the Transition Zone.</p><br>
+        <p>The Finish Line is located on Rossio dos Olivais, directly in front of Doca dos Olivais and the Vasco da Gama Mall, where the Recovery Zone awaits finishers.</p><br>
+        
+            `,
+        distances: [
+          { label: "Sprint", val: "5km", p: 33 },
+          { label: "Middle", val: "10km", p: 66 },
+          { label: "Long", val: "20km", p: 100 },
+        ],
+        stravaId: "3442184922483070074",
+      },
+      distanceTable: [
+      {
+        "name": "SPRINT",
+        "swim": "600m",
+        "bike": "21.5km",
+        "run": "5km"
+      },
+      {
+        "name": "MIDDLE",
+        "swim": "1200m",
+        "bike": "43km",
+        "run": "10km"
+      },
+      {
+        "name": "LONG",
+        "swim": "1800m",
+        "bike": "86km",
+        "run": "20km"
+      }
+    ],
     },
     schedule: {
-      title: "SCHEDULE",
-      subtitle: "Race Day Timeline",
-      days: [],
+      title: "AGENDA",
+      subtitle: "Planning your journey",
+      days: [
+        {
+          id: "friday",
+          date: "4 Sept",
+          title: "Friday",
+          subtitle: "RACE DAY 1 - THE SWIM",
+          events: [
+            {
+              time: "09:00 – 18:00",
+              title: "No Activities Scheduled",
+              location: "",
+            },
+          ],
+        },
+        {
+          id: "saturday",
+          date: "5 Sept",
+          title: "Saturday",
+          subtitle: "RACE DAY 2 – THE BIKE",
+          events: [
+            {
+              time: "10:00 – 19:00",
+              title: "Race Office",
+              location: "TBC",
+            },
+            {
+              time: "10:00 – 19:00",
+              title: "Expo Village",
+              location: "Parque das Nações",
+            },
+            {
+              time: "16:30",
+              title: "Kids & Parents, Swim & Run",
+              location: "Docas dos Olivais",
+            },
+            {
+              time: "16:30 - 17:30",
+              title: "Swim course practice",
+              location: "Docas dos Olivais",
+            },
+            {
+              time: "19:00",
+              title: "Welcome Dinner Party",
+              location:
+                "Location TBC",
+            },
+          ],
+        },
+        {
+          id: "sunday",
+          date: "5 Sept",
+          title: "Sunday",
+          subtitle: "RACE DAY 3 - THE RUN",
+          events: [
+            {
+              time: "04:10 – 05:40",
+              title: "Last minute Race office",
+              location:  "TBC",
+            },
+            {
+              time: "07:00 - 16:00",
+              title: "Expo Village",
+              location: "Parque das Nações",
+            },
+            {
+              time: "07:00",
+              title: "Swim warm up",
+              location: "Doca dos Olivais",
+            },
+             {
+              time: "07:30",
+              title: "START SPRINT AND CORPORATE RELAY",
+              location: "Doca dos Olivais",
+            },
+            {
+              time: "07:33",
+              title: "START MIDDLE",
+              location: "Doca dos Olivais",
+            },
+             {
+              time: "07:36",
+              title: "START LONG",
+              location: "Doca dos Olivais",
+            },
+            // {
+            //   isCutoff: true,
+            //   title: "Tempos de Corte da Natação",
+            //   details: [
+            //     { label: "SPRINT", value: "20min" },
+            //     { label: "MIDDLE", value: "40min" },
+            //     { label: "LONG", value: "1h00" },
+            //   ],
+            // },
+            // {
+            //   isCutoff: true,
+            //   title: "Tempos de Corte da Ciclismo",
+            //   details: [
+            //     { label: "SPRINT", value: "1h00" },
+            //     { label: "MIDDLE", value: "2h00" },
+            //     { label: "LONG", value: "3h00" },
+            //   ],
+            // },
+            // {
+            //   isCutoff: true,
+            //   title: "Tempos de Corte da Corrida",
+            //   details: [
+            //     { label: "SPRINT", value: "40min" },
+            //     { label: "MIDDLE", value: "1h00" },
+            //     { label: "LONG", value: "2h00" },
+            //   ],
+            // },
+            
+           
+          ],
+        },
+      ],
       importantNote: "",
     },
+    locations: {
+      description: "O TRITON Rio 26 acontece em Mangaratiba, um destino que combina o melhor da Serra do Mar com a Costa Verde. Planeje sua viagem, escolha seu hotel parceiro e prepare-se para uma experiência que vai além da competição.",
+      experience: {
+        image: lisboaExperienceImage,
+        pois: [
+          {
+            icon: "Compass",
+            title: "Explore a Lisbon",
+            desc: "Discover Lisbon’s historic heart, from the charming streets of Alfama and Baixa to the iconic Belém district. Experience centuries of history, traditional architecture, and the vibrant atmosphere of Portugal’s capital.",
+          },
+          {
+            icon: "Anchor",
+            title: "COASTLINE & BEACHES",
+            desc: "Enjoy Lisbon’s Atlantic coastline, with easy access to famous beaches such as Cascais, Carcavelos, and Costa da Caparica. Perfect for relaxation, outdoor activities, and family moments.",
+          },
+          {
+            icon: "Utensils",
+            title: "PORTUGUESE GASTRONOMY",
+            desc: "Savor Portugal’s renowned cuisine, from fresh seafood and traditional dishes to the iconic Pastéis de Belém. Lisbon offers authentic flavors at every turn.",
+          },
+          {
+            icon: "Palmtree",
+            title: "CULTURE & LOCAL EXPERIENCES",
+            desc: "Experience Lisbon through Fado, lively squares, riverside sunsets, local markets, and cultural attractions. A city full of unique experiences beyond race weekend.",
+          },
+        ],
+      },
+      logistics: [
+        {
+          icon: "Plane",
+          title: "LIS Aeroporto",
+          detail: "4 km",
+          sub: "~10min",
+          color: "from-blue-500/20",
+        },
+        {
+          icon: "Track",
+          title: "Metro & Train",
+          detail: "ORIENTE STATION",
+          sub: "2 min walk",
+          color: "from-green-500/20",
+        },
+        {
+          icon: "Car",
+          title: "ROAD ACCESS",
+          detail: "A1 & A2",
+          sub: "National & International Links ",
+          color: "from-purple-500/20",
+        },
+        {
+          icon: "MapPin",
+          title: "LOCATION",
+          detail: "PQ. DAS NAÇÕES",
+          sub: "Lisbon",
+          color: "from-red-500/20",
+        },
+      ],
+      resort: {
+        image: fotoResortLisboa,
+        title: "Tivoli",
+        description:
+          "The Tivoli Oriente Lisboa Hotel is the official hotel of TRITON Lisboa, offering exclusive discounts for athletes and their families.",
+        benefits: [
+          "700m from the race arena",
+          "Enjoy the special rates",
+          "Use code: NHTORIWED ",
+        ],
+        buttonText: "Contact Us",
+        whatsappLink:
+          "https://www.nh-hotels.com/pt/hoteis/lisboa",
+      },
+    },
+    afterMovie:{
+      youtubeSrc:"uF-G6jTNDLQ?si=qfYeZlMsdkWxfshZ"
+    },
+    testimonial: {
+      youtubeSrc:"",
+      testimonials: [{
+      "avatar_url": "/images/atletas/viviane.jpeg",
+      "quote": "Quantas lições em um único final de semana. Foram 3 dias, 3 esportes, 3 humores e unimeras variações de sentimentos. No Triton 3 pude me testar, exercitar a paciência e também o carinho comigo mesma. ",
+      "author": "Viviane",
+      "company": "TechFlow",
+      "link_social": ""
+    },
+    {
+      "avatar_url": "/images/atletas/elida.jpeg",
+      "quote": "Que fim de semana incrível! Obrigada Triton pela experiência única. Levo para casa uma recordação cheias de boas energias e momentos especiais...",
+      "author": "Elida",
+      "company": "TechFlow",
+      "link_social": ""
+    },
+    {
+      "avatar_url": "/images/atletas/bizarelo.jpeg",
+      "quote": "Que dia incrível e que dia forte! Obrigado TRITON pela prova top, segura e com visual fantástico",
+      "author": "Bizarelo",
+      "company": "TechFlow",
+      "link_social": ""
+    }]
+  },
+    
     partners: [
       {
         name: "Prouder",
-        logo: "/images/partners/prouder.png",
+        logo: "/images/partners/prouder-logo.png",
         url: "#"
       },
     ]
