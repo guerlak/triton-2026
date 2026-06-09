@@ -35,7 +35,7 @@ export default function FAQ() {
                         TRITON <span className="text-triton-red italic">WORLD SERIES</span><br />
                         <span className="text-3xl md:text-4xl">FREQUENTLY ASKED QUESTIONS (FAQ)</span>
                     </h1>
-                    <p className="text-lg text-gray-500 max-w-2xl leading-relaxed">
+                    <p className="text-lg text-gray-500 max-w-3xl leading-relaxed">
                         The complete guide to the TRITON ecosystem, formats, rankings, and rules.
                     </p>
                 </section>
@@ -414,13 +414,27 @@ export default function FAQ() {
                                             </div>
                                         }
                                     />
+                                    <FAQItem
+                                        question="WHAT ARE THE MINIMUM PERFORMANCE STANDARDS?"
+                                        answer={
+                                            <div className="space-y-4">
+                                                <p>All athletes must maintain at least:</p>
+                                                <ul className="space-y-2 list-disc pl-5 text-gray-400">
+                                                    <li>Swim: 2:45 / 100m</li>
+                                                    <li>Bike: 18 km/h</li>
+                                                    <li>Run: 9:00 / km</li>
+                                                </ul>
+                                                <p>These apply globally across all races.</p>
+                                            </div>
+                                        }
+                                    />
 
                                     <div className="border-y border-white/5 py-12 my-12">
                                         <h3 className="text-xl font-black text-white uppercase mb-8">22.2. MINIMUM PERFORMANCE STANDARDS</h3>
                                         <p className="text-gray-400 mb-6">All athletes must be capable of maintaining at least:</p>
                                         <div className="space-y-6">
                                             <div>
-                                                <p className="text-white font-bold mb-1 underline decoration-triton-red">Swim: 3:30 min / 100m</p>
+                                                <p className="text-white font-bold mb-1 underline decoration-triton-red">Swim: 3:00 min / 100m</p>
                                                 <p className="text-sm text-gray-500">Swim final cut-off: max swim time</p>
                                             </div>
                                             <div>
@@ -519,7 +533,7 @@ export default function FAQ() {
                                     />
                                     <FAQItem
                                         question="CAN CUT-OFF DECISIONS BE APPEALED?"
-                                        answer="No. All decisions are final."
+                                        answer="Yes. Appeals must be made within 15 minutes after finish. Submitted to head referee."
                                     />
                                 </div>
                             </section>
@@ -561,8 +575,7 @@ export default function FAQ() {
                                             <div className="space-y-4">
                                                 <p>Yes:</p>
                                                 <ul className="space-y-2 list-disc pl-5 text-gray-400">
-                                                    <li>Within 15 minutes after finish</li>
-                                                    <li>Through official procedure</li>
+                                                    <li>Within 15 minutes after finish. Submitted to head referee.</li>
                                                 </ul>
                                             </div>
                                         }

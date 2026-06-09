@@ -190,7 +190,7 @@ export default async function RankingPage() {
             <span className="font-black uppercase tracking-[0.3em] text-sm">Historical Data</span>
           </div>
           <h2 className="text-5xl md:text-7xl font-black text-white uppercase leading-none mb-4">
-            Hall of <span className="text-triton-red italic">Fame</span>
+            Ranking <span className="text-triton-red italic">Champions</span>
           </h2>
           <p className="text-gray-400 text-lg">
             Honoring the athletes who define legacy.
