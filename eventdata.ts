@@ -154,6 +154,7 @@ import fotoResortLisboa from "@/public/images/eventos/lisboa-2026/hotel-lisboa.j
 //imports qdong
 import heroImgQidong from "@/public/images/eventos/qidong/triton1-qidong-hero.jpeg"
 import logoQidong from "@/public/images/eventos/qidong/logo-qidong.png"
+import qidongHotel from "@/public/images/eventos/qidong/qidong-hotel.jpeg"
 
 
 
@@ -1653,26 +1654,22 @@ export const EVENT_DATA_MAP: Record<string, EventData> = {
         },
       ],
       resort: {
-        image: fotoResort, // Placeholder
-        title: "Qidong Partner Hotel",
+        image: qidongHotel, // Placeholder
+        title: "Yuantuojiao Resort",
         description:
-          "Official accommodation partner in Qidong, providing luxury stay for international athletes.",
+          "Located along the stunning coastline of Jiangsu Province, the event takes place at the Evergrande Venice Resort Hotel, one of China's largest and most impressive seaside resorts. Featuring direct beach access, world-class facilities, and unique coastal scenery, the venue provides the perfect setting for an unforgettable weekend of racing, relaxation, and outdoor adventure.",
         benefits: [
-          "English Speaking Staff",
-          "Sports Nutrition",
-          "Event Transfer",
-          "Recovery Zone",
+          
         ],
         buttonText: "Book Now",
         whatsappLink: "#",
       },
     },
-  
     partners: [
       {
         name: "Prouder",
-        logo: "/images/partners/prouder.png",
-        url: "#"
+        logo: "/images/partners/prouder-logo.png",
+        url: ""
       },
     ]
   },
