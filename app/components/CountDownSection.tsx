@@ -25,7 +25,7 @@ const COUNTDOWN_EVENTS = [
     date: "06 Sep, 2026",
     targetDate: "2026-09-06T08:00:00",
     image: "/images/triton-fotos-prova-bike.jpeg",
-    href: "/events/triton1/lisboa",
+    href: "/events/triton1/lisboa-2026",
     registerUrl: "https://register.hakuapp.com/?event=9ce0f9c87c1b43a8b97a"
   },
   {
@@ -36,8 +36,8 @@ const COUNTDOWN_EVENTS = [
     date: "31 Oct, 2026",
     targetDate: "2026-10-31T08:00:00",
     image: "/images/bg-qindong.jpg",
-    href: "/events/triton1/qindong",
-    registerUrl: "https://ticketsports.com.br/e/triton1salvador"
+    href: "/events/triton1/qindong-2026",
+    registerUrl: ""
   },
   {
     id: 4,
@@ -47,7 +47,7 @@ const COUNTDOWN_EVENTS = [
     date: "11 Apr, 2027",
     targetDate: "2027-04-11T08:00:00",
     image: "/images/bg-salvador.jpg",
-    href: "/events/triton1/salvador",
+    href: "/events/triton1/salvador-2027",
     registerUrl: "https://ticketsports.com.br/e/triton1salvador"
   },
 ];

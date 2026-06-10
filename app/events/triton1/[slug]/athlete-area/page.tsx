@@ -26,4 +26,3 @@ export default async function AthleteArePage({ params }: { params: Promise<{ slu
 // Results
 // reutilizar o componente de filtro e listagem do results
 // Full results colocar os results da API T1 T2 Swin Run
-//
