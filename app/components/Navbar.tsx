@@ -124,7 +124,7 @@ const Navbar = () => {
           ))}
           <div className="mt-8 flex flex-col items-center gap-6 w-full max-w-xs">
             <NavButton text="Live Results" href="/live-results" className="w-full" />
-            <NavButton isRed text="Find a Race" href="/triton-events" className="w-full" />
+            <NavButton isRed text="Find a Race" href="/events" className="w-full" />
           </div>
         </div>
       </div>

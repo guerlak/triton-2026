@@ -1,7 +1,13 @@
 import React from "react";
 import { Instagram, Facebook, Youtube, Mail } from "lucide-react";
+import Link from "next/link";
+import { EVENT_DATA_MAP } from "@/eventdata";
 
 const Footer: React.FC = () => {
+  const confirmedEvents = Object.values(EVENT_DATA_MAP)
+    .filter((event) => event.status === "Confirmed")
+    .sort((a, b) => a.targetDate.localeCompare(b.targetDate))
+    .slice(0, 4);
   return (
     <footer className="bg-neutral-950 border-t border-white/10 pt-16 pb-8">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -43,26 +49,16 @@ const Footer: React.FC = () => {
           <div>
             <h4 className="text-white font-bold uppercase mb-4">Events</h4>
             <ul className="space-y-2 text-sm text-gray-400">
-              <li>
-                <a href="#" className="hover:text-white transition-colors">
-                  Brazil
-                </a>
-              </li>
-              <li>
-                <a href="#" className="hover:text-white transition-colors">
-                  China
-                </a>
-              </li>
-              <li>
-                <a href="#" className="hover:text-white transition-colors">
-                  Portugal
-                </a>
-              </li>
-              <li>
-                <a href="#" className="hover:text-white transition-colors">
-                  World Final
-                </a>
-              </li>
+              {confirmedEvents.map((event) => (
+                <li key={event.id}>
+                  <Link
+                    href={`/events/${event.eventFormat}/${event.slug}`}
+                    className="hover:text-white transition-colors"
+                  >
+                    {event.title}
+                  </Link>
+                </li>
+              ))}
             </ul>
           </div>
 
