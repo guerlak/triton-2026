@@ -32,13 +32,13 @@ const Footer: React.FC = () => {
                 <Instagram size={20} />
               </a>
               <a
-                href="#"
+                href="https://www.facebook.com/TritonWorldSeries"
                 className="text-gray-400 hover:text-triton-red transition-colors"
               >
                 <Facebook size={20} />
               </a>
               <a
-                href="#"
+                href="https://youtube.com/@tritonworldseries?si=PQFtAoFsOqt6tmHg"
                 className="text-gray-400 hover:text-triton-red transition-colors"
               >
                 <Youtube size={20} />
