@@ -155,6 +155,7 @@ import fotoResortLisboa from "@/public/images/eventos/lisboa-2026/hotel-lisboa.j
 import heroImgQidong from "@/public/images/eventos/qidong/triton1-qidong-hero.jpeg"
 import logoQidong from "@/public/images/eventos/qidong/logo-qidong.png"
 import qidongHotel from "@/public/images/eventos/qidong/evergrande-hotel.jpeg"
+import landScapeQidong from "@/public/images/eventos/qidong/landscape-qidong.jpeg"
 
 
 
@@ -1203,12 +1204,12 @@ export const EVENT_DATA_MAP: Record<string, EventData> = {
     locations: {
       description: "Plan your trip and make the most of your TRITON experience in Qidong. Enjoy a fast-growing coastal destination with unique local culture, fresh seafood, and scenic courses where the rivers meet the sea.",
       experience: {
-        image: touristCoast, // Placeholder
+        image: landScapeQidong, // Placeholder
         pois: [
           {
             icon: "Compass",
             title: "EXPLORE YUANTUOJIAO",
-            desc: "Discover one of China’s most unique coastal destinations, located where the mighty Yangtze River meets the East China Sea. Enjoy stunning waterfront landscapes, peaceful beaches, and the relaxing atmosphere of Yuantuojiao Tourist Resort.",
+            desc: "Discover one of China's most unique coastal destinations, where the Yangtze River meets the East China Sea. Enjoy serene beaches and the charm of Yuantuojiao Tourist Resort.",
           },
           {
             icon: "Anchor",
@@ -1253,7 +1254,7 @@ export const EVENT_DATA_MAP: Record<string, EventData> = {
           icon: "MapPin",
           title: "Location",
           detail: "QIDONG",
-          sub: "YUANTUOJIAO TOURIST RESORT",
+          sub: "Yuantuojiao Tourist Resort",
           color: "from-red-500/20",
         },
       ],

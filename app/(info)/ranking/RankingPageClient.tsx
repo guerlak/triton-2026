@@ -60,7 +60,7 @@ export default function RankingPageClient({ initialAthletes }: RankingPageClient
         {/* Filters Section */}
         <motion.div
           initial={{ opacity: 0, y: 0 }}
-          animate={{ opacity: 1, y: 0 }}
+          animate={{ opacity: 1, y: 2 }}
           transition={{ delay: 0.1 }}
           className="bg-neutral-900/50 backdrop-blur-xl border border-white/5 rounded-3xl p-6 md:p-8"
         >
@@ -155,7 +155,7 @@ export default function RankingPageClient({ initialAthletes }: RankingPageClient
                 </tr>
               </thead>
               <tbody className="divide-y divide-white/5">
-                <AnimatePresence mode="popLayout">
+                <AnimatePresence mode="wait">
                   {filteredAthletes.length > 0 ? (
                     filteredAthletes.map((athlete, index) => (
                       <motion.tr

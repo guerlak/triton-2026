@@ -165,11 +165,7 @@ export default async function RankingPage() {
               <div className="absolute -top-4 -right-4 w-24 h-24 border-t-4 border-r-4 border-triton-red rounded-tr-3xl"></div>
               <div className="absolute -bottom-4 -left-4 w-24 h-24 border-b-4 border-l-4 border-white/20 rounded-bl-3xl"></div>
             </div>
-
           </div>
-
-
-
           {/* Trophy Highlight Box */}
           <div className="mt-20  backdrop-blur-2xl p-10  text-center">
             {/* <div className="absolute right-0 top-0 w-32 h-full opacity-10 pointer-events-none">
