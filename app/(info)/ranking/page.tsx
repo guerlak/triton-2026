@@ -122,12 +122,12 @@ export default async function RankingPage() {
 
         <Heading text1="GLOBAL RANKING" text2="TWS Global Standings" />
 
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+        <div className="max-w-7xl mx-auto px-10 sm:px-6 lg:px-8 relative z-10 mt-10">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-x-16 gap-y-12 items-center">
             <div className="space-y-8">
 
               <div className="space-y-6">
-                <p className="text-2xl md:text-3xl text-white font-black leading-tight uppercase font-sans">
+                <p className="text-2xl md:text-xl text-white font-black leading-tight uppercase font-sans">
                   The TRITON Global Ranking is an annual, by-points competition that you score at every race.
                 </p>
                 <p className="text-gray-400 text-lg leading-relaxed font-sans max-w-lg">

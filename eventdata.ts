@@ -917,10 +917,10 @@ export const EVENT_DATA_MAP: Record<string, EventData> = {
     id: "qindong-2026",
     slug: "qindong-2026",
     eventFormat: "triton1",
-    title: "Jiangsu",
+    title: "Qidong",
     subtitle: "TRITON 1",
     location: "Qidong",
-    venue: "Qidong, China",
+    venue: "Jiangsu, China",
     country: "China",
     flag: "🇨🇳",
     status: "Confirmed",
@@ -1240,15 +1240,15 @@ export const EVENT_DATA_MAP: Record<string, EventData> = {
         {
           icon: "Navigation",
           title: "Shanghai Station",
-          detail: "115km",
-          sub: "~1h 15min",
+          detail: "RAILWAY",
+          sub: "~1h58min",
           color: "from-green-500/20",
         },
         {
           icon: "Car",
-          title: "Bridge Access",
-          detail: "G40 Highway",
-          sub: "Direct Connection",
+          title: "ACCESS",
+          detail: "EXPY G40",
+          sub: "Shangai Connection",
           color: "from-purple-500/20",
         },
         {
@@ -1482,7 +1482,7 @@ export const EVENT_DATA_MAP: Record<string, EventData> = {
         },
         {
           id: "sunday",
-          date: "5 Sept",
+          date: "6 Sept",
           title: "Sunday",
           subtitle: "RACE DAY 3 - THE RUN",
           events: [
