@@ -114,18 +114,28 @@ const FormatsSection: React.FC<{ language: string, formats: any }> = ({ language
               {/* Left Column: Image and Key Info */}
               <div className="space-y-6">
                 <div className="w-full h-[300px] mb-4 rounded-2xl relative overflow-hidden group shadow-2xl">
-                  <Image
+                  {formats.swim.image && <Image
                     src={formats.swim.image}
                     alt="Swimming"
                     className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
-                  />
-                  <div className="absolute inset-0 bg-linear-to-t from-black/80 via-transparent to-transparent" />
-                  <div className="absolute bottom-6 left-6" >
-
+                  />}
+                  {formats.swim.video &&
+                    <div className="absolute inset-0">
+                      <iframe
+                        width="100%"
+                        height="100%"
+                        src={formats.swim.video}
+                        title="Swimming"
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                        allowFullScreen
+                        className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                      ></iframe>
+                    </div>
+                  }
+                  <div className="absolute inset-0 bg-linear-to-t from-black/80 via-transparent to-transparent pointer-events-none" />
+                  <div className="absolute bottom-6 left-6 pointer-events-none" >
                   </div>
                 </div>
-
-
                 <div className="bg-white/5 p-6 rounded-2xl border border-white/10 space-y-6">
                   <div className="flex items-center gap-2 mb-2">
                     <Trophy className="text-triton-red" size={18} />
@@ -214,14 +224,26 @@ const FormatsSection: React.FC<{ language: string, formats: any }> = ({ language
               {/* Left Column: Image and Key Info */}
               <div className="space-y-6">
                 <div className="w-full h-[300px] mb-4 rounded-2xl relative overflow-hidden group shadow-2xl">
-                  <Image
+                  {formats.bike.image && <Image
                     src={formats.bike.image}
                     alt="Cycling"
                     className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
-                  />
-                  <div className="absolute inset-0 bg-linear-to-t from-black/80 via-transparent to-transparent" />
-                  <div className="absolute bottom-6 left-6" >
-
+                  />}
+                  {formats.bike.video &&
+                    <div className="absolute inset-0">
+                      <iframe
+                        width="100%"
+                        height="100%"
+                        src={formats.bike.video}
+                        title="Cycling"
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                        allowFullScreen
+                        className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                      ></iframe>
+                    </div>
+                  }
+                  <div className="absolute inset-0 bg-linear-to-t from-black/80 via-transparent to-transparent pointer-events-none" />
+                  <div className="absolute bottom-6 left-6 pointer-events-none" >
                   </div>
                 </div>
 
@@ -316,13 +338,27 @@ const FormatsSection: React.FC<{ language: string, formats: any }> = ({ language
               {/* Left Column: Image and Key Info */}
               <div className="space-y-6">
                 <div className="w-full h-[300px] mb-4 rounded-2xl relative overflow-hidden group shadow-2xl">
-                  <Image
+                  {formats.run.image && <Image
                     src={formats.run.image}
                     alt="Running"
                     className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
-                  />
-                  <div className="absolute inset-0 bg-linear-to-t from-black/80 via-transparent to-transparent" />
-
+                  />}
+                  {formats.run.video &&
+                    <div className="absolute inset-0">
+                      <iframe
+                        width="100%"
+                        height="100%"
+                        src={formats.run.video}
+                        title="Running"
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                        allowFullScreen
+                        className="w-full h-full object-cover transition-transform duration-700"
+                      ></iframe>
+                    </div>
+                  }
+                  <div className="absolute inset-0 bg-linear-to-t from-black/80 via-transparent to-transparent pointer-events-none" />
+                  <div className="absolute bottom-6 left-6 pointer-events-none" >
+                  </div>
                 </div>
 
 
@@ -463,7 +499,17 @@ const FormatsSection: React.FC<{ language: string, formats: any }> = ({ language
             </div>
 
             {/* Modalidades Individuais */}
-            <div className="bg-white/5 p-6 rounded-xl border border-white/10 hover:border-triton-red/50 transition-all group">
+
+            <div className={`p-6 rounded-xl border transition-all group relative ${formats.disableMixMatch === true
+              ? "bg-white/5 border-white/5 opacity-50"
+              : "bg-white/5 border-white/10 hover:border-triton-red/50"
+              }`}>
+              {formats.disableMixMatch === true && (
+                <span className="absolute top-4 right-4 bg-triton-red/20 text-triton-red border border-triton-red/30 text-[10px] font-bold px-2.5 py-1 rounded-full uppercase tracking-wider">
+                  {language === "pt-BR" ? "Não Disponível" : "Not Available"}
+                </span>
+              )}
+
               <div className="bg-triton-red/10 w-12 h-12 rounded-lg flex items-center justify-center mb-4 group-hover:bg-triton-red transition-colors">
                 <Shuffle
                   className="text-triton-red group-hover:text-white"

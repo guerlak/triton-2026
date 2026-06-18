@@ -49,7 +49,8 @@ export interface EventFormatDetail {
   day: string;
   date: string;
   startTime: string;
-  image: StaticImageData | string;
+  image?: StaticImageData | StaticImport | string | null | undefined;
+  video?: string | null | undefined;
   title: string;
   description: string;
   distances: { label: string; val: string; p: number }[];
@@ -99,6 +100,7 @@ export interface EventData {
     bike: EventFormatDetail;
     run: EventFormatDetail;
     distanceTable: Array<{ name: string; swim: string; bike: string; run: string }>;
+    disableMixMatch?: boolean;
   };
   locations: {
     description: string;
@@ -156,6 +158,7 @@ import heroImgQidong from "@/public/images/eventos/qidong/triton1-qidong-hero.jp
 import logoQidong from "@/public/images/eventos/qidong/logo-qidong.png"
 import qidongHotel from "@/public/images/eventos/qidong/evergrande-hotel.jpeg"
 import landScapeQidong from "@/public/images/eventos/qidong/landscape-qidong.jpeg"
+import { StaticImport } from "next/dist/shared/lib/get-img-props";
 
 
 
@@ -948,7 +951,8 @@ export const EVENT_DATA_MAP: Record<string, EventData> = {
         day: "Dia 1",
         date: "21 de Agosto (sexta)",
         startTime: "15:30",
-        image: swimPicLisboa,
+        image: "",
+        video: "https://www.youtube.com/embed/",
         title: "Natação",
         description:`
           <p>The swim race will take place at Bihai Yintan Scenic Area Beach, renowned for its calm waters, natural shelter from ocean swells, and excellent visibility.</p>
@@ -960,13 +964,7 @@ export const EVENT_DATA_MAP: Record<string, EventData> = {
               <li>LONG — 3 laps</li>
           </ul>
           <br>
-          <p>MIDDLE and LONG distances feature Australian exits, adding an extra dynamic element to the race:</p>
-          <ul class="list-disc pl-5 pt-4">
-              <li>MIDDLE — 1 exit</li>
-              <li>LONG — 2 exits</li>
-          </ul>
-          <br>
-          <p>A hydration station with drinking water will be available on the beach beside the buoy.</p>
+          <p>MIDDLE and LONG distances feature Australian exits, adding an extra dynamic element to the race: MIDDLE - 1 exit and LONG - 2 exits</p>
           <br>
           <p>The Open Water Swim division will also offer four distances:</p>
           <ul class="list-disc pl-5 pt-4">
@@ -988,7 +986,8 @@ export const EVENT_DATA_MAP: Record<string, EventData> = {
         day: "Dia 2",
         date: "22 de Agosto (sábado)",
         startTime: "08:00",
-        image: bikePicLisboa,
+       image: "",
+        video: "https://www.youtube.com/embed/",
         title: "Ciclismo",
         description:`
           <p>The bike course follows scenic coastal roads renowned for their stunning views and recognized by National Geographic as one of the region's most remarkable routes.</p>
@@ -1016,7 +1015,8 @@ export const EVENT_DATA_MAP: Record<string, EventData> = {
         day: "Dia 3",
         date: "23 de Agosto (domingo)",
         startTime: "08:00",
-        image: runPicLisboa,
+        image: "",
+        video: "https://www.youtube.com/embed/",
         title: "Running",
         description: `
           <p>
@@ -1057,6 +1057,7 @@ export const EVENT_DATA_MAP: Record<string, EventData> = {
         "run": "20km"
       }
     ],
+    disableMixMatch: true,
     },
     schedule: {
       title: "AGENDA",
