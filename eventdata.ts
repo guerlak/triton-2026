@@ -154,7 +154,7 @@ import fotoResortLisboa from "@/public/images/eventos/lisboa-2026/hotel-lisboa.j
 //imports qdong
 import heroImgQidong from "@/public/images/eventos/qidong/triton1-qidong-hero.jpeg"
 import logoQidong from "@/public/images/eventos/qidong/logo-qidong.png"
-import qidongHotel from "@/public/images/eventos/qidong/qidong-hotel.jpeg"
+import qidongHotel from "@/public/images/eventos/qidong/evergrande-hotel.jpeg"
 
 
 
@@ -909,6 +909,753 @@ export const EVENT_DATA_MAP: Record<string, EventData> = {
      
     ]
   },
+  "qindong-2026": {
+    id: "qindong-2026",
+    slug: "qindong-2026",
+    eventFormat: "triton1",
+    title: "Jiangsu",
+    subtitle: "TRITON 1",
+    location: "Qidong",
+    venue: "Qidong, China",
+    country: "China",
+    flag: "🇨🇳",
+    status: "Confirmed",
+    year: 2026,
+    dateText: "31 OCT - 01 NOV",
+    fullDateText: "31 de Oct - 01 de Nov, 2026",
+    targetDate: "2026-11-01T08:00:00",
+    language: "en",
+    registrationLink:
+      "",
+    hero: {
+      backgroundImage: heroImgQidong, // Placeholder
+      logoImage: logoQidong,
+    },
+    info: {
+      title: "Experience the Orient Coast",
+      subtitle: "Where Rivers meet the Sea",
+      description:
+        "Qidong offers a unique racing environment at the convergence of major waterways. Fast, flat, and visually stunning.",
+    },
+    scoring: {
+      title: "GLOBAL POINTS IN THE EAST",
+      description:
+        "Earn your spot in the World Championship at our premier Asian series stop.",
+    },
+    formats: {
+      swim: {
+        day: "Dia 1",
+        date: "21 de Agosto (sexta)",
+        startTime: "15:30",
+        image: swimPicLisboa,
+        title: "Natação",
+        description:`
+          <p>The swim race will take place at Bihai Yintan Scenic Area Beach, renowned for its calm waters, natural shelter from ocean swells, and excellent visibility.</p>
+          <br>
+          <p>Athletes will start in waves directly from the beach, beginning with LONG, followed by MIDDLE and SPRINT. The swim course follows a loop format:</p>
+          <ul class="list-disc pl-5 pt-4">
+              <li>SPRINT — 1 lap</li>
+              <li>MIDDLE — 2 laps</li>
+              <li>LONG — 3 laps</li>
+          </ul>
+          <br>
+          <p>MIDDLE and LONG distances feature Australian exits, adding an extra dynamic element to the race:</p>
+          <ul class="list-disc pl-5 pt-4">
+              <li>MIDDLE — 1 exit</li>
+              <li>LONG — 2 exits</li>
+          </ul>
+          <br>
+          <p>A hydration station with drinking water will be available on the beach beside the buoy.</p>
+          <br>
+          <p>The Open Water Swim division will also offer four distances:</p>
+          <ul class="list-disc pl-5 pt-4">
+              <li>10 km — 6 laps</li>
+              <li>5 km — 3 laps</li>
+              <li>3.3 km — 2 laps</li>
+              <li>1.66 km — 1 lap</li>
+          </ul>
+            `,
+        distances: [
+          { label: "Sprint", val: "700m", p: 33 },
+          { label: "Middle", val: "1400m", p: 66 },
+          { label: "Long", val: "2100m", p: 100 },
+        ],
+
+        stravaId: "3490382720997212106",
+      },
+      bike: {
+        day: "Dia 2",
+        date: "22 de Agosto (sábado)",
+        startTime: "08:00",
+        image: bikePicLisboa,
+        title: "Ciclismo",
+        description:`
+          <p>The bike course follows scenic coastal roads renowned for their stunning views and recognized by National Geographic as one of the region's most remarkable routes.</p>
+          <br>
+          <p>The course is almost entirely flat, providing ideal conditions for athletes aiming to achieve their personal best performances.</p>
+          <ul class="list-disc pl-5 pt-4">
+              <li>SPRINT — 20 km</li>
+              <li>MIDDLE — 36 km</li>
+              <li>LONG — 88 km</li>
+          </ul>
+          <br>
+          <p>Hydration stations and restroom facilities will be available along the course.</p>
+            `,
+        distances: [  
+          { label: "Sprint", val: "20km", p: 33 },
+          { label: "Middle", val: "36km", p: 66 },
+          { label: "Long", val: "88km", p: 100 },
+        ],
+        stravaId: "3489887744610501362",
+        details: [
+          
+        ],
+      },
+      run: {
+        day: "Dia 3",
+        date: "23 de Agosto (domingo)",
+        startTime: "08:00",
+        image: runPicLisboa,
+        title: "Running",
+        description: `
+          <p>
+          The run course passes through the Golden Beach Scenic Area and Cultural Tourism Avenue, offering athletes stunning coastal scenery and views of the impressive wind turbines that line the route.
+          </p>
+          <ul class="list-disc pl-5 pt-4">
+              <li>SPRINT — 4.5 km</li>
+              <li>MIDDLE — 12 km</li>
+              <li>LONG — 20 km</li>
+          </ul>
+          <br>
+          <p>Hydration and nutrition stations, including electrolyte drinks and water, will be available at multiple points along the course.</p>
+        `,
+        distances: [
+          { label: "Sprint", val: "4.5km", p: 33 },
+          { label: "Middle", val: "12km", p: 66 },
+          { label: "Long", val: "20km", p: 100 },
+        ],
+        stravaId: "3490379193741390584",
+      },
+      distanceTable: [
+      {
+        "name": "SPRINT",
+        "swim": "700m",
+        "bike": "20km",
+        "run": "4,5km"
+      },
+      {
+        "name": "MIDDLE",
+        "swim": "1400m",
+        "bike": "36km",
+        "run": "12km"
+      },
+      {
+        "name": "LONG",
+        "swim": "2100m",
+        "bike": "88km",
+        "run": "20km"
+      }
+    ],
+    },
+    schedule: {
+      title: "AGENDA",
+      subtitle: "Planning your journey",
+      days: [
+        {
+          id: "friday",
+          date: "30 Oct",
+          title: "Friday",
+          subtitle: "RACE DAY 1 - THE SWIM",
+          events: [
+            {
+              time: "10:00 – 18:00",
+              title: "Check-in & Race Pick-up",
+              location: "Evergrande Venice Resort",
+            },
+          ],
+        },
+        {
+          id: "saturday",
+          date: "31 Oct",
+          title: "Saturday",
+          subtitle: "Race Prep & Kids Event",
+          events: [
+            {
+              time: "08:00 – 18:00",
+              title: "Check-in & Race Pick-up",
+              location: "Evergrande Venice Resort",
+            },
+            {
+              time: "15:00 – 16:00",
+              title: "Adult Swimming Test (swim crossing and triathlon)",
+              location: "Evergrande Venice Resort",
+            },
+            {
+              time: "14:00 – 18:00",
+              title: "Repair & Transition Area Open",
+              location: "Evergrande Venice Resort",
+            },
+            {
+              time: "10:00 – 15:30",
+              title: "Kids Triathlon Transition Area Open",
+              location: "Evergrande Venice Resort",
+            },
+            {
+              time: "10:00 – 11:00",
+              title: "Kids Swimming Test",
+              location: "Beach",
+            },
+            {
+              time: "11:30 – 11:45",
+              title: "Kids Briefing & Warm-up",
+              location: "Beach",
+            },
+            {
+              time: "11:45",
+              title: "Kids Triathlon Wave Start",
+              location: "Beach",
+            },
+            {
+              time: "13:30",
+              title: "Kids Triathlon Cut-off",
+              location: "Evergrande Venice Resort",
+            },
+            {
+              time: "13:30 – 14:00",
+              title: "Kids Triathlon Award Ceremony",
+              location: "Evergrande Venice Resort",
+            },
+          ],
+        },
+        {
+          id: "sunday",
+          date: "1 Nov",
+          title: "Sunday",
+          subtitle: "Race Day",
+          events: [
+            {
+              time: "05:00 – 06:30",
+              title: "Transition Area Open",
+              location: "Evergrande Venice Resort",
+            },
+            {
+              time: "06:15 – 06:45",
+              title: "Check-in & wait at start",
+              location: "Beach",
+            },
+            {
+              time: "07:00",
+              title: "TRITON 1 Start: LONG > MIDDLE > SPRINT",
+              location: "Beach",
+            },
+            {
+              isCutoff: true,
+              title: "TRITON 1 Swim Cut-off",
+              details: [
+                { label: "SPRINT", value: "30m" },
+                { label: "MIDDLE", value: "1h" },
+                { label: "LONG", value: "1h30" },
+              ],
+            },
+            {
+              isCutoff: true,
+              title: "TRITON 1 Bike Cut-off",
+              details: [
+                { label: "SPRINT", value: "1h" },
+                { label: "MIDDLE", value: "2h" },
+                { label: "LONG", value: "5h" },
+              ],
+            },
+            {
+              isCutoff: true,
+              title: "TRITON 1 Run Cut-off",
+              details: [
+                { label: "SPRINT", value: "30m" },
+                { label: "MIDDLE", value: "1h" },
+                { label: "LONG", value: "2h" },
+              ],
+            },
+            {
+              time: "08:00 – 11:00",
+              title: "Swim Crossing Staggered Check-in",
+              location: "Beach",
+            },
+            {
+              time: "09:00",
+              title: "Swim Crossing Wave Start",
+              location: "Beach",
+            },
+            {
+              time: "14:30",
+              title: "Swim Crossing Cut-off",
+              location: "Beach",
+            },
+            {
+              time: "09:00 – 12:30",
+              title: "Award Ceremonies",
+              location: "Beach",
+            },
+          ],
+        },
+      ],
+      importantNote: "",
+    },
+    locations: {
+      description: "Plan your trip and make the most of your TRITON experience in Qidong. Enjoy a fast-growing coastal destination with unique local culture, fresh seafood, and scenic courses where the rivers meet the sea.",
+      experience: {
+        image: touristCoast, // Placeholder
+        pois: [
+          {
+            icon: "Compass",
+            title: "EXPLORE YUANTUOJIAO",
+            desc: "Discover one of China’s most unique coastal destinations, located where the mighty Yangtze River meets the East China Sea. Enjoy stunning waterfront landscapes, peaceful beaches, and the relaxing atmosphere of Yuantuojiao Tourist Resort.",
+          },
+          {
+            icon: "Anchor",
+            title: "COASTLINE & BEACHES",
+            desc: "Explore Qidong’s scenic coastline, featuring beachfront promenades, oceanfront parks, and expansive open spaces perfect for walking, relaxing, and enjoying the seaside environment.",
+          },
+          {
+            icon: "Utensils",
+            title: "SEAFOOD & LOCAL FLAVORS",
+            desc: "Savor Qidong’s renowned fresh seafood and the authentic flavors of Jiangsu cuisine, celebrated for its refined taste, premium ingredients, and regional specialties.",
+          },
+          {
+            icon: "Palmtree",
+            title: "CULTURE & HERITAGE",
+            desc: "Experience the rich cultural heritage of Jiangsu Province, where centuries of history, traditional Chinese architecture, and warm local hospitality come together.",
+          },
+        ],
+      },
+      logistics: [
+        {
+          icon: "Plane",
+          title: "PVG Airport",
+          detail: "110 km",
+          sub: "~90min",
+          color: "from-blue-500/20",
+        },
+        {
+          icon: "Navigation",
+          title: "Shanghai Station",
+          detail: "115km",
+          sub: "~1h 15min",
+          color: "from-green-500/20",
+        },
+        {
+          icon: "Car",
+          title: "Bridge Access",
+          detail: "G40 Highway",
+          sub: "Direct Connection",
+          color: "from-purple-500/20",
+        },
+        {
+          icon: "MapPin",
+          title: "Location",
+          detail: "QIDONG",
+          sub: "YUANTUOJIAO TOURIST RESORT",
+          color: "from-red-500/20",
+        },
+      ],
+      resort: {
+        image: qidongHotel, // Placeholder
+        title: "Yuantuojiao Resort",
+        description:
+          "One of China's largest seaside resorts, offering direct beach access, premium facilities, and the ideal race-week atmosphere. ",
+        benefits: [
+          "Exclusive rates for TRITON athletes",
+          "Early race-day breakfast",
+          "Late check-out available",
+        ],
+        buttonText: "Book Now",
+        whatsappLink: "#",
+      },
+    },
+    partners: [
+      {
+        name: "Marathon Photos",
+        logo: "/images/partners/marathon-photos-logo.png",
+        url: ""
+      },
+    ]
+  },
+ "lisboa-2026": {
+    id: "lisboa-2026",
+    slug: "lisboa-2026",
+    eventFormat: "triton1",
+    title: "Lisboa",
+    subtitle: "TRITON 1",
+    location: "Parque das Nações",
+    venue: "Lisbon, Portugal",
+    country: "Portugal",
+    flag: "🇵🇹",
+    status: "Confirmed",
+    year: 2026,
+    dateText: "SEP 06",
+    fullDateText: "September 6, 2026",
+    targetDate: "2026-09-06T08:00:00",
+    language: "en",
+    registrationLink: "https://register.hakuapp.com/?event=9ce0f9c87c1b43a8b97a",
+    hero: {
+      backgroundImage: heroImgLisboa,
+      logoImage: logoLisboa,
+    },
+    info: {
+      title: "Lisbon Triton",
+      subtitle: "Race in the heart of Portugal",
+      description:
+        "Experience the beautiful coast of Lisbon in this epic TRITON 1 event.",
+    },
+    scoring: {
+      title: "GLOBAL POINTS",
+      description: "Earn points for the global ranking.",
+    },
+    formats: {
+      swim: {
+        day: "Dia 1",
+        date: "21 de Agosto (sexta)",
+        startTime: "15:30",
+        image: swimPicLisboa,
+        title: "Natação",
+        description:`
+            <p>The swim takes place in Doca dos Olivais, a man-made lake located next to Lisbon’s iconic waterfront. Athletes enter the water from the Oceanário de Lisboa side, with the course positioned just a short distance from the transition area for a smooth race experience.</p>
+            <br>
+            <p>With calm, still waters and an average temperature of 18°C to 19°C (64°F–66°F), the venue offers excellent conditions for athletes. </p>
+            <br>
+            <p>The swim course is designed as a loop format</p>
+            <ul class="list-disc pl-5 pt-4">
+                <li>SPRINT — 1 lap</li>
+                <li>MIDDLE — 2 laps</li>
+                <li>LONG — 3 laps</li>
+            </ul>
+            <br>
+            <p>Waves are, SPRINT  first, MIDDLE second and LONG, third. The number of waves for each distance may vary according to the number of participants.</p>
+
+          
+            `,
+        distances: [
+          { label: "Sprint", val: "600m", p: 33 },
+          { label: "Middle", val: "1200m", p: 66 },
+          { label: "Long", val: "1800m", p: 100 },
+        ],
+
+        stravaId: "3442186454436027514",
+      },
+      bike: {
+        day: "Dia 2",
+        date: "22 de Agosto (sábado)",
+        startTime: "08:00",
+        image: bikePicLisboa,
+        title: "Ciclismo",
+        description:`
+             <strong>100% CLOSED TO TRAFFIC</strong>
+             <br><br>
+            <p>One of the few urban triathlon bike courses in Lisbon that is fully closed to traffic, providing a safe and fast racing experience.</p>
+            <p>The course is a 21.5 km multi-lap circuit:</p><br>
+            <ul class="list-disc pl-5">
+                <li>SPRINT — 1 lap</li>
+                <li>MIDDLE — 2 laps</li>
+                <li>LONG — 4 laps</li>
+            </ul>
+            <br>
+<p>Starting from Transition, athletes head north along Avenida D. João II before joining the IC2 highway. The course is predominantly flat and fast, featuring gentle rolling terrain and a gradual 1 km climb near the turnaround point.</p><br>
+<p>A Bike Aid Station is located at the turnaround area and is accessible at the start of each new lap. Please note that littering is only permitted within the designated aid station zone and may result in disqualification if done elsewhere.</p>
+
+
+            `,
+        distances: [  
+          { label: "Sprint", val: "21.5km", p: 33 },
+          { label: "Middle", val: "43km", p: 66 },
+          { label: "Long", val: "86km", p: 100 },
+        ],
+        stravaId: "3442190057377176544",
+        details: [
+          "Retorno Sprint: ~4,5 km após Macundu",
+          "Hidratação Middle & Long: ~10 km após Macundu",
+          "Retorno Middle & Long (Rio Claro): ~7,5 km após o ponto de hidratação",
+          "Chegada: ~3 km após Macundu (sentido Mangaratiba)",
+          "Descida neutralizada: ~14 km",
+          "Vácuo liberado (Proibido bike de TT)",
+        ],
+      },
+      run: {
+        day: "Dia 3",
+        date: "23 de Agosto (domingo)",
+        startTime: "08:00",
+        image: runPicLisboa,
+        title: "Corrida",
+        description: `
+        <p>The run course starts from the Transition Zone and follows a flat, multi-lap route, creating an exciting and spectator-friendly atmosphere throughout the race.</p><br>
+
+        <strong>The course is a 5 km multi-lap circuit:</strong><br><br>
+
+        <ul class="list-disc pl-5">
+                <li>SPRINT — 1 lap</li>
+                <li>MIDDLE — 2 laps</li>
+                <li>LONG — 4 laps</li>
+            </ul>
+            <br>
+        <p>Athletes will find one aid station approximately every 2.5 km, located near the midpoint of the course. One turnaround point is positioned near the iconic Vasco da Gama Bridge, one of the longest bridges in Europe, while the other is located closer to the Transition Zone.</p><br>
+        <p>The Finish Line is located on Rossio dos Olivais, directly in front of Doca dos Olivais and the Vasco da Gama Mall, where the Recovery Zone awaits finishers.</p><br>
+        
+            `,
+        distances: [
+          { label: "Sprint", val: "5km", p: 33 },
+          { label: "Middle", val: "10km", p: 66 },
+          { label: "Long", val: "20km", p: 100 },
+        ],
+        stravaId: "3442184922483070074",
+      },
+      distanceTable: [
+      {
+        "name": "SPRINT",
+        "swim": "600m",
+        "bike": "21.5km",
+        "run": "5km"
+      },
+      {
+        "name": "MIDDLE",
+        "swim": "1200m",
+        "bike": "43km",
+        "run": "10km"
+      },
+      {
+        "name": "LONG",
+        "swim": "1800m",
+        "bike": "86km",
+        "run": "20km"
+      }
+    ],
+    },
+    schedule: {
+      title: "AGENDA",
+      subtitle: "Planning your journey",
+      days: [
+        {
+          id: "friday",
+          date: "4 Sept",
+          title: "Friday",
+          subtitle: "RACE DAY 1 - THE SWIM",
+          events: [
+            {
+              time: "09:00 – 18:00",
+              title: "No Activities Scheduled",
+              location: "",
+            },
+          ],
+        },
+        {
+          id: "saturday",
+          date: "5 Sept",
+          title: "Saturday",
+          subtitle: "RACE DAY 2 – THE BIKE",
+          events: [
+            {
+              time: "10:00 – 19:00",
+              title: "Race Office",
+              location: "TBC",
+            },
+            {
+              time: "10:00 – 19:00",
+              title: "Expo Village",
+              location: "Parque das Nações",
+            },
+            {
+              time: "16:30",
+              title: "Kids & Parents, Swim & Run",
+              location: "Docas dos Olivais",
+            },
+            {
+              time: "16:30 - 17:30",
+              title: "Swim course practice",
+              location: "Docas dos Olivais",
+            },
+            {
+              time: "19:00",
+              title: "Welcome Dinner Party",
+              location:
+                "Location TBC",
+            },
+          ],
+        },
+        {
+          id: "sunday",
+          date: "5 Sept",
+          title: "Sunday",
+          subtitle: "RACE DAY 3 - THE RUN",
+          events: [
+            {
+              time: "04:10 – 05:40",
+              title: "Last minute Race office",
+              location:  "TBC",
+            },
+            {
+              time: "07:00 - 16:00",
+              title: "Expo Village",
+              location: "Parque das Nações",
+            },
+            {
+              time: "07:00",
+              title: "Swim warm up",
+              location: "Doca dos Olivais",
+            },
+             {
+              time: "07:30",
+              title: "START SPRINT AND CORPORATE RELAY",
+              location: "Doca dos Olivais",
+            },
+            {
+              time: "07:33",
+              title: "START MIDDLE",
+              location: "Doca dos Olivais",
+            },
+             {
+              time: "07:36",
+              title: "START LONG",
+              location: "Doca dos Olivais",
+            },
+            // {
+            //   isCutoff: true,
+            //   title: "Tempos de Corte da Natação",
+            //   details: [
+            //     { label: "SPRINT", value: "20min" },
+            //     { label: "MIDDLE", value: "40min" },
+            //     { label: "LONG", value: "1h00" },
+            //   ],
+            // },
+            // {
+            //   isCutoff: true,
+            //   title: "Tempos de Corte da Ciclismo",
+            //   details: [
+            //     { label: "SPRINT", value: "1h00" },
+            //     { label: "MIDDLE", value: "2h00" },
+            //     { label: "LONG", value: "3h00" },
+            //   ],
+            // },
+            // {
+            //   isCutoff: true,
+            //   title: "Tempos de Corte da Corrida",
+            //   details: [
+            //     { label: "SPRINT", value: "40min" },
+            //     { label: "MIDDLE", value: "1h00" },
+            //     { label: "LONG", value: "2h00" },
+            //   ],
+            // },
+            
+           
+          ],
+        },
+      ],
+      importantNote: "",
+    },
+    locations: {
+      description: "O TRITON Rio 26 acontece em Mangaratiba, um destino que combina o melhor da Serra do Mar com a Costa Verde. Planeje sua viagem, escolha seu hotel parceiro e prepare-se para uma experiência que vai além da competição.",
+      experience: {
+        image: lisboaExperienceImage,
+        pois: [
+          {
+            icon: "Compass",
+            title: "Explore a Lisbon",
+            desc: "Discover Lisbon’s historic heart, from the charming streets of Alfama and Baixa to the iconic Belém district. Experience centuries of history, traditional architecture, and the vibrant atmosphere of Portugal’s capital.",
+          },
+          {
+            icon: "Anchor",
+            title: "COASTLINE & BEACHES",
+            desc: "Enjoy Lisbon’s Atlantic coastline, with easy access to famous beaches such as Cascais, Carcavelos, and Costa da Caparica. Perfect for relaxation, outdoor activities, and family moments.",
+          },
+          {
+            icon: "Utensils",
+            title: "PORTUGUESE GASTRONOMY",
+            desc: "Savor Portugal’s renowned cuisine, from fresh seafood and traditional dishes to the iconic Pastéis de Belém. Lisbon offers authentic flavors at every turn.",
+          },
+          {
+            icon: "Palmtree",
+            title: "CULTURE & LOCAL EXPERIENCES",
+            desc: "Experience Lisbon through Fado, lively squares, riverside sunsets, local markets, and cultural attractions. A city full of unique experiences beyond race weekend.",
+          },
+        ],
+      },
+      logistics: [
+        {
+          icon: "Plane",
+          title: "LIS Aeroporto",
+          detail: "4 km",
+          sub: "~10min",
+          color: "from-blue-500/20",
+        },
+        {
+          icon: "Track",
+          title: "Metro & Train",
+          detail: "ORIENTE STATION",
+          sub: "2 min walk",
+          color: "from-green-500/20",
+        },
+        {
+          icon: "Car",
+          title: "ROAD ACCESS",
+          detail: "A1 & A2",
+          sub: "National & International Links ",
+          color: "from-purple-500/20",
+        },
+        {
+          icon: "MapPin",
+          title: "LOCATION",
+          detail: "PQ. DAS NAÇÕES",
+          sub: "Lisbon",
+          color: "from-red-500/20",
+        },
+      ],
+      resort: {
+        image: fotoResortLisboa,
+        title: "Tivoli",
+        description:
+          "The Tivoli Oriente Lisboa Hotel is the official hotel of TRITON Lisboa, offering exclusive discounts for athletes and their families.",
+        benefits: [
+          "700m from the race arena",
+          "Enjoy the special rates",
+          "Use code: NHTORIWED ",
+        ],
+        buttonText: "Contact Us",
+        whatsappLink:
+          "https://www.nh-hotels.com/pt/hoteis/lisboa",
+      },
+    },
+    afterMovie:{
+      youtubeSrc:"uF-G6jTNDLQ?si=qfYeZlMsdkWxfshZ"
+    },
+    testimonial: {
+      youtubeSrc:"",
+      testimonials: [{
+      "avatar_url": "/images/atletas/viviane.jpeg",
+      "quote": "Quantas lições em um único final de semana. Foram 3 dias, 3 esportes, 3 humores e unimeras variações de sentimentos. No Triton 3 pude me testar, exercitar a paciência e também o carinho comigo mesma. ",
+      "author": "Viviane",
+      "company": "TechFlow",
+      "link_social": ""
+    },
+    {
+      "avatar_url": "/images/atletas/elida.jpeg",
+      "quote": "Que fim de semana incrível! Obrigada Triton pela experiência única. Levo para casa uma recordação cheias de boas energias e momentos especiais...",
+      "author": "Elida",
+      "company": "TechFlow",
+      "link_social": ""
+    },
+    {
+      "avatar_url": "/images/atletas/bizarelo.jpeg",
+      "quote": "Que dia incrível e que dia forte! Obrigado TRITON pela prova top, segura e com visual fantástico",
+      "author": "Bizarelo",
+      "company": "TechFlow",
+      "link_social": ""
+    }]
+  },
+    
+    partners: [
+      {
+        name: "Prouder",
+        logo: "/images/partners/prouder-logo.png",
+        url: "#"
+      },
+    ]
+  },
   "salvador-2027": {
     id: "salvador-2027",
     slug: "salvador-2027",
@@ -1301,384 +2048,6 @@ export const EVENT_DATA_MAP: Record<string, EventData> = {
       {
         name: "Esportiva Bet",
         logo: "/images/eventos/salvador-2027/esportiva-bet-logo.png",
-        url: "#"
-      },
-    ]
-  },
-  
-  "lisboa-2026": {
-    id: "lisboa-2026",
-    slug: "lisboa-2026",
-    eventFormat: "triton1",
-    title: "Lisboa",
-    subtitle: "TRITON 1",
-    location: "Parque das Nações",
-    venue: "Lisbon, Portugal",
-    country: "Portugal",
-    flag: "🇵🇹",
-    status: "Confirmed",
-    year: 2026,
-    dateText: "SEP 06",
-    fullDateText: "September 6, 2026",
-    targetDate: "2026-09-06T08:00:00",
-    language: "en",
-    registrationLink: "https://register.hakuapp.com/?event=9ce0f9c87c1b43a8b97a",
-    hero: {
-      backgroundImage: heroImgLisboa,
-      logoImage: logoLisboa,
-    },
-    info: {
-      title: "Lisbon Triton",
-      subtitle: "Race in the heart of Portugal",
-      description:
-        "Experience the beautiful coast of Lisbon in this epic TRITON 1 event.",
-    },
-    scoring: {
-      title: "GLOBAL POINTS",
-      description: "Earn points for the global ranking.",
-    },
-    formats: {
-      swim: {
-        day: "Dia 1",
-        date: "21 de Agosto (sexta)",
-        startTime: "15:30",
-        image: swimPicLisboa,
-        title: "Natação",
-        description:`
-            <p>The swim takes place in Doca dos Olivais, a man-made lake located next to Lisbon’s iconic waterfront. Athletes enter the water from the Oceanário de Lisboa side, with the course positioned just a short distance from the transition area for a smooth race experience.</p>
-            <br>
-            <p>With calm, still waters and an average temperature of 18°C to 19°C (64°F–66°F), the venue offers excellent conditions for athletes. </p>
-            <br>
-            <p>The swim course is designed as a loop format</p>
-            <ul class="list-disc pl-5 pt-4">
-                <li>SPRINT — 1 lap</li>
-                <li>MIDDLE — 2 laps</li>
-                <li>LONG — 3 laps</li>
-            </ul>
-            <br>
-            <p>Waves are, SPRINT  first, MIDDLE second and LONG, third. The number of waves for each distance may vary according to the number of participants.</p>
-
-          
-            `,
-        distances: [
-          { label: "Sprint", val: "600m", p: 33 },
-          { label: "Middle", val: "1200m", p: 66 },
-          { label: "Long", val: "1800m", p: 100 },
-        ],
-
-        stravaId: "3442186454436027514",
-      },
-      bike: {
-        day: "Dia 2",
-        date: "22 de Agosto (sábado)",
-        startTime: "08:00",
-        image: bikePicLisboa,
-        title: "Ciclismo",
-        description:`
-             <strong>100% CLOSED TO TRAFFIC</strong>
-             <br><br>
-            <p>One of the few urban triathlon bike courses in Lisbon that is fully closed to traffic, providing a safe and fast racing experience.</p>
-            <p>The course is a 21.5 km multi-lap circuit:</p><br>
-            <ul class="list-disc pl-5">
-                <li>SPRINT — 1 lap</li>
-                <li>MIDDLE — 2 laps</li>
-                <li>LONG — 4 laps</li>
-            </ul>
-            <br>
-<p>Starting from Transition, athletes head north along Avenida D. João II before joining the IC2 highway. The course is predominantly flat and fast, featuring gentle rolling terrain and a gradual 1 km climb near the turnaround point.</p><br>
-<p>A Bike Aid Station is located at the turnaround area and is accessible at the start of each new lap. Please note that littering is only permitted within the designated aid station zone and may result in disqualification if done elsewhere.</p>
-
-
-            `,
-        distances: [  
-          { label: "Sprint", val: "21.5km", p: 33 },
-          { label: "Middle", val: "43km", p: 66 },
-          { label: "Long", val: "86km", p: 100 },
-        ],
-        stravaId: "3442190057377176544",
-        details: [
-          "Retorno Sprint: ~4,5 km após Macundu",
-          "Hidratação Middle & Long: ~10 km após Macundu",
-          "Retorno Middle & Long (Rio Claro): ~7,5 km após o ponto de hidratação",
-          "Chegada: ~3 km após Macundu (sentido Mangaratiba)",
-          "Descida neutralizada: ~14 km",
-          "Vácuo liberado (Proibido bike de TT)",
-        ],
-      },
-      run: {
-        day: "Dia 3",
-        date: "23 de Agosto (domingo)",
-        startTime: "08:00",
-        image: runPicLisboa,
-        title: "Corrida",
-        description: `
-        <p>The run course starts from the Transition Zone and follows a flat, multi-lap route, creating an exciting and spectator-friendly atmosphere throughout the race.</p><br>
-
-        <strong>The course is a 5 km multi-lap circuit:</strong><br><br>
-
-        <ul class="list-disc pl-5">
-                <li>SPRINT — 1 lap</li>
-                <li>MIDDLE — 2 laps</li>
-                <li>LONG — 4 laps</li>
-            </ul>
-            <br>
-        <p>Athletes will find one aid station approximately every 2.5 km, located near the midpoint of the course. One turnaround point is positioned near the iconic Vasco da Gama Bridge, one of the longest bridges in Europe, while the other is located closer to the Transition Zone.</p><br>
-        <p>The Finish Line is located on Rossio dos Olivais, directly in front of Doca dos Olivais and the Vasco da Gama Mall, where the Recovery Zone awaits finishers.</p><br>
-        
-            `,
-        distances: [
-          { label: "Sprint", val: "5km", p: 33 },
-          { label: "Middle", val: "10km", p: 66 },
-          { label: "Long", val: "20km", p: 100 },
-        ],
-        stravaId: "3442184922483070074",
-      },
-      distanceTable: [
-      {
-        "name": "SPRINT",
-        "swim": "600m",
-        "bike": "21.5km",
-        "run": "5km"
-      },
-      {
-        "name": "MIDDLE",
-        "swim": "1200m",
-        "bike": "43km",
-        "run": "10km"
-      },
-      {
-        "name": "LONG",
-        "swim": "1800m",
-        "bike": "86km",
-        "run": "20km"
-      }
-    ],
-    },
-    schedule: {
-      title: "AGENDA",
-      subtitle: "Planning your journey",
-      days: [
-        {
-          id: "friday",
-          date: "4 Sept",
-          title: "Friday",
-          subtitle: "RACE DAY 1 - THE SWIM",
-          events: [
-            {
-              time: "09:00 – 18:00",
-              title: "No Activities Scheduled",
-              location: "",
-            },
-          ],
-        },
-        {
-          id: "saturday",
-          date: "5 Sept",
-          title: "Saturday",
-          subtitle: "RACE DAY 2 – THE BIKE",
-          events: [
-            {
-              time: "10:00 – 19:00",
-              title: "Race Office",
-              location: "TBC",
-            },
-            {
-              time: "10:00 – 19:00",
-              title: "Expo Village",
-              location: "Parque das Nações",
-            },
-            {
-              time: "16:30",
-              title: "Kids & Parents, Swim & Run",
-              location: "Docas dos Olivais",
-            },
-            {
-              time: "16:30 - 17:30",
-              title: "Swim course practice",
-              location: "Docas dos Olivais",
-            },
-            {
-              time: "19:00",
-              title: "Welcome Dinner Party",
-              location:
-                "Location TBC",
-            },
-          ],
-        },
-        {
-          id: "sunday",
-          date: "5 Sept",
-          title: "Sunday",
-          subtitle: "RACE DAY 3 - THE RUN",
-          events: [
-            {
-              time: "04:10 – 05:40",
-              title: "Last minute Race office",
-              location:  "TBC",
-            },
-            {
-              time: "07:00 - 16:00",
-              title: "Expo Village",
-              location: "Parque das Nações",
-            },
-            {
-              time: "07:00",
-              title: "Swim warm up",
-              location: "Doca dos Olivais",
-            },
-             {
-              time: "07:30",
-              title: "START SPRINT AND CORPORATE RELAY",
-              location: "Doca dos Olivais",
-            },
-            {
-              time: "07:33",
-              title: "START MIDDLE",
-              location: "Doca dos Olivais",
-            },
-             {
-              time: "07:36",
-              title: "START LONG",
-              location: "Doca dos Olivais",
-            },
-            // {
-            //   isCutoff: true,
-            //   title: "Tempos de Corte da Natação",
-            //   details: [
-            //     { label: "SPRINT", value: "20min" },
-            //     { label: "MIDDLE", value: "40min" },
-            //     { label: "LONG", value: "1h00" },
-            //   ],
-            // },
-            // {
-            //   isCutoff: true,
-            //   title: "Tempos de Corte da Ciclismo",
-            //   details: [
-            //     { label: "SPRINT", value: "1h00" },
-            //     { label: "MIDDLE", value: "2h00" },
-            //     { label: "LONG", value: "3h00" },
-            //   ],
-            // },
-            // {
-            //   isCutoff: true,
-            //   title: "Tempos de Corte da Corrida",
-            //   details: [
-            //     { label: "SPRINT", value: "40min" },
-            //     { label: "MIDDLE", value: "1h00" },
-            //     { label: "LONG", value: "2h00" },
-            //   ],
-            // },
-            
-           
-          ],
-        },
-      ],
-      importantNote: "",
-    },
-    locations: {
-      description: "O TRITON Rio 26 acontece em Mangaratiba, um destino que combina o melhor da Serra do Mar com a Costa Verde. Planeje sua viagem, escolha seu hotel parceiro e prepare-se para uma experiência que vai além da competição.",
-      experience: {
-        image: lisboaExperienceImage,
-        pois: [
-          {
-            icon: "Compass",
-            title: "Explore a Lisbon",
-            desc: "Discover Lisbon’s historic heart, from the charming streets of Alfama and Baixa to the iconic Belém district. Experience centuries of history, traditional architecture, and the vibrant atmosphere of Portugal’s capital.",
-          },
-          {
-            icon: "Anchor",
-            title: "COASTLINE & BEACHES",
-            desc: "Enjoy Lisbon’s Atlantic coastline, with easy access to famous beaches such as Cascais, Carcavelos, and Costa da Caparica. Perfect for relaxation, outdoor activities, and family moments.",
-          },
-          {
-            icon: "Utensils",
-            title: "PORTUGUESE GASTRONOMY",
-            desc: "Savor Portugal’s renowned cuisine, from fresh seafood and traditional dishes to the iconic Pastéis de Belém. Lisbon offers authentic flavors at every turn.",
-          },
-          {
-            icon: "Palmtree",
-            title: "CULTURE & LOCAL EXPERIENCES",
-            desc: "Experience Lisbon through Fado, lively squares, riverside sunsets, local markets, and cultural attractions. A city full of unique experiences beyond race weekend.",
-          },
-        ],
-      },
-      logistics: [
-        {
-          icon: "Plane",
-          title: "LIS Aeroporto",
-          detail: "4 km",
-          sub: "~10min",
-          color: "from-blue-500/20",
-        },
-        {
-          icon: "Track",
-          title: "Metro & Train",
-          detail: "ORIENTE STATION",
-          sub: "2 min walk",
-          color: "from-green-500/20",
-        },
-        {
-          icon: "Car",
-          title: "ROAD ACCESS",
-          detail: "A1 & A2",
-          sub: "National & International Links ",
-          color: "from-purple-500/20",
-        },
-        {
-          icon: "MapPin",
-          title: "LOCATION",
-          detail: "PQ. DAS NAÇÕES",
-          sub: "Lisbon",
-          color: "from-red-500/20",
-        },
-      ],
-      resort: {
-        image: fotoResortLisboa,
-        title: "Tivoli",
-        description:
-          "The Tivoli Oriente Lisboa Hotel is the official hotel of TRITON Lisboa, offering exclusive discounts for athletes and their families.",
-        benefits: [
-          "700m from the race arena",
-          "Enjoy the special rates",
-          "Use code: NHTORIWED ",
-        ],
-        buttonText: "Contact Us",
-        whatsappLink:
-          "https://www.nh-hotels.com/pt/hoteis/lisboa",
-      },
-    },
-    afterMovie:{
-      youtubeSrc:"uF-G6jTNDLQ?si=qfYeZlMsdkWxfshZ"
-    },
-    testimonial: {
-      youtubeSrc:"",
-      testimonials: [{
-      "avatar_url": "/images/atletas/viviane.jpeg",
-      "quote": "Quantas lições em um único final de semana. Foram 3 dias, 3 esportes, 3 humores e unimeras variações de sentimentos. No Triton 3 pude me testar, exercitar a paciência e também o carinho comigo mesma. ",
-      "author": "Viviane",
-      "company": "TechFlow",
-      "link_social": ""
-    },
-    {
-      "avatar_url": "/images/atletas/elida.jpeg",
-      "quote": "Que fim de semana incrível! Obrigada Triton pela experiência única. Levo para casa uma recordação cheias de boas energias e momentos especiais...",
-      "author": "Elida",
-      "company": "TechFlow",
-      "link_social": ""
-    },
-    {
-      "avatar_url": "/images/atletas/bizarelo.jpeg",
-      "quote": "Que dia incrível e que dia forte! Obrigado TRITON pela prova top, segura e com visual fantástico",
-      "author": "Bizarelo",
-      "company": "TechFlow",
-      "link_social": ""
-    }]
-  },
-    
-    partners: [
-      {
-        name: "Prouder",
-        logo: "/images/partners/prouder-logo.png",
         url: "#"
       },
     ]
