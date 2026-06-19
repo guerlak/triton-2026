@@ -1651,11 +1651,37 @@ export const EVENT_DATA_MAP: Record<string, EventData> = {
   },
     
     partners: [
+      
       {
-        name: "Prouder",
-        logo: "/images/partners/prouder-logo.png",
+        name: "Câmara Municipal de Lisboa",
+        logo: "/images/eventos/lisboa-2026/partners/logo-camara-lisboa.png",
         url: "#"
       },
+      {
+        name: "Instituto Português do Desporto e Juventude",
+        logo: "/images/eventos/lisboa-2026/partners/logo-instituto-portugues.png",
+        url: "#"
+      },
+      {
+        name: "Loff",
+        logo: "/images/eventos/lisboa-2026/partners/logo-loff.png",
+        url: "#"
+      },
+      {
+        name: "Parque das Nações",
+        logo: "/images/eventos/lisboa-2026/partners/logo-parque-nacoes.png",
+        url: "#"
+      },
+      {
+        name: "Snupe",
+        logo: "/images/eventos/lisboa-2026/partners/logo-snupe.png",
+        url: "#"
+      },
+      {
+        name: "Tivoli",
+        logo: "/images/eventos/lisboa-2026/partners/logo-tivoli.png",
+        url: "#"
+      }
     ]
   },
   "salvador-2027": {
