@@ -21,7 +21,7 @@ export const metadata: Metadata = {
   authors: [{ name: "TRITON World Series Team" }],
   openGraph: {
     title: "TRITON World Series | Global Triathlon Platform",
-    description: "Discover the standard global triathlon series designed for progression, performance, and international competition.",
+    description: "Discover the new global triathlon series platform design for progression, performance, and reward.",
     url: "https://tritonworldseries.com",
     siteName: "TRITON World Series",
     locale: "en_US",

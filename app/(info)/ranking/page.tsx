@@ -1,20 +1,20 @@
 import RankingPageClient from "./RankingPageClient";
 import Heading from "../../ui/Heading";
 import { ApiRankingRepo } from "@/repositories/ApiRankingRepo";
-import { fetchDetails, fetchGeneralRanking } from "@/services/RankingService";
+import { fetchGeneralRanking } from "@/services/RankingService";
 import HallOfFame from "./HallOfFame";
 import { Award, Trophy } from "lucide-react";
 import Image from "next/image";
+import { Metadata } from 'next';
 
-
-export const metadata = {
+export const metadata: Metadata = {
   title: "Ranking | Triton World Series",
   description: "Check the global standings and points for all Triton World Series athletes.",
 };
 
 export default async function RankingPage() {
-  const data = await fetchGeneralRanking(new ApiRankingRepo());
 
+  const data = await fetchGeneralRanking(new ApiRankingRepo());
 
   if (!data) {
     return (

@@ -952,7 +952,7 @@ export const EVENT_DATA_MAP: Record<string, EventData> = {
         date: "21 de Agosto (sexta)",
         startTime: "15:30",
         image: "",
-        video: "https://www.youtube.com/embed/",
+        video: "https://www.youtube.com/embed/iM_ot3vSexQ?si=ETtFTJHWSe3DN1qJ",
         title: "Natação",
         description:`
           <p>The swim race will take place at Bihai Yintan Scenic Area Beach, renowned for its calm waters, natural shelter from ocean swells, and excellent visibility.</p>
@@ -987,7 +987,7 @@ export const EVENT_DATA_MAP: Record<string, EventData> = {
         date: "22 de Agosto (sábado)",
         startTime: "08:00",
        image: "",
-        video: "https://www.youtube.com/embed/",
+        video: "https://www.youtube.com/embed/ChnAi8MZARI?si=F0K-K9Gd-MK5UgAO",
         title: "Ciclismo",
         description:`
           <p>The bike course follows scenic coastal roads renowned for their stunning views and recognized by National Geographic as one of the region's most remarkable routes.</p>
@@ -1016,7 +1016,7 @@ export const EVENT_DATA_MAP: Record<string, EventData> = {
         date: "23 de Agosto (domingo)",
         startTime: "08:00",
         image: "",
-        video: "https://www.youtube.com/embed/",
+        video: "https://www.youtube.com/embed/VbdfsFcu6bY?si=d76Tgzl6lQHNn_uO",
         title: "Running",
         description: `
           <p>
