@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Montserrat } from "next/font/google";
 import Footer from "./components/Footer";
+import { GoogleAnalytics } from '@next/third-parties/google';
 
 import "./globals.css";
 
@@ -65,6 +66,7 @@ export default async function RootLayout({
         {children}
         <Footer />
       </body>
+      <GoogleAnalytics gaId="G-B370GDSYNG" />
     </html>
   );
 }

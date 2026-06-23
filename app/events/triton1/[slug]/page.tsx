@@ -14,6 +14,16 @@ import InfoSectionTriton1 from "@/app/components/event/InfoSectionTriton1";
 import FormatsSectionTriton1 from "@/app/components/event/FormatsSectionTriton1";
 import PartnersSectionEvent from "@/app/components/event/PartnersSectionEvent";
 import AfterMovie from "@/app/components/AfterMovie";
+import { Metadata } from "next";
+
+export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }): Promise<Metadata> {
+  const { slug } = await params;
+  const data = EVENT_DATA_MAP[slug];
+
+  return {
+    title: `${data.title} | Triton`,
+  };
+}
 
 export default async function Page({ params }: { params: Promise<{ slug: string }> }) {
 
