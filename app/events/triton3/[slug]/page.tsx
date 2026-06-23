@@ -12,6 +12,7 @@ import { EVENT_DATA_MAP } from "@/eventdata";
 import { notFound } from "next/navigation";
 import PartnersSectionEvent from "@/app/components/event/PartnersSectionEvent";
 import AfterMovie from "@/app/components/AfterMovie";
+import { Metadata } from "next";
 
 export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }): Promise<Metadata> {
   const { slug } = await params;
