@@ -73,6 +73,7 @@ export interface EventData {
   targetDate: string;
   hero: EventHero;
   startListApiUrl?: string;
+  liveResutsUrl?: string;
 
   registrationLink: string;
   info: {
@@ -177,16 +178,16 @@ export const EVENT_DATA_MAP: Record<string, EventData> = {
     year: 2026,
     dateText: "ABR 12",
     fullDateText: "12 de Abril, 2026",
-    targetDate: "2026-04-12T08:00:00",
+    targetDate: "2026-06-22T08:00:00",
     language: "pt-BR",
     registrationLink:
       "https://www.ticketsports.com.br/e/triton-1-salvador-86852",
     startListApiUrl: "https://api.raceresult.com/371805/RQDKNSO0GU02BW4IF4X1G7AF12S073FW",
+    liveResutsUrl: "https://resultscui.active.com/events/TRITONSALVADOR2026",
     hero: {
       backgroundImage: heroImgSalvador, // Placeholder
       logoImage: logoSalvador,
     },
-   
     info: {
       title: "The Ultimate Challenge in Bahia",
       subtitle: "Race through History",

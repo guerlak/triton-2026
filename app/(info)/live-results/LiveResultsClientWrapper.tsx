@@ -60,7 +60,7 @@ const LiveResultsClientWrapper: React.FC<Props> = ({ initialAthletes }) => {
                 <th className="py-6 px-6">Athlete</th>
                 <th className="py-6 px-6">Distance</th>
                 <th className="py-6 px-6">Gender</th>
-                <th className="py-6 px-6 text-center text-triton-red">Age Group</th>
+                <th className="py-6 px-6 text-center">Age Group</th>
               </tr>
             </thead>
             <tbody>
@@ -71,7 +71,7 @@ const LiveResultsClientWrapper: React.FC<Props> = ({ initialAthletes }) => {
                     className="border-b border-white/5 hover:bg-white/5 transition-colors group"
                   >
                     <td className="py-5 px-8 text-center font-bold text-gray-400">
-                      #{athlete.Bib}
+                      {athlete.Bib}
                     </td>
                     <td className="py-5 px-6">
                       <div className="flex items-center gap-4">
@@ -86,19 +86,23 @@ const LiveResultsClientWrapper: React.FC<Props> = ({ initialAthletes }) => {
                       </div>
                     </td>
                     <td className="py-5 px-6 text-xs font-bold text-gray-400 uppercase tracking-wider">
-                      {athlete.Contest}
+                      <span className={`text-[10px] font-black uppercase px-2 py-1 rounded-md border 
+                        ${athlete.Contest === "Sprint Distance"
+                          ? "border-white/20 text-black bg-white/75"
+                          : athlete.Contest === "Middle Distance"
+                            ? "border-red-500/30 text-white bg-red-500/30"
+                            : "border-black/20 text-white bg-white/5"
+                        }`}>
+                        {athlete.Contest}
+                      </span>
                     </td>
                     <td className="py-5 px-6">
-                      <span className={`text-[10px] font-black uppercase px-2 py-1 rounded-md border 
-                        ${athlete.Gender === "Men"
-                          ? "border-blue-500/20 text-blue-400 bg-blue-500/5"
-                          : "border-pink-500/20 text-pink-400 bg-pink-500/5"
-                        }`}>
+                      <span className="text-[10px] font-black uppercase px-2 py-1 text-white/60 tracking-wider">
                         {athlete.Gender}
                       </span>
                     </td>
                     <td className="py-5 px-6 text-center">
-                      <span className="font-black text-triton-red text-xs uppercase tracking-widest bg-triton-red/5 px-3 py-1 rounded-full border border-triton-red/10">
+                      <span className="font-black text-white text-xs uppercase tracking-widest px-3 py-1 rounded-full">
                         {athlete.AgeGroup}
                       </span>
                     </td>

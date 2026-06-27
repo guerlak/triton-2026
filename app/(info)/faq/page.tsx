@@ -198,9 +198,9 @@ export default function FAQ() {
                                             <div className="space-y-4">
                                                 <p>All races include:</p>
                                                 <ul className="space-y-2 list-disc pl-5 text-gray-400">
-                                                    <li>Sprint (1 lap)</li>
-                                                    <li>Middle (2 laps)</li>
-                                                    <li>Long (3 laps)</li>
+                                                    <li>Sprint</li>
+                                                    <li>Middle</li>
+                                                    <li>Long</li>
                                                 </ul>
                                                 <p>Distances are adapted to local conditions, but always follow this structure.</p>
                                             </div>
