@@ -8,6 +8,9 @@ import { useState, useMemo } from "react";
 import Link from "next/link";
 import { redirect } from "next/navigation";
 
+import heroImg from "@/public/images/triton-about-002.png";
+import HeroSection from "@/app/ui/HeroSection";
+
 interface PastEvent {
   name: string;
   year: number;
@@ -30,7 +33,7 @@ const PAST_EVENTS: PastEvent[] = [
 ];
 
 export default function LiveResultsPage() {
-  redirect("/under-development");
+  //redirect("/under-development");
 
   const now = new Date();
   const [selectedEvent, setSelectedEvent] = useState<string>("All");
@@ -66,85 +69,84 @@ export default function LiveResultsPage() {
   }, [selectedEvent, selectedYear]);
 
   return (
-    <div className="bg-black min-h-[80vh] text-white font-sans selection:bg-triton-red selection:text-white flex flex-col justify-center items-center gap-24 py-16 px-4 relative overflow-hidden">
-      {/* Background glow effects */}
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] bg-triton-red/10 rounded-full blur-[120px] pointer-events-none" />
+    <div className="bg-black min-h-screen text-white font-sans selection:bg-triton-red selection:text-white flex flex-col justify-center items-center gap-24 relative overflow-hidden">
+      <HeroSection
+        backgroundImage={heroImg}
+        heightClass="h-[480px]"
+        darkFilter={true}
+        showChevron={false}
+      >
+        <div className="max-w-2xl w-full text-center relative z-10 mt-8 flex flex-col items-center">
+          {/* Pulsing indicator */}
+          <div className="relative w-24 h-24 mx-auto mb-8 flex items-center justify-center">
+            {liveEvent ? (
+              <>
+                <div className="absolute inset-0 rounded-full border border-triton-red/30 animate-ping opacity-75" />
+                <div className="absolute -inset-4 rounded-full border border-white/5 animate-pulse" />
+                <div className="absolute inset-0 rounded-full border-2 border-dashed border-triton-red/50 animate-[spin_10s_linear_infinite]" />
+                <div className="w-16 h-16 rounded-full bg-neutral-900 border border-white/10 flex items-center justify-center shadow-[0_0_25px_rgba(223,31,38,0.25)]">
+                  <Activity className="text-triton-red animate-pulse" size={28} />
+                </div>
+              </>
+            ) : (
+              <>
+                <div className="absolute inset-0 rounded-full border border-white/5" />
+                <div className="w-16 h-16 rounded-full bg-neutral-950 border border-white/10 flex items-center justify-center">
+                  <Activity className="text-neutral-500" size={28} />
+                </div>
+              </>
+            )}
+          </div>
 
-      {/* Live / Upcoming Event Section */}
-      <div className="max-w-2xl w-full text-center relative z-10">
-        {/* Pulsing indicator */}
-        <div className="relative w-24 h-24 mx-auto mb-8 flex items-center justify-center">
-          {liveEvent ? (
-            <>
-              <div className="absolute inset-0 rounded-full border border-triton-red/30 animate-ping opacity-75" />
-              <div className="absolute -inset-4 rounded-full border border-white/5 animate-pulse" />
-              <div className="absolute inset-0 rounded-full border-2 border-dashed border-triton-red/50 animate-[spin_10s_linear_infinite]" />
-              <div className="w-16 h-16 rounded-full bg-neutral-900 border border-white/10 flex items-center justify-center shadow-[0_0_25px_rgba(223,31,38,0.25)]">
-                <Activity className="text-triton-red animate-pulse" size={28} />
-              </div>
-            </>
-          ) : (
-            <>
-              <div className="absolute inset-0 rounded-full border border-white/5" />
-              <div className="w-16 h-16 rounded-full bg-neutral-950 border border-white/10 flex items-center justify-center">
-                <Activity className="text-neutral-500" size={28} />
-              </div>
-            </>
-          )}
+          {/* Badge */}
+          <div className={`inline-flex items-center gap-2 border px-4 py-1.5 rounded-full text-xs font-black uppercase tracking-widest mb-6 ${liveEvent
+            ? "bg-triton-red/10 border-triton-red/30 text-triton-red"
+            : "bg-white/5 border-white/10 text-neutral-400"
+            }`}>
+            {liveEvent ? (
+              <>
+                <span className="w-2.5 h-2.5 rounded-full bg-triton-red animate-ping" />
+                Event Live Now
+              </>
+            ) : (
+              <>
+                <span className="w-2.5 h-2.5 rounded-full bg-neutral-600" />
+                No Live Event
+              </>
+            )}
+          </div>
+
+          {/* Heading */}
+          <h1 className="text-5xl md:text-7xl font-black uppercase italic leading-none mb-6 tracking-tight">
+            {liveEvent ? (
+              <>
+                {liveEvent?.title} <span className="text-triton-red">{liveEvent?.subtitle}</span>
+              </>
+            ) : (
+              <>
+                Follow the Race <span className="text-triton-red">Live Results</span>
+              </>
+            )}
+          </h1>
+
+          {/* Description */}
+          <p className="text-gray-300 text-lg md:text-xl font-medium max-w-xl mx-auto mb-10 leading-relaxed">
+            {liveEvent
+              ? `Track real-time results from the ongoing ${liveEvent?.title} stage and stay on top of every move.`
+              : "Track real-time results from the next TRITON stage and stay on top of every move."
+            }
+          </p>
+
+          {/* Actions */}
+          <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
+            {liveEvent &&
+              <MainButton href={liveEvent?.liveResutsUrl || "#"}>
+                Go to Live Results
+              </MainButton>
+            }
+          </div>
         </div>
-
-        {/* Badge */}
-        <div className={`inline-flex items-center gap-2 border px-4 py-1.5 rounded-full text-xs font-black uppercase tracking-widest mb-6 ${liveEvent
-          ? "bg-triton-red/10 border-triton-red/30 text-triton-red"
-          : "bg-white/5 border-white/10 text-neutral-400"
-          }`}>
-          {liveEvent ? (
-            <>
-              <span className="w-2 h-2 rounded-full bg-triton-red animate-ping" />
-              Event Live Now
-            </>
-          ) : (
-            <>
-              <span className="w-2.5 h-2.5 rounded-full bg-neutral-600" />
-              No Live Event
-            </>
-          )}
-        </div>
-
-        {/* Heading */}
-        <h1 className="text-5xl md:text-7xl font-black uppercase italic leading-none mb-6 tracking-tight">
-          {liveEvent ? (
-            <>
-              {liveEvent?.title} <span className="text-triton-red">{liveEvent?.subtitle}</span>
-            </>
-          ) : (
-            <>
-              Follow the Race <span className="text-triton-red">Live Support</span>
-            </>
-          )}
-        </h1>
-
-        {/* Description */}
-        <p className="text-gray-300 text-lg md:text-xl font-medium max-w-xl mx-auto mb-10 leading-relaxed">
-          {liveEvent
-            ? `Track real-time results from the ongoing ${liveEvent?.title} stage and stay on top of every move.`
-            : "Track real-time results from the next TRITON stage and stay on top of every move."
-          }
-        </p>
-
-        {/* Actions */}
-        <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-          {liveEvent ? (
-            <MainButton href={liveEvent?.liveResutsUrl || "#"}>
-              Go to Live Results
-            </MainButton>
-          ) : (
-            <MainButton href="/">
-              Back to Home
-            </MainButton>
-          )}
-        </div>
-      </div>
+      </HeroSection>
 
       {/* Divider */}
       <div className="w-full max-w-3xl h-px bg-gradient-to-r from-transparent via-white/10 to-transparent relative z-10" />

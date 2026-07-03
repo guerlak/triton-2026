@@ -1,7 +1,6 @@
 import LocationsSection from "@/app/components/event/LocationsSection";
 import CountdownSectionEvent from "@/app/components/event/CountDownSectionEvent";
 import EventNavBar from "@/app/components/event/EventNavBar";
-
 import ScheduleSection from "@/app/components/event/ScheduleSection";
 import Testimonials from "@/app/components/Testimonials";
 import NewsletterSection from "@/app/components/NewsletterSection";
