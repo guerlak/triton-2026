@@ -84,7 +84,7 @@ const Navbar = ({ language }: { language: string }) => {
                 {/* Desktop Buttons */}
                 <div className="hidden lg:flex items-center gap-4">
                     <NavButton text="Triton Global" href="/" />
-                    <NavButton isRed text="Athlete Area" href={`${pathname}/athlete-area`} />
+                    {/* <NavButton isRed text="Athlete Area" href={`${pathname}/athlete-area`} /> */}
                 </div>
 
                 {/* Mobile menu button */}

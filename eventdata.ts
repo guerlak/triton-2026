@@ -662,21 +662,21 @@ export const EVENT_DATA_MAP: Record<string, EventData> = {
       "quote": "Quantas lições em um único final de semana. Foram 3 dias, 3 esportes, 3 humores e unimeras variações de sentimentos. No Triton 3 pude me testar, exercitar a paciência e também o carinho comigo mesma. ",
       "author": "Viviane",
       "company": "TechFlow",
-      "link_social": "https://www.instagram.com/"
+      "link_social": "https://www.instagram.com/viviwigand"
     },
     {
       "avatar_url": "/images/atletas/elida.jpeg",
       "quote": "Que fim de semana incrível! Obrigada Triton pela experiência única. Levo para casa uma recordação cheias de boas energias e momentos especiais...",
       "author": "Elida",
       "company": "TechFlow",
-      "link_social": "https://www.instagram.com"
+      "link_social": "https://www.instagram.com/elidacordeiroo"
     },
     {
       "avatar_url": "/images/atletas/bizarelo.jpeg",
       "quote": "Que dia incrível e que dia forte! Obrigado TRITON pela prova top, segura e com visual fantástico",
       "author": "Bizarelo",
       "company": "TechFlow",
-      "link_social": "https://www.instagram.com"
+      "link_social": "https://www.instagram.com/bizarelocycling"
     }]
     },
     schedule: {
@@ -930,8 +930,7 @@ export const EVENT_DATA_MAP: Record<string, EventData> = {
     fullDateText: "31 de Oct - 01 de Nov, 2026",
     targetDate: "2026-11-01T08:00:00",
     language: "en",
-    registrationLink:
-      "",
+    registrationLink:"https://endurancecui.active.com/new/events/97349504/select-race?e4p=187915b9-9a93-4ced-99f0-839e3e981906&e4ts=1783257039&e4q=02163a21-29c0-4de1-b66e-72afad13e817&e4c=active&e4e=snawe00000000&e4h=59a235dbd7daa5c78eae6eae03177f16&e4rt=Safetynet&_p=9911300500391054",
     hero: {
       backgroundImage: heroImgQidong, // Placeholder
       logoImage: logoQidong,

@@ -74,7 +74,7 @@ export default function TestimonialList({ language, testimonials, youtubeSrc }: 
                 author={item.author}
                 company={item.company}
                 avatarUrl={item.avatarUrl || item.avatar_url || ""}
-                linkSocial={item.linkSocial || item.link_social || ""}
+                linkSocial={item.link_social || item.linkSocial || ""}
               />
             </div>
           ))}

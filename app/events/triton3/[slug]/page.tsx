@@ -42,7 +42,7 @@ export default async function Page({ params }: { params: Promise<{ slug: string 
         <ScheduleSection schedule={data.schedule} language={data.language} />
         <LocationsSection locations={data.locations} language={data.language} />
         {data.afterMovie && <AfterMovie youtubeSrc={data.afterMovie.youtubeSrc} language={data.language} />}
-        <Testimonials language={data.language} />
+        <Testimonials language={data.language} testimonials={data.testimonial?.testimonials} />
         <ShopSection language={data.language} />
         <NewsletterSection language={data.language} />
         <PartnersSectionEvent partners={data.partners} />
