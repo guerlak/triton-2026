@@ -907,8 +907,19 @@ export const EVENT_DATA_MAP: Record<string, EventData> = {
         url: "#"
       },
       {
-        name: "Governo Federal",
-        logo: "/images/partners/events/rio2026/governo-federal-logo.png",
+        name: "Equestrian Center",
+        logo: "/images/partners/events/rio2026/eq.png",
+        url: "#"
+      },
+      {
+        name: "B Drops",
+        logo: "/images/partners/events/rio2026/drops.png",
+        url: "#"
+      },
+      
+      {
+        name: "Ministerio Esporte",
+        logo: "/images/partners/events/rio2026/ministerio-esporte.png",
         url: "#"
       },
      

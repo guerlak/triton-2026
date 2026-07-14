@@ -13,7 +13,7 @@ interface Partner {
 const PartnersSectionEvent = ({ partners = [] }: { partners: Partner[] }) => {
   return (
     <section className="py-16 bg-neutral-950 border-y border-white/5">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="max-w-12xl mx-auto px-4 sm:px-6 lg:px-8">
         <h2 className="text-triton-red font-bold tracking-widest uppercase flex items-center justify-center gap-2 mb-10">
           Triton Partners
         </h2>
