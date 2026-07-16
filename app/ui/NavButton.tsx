@@ -5,9 +5,10 @@ interface NavButtonProps {
   text: string;
   href: string;
   className?: string;
+  external?: boolean;
 }
 
-export default function NavButton({ isRed, text, href, className = "" }: NavButtonProps) {
+export default function NavButton({ isRed, text, href, className = "", external = false }: NavButtonProps) {
   const baseStyles = "px-5 py-2 rounded-full text-sm font-bold uppercase transition-colors inline-block text-center";
   const redStyles = "bg-triton-red hover:bg-red-700 text-white";
   const whiteStyles = "bg-white text-black hover:text-triton-red";
@@ -16,6 +17,7 @@ export default function NavButton({ isRed, text, href, className = "" }: NavButt
     <Link 
       href={href} 
       className={`${baseStyles} ${isRed ? redStyles : whiteStyles} ${className}`}
+      {...(external ? { target: "_blank", rel: "noopener noreferrer" } : {})}
     >
       {text}
     </Link>

@@ -7,7 +7,7 @@ import { usePathname } from "next/navigation";
 import NavButton from "@/app/ui/NavButton";
 import { useState, useEffect } from "react";
 
-const Navbar = ({ language }: { language: string }) => {
+const Navbar = ({ language, registerLink }: { language: string, registerLink: string }) => {
     const pathname = usePathname();
     const [isOpen, setIsOpen] = useState(false);
     const [isScrolled, setIsScrolled] = useState(false);
@@ -85,6 +85,7 @@ const Navbar = ({ language }: { language: string }) => {
                 <div className="hidden lg:flex items-center gap-4">
                     <NavButton text="Triton Global" href="/" />
                     {/* <NavButton isRed text="Athlete Area" href={`${pathname}/athlete-area`} /> */}
+                    <NavButton isRed text="Register Now" href={registerLink} external />
                 </div>
 
                 {/* Mobile menu button */}

@@ -1281,7 +1281,7 @@ export const EVENT_DATA_MAP: Record<string, EventData> = {
           "Late check-out available",
         ],
         buttonText: "Book Now",
-        whatsappLink: "#",
+        whatsappLink: "https://endurancecui.active.com/new/events/97349504/select-race?e4p=187915b9-9a93-4ced-99f0-839e3e981906&e4ts=1783257039&e4q=02163a21-29c0-4de1-b66e-72afad13e817&e4c=active&e4e=snawe00000000&e4h=59a235dbd7daa5c78eae6eae03177f16&e4rt=Safetynet&_p=9911300500391054",
       },
     },
     partners: [
