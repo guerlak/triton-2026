@@ -56,12 +56,103 @@ const FormatTable: React.FC<{ distances: any[] }> = ({ distances }) => (
 
 const FormatsSection: React.FC<{ language: string, formats: any }> = ({ language, formats }) => {
   const [activeTab, setActiveTab] = useState<"1" | "2" | "3">("1");
+  const [selectedDistance, setSelectedDistance] = useState<"sprint" | "middle" | "long">("sprint");
+
+  const getActiveStravaId = (category: any) => {
+    if (!category) return null;
+    if (category.stravaIds) {
+      return category.stravaIds[selectedDistance] || category.stravaIds.sprint || category.stravaIds.middle || category.stravaIds.long;
+    }
+    return category.stravaId || null;
+  };
+
+  const renderStravaSection = (category: any, tabId: string) => {
+    const hasStravaIds = !!category.stravaIds;
+    const activeStravaId = getActiveStravaId(category);
+
+    if (!activeStravaId) {
+      return (
+        <div className="relative rounded-2xl overflow-hidden mb-6 border border-white/10 bg-white/5 p-12 text-center flex flex-col items-center justify-center min-h-[300px] group hover:border-triton-red/30 transition-all duration-300">
+          <MapPin className="text-triton-red/40 w-12 h-12 mb-4 animate-pulse" />
+          <h4 className="text-white font-black uppercase text-xl mb-2">
+            {language === "pt-BR" ? "Em breve" : "Course map coming soon"}
+          </h4>
+          <p className="text-gray-400 text-sm max-w-sm">
+            {language === "pt-BR"
+              ? "Estamos finalizando os detalhes do percurso."
+              : "We are finalizing the route details."}
+          </p>
+        </div>
+      );
+    }
+
+    return (
+      <div className="space-y-4">
+        {hasStravaIds && (
+          <div className="flex justify-center md:justify-start items-center">
+            <div className="bg-white/5 backdrop-blur-xl p-1 rounded-xl inline-flex border border-white/10 shadow-lg gap-1">
+              {(["sprint", "middle", "long"] as const).map((dist) => {
+                const isAvailable = category.stravaIds[dist];
+                if (!isAvailable) return null;
+                const isSelected = selectedDistance === dist;
+                return (
+                  <button
+                    key={dist}
+                    onClick={() => setSelectedDistance(dist)}
+                    className={`relative px-4 py-2 rounded-lg text-[10px] md:text-xs font-black uppercase tracking-widest transition-all duration-300 z-10 ${isSelected ? "text-white" : "text-gray-500 hover:text-white"
+                      }`}
+                  >
+                    {isSelected && (
+                      <motion.div
+                        layoutId={`activeDistance-${tabId}`}
+                        className="absolute inset-0 bg-triton-red rounded-lg shadow-[0_0_15px_rgba(223,31,38,0.4)]"
+                        transition={{ type: "spring", bounce: 0.2, duration: 0.6 }}
+                      />
+                    )}
+                    <span className="relative z-20">{dist}</span>
+                  </button>
+                );
+              })}
+            </div>
+            <p className="text-gray-400 text-xs ml-4 italic uppercase">
+              {language === "pt-BR" ? "Selecione uma distância para ver o mapa do percurso" : "Select a distance to view the course map"}
+            </p>
+
+          </div>
+        )}
+
+        <div className="relative rounded-2xl overflow-hidden mb-6 border border-white/10 group">
+          <div
+            key={`${tabId}-${selectedDistance}-${activeStravaId}`}
+            dangerouslySetInnerHTML={{
+              __html: `
+                <div
+                  class="strava-embed-placeholder w-full h-[400px]"
+                  data-full-width="true"
+                  data-embed-type="route"
+                  data-embed-id="${activeStravaId}"
+                  data-style="standard"
+                  data-terrain="3d"
+                  data-from-embed="true"
+                ></div>
+              `
+            }}
+          />
+          <div className="absolute inset-0 pointer-events-none transition-colors duration-300" />
+          <div className="absolute top-4 right-4 bg-black/60 backdrop-blur-md px-3 py-1 rounded-full border border-white/10 flex items-center gap-2">
+            <MapPin size={12} className="text-triton-red" />
+            <span className="text-[10px] font-bold uppercase text-white tracking-widest italic">Course Map</span>
+          </div>
+        </div>
+      </div>
+    );
+  };
 
   React.useEffect(() => {
     if (typeof window !== "undefined" && typeof (window as any).__STRAVA_EMBED_BOOTSTRAP__ === "function") {
       (window as any).__STRAVA_EMBED_BOOTSTRAP__();
     }
-  }, [formats, activeTab]);
+  }, [formats, activeTab, selectedDistance]);
 
   return (
     <section id="formats" className="py-24 bg-triton-dark">
@@ -202,22 +293,7 @@ const FormatsSection: React.FC<{ language: string, formats: any }> = ({ language
               </div>
             </div>
 
-            <div className="relative rounded-2xl overflow-hidden mb-6 border border-white /10 group">
-              <div
-                className="strava-embed-placeholder w-full h-[400px]"
-                data-full-width="true"
-                data-embed-type="route"
-                data-embed-id={formats.swim.stravaId}
-                data-style="standard"
-                data-terrain="3d"
-                data-from-embed="true"
-              ></div>
-              <div className="absolute inset-0 pointer-events-none  transition-colors duration-300" />
-              <div className="absolute top-4 right-4 bg-black/60 backdrop-blur-md px-3 py-1 rounded-full border border-white/10 flex items-center gap-2">
-                <MapPin size={12} className="text-triton-red" />
-                <span className="text-[10px] font-bold uppercase text-white tracking-widest italic">Course Map</span>
-              </div>
-            </div>
+            {renderStravaSection(formats.swim, "swim")}
             <Script
               id="strava-script"
               src="https://strava-embeds.com/embed.js"
@@ -315,22 +391,7 @@ const FormatsSection: React.FC<{ language: string, formats: any }> = ({ language
               </div>
             </div>
 
-            <div className="relative rounded-2xl overflow-hidden mb-6 border border-white/10 group">
-              <div
-                className="strava-embed-placeholder w-full h-[400px]"
-                data-full-width="true"
-                data-embed-type="route"
-                data-embed-id={formats.bike.stravaId}
-                data-style="standard"
-                data-terrain="3d"
-                data-from-embed="true"
-              ></div>
-              <div className="absolute inset-0  pointer-events-none  transition-colors duration-300" />
-              <div className="absolute top-4 right-4 bg-black/60 backdrop-blur-md px-3 py-1 rounded-full border border-white/10 flex items-center gap-2">
-                <MapPin size={12} className="text-triton-red" />
-                <span className="text-[10px] font-bold uppercase text-white tracking-widest italic">Course Map</span>
-              </div>
-            </div>
+            {renderStravaSection(formats.bike, "bike")}
             <Script
               id="strava-script"
               src="https://strava-embeds.com/embed.js"
@@ -427,22 +488,7 @@ const FormatsSection: React.FC<{ language: string, formats: any }> = ({ language
               </div>
             </div>
 
-            <div className="relative rounded-2xl overflow-hidden mb-6 border border-white/10 group">
-              <div
-                className="strava-embed-placeholder w-full h-[400px]"
-                data-full-width="true"
-                data-embed-type="route"
-                data-embed-id={formats.run.stravaId}
-                data-style="standard"
-                data-terrain="3d"
-                data-from-embed="true"
-              ></div>
-              <div className="absolute inset-0  pointer-events-none  transition-colors duration-300" />
-              <div className="absolute top-4 right-4 backdrop-blur-md px-3 py-1 rounded-full border border-white/10 flex items-center gap-2">
-                <MapPin size={12} className="text-triton-red" />
-                <span className="text-[10px] font-bold uppercase text-white tracking-widest italic">Course Map</span>
-              </div>
-            </div>
+            {renderStravaSection(formats.run, "run")}
             <Script
               id="strava-script"
               src="https://strava-embeds.com/embed.js"
@@ -457,7 +503,7 @@ const FormatsSection: React.FC<{ language: string, formats: any }> = ({ language
 
         <FormatTable distances={dict?.distances?.triton_1} />
 
-        <div className="mt-8  pt-12">
+        <div className="mt-8 pt-12">
           <h4 className="text-2xl font-bold text-white mb-8 uppercase border-l-4 border-triton-red pl-4">
             {language === "pt-BR" ? "Opções de competição" : "Competition Options"}
           </h4>

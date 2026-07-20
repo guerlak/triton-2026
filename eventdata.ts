@@ -54,7 +54,8 @@ export interface EventFormatDetail {
   title: string;
   description: string;
   distances: { label: string; val: string; p: number }[];
-  stravaId: string;
+  stravaIds?: { sprint?:string, middle?:string, long?:string };
+  stravaId?: string;
   details?: string[];
   extraDescription?: string;
 }
@@ -74,7 +75,6 @@ export interface EventData {
   hero: EventHero;
   startListApiUrl?: string;
   liveResutsUrl?: string;
-
   registrationLink: string;
   info: {
     title: string;
@@ -160,8 +160,6 @@ import logoQidong from "@/public/images/eventos/qidong/logo-qidong.png"
 import qidongHotel from "@/public/images/eventos/qidong/evergrande-hotel.jpeg"
 import landScapeQidong from "@/public/images/eventos/qidong/landscape-qidong.jpeg"
 import { StaticImport } from "next/dist/shared/lib/get-img-props";
-
-
 
 export const EVENT_DATA_MAP: Record<string, EventData> = {
   "salvador-2026": {
@@ -287,7 +285,7 @@ export const EVENT_DATA_MAP: Record<string, EventData> = {
           { label: "Long", val: "1500m", p: 100 },
         ],
 
-        stravaId: "",
+        stravaIds: { sprint:"442206601619587448", middle:"3442186454436027514", long:"3442206601619587448" },
       },
       bike: {
         day: "Dia 2",
@@ -302,7 +300,7 @@ export const EVENT_DATA_MAP: Record<string, EventData> = {
           { label: "Middle", val: "40km", p: 66 },
           { label: "Long", val: "60km", p: 100 },
         ],
-        stravaId: "",
+        stravaIds: { sprint:"3442190057377176544 ", middle:"3514206730520669716", long:"3514202065593315860" },
         details: [
           "Retorno Sprint: ~4,5 km após Macundu",
           "Hidratação Middle & Long: ~10 km após Macundu",
@@ -324,7 +322,7 @@ export const EVENT_DATA_MAP: Record<string, EventData> = {
           { label: "Middle", val: "10km", p: 66 },
           { label: "Long", val: "15km", p: 100 },
         ],
-        stravaId: "",
+        stravaIds: { sprint:"3442184922483070074", middle:"3514202065593315860", long:"3514203195016413614" },
       },
       distanceTable: [
       {
@@ -559,7 +557,7 @@ export const EVENT_DATA_MAP: Record<string, EventData> = {
           { label: "Long", val: "3000m", p: 100 },
         ],
 
-        stravaId: "3489878661225659880",
+        stravaIds: { sprint:"3489878661225659880", middle:"3489878661225659880", long:"3489878661225659880" },
       },
       bike: {
         day: "Dia 2",
@@ -595,7 +593,7 @@ export const EVENT_DATA_MAP: Record<string, EventData> = {
           { label: "Middle", val: "60km", p: 66 },
           { label: "Long", val: "90km", p: 100 },
         ],
-        stravaId: "3489885320405280498",
+        stravaIds: { sprint: "3489885320405280498", middle: "3489885320405280498", long: "3489885320405280498" },
         details: [
           "Retorno Sprint: ~4,5 km após Macundu",
           "Hidratação Middle & Long: ~10 km após Macundu",
@@ -629,7 +627,7 @@ export const EVENT_DATA_MAP: Record<string, EventData> = {
           { label: "Middle", val: "20km", p: 66 },
           { label: "Long", val: "30km", p: 100 },
         ],
-        stravaId: "3489885320403923698",
+        stravaIds: { sprint: "3489885320403923698", middle: "3489885320403923698", long: "3489885320403923698" },
       },
       distanceTable: [
         {
@@ -991,7 +989,7 @@ export const EVENT_DATA_MAP: Record<string, EventData> = {
           { label: "Long", val: "2100m", p: 100 },
         ],
 
-        stravaId: "3490382720997212106",
+        stravaIds: { sprint: "3490382720997212106", middle: "3490382720997212106", long: "3490382720997212106" },
       },
       bike: {
         day: "Dia 2",
@@ -1017,7 +1015,7 @@ export const EVENT_DATA_MAP: Record<string, EventData> = {
           { label: "Middle", val: "36km", p: 66 },
           { label: "Long", val: "88km", p: 100 },
         ],
-        stravaId: "3489887744610501362",
+        stravaIds: { sprint: "3489887744610501362", middle: "3489887744610501362", long: "3489887744610501362" },
         details: [
           
         ],
@@ -1046,7 +1044,7 @@ export const EVENT_DATA_MAP: Record<string, EventData> = {
           { label: "Middle", val: "12km", p: 66 },
           { label: "Long", val: "20km", p: 100 },
         ],
-        stravaId: "3490379193741390584",
+        stravaIds: { sprint:"3490379193741390584", middle:"3490379193741390584", long:"3490379193741390584" },
       },
       distanceTable: [
       {
@@ -1352,7 +1350,7 @@ export const EVENT_DATA_MAP: Record<string, EventData> = {
           { label: "Long", val: "1800m", p: 100 },
         ],
 
-        stravaId: "3442186454436027514",
+        stravaIds: { sprint:"3442186454436027514", middle:"3442186454436027514", long:"3442186454436027514" },
       },
       bike: {
         day: "Dia 2",
@@ -1381,7 +1379,7 @@ export const EVENT_DATA_MAP: Record<string, EventData> = {
           { label: "Middle", val: "43km", p: 66 },
           { label: "Long", val: "86km", p: 100 },
         ],
-        stravaId: "3442190057377176544",
+        stravaIds: { sprint: "3442190057377176544", middle: "3442190057377176544", long: "3442190057377176544" },
         details: [
           "Retorno Sprint: ~4,5 km após Macundu",
           "Hidratação Middle & Long: ~10 km após Macundu",
@@ -1417,7 +1415,7 @@ export const EVENT_DATA_MAP: Record<string, EventData> = {
           { label: "Middle", val: "10km", p: 66 },
           { label: "Long", val: "20km", p: 100 },
         ],
-        stravaId: "3442184922483070074",
+        stravaIds: { sprint: "3442184922483070074", middle: "3442184922483070074", long: "3442184922483070074" },
       },
       distanceTable: [
       {
@@ -1660,7 +1658,6 @@ export const EVENT_DATA_MAP: Record<string, EventData> = {
       "link_social": ""
     }]
   },
-    
     partners: [
       
       {
@@ -1764,7 +1761,7 @@ export const EVENT_DATA_MAP: Record<string, EventData> = {
           { label: "Long", val: "1500m", p: 100 },
         ],
 
-        stravaId: "",
+        stravaIds: { sprint:"", middle:"", long:"" },
       },
       bike: {
         day: "Dia 2",
@@ -1803,7 +1800,7 @@ export const EVENT_DATA_MAP: Record<string, EventData> = {
           { label: "Middle", val: "40km", p: 66 },
           { label: "Long", val: "60km", p: 100 },
         ],
-        stravaId: "",
+        stravaIds: { sprint: "", middle: "", long: "" },
         details: [
           "Retorno Sprint: ~4,5 km após Macundu",
           "Hidratação Middle & Long: ~10 km após Macundu",
@@ -1845,7 +1842,7 @@ export const EVENT_DATA_MAP: Record<string, EventData> = {
           { label: "Middle", val: "10km", p: 66 },
           { label: "Long", val: "15km", p: 100 },
         ],
-        stravaId: "",
+        stravaIds: { sprint: "", middle: "", long: "" },
       },
       distanceTable: [
       {
@@ -2150,7 +2147,7 @@ export const EVENT_DATA_MAP: Record<string, EventData> = {
           { label: "Long", val: "1800m", p: 100 },
         ],
 
-        stravaId: "3442186454436027514",
+        stravaIds: { sprint:"3442186454436027514", middle:"3442186454436027514", long:"3442186454436027514" },
       },
       bike: {
         day: "Dia 2",
@@ -2179,7 +2176,7 @@ export const EVENT_DATA_MAP: Record<string, EventData> = {
           { label: "Middle", val: "43km", p: 66 },
           { label: "Long", val: "86km", p: 100 },
         ],
-        stravaId: "3442190057377176544",
+        stravaIds: { sprint: "3442190057377176544", middle: "3442190057377176544", long: "3442190057377176544" },
         details: [
           "Retorno Sprint: ~4,5 km após Macundu",
           "Hidratação Middle & Long: ~10 km após Macundu",
@@ -2215,7 +2212,7 @@ export const EVENT_DATA_MAP: Record<string, EventData> = {
           { label: "Middle", val: "10km", p: 66 },
           { label: "Long", val: "20km", p: 100 },
         ],
-        stravaId: "3442184922483070074",
+        stravaIds: { sprint: "3442184922483070074", middle: "3442184922483070074", long: "3442184922483070074" },
       },
       distanceTable: [
       {
@@ -2328,7 +2325,7 @@ export const EVENT_DATA_MAP: Record<string, EventData> = {
           { label: "Long", val: "1800m", p: 100 },
         ],
 
-        stravaId: "3442186454436027514",
+        stravaIds: { sprint:"3442186454436027514", middle:"3442186454436027514", long:"3442186454436027514" },
       },
       bike: {
         day: "Dia 2",
@@ -2357,7 +2354,7 @@ export const EVENT_DATA_MAP: Record<string, EventData> = {
           { label: "Middle", val: "43km", p: 66 },
           { label: "Long", val: "86km", p: 100 },
         ],
-        stravaId: "3442190057377176544",
+        stravaIds: { sprint: "3442190057377176544", middle: "3442190057377176544", long: "3442190057377176544" },
         details: [
           "Retorno Sprint: ~4,5 km após Macundu",
           "Hidratação Middle & Long: ~10 km após Macundu",
@@ -2393,7 +2390,7 @@ export const EVENT_DATA_MAP: Record<string, EventData> = {
           { label: "Middle", val: "10km", p: 66 },
           { label: "Long", val: "20km", p: 100 },
         ],
-        stravaId: "3442184922483070074",
+        stravaIds: { sprint: "3442184922483070074", middle: "3442184922483070074", long: "3442184922483070074" },
       },
       distanceTable: [
       {
@@ -2506,7 +2503,7 @@ export const EVENT_DATA_MAP: Record<string, EventData> = {
           { label: "Long", val: "1800m", p: 100 },
         ],
 
-        stravaId: "3442186454436027514",
+        stravaIds: { sprint:"3442186454436027514", middle:"3442186454436027514", long:"3442186454436027514" },
       },
       bike: {
         day: "Dia 2",
@@ -2535,7 +2532,7 @@ export const EVENT_DATA_MAP: Record<string, EventData> = {
           { label: "Middle", val: "43km", p: 66 },
           { label: "Long", val: "86km", p: 100 },
         ],
-        stravaId: "3442190057377176544",
+        stravaIds: { sprint: "3442190057377176544", middle: "3442190057377176544", long: "3442190057377176544" },
         details: [
           "Retorno Sprint: ~4,5 km após Macundu",
           "Hidratação Middle & Long: ~10 km após Macundu",
@@ -2571,7 +2568,7 @@ export const EVENT_DATA_MAP: Record<string, EventData> = {
           { label: "Middle", val: "10km", p: 66 },
           { label: "Long", val: "20km", p: 100 },
         ],
-        stravaId: "3442184922483070074",
+        stravaIds: { sprint: "3442184922483070074", middle: "3442184922483070074", long: "3442184922483070074" },
       },
       distanceTable: [
       {
