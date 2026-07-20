@@ -593,7 +593,7 @@ export const EVENT_DATA_MAP: Record<string, EventData> = {
           { label: "Middle", val: "60km", p: 66 },
           { label: "Long", val: "90km", p: 100 },
         ],
-        stravaIds: { sprint: "3489885320405280498", middle: "3514206730520669716", long: "3514208343517162558" },
+        stravaIds: { sprint: "", middle: "", long: "" },
         details: [
           "Retorno Sprint: ~4,5 km após Macundu",
           "Hidratação Middle & Long: ~10 km após Macundu",
@@ -1370,10 +1370,7 @@ export const EVENT_DATA_MAP: Record<string, EventData> = {
             </ul>
             <br>
 <p>Starting from Transition, athletes head north along Avenida D. João II before joining the IC2 highway. The course is predominantly flat and fast, featuring gentle rolling terrain and a gradual 1 km climb near the turnaround point.</p><br>
-<p>A Bike Aid Station is located at the turnaround area and is accessible at the start of each new lap. Please note that littering is only permitted within the designated aid station zone and may result in disqualification if done elsewhere.</p>
-
-
-            `,
+<p>A Bike Aid Station is located at the turnaround area and is accessible at the start of each new lap. Please note that littering is only permitted within the designated aid station zone and may result in disqualification if done elsewhere.</p>`,
         distances: [  
           { label: "Sprint", val: "21.5km", p: 33 },
           { label: "Middle", val: "43km", p: 66 },
@@ -1381,7 +1378,9 @@ export const EVENT_DATA_MAP: Record<string, EventData> = {
         ],
         stravaIds: { 
           sprint: "3442190057377176544", 
-          middle: "3442190057377176544", long: "3442190057377176544" },
+          middle: "3514206730520669716",
+          long: "3514208343517162558"
+        },
         details: [
           "Retorno Sprint: ~4,5 km após Macundu",
           "Hidratação Middle & Long: ~10 km após Macundu",
