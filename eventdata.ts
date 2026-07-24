@@ -557,7 +557,7 @@ export const EVENT_DATA_MAP: Record<string, EventData> = {
           { label: "Long", val: "3000m", p: 100 },
         ],
 
-        stravaIds: { sprint:"3489878661225659880", middle:"3489878661225659880", long:"3489878661225659880" },
+        stravaIds: { sprint:"3489878661225659880", middle:"3514670048784968980", long:"3514676975046882124" },
       },
       bike: {
         day: "Dia 2",
@@ -566,28 +566,29 @@ export const EVENT_DATA_MAP: Record<string, EventData> = {
         image: bikePic,
         title: "Ciclismo",
         description:
-          `<p>O percurso de ciclismo acontece na <span class="destaque">Serra do Piloto</span>.
-
-    Localizada a aproximadamente 12 km do Resort Portobello, a prova tem início em frente ao <span class="destaque">Parque de Exposições de Mangaratiba (EXPO)</span>, onde os atletas contam com estacionamento seguro e estrutura de apoio antes da largada.</p>
-    <br>
-    <p><strong>Destaques do Percurso:</strong></p>
-    <br>
-    <ul style="list-style-type: disc; padding-left: 20px;">
-        <li><strong>Primeiro Trecho:</strong> ~ 11 km de subida contínua, em um ritmo constante.</li>
-        <li><strong>Da Base até Macundu:</strong> Após a escalada, o percurso segue por ~ 18 km até a região de Macundu, onde estará localizada uma base de suporte para os atletas.</li>
-        <li><strong>Retorno SPRINT:</strong> ~ 4,5 km após Macundu.</li>
-        <li><strong>AID STATION (MIDDLE e LONG):</strong> ~ 10 km após Macundu.</li>
-        <li><strong>Retorno Rio Claro (MIDDLE e LONG):</strong> ~ 7,5 km após o AID STATION.</li>
-        <li><strong>Chegada:</strong> ~ 3 km após Macundu, no sentido Mangaratiba.</li>
-    </ul>
-    <br>
+          `
+          <p>O percurso de ciclismo acontece na <span class="destaque">Serra do Piloto</span>.
+          Localizada a aproximadamente 12 km do Resort Portobello, a prova tem início em frente ao <span class="destaque">Parque de Exposições de Mangaratiba (EXPO)</span>, onde os atletas contam com estacionamento seguro e estrutura de apoio antes da largada.</p>
+          <br>
+          <p><strong>Destaques do Percurso:</strong></p>
+          <br>
+          <ul style="list-style-type: disc; padding-left: 20px;">
+          <li><strong>Primeiro Trecho:</strong> ~ 11 km de subida contínua, em um ritmo constante.</li>
+          <li><strong>Da Base até Macundu:</strong> Após a escalada, o percurso segue por ~ 18 km até a região de Macundu, onde estará localizada uma base de suporte para os atletas.</li>
+          <li><strong>Retorno SPRINT:</strong> ~ 4,5 km após Macundu.</li>
+          <li><strong>AID STATION (MIDDLE e LONG):</strong> ~ 10 km após Macundu.</li>
+          <li><strong>Retorno Rio Claro (MIDDLE e LONG):</strong> ~ 7,5 km após o AID STATION.</li>
+          <li><strong>Chegada:</strong> ~ 3 km após Macundu, no sentido Mangaratiba.</li>
+      </ul>
+      <br>
         <strong>Notas Importantes:</strong>
         <br><br>
         <ul style="list-style-type: disc; padding-left: 20px;">
             <li><strong>Descida neutralizada:</strong> ~ 14 km.</li>
             <li><strong>Vácuo permitido</strong> (Draft Legal).</li>
             <li>Bicicletas de contrarrelógio (TT Bikes) e extensores de guidão (clip-on aerobars) <strong style="color: #c53030;">não são permitidos</strong>.</li>
-        </ul>`,
+        </ul>
+        `,
         distances: [
           { label: "Sprint", val: "30km", p: 33 },
           { label: "Middle", val: "60km", p: 66 },
