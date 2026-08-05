@@ -54,7 +54,7 @@ export interface EventFormatDetail {
   title: string;
   description: string;
   distances: { label: string; val: string; p: number }[];
-  stravaIds?: { sprint?:string, middle?:string, long?:string };
+  stravaIds?: { sprint:string, middle:string, long:string };
   stravaId?: string;
   details?: string[];
   extraDescription?: string;
@@ -76,6 +76,20 @@ export interface EventData {
   startListApiUrl?: string;
   liveResutsUrl?: string;
   registrationLink: string;
+  country: string;
+  flag: string;
+  status: "Confirmed" | "Planned" | "Completed";
+  year: number;
+  extraEvent?: {
+    imageSrc: string;
+    imageAlt: string;
+    title: string;
+    subtitle: string;
+    description: string;
+    ctaText: string;
+    ctaLink: string;
+    badge: string;
+  };
   info: {
     title: string;
     subtitle: string;
@@ -85,11 +99,6 @@ export interface EventData {
     title: string;
     description: string;
   };
-  
-  country: string;
-  flag: string;
-  status: "Confirmed" | "Planned" | "Completed";
-  year: number;
   schedule: {
     title: string;
     subtitle: string;
@@ -594,7 +603,7 @@ export const EVENT_DATA_MAP: Record<string, EventData> = {
           { label: "Middle", val: "60km", p: 66 },
           { label: "Long", val: "90km", p: 100 },
         ],
-        stravaIds: { sprint: "", middle: "", long: "" },
+        stravaIds: { sprint: "3519490203086994802", middle: "3519487411795828350", long: "3519490203086088562" },
         details: [
           "Retorno Sprint: ~4,5 km após Macundu",
           "Hidratação Middle & Long: ~10 km após Macundu",
@@ -628,7 +637,7 @@ export const EVENT_DATA_MAP: Record<string, EventData> = {
           { label: "Middle", val: "20km", p: 66 },
           { label: "Long", val: "30km", p: 100 },
         ],
-        stravaIds: { sprint: "3489885320403923698", middle: "3489885320403923698", long: "3489885320403923698" },
+        stravaIds: { sprint: "3519487411797267070", middle: "3519482091384751256", long: "3519482242820725230" },
       },
       distanceTable: [
         {
@@ -1439,6 +1448,39 @@ export const EVENT_DATA_MAP: Record<string, EventData> = {
         "run": "20km"
       }
     ],
+    },
+    extraEvent: {
+      imageSrc: "/images/eventos/lisboa-2026/event-extra.jpg",
+      imageAlt: "Extra Event",
+      ctaText:"Register now",
+      ctaLink:"https://register.hakuapp.com/?event=9ce0f9c87c1b43a8b97a",
+      badge:"EXTRA EXPERIENCE",
+      title: "TRITON KIDS & FAMILY",
+      subtitle: "",
+      description: `<div class="space-y-4">
+       
+        <p>Create unforgettable memories and experience the spirit of TRITON together. Whether you choose the Family Swim & Run or the TRITON Family Triathlon, every team starts, races, and finishes side by side.</p>
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 my-4">
+          <div class="bg-white/5 p-4 rounded-xl border border-white/10">
+            <h4 class="font-bold text-triton-red text-base mb-2">Family Swim & Run</h4>
+            <ul class="text-sm space-y-1 text-gray-300">
+              <li><strong class="text-white">Ages:</strong> 8–11 (accompanied by family members of any age)</li>
+              <li><strong class="text-white">Start:</strong> 4:00 PM</li>
+              <li><strong class="text-white">Distance:</strong> 50 m swim + 1 km run</li>
+            </ul>
+          </div>
+          <div class="bg-white/5 p-4 rounded-xl border border-white/10">
+            <h4 class="font-bold text-triton-red text-base mb-2">TRITON Family Triathlon</h4>
+            <ul class="text-sm space-y-1 text-gray-300">
+              <li><strong class="text-white">Ages:</strong> 12–15 (accompanied by family members of any age)</li>
+              <li><strong class="text-white">Start:</strong> 4:30 PM</li>
+              <li><strong class="text-white">Distance:</strong> 200 m swim + 5 km bike + 2 km run</li>
+            </ul>
+          </div>
+        </div>
+        <p class="text-sm text-gray-300"><strong class="text-white">Team Rules:</strong> Each team must consist of 2 or 3 family members. The entire course must be completed together—this is not a relay race.</p>
+        <p class="text-sm font-medium text-white flex items-center gap-2"><span>🏆</span> <span><strong>Awards Ceremony:</strong> Following the completion of both events.</span></p>
+      </div>`,
     },
     schedule: {
       title: "AGENDA",

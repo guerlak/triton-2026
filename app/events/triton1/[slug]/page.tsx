@@ -14,6 +14,7 @@ import FormatsSectionTriton1 from "@/app/components/event/FormatsSectionTriton1"
 import PartnersSectionEvent from "@/app/components/event/PartnersSectionEvent";
 import AfterMovie from "@/app/components/AfterMovie";
 import { Metadata } from "next";
+import ExtraEvent from "@/app/components/event/ExtraEvent";
 
 export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }): Promise<Metadata> {
   const { slug } = await params;
@@ -41,6 +42,7 @@ export default async function Page({ params }: { params: Promise<{ slug: string 
         <CountdownSectionEvent data={data} />
         <InfoSectionTriton1 info={data.info} scoring={data.scoring} eventFormat={data.eventFormat} language={data.language} />
         <FormatsSectionTriton1 formats={data.formats} language={data.language} />
+        {data.extraEvent && <ExtraEvent {...data.extraEvent} />}
         <ScheduleSection schedule={data.schedule} language={data.language} />
         <LocationsSection locations={data.locations} language={data.language} />
         {data.afterMovie && <AfterMovie youtubeSrc={data.afterMovie.youtubeSrc} language={data.language} />}

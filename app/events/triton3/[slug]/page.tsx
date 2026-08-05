@@ -13,6 +13,8 @@ import { notFound } from "next/navigation";
 import PartnersSectionEvent from "@/app/components/event/PartnersSectionEvent";
 import AfterMovie from "@/app/components/AfterMovie";
 import { Metadata } from "next";
+import ExtraEvent from "@/app/components/event/ExtraEvent";
+import RedLine from "@/app/ui/RedLine";
 
 export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }): Promise<Metadata> {
   const { slug } = await params;
@@ -39,6 +41,8 @@ export default async function Page({ params }: { params: Promise<{ slug: string 
         <CountdownSectionEvent data={data} />
         <InfoSection info={data.info} scoring={data.scoring} eventFormat={data.eventFormat} language={data.language} />
         <FormatsSection formats={data.formats} language={data.language} />
+        {data.extraEvent && <ExtraEvent {...data.extraEvent} />}
+        <RedLine />
         <ScheduleSection schedule={data.schedule} language={data.language} />
         <LocationsSection locations={data.locations} language={data.language} />
         {data.afterMovie && <AfterMovie youtubeSrc={data.afterMovie.youtubeSrc} language={data.language} />}
