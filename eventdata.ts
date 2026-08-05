@@ -1516,8 +1516,8 @@ export const EVENT_DATA_MAP: Record<string, EventData> = {
               location: "Parque das Nações",
             },
             {
-              time: "16:30",
-              title: "Kids & Parents, Swim & Run",
+              time: "16:00",
+              title: "Kids & Parents, Swim & Run + Triathlon",
               location: "Docas dos Olivais",
             },
             {
