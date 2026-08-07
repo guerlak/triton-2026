@@ -15,7 +15,10 @@ interface ScheduleSectionProps {
   language: "pt-BR" | "en";
 }
 
-const ScheduleSection: React.FC<ScheduleSectionProps> = ({ schedule, language }) => {
+const ScheduleSection: React.FC<ScheduleSectionProps> = ({
+  schedule,
+  language,
+}) => {
   const [activeDay, setActiveDay] = useState<string>(
     schedule.days[0]?.id || "",
   );
@@ -39,9 +42,18 @@ const ScheduleSection: React.FC<ScheduleSectionProps> = ({ schedule, language })
     <section id="schedule" className="py-20 bg-black overflow-hidden">
       <div className="container mx-auto px-4 md:px-8 lg:px-16">
         <div className="text-center mb-16">
-          <Heading text1={language === "pt-BR" ? "programa" : "RACE SCHEDULE"} text2={language === "pt-BR" ? "FIQUE POR DENTRO DOS HORÁRIOS" : "Plan your weekend"} />
+          <Heading
+            text1={language === "pt-BR" ? "programa" : "RACE SCHEDULE"}
+            text2={
+              language === "pt-BR"
+                ? "FIQUE POR DENTRO DOS HORÁRIOS"
+                : "Plan your weekend"
+            }
+          />
           <p className="text-gray-400 mx-auto text-lg">
-            {language === "pt-BR" ? "Organize-se e não perca nenhum momento. Confira a programação completa do fim de semana de prova." : "Plan ahead and make the most of every moment. Explore the full schedule for an unforgettable TRITON race weekend."}
+            {language === "pt-BR"
+              ? "Organize-se e não perca nenhum momento. Confira a programação completa do fim de semana de prova."
+              : "Plan ahead and make the most of every moment. Explore the full schedule for an unforgettable TRITON race weekend."}
           </p>
         </div>
 
@@ -52,7 +64,7 @@ const ScheduleSection: React.FC<ScheduleSectionProps> = ({ schedule, language })
               <button
                 key={day.id}
                 onClick={() => setActiveDay(day.id)}
-                className={`relative px-6 md:px-10 py-3 md:py-4 rounded-xl font-black uppercase tracking-widest transition-all duration-300 z-10 ${activeDay === day.id ? "text-white" : "text-gray-500 hover:text-white"}`}
+                className={`relative px-3 md:px-10 py-2 md:py-4 rounded-xl font-black uppercase tracking-wide md:tracking-widest transition-all duration-300 z-10 ${activeDay === day.id ? "text-white" : "text-gray-500 hover:text-white"}`}
               >
                 {activeDay === day.id && (
                   <motion.div
@@ -62,8 +74,8 @@ const ScheduleSection: React.FC<ScheduleSectionProps> = ({ schedule, language })
                   />
                 )}
                 <div className="relative z-20 flex flex-col items-center">
-                  <span className="text-xs md:text-sm">{day.title}</span>
-                  <span className="text-[10px] opacity-60 font-bold">
+                  <span className="text-[11px] md:text-sm">{day.title}</span>
+                  <span className="text-[9px] md:text-[10px] opacity-60 font-bold">
                     {day.date}
                   </span>
                 </div>
@@ -100,7 +112,7 @@ const ScheduleSection: React.FC<ScheduleSectionProps> = ({ schedule, language })
                         <div className="flex flex-col md:flex-row md:items-start md:justify-between gap-4 mb-3">
                           <div className="flex items-center gap-3">
                             {!event.isCutoff && event.time && (
-                              <div className="flex items-center gap-2 text-gray-400 font-bold text-sm">
+                              <div className="flex items-center gap-2 text-gray-400 font-bold text-xs">
                                 <Clock className="w-4 h-4 text-triton-red" />
                                 <span>{event.time}</span>
                               </div>
@@ -114,12 +126,12 @@ const ScheduleSection: React.FC<ScheduleSectionProps> = ({ schedule, language })
                         {/* Description & Location */}
                         <div className="space-y-2">
                           {event.description && (
-                            <p className="text-gray-400 text-sm">
+                            <p className="text-gray-400 text-xs md:text-sm">
                               {event.description}
                             </p>
                           )}
                           {event.location && (
-                            <div className="flex items-center gap-2 text-gray-500 text-sm">
+                            <div className="flex items-center gap-2 text-gray-500 text-xs md:text-sm">
                               <MapPin className="w-3 h-3" />
                               <span>{event.location}</span>
                             </div>
@@ -159,11 +171,9 @@ const ScheduleSection: React.FC<ScheduleSectionProps> = ({ schedule, language })
             <AlertCircle className="w-6 h-6 text-triton-red" />
           </div>
           <p className="text-gray-400 text-sm leading-relaxed italic text-center md:text-left">
-            {language === "pt-BR" ? (
-              "Todos os horários estão sujeitos a alteração sem aviso prévio devido a circunstâncias imprevistas. Os horários e a ordem de largada também poderão ser ajustados. Recomendamos acompanhar a programação regularmente para se manter atualizado sobre possíveis mudanças de última hora."
-            ) : (
-              "All times are subject to change without notice due to unforeseen circumstances. Start times and order may also be adjusted. We recommend following the schedule regularly to stay updated on any last-minute changes."
-            )}
+            {language === "pt-BR"
+              ? "Todos os horários estão sujeitos a alteração sem aviso prévio devido a circunstâncias imprevistas. Os horários e a ordem de largada também poderão ser ajustados. Recomendamos acompanhar a programação regularmente para se manter atualizado sobre possíveis mudanças de última hora."
+              : "All times are subject to change without notice due to unforeseen circumstances. Start times and order may also be adjusted. We recommend following the schedule regularly to stay updated on any last-minute changes."}
           </p>
         </div>
       </div>

@@ -698,12 +698,12 @@ export const EVENT_DATA_MAP: Record<string, EventData> = {
           subtitle: "RACE DAY 1 - THE SWIM",
           events: [
             {
-              time: "12:00 – 15:00",
+              time: "12:00 – 18:00",
               title: "Entrega de Kits",
               location: "Sala Araras, Portobello Resort",
             },
             {
-              time: "15:00",
+              time: "12:00",
               title: "Abertura Arena TRITON",
               location: "Portobello Resort",
             },
@@ -738,12 +738,17 @@ export const EVENT_DATA_MAP: Record<string, EventData> = {
           subtitle: "RACE DAY 2 – THE BIKE",
           events: [
             {
-              time: "06:00 – 07:30",
+              time: "06:00 – 07:45",
+              title: "Ajustes Bike - Barcellos Sports",
+              location: "Parque de Exposições de Mangaratiba (EXPO)",
+            },
+            {
+              time: "06:30 – 07:30",
               title: "Entrega de kit do ciclismo",
               location: "Parque de Exposições de Mangaratiba (EXPO)",
             },
             {
-              time: "06:30 – 07:45",
+              time: "07:45",
               title: "Concentração largada Ciclismo",
               location:
                 "Serra do Piloto em frente ao Parque de Exposições de Mangaratiba (EXPO)",
@@ -764,7 +769,7 @@ export const EVENT_DATA_MAP: Record<string, EventData> = {
               ],
             },
             {
-              time: "08:30",
+              time: "10:00",
               title: "Abertura Arena TRITON",
               location: "Portobello Resort",
             },
@@ -782,7 +787,7 @@ export const EVENT_DATA_MAP: Record<string, EventData> = {
           subtitle: "RACE DAY 3 - THE RUN",
           events: [
             {
-              time: "06:00 – 06:45",
+              time: "06:00 – 06:30",
               title: "Entrega de kit corrida",
               location: "Sala Araras, Portobelo Resort",
             },
@@ -1458,7 +1463,6 @@ export const EVENT_DATA_MAP: Record<string, EventData> = {
       title: "TRITON KIDS & FAMILY",
       subtitle: "",
       description: `<div class="space-y-4">
-       
         <p>Create unforgettable memories and experience the spirit of TRITON together. Whether you choose the Family Swim & Run or the TRITON Family Triathlon, every team starts, races, and finishes side by side.</p>
         <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 my-4">
           <div class="bg-white/5 p-4 rounded-xl border border-white/10">

@@ -40,7 +40,7 @@ export default function CommunitySection() {
             {/* <VennDiagram /> */}
           </div>
 
-          <div className="flex flex-wrap md:justify-end gap-3 mt-10 max-w-[40px] md:max-w-full">
+          <div className="flex flex-wrap md:justify-end gap-3 mt-10">
             {["#TRITONworldseries", "#TRITON1", "#TRITON3", "#BEEAGERBEBRAVEBESTRONG"].map((tag) => (
               <span
                 key={tag}

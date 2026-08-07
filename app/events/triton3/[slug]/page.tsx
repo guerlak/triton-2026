@@ -16,7 +16,11 @@ import { Metadata } from "next";
 import ExtraEvent from "@/app/components/event/ExtraEvent";
 import RedLine from "@/app/ui/RedLine";
 
-export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }): Promise<Metadata> {
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ slug: string }>;
+}): Promise<Metadata> {
   const { slug } = await params;
   const data = EVENT_DATA_MAP[slug];
 
@@ -25,7 +29,11 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   };
 }
 
-export default async function Page({ params }: { params: Promise<{ slug: string }> }) {
+export default async function Page({
+  params,
+}: {
+  params: Promise<{ slug: string }>;
+}) {
   const { slug } = await params;
   const data = EVENT_DATA_MAP[slug];
 
@@ -35,18 +43,33 @@ export default async function Page({ params }: { params: Promise<{ slug: string 
 
   return (
     <>
-      <EventNavBar language={data.language} registerLink={data.registrationLink} />
+      <EventNavBar
+        language={data.language}
+        registerLink={data.registrationLink}
+      />
       <main className="text-white bg-black/90">
         <HeroEvent data={data.hero} />
         <CountdownSectionEvent data={data} />
-        <InfoSection info={data.info} scoring={data.scoring} eventFormat={data.eventFormat} language={data.language} />
+        <InfoSection
+          info={data.info}
+          scoring={data.scoring}
+          eventFormat={data.eventFormat}
+          language={data.language}
+        />
         <FormatsSection formats={data.formats} language={data.language} />
         {data.extraEvent && <ExtraEvent {...data.extraEvent} />}
-        <RedLine />
         <ScheduleSection schedule={data.schedule} language={data.language} />
         <LocationsSection locations={data.locations} language={data.language} />
-        {data.afterMovie && <AfterMovie youtubeSrc={data.afterMovie.youtubeSrc} language={data.language} />}
-        <Testimonials language={data.language} testimonials={data.testimonial?.testimonials} />
+        {data.afterMovie && (
+          <AfterMovie
+            youtubeSrc={data.afterMovie.youtubeSrc}
+            language={data.language}
+          />
+        )}
+        <Testimonials
+          language={data.language}
+          testimonials={data.testimonial?.testimonials}
+        />
         <ShopSection language={data.language} />
         <NewsletterSection language={data.language} />
         <PartnersSectionEvent partners={data.partners} />

@@ -1,18 +1,14 @@
 "use client";
 
-import React, { useEffect, useRef, useState } from "react";
-import { motion, useInView, useSpring, useTransform, animate } from "framer-motion";
+import React, { useEffect, useRef } from "react";
 import {
-
-  Map,
-
-  Calendar,
-
-  Medal,
-  Trophy,
-  Globe2,
-
-} from "lucide-react";
+  motion,
+  useInView,
+  useSpring,
+  useTransform,
+  animate,
+} from "framer-motion";
+import { Calendar, Medal, Trophy, Globe2 } from "lucide-react";
 import RedLine from "../ui/RedLine";
 
 const stats = [
@@ -22,7 +18,13 @@ const stats = [
   { label: "CHAMPIONSHIP", value: 1, icon: Trophy },
 ];
 
-function Counter({ value, duration = 2.5 }: { value: number; duration?: number }) {
+function Counter({
+  value,
+  duration = 2.5,
+}: {
+  value: number;
+  duration?: number;
+}) {
   const ref = useRef<HTMLSpanElement>(null);
   const inView = useInView(ref, { once: true, margin: "-100px" });
 
@@ -44,7 +46,13 @@ function Counter({ value, duration = 2.5 }: { value: number; duration?: number }
   return <span ref={ref}>0</span>;
 }
 
-function StatCard({ stat, index }: { stat: { label: string; value: number; icon: any; highlight?: boolean }, index: number }) {
+function StatCard({
+  stat,
+  index,
+}: {
+  stat: { label: string; value: number; icon: any; highlight?: boolean };
+  index: number;
+}) {
   const mouseX = useSpring(0, { stiffness: 500, damping: 50 });
   const mouseY = useSpring(0, { stiffness: 500, damping: 50 });
 
@@ -56,7 +64,8 @@ function StatCard({ stat, index }: { stat: { label: string; value: number; icon:
 
   const background = useTransform(
     [mouseX, mouseY],
-    ([x, y]) => `radial-gradient(400px circle at ${x}px ${y}px, rgba(223,31,38,0.15), transparent)`
+    ([x, y]) =>
+      `radial-gradient(400px circle at ${x}px ${y}px, rgba(223,31,38,0.15), transparent)`,
   );
 
   const isHighlighted = stat.highlight;
@@ -68,10 +77,11 @@ function StatCard({ stat, index }: { stat: { label: string; value: number; icon:
       viewport={{ once: true }}
       transition={{ duration: 0.5, delay: index * 0.1 }}
       onMouseMove={onMouseMove}
-      className={`group relative p-10 rounded-[2.5rem] border transition-all duration-700 overflow-hidden flex flex-col items-center justify-center min-h-[280px] ${isHighlighted
-        ? "bg-gradient-to-br from-white/10 to-white/5 border-triton-red/50 shadow-[0_0_40px_rgba(223,31,38,0.15)]"
-        : "bg-white/[0.03] border-white/10 hover:border-white/20"
-        }`}
+      className={`group relative p-5 sm:p-8 lg:p-10 rounded-3xl sm:rounded-[2.5rem] border transition-all duration-700 overflow-hidden flex flex-col items-center justify-center min-h-[200px] sm:min-h-[280px] ${
+        isHighlighted
+          ? "bg-gradient-to-br from-white/10 to-white/5 border-triton-red/50 shadow-[0_0_40px_rgba(223,31,38,0.15)]"
+          : "bg-white/[0.03] border-white/10 hover:border-white/20"
+      }`}
     >
       {/* Dynamic Background Spotlight */}
       <motion.div
@@ -80,52 +90,82 @@ function StatCard({ stat, index }: { stat: { label: string; value: number; icon:
       />
 
       {/* Decorative corner element */}
-      <div className={`absolute top-6 right-6 w-12 h-12 border-t-2 border-r-2 rounded-tr-xl transition-all duration-700 group-hover:scale-110 ${isHighlighted ? "border-triton-red/40" : "border-white/5 group-hover:border-triton-red/20"
-        }`} />
+      <div
+        className={`absolute top-4 right-4 sm:top-6 sm:right-6 w-8 h-8 sm:w-12 sm:h-12 border-t-2 border-r-2 rounded-tr-xl transition-all duration-700 group-hover:scale-110 ${
+          isHighlighted
+            ? "border-triton-red/40"
+            : "border-white/5 group-hover:border-triton-red/20"
+        }`}
+      />
 
       {/* Icon with animated container */}
-      <div className="relative mb-8">
-        <div className={`absolute inset-0 blur-2xl transition-opacity duration-500 opacity-0 group-hover:opacity-100 ${isHighlighted ? "bg-triton-red/40" : "bg-white/20"
-          }`} />
-        <div className={`relative p-4 rounded-2xl border transition-all duration-500 group-hover:-translate-y-1 ${isHighlighted
-          ? "bg-triton-red border-triton-red shadow-[0_0_20px_rgba(223,31,38,0.4)]"
-          : "bg-white/5 border-white/10 group-hover:border-white/30 group-hover:bg-white/10"
-          }`}>
-          <stat.icon className={`w-6 h-6 ${isHighlighted ? "text-white" : "text-triton-red"}`} />
+      <div className="relative mb-4 sm:mb-8">
+        <div
+          className={`absolute inset-0 blur-2xl transition-opacity duration-500 opacity-0 group-hover:opacity-100 ${
+            isHighlighted ? "bg-triton-red/40" : "bg-white/20"
+          }`}
+        />
+        <div
+          className={`relative p-2.5 sm:p-4 rounded-xl sm:rounded-2xl border transition-all duration-500 group-hover:-translate-y-1 ${
+            isHighlighted
+              ? "bg-triton-red border-triton-red shadow-[0_0_20px_rgba(223,31,38,0.4)]"
+              : "bg-white/5 border-white/10 group-hover:border-white/30 group-hover:bg-white/10"
+          }`}
+        >
+          <stat.icon
+            className={`w-5 h-5 sm:w-6 sm:h-6 ${isHighlighted ? "text-white" : "text-triton-red"}`}
+          />
         </div>
       </div>
 
       {/* Stats Content */}
       <div className="relative z-10 flex flex-col items-center">
-        <div className={`text-7xl font-black mb-2 tracking-tighter tabular-nums transition-transform duration-500 group-hover:scale-110 ${isHighlighted ? "text-white" : "text-white/90 group-hover:text-white"
-          }`}>
+        <div
+          className={`text-4xl sm:text-6xl lg:text-7xl font-black mb-1 sm:mb-2 tracking-tighter tabular-nums transition-transform duration-500 group-hover:scale-110 ${
+            isHighlighted
+              ? "text-white"
+              : "text-white/90 group-hover:text-white"
+          }`}
+        >
           <Counter value={stat.value} />
         </div>
 
-        <div className="flex items-center gap-3">
-          <div className={`h-[1px] w-4 transition-all duration-500 group-hover:w-8 ${isHighlighted ? "bg-triton-red" : "bg-white/10 group-hover:bg-triton-red"
-            }`} />
-          <span className="text-[11px] font-black tracking-[0.4em] text-white/40 uppercase group-hover:text-white transition-colors duration-300">
+        <div className="flex items-center gap-2 sm:gap-3">
+          <div
+            className={`h-[1px] w-3 sm:w-4 transition-all duration-500 group-hover:w-8 ${
+              isHighlighted
+                ? "bg-triton-red"
+                : "bg-white/10 group-hover:bg-triton-red"
+            }`}
+          />
+          <span className="text-[9px] sm:text-[11px] font-black tracking-[0.2em] sm:tracking-[0.4em] text-white/40 uppercase group-hover:text-white transition-colors duration-300 text-center">
             {stat.label}
           </span>
-          <div className={`h-[1px] w-4 transition-all duration-500 group-hover:w-8 ${isHighlighted ? "bg-triton-red" : "bg-white/10 group-hover:bg-triton-red"
-            }`} />
+          <div
+            className={`h-[1px] w-3 sm:w-4 transition-all duration-500 group-hover:w-8 ${
+              isHighlighted
+                ? "bg-triton-red"
+                : "bg-white/10 group-hover:bg-triton-red"
+            }`}
+          />
         </div>
       </div>
 
       {/* Bottom glowing line */}
-      <div className={`absolute bottom-0 left-1/2 -translate-x-1/2 h-[2px] transition-all duration-700 blur-[1px] ${isHighlighted
-        ? "w-1/2 bg-triton-red shadow-[0_0_15px_rgba(223,31,38,0.8)]"
-        : "w-0 bg-triton-red group-hover:w-1/3 opacity-50"
-        }`} />
+      <div
+        className={`absolute bottom-0 left-1/2 -translate-x-1/2 h-[2px] transition-all duration-700 blur-[1px] ${
+          isHighlighted
+            ? "w-1/2 bg-triton-red shadow-[0_0_15px_rgba(223,31,38,0.8)]"
+            : "w-0 bg-triton-red group-hover:w-1/3 opacity-50"
+        }`}
+      />
     </motion.div>
   );
 }
 
 export default function WorldStatsSection() {
   return (
-
-    <section className="relative py-32 px-6 overflow-hidden bg-triton-dark border-y border-white/5">
+    <section className="relative py-32 px-3 sm:px-6 overflow-hidden bg-triton-dark border-y border-white/5">
       <RedLine />
       {/* Background Large Text */}
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full text-center pointer-events-none select-none opacity-[0.04] whitespace-nowrap hidden lg:block">
@@ -160,11 +200,12 @@ export default function WorldStatsSection() {
             transition={{ duration: 0.8, delay: 0.2 }}
             className="text-white/40 max-w-sm text-right font-medium tracking-tight leading-relaxed"
           >
-            A global community connected by the passion for excellence and the thrill of competition across 3 continents.
+            A global community connected by the passion for excellence and the
+            thrill of competition across 3 continents.
           </motion.p>
         </div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-8">
+        <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6 lg:gap-8">
           {stats.map((stat, index) => (
             <StatCard key={stat.label} stat={stat} index={index} />
           ))}

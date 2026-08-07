@@ -26,14 +26,14 @@ const ShopSection: React.FC<{ language: string }> = ({ language }) => {
           </div>
 
           {/* Content */}
-          <div className="relative p-5 md:p-10 max-w-2xl sm:min-h-[600px] sm:min-w-[650px]">
+          <div className="relative p-5 md:p-10 max-w-2xl md:min-h-[600px] md:min-w-[650px]">
 
             <div className="inline-flex items-center gap-2 bg-triton-red px-4 py-1.5 rounded-full
              text-white text-[10px] font-black uppercase tracking-widest mb-6">
               <ShoppingBag size={12} />  OFFICIAL COLLECTION
             </div>
 
-            <div className="mt-50">
+            <div className="mt-16 md:mt-50">
               <h2 className="text-3xl md:text-3xl font-black text-white uppercase leading-tight 
               mb-0 sm:mb-2 max-w-2/3">
                 WEAR THE <br></br><span className="text-triton-red">
@@ -75,14 +75,14 @@ const ShopSection: React.FC<{ language: string }> = ({ language }) => {
           </div>
 
           {/* Content */}
-          <div className="relative p-5 md:py-10 md:p-10 max-w-2xl sm:min-h-[600px] min-w-[600px]">
+          <div className="relative p-5 md:py-10 md:p-10 max-w-2xl md:min-h-[600px] md:min-w-[600px]">
             <div className="inline-flex items-center gap-2 bg-triton-red px-4 py-1.5 rounded-full
              text-white text-[10px] font-black uppercase tracking-widest mb-6">
               <TabletSmartphone size={12} />
               WEB App
             </div>
 
-            <div className="mt-50">
+            <div className="mt-16 md:mt-50">
               <h2 className="text-3xl font-black text-white uppercase leading-tight mb-2 max-w-2/3">
                 TAKE US WITH YOU <br></br>
                 <span className="text-triton-red">WITH YOU</span>{" "}

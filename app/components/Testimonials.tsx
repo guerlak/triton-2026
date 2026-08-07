@@ -80,14 +80,12 @@ export default function TestimonialList({ language, testimonials, youtubeSrc }: 
           ))}
         </div>
         <iframe
-          width="425"
-          height="750"
           src={youtubeSrc || "https://www.youtube.com/embed/u8iIBGmxq9Q"}
           title="TRITON 3 RIO DE JANEIRO | DAY 3 - RACE"
           allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
           referrerPolicy="strict-origin-when-cross-origin"
           allowFullScreen
-          className="max-w-full rounded-2xl"
+          className="w-full max-w-[425px] aspect-9/16 rounded-2xl"
         ></iframe>
       </div>
       <RedLine />
