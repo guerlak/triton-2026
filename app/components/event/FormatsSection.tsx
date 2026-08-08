@@ -107,7 +107,7 @@ const FormatsSection: React.FC<{ language: string; formats: any }> = ({
     }
 
     return (
-      <div className="space-y-0 md:space-y-4">
+      <div className="space-y-8 md:space-y-4">
         {hasStravaIds && (
           <div className="flex justify-center md:justify-start items-center">
             <div className="bg-white/5 backdrop-blur-xl p-1 rounded-xl inline-flex border border-white/10 shadow-lg gap-1">
