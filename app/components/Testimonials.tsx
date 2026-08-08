@@ -56,7 +56,7 @@ export default function TestimonialList({ language, testimonials, youtubeSrc }: 
   return (
     <section
       id="moviment"
-      className="py-20 bg-triton-dark relative overflow-hidden text-center"
+      className="py-10 bg-triton-dark relative overflow-hidden text-center"
     >
       <h2 className="text-triton-red font-bold tracking-widest uppercase mb-2">
         {language === "pt-BR" ? "NÃO É APENAS UMA PROVA" : "Is not just a race"}

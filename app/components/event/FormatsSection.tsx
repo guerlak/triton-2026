@@ -107,7 +107,7 @@ const FormatsSection: React.FC<{ language: string; formats: any }> = ({
     }
 
     return (
-      <div className="space-y-4">
+      <div className="space-y-0 md:space-y-4">
         {hasStravaIds && (
           <div className="flex justify-center md:justify-start items-center">
             <div className="bg-white/5 backdrop-blur-xl p-1 rounded-xl inline-flex border border-white/10 shadow-lg gap-1">
@@ -119,11 +119,10 @@ const FormatsSection: React.FC<{ language: string; formats: any }> = ({
                   <button
                     key={dist}
                     onClick={() => setSelectedDistance(dist)}
-                    className={`relative px-4 py-2 rounded-lg text-[10px] md:text-xs font-black uppercase tracking-widest transition-all duration-300 z-10 ${
-                      isSelected
-                        ? "text-white"
-                        : "text-gray-500 hover:text-white"
-                    }`}
+                    className={`relative px-4 py-2 rounded-lg text-[10px] md:text-xs font-black uppercase tracking-widest transition-all duration-300 z-10 ${isSelected
+                      ? "text-white"
+                      : "text-gray-500 hover:text-white"
+                      }`}
                   >
                     {isSelected && (
                       <motion.div
@@ -188,7 +187,7 @@ const FormatsSection: React.FC<{ language: string; formats: any }> = ({
   }, [formats, activeTab, selectedDistance]);
 
   return (
-    <section id="formats" className="py-24 bg-triton-dark">
+    <section id="formats" className="py-12 md:py-24 bg-triton-dark">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-16">
           <h2 className="text-triton-red font-bold tracking-widest uppercase mb-2">
@@ -207,7 +206,7 @@ const FormatsSection: React.FC<{ language: string; formats: any }> = ({
         </div>
 
         {/* Toggles - Premium Segmented Control */}
-        <div className="flex justify-center mb-16 px-4">
+        <div className="flex justify-center mb-10">
           <div className="bg-white/5 backdrop-blur-xl p-1.5 rounded-2xl inline-flex border border-white/10 shadow-2xl relative overflow-hidden">
             {["1", "2", "3"].map((tab) => (
               <button
@@ -672,7 +671,7 @@ const FormatsSection: React.FC<{ language: string; formats: any }> = ({
                 </div>
                 <h5 className="text-white font-black uppercase mb-2 text-lg">
                   {language === "pt-BR"
-                    ? "Modalidade Individual"
+                    ? "Modalidade Avulsa"
                     : "Individual Modality"}
                 </h5>
                 <span className="inline-block bg-white/10 text-white text-[10px] font-bold px-2 py-1 rounded uppercase m-0.5">

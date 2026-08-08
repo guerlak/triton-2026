@@ -58,7 +58,7 @@ const ScheduleSection: React.FC<ScheduleSectionProps> = ({
         </div>
 
         {/* Day Tabs */}
-        <div className="flex justify-center mb-16 px-4">
+        <div className="flex justify-center mb-10 px-4">
           <div className="bg-white/5 backdrop-blur-xl p-1.5 rounded-2xl inline-flex border border-white/10 shadow-2xl relative overflow-hidden">
             {schedule.days.map((day) => (
               <button

@@ -523,7 +523,7 @@ export const EVENT_DATA_MAP: Record<string, EventData> = {
       title: "Um formato inovador",
       subtitle: "Permita-se viver esse desafio",
       description:
-        "O TRITON 3 redefine o triathlon tradicional, oferecendo uma experiência surpreendente para quem topa o desafio. Em vez de concentrar as três modalidades em um único dia, cada uma se torna uma prova independente — ao longo de três dias consecutivos: natação na sexta-feira, ciclismo no sábado e corrida no domingo. Esse formato exige mais do que resistência. Ele desafia os atletas a performar no mais alto nível, dia após dia — onde consistência, resiliência e estratégia são levadas ao limite.",
+        "O TRITON 3 redefine o triathlon tradicional, oferecendo uma experiência surpreendente para quem topa o desafio. Em vez de concentrar as três modalidades em um único dia, cada uma se torna uma prova independente — ao longo de três dias consecutivos. Esse formato exige mais do que resistência. Ele desafia os atletas a performar no mais alto nível, dia após dia — onde consistência, resiliência e estratégia são levadas ao limite.",
     },
     scoring: {
       title: "Um sistema de pontuação inovador",
@@ -893,7 +893,7 @@ export const EVENT_DATA_MAP: Record<string, EventData> = {
           "Gratuidade p/ 2 crianças de até 7 anos",
           "Opções de pagamento parcelado",
         ],
-        buttonText: "Central de Reservas",
+        buttonText: "Reservas",
         whatsappLink:
           "https://api.whatsapp.com/send?phone=552127898000&text=Ol%C3%A1!%20Me%20inscrevi%20no%20TRITON%20e%20gostaria%20de%20informa%C3%A7%C3%B5es%20sobre%20a%20reserva%20em%20Portobello.",
       },
@@ -912,7 +912,7 @@ export const EVENT_DATA_MAP: Record<string, EventData> = {
       {
         name: "My Safe",
         logo: "/images/partners/events/rio2026/my-safe-logo.png",
-        url: "https://triton.mysafesport.com.br/"
+        url: ""
       },
        {
         name: "Prefeitura de Mangaratiba",
@@ -920,8 +920,8 @@ export const EVENT_DATA_MAP: Record<string, EventData> = {
         url: "#"
       },
       {
-        name: "Equestrian Center",
-        logo: "/images/partners/events/rio2026/eq.png",
+        name: "Equilibrium Saude Integrada",
+        logo: "/images/partners/events/rio2026/eq-logo.png",
         url: "#"
       },
       {

@@ -42,7 +42,7 @@ const CountdownSection: React.FC<CountdownSectionProps> = ({ data }) => {
   }, [data.targetDate]);
 
   return (
-    <section className="relative py-10 overflow-hidden min-h-[400px] flex items-center">
+    <section className="relative py-10 overflow-hidden min-h-100 flex items-center">
       {/* Background with Fade Transition */}
       <div className="absolute inset-0 z-0">
         <video

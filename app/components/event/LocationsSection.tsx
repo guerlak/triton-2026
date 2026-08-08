@@ -47,8 +47,8 @@ interface LocationsSectionProps {
 
 const LocationsSection: React.FC<LocationsSectionProps> = ({ locations, language, description }) => {
   return (
-    <section id="locations" className="py-24 bg-triton-dark overflow-hidden">
-      <div className="text-center mb-20">
+    <section id="locations" className="py-12 md:py-24 bg-triton-dark overflow-hidden">
+      <div className="text-center mb-14 hidden sm:block">
         <h2 className="text-triton-red font-bold tracking-[0.3em] uppercase mb-4 text-sm md:text-base">
           {language === "pt-BR" ? "SEU PRÓXIMO DESAFIO É NO PARAÍSO" : "YOUR NEXT CHALLENGE IS IN PARADISE"}
         </h2>
@@ -64,7 +64,7 @@ const LocationsSection: React.FC<LocationsSectionProps> = ({ locations, language
       {/* Main Destination Selling Points */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Tourism Experience - Beyond the Race */}
-        <div className="relative mb-24 group rounded-4xl overflow-hidden border border-white/10 bg-neutral-950 min-h-[550px] flex items-center shadow-[0_40px_100px_rgba(0,0,0,0.8)]">
+        <div className="relative mb-8 group rounded-4xl overflow-hidden border border-white/10 bg-neutral-950 min-h-[550px] flex items-center shadow-[0_40px_100px_rgba(0,0,0,0.8)]">
           <div className="absolute inset-0 z-0">
             <Image
               src={locations.experience.image}
@@ -114,31 +114,30 @@ const LocationsSection: React.FC<LocationsSectionProps> = ({ locations, language
         </div>
 
         {/* Travel Logistics Infographic Row */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-24">
+        <div className="grid grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-6 mb-16 sm:mb-24">
           {locations.logistics.map((item, idx) => {
             const Icon = ICON_MAP[item.icon] || MapPin;
             return (
               <div
                 key={idx}
-                className="bg-white/5 backdrop-blur-xl p-5 rounded-3xl border border-white/10 relative overflow-hidden group hover:border-triton-red/50 transition-all duration-500"
+                className="bg-white/5 backdrop-blur-xl p-4 sm:p-5 rounded-3xl border border-white/10 relative overflow-hidden group hover:border-triton-red/50 transition-all duration-500"
               >
                 <div
                   className={`absolute inset-0 bg-linear-to-br ${item.color} to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500`}
                 />
                 <div className="relative z-10 text-center">
-                  <div className="bg-triton-red/10 w-16 h-16 rounded-2xl flex items-center justify-center mx-auto mb-6 group-hover:bg-triton-red group-hover:scale-110 transition-all duration-500">
+                  <div className="bg-triton-red/10 w-12 h-12 sm:w-16 sm:h-16 rounded-2xl flex items-center justify-center mx-auto mb-4 sm:mb-6 group-hover:bg-triton-red group-hover:scale-110 transition-all duration-500">
                     <Icon
-                      className="text-triton-red group-hover:text-white"
-                      size={32}
+                      className="text-triton-red group-hover:text-white w-6 h-6 sm:w-8 sm:h-8"
                     />
                   </div>
-                  <h4 className="text-gray-400 text-xs font-bold uppercase tracking-widest mb-1">
+                  <h4 className="text-gray-400 text-[10px] sm:text-xs font-bold uppercase tracking-widest mb-1">
                     {item.title}
                   </h4>
-                  <p className="text-2xl font-black text-white italic mb-1 uppercase tracking-tighter">
+                  <p className="text-lg sm:text-2xl font-black text-white italic mb-1 uppercase tracking-tighter">
                     {item.detail}
                   </p>
-                  <p className="text-sm text-gray-500 font-bold">{item.sub}</p>
+                  <p className="text-xs sm:text-sm text-gray-500 font-bold">{item.sub}</p>
                 </div>
               </div>
             );
@@ -209,7 +208,7 @@ const LocationsSection: React.FC<LocationsSectionProps> = ({ locations, language
         </div>
 
         {/* Other Options Section */}
-        <div className="relative group mb-12">
+        <div className="relative group mb-4">
           <div className="absolute -inset-0.5 bg-linear-to-r from-triton-red/30 to-red-900/30 rounded-4xl blur-md opacity-40 group-hover:opacity-80 transition duration-500"></div>
           <div className="relative bg-neutral-950/80 backdrop-blur-xl rounded-4xl overflow-hidden border border-white/10 p-8 lg:p-12 flex flex-col lg:flex-row items-center justify-between gap-8">
             <div className="flex-1">
