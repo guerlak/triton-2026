@@ -81,46 +81,48 @@ export default function ScoreSystemPage() {
                                 All athletes are timed using an electronic timing system, and their finishing times are displayed by gender, distance (SPRINT, MIDDLE, or LONG), age group, and/or team. At the end of each day, finishing positions are converted into points: 1 point is awarded to the first-place finisher, 2 points to the second place, 3 points to the third place, and so on until the last finisher.
                             </p>
 
-                            <div className="my-12 overflow-x-auto bg-white/5 rounded-2xl border border-white/10">
-                                <div className="p-6 border-b border-white/10 bg-white/5">
-                                    <h3 className="text-sm font-black uppercase tracking-widest text-triton-red">TRITON 3 Scoring Example</h3>
-                                    <p className="text-xs text-gray-500 mt-1 uppercase tracking-tighter">Demonstrating how consistency across disciplines defines the most balanced athlete.</p>
+                            <div className="my-8 sm:my-12 bg-white/5 rounded-xl sm:rounded-2xl border border-white/10 overflow-hidden">
+                                <div className="p-4 sm:p-6 border-b border-white/10 bg-white/5">
+                                    <h3 className="text-xs sm:text-sm font-black uppercase tracking-widest text-triton-red">TRITON 3 Scoring Example</h3>
+                                    <p className="text-[11px] sm:text-xs text-gray-500 mt-1 uppercase tracking-tighter">Demonstrating how consistency across disciplines defines the most balanced athlete.</p>
                                 </div>
-                                <table className="w-full text-left border-collapse">
-                                    <thead>
-                                        <tr className="text-[10px] uppercase tracking-widest text-gray-500 border-b border-white/5">
-                                            <th className="px-6 py-4 font-black">Prev</th>
-                                            <th className="px-6 py-4 font-black text-triton-red">New</th>
-                                            <th className="px-6 py-4 font-black">Athlete</th>
-                                            <th className="px-6 py-4 font-black text-center">Swim (#)</th>
-                                            <th className="px-6 py-4 font-black text-center">Bike (#)</th>
-                                            <th className="px-6 py-4 font-black text-center">Run (#)</th>
-                                            <th className="px-6 py-4 font-black text-right text-white">Total Pts</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody className="text-xs font-sans">
-                                        {triton3Example.map((row, i) => (
-                                            <tr key={i} className="border-b border-white/5 last:border-0 hover:bg-white/5 transition-colors">
-                                                <td className="px-6 py-4 text-gray-500">{row.prev}</td>
-                                                <td className="px-6 py-4 font-black text-triton-red">{row.next}</td>
-                                                <td className="px-6 py-4 font-bold text-white italic">{row.name}</td>
-                                                <td className="px-6 py-4 text-center">
-                                                    <span className="text-gray-400">{row.swim}</span>
-                                                    <span className="ml-2 font-black text-white/40">({row.swimPts})</span>
-                                                </td>
-                                                <td className="px-6 py-4 text-center">
-                                                    <span className="text-gray-400">{row.bike}</span>
-                                                    <span className="ml-2 font-black text-white/40">({row.bikePts})</span>
-                                                </td>
-                                                <td className="px-6 py-4 text-center">
-                                                    <span className="text-gray-400">{row.run}</span>
-                                                    <span className="ml-2 font-black text-white/40">({row.runPts})</span>
-                                                </td>
-                                                <td className="px-6 py-4 text-right font-black text-white">{row.total}</td>
+                                <div className="overflow-x-auto">
+                                    <table className="w-full text-left border-collapse min-w-[550px] sm:min-w-full">
+                                        <thead>
+                                            <tr className="text-[9px] sm:text-[10px] uppercase tracking-wider text-gray-500 border-b border-white/5 bg-black/40">
+                                                <th className="px-2.5 sm:px-4 py-3 font-black text-center w-10">Prev</th>
+                                                <th className="px-2.5 sm:px-4 py-3 font-black text-center text-triton-red w-10">New</th>
+                                                <th className="px-2.5 sm:px-4 py-3 font-black">Athlete</th>
+                                                <th className="px-2.5 sm:px-4 py-3 font-black text-center">Swim (#)</th>
+                                                <th className="px-2.5 sm:px-4 py-3 font-black text-center">Bike (#)</th>
+                                                <th className="px-2.5 sm:px-4 py-3 font-black text-center">Run (#)</th>
+                                                <th className="px-2.5 sm:px-4 py-3 font-black text-right text-white">Total Pts</th>
                                             </tr>
-                                        ))}
-                                    </tbody>
-                                </table>
+                                        </thead>
+                                        <tbody className="text-[11px] sm:text-xs font-sans">
+                                            {triton3Example.map((row, i) => (
+                                                <tr key={i} className="border-b border-white/5 last:border-0 hover:bg-white/5 transition-colors whitespace-nowrap">
+                                                    <td className="px-2.5 sm:px-4 py-2.5 sm:py-3 text-center text-gray-500 font-mono">{row.prev}</td>
+                                                    <td className="px-2.5 sm:px-4 py-2.5 sm:py-3 text-center font-black text-triton-red font-mono">{row.next}</td>
+                                                    <td className="px-2.5 sm:px-4 py-2.5 sm:py-3 font-bold text-white italic">{row.name}</td>
+                                                    <td className="px-2.5 sm:px-4 py-2.5 sm:py-3 text-center">
+                                                        <span className="text-gray-300 font-mono text-[10px] sm:text-xs">{row.swim}</span>
+                                                        <span className="ml-1 sm:ml-2 font-black text-white/50 text-[10px] sm:text-xs">({row.swimPts})</span>
+                                                    </td>
+                                                    <td className="px-2.5 sm:px-4 py-2.5 sm:py-3 text-center">
+                                                        <span className="text-gray-300 font-mono text-[10px] sm:text-xs">{row.bike}</span>
+                                                        <span className="ml-1 sm:ml-2 font-black text-white/50 text-[10px] sm:text-xs">({row.bikePts})</span>
+                                                    </td>
+                                                    <td className="px-2.5 sm:px-4 py-2.5 sm:py-3 text-center">
+                                                        <span className="text-gray-300 font-mono text-[10px] sm:text-xs">{row.run}</span>
+                                                        <span className="ml-1 sm:ml-2 font-black text-white/50 text-[10px] sm:text-xs">({row.runPts})</span>
+                                                    </td>
+                                                    <td className="px-2.5 sm:px-4 py-2.5 sm:py-3 text-right font-black text-white text-xs sm:text-sm font-mono">{row.total}</td>
+                                                </tr>
+                                            ))}
+                                        </tbody>
+                                    </table>
+                                </div>
                             </div>
 
                             <div className="bg-white/5 p-8 border-l-4 border-triton-red rounded-r-xl my-10">

@@ -28,53 +28,12 @@ const Hero: React.FC = () => {
           className="w-70 md:w-120 mx-auto"
         />
 
-        <div className="flex flex-col md:flex-row justify-center items-center gap-6 text-sm md:text-xl font-bold tracking-widest uppercase">
-          <motion.div initial={{ opacity: 0, scale: 0 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{
-              duration: 0.3,
-              delay: 0.1 // espera 2 segundos antes de iniciar
-            }}>
-            <span className="text-white">Be Eager</span>
-          </motion.div>
-          <motion.div initial={{ opacity: 0, scale: 0 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{
-              duration: 0.3,
-              delay: 0.6 // espera 2 segundos antes de iniciar
-            }}>
-            <span className="hidden md:block text-triton-red">•</span>
-          </motion.div>
-          <motion.div
-            initial={{ opacity: 0, scale: 0 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{
-              duration: 0.3,
-              delay: 0.3 // espera 2 segundos antes de iniciar
-            }}>
-            <motion.div initial={{ opacity: 0, scale: 0 }}
-              animate={{ opacity: 1, scale: 1 }} >
-              <span className="text-white">Be Brave</span>
-            </motion.div>
-          </motion.div>
-          <motion.div initial={{ opacity: 0, scale: 0 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{
-              duration: 0.3,
-              delay: 1 // espera 2 segundos antes de iniciar
-            }}>
-            <span className="hidden md:block text-triton-red">•</span>
-          </motion.div>
-          <motion.div
-            initial={{ opacity: 0, scale: 0 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{
-              duration: 0.3,
-              delay: 0.6 // espera 2 segundos antes de iniciar
-            }}>
-
-            <span className="text-white">Be Strong</span>
-          </motion.div>
+        <div className="flex flex-row flex-wrap justify-center items-center gap-2 sm:gap-6 text-xs sm:text-base md:text-xl font-bold tracking-widest uppercase mt-4">
+          <span className="text-white">Be Eager</span>
+          <span className="text-triton-red">•</span>
+          <span className="text-white">Be Brave</span>
+          <span className="text-triton-red">•</span>
+          <span className="text-white">Be Strong</span>
         </div>
       </div>
 
