@@ -77,7 +77,7 @@ const Footer: React.FC = () => {
               </li>
 
               <li>
-                <a href="#" className="hover:text-white transition-colors">
+                <a href="/scoring-system" className="hover:text-white transition-colors">
                   Scoring System
                 </a>
               </li>

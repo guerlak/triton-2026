@@ -79,7 +79,7 @@ const HallOfFame = ({ athletes }: { athletes: HallOfFameAthlete[] }) => {
 
       <div className="relative bg-neutral-900/80 backdrop-blur-md border border-white/10 rounded-2xl flex flex-col h-full group-hover:border-white/20 transition-colors">
         {/* Top Header/Image Area */}
-        <div className="relative h-64 w-full overflow-hidden bg-neutral-800">
+        <div className="relative h-52 sm:h-64 w-full overflow-hidden bg-neutral-800">
           {/* Athlete Image */}
           {athlete.imgUrl && (
             <Image
@@ -100,22 +100,22 @@ const HallOfFame = ({ athletes }: { athletes: HallOfFameAthlete[] }) => {
           </div>
 
           {/* Champion Badge */}
-          <div className="absolute top-4 left-4 z-10">
-            <div className="flex items-center gap-2 px-3 py-1.5 rounded-full bg-amber-400 text-neutral-950 font-black text-[10px] uppercase tracking-wider shadow-lg shadow-amber-400/30">
+          <div className="absolute top-3 left-3 sm:top-4 sm:left-4 z-10">
+            <div className="flex items-center gap-1.5 sm:gap-2 px-2.5 sm:px-3 py-1 sm:py-1.5 rounded-full bg-amber-400 text-neutral-950 font-black text-[9px] sm:text-[10px] uppercase tracking-wider shadow-lg shadow-amber-400/30">
               <Trophy className="w-3 h-3" />
               <span>CHAMPION</span>
             </div>
           </div>
 
           {/* Distance Tag */}
-          <div className="absolute bottom-4 left-4 z-10 flex items-center gap-2">
-            <Icon className={`w-4 h-4 ${accentText}`} />
-            <span className="text-white text-xs font-black uppercase tracking-[0.2em]">{distanceLabel}</span>
+          <div className="absolute bottom-3 left-3 sm:bottom-4 sm:left-4 z-10 flex items-center gap-2">
+            <Icon className={`w-3.5 h-3.5 sm:w-4 sm:h-4 ${accentText}`} />
+            <span className="text-white text-[11px] sm:text-xs font-black uppercase tracking-[0.2em]">{distanceLabel}</span>
           </div>
         </div>
 
         {/* Content Area */}
-        <div className="p-6 flex flex-col grow">
+        <div className="p-4 sm:p-6 flex flex-col grow">
           <div className="flex items-center justify-between mb-2">
             <span className={`text-[10px] font-black uppercase tracking-[0.25em] ${accentText}`}>
               GLOBAL SERIES
@@ -123,7 +123,7 @@ const HallOfFame = ({ athletes }: { athletes: HallOfFameAthlete[] }) => {
             <CountryFlag countryCode={athlete.Nation} />
           </div>
 
-          <h3 className="text-2xl font-black text-white uppercase leading-none mb-6 group-hover:text-triton-red transition-colors duration-300">
+          <h3 className="text-lg sm:text-xl md:text-2xl font-black text-white uppercase leading-tight mb-4 sm:mb-6 group-hover:text-triton-red transition-colors duration-300">
             {athlete.Name}
           </h3>
 
@@ -158,7 +158,7 @@ const HallOfFame = ({ athletes }: { athletes: HallOfFameAthlete[] }) => {
   );
 
   return (
-    <section className="py-24 relative overflow-hidden">
+    <section className="py-8 sm:py-16 md:py-24 relative overflow-hidden">
       {/* Heavy Decorative Typography in Background */}
       <div className="absolute inset-0 flex flex-col justify-between pointer-events-none opacity-[0.03] select-none">
         <h2 className="text-[25vw] font-black leading-none -ml-20 tracking-tighter">ELITE</h2>
@@ -166,7 +166,7 @@ const HallOfFame = ({ athletes }: { athletes: HallOfFameAthlete[] }) => {
       </div>
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-        <div className="space-y-32">
+        <div className="space-y-12 sm:space-y-20 md:space-y-32">
           {GENDERS.map(({ label, accentBg, accentBorder, accentText, distances }) => {
             const displayAthletes = distances.map(({ distanceLabel, icon }) => ({
               athlete: athletes.find(a =>
@@ -182,22 +182,19 @@ const HallOfFame = ({ athletes }: { athletes: HallOfFameAthlete[] }) => {
             return (
               <div key={label}>
                 {/* Gender Section Header */}
-                <div className="flex flex-col md:flex-row md:items-end justify-between gap-8 mb-8">
+                <div className="flex flex-col md:flex-row md:items-end justify-between gap-4 md:gap-8 mb-6 sm:mb-8">
                   <div className="flex flex-col">
-                    <h2 className="text-6xl md:text-6xl font-black text-white uppercase leading-[0.8] mb-6">
+                    <h2 className="text-3xl sm:text-4xl md:text-6xl font-black text-white uppercase leading-none mb-2 sm:mb-4">
                       {label}<span className={`text-triton-red animate-pulse`}>.</span>
                     </h2>
-                    <div className="flex items-center gap-4 mb-4">
-                      {/* <div className={`h-[2px] w-12 ${accentText.replace('text-', 'bg-')}`} /> */}
-                    </div>
-                    <span className={`text-sm font-black uppercase tracking-[0.4em] text-triton-red`}>
+                    <span className={`text-xs sm:text-sm font-black uppercase tracking-[0.2em] sm:tracking-[0.4em] text-triton-red`}>
                       2025 RANKING COMPETITION CHAMPIONS
                     </span>
                   </div>
                 </div>
 
                 {/* Grid Layout */}
-                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 md:gap-10">
+                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 md:gap-10">
                   <AnimatePresence mode="popLayout">
                     {displayAthletes.map(({ athlete, distanceLabel, icon }, i) =>
                       athlete ? (

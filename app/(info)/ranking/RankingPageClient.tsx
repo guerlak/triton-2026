@@ -53,30 +53,30 @@ export default function RankingPageClient({ initialAthletes }: RankingPageClient
   };
 
   return (
-    <div className="  text-white pb-20 pt-10 px-4 sm:px-6 lg:px-8">
+    <div className="text-white pb-10 sm:pb-20 pt-4 sm:pt-10 px-2 sm:px-6 lg:px-8">
       {/* Page Header */}
-      <div className="max-w-7xl mx-auto mb-12">
+      <div className="max-w-7xl mx-auto mb-6 sm:mb-12">
 
         {/* Filters Section */}
         <motion.div
           initial={{ opacity: 0, y: 0 }}
           animate={{ opacity: 1, y: 2 }}
           transition={{ delay: 0.1 }}
-          className="bg-neutral-900/50 backdrop-blur-xl border border-white/5 rounded-3xl p-6 md:p-8"
+          className="bg-neutral-900/50 backdrop-blur-xl border border-white/5 rounded-2xl sm:rounded-3xl p-4 sm:p-6 md:p-8"
         >
-          <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
+          <div className="grid grid-cols-1 md:grid-cols-4 gap-4 sm:gap-6">
             {/* Search Input */}
             <div className="md:col-span-2 relative">
-              <label className="block text-xs font-black uppercase tracking-widest text-gray-500 mb-2 ml-1">
+              <label className="block text-[11px] sm:text-xs font-black uppercase tracking-widest text-gray-500 mb-1.5 sm:mb-2 ml-1">
                 Search Athlete / BIB
               </label>
               <div className="relative group">
                 <Search className="absolute left-4 top-1/2 -translate-y-1/2 text-gray-500 group-focus-within:text-triton-red 
-                transition-colors w-5 h-5" />
+                transition-colors w-4 h-4 sm:w-5 sm:h-5" />
                 <input
                   type="text"
                   placeholder="Ex: John Doe or 3023"
-                  className="w-full bg-black/40 border border-white/10 rounded-2xl py-4 pl-12 pr-4 text-white 
+                  className="w-full bg-black/40 border border-white/10 rounded-xl sm:rounded-2xl py-3 sm:py-4 pl-11 sm:pl-12 pr-4 text-sm text-white 
                   focus:outline-none focus:border-triton-red focus:ring-1 focus:ring-triton-red/50 transition-all font-bold"
                   value={search}
                   onChange={(e) => setSearch(e.target.value)}
@@ -86,7 +86,7 @@ export default function RankingPageClient({ initialAthletes }: RankingPageClient
 
             {/* Gender Filter */}
             <div>
-              <label className="block text-xs font-black uppercase tracking-widest text-gray-500 mb-2 ml-1">
+              <label className="block text-[11px] sm:text-xs font-black uppercase tracking-widest text-gray-500 mb-1.5 sm:mb-2 ml-1">
                 Gender
               </label>
               <CustomSelect
@@ -102,7 +102,7 @@ export default function RankingPageClient({ initialAthletes }: RankingPageClient
 
             {/* Contest Filter */}
             <div>
-              <label className="block text-xs font-black uppercase tracking-widest text-gray-500 mb-2 ml-1">
+              <label className="block text-[11px] sm:text-xs font-black uppercase tracking-widest text-gray-500 mb-1.5 sm:mb-2 ml-1">
                 Distance
               </label>
               <CustomSelect
@@ -117,7 +117,7 @@ export default function RankingPageClient({ initialAthletes }: RankingPageClient
           </div>
 
           {/* Results Summary & Clear Filters */}
-          <div className="mt-6 flex flex-wrap items-center justify-between gap-4 pt-6 border-t border-white/5">
+          <div className="mt-4 sm:mt-6 flex flex-wrap items-center justify-between gap-3 pt-4 sm:pt-6 border-t border-white/5 text-xs sm:text-sm">
             <span className="text-gray-400 font-bold">
               Showing <span className="text-white">{filteredAthletes.length}</span> athletes
             </span>
@@ -140,18 +140,18 @@ export default function RankingPageClient({ initialAthletes }: RankingPageClient
 
       {/* Main Table / Grid */}
       <div className="max-w-7xl mx-auto">
-        <div className="bg-neutral-900 shadow-2xl rounded-3xl overflow-hidden border border-white/5">
+        <div className="bg-neutral-900 shadow-2xl rounded-2xl sm:rounded-3xl overflow-hidden border border-white/5">
           <div className="overflow-x-auto">
             <table className="w-full text-left border-collapse">
               <thead>
                 <tr className="bg-black/60 text-[10px] font-black uppercase tracking-[0.2em] text-gray-500 border-b border-white/10">
-                  <th className="py-6 px-4 sm:px-8 text-center w-20">Rank</th>
-                  <th className="py-6 px-4">BIB</th>
-                  <th className="py-6 px-4">Athlete</th>
-                  <th className="py-6 px-4 hidden sm:table-cell">Gender</th>
-                  <th className="py-6 px-4 hidden md:table-cell">Distance</th>
-                  <th className="py-6 px-4 text-center text-triton-red">Points</th>
-                  <th className="py-6 px-4 text-right">Details</th>
+                  <th className="py-4 sm:py-6 px-2 sm:px-8 text-center w-12 sm:w-20">Rank</th>
+                  <th className="py-4 sm:py-6 px-2 sm:px-4">BIB</th>
+                  <th className="py-4 sm:py-6 px-2 sm:px-4">Athlete</th>
+                  <th className="py-4 sm:py-6 px-4 hidden sm:table-cell">Gender</th>
+                  <th className="py-4 sm:py-6 px-4 hidden md:table-cell">Distance</th>
+                  <th className="py-4 sm:py-6 px-2 sm:px-4 text-center text-triton-red">Points</th>
+                  <th className="py-4 sm:py-6 px-2 sm:px-4 text-right">Details</th>
                 </tr>
               </thead>
               <tbody className="divide-y divide-white/5">
@@ -167,39 +167,40 @@ export default function RankingPageClient({ initialAthletes }: RankingPageClient
                         onClick={() => handleAthleteClick(athlete)}
                         className="group hover:bg-white/5 transition-all cursor-pointer"
                       >
-                        <td className="py-5 px-4 sm:px-8 text-center">
-                          <span className={`inline-flex items-center justify-center w-8 h-8 rounded-full font-black text-xs border ${athlete["Global Standings"] <= 3
+                        <td className="py-3.5 sm:py-5 px-2 sm:px-8 text-center">
+                          <span className={`inline-flex items-center justify-center w-7 h-7 sm:w-8 sm:h-8 rounded-full font-black text-[11px] sm:text-xs border ${athlete["Global Standings"] <= 3
                             ? "bg-triton-red border-triton-red text-white"
                             : "border-white/10 text-gray-400"
                             }`}>
                             {athlete["Global Standings"]}
                           </span>
                         </td>
-                        <td className="py-5 px-4 font-mono text-xs text-gray-500">#{athlete.Bib}</td>
-                        <td className="py-5 px-4">
-                          <div className="flex items-center gap-3">
+                        <td className="py-3.5 sm:py-5 px-2 sm:px-4 font-mono text-[11px] sm:text-xs text-gray-500">#{athlete.Bib}</td>
+                        <td className="py-3.5 sm:py-5 px-2 sm:px-4">
+                          <div className="flex items-center gap-2 sm:gap-3">
                             <CountryFlag countryCode={athlete.Country} />
-                            <span className="font-bold text-white uppercase tracking-wider">{athlete.Name}</span>
+                            <span className="text-xs sm:text-sm md:text-base font-bold text-white uppercase tracking-wider">{athlete.Name}</span>
                           </div>
                         </td>
-                        <td className="py-5 px-4 hidden sm:table-cell">
+                        <td className="py-3.5 sm:py-5 px-4 hidden sm:table-cell">
                           <span className="text-xs font-black uppercase tracking-widest text-gray-400 group-hover:text-white transition-colors">
                             {athlete.Gender}
                           </span>
                         </td>
-                        <td className="py-5 px-4 hidden md:table-cell">
+                        <td className="py-3.5 sm:py-5 px-4 hidden md:table-cell">
                           <span className="text-xs font-bold text-white/60 bg-white/5 border border-white/10 px-3 py-1 rounded-full whitespace-nowrap">
                             {athlete.Contest}
                           </span>
                         </td>
-                        <td className="py-5 px-4 text-center">
-                          <span className="font-black text-lg text-white group-hover:text-triton-red transition-colors">
+                        <td className="py-3.5 sm:py-5 px-2 sm:px-4 text-center">
+                          <span className="font-black text-sm sm:text-lg text-white group-hover:text-triton-red transition-colors">
                             {athlete["Total Points"]}
                           </span>
                         </td>
-                        <td className="py-5 px-4 text-right">
-                          <div className="inline-flex items-center justify-center w-10 h-10 rounded-xl bg-triton-red/10 text-triton-red group-hover:bg-triton-red group-hover:text-white transition-all shadow-lg shadow-triton-red/0 group-hover:shadow-triton-red/20">
-                            <Plus size={20} />
+                        <td className="py-3.5 sm:py-5 px-2 sm:px-4 text-right">
+                          <div className="inline-flex items-center justify-center w-8 h-8 sm:w-10 sm:h-10 rounded-lg sm:rounded-xl bg-triton-red/10 text-triton-red group-hover:bg-triton-red group-hover:text-white transition-all">
+                            <Plus size={18} className="sm:hidden" />
+                            <Plus size={20} className="hidden sm:block" />
                           </div>
                         </td>
                       </motion.tr>
