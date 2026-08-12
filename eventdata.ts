@@ -910,6 +910,11 @@ export const EVENT_DATA_MAP: Record<string, EventData> = {
         url: "#"
       },
       {
+        name: "Dobro",
+        logo: "/images/partners/events/rio2026/dobro-logo.png",
+        url: "#"
+      },
+      {
         name: "My Safe",
         logo: "/images/partners/events/rio2026/my-safe-logo.png",
         url: ""
