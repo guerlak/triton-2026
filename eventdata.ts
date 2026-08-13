@@ -1517,28 +1517,34 @@ export const EVENT_DATA_MAP: Record<string, EventData> = {
             {
               time: "10:00 – 19:00",
               title: "Race Office",
-              location: "TBC",
+              description: "Next to finish-line - by the Iberia Lince Statue",
+              location: "Rossio dos Olivais, Parque das Nações",
             },
             {
               time: "10:00 – 19:00",
               title: "Expo Village",
-              location: "Parque das Nações",
+              location: "At the finish-line",
             },
             {
               time: "16:00",
-              title: "Kids & Parents, Swim & Run + Triathlon",
-              location: "Docas dos Olivais",
+              title: "Kids & Parents, Swim & Run",
+              location: "Meeting point (15:00) at Race Office (at the finish-line)",
+            },
+            {
+              time: "16:30",
+              title: "Family Triathlon",
+              location: "Meeting point (15:00) at Race Office (at the finish-line)",
             },
             {
               time: "16:30 - 17:30",
               title: "Swim course practice",
-              location: "Docas dos Olivais",
+              location: "At swim start",
             },
             {
               time: "19:00",
-              title: "Welcome Dinner Party",
-              location:
-                "Location TBC",
+              title: "Athletes Dinner Time",
+              description: "(Optional: buy tickets at race office)",
+              location: `Restaurant next to finish-line - <a href="https://www.casadofrango.pt/en" target="_blank" rel="noopener noreferrer" class="underline text-triton-red hover:text-white transition-colors">Casa do Frango</a>`,
             },
           ],
         },
@@ -1549,71 +1555,87 @@ export const EVENT_DATA_MAP: Record<string, EventData> = {
           subtitle: "RACE DAY 3 - THE RUN",
           events: [
             {
-              time: "04:10 – 05:40",
-              title: "Last minute Race office",
-              location:  "TBC",
+              time: "05:30 - 07:00",
+              title: "Bike Check-In",
+              location: "Transition Zone: at swim exit",
             },
             {
-              time: "07:00 - 16:00",
-              title: "Expo Village",
-              location: "Parque das Nações",
+              time: "06:00 – 07:00",
+              title: "Last Minute Race Office",
+              location: "At the finish-line",
             },
             {
               time: "07:00",
-              title: "Swim warm up",
-              location: "Doca dos Olivais",
+              title: "Swim Warm Up",
+              location: "At swim start venue",
             },
-             {
+            {
+              time: "07:15",
+              title: "Triton Angels Start",
+              location: "At swim start venue",
+            },
+            {
               time: "07:30",
-              title: "START SPRINT AND CORPORATE RELAY",
-              location: "Doca dos Olivais",
+              title: "Sprint and Corporate Relay Start",
+              location: "At swim start venue",
             },
             {
               time: "07:33",
-              title: "START MIDDLE",
-              location: "Doca dos Olivais",
+              title: "Middle Start",
+              location: "At swim start venue",
             },
-             {
+            {
               time: "07:36",
-              title: "START LONG",
-              location: "Doca dos Olivais",
+              title: "Long Start",
+              location: "At swim start venue",
             },
-            // {
-            //   isCutoff: true,
-            //   title: "Tempos de Corte da Natação",
-            //   details: [
-            //     { label: "SPRINT", value: "20min" },
-            //     { label: "MIDDLE", value: "40min" },
-            //     { label: "LONG", value: "1h00" },
-            //   ],
-            // },
-            // {
-            //   isCutoff: true,
-            //   title: "Tempos de Corte da Ciclismo",
-            //   details: [
-            //     { label: "SPRINT", value: "1h00" },
-            //     { label: "MIDDLE", value: "2h00" },
-            //     { label: "LONG", value: "3h00" },
-            //   ],
-            // },
-            // {
-            //   isCutoff: true,
-            //   title: "Tempos de Corte da Corrida",
-            //   details: [
-            //     { label: "SPRINT", value: "40min" },
-            //     { label: "MIDDLE", value: "1h00" },
-            //     { label: "LONG", value: "2h00" },
-            //   ],
-            // },
-            
-           
+            {
+              time: "08:45",
+              title: "Race Awards (Estimated) - Sprint Age-Groups",
+              location: "At the finish-line",
+            },
+            {
+              time: "09:15",
+              title: "Race Awards (Estimated) - Corporate",
+              location: "At the finish-line",
+            },
+            {
+              time: "09:30",
+              title: "Race Awards (Estimated) - Sprint Overall Ladies and Men",
+              location: "At the finish-line",
+            },
+            {
+              time: "09:40",
+              title: "Race Awards (Estimated) - Middle Age-Groups",
+              location: "At the finish-line",
+            },
+            {
+              time: "10:30",
+              title: "Race Awards (Estimated) - Middle Overall Ladies and Men",
+              location: "At the finish-line",
+            },
+            {
+              time: "11:30",
+              title: "Race Awards (Estimated) - Long Age-Groups",
+              location: "At the finish-line",
+            },
+            {
+              time: "13:00",
+              title: "Race Awards (Estimated) - Long Overall Ladies and Men",
+              location: "At the finish-line",
+            },
+            {
+              time: "14:30",
+              title: "Last Finisher (Estimated)",
+              location: "At the finish-line",
+            },
           ],
         },
       ],
       importantNote: "",
     },
     locations: {
-      description: "O TRITON Rio 26 acontece em Mangaratiba, um destino que combina o melhor da Serra do Mar com a Costa Verde. Planeje sua viagem, escolha seu hotel parceiro e prepare-se para uma experiência que vai além da competição.",
+      description: "",
       experience: {
         image: lisboaExperienceImage,
         pois: [
@@ -1673,11 +1695,11 @@ export const EVENT_DATA_MAP: Record<string, EventData> = {
         image: fotoResortLisboa,
         title: "Tivoli",
         description:
-          "The Tivoli Oriente Lisboa Hotel is the official hotel of TRITON Lisboa, offering exclusive discounts for athletes and their families.",
+          "The Tivoli Oriente Lisboa Hotel is the official hotel of TRITON Lisboa, offering the best location for athletes and their families.",
         benefits: [
-          "700m from the race arena",
-          "Enjoy the special rates",
-          "Use code: NHTORIWED ",
+          "Close to airport",
+          "Our staff hotel",
+          "700 meters from race venue",
         ],
         buttonText: "Contact Us",
         whatsappLink:
