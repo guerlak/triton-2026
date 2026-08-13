@@ -26,7 +26,7 @@ const ExtraEvent: React.FC<ExtraEventProps> = ({
     badge,
 }) => {
     return (
-        <section className=" py-16 md:py-24 bg-black text-white relative overflow-hidden border-t border-white/5">
+        <section className=" py-16 md:py-24 bg-triton-light text-white relative overflow-hidden border-t border-white/5">
             {/* Background glow effect */}
             <div className="absolute top-1/2 right-0 w-96 h-96 bg-triton-red/10 rounded-full blur-3xl pointer-events-none translate-x-1/2 -translate-y-1/2" />
 

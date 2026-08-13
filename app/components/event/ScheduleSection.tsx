@@ -126,14 +126,15 @@ const ScheduleSection: React.FC<ScheduleSectionProps> = ({
                         {/* Description & Location */}
                         <div className="space-y-2">
                           {event.description && (
-                            <p className="text-gray-400 text-xs md:text-sm">
-                              {event.description}
-                            </p>
+                            <p
+                              className="text-gray-400 text-xs md:text-sm"
+                              dangerouslySetInnerHTML={{ __html: event.description }}
+                            />
                           )}
                           {event.location && (
                             <div className="flex items-center gap-2 text-gray-500 text-xs md:text-sm">
-                              <MapPin className="w-3 h-3" />
-                              <span>{event.location}</span>
+                              <MapPin className="w-3 h-3 shrink-0" />
+                              <span dangerouslySetInnerHTML={{ __html: event.location }} />
                             </div>
                           )}
                         </div>
