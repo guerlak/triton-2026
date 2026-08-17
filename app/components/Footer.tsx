@@ -71,7 +71,7 @@ const Footer: React.FC = () => {
                 </a>
               </li>
               <li>
-                <a href="/social-responsability" className="hover:text-white transition-colors">
+                <a href="/social-responsibility" className="hover:text-white transition-colors">
                   Social Responsibility
                 </a>
               </li>

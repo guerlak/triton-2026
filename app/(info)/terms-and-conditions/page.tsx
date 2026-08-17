@@ -27,8 +27,8 @@ export default function TermsAndConditions() {
                         <Gavel className="w-5 h-5 sm:w-6 sm:h-6 ml-[-4px]" />
                         <span className="font-black uppercase tracking-[0.4em] text-xs">Legal</span>
                     </div>
-                    <h1 className="text-3xl sm:text-5xl md:text-7xl font-black uppercase text-white leading-tight tracking-tight break-words mb-4 sm:mb-6">
-                        TRITON RACES <span className="text-triton-red italic">GLOBAL TERMS & CONDITIONS</span>
+                    <h1 className="text-3xl sm:text-4xl md:text-6xl font-black uppercase text-white leading-tight tracking-tight break-words mb-4 sm:mb-6">
+                        GLOBAL <span className="text-triton-red italic"> TERMS & CONDITIONS</span>
                     </h1>
                     <p className="text-xs sm:text-base md:text-lg text-gray-400 font-sans tracking-wide uppercase italic">
                         Waiver and Release of Liability, Assumption of Risk and Indemnity
@@ -388,7 +388,6 @@ export default function TermsAndConditions() {
                 </div>
             </main>
 
-            <Footer />
         </div>
     );
 }

@@ -19,9 +19,11 @@ const InfoNavbar = () => {
   }, []);
 
   const navItems = [
-    { name: "Home", href: "/" },
+
     { name: "About", href: "/about" },
-    { name: "Score System", href: "/score-system" },
+    { name: "Scoring System", href: "/scoring-system" },
+    { name: "Terms & Conditions", href: "/terms-and-conditions" },
+    { name: "Social responsibility", href: "/social-responsibility" },
     { name: "FAQ", href: "/faq" },
 
 
