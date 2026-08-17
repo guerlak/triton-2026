@@ -159,7 +159,7 @@ const LiveResultsClientWrapper: React.FC<Props> = ({ initialAthletes }) => {
                 <th className="py-6 px-8 text-right text-triton-red">
                   <div className="flex items-center justify-end gap-2 text-triton-red">
                     <Clock size={14} />
-                    <span>Time</span>
+                    <span>Points</span>
                   </div>
                 </th>
               </tr>

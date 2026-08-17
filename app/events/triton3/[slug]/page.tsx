@@ -8,7 +8,7 @@ import Testimonials from "@/app/components/Testimonials";
 import NewsletterSection from "@/app/components/NewsletterSection";
 import ShopSection from "@/app/components/ShopSection";
 import HeroEvent from "@/app/components/event/HeroEvent";
-import { EVENT_DATA_MAP } from "@/eventdata";
+import { getEventData } from "@/services/EventService";
 import { notFound } from "next/navigation";
 import PartnersSectionEvent from "@/app/components/event/PartnersSectionEvent";
 import AfterMovie from "@/app/components/AfterMovie";
@@ -22,7 +22,13 @@ export async function generateMetadata({
   params: Promise<{ slug: string }>;
 }): Promise<Metadata> {
   const { slug } = await params;
-  const data = EVENT_DATA_MAP[slug];
+  const data = await getEventData(slug);
+
+  if (!data) {
+    return {
+      title: "Triton Event",
+    };
+  }
 
   return {
     title: `${data.title} | Triton`,
@@ -35,7 +41,7 @@ export default async function Page({
   params: Promise<{ slug: string }>;
 }) {
   const { slug } = await params;
-  const data = EVENT_DATA_MAP[slug];
+  const data = await getEventData(slug);
 
   if (!data) {
     notFound();
@@ -46,6 +52,7 @@ export default async function Page({
       <EventNavBar
         language={data.language}
         registerLink={data.registrationLink}
+
       />
       <main className="text-white bg-black/90">
         <HeroEvent data={data.hero} />

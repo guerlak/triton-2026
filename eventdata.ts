@@ -74,8 +74,9 @@ export interface EventData {
   targetDate: string;
   hero: EventHero;
   startListApiUrl?: string;
-  liveResutsUrl?: string;
+  liveResultsUrl?: string;
   registrationLink: string;
+  raceGuideLink?: string;
   country: string;
   flag: string;
   status: "Confirmed" | "Planned" | "Completed";
@@ -190,7 +191,7 @@ export const EVENT_DATA_MAP: Record<string, EventData> = {
     registrationLink:
       "https://www.ticketsports.com.br/e/triton-1-salvador-86852",
     startListApiUrl: "https://api.raceresult.com/371805/RQDKNSO0GU02BW4IF4X1G7AF12S073FW",
-    liveResutsUrl: "https://resultscui.active.com/events/TRITONSALVADOR2026",
+    liveResultsUrl: "https://resultscui.active.com/events/TRITONSALVADOR2026",
     hero: {
       backgroundImage: heroImgSalvador, // Placeholder
       logoImage: logoSalvador,
@@ -512,13 +513,14 @@ export const EVENT_DATA_MAP: Record<string, EventData> = {
     dateText: "AGO 21 . 22 . 23",
     fullDateText: "21, 22 e 23 de Agosto, 2026",
     targetDate: "2026-08-21T08:00:00",
+    liveResultsUrl: "https://www.eicrono.com.br/triton/index_triton3.html",
+    raceGuideLink: "/docs/race-guide/guia_do_atleta_rio26.pdf",
     hero: {
       backgroundImage: heroImg,
       logoImage: logoHero,
     },
     registrationLink:
       "https://www.ticketsports.com.br/e/triton-3-rio-de-janeiro-2026-74526",
-    
     info: {
       title: "Um formato inovador",
       subtitle: "Permita-se viver esse desafio",

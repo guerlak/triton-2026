@@ -140,7 +140,7 @@ export default function LiveResultsPage() {
           {/* Actions */}
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
             {liveEvent &&
-              <MainButton href={liveEvent?.liveResutsUrl || "#"}>
+              <MainButton href={liveEvent?.liveResultsUrl || "#"}>
                 Go to Live Results
               </MainButton>
             }

@@ -7,7 +7,7 @@ import { useState, useEffect } from "react";
 import { Radio } from "lucide-react";
 import Link from "next/link";
 
-const Navbar = () => {
+const Navbar = ({ liveResultsUrl }: { liveResultsUrl?: string }) => {
     const [isOpen, setIsOpen] = useState(false);
     const [isScrolled, setIsScrolled] = useState(false);
 
@@ -29,7 +29,7 @@ const Navbar = () => {
 
     ];
 
-    const urlLiveResults = "https://resultscui.active.com/events/TRITONSALVADOR2026"
+
     const activeEvent = true;
 
     return (
@@ -76,7 +76,7 @@ const Navbar = () => {
                 {/* Desktop Buttons */}
                 <div className="hidden lg:flex items-center gap-4">
                     <div className="shrink-0">
-                        {activeEvent ? <a href={urlLiveResults} target="_blank" className="flex items-center gap-2 text-xl font-black"><span className="text-triton-red animate-pulse text-2xl font-black flex items-center gap-2"><Radio size={24} /></span><span className="text-white/90 uppercase hover:text-triton-red transition-opacity text-sm">Check Live Results</span></a> : <></>}
+                        {activeEvent ? <a href={liveResultsUrl} target="_blank" className="flex items-center gap-2 text-xl font-black"><span className="text-triton-red animate-pulse text-2xl font-black flex items-center gap-2"><Radio size={24} /></span><span className="text-white/90 uppercase hover:text-triton-red transition-opacity text-sm">Check Live Results</span></a> : <></>}
                     </div>
                     {/* <NavButton text="Triton Global" href="/" />
                     <NavButton isRed text="Athlete Area" href="./athlete-area" /> */}

@@ -1,26 +1,26 @@
 import LiveResults from "./LiveResults"
 import StartList from "./StartList"
 import AthleteNavBar from "./AthleteNavBar"
-import RaceKit from "./RaceKit"
 import RaceGuide from "./RaceGuide"
+import { getEventData } from "@/services/EventService";
+import { notFound } from "next/navigation";
 
 export default async function AthleteArePage({ params }: { params: Promise<{ slug: string }> }) {
 	const { slug } = await params;
+
+	const data = await getEventData(slug);
+	if (!data) {
+		notFound();
+	}
+
+
 	return (
 		<>
-			<AthleteNavBar />
-			<RaceGuide slug={slug} />
-			<RaceKit />
+			<AthleteNavBar liveResultsUrl={data.liveResultsUrl} />
+			<RaceGuide raceGuideLink={data.raceGuideLink} />
+			{/* <RaceKit /> */}
 			<StartList slug={slug} />
 			<LiveResults />
 		</>
 	)
 }
-
-// KIT
-// RACE GUIDE
-// Start list
-// Results
-// reutilizar o componente de filtro e listagem do results
-// Full results colocar os results da API T1 T2 Swin Run
-//
