@@ -52,7 +52,7 @@ export default async function Page({
       <EventNavBar
         language={data.language}
         registerLink={data.registrationLink}
-
+        isRegistrationClosed={data.isRegistrationClosed}
       />
       <main className="text-white bg-black/90">
         <HeroEvent data={data.hero} />

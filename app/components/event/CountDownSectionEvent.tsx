@@ -87,10 +87,16 @@ const CountdownSection: React.FC<CountdownSectionProps> = ({ data }) => {
               </div>
 
               <div className="mt-10 flex gap-4 justify-center lg:justify-start">
-                <a href={data.registrationLink} target="_blank" className="bg-triton-red hover:bg-white text-white hover:text-black font-black py-2 px-4 md:px-10 rounded-none flex items-center gap-3 uppercase tracking-widest transition-all duration-300">
-                  <span>{data.language === "pt-BR" ? "Inscreva-se" : "Register"}</span>
-                  <ArrowRight size={18} />
-                </a>
+                {data.isRegistrationClosed ? (
+                  <span className="bg-neutral-800 text-gray-500 font-black py-2 px-4 md:px-10 rounded-none flex items-center gap-3 uppercase tracking-widest cursor-not-allowed opacity-60 border border-white/10 select-none">
+                    <span>{data.language === "pt-BR" ? "Inscrições Encerradas" : "Registration Closed"}</span>
+                  </span>
+                ) : (
+                  <a href={data.registrationLink} target="_blank" className="bg-triton-red hover:bg-white text-white hover:text-black font-black py-2 px-4 md:px-10 rounded-none flex items-center gap-3 uppercase tracking-widest transition-all duration-300">
+                    <span>{data.language === "pt-BR" ? "Inscreva-se" : "Register"}</span>
+                    <ArrowRight size={18} />
+                  </a>
+                )}
               </div>
             </div>
 

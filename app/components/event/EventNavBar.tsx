@@ -7,7 +7,7 @@ import { usePathname } from "next/navigation";
 import NavButton from "@/app/ui/NavButton";
 import { useState, useEffect } from "react";
 
-const Navbar = ({ language, registerLink }: { language: string, registerLink: string }) => {
+const Navbar = ({ language, registerLink, isRegistrationClosed }: { language: string, registerLink: string, isRegistrationClosed?: boolean }) => {
     const pathname = usePathname();
     const [isOpen, setIsOpen] = useState(false);
     const [isScrolled, setIsScrolled] = useState(false);
@@ -83,9 +83,16 @@ const Navbar = ({ language, registerLink }: { language: string, registerLink: st
 
                 {/* Desktop Buttons */}
                 <div className="hidden lg:flex items-center gap-4">
-                    <NavButton text="Triton Global" href="/" />
-                    {/* <NavButton isRed text="Athlete Area" href={`${pathname}/athlete-area`} /> */}
-                    <NavButton isRed text="Register Now" href={registerLink} external />
+
+                    <NavButton text={language === "pt-BR" ? "Área do Atleta" : "Athlete Area"} href={`${pathname}/athlete-area`} />
+                    {!isRegistrationClosed && (
+                        <NavButton
+                            isRed
+                            text={language === "pt-BR" ? "Inscreva-se Já" : "Register Now"}
+                            href={registerLink}
+                            external
+                        />
+                    )}
                 </div>
 
                 {/* Mobile menu button */}
@@ -141,8 +148,17 @@ const Navbar = ({ language, registerLink }: { language: string, registerLink: st
                         </a>
                     ))}
                     <div className="mt-8 flex flex-col items-center gap-6 w-full max-w-xs">
-                        <NavButton text="Triton Global" href="/live-results" className="w-full" />
-                        <NavButton isRed text="Race Guide" href="/triton-events" className="w-full" />
+                        <NavButton text="Triton Global" href="/" className="w-full" />
+                        <NavButton text={language === "pt-BR" ? "Área do Atleta" : "Athlete Area"} href={`${pathname}/athlete-area`} className="w-full" />
+                        {!isRegistrationClosed && (
+                            <NavButton
+                                isRed
+                                text={language === "pt-BR" ? "Inscreva-se Já" : "Register Now"}
+                                href={registerLink}
+                                external
+                                className="w-full"
+                            />
+                        )}
                     </div>
                 </div>
             </div>

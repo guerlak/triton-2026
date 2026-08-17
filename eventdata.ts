@@ -76,6 +76,7 @@ export interface EventData {
   startListApiUrl?: string;
   liveResultsUrl?: string;
   registrationLink: string;
+  isRegistrationClosed?: boolean;
   raceGuideLink?: string;
   country: string;
   flag: string;
@@ -170,6 +171,8 @@ import logoQidong from "@/public/images/eventos/qidong/logo-qidong.png"
 import qidongHotel from "@/public/images/eventos/qidong/evergrande-hotel.jpeg"
 import landScapeQidong from "@/public/images/eventos/qidong/landscape-qidong.jpeg"
 import { StaticImport } from "next/dist/shared/lib/get-img-props";
+import { TruckElectric } from "lucide-react";
+import { tr } from "framer-motion/client";
 
 export const EVENT_DATA_MAP: Record<string, EventData> = {
   "salvador-2026": {
@@ -1329,6 +1332,9 @@ export const EVENT_DATA_MAP: Record<string, EventData> = {
     targetDate: "2026-09-06T08:00:00",
     language: "en",
     registrationLink: "https://register.hakuapp.com/?event=9ce0f9c87c1b43a8b97a",
+    isRegistrationClosed: true
+    
+    ,
     hero: {
       backgroundImage: heroImgLisboa,
       logoImage: logoLisboa,
