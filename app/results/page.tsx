@@ -145,7 +145,7 @@ export default function LiveResultsPage() {
           {/* Actions */}
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4 w-full sm:w-auto">
             {liveEvent &&
-              <MainButton href={liveEvent?.liveResultsUrl || "#"}>
+              <MainButton href={liveEvent?.athleteArea?.liveResultsUrl || liveEvent?.liveResultsUrl || "#"}>
                 Go to Live Results
               </MainButton>
             }

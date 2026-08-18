@@ -5,7 +5,7 @@ import { Clock } from "lucide-react";
 
 export default async function StartList({ slug }: { slug: string }) {
   const eventData = await getEventData(slug);
-  const url = eventData?.startListApiUrl;
+  const url = eventData?.athleteArea?.startListApiUrl || eventData?.startListApiUrl;
   const tritonType = eventData?.eventFormat === "triton3" ? "TRITON 3" : "TRITON 1";
   const thisEvent = eventData?.title || "TRITON Event";
 

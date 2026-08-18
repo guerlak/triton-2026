@@ -5,10 +5,12 @@ import { Search } from "lucide-react";
 
 interface LiveAthlete {
   TritonID: number;
-  Contest: string;
+  Contest?: string;
+  Race?: string;
+  Distance?: string;
   Bib: number;
-  Flag: string;
-  Nation: string;
+  Flag?: string;
+  Nation?: string;
   Name: string;
   Gender: string;
   AgeGroup: string;
@@ -31,7 +33,10 @@ const StartListClientWrapper: React.FC<Props> = ({ initialAthletes }) => {
     const query = searchQuery.toLowerCase();
     const matchesSearch =
       athlete.Name.toLowerCase().includes(query) ||
-      athlete.Bib.toString().includes(query);
+      athlete.Bib.toString().includes(query) ||
+      (athlete.Race && athlete.Race.toLowerCase().includes(query)) ||
+      (athlete.Distance && athlete.Distance.toLowerCase().includes(query)) ||
+      (athlete.Contest && athlete.Contest.toLowerCase().includes(query));
     const matchesGender = selectedGender === "ALL GENDERS" || athlete.Gender === selectedGender;
     const matchesAgeGroup = selectedAgeGroup === "ALL AGE GROUPS" || athlete.AgeGroup === selectedAgeGroup;
 
@@ -110,54 +115,81 @@ const StartListClientWrapper: React.FC<Props> = ({ initialAthletes }) => {
         <div className="overflow-x-auto scrollbar-hide">
           <table className="w-full text-left border-collapse min-w-[800px]">
             <thead>
-              <tr className="bg-black/40 text-[10px] font-black uppercase text-gray-500 border-b border-white/5 tracking-widest">
-                <th className="py-6 px-8 text-center w-24">Bib</th>
-                <th className="py-6 px-6">Athlete</th>
-                <th className="py-6 px-6">Distance</th>
-                <th className="py-6 px-6">Gender</th>
-                <th className="py-6 px-6 text-center">Age Group</th>
+              <tr className="bg-black/60 text-[10px] sm:text-xs font-black uppercase text-gray-400 border-b border-white/10 tracking-widest whitespace-nowrap">
+                <th className="py-5 px-3 sm:px-6 text-center w-16 sm:w-24">Bib</th>
+                <th className="py-5 px-3 sm:px-6">Athlete</th>
+                <th className="py-5 px-3 sm:px-6">Race</th>
+                <th className="py-5 px-3 sm:px-6">Distance</th>
+                <th className="py-5 px-3 sm:px-6">Gender</th>
+                <th className="py-5 px-3 sm:px-6 text-center">Age Group</th>
               </tr>
             </thead>
             <tbody>
               {displayedAthletes.length > 0 ? (
                 displayedAthletes.map((athlete) => (
                   <tr
-                    key={athlete.Bib}
-                    className="border-b border-white/5 hover:bg-white/5 transition-colors group"
+                    key={`${athlete.TritonID}-${athlete.Bib}`}
+                    className="border-b border-white/5 hover:bg-white/5 transition-colors group whitespace-nowrap"
                   >
-                    <td className="py-5 px-8 text-center font-bold text-gray-400">
+                    {/* BIB */}
+                    <td className="py-3.5 sm:py-4 px-3 sm:px-6 text-center font-mono font-bold text-gray-300 text-xs sm:text-sm">
                       {athlete.Bib}
                     </td>
-                    <td className="py-5 px-6">
-                      <div className="flex items-center gap-4">
-                        <img
-                          src={athlete.Flag}
-                          alt={athlete.Nation}
-                          className="w-6 h-4 object-contain rounded-sm shadow-md"
-                        />
-                        <span className="font-black text-sm text-white uppercase tracking-tight">
+
+                    {/* ATHLETE */}
+                    <td className="py-3.5 sm:py-4 px-3 sm:px-6">
+                      <div className="flex items-center gap-3">
+                        {athlete.Flag && (
+                          <img
+                            src={athlete.Flag}
+                            alt={athlete.Nation || "Flag"}
+                            className="w-5 h-3.5 sm:w-6 sm:h-4 object-contain rounded-xs shadow-sm shrink-0"
+                          />
+                        )}
+                        <span className="font-black text-xs sm:text-sm text-white uppercase tracking-tight">
                           {athlete.Name}
                         </span>
+                        {athlete.Nation && (
+                          <span className="text-[10px] font-mono text-gray-500 uppercase">
+                            ({athlete.Nation})
+                          </span>
+                        )}
                       </div>
                     </td>
-                    <td className="py-5 px-6 text-xs font-bold text-gray-400 uppercase tracking-wider">
-                      <span className={`text-[10px] font-black uppercase px-2 py-1 rounded-md border 
-                        ${athlete.Contest === "Sprint Distance"
-                          ? "border-white/20 text-black bg-white/75"
-                          : athlete.Contest === "Middle Distance"
-                            ? "border-red-500/30 text-white bg-red-500/30"
-                            : "border-black/20 text-white bg-white/5"
-                        }`}>
-                        {athlete.Contest}
+
+                    {/* RACE */}
+                    <td className="py-3.5 sm:py-4 px-3 sm:px-6 text-xs font-bold text-gray-300 uppercase tracking-wider">
+                      <span className="text-[10px] sm:text-xs font-black uppercase px-2.5 py-1  text-gray-200">
+                        {athlete.Race || "Triathlon"}
                       </span>
                     </td>
-                    <td className="py-5 px-6">
-                      <span className={`text-[10px] font-black uppercase px-2 py-1 text-white/60 tracking-wider`}>
+
+                    {/* DISTANCE */}
+                    <td className="py-3.5 sm:py-4 px-3 sm:px-6 text-xs font-bold uppercase tracking-wider">
+                      <span
+                        className={`text-[10px] sm:text-xs font-black uppercase px-2.5 py-1 rounded-md border shadow-sm ${(athlete.Distance || athlete.Contest)?.toLowerCase().includes("sprint")
+                          ? "bg-gray-400 text-black border-white/40"
+                          : (athlete.Distance || athlete.Contest)?.toLowerCase().includes("middle")
+                            ? "bg-red-500/30 text-white border-red-500/30"
+                            : (athlete.Distance || athlete.Contest)?.toLowerCase().includes("long") || (athlete.Distance || athlete.Contest)?.toLowerCase().includes("full")
+                              ? "bg-gray-800 text-white border-white/30"
+                              : "bg-white/10 text-gray-200 border-white/10"
+                          }`}
+                      >
+                        {athlete.Distance || athlete.Contest || "-"}
+                      </span>
+                    </td>
+
+                    {/* GENDER */}
+                    <td className="py-3.5 sm:py-4 px-3 sm:px-6">
+                      <span className="text-[10px] sm:text-xs font-bold uppercase text-gray-300 tracking-wider">
                         {athlete.Gender}
                       </span>
                     </td>
-                    <td className="py-5 px-6 text-center">
-                      <span className="font-black text-white text-xs uppercase tracking-widest px-3 py-1 rounded-full">
+
+                    {/* AGE GROUP */}
+                    <td className="py-3.5 sm:py-4 px-3 sm:px-6 text-center">
+                      <span className="font-mono font-bold text-white text-xs uppercase tracking-widest px-3 py-1 rounded-full bg-white/5 border border-white/10 inline-block">
                         {athlete.AgeGroup}
                       </span>
                     </td>
@@ -165,7 +197,7 @@ const StartListClientWrapper: React.FC<Props> = ({ initialAthletes }) => {
                 ))
               ) : (
                 <tr>
-                  <td colSpan={5} className="py-20 text-center text-gray-500 font-bold uppercase tracking-widest">
+                  <td colSpan={6} className="py-16 text-center text-gray-500 font-bold uppercase tracking-widest text-xs sm:text-sm">
                     No athletes found matching your search.
                   </td>
                 </tr>

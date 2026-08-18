@@ -5,6 +5,7 @@ import { notFound } from "next/navigation";
 import AthleteNavBar from "@/app/components/event/AthleteNavBar";
 import RaceGuide from "@/app/components/event/RaceGuide";
 import AthleteResults from "@/app/components/event/AthleteResults";
+import EventVideo from "@/app/components/event/EventVideo";
 
 export default async function AthleteArePage({ params }: { params: Promise<{ slug: string }> }) {
 	const { slug } = await params;
@@ -14,16 +15,14 @@ export default async function AthleteArePage({ params }: { params: Promise<{ slu
 		notFound();
 	}
 
-
-
-
 	return (
 		<>
-			<AthleteNavBar liveResultsUrl={data.liveResultsUrl} targetDate={data.targetDate} />
-			<RaceGuide raceGuideLink={data.raceGuideLink} />
+			<AthleteNavBar liveResultsUrl={data.athleteArea?.liveResultsUrl} targetDate={data.targetDate} mediaPictureUrl={data.athleteArea?.mediaPictureUrl} />
+			<RaceGuide raceGuideLink={data.athleteArea?.raceGuideLink} />
+			<EventVideo videoBriefingUrl={data.athleteArea?.videoBriefingUrl} />
 			{/* <RaceKit /> */}
 			<StartList slug={slug} />
-			<AthleteResults url={data.athleteResultsUrl} />
+			<AthleteResults url={data.athleteArea?.liveResultsUrl} />
 		</>
 	)
 }

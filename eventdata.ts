@@ -60,6 +60,14 @@ export interface EventFormatDetail {
   extraDescription?: string;
 }
 
+export interface AthleteArea {
+  liveResultsUrl: string;
+  raceGuideLink?: string;
+  startListApiUrl?: string;
+  mediaPictureUrl?: string;
+  videoBriefingUrl?: string;
+}
+
 export interface EventData {
   id: string;
   slug: string;
@@ -73,12 +81,14 @@ export interface EventData {
   fullDateText: string;
   targetDate: string;
   hero: EventHero;
-  startListApiUrl?: string;
+  athleteArea?: AthleteArea;
   liveResultsUrl?: string;
+  startListApiUrl?: string;
   athleteResultsUrl?: string;
+  mediaPictureUrl?: string;
+  raceGuideLink?: string;
   registrationLink: string;
   isRegistrationClosed?: boolean;
-  raceGuideLink?: string;
   country: string;
   flag: string;
   status: "Confirmed" | "Planned" | "Completed";
@@ -172,8 +182,7 @@ import logoQidong from "@/public/images/eventos/qidong/logo-qidong.png"
 import qidongHotel from "@/public/images/eventos/qidong/evergrande-hotel.jpeg"
 import landScapeQidong from "@/public/images/eventos/qidong/landscape-qidong.jpeg"
 import { StaticImport } from "next/dist/shared/lib/get-img-props";
-import { TruckElectric } from "lucide-react";
-import { tr } from "framer-motion/client";
+
 
 export const EVENT_DATA_MAP: Record<string, EventData> = {
   "salvador-2026": {
@@ -517,10 +526,13 @@ export const EVENT_DATA_MAP: Record<string, EventData> = {
     dateText: "AGO 21 . 22 . 23",
     fullDateText: "21, 22 e 23 de Agosto, 2026",
     targetDate: "2026-08-21T08:00:00",
-    liveResultsUrl: "https://www.eicrono.com.br/triton/index_triton3.html",
-    raceGuideLink: "/docs/race-guide/guia_do_atleta_rio26.pdf",
-    startListApiUrl: "https://api.raceresult.com/371805/2ZJGC6U06Z8RLDI16UWNEHNXGE39KYE0",
-   
+    athleteArea: {
+      liveResultsUrl: "https://www.eicrono.com.br/triton/index_triton3.html",
+      raceGuideLink: "/docs/race-guide/guia_do_atleta_rio26.pdf",
+      startListApiUrl: "https://api.raceresult.com/371805/2ZJGC6U06Z8RLDI16UWNEHNXGE39KYE0",
+      mediaPictureUrl: "https://www.focoradical.com.br/grupos/triton-3-rj",
+      videoBriefingUrl: "https://youtu.be/mx0aPdfgAUY?si=4UZPQTTX_dVuo_HB",
+    },
     isRegistrationClosed: true,
     hero: {
       backgroundImage: heroImg,

@@ -50,7 +50,7 @@ const MissionSection: React.FC = () => {
           <div className="relative">
             <div className="relative aspect-square rounded-3xl overflow-hidden shadow-2xl shadow-triton-red/20 flex items-center justify-center p-12">
               <Image
-                src="/images/triton-about-002.png"
+                src="/images/triton-about-002.jpg"
                 alt="Mission"
                 fill
                 className="object-cover"
