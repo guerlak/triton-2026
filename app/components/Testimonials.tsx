@@ -35,7 +35,7 @@ const Testimonial = ({
 
           <div className="mt-auto flex justify-center w-full">
             <a
-              href={linkSocial || ""}
+              href={linkSocial}
               target="_blank"
               rel="noopener noreferrer"
               className="text-triton-red hover:text-red-400"
@@ -74,7 +74,7 @@ export default function TestimonialList({ language, testimonials, youtubeSrc }: 
                 author={item.author}
                 company={item.company}
                 avatarUrl={item.avatarUrl || item.avatar_url || ""}
-                linkSocial={item.link_social || item.linkSocial || ""}
+                linkSocial={item.link_social}
               />
             </div>
           ))}

@@ -1337,7 +1337,6 @@ export const EVENT_DATA_MAP: Record<string, EventData> = {
     language: "en",
     registrationLink: "https://register.hakuapp.com/?event=9ce0f9c87c1b43a8b97a",
     isRegistrationClosed: true
-    
     ,
     hero: {
       backgroundImage: heroImgLisboa,
@@ -1728,25 +1727,24 @@ export const EVENT_DATA_MAP: Record<string, EventData> = {
       "quote": "Quantas lições em um único final de semana. Foram 3 dias, 3 esportes, 3 humores e unimeras variações de sentimentos. No Triton 3 pude me testar, exercitar a paciência e também o carinho comigo mesma. ",
       "author": "Viviane",
       "company": "TechFlow",
-      "link_social": ""
+      "link_social": "https://www.instagram.com/viviwigand"
     },
     {
       "avatar_url": "/images/atletas/elida.jpeg",
       "quote": "Que fim de semana incrível! Obrigada Triton pela experiência única. Levo para casa uma recordação cheias de boas energias e momentos especiais...",
       "author": "Elida",
       "company": "TechFlow",
-      "link_social": ""
+      "link_social": "https://www.instagram.com/elidacordeiroo"
     },
     {
       "avatar_url": "/images/atletas/bizarelo.jpeg",
       "quote": "Que dia incrível e que dia forte! Obrigado TRITON pela prova top, segura e com visual fantástico",
       "author": "Bizarelo",
       "company": "TechFlow",
-      "link_social": ""
+      "link_social": "https://www.instagram.com/bizarelocycling"
     }]
   },
     partners: [
-      
       {
         name: "Câmara Municipal de Lisboa",
         logo: "/images/eventos/lisboa-2026/partners/logo-camara-lisboa.png",
