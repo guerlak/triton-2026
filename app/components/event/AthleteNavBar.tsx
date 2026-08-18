@@ -22,7 +22,7 @@ const Navbar = ({ liveResultsUrl, targetDate }: { liveResultsUrl?: string; targe
     const toggleMenu = () => setIsOpen(!isOpen);
 
     const navLinks = [
-        { name: "Race Kit", href: "#race-kit" },
+
         { name: "Race Guide", href: "#race-guide" },
         { name: "Start List", href: "#start-list" },
         { name: "Results", href: "#results" },
