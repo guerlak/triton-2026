@@ -35,7 +35,11 @@ const HeroSection: React.FC<HeroSectionProps> = ({
         <Image
           src={backgroundImage}
           alt={backgroundImageAlt}
-          className={`w-full h-full object-cover ${backgroundImageClassName}`}
+          fill
+          priority
+          sizes="100vw"
+          quality={80}
+          className={`object-cover ${backgroundImageClassName}`}
         />
         {darkFilter && <div className="absolute inset-0 bg-black/60 z-10" />}
         <div className="absolute inset-0 bg-linear-to-b from-black/0 via-black/0 to-black z-20"></div>

@@ -14,8 +14,12 @@ const Hero: React.FC = () => {
       <div className="absolute inset-0 z-0">
         <Image
           src={heroImg}
-          alt="Triathlon Swimming"
-          className="w-full h-full object-cover opacity-60"
+          alt="TRITON World Series - Be Eager, Be Brave, Be Strong"
+          fill
+          priority
+          sizes="100vw"
+          quality={80}
+          className="object-cover opacity-60"
         />
         <div className="absolute inset-0 bg-linear-to-b from-black/0 via-black/10 to-black"></div>
       </div>
@@ -24,7 +28,8 @@ const Hero: React.FC = () => {
         {/* Logo Mark */}
         <Image
           src={logoHero}
-          alt="Triathlon Swimming"
+          alt="TRITON World Series Logo"
+          priority
           className="w-70 md:w-120 mx-auto"
         />
 

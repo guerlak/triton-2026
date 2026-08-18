@@ -67,7 +67,7 @@ const Navbar = () => {
 
         {/* Desktop Buttons */}
         <div className="hidden lg:flex items-center gap-4">
-          <NavButton text="Live Results" href="/live-results" />
+          <NavButton text="Live Results" href="/results" />
           <NavButton isRed text="Find a Race" href="/events" />
         </div>
 
@@ -123,7 +123,7 @@ const Navbar = () => {
             </a>
           ))}
           <div className="mt-6 flex flex-col items-center gap-4 w-full max-w-xs">
-            <NavButton text="Live Results" href="/live-results" className="w-full text-center" />
+            <NavButton text="Live Results" href="/results" className="w-full text-center" />
             <NavButton isRed text="Find a Race" href="/events" className="w-full text-center" />
           </div>
         </div>

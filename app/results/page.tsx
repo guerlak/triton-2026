@@ -1,8 +1,7 @@
 "use client";
 
-import Navbar from "@/app/components/Navbar";
 import MainButton from "@/app/ui/MainButton";
-import { Activity, Trophy, Calendar, ArrowRight, ExternalLink, Filter } from "lucide-react";
+import { Activity, Trophy, Calendar, ArrowRight, ExternalLink, Filter, ArrowLeft } from "lucide-react";
 import { EVENT_DATA_MAP } from "@/eventdata";
 import { useState, useMemo } from "react";
 import Link from "next/link";
@@ -69,55 +68,61 @@ export default function LiveResultsPage() {
   }, [selectedEvent, selectedYear]);
 
   return (
-    <div className="bg-black min-h-screen text-white font-sans selection:bg-triton-red selection:text-white flex flex-col justify-center items-center gap-24 relative overflow-hidden">
+    <div className="bg-black min-h-screen text-white font-sans selection:bg-triton-red selection:text-white flex flex-col justify-center items-center gap-12 sm:gap-16 md:gap-24 relative overflow-hidden pb-16 sm:pb-24">
+      <Link
+        href="/"
+        className="absolute top-6 left-6 md:top-10 md:left-10 z-40 hover:text-triton-red transition-all duration-300 cursor-pointer opacity-50 hover:opacity-100"
+      >
+        <ArrowLeft className="w-7 h-7 md:w-10 md:h-10" />
+      </Link>
       <HeroSection
         backgroundImage={heroImg}
-        heightClass="h-[480px]"
+        heightClass="h-[520px] md:h-[720px]"
         darkFilter={true}
         showChevron={false}
       >
-        <div className="max-w-2xl w-full text-center relative z-10 mt-8 flex flex-col items-center">
+        <div className="max-w-2xl w-full text-center relative z-10 mt-8 sm:mt-12 flex flex-col items-center px-4">
           {/* Pulsing indicator */}
-          <div className="relative w-24 h-24 mx-auto mb-8 flex items-center justify-center">
+          <div className="relative w-20 h-20 sm:w-24 sm:h-24 mx-auto mb-6 sm:mb-8 flex items-center justify-center">
             {liveEvent ? (
               <>
                 <div className="absolute inset-0 rounded-full border border-triton-red/30 animate-ping opacity-75" />
                 <div className="absolute -inset-4 rounded-full border border-white/5 animate-pulse" />
                 <div className="absolute inset-0 rounded-full border-2 border-dashed border-triton-red/50 animate-[spin_10s_linear_infinite]" />
-                <div className="w-16 h-16 rounded-full bg-neutral-900 border border-white/10 flex items-center justify-center shadow-[0_0_25px_rgba(223,31,38,0.25)]">
-                  <Activity className="text-triton-red animate-pulse" size={28} />
+                <div className="w-14 h-14 sm:w-16 sm:h-16 rounded-full bg-neutral-900 border border-white/10 flex items-center justify-center shadow-[0_0_25px_rgba(223,31,38,0.25)]">
+                  <Activity className="text-triton-red animate-pulse w-6 h-6 sm:w-7 sm:h-7" />
                 </div>
               </>
             ) : (
               <>
                 <div className="absolute inset-0 rounded-full border border-white/5" />
-                <div className="w-16 h-16 rounded-full bg-neutral-950 border border-white/10 flex items-center justify-center">
-                  <Activity className="text-neutral-500" size={28} />
+                <div className="w-14 h-14 sm:w-16 sm:h-16 rounded-full bg-neutral-950 border border-white/10 flex items-center justify-center">
+                  <Activity className="text-neutral-500 w-6 h-6 sm:w-7 sm:h-7" />
                 </div>
               </>
             )}
           </div>
 
           {/* Badge */}
-          <div className={`inline-flex items-center gap-2 border px-4 py-1.5 rounded-full text-xs font-black uppercase tracking-widest mb-6 ${liveEvent
+          <div className={`inline-flex items-center gap-2 border px-3.5 sm:px-4 py-1.5 rounded-full text-[10px] sm:text-xs font-black uppercase tracking-widest mb-4 sm:mb-6 ${liveEvent
             ? "bg-triton-red/10 border-triton-red/30 text-triton-red"
             : "bg-white/5 border-white/10 text-neutral-400"
             }`}>
             {liveEvent ? (
               <>
-                <span className="w-2.5 h-2.5 rounded-full bg-triton-red animate-ping" />
+                <span className="w-2 h-2 sm:w-2.5 sm:h-2.5 rounded-full bg-triton-red animate-ping" />
                 Event Live Now
               </>
             ) : (
               <>
-                <span className="w-2.5 h-2.5 rounded-full bg-neutral-600" />
+                <span className="w-2 h-2 sm:w-2.5 sm:h-2.5 rounded-full bg-neutral-600" />
                 No Live Event
               </>
             )}
           </div>
 
           {/* Heading */}
-          <h1 className="text-5xl md:text-7xl font-black uppercase italic leading-none mb-6 tracking-tight">
+          <h1 className="text-3xl sm:text-5xl md:text-7xl font-black uppercase italic leading-tight mb-4 sm:mb-6 tracking-tight">
             {liveEvent ? (
               <>
                 {liveEvent?.title} <span className="text-triton-red">{liveEvent?.subtitle}</span>
@@ -130,7 +135,7 @@ export default function LiveResultsPage() {
           </h1>
 
           {/* Description */}
-          <p className="text-gray-300 text-lg md:text-xl font-medium max-w-xl mx-auto mb-10 leading-relaxed">
+          <p className="text-gray-300 text-xs sm:text-base md:text-xl font-medium max-w-xl mx-auto mb-6 sm:mb-10 leading-relaxed">
             {liveEvent
               ? `Track real-time results from the ongoing ${liveEvent?.title} stage and stay on top of every move.`
               : "Track real-time results from the next TRITON stage and stay on top of every move."
@@ -138,7 +143,7 @@ export default function LiveResultsPage() {
           </p>
 
           {/* Actions */}
-          <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
+          <div className="flex flex-col sm:flex-row items-center justify-center gap-4 w-full sm:w-auto">
             {liveEvent &&
               <MainButton href={liveEvent?.liveResultsUrl || "#"}>
                 Go to Live Results
@@ -146,38 +151,39 @@ export default function LiveResultsPage() {
             }
           </div>
         </div>
+
       </HeroSection>
 
       {/* Divider */}
-      <div className="w-full max-w-3xl h-px bg-gradient-to-r from-transparent via-white/10 to-transparent relative z-10" />
+      <div className="w-full max-w-3xl h-px bg-gradient-to-r from-transparent via-white/10 to-transparent relative z-10 px-4" />
 
       {/* Past Events / All Results Section */}
-      <div className="max-w-4xl w-full text-center relative z-10 flex flex-col items-center">
+      <div className="max-w-4xl w-full text-center relative z-10 flex flex-col items-center px-4 sm:px-6 lg:px-8">
         {/* Heading */}
-        <h2 className="text-3xl md:text-5xl font-black uppercase italic leading-none mb-6 tracking-tight">
+        <h2 className="text-2xl sm:text-3xl md:text-5xl font-black uppercase italic leading-tight mb-4 sm:mb-6 tracking-tight">
           All Races. <span className="text-triton-red">All Results.</span>
         </h2>
 
         {/* Description */}
-        <p className="text-gray-300 text-base md:text-lg font-medium max-w-xl mx-auto mb-12 leading-relaxed">
+        <p className="text-gray-300 text-xs sm:text-base md:text-lg font-medium max-w-xl mx-auto mb-8 sm:mb-12 leading-relaxed">
           Explore startlists and results from every TRITON event. Use the filter to find a specific race.
         </p>
 
         {/* Filters */}
-        <div className="w-full max-w-2xl bg-neutral-900/40 border border-white/10 rounded-2xl p-6 mb-10 backdrop-blur-sm flex flex-col sm:flex-row gap-6 items-center justify-between">
+        <div className="w-full max-w-2xl bg-neutral-900/40 border border-white/10 rounded-2xl p-4 sm:p-6 mb-8 sm:mb-10 backdrop-blur-sm flex flex-col sm:flex-row gap-4 sm:gap-6 items-stretch sm:items-center justify-between">
           <div className="flex items-center gap-2 text-neutral-400 font-bold uppercase tracking-wider text-xs">
             <Filter size={16} className="text-triton-red" />
             <span>Filter Results</span>
           </div>
 
-          <div className="flex flex-col sm:flex-row gap-4 w-full sm:w-auto">
+          <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 w-full sm:w-auto">
             {/* Event Name Filter */}
             <div className="flex flex-col items-start gap-1 w-full sm:w-48">
               <label className="text-[10px] uppercase tracking-widest text-neutral-500 font-bold">Event</label>
               <select
                 value={selectedEvent}
                 onChange={(e) => setSelectedEvent(e.target.value)}
-                className="w-full bg-neutral-950 border border-white/10 rounded-lg px-3 py-2 text-sm font-semibold text-white focus:outline-none focus:border-triton-red transition-colors cursor-pointer"
+                className="w-full bg-neutral-950 border border-white/10 rounded-lg px-3 py-2.5 text-xs sm:text-sm font-semibold text-white focus:outline-none focus:border-triton-red transition-colors cursor-pointer"
               >
                 {eventNames.map(name => (
                   <option key={name} value={name}>{name === "All" ? "All Locations" : name}</option>
@@ -191,7 +197,7 @@ export default function LiveResultsPage() {
               <select
                 value={selectedYear}
                 onChange={(e) => setSelectedYear(e.target.value)}
-                className="w-full bg-neutral-950 border border-white/10 rounded-lg px-3 py-2 text-sm font-semibold text-white focus:outline-none focus:border-triton-red transition-colors cursor-pointer"
+                className="w-full bg-neutral-950 border border-white/10 rounded-lg px-3 py-2.5 text-xs sm:text-sm font-semibold text-white focus:outline-none focus:border-triton-red transition-colors cursor-pointer"
               >
                 {years.map(yr => (
                   <option key={yr} value={yr}>{yr === "All" ? "All Years" : yr}</option>
@@ -202,33 +208,33 @@ export default function LiveResultsPage() {
         </div>
 
         {/* Events Grid/List */}
-        <div className="w-full max-w-3xl space-y-4 text-left">
+        <div className="w-full max-w-3xl space-y-3 sm:space-y-4 text-left">
           {filteredEvents.length > 0 ? (
             filteredEvents.map((event, idx) => (
               <div
                 key={`${event.name}-${event.year}-${idx}`}
-                className="group relative bg-neutral-900/25 hover:bg-neutral-900/60 border border-white/5 hover:border-white/10 rounded-xl p-5 flex flex-col md:flex-row items-start md:items-center justify-between gap-4 transition-all duration-300"
+                className="group relative bg-neutral-900/25 hover:bg-neutral-900/60 border border-white/5 hover:border-white/10 rounded-xl p-4 sm:p-5 flex flex-col sm:flex-row items-stretch sm:items-center justify-between gap-4 transition-all duration-300"
               >
                 {/* Event Name & Year */}
-                <div className="flex items-center gap-4">
-                  <div className="w-15 h-10 rounded-lg bg-neutral-950 border border-white/5 flex items-center justify-center text-sm font-black text-triton-red group-hover:scale-105 transition-transform">
+                <div className="flex items-center gap-3 sm:gap-4">
+                  <div className="w-12 sm:w-15 h-8 sm:h-10 rounded-lg bg-neutral-950 border border-white/5 flex items-center justify-center text-xs sm:text-sm font-black text-triton-red group-hover:scale-105 transition-transform shrink-0">
                     {event.year.toString()}
                   </div>
                   <div>
-                    <h3 className="font-black uppercase text-lg group-hover:text-triton-red transition-colors leading-none mb-1.5">
+                    <h3 className="font-black uppercase text-base sm:text-lg group-hover:text-triton-red transition-colors leading-tight mb-1">
                       {event.name}
                     </h3>
-                    <span className="text-xs uppercase tracking-widest text-neutral-500 font-bold">
+                    <span className="text-[10px] sm:text-xs uppercase tracking-widest text-neutral-500 font-bold">
                       TRITON World Series &bull; {event.year}
                     </span>
                   </div>
                 </div>
 
                 {/* Actions */}
-                <div className="flex items-center gap-3 w-full md:w-auto">
+                <div className="flex items-center gap-2 sm:gap-3 w-full sm:w-auto">
                   <Link
                     href={`/live-results/${event.slug}/start-list`}
-                    className="flex-1 md:flex-none inline-flex items-center justify-center gap-2 bg-neutral-950 hover:bg-neutral-900 border border-white/10 hover:border-white/20 px-4 py-2.5 rounded-lg text-xs font-black uppercase tracking-wider transition-all"
+                    className="flex-1 sm:flex-none inline-flex items-center justify-center gap-2 bg-neutral-950 hover:bg-neutral-900 border border-white/10 hover:border-white/20 px-3.5 sm:px-4 py-2 sm:py-2.5 rounded-lg text-[10px] sm:text-xs font-black uppercase tracking-wider transition-all"
                   >
                     <span>Start List</span>
                     <ArrowRight size={12} className="opacity-60" />
@@ -236,7 +242,7 @@ export default function LiveResultsPage() {
 
                   <Link
                     href={`/live-results/${event.slug}/results`}
-                    className="flex-1 md:flex-none inline-flex items-center justify-center gap-2 bg-triton-red hover:bg-triton-red/80 px-4 py-2.5 rounded-lg text-xs font-black uppercase tracking-wider transition-all shadow-[0_0_15px_rgba(223,31,38,0.15)]"
+                    className="flex-1 sm:flex-none inline-flex items-center justify-center gap-2 bg-triton-red hover:bg-triton-red/80 px-3.5 sm:px-4 py-2 sm:py-2.5 rounded-lg text-[10px] sm:text-xs font-black uppercase tracking-wider transition-all shadow-[0_0_15px_rgba(223,31,38,0.15)]"
                   >
                     <span>Results</span>
                     <ArrowRight size={12} />
@@ -245,8 +251,8 @@ export default function LiveResultsPage() {
               </div>
             ))
           ) : (
-            <div className="text-center py-12 border border-dashed border-white/10 rounded-xl">
-              <p className="text-neutral-500 font-medium text-sm">
+            <div className="text-center py-8 sm:py-12 border border-dashed border-white/10 rounded-xl">
+              <p className="text-neutral-500 font-medium text-xs sm:text-sm">
                 No races found matching your filter criteria.
               </p>
             </div>
@@ -256,4 +262,3 @@ export default function LiveResultsPage() {
     </div>
   );
 }
-
