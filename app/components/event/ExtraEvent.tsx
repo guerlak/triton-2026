@@ -26,7 +26,7 @@ const ExtraEvent: React.FC<ExtraEventProps> = ({
     badge,
 }) => {
     return (
-        <section className=" py-16 md:py-24 bg-triton-light text-white relative overflow-hidden border-t border-white/5">
+        <section className=" py-16 md:py-24 bg-triton-lightß text-white relative overflow-hidden border-t border-white/5">
             {/* Background glow effect */}
             <div className="absolute top-1/2 right-0 w-96 h-96 bg-triton-red/10 rounded-full blur-3xl pointer-events-none translate-x-1/2 -translate-y-1/2" />
 
@@ -66,20 +66,7 @@ const ExtraEvent: React.FC<ExtraEventProps> = ({
                             dangerouslySetInnerHTML={{ __html: description }}
                         />
 
-                        {/* CTA Link */}
-                        {ctaText && ctaLink && (
-                            <div className="pt-2">
-                                <Link
-                                    href={ctaLink}
-                                    target={ctaLink.startsWith("http") ? "_blank" : undefined}
-                                    rel={ctaLink.startsWith("http") ? "noopener noreferrer" : undefined}
-                                    className="inline-flex items-center gap-3 px-7 py-3.5 bg-triton-red hover:bg-red-700 text-white font-bold uppercase tracking-wider text-sm rounded-lg transition-all duration-300 shadow-lg shadow-triton-red/20 hover:shadow-triton-red/40 hover:-translate-y-0.5 active:translate-y-0"
-                                >
-                                    <span>{ctaText}</span>
-                                    <ArrowRight className="w-4 h-4" />
-                                </Link>
-                            </div>
-                        )}
+
                     </div>
 
                     {/* 3x4 Aspect Ratio Image: Right Side */}

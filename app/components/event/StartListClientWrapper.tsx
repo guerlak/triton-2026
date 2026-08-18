@@ -181,7 +181,7 @@ const StartListClientWrapper: React.FC<Props> = ({ initialAthletes }) => {
               onClick={() => setShowAll(true)}
               className="group relative px-10 py-4 bg-triton-red hover:bg-white text-white hover:text-black font-black uppercase tracking-[0.2em] text-xs rounded-2xl transition-all duration-300 transform hover:scale-105 shadow-[0_0_20px_rgba(234,30,36,0.3)] hover:shadow-[0_0_30px_rgba(255,255,255,0.1)] flex items-center gap-3"
             >
-              <span>View All Results</span>
+              <span>View All</span>
               <span className="opacity-60 font-medium text-[10px]">({filteredAthletes.length} Matches)</span>
             </button>
           </div>

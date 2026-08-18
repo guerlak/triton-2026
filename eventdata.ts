@@ -518,6 +518,8 @@ export const EVENT_DATA_MAP: Record<string, EventData> = {
     targetDate: "2026-08-21T08:00:00",
     liveResultsUrl: "https://www.eicrono.com.br/triton/index_triton3.html",
     raceGuideLink: "/docs/race-guide/guia_do_atleta_rio26.pdf",
+    startListApiUrl: "https://api.raceresult.com/371805/2ZJGC6U06Z8RLDI16UWNEHNXGE39KYE0",
+    isRegistrationClosed: true,
     hero: {
       backgroundImage: heroImg,
       logoImage: logoHero,

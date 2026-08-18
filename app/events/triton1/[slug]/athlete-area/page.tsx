@@ -1,8 +1,6 @@
 import LiveResults from "./LiveResults"
 import StartList from "@/app/components/event/StartList"
 
-import RaceKit from "./RaceKit"
-
 import { notFound, redirect } from "next/navigation"
 import AthleteNavBar from "@/app/components/event/AthleteNavBar"
 import { getEventData } from "@/services/EventService";
