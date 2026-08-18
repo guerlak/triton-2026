@@ -1,7 +1,7 @@
 import React from "react";
 import Link from "next/link";
-import { ArrowLeft, Trophy, Calendar, FileText } from "lucide-react";
-import LiveResultsClientWrapper from "../../LiveResultsClientWrapper";
+import { ArrowLeft, FileText } from "lucide-react";
+import StartListClientWrapper from "@/app/components/event/StartListClientWrapper";
 
 interface PastEvent {
   name: string;
@@ -24,34 +24,29 @@ const PAST_EVENTS: PastEvent[] = [
   { name: "Portimão", year: 2025, slug: "portimao-2025", startList: "https://api.raceresult.com/362673/507LIWI3TAGV809R53S442M8CTU25MJQ", results: "https://api.raceresult.com/362673/BC9WES9T0B422JUHYB1X7DX40NYQXE4T" },
 ];
 
-export default async function EventDetailPage({
+export default async function StartListPage({
   params,
 }: {
-  params: Promise<{ slug: string; type: string }>;
+  params: Promise<{ slug: string }>;
 }) {
-  const { slug, type } = await params;
-
-  // Find the event
+  const { slug } = await params;
   const event = PAST_EVENTS.find((e) => e.slug === slug);
 
   if (!event) {
     return (
       <div className="min-h-screen bg-black text-white flex flex-col items-center justify-center">
         <h1 className="text-2xl font-black uppercase text-triton-red mb-4">Event Not Found</h1>
-        <Link href="/live-results" className="text-sm underline">Back to Live Results</Link>
+        <Link href="/results" className="text-sm underline">Back to Results</Link>
       </div>
     );
   }
-
-  const isStartList = type === "start-list";
-  const apiUrl = isStartList ? event.startList : event.results;
 
   let athletes = [];
   let errorMsg = null;
 
   try {
-    const res = await fetch(apiUrl, {
-      next: { revalidate: 300 }, // Cache results for 5 minutes
+    const res = await fetch(event.startList, {
+      next: { revalidate: 300 },
     });
 
     if (!res.ok) {
@@ -60,7 +55,7 @@ export default async function EventDetailPage({
 
     athletes = await res.json();
   } catch (err: any) {
-    errorMsg = err.message || "Could not retrieve race data.";
+    errorMsg = err?.message || "Could not retrieve start list data.";
   }
 
   return (
@@ -68,7 +63,7 @@ export default async function EventDetailPage({
       <div className="max-w-7xl mx-auto">
         {/* Back Link */}
         <Link
-          href="/live-results"
+          href="/results"
           className="mb-8 inline-flex items-center gap-2 text-neutral-400 hover:text-white transition-colors group"
         >
           <ArrowLeft className="w-4 h-4 group-hover:-translate-x-1 transition-transform" />
@@ -80,8 +75,8 @@ export default async function EventDetailPage({
         {/* Header */}
         <header className="mb-12">
           <div className="inline-flex items-center gap-2 bg-triton-red/10 border border-triton-red/20 px-3 py-1 rounded-full text-[10px] font-black uppercase tracking-widest text-triton-red mb-4">
-            {isStartList ? <FileText size={12} /> : <Trophy size={12} />}
-            {isStartList ? "Start List" : "Race Results"}
+            <FileText size={12} />
+            Start List
           </div>
 
           <h1 className="text-4xl md:text-6xl font-black uppercase tracking-tight">
@@ -89,20 +84,18 @@ export default async function EventDetailPage({
           </h1>
 
           <p className="text-neutral-400 text-sm md:text-base font-medium mt-2">
-            {isStartList
-              ? `Check the official entry list and bibs for the ${event.name} ${event.year} stage.`
-              : `View final rankings and gender results from the ${event.name} ${event.year} stage.`}
+            Check the official entry list and bibs for {event.name} {event.year}.
           </p>
         </header>
 
         {/* Content */}
         {errorMsg ? (
           <div className="bg-neutral-900 border border-triton-red/20 rounded-2xl p-8 text-center">
-            <p className="text-triton-red font-bold mb-2">Error Loading Data</p>
+            <p className="text-triton-red font-bold mb-2">Error Loading Start List</p>
             <p className="text-sm text-neutral-400">{errorMsg}</p>
           </div>
         ) : (
-          <LiveResultsClientWrapper initialAthletes={athletes} />
+          <StartListClientWrapper initialAthletes={athletes} />
         )}
       </div>
     </div>

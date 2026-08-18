@@ -233,7 +233,7 @@ export default function LiveResultsPage() {
                 {/* Actions */}
                 <div className="flex items-center gap-2 sm:gap-3 w-full sm:w-auto">
                   <Link
-                    href={`/live-results/${event.slug}/start-list`}
+                    href={`/results/start-list/${event.slug}`}
                     className="flex-1 sm:flex-none inline-flex items-center justify-center gap-2 bg-neutral-950 hover:bg-neutral-900 border border-white/10 hover:border-white/20 px-3.5 sm:px-4 py-2 sm:py-2.5 rounded-lg text-[10px] sm:text-xs font-black uppercase tracking-wider transition-all"
                   >
                     <span>Start List</span>
@@ -241,7 +241,7 @@ export default function LiveResultsPage() {
                   </Link>
 
                   <Link
-                    href={`/live-results/${event.slug}/results`}
+                    href={`/results/race-results/${event.slug}`}
                     className="flex-1 sm:flex-none inline-flex items-center justify-center gap-2 bg-triton-red hover:bg-triton-red/80 px-3.5 sm:px-4 py-2 sm:py-2.5 rounded-lg text-[10px] sm:text-xs font-black uppercase tracking-wider transition-all shadow-[0_0_15px_rgba(223,31,38,0.15)]"
                   >
                     <span>Results</span>

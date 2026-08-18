@@ -23,10 +23,21 @@ interface Props {
 const StartListClientWrapper: React.FC<Props> = ({ initialAthletes }) => {
   const [searchQuery, setSearchQuery] = useState("");
   const [selectedGender, setSelectedGender] = useState("ALL GENDERS");
+  const [selectedDistance, setSelectedDistance] = useState("ALL DISTANCES");
   const [selectedAgeGroup, setSelectedAgeGroup] = useState("ALL AGE GROUPS");
   const [showAll, setShowAll] = useState(false);
 
   const uniqueGenders = ["ALL GENDERS", ...Array.from(new Set(initialAthletes.map((a) => a.Gender)))];
+  const uniqueDistances = [
+    "ALL DISTANCES",
+    ...Array.from(
+      new Set(
+        initialAthletes
+          .map((a) => a.Distance || a.Contest)
+          .filter((d): d is string => Boolean(d))
+      )
+    ),
+  ].sort();
   const uniqueAgeGroups = ["ALL AGE GROUPS", ...Array.from(new Set(initialAthletes.map((a) => a.AgeGroup)))].sort();
 
   const filteredAthletes = initialAthletes.filter((athlete) => {
@@ -39,8 +50,10 @@ const StartListClientWrapper: React.FC<Props> = ({ initialAthletes }) => {
       (athlete.Contest && athlete.Contest.toLowerCase().includes(query));
     const matchesGender = selectedGender === "ALL GENDERS" || athlete.Gender === selectedGender;
     const matchesAgeGroup = selectedAgeGroup === "ALL AGE GROUPS" || athlete.AgeGroup === selectedAgeGroup;
+    const athleteDistance = athlete.Distance || athlete.Contest;
+    const matchesDistance = selectedDistance === "ALL DISTANCES" || athleteDistance === selectedDistance;
 
-    return matchesSearch && matchesGender && matchesAgeGroup;
+    return matchesSearch && matchesGender && matchesAgeGroup && matchesDistance;
   });
 
   const displayedAthletes = showAll ? filteredAthletes : filteredAthletes.slice(0, 20);
@@ -74,6 +87,26 @@ const StartListClientWrapper: React.FC<Props> = ({ initialAthletes }) => {
             {uniqueGenders.map((gender) => (
               <option key={gender} value={gender} className="bg-neutral-900 text-white uppercase">
                 {gender}
+              </option>
+            ))}
+          </select>
+          <div className="absolute inset-y-0 right-0 pr-4 flex items-center pointer-events-none text-gray-500">
+            <svg className="w-4 h-4 fill-current" viewBox="0 0 20 20">
+              <path d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" />
+            </svg>
+          </div>
+        </div>
+
+        {/* Distance Filter */}
+        <div className="relative w-full lg:w-56">
+          <select
+            value={selectedDistance}
+            onChange={(e) => setSelectedDistance(e.target.value)}
+            className="w-full bg-neutral-900 border border-white/10 rounded-2xl py-4 px-6 text-xs font-black text-white uppercase tracking-widest focus:outline-none focus:border-triton-red/50 transition-all appearance-none cursor-pointer"
+          >
+            {uniqueDistances.map((dist) => (
+              <option key={dist} value={dist} className="bg-neutral-900 text-white uppercase">
+                {dist}
               </option>
             ))}
           </select>
