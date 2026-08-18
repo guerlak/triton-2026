@@ -75,6 +75,7 @@ export interface EventData {
   hero: EventHero;
   startListApiUrl?: string;
   liveResultsUrl?: string;
+  athleteResultsUrl?: string;
   registrationLink: string;
   isRegistrationClosed?: boolean;
   raceGuideLink?: string;

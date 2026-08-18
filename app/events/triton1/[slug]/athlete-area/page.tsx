@@ -1,4 +1,4 @@
-import LiveResults from "./LiveResults"
+import AthleteResults from "@/app/components/event/AthleteResults"
 import StartList from "@/app/components/event/StartList"
 
 import { notFound, redirect } from "next/navigation"
@@ -17,18 +17,11 @@ export default async function AthleteArePage({ params }: { params: Promise<{ slu
 
 	return (
 		<>
-			<AthleteNavBar liveResultsUrl={data.liveResultsUrl} />
+			<AthleteNavBar liveResultsUrl={data.liveResultsUrl} targetDate={data.targetDate} />
 			<RaceGuide raceGuideLink={data.raceGuideLink} />
 			{/* <RaceKit /> */}
 			<StartList slug={slug} />
-			<LiveResults />
+			<AthleteResults url={data.athleteResultsUrl} />
 		</>
 	)
 }
-
-// KIT
-// RACE GUIDE
-// Start list
-// Results
-// reutilizar o componente de filtro e listagem do results
-// Full results colocar os results da API T1 T2 Swin Run

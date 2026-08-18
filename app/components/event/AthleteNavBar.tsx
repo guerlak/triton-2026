@@ -7,7 +7,7 @@ import { useState, useEffect } from "react";
 import { Radio } from "lucide-react";
 import Link from "next/link";
 
-const Navbar = ({ liveResultsUrl }: { liveResultsUrl?: string }) => {
+const Navbar = ({ liveResultsUrl, targetDate }: { liveResultsUrl?: string; targetDate?: string }) => {
     const [isOpen, setIsOpen] = useState(false);
     const [isScrolled, setIsScrolled] = useState(false);
 
@@ -29,8 +29,18 @@ const Navbar = ({ liveResultsUrl }: { liveResultsUrl?: string }) => {
 
     ];
 
+    const isEventActive = () => {
+        if (!liveResultsUrl) return false;
+        if (!targetDate) return true;
 
-    const activeEvent = true;
+        const now = new Date();
+        const eventStart = new Date(targetDate);
+        eventStart.setHours(0, 0, 0, 0);
+
+        return now >= eventStart;
+    };
+
+    const activeEvent = isEventActive();
 
     return (
         <nav

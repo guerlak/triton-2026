@@ -4,7 +4,6 @@ import EventNavBar from "@/app/components/event/EventNavBar";
 import ScheduleSection from "@/app/components/event/ScheduleSection";
 import Testimonials from "@/app/components/Testimonials";
 import NewsletterSection from "@/app/components/NewsletterSection";
-import PartnersSection from "@/app/components/PartnersSection";
 import ShopSection from "@/app/components/ShopSection";
 import HeroEvent from "@/app/components/event/HeroEvent";
 import { EVENT_DATA_MAP } from "@/eventdata";
