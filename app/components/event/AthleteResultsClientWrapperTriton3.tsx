@@ -1,7 +1,7 @@
 "use client";
 import React, { useState, useMemo } from "react";
 import { motion } from "framer-motion";
-import { Search, Clock, ClockArrowUp } from "lucide-react";
+import { Search, Clock, ClockArrowUp, Trophy } from "lucide-react";
 
 interface LiveAthlete {
   Contest: string;
@@ -12,18 +12,38 @@ interface LiveAthlete {
   Name: string;
   Gender: "Men" | "Women";
   AgeGroup: string;
-  Swim: string;
-  T1: string;
-  Bike: string;
-  T2: string;
-  Run: string;
+  Swim?: string;
+  T1?: string;
+  Bike?: string;
+  T2?: string;
+  Run?: string;
   Time: string;
-  Gap: string;
-  Nation: string;
+  Total?: string | number;
+  TotalPoints?: string | number;
+  Points?: string | number;
+  Gap?: string;
+  Nation?: string;
 }
 
 interface Props {
   initialAthletes: LiveAthlete[];
+}
+
+function getAthleteTotalValue(athlete: LiveAthlete): string | number | null {
+  if (athlete.Total !== undefined && athlete.Total !== null && athlete.Total !== "") return athlete.Total;
+  if (athlete.TotalPoints !== undefined && athlete.TotalPoints !== null && athlete.TotalPoints !== "") return athlete.TotalPoints;
+  if (athlete.Points !== undefined && athlete.Points !== null && athlete.Points !== "") return athlete.Points;
+  return null;
+}
+
+function hasCompletedAll3Modalities(athlete: LiveAthlete): boolean {
+  const isValid = (val?: string | number) => {
+    if (val === undefined || val === null) return false;
+    const str = val.toString().trim().toUpperCase();
+    return str !== "" && str !== "--:--:--" && str !== "DNS" && str !== "DNF" && str !== "0";
+  };
+
+  return isValid(athlete.Swim) && isValid(athlete.Bike) && isValid(athlete.Run);
 }
 
 const LiveResultsClientWrapper: React.FC<Props> = ({ initialAthletes }) => {
@@ -44,24 +64,34 @@ const LiveResultsClientWrapper: React.FC<Props> = ({ initialAthletes }) => {
   const filteredAthletes = useMemo(() => {
     let result = initialAthletes.filter((athlete) => {
       const query = searchQuery.toLowerCase();
-      const nameMatch =
-        athlete.Name.toLowerCase().includes(query) ||
-        athlete.Bib.toString().includes(query);
+      const nameMatch = athlete.Name.toLowerCase().includes(query) || athlete.Bib.toString().includes(query);
       const ageGroupMatch = selectedAgeGroup === "" || athlete.AgeGroup === selectedAgeGroup;
       const distanceMatch = selectedDistance === "" || athlete.Contest === selectedDistance;
       const genderMatch = selectedGender === "" || athlete.Gender === selectedGender;
+      const participatedIn3Modalities = hasCompletedAll3Modalities(athlete);
 
-      return nameMatch && ageGroupMatch && distanceMatch && genderMatch;
+      return nameMatch && ageGroupMatch && distanceMatch && genderMatch && participatedIn3Modalities;
     });
 
-    // Always sort by time (fastest first)
+
+
     return [...result].sort((a, b) => {
+
+      const valA = getAthleteTotalValue(a);
+      const valB = getAthleteTotalValue(b);
+      if (valA !== null && valB !== null) {
+        const numA = typeof valA === "number" ? valA : parseFloat(valA.toString().replace(/[^0-9.-]+/g, "")) || 0;
+        const numB = typeof valB === "number" ? valB : parseFloat(valB.toString().replace(/[^0-9.-]+/g, "")) || 0;
+        if (numA !== numB) return numA - numB;
+      }
+
       // Handle empty or placeholder times
       const timeA = !a.Time || a.Time === "--:--:--" || a.Time === "" ? "99:99:99" : a.Time;
       const timeB = !b.Time || b.Time === "--:--:--" || b.Time === "" ? "99:99:99" : b.Time;
       return timeA.localeCompare(timeB);
     });
   }, [initialAthletes, searchQuery, selectedAgeGroup, selectedDistance, selectedGender]);
+
 
   return (
     <div className="mt-12 space-y-8">
@@ -159,67 +189,87 @@ const LiveResultsClientWrapper: React.FC<Props> = ({ initialAthletes }) => {
                 <th className="py-6 px-6">Age Group</th>
                 <th className="py-6 px-8 text-right text-triton-red">
                   <div className="flex items-center justify-end gap-2 text-triton-red">
-                    <Clock size={14} />
-                    <span>Time</span>
+                    <Trophy size={14} />
+                    <span>Total Points</span>
                   </div>
                 </th>
               </tr>
             </thead>
             <tbody>
               {filteredAthletes.length > 0 ? (
-                filteredAthletes.map((athlete, i) => (
-                  <tr
-                    key={athlete.Bib}
-                    className="border-b border-white/5 hover:bg-white/5 transition-colors group"
-                  >
-                    <td className="py-5 px-4 text-center font-bold text-gray-400">
-                      #{i + 1}
-                    </td>
-                    <td className="py-5 px-6">
-                      <div className="flex items-center gap-4">
-                        {/* <img
-                          src={athlete.Flag}
-                          alt={athlete.Flag}
-                          className="w-6 h-4 object-contain rounded-sm shadow-md"
-                        /> */}
-                        <span className="font-black text-sm text-white uppercase tracking-tight">
-                          {athlete.Name}
-                        </span>
-                        {athlete.Nation && (
-                          <span className="text-[10px] font-mono text-gray-500 uppercase">
-                            ({athlete.Nation})
+                filteredAthletes.map((athlete, i) => {
+                  const totalVal = getAthleteTotalValue(athlete);
+                  return (
+                    <tr
+                      key={athlete.Bib}
+                      className="border-b border-white/5 hover:bg-white/5 transition-colors group"
+                    >
+                      <td className="py-5 px-4 text-center font-bold text-gray-400">
+                        #{i + 1}
+                      </td>
+                      <td className="py-5 px-6">
+                        <div className="flex items-center gap-4">
+
+                          <span className="font-black text-sm text-white uppercase tracking-tight">
+                            {athlete.Name}
                           </span>
-                        )}
-                      </div>
-                    </td>
-                    <td className="py-5 px-6 text-xs font-bold text-gray-400 uppercase tracking-wider">
-                      <span className={`text-[10px] font-black uppercase px-2 py-1 rounded-md border 
-                        ${athlete.Contest === "Sprint Distance"
-                          ? "border-white/20 text-black bg-white/75"
-                          : athlete.Contest === "Middle Distance"
-                            ? "border-red-500/30 text-white bg-red-500/30"
-                            : "border-black/20 text-white bg-white/5"
-                        }`}>
-                        {athlete.Contest}
-                      </span>
-                    </td>
-                    <td className="py-5 px-6">
-                      <span className="text-[10px] font-black uppercase px-2 py-1 tracking-widest text-gray-400">
-                        {athlete.Gender}
-                      </span>
-                    </td>
-                    <td className="py-5 px-6">
-                      <span className="font-black text-xs uppercase tracking-widest px-3 py-1 text-gray-300">
-                        {athlete.AgeGroup}
-                      </span>
-                    </td>
-                    <td className="py-5 px-8 text-right">
-                      <span className="font-black text-sm text-white tabular-nums tracking-widest">
-                        {athlete.Time || "--:--:--"}
-                      </span>
-                    </td>
-                  </tr>
-                ))
+                          {athlete.Nation && (
+                            <span className="text-[10px] font-mono text-gray-500 uppercase">
+                              ({athlete.Nation})
+                            </span>
+                          )}
+                        </div>
+                      </td>
+                      <td className="py-5 px-6 text-xs font-bold text-gray-400 uppercase tracking-wider">
+                        <span className={`text-[10px] font-black uppercase px-2 py-1 rounded-md border 
+                          ${athlete.Contest === "Sprint Distance"
+                            ? "border-white/20 text-black bg-white/75"
+                            : athlete.Contest === "Middle Distance"
+                              ? "border-red-500/30 text-white bg-red-500/30"
+                              : "border-black/20 text-white bg-white/5"
+                          }`}>
+                          {athlete.Contest}
+                        </span>
+                      </td>
+                      <td className="py-5 px-6">
+                        <span className="text-[10px] font-black uppercase px-2 py-1 tracking-widest text-gray-400">
+                          {athlete.Gender}
+                        </span>
+                      </td>
+                      <td className="py-5 px-6">
+                        <span className="font-black text-xs uppercase tracking-widest px-3 py-1 text-gray-300">
+                          {athlete.AgeGroup}
+                        </span>
+                      </td>
+                      <td className="py-5 px-8 text-right">
+                        <div className="flex flex-col items-center justify-center gap-1">
+                          <span className="font-black text-sm text-white tabular-nums tracking-widest">
+                            {athlete.Total ?? totalVal ?? athlete.Time ?? "--"}
+                          </span>
+                          {(athlete.Swim || athlete.Bike || athlete.Run) && (
+                            <div className="flex items-center gap-1.5 text-[10px] font-bold uppercase tracking-wider">
+                              {athlete.Swim && (
+                                <span className="bg-neutral-950 border border-white/10 px-1.5 py-0.5 rounded text-cyan-400">
+                                  S: <span className="text-white font-mono">{athlete.Swim}</span>
+                                </span>
+                              )}
+                              {athlete.Bike && (
+                                <span className="bg-neutral-950 border border-white/10 px-1.5 py-0.5 rounded text-amber-400">
+                                  B: <span className="text-white font-mono">{athlete.Bike}</span>
+                                </span>
+                              )}
+                              {athlete.Run && (
+                                <span className="bg-neutral-950 border border-white/10 px-1.5 py-0.5 rounded text-emerald-400">
+                                  R: <span className="text-white font-mono">{athlete.Run}</span>
+                                </span>
+                              )}
+                            </div>
+                          )}
+                        </div>
+                      </td>
+                    </tr>
+                  );
+                })
               ) : (
                 <tr>
                   <td colSpan={6} className="py-20 text-center text-gray-500 font-bold uppercase tracking-widest">
