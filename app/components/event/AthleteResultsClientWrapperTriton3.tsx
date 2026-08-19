@@ -179,16 +179,16 @@ const LiveResultsClientWrapper: React.FC<Props> = ({ initialAthletes }) => {
         className="bg-neutral-900 border border-white/5 rounded-3xl overflow-hidden shadow-2xl"
       >
         <div className="overflow-x-auto scrollbar-hide">
-          <table className="w-full text-left border-collapse min-w-[900px]">
+          <table className="w-full text-center border-collapse min-w-[900px]">
             <thead>
               <tr className="bg-black/40 text-[10px] font-black uppercase text-gray-500 border-b border-white/5 tracking-widest">
-                <th className="py-6 px-8 text-center w-24">Pos</th>
-                <th className="py-6 px-6">Athlete</th>
-                <th className="py-6 px-6">Distance</th>
-                <th className="py-6 px-6">Gender</th>
-                <th className="py-6 px-6">Age Group</th>
-                <th className="py-6 px-8 text-right text-triton-red">
-                  <div className="flex items-center justify-end gap-2 text-triton-red">
+                <th className="py-6 px-6 text-center w-24">Pos</th>
+                <th className="py-6 px-6 text-left">Athlete</th>
+                <th className="py-6 px-6 text-center">Distance</th>
+                <th className="py-6 px-6 text-center">Gender</th>
+                <th className="py-6 px-6 text-center">Age Group</th>
+                <th className="py-6 px-8 text-center text-triton-red">
+                  <div className="flex items-center justify-center gap-2 text-triton-red">
                     <Trophy size={14} />
                     <span>Total Points</span>
                   </div>
@@ -207,7 +207,7 @@ const LiveResultsClientWrapper: React.FC<Props> = ({ initialAthletes }) => {
                       <td className="py-5 px-4 text-center font-bold text-gray-400">
                         #{i + 1}
                       </td>
-                      <td className="py-5 px-6">
+                      <td className="py-5 px-6 text-left">
                         <div className="flex items-center gap-4">
 
                           <span className="font-black text-sm text-white uppercase tracking-tight">
@@ -220,7 +220,7 @@ const LiveResultsClientWrapper: React.FC<Props> = ({ initialAthletes }) => {
                           )}
                         </div>
                       </td>
-                      <td className="py-5 px-6 text-xs font-bold text-gray-400 uppercase tracking-wider">
+                      <td className="py-5 px-6 text-center text-xs font-bold text-gray-400 uppercase tracking-wider">
                         <span className={`text-[10px] font-black uppercase px-2 py-1 rounded-md border 
                           ${athlete.Contest === "Sprint Distance"
                             ? "border-white/20 text-black bg-white/75"
@@ -231,17 +231,17 @@ const LiveResultsClientWrapper: React.FC<Props> = ({ initialAthletes }) => {
                           {athlete.Contest}
                         </span>
                       </td>
-                      <td className="py-5 px-6">
+                      <td className="py-5 px-6 text-center">
                         <span className="text-[10px] font-black uppercase px-2 py-1 tracking-widest text-gray-400">
                           {athlete.Gender}
                         </span>
                       </td>
-                      <td className="py-5 px-6">
+                      <td className="py-5 px-6 text-center">
                         <span className="font-black text-xs uppercase tracking-widest px-3 py-1 text-gray-300">
                           {athlete.AgeGroup}
                         </span>
                       </td>
-                      <td className="py-5 px-8 text-right">
+                      <td className="py-5 px-8 text-center">
                         <div className="flex flex-col items-center justify-center gap-1">
                           <span className="font-black text-sm text-white tabular-nums tracking-widest">
                             {athlete.Total ?? totalVal ?? athlete.Time ?? "--"}
