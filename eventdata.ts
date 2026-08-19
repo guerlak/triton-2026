@@ -624,7 +624,7 @@ export const EVENT_DATA_MAP: Record<string, EventData> = {
           { label: "Middle", val: "60km", p: 66 },
           { label: "Long", val: "90km", p: 100 },
         ],
-        stravaIds: { sprint: "3519490203086994802", middle: "3519487411795828350", long: "3519490203086088562" },
+        stravaIds: { sprint: "3522256534637037376", middle: "3522246706375714318", long: "3522246706371795470" },
         details: [
           "Retorno Sprint: ~4,5 km após Macundu",
           "Hidratação Middle & Long: ~10 km após Macundu",
