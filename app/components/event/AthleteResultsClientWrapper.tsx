@@ -27,6 +27,7 @@ interface Props {
 }
 
 const LiveResultsClientWrapper: React.FC<Props> = ({ initialAthletes }) => {
+
   const [searchQuery, setSearchQuery] = useState("");
   const [selectedAgeGroup, setSelectedAgeGroup] = useState("");
   const [selectedDistance, setSelectedDistance] = useState("");

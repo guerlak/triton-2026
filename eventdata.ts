@@ -658,7 +658,7 @@ export const EVENT_DATA_MAP: Record<string, EventData> = {
           { label: "Middle", val: "20km", p: 66 },
           { label: "Long", val: "30km", p: 100 },
         ],
-        stravaIds: { sprint: "3519487411797267070", middle: "3519482091384751256", long: "3519482242820725230" },
+        stravaIds: { sprint: "3519487411797267070", middle: "3522263920951085426", long: "3522260860951276352" },
       },
       distanceTable: [
         {
