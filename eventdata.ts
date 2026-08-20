@@ -66,6 +66,8 @@ export interface AthleteArea {
   startListApiUrl?: string;
   mediaPictureUrl?: string;
   videoBriefingUrl?: string;
+  liveResultsApiUrl?: string;
+  topFiveApiUrl?: string;
 }
 
 export interface EventData {
@@ -532,6 +534,9 @@ export const EVENT_DATA_MAP: Record<string, EventData> = {
       startListApiUrl: "https://api.raceresult.com/371805/2ZJGC6U06Z8RLDI16UWNEHNXGE39KYE0",
       mediaPictureUrl: "https://www.focoradical.com.br/grupos/triton-3-rj",
       videoBriefingUrl: "https://youtu.be/mx0aPdfgAUY?si=4UZPQTTX_dVuo_HB",
+      topFiveApiUrl: "",
+      liveResultsApiUrl:""
+
     },
     isRegistrationClosed: true,
     hero: {

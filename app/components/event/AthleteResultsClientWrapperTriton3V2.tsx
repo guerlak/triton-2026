@@ -1,7 +1,7 @@
 "use client";
 import React, { useState, useMemo } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Search, Clock, ClockArrowUp, Trophy, X, Waves, Bike, Footprints, Eye } from "lucide-react";
+import { Search, Clock, ClockArrowUp, Trophy, X, Waves, Bike, Footprints, Eye, ChevronDown } from "lucide-react";
 
 interface LiveAthlete {
   Contest: string;
@@ -96,23 +96,24 @@ const AthleteResultsClientWrapperTriton3V2: React.FC<Props> = ({ initialAthletes
   }, [initialAthletes, searchQuery, selectedAgeGroup, selectedDistance, selectedGender]);
 
   return (
-    <div className="mt-12 space-y-8">
-      <div className="flex flex-col items-center text-center space-y-4">
-        <div className="flex items-center gap-4 text-triton-red">
-          <div className="h-px w-12 bg-triton-red/30" />
-          <ClockArrowUp className="w-8 h-8" />
-          <div className="h-px w-12 bg-triton-red/30" />
+    <div className="mt-8 sm:mt-12 space-y-6 sm:space-y-8">
+      {/* Header Section */}
+      <div className="flex flex-col items-center text-center space-y-3 sm:space-y-4 px-2">
+        <div className="flex items-center gap-3 sm:gap-4 text-triton-red">
+          <div className="h-px w-8 sm:w-12 bg-triton-red/30" />
+          <ClockArrowUp className="w-6 h-6 sm:w-8 sm:h-8" />
+          <div className="h-px w-8 sm:w-12 bg-triton-red/30" />
         </div>
-        <h2 className="text-4xl font-black uppercase tracking-[0.2em] text-white">
+        <h2 className="text-2xl sm:text-4xl md:text-5xl font-black uppercase tracking-[0.15em] sm:tracking-[0.2em] text-white">
           Full <span className="text-triton-red italic">Results</span>
         </h2>
-        <p className="text-gray-500 text-xs font-bold uppercase tracking-widest max-w-md italic">
-          Check all the results of athletes participating in the event. Click on any athlete for detailed times & points.
+        <p className="text-gray-400 text-xs sm:text-sm font-bold uppercase tracking-widest max-w-md italic">
+          Check all results of athletes participating in the event. Tap any athlete for detailed times & points.
         </p>
       </div>
 
       {/* Filters Header */}
-      <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-6">
+      <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-4 sm:gap-6">
         {/* Search Bar */}
         <div className="relative w-full lg:max-w-md group">
           <div className="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none">
@@ -123,24 +124,25 @@ const AthleteResultsClientWrapperTriton3V2: React.FC<Props> = ({ initialAthletes
             placeholder="SEARCH BY NAME OR BIB..."
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}
-            className="w-full bg-neutral-900 border border-white/10 rounded-2xl py-4 pl-12 pr-6 text-sm font-bold text-white uppercase tracking-widest focus:outline-none focus:border-triton-red/50 focus:ring-1 focus:ring-triton-red/50 transition-all placeholder:text-gray-600 shadow-xl"
+            className="w-full bg-neutral-900 border border-white/10 rounded-2xl py-3.5 sm:py-4 pl-12 pr-6 text-xs sm:text-sm font-bold text-white uppercase tracking-wider sm:tracking-widest focus:outline-none focus:border-triton-red/50 focus:ring-1 focus:ring-triton-red/50 transition-all placeholder:text-gray-600 shadow-xl"
           />
         </div>
 
         {/* Select Filters */}
-        <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 w-full lg:w-auto">
+        <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 sm:gap-4 w-full lg:w-auto">
           {/* Distance Filter */}
           <div className="relative">
             <select
               value={selectedDistance}
               onChange={(e) => setSelectedDistance(e.target.value)}
-              className="w-full bg-neutral-900 border border-white/10 rounded-xl py-3 px-4 text-xs font-bold text-white uppercase tracking-widest appearance-none focus:outline-none focus:border-triton-red/50 transition-all cursor-pointer"
+              className="w-full bg-neutral-900 border border-white/10 rounded-xl py-3 pl-4 pr-10 text-xs font-bold text-white uppercase tracking-wider appearance-none focus:outline-none focus:border-triton-red/50 transition-all cursor-pointer truncate"
             >
               <option value="">All Distances</option>
               {filterOptions.distances.map((d) => (
                 <option key={d} value={d}>{d}</option>
               ))}
             </select>
+            <ChevronDown size={16} className="absolute right-3.5 top-1/2 -translate-y-1/2 text-gray-500 pointer-events-none" />
           </div>
 
           {/* Gender Filter */}
@@ -148,13 +150,14 @@ const AthleteResultsClientWrapperTriton3V2: React.FC<Props> = ({ initialAthletes
             <select
               value={selectedGender}
               onChange={(e) => setSelectedGender(e.target.value)}
-              className="w-full bg-neutral-900 border border-white/10 rounded-xl py-3 px-4 text-xs font-bold text-white uppercase tracking-widest appearance-none focus:outline-none focus:border-triton-red/50 transition-all cursor-pointer"
+              className="w-full bg-neutral-900 border border-white/10 rounded-xl py-3 pl-4 pr-10 text-xs font-bold text-white uppercase tracking-wider appearance-none focus:outline-none focus:border-triton-red/50 transition-all cursor-pointer truncate"
             >
               <option value="">All Genders</option>
               {filterOptions.genders.map((g) => (
                 <option key={g} value={g}>{g}</option>
               ))}
             </select>
+            <ChevronDown size={16} className="absolute right-3.5 top-1/2 -translate-y-1/2 text-gray-500 pointer-events-none" />
           </div>
 
           {/* Age Group Filter */}
@@ -162,41 +165,117 @@ const AthleteResultsClientWrapperTriton3V2: React.FC<Props> = ({ initialAthletes
             <select
               value={selectedAgeGroup}
               onChange={(e) => setSelectedAgeGroup(e.target.value)}
-              className="w-full bg-neutral-900 border border-white/10 rounded-xl py-3 px-4 text-xs font-bold text-white uppercase tracking-widest appearance-none focus:outline-none focus:border-triton-red/50 transition-all cursor-pointer"
+              className="w-full bg-neutral-900 border border-white/10 rounded-xl py-3 pl-4 pr-10 text-xs font-bold text-white uppercase tracking-wider appearance-none focus:outline-none focus:border-triton-red/50 transition-all cursor-pointer truncate"
             >
               <option value="">All Categories</option>
               {filterOptions.ageGroups.map((ag) => (
                 <option key={ag} value={ag}>{ag}</option>
               ))}
             </select>
+            <ChevronDown size={16} className="absolute right-3.5 top-1/2 -translate-y-1/2 text-gray-500 pointer-events-none" />
           </div>
         </div>
       </div>
 
-      {/* Table Container */}
+      {/* Mobile Layout (< 768px): Responsive Athlete Card List */}
+      <div className="block md:hidden space-y-3">
+        {filteredAthletes.length > 0 ? (
+          filteredAthletes.map((athlete, i) => {
+            const totalVal = getAthleteTotalValue(athlete);
+            return (
+              <motion.div
+                key={athlete.Bib}
+                initial={{ opacity: 0, y: 15 }}
+                animate={{ opacity: 1, y: 0 }}
+                onClick={() => setSelectedAthlete(athlete)}
+                className="bg-neutral-900 border border-white/10 hover:border-triton-red/40 rounded-2xl p-4 transition-all shadow-xl active:scale-[0.99] cursor-pointer space-y-3"
+              >
+                {/* Top Row: Rank, BIB & Distance Badge */}
+                <div className="flex items-center justify-between gap-2">
+                  <div className="flex items-center gap-2">
+                    <span className="font-black text-xs text-triton-red bg-triton-red/10 border border-triton-red/20 px-2.5 py-1 rounded-lg whitespace-nowrap">
+                      #{i + 1}
+                    </span>
+                    <span className="text-[10px] font-bold text-gray-500 uppercase tracking-widest font-mono whitespace-nowrap">
+                      BIB #{athlete.Bib}
+                    </span>
+                  </div>
+                  <span className={`inline-block whitespace-nowrap text-[9px] font-black uppercase px-2.5 py-1 rounded-md border tracking-wider ${athlete.Contest === "Sprint Distance"
+                    ? "border-white/20 text-black bg-white/80"
+                    : athlete.Contest === "Middle Distance"
+                      ? "border-red-500/30 text-white bg-red-500/30"
+                      : "border-white/10 text-white bg-white/5"
+                    }`}>
+                    {athlete.Contest}
+                  </span>
+                </div>
+
+                {/* Middle Row: Name, Category, Nation */}
+                <div className="flex items-center justify-between gap-3 pt-1 border-t border-white/5">
+                  <div className="space-y-0.5">
+                    <h4 className="font-black text-sm text-white uppercase tracking-tight">
+                      {athlete.Name}
+                    </h4>
+                    <div className="flex items-center gap-2 text-[10px] font-bold text-gray-400 uppercase tracking-wider">
+                      <span>{athlete.Gender}</span>
+                      <span className="text-gray-600">•</span>
+                      <span>{athlete.AgeGroup}</span>
+                      {athlete.Nation && (
+                        <>
+                          <span className="text-gray-600">•</span>
+                          <span className="text-gray-500 font-mono">({athlete.Nation})</span>
+                        </>
+                      )}
+                    </div>
+                  </div>
+
+                  {/* Points & Details Trigger */}
+                  <div className="flex items-center gap-3 shrink-0">
+                    <div className="text-right">
+                      <p className="text-[9px] font-black uppercase tracking-widest text-triton-red whitespace-nowrap">Total Pts</p>
+                      <p className="text-base font-black text-white tabular-nums whitespace-nowrap">
+                        {athlete.Total ?? totalVal ?? athlete.Time ?? "--"}
+                      </p>
+                    </div>
+                    <div className="p-2 rounded-xl bg-white/5 text-gray-400 border border-white/10">
+                      <Eye size={16} />
+                    </div>
+                  </div>
+                </div>
+              </motion.div>
+            );
+          })
+        ) : (
+          <div className="bg-neutral-900 border border-white/5 rounded-2xl p-10 text-center text-gray-500 font-bold uppercase tracking-widest text-xs">
+            No athletes found matching your filters.
+          </div>
+        )}
+      </div>
+
+      {/* Desktop Layout (>= 768px): Full Table View */}
       <motion.div
         initial={{ opacity: 0, y: 30 }}
         animate={{ opacity: 1, y: 0 }}
-        key={`${selectedDistance}-${selectedGender}-${selectedAgeGroup}`} // Re-animate on filter change
+        key={`${selectedDistance}-${selectedGender}-${selectedAgeGroup}`}
         viewport={{ once: true }}
-        className="bg-neutral-900 border border-white/5 rounded-3xl overflow-hidden shadow-2xl"
+        className="hidden md:block bg-neutral-900 border border-white/5 rounded-3xl overflow-hidden shadow-2xl"
       >
         <div className="overflow-x-auto scrollbar-hide">
-          <table className="w-full text-center border-collapse min-w-[900px]">
+          <table className="w-full text-center border-collapse min-w-[800px]">
             <thead>
               <tr className="bg-black/40 text-[10px] font-black uppercase text-gray-500 border-b border-white/5 tracking-widest">
-                <th className="py-6 px-6 text-center w-24">Pos</th>
-                <th className="py-6 px-6 text-left">Athlete</th>
-                <th className="py-6 px-6 text-center">Distance</th>
-                <th className="py-6 px-6 text-center">Gender</th>
-                <th className="py-6 px-6 text-center">Age Group</th>
-                <th className="py-6 px-8 text-center text-triton-red">
+                <th className="py-6 px-6 text-center w-20 whitespace-nowrap">Pos</th>
+                <th className="py-6 px-6 text-left whitespace-nowrap">Athlete</th>
+                <th className="py-6 px-6 text-center whitespace-nowrap">Distance</th>
+                <th className="py-6 px-6 text-center whitespace-nowrap">Gender</th>
+                <th className="py-6 px-6 text-center whitespace-nowrap">Age Group</th>
+                <th className="py-6 px-8 text-center text-triton-red whitespace-nowrap">
                   <div className="flex items-center justify-center gap-2 text-triton-red">
                     <Trophy size={14} />
                     <span>Total Points</span>
                   </div>
                 </th>
-                <th className="py-6 px-4 text-center w-16">Details</th>
+                <th className="py-6 px-4 text-center w-16 whitespace-nowrap">Details</th>
               </tr>
             </thead>
             <tbody>
@@ -209,10 +288,10 @@ const AthleteResultsClientWrapperTriton3V2: React.FC<Props> = ({ initialAthletes
                       onClick={() => setSelectedAthlete(athlete)}
                       className="border-b border-white/5 hover:bg-white/10 transition-colors group cursor-pointer"
                     >
-                      <td className="py-5 px-4 text-center font-bold text-gray-400">
+                      <td className="py-5 px-4 text-center font-bold text-gray-400 whitespace-nowrap">
                         #{i + 1}
                       </td>
-                      <td className="py-5 px-6 text-left">
+                      <td className="py-5 px-6 text-left whitespace-nowrap">
                         <div className="flex items-center gap-4">
                           <span className="font-black text-sm text-white uppercase tracking-tight group-hover:text-triton-red transition-colors">
                             {athlete.Name}
@@ -224,33 +303,32 @@ const AthleteResultsClientWrapperTriton3V2: React.FC<Props> = ({ initialAthletes
                           )}
                         </div>
                       </td>
-                      <td className="py-5 px-6 text-center text-xs font-bold text-gray-400 uppercase tracking-wider">
-                        <span className={`text-[10px] font-black uppercase px-2 py-1 rounded-md border 
-                          ${athlete.Contest === "Sprint Distance"
-                            ? "border-white/20 text-black bg-white/75"
-                            : athlete.Contest === "Middle Distance"
-                              ? "border-red-500/30 text-white bg-red-500/30"
-                              : "border-black/20 text-white bg-white/5"
+                      <td className="py-5 px-6 text-center text-xs font-bold text-gray-400 uppercase tracking-wider whitespace-nowrap">
+                        <span className={`inline-block whitespace-nowrap text-[10px] font-black uppercase px-2.5 py-1 rounded-md border tracking-wider ${athlete.Contest === "Sprint Distance"
+                          ? "border-white/20 text-black bg-white/75"
+                          : athlete.Contest === "Middle Distance"
+                            ? "border-red-500/30 text-white bg-red-500/30"
+                            : "border-black/20 text-white bg-white/5"
                           }`}>
                           {athlete.Contest}
                         </span>
                       </td>
-                      <td className="py-5 px-6 text-center">
+                      <td className="py-5 px-6 text-center whitespace-nowrap">
                         <span className="text-[10px] font-black uppercase px-2 py-1 tracking-widest text-gray-400">
                           {athlete.Gender}
                         </span>
                       </td>
-                      <td className="py-5 px-6 text-center">
+                      <td className="py-5 px-6 text-center whitespace-nowrap">
                         <span className="font-black text-xs uppercase tracking-widest px-3 py-1 text-gray-300">
                           {athlete.AgeGroup}
                         </span>
                       </td>
-                      <td className="py-5 px-8 text-center">
+                      <td className="py-5 px-8 text-center whitespace-nowrap">
                         <span className="font-black text-sm text-white tabular-nums tracking-widest">
                           {athlete.Total ?? totalVal ?? athlete.Time ?? "--"}
                         </span>
                       </td>
-                      <td className="py-5 px-4 text-center">
+                      <td className="py-5 px-4 text-center whitespace-nowrap">
                         <button
                           onClick={(e) => {
                             e.stopPropagation();
@@ -281,7 +359,7 @@ const AthleteResultsClientWrapperTriton3V2: React.FC<Props> = ({ initialAthletes
       <AnimatePresence>
         {selectedAthlete && (
           <div
-            className="fixed inset-0 z-50 flex items-center justify-center p-4 sm:p-6 bg-black/80 backdrop-blur-md overflow-y-auto"
+            className="fixed inset-0 z-50 flex items-center justify-center p-3 sm:p-6 bg-black/80 backdrop-blur-md overflow-y-auto"
             onClick={() => setSelectedAthlete(null)}
           >
             <motion.div
@@ -289,11 +367,11 @@ const AthleteResultsClientWrapperTriton3V2: React.FC<Props> = ({ initialAthletes
               animate={{ opacity: 1, scale: 1, y: 0 }}
               exit={{ opacity: 0, scale: 0.95, y: 20 }}
               transition={{ duration: 0.2 }}
-              className="bg-neutral-900 border border-white/10 rounded-3xl max-w-xl w-full overflow-hidden shadow-2xl relative text-white my-auto flex flex-col"
+              className="bg-neutral-900 border border-white/10 rounded-3xl max-w-xl w-full overflow-hidden shadow-2xl relative text-white my-auto flex flex-col max-h-[90vh]"
               onClick={(e) => e.stopPropagation()}
             >
               {/* Header */}
-              <div className="bg-gradient-to-r from-neutral-950 via-neutral-900 to-neutral-950 border-b border-white/10 p-6 sm:p-8 relative">
+              <div className="bg-gradient-to-r from-neutral-950 via-neutral-900 to-neutral-950 border-b border-white/10 p-5 sm:p-8 relative shrink-0">
                 <button
                   onClick={() => setSelectedAthlete(null)}
                   className="absolute top-4 right-4 p-2.5 rounded-full bg-white/5 hover:bg-triton-red/20 text-gray-400 hover:text-white border border-white/10 transition-colors cursor-pointer"
@@ -302,30 +380,29 @@ const AthleteResultsClientWrapperTriton3V2: React.FC<Props> = ({ initialAthletes
                   <X size={18} />
                 </button>
 
-                <div className="flex flex-wrap items-center gap-2 mb-3">
-                  <span className="bg-triton-red/20 text-triton-red border border-triton-red/30 px-3 py-1 rounded-full text-xs font-black uppercase tracking-widest">
+                <div className="flex flex-wrap items-center gap-2 mb-3 pr-10">
+                  <span className="bg-triton-red/20 text-triton-red border border-triton-red/30 px-3 py-1 rounded-full text-xs font-black uppercase tracking-widest whitespace-nowrap">
                     BIB #{selectedAthlete.Bib}
                   </span>
-                  <span className={`text-[10px] font-black uppercase px-2.5 py-1 rounded-md border ${
-                    selectedAthlete.Contest === "Sprint Distance"
-                      ? "border-white/20 text-black bg-white/75"
-                      : selectedAthlete.Contest === "Middle Distance"
+                  <span className={`inline-block whitespace-nowrap text-[10px] font-black uppercase px-2.5 py-1 rounded-md border ${selectedAthlete.Contest === "Sprint Distance"
+                    ? "border-white/20 text-black bg-white/80"
+                    : selectedAthlete.Contest === "Middle Distance"
                       ? "border-red-500/30 text-white bg-red-500/30"
                       : "border-black/20 text-white bg-white/5"
-                  }`}>
+                    }`}>
                     {selectedAthlete.Contest}
                   </span>
-                  <span className="text-[10px] font-black uppercase px-2.5 py-1 rounded-md border border-white/10 text-gray-400 bg-white/5">
+                  <span className="text-[10px] font-black uppercase px-2.5 py-1 rounded-md border border-white/10 text-gray-400 bg-white/5 whitespace-nowrap">
                     {selectedAthlete.Gender}
                   </span>
-                  <span className="text-[10px] font-black uppercase px-2.5 py-1 rounded-md border border-white/10 text-gray-400 bg-white/5">
+                  <span className="text-[10px] font-black uppercase px-2.5 py-1 rounded-md border border-white/10 text-gray-400 bg-white/5 whitespace-nowrap">
                     {selectedAthlete.AgeGroup}
                   </span>
                 </div>
 
                 <div className="flex items-center justify-between gap-4">
                   <div>
-                    <h3 className="text-2xl sm:text-3xl font-black uppercase tracking-tight text-white flex items-center gap-3">
+                    <h3 className="text-xl sm:text-3xl font-black uppercase tracking-tight text-white flex items-center gap-3">
                       {selectedAthlete.Name}
                     </h3>
                     {selectedAthlete.Nation && (
@@ -338,32 +415,32 @@ const AthleteResultsClientWrapperTriton3V2: React.FC<Props> = ({ initialAthletes
                     <img
                       src={selectedAthlete.Flag}
                       alt={selectedAthlete.Nation || "Flag"}
-                      className="w-9 h-6 object-contain rounded-sm shadow-md border border-white/10"
+                      className="w-9 h-6 object-contain rounded-sm shadow-md border border-white/10 shrink-0"
                     />
                   )}
                 </div>
               </div>
 
-              {/* Body Content */}
-              <div className="p-6 sm:p-8 space-y-6">
+              {/* Scrollable Body Content */}
+              <div className="p-5 sm:p-8 space-y-6 overflow-y-auto scrollbar-hide">
                 {/* Total Points & Time Highlights */}
-                <div className="grid grid-cols-2 gap-4">
-                  <div className="bg-triton-red/10 border border-triton-red/30 p-4 rounded-2xl text-center">
+                <div className="grid grid-cols-2 gap-3 sm:gap-4">
+                  <div className="bg-triton-red/10 border border-triton-red/30 p-3.5 sm:p-4 rounded-2xl text-center">
                     <div className="flex items-center justify-center gap-1.5 text-triton-red text-xs font-black uppercase tracking-widest mb-1">
                       <Trophy size={14} />
                       <span>Total Points</span>
                     </div>
-                    <p className="text-3xl font-black text-white tracking-tight">
+                    <p className="text-2xl sm:text-3xl font-black text-white tracking-tight">
                       {selectedAthlete.TotalPoints ?? selectedAthlete.Total ?? selectedAthlete.Points ?? "--"}
                     </p>
                   </div>
 
-                  <div className="bg-white/5 border border-white/10 p-4 rounded-2xl text-center">
+                  <div className="bg-white/5 border border-white/10 p-3.5 sm:p-4 rounded-2xl text-center">
                     <div className="flex items-center justify-center gap-1.5 text-gray-400 text-xs font-black uppercase tracking-widest mb-1">
                       <Clock size={14} />
                       <span>Total Time</span>
                     </div>
-                    <p className="text-2xl font-black text-white tracking-tight font-mono">
+                    <p className="text-xl sm:text-2xl font-black text-white tracking-tight font-mono">
                       {selectedAthlete.Time || "--"}
                     </p>
                   </div>
@@ -395,8 +472,8 @@ const AthleteResultsClientWrapperTriton3V2: React.FC<Props> = ({ initialAthletes
                       <div className="pt-2 border-t border-white/5 flex justify-between items-center">
                         <span className="text-[10px] font-bold text-gray-500 uppercase tracking-widest">Points</span>
                         <span className="text-sm font-black text-cyan-400">
-                          {selectedAthlete.SwimPoints !== undefined && selectedAthlete.SwimPoints !== "" 
-                            ? `${selectedAthlete.SwimPoints} pts` 
+                          {selectedAthlete.SwimPoints !== undefined && selectedAthlete.SwimPoints !== ""
+                            ? `${selectedAthlete.SwimPoints} pts`
                             : "--"}
                         </span>
                       </div>
@@ -420,8 +497,8 @@ const AthleteResultsClientWrapperTriton3V2: React.FC<Props> = ({ initialAthletes
                       <div className="pt-2 border-t border-white/5 flex justify-between items-center">
                         <span className="text-[10px] font-bold text-gray-500 uppercase tracking-widest">Points</span>
                         <span className="text-sm font-black text-amber-400">
-                          {selectedAthlete.BikePoints !== undefined && selectedAthlete.BikePoints !== "" 
-                            ? `${selectedAthlete.BikePoints} pts` 
+                          {selectedAthlete.BikePoints !== undefined && selectedAthlete.BikePoints !== ""
+                            ? `${selectedAthlete.BikePoints} pts`
                             : "--"}
                         </span>
                       </div>
@@ -445,8 +522,8 @@ const AthleteResultsClientWrapperTriton3V2: React.FC<Props> = ({ initialAthletes
                       <div className="pt-2 border-t border-white/5 flex justify-between items-center">
                         <span className="text-[10px] font-bold text-gray-500 uppercase tracking-widest">Points</span>
                         <span className="text-sm font-black text-emerald-400">
-                          {selectedAthlete.RunPoints !== undefined && selectedAthlete.RunPoints !== "" 
-                            ? `${selectedAthlete.RunPoints} pts` 
+                          {selectedAthlete.RunPoints !== undefined && selectedAthlete.RunPoints !== ""
+                            ? `${selectedAthlete.RunPoints} pts`
                             : "--"}
                         </span>
                       </div>
@@ -455,16 +532,16 @@ const AthleteResultsClientWrapperTriton3V2: React.FC<Props> = ({ initialAthletes
 
                   {/* Transitions if present */}
                   {(selectedAthlete.T1 || selectedAthlete.T2) && (
-                    <div className="mt-4 flex gap-6 bg-white/5 p-3 rounded-xl border border-white/5 text-xs justify-center">
+                    <div className="mt-4 flex flex-wrap gap-4 sm:gap-6 bg-white/5 p-3 rounded-xl border border-white/5 text-xs justify-center">
                       {selectedAthlete.T1 && (
                         <div className="flex items-center gap-2">
-                          <span className="text-gray-400 font-bold uppercase">T1 (Transition 1):</span>
+                          <span className="text-gray-400 font-bold uppercase">T1:</span>
                           <span className="font-mono text-white font-bold">{selectedAthlete.T1}</span>
                         </div>
                       )}
                       {selectedAthlete.T2 && (
                         <div className="flex items-center gap-2">
-                          <span className="text-gray-400 font-bold uppercase">T2 (Transition 2):</span>
+                          <span className="text-gray-400 font-bold uppercase">T2:</span>
                           <span className="font-mono text-white font-bold">{selectedAthlete.T2}</span>
                         </div>
                       )}
@@ -474,7 +551,7 @@ const AthleteResultsClientWrapperTriton3V2: React.FC<Props> = ({ initialAthletes
               </div>
 
               {/* Footer */}
-              <div className="bg-black/40 border-t border-white/10 p-4 sm:p-6 flex justify-end">
+              <div className="bg-black/40 border-t border-white/10 p-4 sm:p-5 flex justify-end shrink-0">
                 <button
                   onClick={() => setSelectedAthlete(null)}
                   className="px-6 py-2.5 rounded-xl bg-triton-red hover:bg-triton-red/80 text-white font-black text-xs uppercase tracking-widest transition-colors cursor-pointer"
@@ -491,4 +568,3 @@ const AthleteResultsClientWrapperTriton3V2: React.FC<Props> = ({ initialAthletes
 };
 
 export default AthleteResultsClientWrapperTriton3V2;
-

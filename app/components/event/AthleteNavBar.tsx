@@ -24,7 +24,8 @@ const Navbar = ({ liveResultsUrl, targetDate, mediaPictureUrl }: { liveResultsUr
   const navLinks = [
     { name: "Race Guide", href: "#race-guide" },
     { name: "Start List", href: "#start-list" },
-    { name: "Results", href: "#results" },
+    { name: "Top 5", href: "#top-five" },
+    { name: "Results", href: "#full-results" },
   ];
 
   const isEventActive = () => {
@@ -166,6 +167,18 @@ const Navbar = ({ liveResultsUrl, targetDate, mediaPictureUrl }: { liveResultsUr
           }`}
       >
         <div className="px-6 py-12 flex flex-col items-center gap-8 min-h-full">
+          <div className="flex flex-col items-center gap-6 w-full max-w-xs border-b border-white/10 pb-6">
+            {navLinks.map((link) => (
+              <a
+                key={link.name}
+                href={link.href}
+                onClick={() => setIsOpen(false)}
+                className="text-gray-200 hover:text-triton-red text-base font-bold uppercase transition-colors tracking-widest text-center"
+              >
+                {link.name}
+              </a>
+            ))}
+          </div>
 
           {mediaPictureUrl && (
             <a
