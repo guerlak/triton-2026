@@ -16,6 +16,7 @@ const CountdownSection: React.FC<CountdownSectionProps> = ({ data }) => {
     minutes: 0,
     seconds: 0,
   });
+  const [isEventStarted, setIsEventStarted] = useState(false);
 
   useEffect(() => {
     const target = new Date(data.targetDate).getTime();
@@ -23,11 +24,13 @@ const CountdownSection: React.FC<CountdownSectionProps> = ({ data }) => {
       const now = new Date().getTime();
       const distance = target - now;
 
-      if (distance < 0) {
+      if (distance <= 0) {
         setTimeLeft({ days: 0, hours: 0, minutes: 0, seconds: 0 });
+        setIsEventStarted(true);
         return;
       }
 
+      setIsEventStarted(false);
       setTimeLeft({
         days: Math.floor(distance / (1000 * 60 * 60 * 24)),
         hours: Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)),
@@ -40,6 +43,8 @@ const CountdownSection: React.FC<CountdownSectionProps> = ({ data }) => {
     const timer = setInterval(calculateTime, 1000);
     return () => clearInterval(timer);
   }, [data.targetDate]);
+
+  const liveResultsUrl = data.liveResultsUrl || data.athleteArea?.liveResultsUrl;
 
   return (
     <section className="relative py-10 overflow-hidden min-h-100 flex items-center">
@@ -87,12 +92,27 @@ const CountdownSection: React.FC<CountdownSectionProps> = ({ data }) => {
               </div>
 
               <div className="mt-10 flex gap-4 justify-center lg:justify-start">
-                {data.isRegistrationClosed ? (
+                {isEventStarted && liveResultsUrl ? (
+                  <a
+                    href={liveResultsUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="bg-triton-red hover:bg-white text-white hover:text-black font-black py-2 px-4 md:px-10 rounded-none flex items-center gap-3 uppercase tracking-widest transition-all duration-300"
+                  >
+                    <span>{data.language === "pt-BR" ? "Resultados Ao Vivo" : "Live Results"}</span>
+                    <ArrowRight size={18} />
+                  </a>
+                ) : data.isRegistrationClosed ? (
                   <span className="bg-neutral-800 text-gray-500 font-black py-2 px-4 md:px-10 rounded-none flex items-center gap-3 uppercase tracking-widest cursor-not-allowed opacity-60 border border-white/10 select-none">
                     <span>{data.language === "pt-BR" ? "Inscrições Encerradas" : "Registration Closed"}</span>
                   </span>
                 ) : (
-                  <a href={data.registrationLink} target="_blank" className="bg-triton-red hover:bg-white text-white hover:text-black font-black py-2 px-4 md:px-10 rounded-none flex items-center gap-3 uppercase tracking-widest transition-all duration-300">
+                  <a
+                    href={data.registrationLink}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="bg-triton-red hover:bg-white text-white hover:text-black font-black py-2 px-4 md:px-10 rounded-none flex items-center gap-3 uppercase tracking-widest transition-all duration-300"
+                  >
                     <span>{data.language === "pt-BR" ? "Inscreva-se" : "Register"}</span>
                     <ArrowRight size={18} />
                   </a>
@@ -100,14 +120,24 @@ const CountdownSection: React.FC<CountdownSectionProps> = ({ data }) => {
               </div>
             </div>
 
-            {/* Countdown Grid */}
+            {/* Countdown Grid / Event Started Message */}
             <div className="w-full flex justify-center">
-              <div className="grid grid-cols-4 sm:grid-cols-4 lg:grid-cols-4 gap-3 md:gap-4">
-                <TimeUnit value={timeLeft.days} label="Days" />
-                <TimeUnit value={timeLeft.hours} label="Hours" />
-                <TimeUnit value={timeLeft.minutes} label="Minutes" />
-                <TimeUnit value={timeLeft.seconds} label="Seconds" />
-              </div>
+              {isEventStarted ? (
+                <div className="text-center py-4">
+                  <p className="text-2xl sm:text-3xl md:text-4xl font-black uppercase leading-tight tracking-wide text-white">
+                    {data.language === "pt-BR"
+                      ? "Desafio começa agora. Boa prova, atletas!"
+                      : "The challenge starts now. Have a great race, athletes!"}
+                  </p>
+                </div>
+              ) : (
+                <div className="grid grid-cols-4 sm:grid-cols-4 lg:grid-cols-4 gap-3 md:gap-4">
+                  <TimeUnit value={timeLeft.days} label="Days" />
+                  <TimeUnit value={timeLeft.hours} label="Hours" />
+                  <TimeUnit value={timeLeft.minutes} label="Minutes" />
+                  <TimeUnit value={timeLeft.seconds} label="Seconds" />
+                </div>
+              )}
             </div>
           </motion.div>
         </div>
