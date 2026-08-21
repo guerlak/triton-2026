@@ -1,6 +1,6 @@
 "use client";
 import React, { useState, useEffect } from "react";
-import { ArrowRight, MapPin } from "lucide-react";
+import { ArrowRight, MapPin, Flame } from "lucide-react";
 import { motion } from "framer-motion";
 import { TimeUnit } from "../../components/TimeUnit";
 import { EventData } from "@/eventdata";
@@ -123,11 +123,34 @@ const CountdownSection: React.FC<CountdownSectionProps> = ({ data }) => {
             {/* Countdown Grid / Event Started Message */}
             <div className="w-full flex justify-center">
               {isEventStarted ? (
-                <div className="text-center py-4">
-                  <p className="text-2xl sm:text-3xl md:text-4xl font-black uppercase leading-tight tracking-wide text-white">
-                    {data.language === "pt-BR"
-                      ? "Desafio começa agora. Boa prova, atletas!"
-                      : "The challenge starts now. Have a great race, athletes!"}
+                <div className="w-full flex flex-col items-center justify-center text-center p-6 md:p-8 rounded-3xl bg-linear-to-b from-triton-red/10 via-black/40 to-transparent border border-triton-red/30 shadow-[0_0_30px_rgba(235,0,40,0.15)] relative overflow-hidden">
+                  {/* Live Badge Indicator */}
+                  <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-triton-red/20 border border-triton-red/40 text-triton-red text-xs font-black uppercase tracking-widest mb-3">
+                    <span className="relative flex h-2.5 w-2.5">
+                      <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-triton-red opacity-75"></span>
+                      <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-triton-red"></span>
+                    </span>
+                    <span>{data.language === "pt-BR" ? "PROVA EM ANDAMENTO" : "RACE IN PROGRESS"}</span>
+                  </div>
+
+                  {/* Main Headline */}
+                  <h3 className="text-2xl sm:text-3xl md:text-4xl font-black uppercase leading-tight tracking-tight text-white mb-2">
+                    {data.language === "pt-BR" ? (
+                      <>
+                        O DESAFIO <span className="text-triton-red italic">COMEÇA AGORA</span>
+                      </>
+                    ) : (
+                      <>
+                        THE CHALLENGE <span className="text-triton-red italic">STARTS NOW</span>
+                      </>
+                    )}
+                  </h3>
+
+                  {/* Subtitle / Wish */}
+                  <p className="text-xs sm:text-sm md:text-base font-bold uppercase tracking-widest text-gray-300 flex items-center justify-center gap-2">
+                    <Flame className="w-4 h-4 text-triton-red shrink-0" />
+                    <span>{data.language === "pt-BR" ? "Boa prova, atletas!" : "Have a great race, athletes!"}</span>
+                    <Flame className="w-4 h-4 text-triton-red shrink-0" />
                   </p>
                 </div>
               ) : (
