@@ -518,7 +518,7 @@ export const EVENT_DATA_MAP: Record<string, EventData> = {
     id: "rio-2026",
     eventFormat: "triton3",
     title: "Rio de Janeiro",
-    subtitle: "TRITON 1",
+    subtitle: "TRITON 3",
     location: "Portobello",
     venue: "Portobello, Rio de Janeiro",
     country: "Brazil",
