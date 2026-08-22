@@ -4,51 +4,60 @@ import { Timer, ArrowRight, MapPin, ChevronLeft, ChevronRight } from "lucide-rea
 import Link from "next/link";
 import { motion, AnimatePresence } from "framer-motion";
 import { TimeUnit } from "./TimeUnit";
+import { EVENT_DATA_MAP } from "@/eventdata";
 
 const COUNTDOWN_EVENTS = [
   {
     id: 1,
     title: "TRITON 3",
+    slug: "rio-2026",
     subtitle: "RIO DE JANEIRO",
     location: "Portobello, RJ",
     date: "21 Aug, 2026",
     targetDate: "2026-08-21T08:00:00",
     image: "/images/triton-fotos-prova-run.jpeg",
     href: "/events/triton3/rio-2026",
-    registerUrl: "https://www.ticketsports.com.br/e/triton-3-rio-de-janeiro-2026-74526"
+    registerUrl: "https://www.ticketsports.com.br/e/triton-3-rio-de-janeiro-2026-74526",
+    isOnLive: true,
   },
   {
     id: 2,
     title: "TRITON 1",
+    slug: "lisboa-2026",
     subtitle: "LISBOA",
     location: "Parque das Nações, Lisboa",
     date: "06 Sep, 2026",
     targetDate: "2026-09-06T08:00:00",
     image: "/images/triton-fotos-prova-bike.jpeg",
     href: "/events/triton1/lisboa-2026",
-    registerUrl: "https://register.hakuapp.com/?event=9ce0f9c87c1b43a8b97a"
+    registerUrl: "https://register.hakuapp.com/?event=9ce0f9c87c1b43a8b97a",
+    isOnLive: false,
   },
   {
     id: 3,
     title: "TRITON 1",
+    slug: "qindong-2026",
     subtitle: "QIDONG",
     location: "JIANGSU, China",
     date: "31 Oct, 2026",
     targetDate: "2026-10-31T08:00:00",
     image: "/images/bg-qindong.jpg",
     href: "/events/triton1/qindong-2026",
-    registerUrl: ""
+    registerUrl: "",
+    isOnLive: false,
   },
   {
     id: 4,
     title: "TRITON 1",
+    slug: "salvador-2027",
     subtitle: "SALVADOR",
     location: "Piatã, Bahia",
     date: "11 Apr, 2027",
     targetDate: "2027-04-11T08:00:00",
     image: "/images/bg-salvador.jpg",
     href: "/events/triton1/salvador-2027",
-    registerUrl: "https://ticketsports.com.br/e/triton1salvador"
+    registerUrl: "https://ticketsports.com.br/e/triton1salvador",
+    isOnLive: false,
   },
 ];
 
@@ -56,6 +65,8 @@ const CountdownSection: React.FC = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [direction, setDirection] = useState(0);
   const currentEvent = COUNTDOWN_EVENTS[currentIndex];
+  const eventData = EVENT_DATA_MAP[currentEvent.slug];
+  const liveResultsUrl = eventData?.athleteArea?.liveResultsUrl || eventData?.liveResultsUrl;
 
   const [timeLeft, setTimeLeft] = useState({
     days: 0,
@@ -162,13 +173,25 @@ const CountdownSection: React.FC = () => {
               className="flex flex-col lg:flex-row items-center gap-8 lg:gap-16 bg-black-900/70 backdrop-blur-xl p-6 md:p-10 lg:p-12 rounded-4xl border border-white/10 shadow-[0_0_50px_rgba(0,0,0,0.5)]"
             >
               {/* Text Content */}
-              <div className="">
-                <div className="inline-flex justify-center lg:justify-start items-center gap-2 px-4 py-1.5 rounded-full 
-                bg-triton-red/20 border border-triton-red/30 text-triton-red text-xs font-black uppercase 
-                tracking-widest mb-6">
-                  <Timer size={14} className="animate-pulse" />
-                  Coming Next
-                </div>
+              <div>
+                {currentEvent.isOnLive ? (
+                  <div className="inline-flex justify-center lg:justify-start items-center gap-2 px-4 py-1.5 rounded-full 
+                  bg-triton-red/20 border border-triton-red/40 text-triton-red text-xs sm:text-sm font-bold uppercase 
+                  tracking-widest mb-6">
+                    <span className="relative flex h-2.5 w-2.5">
+                      <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-triton-red opacity-75"></span>
+                      <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-triton-red"></span>
+                    </span>
+                    <span>Live</span>
+                  </div>
+                ) : (
+                  <div className="inline-flex justify-center lg:justify-start items-center gap-2 px-4 py-1.5 rounded-full 
+                  bg-triton-red/20 border border-triton-red/30 text-triton-red text-xs sm:text-sm font-bold uppercase 
+                  tracking-widest mb-6">
+                    <Timer size={14} className="animate-pulse" />
+                    Coming Next
+                  </div>
+                )}
 
                 <div className="mb-4 text-center sm:text-left">
                   <h3 className="text-4xl md:text-6xl font-black text-white uppercase leading-tight">
@@ -187,10 +210,19 @@ const CountdownSection: React.FC = () => {
                 </div>
 
                 <div className="mt-10 flex gap-4 justify-center lg:justify-start">
-                  <a href={currentEvent.registerUrl} target="_blank" className="bg-triton-red hover:bg-white text-white hover:text-black font-black py-2 px-4 md:px-10 rounded-none flex items-center gap-3 uppercase tracking-widest transition-all duration-300">
-                    <span>Register</span>
-                    <ArrowRight size={18} />
-                  </a>
+                  {currentEvent.isOnLive && liveResultsUrl ? (
+                    <></>
+                  ) : (
+                    <a
+                      href={currentEvent.registerUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="bg-triton-red hover:bg-white text-white hover:text-black font-black py-2 px-4 md:px-10 rounded-none flex items-center gap-3 uppercase tracking-widest transition-all duration-300"
+                    >
+                      <span>Register</span>
+                      <ArrowRight size={18} />
+                    </a>
+                  )}
 
                   <Link
                     href={currentEvent.href}
@@ -233,7 +265,7 @@ const CountdownSection: React.FC = () => {
       </div>
 
       <div className="absolute bottom-0 left-0 w-full h-1 bg-linear-to-r from-transparent via-triton-red to-transparent"></div>
-    </section>
+    </section >
   );
 };
 
