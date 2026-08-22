@@ -27,9 +27,15 @@ export default async function AthleteArePage({ params }: { params: Promise<{ slu
 		<main className="min-h-screen bg-black text-white">
 			<AthleteNavBar liveResultsUrl={data.athleteArea?.liveResultsUrl} targetDate={data.targetDate} mediaPictureUrl={data.athleteArea?.mediaPictureUrl} />
 			<RaceGuide raceGuideLink={data.athleteArea?.raceGuideLink} />
+			{/* Full Results Section */}
+			<section id="full-results" className="py-12 sm:py-20 bg-black relative border-t border-white/5">
+				<div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+					<AthleteResultsClientWrapperTriton3V2 initialAthletes={athletes} />
+				</div>
+			</section>
 			<EventVideo videoBriefingUrl={data.athleteArea?.videoBriefingUrl} />
 			{/* <RaceKit /> */}
-			{/* <StartList slug={slug} /> */}
+
 
 			{/* Top 5 Leaderboard Section */}
 			<section id="top-five" className="py-12 sm:py-20 bg-black relative border-t border-white/5">
@@ -38,12 +44,9 @@ export default async function AthleteArePage({ params }: { params: Promise<{ slu
 				</div>
 			</section>
 
-			{/* Full Results Section */}
-			<section id="full-results" className="py-12 sm:py-20 bg-black relative border-t border-white/5">
-				<div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-					<AthleteResultsClientWrapperTriton3V2 initialAthletes={athletes} />
-				</div>
-			</section>
+			<StartList slug={slug} />
+
+
 		</main>
 	);
 }
