@@ -33,20 +33,18 @@ export default async function AthleteArePage({ params }: { params: Promise<{ slu
 					<AthleteResultsClientWrapperTriton3V2 initialAthletes={athletes} />
 				</div>
 			</section>
-			<EventVideo videoBriefingUrl={data.athleteArea?.videoBriefingUrl} />
-			{/* <RaceKit /> */}
-
-
 			{/* Top 5 Leaderboard Section */}
 			<section id="top-five" className="py-12 sm:py-20 bg-black relative border-t border-white/5">
 				<div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 					<TopFiveAthletes initialAthletes={athletesTop5} />
 				</div>
 			</section>
+			<EventVideo videoBriefingUrl={data.athleteArea?.videoBriefingUrl} />
+			{/* <RaceKit /> */}
+
+
 
 			<StartList slug={slug} />
-
-
 		</main>
 	);
 }
