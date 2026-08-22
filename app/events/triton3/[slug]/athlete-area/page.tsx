@@ -22,6 +22,7 @@ export default async function AthleteArePage({ params }: { params: Promise<{ slu
 	const athletes = await getAthleteResultsFromAPI(data.athleteArea?.liveResultsApiUrl);
 	const athletesTop5 = await getAthleteResultsFromAPI(data.athleteArea?.topFiveApiUrl);
 
+
 	return (
 		<main className="min-h-screen bg-black text-white">
 			<AthleteNavBar liveResultsUrl={data.athleteArea?.liveResultsUrl} targetDate={data.targetDate} mediaPictureUrl={data.athleteArea?.mediaPictureUrl} />

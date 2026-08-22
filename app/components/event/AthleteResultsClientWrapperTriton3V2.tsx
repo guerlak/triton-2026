@@ -34,11 +34,58 @@ interface Props {
   initialAthletes: LiveAthlete[];
 }
 
+function parsePoint(val?: string | number): number | null {
+  if (val === undefined || val === null) return null;
+  const str = val.toString().trim();
+  if (str === "" || str === "--" || str === "DNS" || str === "DNF") return null;
+  const num = parseFloat(str);
+  return isNaN(num) ? null : num;
+}
+
 function getAthleteTotalValue(athlete: LiveAthlete): string | number | null {
   if (athlete.Total !== undefined && athlete.Total !== null && athlete.Total !== "") return athlete.Total;
   if (athlete.TotalPoints !== undefined && athlete.TotalPoints !== null && athlete.TotalPoints !== "") return athlete.TotalPoints;
   if (athlete.Points !== undefined && athlete.Points !== null && athlete.Points !== "") return athlete.Points;
   return null;
+}
+
+function getAthletePartialPoints(athlete: LiveAthlete): string | number {
+  const swimPts = parsePoint(athlete.SwimPoints);
+  const bikePts = parsePoint(athlete.BikePoints);
+  const runPts = parsePoint(athlete.RunPoints);
+
+  let hasAnyPoints = false;
+  let sum = 0;
+
+  if (swimPts !== null) {
+    sum += swimPts;
+    hasAnyPoints = true;
+  }
+  if (bikePts !== null) {
+    sum += bikePts;
+    hasAnyPoints = true;
+  }
+  if (runPts !== null) {
+    sum += runPts;
+    hasAnyPoints = true;
+  }
+
+  if (hasAnyPoints) return sum;
+
+  const fallback = getAthleteTotalValue(athlete);
+  if (fallback !== null) return fallback;
+
+  return "--";
+}
+
+function hasValidPartialPoints(athlete: LiveAthlete): boolean {
+  const pts = getAthletePartialPoints(athlete);
+  if (typeof pts === "number") return pts > 0;
+  if (typeof pts === "string") {
+    const num = parseFloat(pts.replace(/[^0-9.-]+/g, ""));
+    return !isNaN(num) && num > 0;
+  }
+  return false;
 }
 
 function hasCompletedAll3Modalities(athlete: LiveAthlete): boolean {
@@ -51,7 +98,7 @@ function hasCompletedAll3Modalities(athlete: LiveAthlete): boolean {
   return isValid(athlete.Swim) && isValid(athlete.Bike) && isValid(athlete.Run);
 }
 
-const AthleteResultsClientWrapperTriton3V2: React.FC<Props> = ({ initialAthletes }) => {
+const AthleteResultsClientWrapperTriton3V2: React.FC<Props> = ({ initialAthletes = [] }) => {
   const [searchQuery, setSearchQuery] = useState("");
   const [selectedAgeGroup, setSelectedAgeGroup] = useState("");
   const [selectedDistance, setSelectedDistance] = useState("");
@@ -60,29 +107,36 @@ const AthleteResultsClientWrapperTriton3V2: React.FC<Props> = ({ initialAthletes
 
   // Get unique filter options
   const filterOptions = useMemo(() => {
+    const safeAthletes = (initialAthletes || []).filter(hasValidPartialPoints);
     return {
-      ageGroups: Array.from(new Set(initialAthletes.map((a) => a.AgeGroup))).sort(),
-      distances: Array.from(new Set(initialAthletes.map((a) => a.Contest))).sort(),
-      genders: Array.from(new Set(initialAthletes.map((a) => a.Gender))).sort(),
+      ageGroups: Array.from(new Set(safeAthletes.map((a) => a.AgeGroup).filter(Boolean))).sort(),
+      distances: Array.from(new Set(safeAthletes.map((a) => a.Contest).filter(Boolean))).sort(),
+      genders: Array.from(new Set(safeAthletes.map((a) => a.Gender).filter(Boolean))).sort(),
     };
   }, [initialAthletes]);
 
   const filteredAthletes = useMemo(() => {
-    let result = initialAthletes.filter((athlete) => {
-      const query = searchQuery.toLowerCase();
-      const nameMatch = athlete.Name.toLowerCase().includes(query) || athlete.Bib.toString().includes(query);
+    const safeAthletes = initialAthletes || [];
+    let result = safeAthletes.filter((athlete) => {
+      const query = searchQuery.toLowerCase().trim();
+      const nameMatch =
+        !query ||
+        (athlete.Name || "").toLowerCase().includes(query) ||
+        (athlete.Bib !== undefined && athlete.Bib !== null ? athlete.Bib.toString().includes(query) : false);
       const ageGroupMatch = selectedAgeGroup === "" || athlete.AgeGroup === selectedAgeGroup;
       const distanceMatch = selectedDistance === "" || athlete.Contest === selectedDistance;
       const genderMatch = selectedGender === "" || athlete.Gender === selectedGender;
-      const participatedIn3Modalities = hasCompletedAll3Modalities(athlete);
+      const hasPoints = hasValidPartialPoints(athlete);
 
-      return nameMatch && ageGroupMatch && distanceMatch && genderMatch && participatedIn3Modalities;
+      return nameMatch && ageGroupMatch && distanceMatch && genderMatch && hasPoints;
     });
 
     return [...result].sort((a, b) => {
-      const valA = getAthleteTotalValue(a);
-      const valB = getAthleteTotalValue(b);
-      if (valA !== null && valB !== null) {
+      const valA = getAthletePartialPoints(a);
+      const valB = getAthletePartialPoints(b);
+      if (typeof valA === "number" && typeof valB === "number") {
+        if (valA !== valB) return valA - valB;
+      } else if (valA !== "--" && valB !== "--") {
         const numA = typeof valA === "number" ? valA : parseFloat(valA.toString().replace(/[^0-9.-]+/g, "")) || 0;
         const numB = typeof valB === "number" ? valB : parseFloat(valB.toString().replace(/[^0-9.-]+/g, "")) || 0;
         if (numA !== numB) return numA - numB;
@@ -233,14 +287,22 @@ const AthleteResultsClientWrapperTriton3V2: React.FC<Props> = ({ initialAthletes
                   {/* Points & Details Trigger */}
                   <div className="flex items-center gap-3 shrink-0">
                     <div className="text-right">
-                      <p className="text-[9px] font-black uppercase tracking-widest text-triton-red whitespace-nowrap">Total Pts</p>
+                      <p className="text-[9px] font-black uppercase tracking-widest text-triton-red whitespace-nowrap">Parcial Pts</p>
                       <p className="text-base font-black text-white tabular-nums whitespace-nowrap">
-                        {athlete.Total ?? totalVal ?? athlete.Time ?? "--"}
+                        {getAthletePartialPoints(athlete)}
                       </p>
                     </div>
-                    <div className="p-2 rounded-xl bg-white/5 text-gray-400 border border-white/10">
+                    <button
+                      onClick={(e) => {
+                        e.stopPropagation();
+                        setSelectedAthlete(athlete);
+                      }}
+                      className="p-2.5 rounded-xl bg-white/5 hover:bg-triton-red/20 text-gray-300 hover:text-white border border-white/10 hover:border-triton-red/40 transition-all shadow-md active:scale-95 cursor-pointer"
+                      title="View Athlete Details"
+                      aria-label={`View details for ${athlete.Name}`}
+                    >
                       <Eye size={16} />
-                    </div>
+                    </button>
                   </div>
                 </div>
               </motion.div>
@@ -273,10 +335,15 @@ const AthleteResultsClientWrapperTriton3V2: React.FC<Props> = ({ initialAthletes
                 <th className="py-6 px-8 text-center text-triton-red whitespace-nowrap">
                   <div className="flex items-center justify-center gap-2 text-triton-red">
                     <Trophy size={14} />
-                    <span>Total Points</span>
+                    <span>Parcial Points</span>
                   </div>
                 </th>
-                <th className="py-6 px-4 text-center w-16 whitespace-nowrap">Details</th>
+                <th className="py-6 px-4 text-center w-16 whitespace-nowrap" title="View Details">
+                  <div className="flex items-center justify-center gap-1.5 text-gray-400">
+                    <Eye size={14} />
+                    <span>Details</span>
+                  </div>
+                </th>
               </tr>
             </thead>
             <tbody>
@@ -326,7 +393,7 @@ const AthleteResultsClientWrapperTriton3V2: React.FC<Props> = ({ initialAthletes
                       </td>
                       <td className="py-5 px-8 text-center whitespace-nowrap">
                         <span className="font-black text-sm text-white tabular-nums tracking-widest">
-                          {athlete.Total ?? totalVal ?? athlete.Time ?? "--"}
+                          {getAthletePartialPoints(athlete)}
                         </span>
                       </td>
                       <td className="py-5 px-4 text-center whitespace-nowrap">
@@ -335,8 +402,9 @@ const AthleteResultsClientWrapperTriton3V2: React.FC<Props> = ({ initialAthletes
                             e.stopPropagation();
                             setSelectedAthlete(athlete);
                           }}
-                          className="p-2 rounded-xl bg-white/5 hover:bg-triton-red/20 text-gray-400 hover:text-white border border-white/10 transition-all shadow-md group-hover:border-triton-red/40"
+                          className="p-2.5 rounded-xl bg-white/5 hover:bg-triton-red/20 text-gray-400 hover:text-white border border-white/10 transition-all shadow-md group-hover:border-triton-red/40 cursor-pointer"
                           title="View Athlete Details"
+                          aria-label={`View details for ${athlete.Name}`}
                         >
                           <Eye size={16} />
                         </button>
@@ -429,10 +497,10 @@ const AthleteResultsClientWrapperTriton3V2: React.FC<Props> = ({ initialAthletes
                   <div className="bg-triton-red/10 border border-triton-red/30 p-3.5 sm:p-4 rounded-2xl text-center">
                     <div className="flex items-center justify-center gap-1.5 text-triton-red text-xs font-black uppercase tracking-widest mb-1">
                       <Trophy size={14} />
-                      <span>Total Points</span>
+                      <span>Parcial Points</span>
                     </div>
                     <p className="text-2xl sm:text-3xl font-black text-white tracking-tight">
-                      {selectedAthlete.TotalPoints ?? selectedAthlete.Total ?? selectedAthlete.Points ?? "--"}
+                      {getAthletePartialPoints(selectedAthlete)}
                     </p>
                   </div>
 
