@@ -77,12 +77,12 @@ const CountdownSection: React.FC<CountdownSectionProps> = ({ data }) => {
               p-6 md:p-10 lg:p-12 rounded-4xl border border-white/10 shadow-[0_0_50px_rgba(0,0,0,0.5)]"
           >
             {/* Text Content */}
-            <div className="">
-              <div className="mb-4 text-center sm:text-left">
-                <h2 className="text-3xl md:text-5xl text-triton-red font-bold">{data.title}</h2>
+            <div className="w-full lg:flex-1 text-center lg:text-left">
+              <div className="mb-4 text-center lg:text-left">
+                <h2 className="text-3xl sm:text-4xl md:text-5xl text-triton-red font-bold">{data.title}</h2>
               </div>
               <div className="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4
-                min-w-sm text-gray-400 font-bold uppercase tracking-widest text-sm md:text-base">
+                text-gray-400 font-bold uppercase tracking-widest text-sm md:text-base">
                 <div className="flex items-center gap-2">
                   <MapPin size={18} className="text-triton-red" />
                   {data.location}
@@ -91,7 +91,7 @@ const CountdownSection: React.FC<CountdownSectionProps> = ({ data }) => {
                 <div className="text-white">{data.dateText}</div>
               </div>
 
-              <div className="mt-10 flex gap-4 justify-center lg:justify-start">
+              <div className="mt-8 sm:mt-10 flex flex-wrap gap-4 justify-center lg:justify-start">
                 {isEventStarted && liveResultsUrl ? (
                   <a
                     href={liveResultsUrl}
@@ -121,7 +121,7 @@ const CountdownSection: React.FC<CountdownSectionProps> = ({ data }) => {
             </div>
 
             {/* Countdown Grid / Event Started Message */}
-            <div className="w-full flex justify-center">
+            <div className="w-full lg:w-auto lg:shrink-0 flex justify-center">
               {isEventStarted ? (
                 <div className="w-full flex flex-col items-center justify-center text-center p-6 md:p-8 rounded-3xl bg-linear-to-b from-triton-red/10 via-black/40 to-transparent border border-triton-red/30 shadow-[0_0_30px_rgba(235,0,40,0.15)] relative overflow-hidden">
                   {/* Live Badge Indicator */}

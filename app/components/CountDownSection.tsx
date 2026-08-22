@@ -173,7 +173,7 @@ const CountdownSection: React.FC = () => {
               className="flex flex-col lg:flex-row items-center gap-8 lg:gap-16 bg-black-900/70 backdrop-blur-xl p-6 md:p-10 lg:p-12 rounded-4xl border border-white/10 shadow-[0_0_50px_rgba(0,0,0,0.5)]"
             >
               {/* Text Content */}
-              <div>
+              <div className="w-full lg:flex-1 text-center lg:text-left">
                 {currentEvent.isOnLive ? (
                   <div className="inline-flex justify-center lg:justify-start items-center gap-2 px-4 py-1.5 rounded-full 
                   bg-triton-red/20 border border-triton-red/40 text-triton-red text-xs sm:text-sm font-bold uppercase 
@@ -194,10 +194,10 @@ const CountdownSection: React.FC = () => {
                 )}
 
                 <div className="mb-4 text-center sm:text-left">
-                  <h3 className="text-4xl md:text-6xl font-black text-white uppercase leading-tight">
+                  <h3 className="text-3xl sm:text-5xl md:text-6xl font-black text-white uppercase leading-tight">
                     {currentEvent.title}
                   </h3>
-                  <h2 className="text-3xl md:text-5xl text-triton-red font-bold">{currentEvent.subtitle}</h2>
+                  <h2 className="text-2xl sm:text-3xl md:text-5xl text-triton-red font-bold">{currentEvent.subtitle}</h2>
                 </div>
 
                 <div className="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4 text-gray-400 font-bold uppercase tracking-widest text-sm md:text-base">
@@ -209,7 +209,7 @@ const CountdownSection: React.FC = () => {
                   <div className="text-white">{currentEvent.date}</div>
                 </div>
 
-                <div className="mt-10 flex gap-4 justify-center lg:justify-start">
+                <div className="mt-8 sm:mt-10 flex flex-wrap gap-4 justify-center lg:justify-start">
                   {currentEvent.isOnLive && liveResultsUrl ? (
                     <></>
                   ) : (
@@ -235,7 +235,7 @@ const CountdownSection: React.FC = () => {
               </div>
 
               {/* Countdown Grid */}
-              <div className="w-full flex justify-center">
+              <div className="w-full lg:w-auto lg:shrink-0 flex justify-center">
                 <div className="grid grid-cols-4 sm:grid-cols-4 lg:grid-cols-4 gap-3 md:gap-4">
                   <TimeUnit value={timeLeft.days} label="Days" />
                   <TimeUnit value={timeLeft.hours} label="Hours" />
