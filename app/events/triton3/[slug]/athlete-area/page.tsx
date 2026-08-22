@@ -28,7 +28,7 @@ export default async function AthleteArePage({ params }: { params: Promise<{ slu
 			<RaceGuide raceGuideLink={data.athleteArea?.raceGuideLink} />
 			<EventVideo videoBriefingUrl={data.athleteArea?.videoBriefingUrl} />
 			{/* <RaceKit /> */}
-			<StartList slug={slug} />
+			{/* <StartList slug={slug} /> */}
 
 			{/* Top 5 Leaderboard Section */}
 			<section id="top-five" className="py-12 sm:py-20 bg-black relative border-t border-white/5">
