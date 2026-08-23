@@ -535,7 +535,7 @@ export const EVENT_DATA_MAP: Record<string, EventData> = {
       mediaPictureUrl: "https://www.focoradical.com.br/grupos/triton-3-rj",
       videoBriefingUrl: "https://youtu.be/mx0aPdfgAUY?si=4UZPQTTX_dVuo_HB",
       topFiveApiUrl: "",
-      liveResultsApiUrl:"https://api.raceresult.com/371805/EYOPJ8I4GJ5GQNTZKHFT4H4RLUTQQVSB"
+      liveResultsApiUrl:"https://api.raceresult.com/371805/9DMAJY5O7T7Z3ZUOVV0MOJGW5BFP5M9R"
 
     },
     isRegistrationClosed: true,

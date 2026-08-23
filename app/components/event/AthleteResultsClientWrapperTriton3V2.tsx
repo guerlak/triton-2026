@@ -1,7 +1,7 @@
 "use client";
 import React, { useState, useMemo } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Search, Clock, ClockArrowUp, Trophy, X, Waves, Bike, Footprints, Eye, ChevronDown } from "lucide-react";
+import { Search, ClockArrowUp, Trophy, X, Waves, Bike, Footprints, Eye, ChevronDown } from "lucide-react";
 
 interface LiveAthlete {
   Contest: string;
@@ -88,15 +88,6 @@ function hasValidPartialPoints(athlete: LiveAthlete): boolean {
   return false;
 }
 
-function hasCompletedAll3Modalities(athlete: LiveAthlete): boolean {
-  const isValid = (val?: string | number) => {
-    if (val === undefined || val === null) return false;
-    const str = val.toString().trim().toUpperCase();
-    return str !== "" && str !== "--:--:--" && str !== "DNS" && str !== "DNF" && str !== "0";
-  };
-
-  return isValid(athlete.Swim) && isValid(athlete.Bike) && isValid(athlete.Run);
-}
 
 const AthleteResultsClientWrapperTriton3V2: React.FC<Props> = ({ initialAthletes = [] }) => {
   const [searchQuery, setSearchQuery] = useState("");
@@ -131,22 +122,7 @@ const AthleteResultsClientWrapperTriton3V2: React.FC<Props> = ({ initialAthletes
       return nameMatch && ageGroupMatch && distanceMatch && genderMatch && hasPoints;
     });
 
-    return [...result].sort((a, b) => {
-      const valA = getAthletePartialPoints(a);
-      const valB = getAthletePartialPoints(b);
-      if (typeof valA === "number" && typeof valB === "number") {
-        if (valA !== valB) return valA - valB;
-      } else if (valA !== "--" && valB !== "--") {
-        const numA = typeof valA === "number" ? valA : parseFloat(valA.toString().replace(/[^0-9.-]+/g, "")) || 0;
-        const numB = typeof valB === "number" ? valB : parseFloat(valB.toString().replace(/[^0-9.-]+/g, "")) || 0;
-        if (numA !== numB) return numA - numB;
-      }
-
-      // Handle empty or placeholder times
-      const timeA = !a.Time || a.Time === "--:--:--" || a.Time === "" ? "99:99:99" : a.Time;
-      const timeB = !b.Time || b.Time === "--:--:--" || b.Time === "" ? "99:99:99" : b.Time;
-      return timeA.localeCompare(timeB);
-    });
+    return result;
   }, [initialAthletes, searchQuery, selectedAgeGroup, selectedDistance, selectedGender]);
 
   return (
@@ -287,7 +263,7 @@ const AthleteResultsClientWrapperTriton3V2: React.FC<Props> = ({ initialAthletes
                   {/* Points & Details Trigger */}
                   <div className="flex items-center gap-3 shrink-0">
                     <div className="text-right">
-                      <p className="text-[9px] font-black uppercase tracking-widest text-triton-red whitespace-nowrap">Parcial Pts</p>
+                      <p className="text-[9px] font-black uppercase tracking-widest text-triton-red whitespace-nowrap">Total Pts</p>
                       <p className="text-base font-black text-white tabular-nums whitespace-nowrap">
                         {getAthletePartialPoints(athlete)}
                       </p>
@@ -327,18 +303,18 @@ const AthleteResultsClientWrapperTriton3V2: React.FC<Props> = ({ initialAthletes
           <table className="w-full text-center border-collapse min-w-[800px]">
             <thead>
               <tr className="bg-black/40 text-[10px] font-black uppercase text-gray-500 border-b border-white/5 tracking-widest">
-                <th className="py-6 px-6 text-center w-20 whitespace-nowrap">Pos</th>
-                <th className="py-6 px-6 text-left whitespace-nowrap">Athlete</th>
-                <th className="py-6 px-6 text-center whitespace-nowrap">Distance</th>
-                <th className="py-6 px-6 text-center whitespace-nowrap">Gender</th>
-                <th className="py-6 px-6 text-center whitespace-nowrap">Age Group</th>
-                <th className="py-6 px-8 text-center text-triton-red whitespace-nowrap">
+                <th className="py-5 px-2.5 sm:px-3 text-center w-14 max-w-[56px] whitespace-nowrap">Pos</th>
+                <th className="py-5 px-4 text-left whitespace-nowrap">Athlete</th>
+                <th className="py-5 px-4 text-center whitespace-nowrap">Distance</th>
+                <th className="py-5 px-4 text-center whitespace-nowrap">Gender</th>
+                <th className="py-5 px-4 text-center whitespace-nowrap">Age Group</th>
+                <th className="py-5 px-4 text-center text-triton-red whitespace-nowrap">
                   <div className="flex items-center justify-center gap-2 text-triton-red">
                     <Trophy size={14} />
-                    <span>Parcial Points</span>
+                    <span>Total Points</span>
                   </div>
                 </th>
-                <th className="py-6 px-4 text-center w-16 whitespace-nowrap" title="View Details">
+                <th className="py-5 px-3 text-center w-14 max-w-[56px] whitespace-nowrap" title="View Details">
                   <div className="flex items-center justify-center gap-1.5 text-gray-400">
                     <Eye size={14} />
                     <span>Details</span>
@@ -356,10 +332,10 @@ const AthleteResultsClientWrapperTriton3V2: React.FC<Props> = ({ initialAthletes
                       onClick={() => setSelectedAthlete(athlete)}
                       className="border-b border-white/5 hover:bg-white/10 transition-colors group cursor-pointer"
                     >
-                      <td className="py-5 px-4 text-center font-bold text-gray-400 whitespace-nowrap">
+                      <td className="py-4 px-2.5 sm:px-3 text-center font-bold text-gray-400 w-14 max-w-[56px] whitespace-nowrap">
                         #{i + 1}
                       </td>
-                      <td className="py-5 px-6 text-left whitespace-nowrap">
+                      <td className="py-4 px-4 text-left whitespace-nowrap">
                         <div className="flex items-center gap-4">
                           <span className="font-black text-sm text-white uppercase tracking-tight group-hover:text-triton-red transition-colors">
                             {athlete.Name}
@@ -371,7 +347,7 @@ const AthleteResultsClientWrapperTriton3V2: React.FC<Props> = ({ initialAthletes
                           )}
                         </div>
                       </td>
-                      <td className="py-5 px-6 text-center text-xs font-bold text-gray-400 uppercase tracking-wider whitespace-nowrap">
+                      <td className="py-4 px-4 text-center text-xs font-bold text-gray-400 uppercase tracking-wider whitespace-nowrap">
                         <span className={`inline-block whitespace-nowrap text-[10px] font-black uppercase px-2.5 py-1 rounded-md border tracking-wider ${athlete.Contest === "Sprint Distance"
                           ? "border-white/20 text-black bg-white/75"
                           : athlete.Contest === "Middle Distance"
@@ -381,22 +357,22 @@ const AthleteResultsClientWrapperTriton3V2: React.FC<Props> = ({ initialAthletes
                           {athlete.Contest}
                         </span>
                       </td>
-                      <td className="py-5 px-6 text-center whitespace-nowrap">
+                      <td className="py-4 px-4 text-center whitespace-nowrap">
                         <span className="text-[10px] font-black uppercase px-2 py-1 tracking-widest text-gray-400">
                           {athlete.Gender}
                         </span>
                       </td>
-                      <td className="py-5 px-6 text-center whitespace-nowrap">
+                      <td className="py-4 px-4 text-center whitespace-nowrap">
                         <span className="font-black text-xs uppercase tracking-widest px-3 py-1 text-gray-300">
                           {athlete.AgeGroup}
                         </span>
                       </td>
-                      <td className="py-5 px-8 text-center whitespace-nowrap">
+                      <td className="py-4 px-4 text-center whitespace-nowrap">
                         <span className="font-black text-sm text-white tabular-nums tracking-widest">
                           {getAthletePartialPoints(athlete)}
                         </span>
                       </td>
-                      <td className="py-5 px-4 text-center whitespace-nowrap">
+                      <td className="py-4 px-3 text-center w-14 max-w-[56px] whitespace-nowrap">
                         <button
                           onClick={(e) => {
                             e.stopPropagation();
@@ -492,27 +468,15 @@ const AthleteResultsClientWrapperTriton3V2: React.FC<Props> = ({ initialAthletes
 
               {/* Scrollable Body Content */}
               <div className="p-5 sm:p-8 space-y-6 overflow-y-auto scrollbar-hide">
-                {/* Total Points & Time Highlights */}
-                <div className="grid grid-cols-2 gap-3 sm:gap-4">
-                  <div className="bg-triton-red/10 border border-triton-red/30 p-3.5 sm:p-4 rounded-2xl text-center">
-                    <div className="flex items-center justify-center gap-1.5 text-triton-red text-xs font-black uppercase tracking-widest mb-1">
-                      <Trophy size={14} />
-                      <span>Parcial Points</span>
-                    </div>
-                    <p className="text-2xl sm:text-3xl font-black text-white tracking-tight">
-                      {getAthletePartialPoints(selectedAthlete)}
-                    </p>
+                {/* Total Points Highlight */}
+                <div className="bg-triton-red/10 border border-triton-red/30 p-3.5 sm:p-4 rounded-2xl text-center">
+                  <div className="flex items-center justify-center gap-1.5 text-triton-red text-xs font-black uppercase tracking-widest mb-1">
+                    <Trophy size={14} />
+                    <span>Total Points</span>
                   </div>
-
-                  <div className="bg-white/5 border border-white/10 p-3.5 sm:p-4 rounded-2xl text-center">
-                    <div className="flex items-center justify-center gap-1.5 text-gray-400 text-xs font-black uppercase tracking-widest mb-1">
-                      <Clock size={14} />
-                      <span>Total Time</span>
-                    </div>
-                    <p className="text-xl sm:text-2xl font-black text-white tracking-tight font-mono">
-                      {selectedAthlete.Time || "--"}
-                    </p>
-                  </div>
+                  <p className="text-2xl sm:text-3xl font-black text-white tracking-tight">
+                    {getAthletePartialPoints(selectedAthlete)}
+                  </p>
                 </div>
 
                 {/* Modality Breakdown */}
