@@ -5,7 +5,6 @@ import { Activity, Trophy, Calendar, ArrowRight, ExternalLink, Filter, ArrowLeft
 import { EVENT_DATA_MAP } from "@/eventdata";
 import { useState, useMemo } from "react";
 import Link from "next/link";
-import { redirect } from "next/navigation";
 
 import heroImg from "@/public/images/triton-about-002.png";
 import HeroSection from "@/app/ui/HeroSection";

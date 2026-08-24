@@ -99,7 +99,7 @@ const CountdownSection: React.FC<CountdownSectionProps> = ({ data }) => {
                     rel="noopener noreferrer"
                     className="bg-triton-red hover:bg-white text-white hover:text-black font-black py-2 px-4 md:px-10 rounded-none flex items-center gap-3 uppercase tracking-widest transition-all duration-300"
                   >
-                    <span>{data.language === "pt-BR" ? "Resultados Ao Vivo" : "Live Results"}</span>
+                    <span>{data.language === "pt-BR" ? "Resultados" : "Live Results"}</span>
                     <ArrowRight size={18} />
                   </a>
                 ) : data.isRegistrationClosed ? (
@@ -130,14 +130,14 @@ const CountdownSection: React.FC<CountdownSectionProps> = ({ data }) => {
                       <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-triton-red opacity-75"></span>
                       <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-triton-red"></span>
                     </span>
-                    <span>{data.language === "pt-BR" ? "PROVA EM ANDAMENTO" : "RACE IN PROGRESS"}</span>
+                    <span>{data.language === "pt-BR" ? "PROVA ENCERRADA" : "RACE IN PROGRESS"}</span>
                   </div>
 
                   {/* Main Headline */}
                   <h3 className="text-2xl sm:text-3xl md:text-4xl font-black uppercase leading-tight tracking-tight text-white mb-2">
                     {data.language === "pt-BR" ? (
                       <>
-                        O DESAFIO <span className="text-triton-red italic">COMEÇA AGORA</span>
+                        PARABÉNS  <span className="text-triton-red italic">ATLETAS</span>
                       </>
                     ) : (
                       <>
@@ -148,9 +148,9 @@ const CountdownSection: React.FC<CountdownSectionProps> = ({ data }) => {
 
                   {/* Subtitle / Wish */}
                   <p className="text-xs sm:text-sm md:text-base font-bold uppercase tracking-widest text-gray-300 flex items-center justify-center gap-2">
-                    <Flame className="w-4 h-4 text-triton-red shrink-0" />
-                    <span>{data.language === "pt-BR" ? "Boa prova, atletas!" : "Have a great race, athletes!"}</span>
-                    <Flame className="w-4 h-4 text-triton-red shrink-0" />
+
+                    <span>{data.language === "pt-BR" ? "PRÓXIMA PARADA: Lisboa, Portugal!" : "Have a great race, athletes!"}</span>
+
                   </p>
                 </div>
               ) : (
