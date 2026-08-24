@@ -6,66 +6,27 @@ import { motion, AnimatePresence } from "framer-motion";
 import { TimeUnit } from "./TimeUnit";
 import { EVENT_DATA_MAP } from "@/eventdata";
 
-const COUNTDOWN_EVENTS = [
-  {
-    id: 1,
-    title: "TRITON 3",
-    slug: "rio-2026",
-    subtitle: "RIO DE JANEIRO",
-    location: "Portobello, RJ",
-    date: "21 Aug, 2026",
-    targetDate: "2026-08-21T08:00:00",
-    image: "/images/triton-fotos-prova-run.jpeg",
-    href: "/events/triton3/rio-2026",
-    registerUrl: "https://www.ticketsports.com.br/e/triton-3-rio-de-janeiro-2026-74526",
-    isOnLive: true,
-  },
-  {
-    id: 2,
-    title: "TRITON 1",
-    slug: "lisboa-2026",
-    subtitle: "LISBOA",
-    location: "Parque das Nações, Lisboa",
-    date: "06 Sep, 2026",
-    targetDate: "2026-09-06T08:00:00",
-    image: "/images/triton-fotos-prova-bike.jpeg",
-    href: "/events/triton1/lisboa-2026",
-    registerUrl: "https://register.hakuapp.com/?event=9ce0f9c87c1b43a8b97a",
-    isOnLive: false,
-  },
-  {
-    id: 3,
-    title: "TRITON 1",
-    slug: "qindong-2026",
-    subtitle: "QIDONG",
-    location: "JIANGSU, China",
-    date: "31 Oct, 2026",
-    targetDate: "2026-10-31T08:00:00",
-    image: "/images/bg-qindong.jpg",
-    href: "/events/triton1/qindong-2026",
-    registerUrl: "",
-    isOnLive: false,
-  },
-  {
-    id: 4,
-    title: "TRITON 1",
-    slug: "salvador-2027",
-    subtitle: "SALVADOR",
-    location: "Piatã, Bahia",
-    date: "11 Apr, 2027",
-    targetDate: "2027-04-11T08:00:00",
-    image: "/images/bg-salvador.jpg",
-    href: "/events/triton1/salvador-2027",
-    registerUrl: "https://ticketsports.com.br/e/triton1salvador",
-    isOnLive: false,
-  },
-];
+const COUNTDOWN_EVENTS = Object.values(EVENT_DATA_MAP)
+  .filter((event) => event.status === "Confirmed")
+  .sort((a, b) => a.targetDate.localeCompare(b.targetDate))
+  .map((event) => ({
+    id: event.id,
+    title: event.subtitle || (event.eventFormat === "triton3" ? "TRITON 3" : "TRITON 1"),
+    slug: event.slug,
+    subtitle: event.title.toUpperCase(),
+    location: event.venue || event.location,
+    date: event.dateText,
+    targetDate: event.targetDate,
+    href: `/events/${event.eventFormat}/${event.slug}`,
+    registerUrl: event.registrationLink,
+    isOnLive: Boolean(event.athleteArea?.liveResultsUrl || event.liveResultsUrl),
+  }));
 
 const CountdownSection: React.FC = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [direction, setDirection] = useState(0);
-  const currentEvent = COUNTDOWN_EVENTS[currentIndex];
-  const eventData = EVENT_DATA_MAP[currentEvent.slug];
+  const currentEvent = COUNTDOWN_EVENTS[currentIndex] || COUNTDOWN_EVENTS[0];
+  const eventData = currentEvent ? EVENT_DATA_MAP[currentEvent.slug] : null;
   const liveResultsUrl = eventData?.athleteArea?.liveResultsUrl || eventData?.liveResultsUrl;
 
   const [timeLeft, setTimeLeft] = useState({

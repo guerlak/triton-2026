@@ -523,7 +523,7 @@ export const EVENT_DATA_MAP: Record<string, EventData> = {
     venue: "Portobello, Rio de Janeiro",
     country: "Brazil",
     flag: "🇧🇷",
-    status: "Confirmed",
+    status: "Completed",
     year: 2026,
     dateText: "AGO 21 . 22 . 23",
     fullDateText: "21, 22 e 23 de Agosto, 2026",

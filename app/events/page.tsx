@@ -11,7 +11,7 @@ interface EventsPageProps {
 
 const EventsPage: React.FC<EventsPageProps> = () => {
   const eventsList: CalendarEvent[] = Object.values(EVENT_DATA_MAP)
-    .filter((event) => event.status !== "Completed" && event.status !== "Planned")
+    .filter((event) => event.status !== "Planned")
     .map(
       (event) => ({
         date: event.dateText,
