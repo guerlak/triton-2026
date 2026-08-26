@@ -41,9 +41,6 @@ export default async function AthleteArePage({ params }: { params: Promise<{ slu
 			</section>
 			<EventVideo videoBriefingUrl={data.athleteArea?.videoBriefingUrl} />
 			{/* <RaceKit /> */}
-
-
-
 			<StartList slug={slug} />
 		</main>
 	);

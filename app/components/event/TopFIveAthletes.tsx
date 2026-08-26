@@ -3,51 +3,94 @@ import React, { useMemo } from "react";
 import { motion } from "framer-motion";
 import { Trophy, Star } from "lucide-react";
 
-interface AthleteType {
+export interface AthleteType {
   Contest: string;
-  Pos: number;
-  TritonID: number;
-  Bib: number;
-  Flag: string;
+  Pos: number | string;
+  TritonID?: number | string;
+  Bib?: number | string;
+  Flag?: string;
   Name: string;
-  Gender: "Men" | "Women";
-  AgeGroup: string;
-  Swim: string;
-  T1: string;
-  Bike: string;
-  T2: string;
-  Run: string;
-  Time: string;
-  Gap: string;
+  Gender: string;
+  TotalPoints?: string | number;
+  Points?: string | number;
+  Total?: string | number;
+  Time?: string;
+  AgeGroup?: string;
+  Swim?: string;
+  T1?: string;
+  Bike?: string;
+  T2?: string;
+  Run?: string;
+  Gap?: string;
 }
 
-interface Props {
+export interface Props {
   initialAthletes?: AthleteType[];
+}
+
+function normalizeGender(gender?: string): "Men" | "Women" | string {
+  if (!gender) return "Men";
+  const g = gender.trim().toLowerCase();
+  if (g === "m" || g === "men" || g === "male") return "Men";
+  if (g === "w" || g === "f" || g === "women" || g === "female") return "Women";
+  return gender.toUpperCase();
+}
+
+function formatResultValue(athlete: AthleteType): string {
+  const val = athlete.TotalPoints ?? athlete.Points ?? athlete.Total;
+  if (val !== undefined && val !== null && val !== "") {
+    const str = String(val).trim();
+    if (str.toLowerCase().includes("pt")) return str;
+    return `${str} pts`;
+  }
+  if (athlete.Time) return athlete.Time;
+  return "--";
 }
 
 const TopFiveAthletes: React.FC<Props> = ({ initialAthletes = [] }) => {
   const topGroups = useMemo(() => {
     const safeAthletes = initialAthletes || [];
-    const genders: ("Women" | "Men")[] = ["Women", "Men"];
     
     let uniqueDistances = Array.from(new Set(safeAthletes.map((a) => a.Contest)))
       .filter(Boolean)
       .sort((a, b) => {
         const order = ["Sprint Distance", "Middle Distance", "Long Distance"];
-        return order.indexOf(a) - order.indexOf(b);
+        const indexA = order.indexOf(a);
+        const indexB = order.indexOf(b);
+        if (indexA !== -1 && indexB !== -1) return indexA - indexB;
+        if (indexA !== -1) return -1;
+        if (indexB !== -1) return 1;
+        return a.localeCompare(b);
       });
 
     if (uniqueDistances.length === 0) {
       uniqueDistances = ["Sprint Distance", "Middle Distance", "Long Distance"];
     }
 
+    const genders: ("Women" | "Men")[] = ["Women", "Men"];
     const result: { gender: "Women" | "Men"; contest: string; athletes: AthleteType[] }[] = [];
 
     genders.forEach((gender) => {
       uniqueDistances.forEach((distance) => {
         const filtered = safeAthletes
-          .filter((a) => a.Gender === gender && a.Contest === distance)
-          .sort((a, b) => (a.Time || "").localeCompare(b.Time || ""))
+          .filter(
+            (a) =>
+              normalizeGender(a.Gender) === gender &&
+              a.Contest === distance
+          )
+          .sort((a, b) => {
+            const posA = typeof a.Pos === "number" ? a.Pos : parseInt(String(a.Pos || 999), 10);
+            const posB = typeof b.Pos === "number" ? b.Pos : parseInt(String(b.Pos || 999), 10);
+            if (!isNaN(posA) && !isNaN(posB) && posA !== posB) {
+              return posA - posB;
+            }
+            const ptsA = parseFloat(String(a.TotalPoints ?? a.Points ?? 0));
+            const ptsB = parseFloat(String(b.TotalPoints ?? b.Points ?? 0));
+            if (!isNaN(ptsA) && !isNaN(ptsB) && ptsA !== ptsB) {
+              return ptsB - ptsA;
+            }
+            return (a.Name || "").localeCompare(b.Name || "");
+          })
           .slice(0, 5);
 
         result.push({ gender, contest: distance, athletes: filtered });
@@ -57,91 +100,161 @@ const TopFiveAthletes: React.FC<Props> = ({ initialAthletes = [] }) => {
     return result;
   }, [initialAthletes]);
 
-  const renderTopTable = (item: { gender: "Women" | "Men"; contest: string; athletes: AthleteType[] }) => (
-    <motion.div
-      initial={{ opacity: 0, y: 20 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true }}
-      key={`${item.gender}-${item.contest}`}
-      className="bg-neutral-900 border border-white/5 rounded-3xl overflow-hidden shadow-2xl flex flex-col"
-    >
-      <div className={`px-6 py-5 border-b border-white/5 flex items-center justify-between
-        ${item.contest === "Sprint Distance" ? "bg-white/70 text-black" : item.contest === "Middle Distance" ? "bg-red-500/30 text-white" : "bg-blue-500/10 text-white"}`}>
-        <div className="flex items-center gap-3">
-          <h3 className="font-black uppercase tracking-widest text-[10px]">
-            {item.gender} <span className="opacity-20 mx-1">/</span>
-            {item.contest.replace(" Distance", "")}
-          </h3>
+  const renderPosBadge = (pos: number) => {
+    if (pos === 1) {
+      return (
+        <div className="w-6 h-6 rounded-full flex items-center justify-center font-black text-[10px] bg-amber-400 text-black shadow-md shadow-amber-500/20">
+          1
         </div>
-        <div className="flex items-center gap-1">
-          <Star className="w-3 h-3 text-yellow-500 fill-yellow-500 animate-pulse" />
-          <span className={`text-[9px] font-black uppercase tracking-tighter ${item.contest === "Sprint Distance" ? "text-black" : "text-white"}`}>Top 5</span>
+      );
+    }
+    if (pos === 2) {
+      return (
+        <div className="w-6 h-6 rounded-full flex items-center justify-center font-black text-[10px] bg-slate-300 text-black shadow-sm">
+          2
         </div>
+      );
+    }
+    if (pos === 3) {
+      return (
+        <div className="w-6 h-6 rounded-full flex items-center justify-center font-black text-[10px] bg-amber-700 text-white shadow-sm">
+          3
+        </div>
+      );
+    }
+    return (
+      <div className="w-6 h-6 rounded-full flex items-center justify-center font-black text-[10px] text-gray-300 bg-white/10">
+        {pos}
       </div>
+    );
+  };
 
-      <div className="overflow-x-auto scrollbar-hide">
-        <table className="w-full text-left border-collapse">
-          <tbody>
-            {item.athletes.length > 0 ? (
-              item.athletes.map((athlete, idx) => (
-                <tr key={athlete.Bib || idx} className="border-b border-white/5 hover:bg-white/5 transition-colors group">
-                  <td className="py-3 px-6 text-center">
-                    <div className="text-[10px] font-black w-6 h-6 rounded-full flex items-center justify-center mx-auto text-white bg-white/5">
-                      {idx + 1}
-                    </div>
-                  </td>
-                  <td className="py-3 px-4">
-                    <div className="flex items-center gap-2">
-                      {athlete.Flag && <img src={athlete.Flag} alt="" className="w-4 h-2.5 object-contain opacity-60" />}
-                      <span className="font-bold text-[11px] text-white uppercase truncate max-w-[140px]">
-                        {athlete.Name}
-                      </span>
-                    </div>
-                  </td>
-                  <td className="py-3 px-6 text-right font-black text-[10px] text-gray-400 tabular-nums">
-                    {athlete.Time || "--:--:--"}
-                  </td>
-                </tr>
-              ))
-            ) : (
-              [1, 2, 3, 4, 5].map((pos) => (
-                <tr key={pos} className="border-b border-white/5 opacity-40">
-                  <td className="py-3 px-6 text-center">
-                    <div className="text-[10px] font-black w-6 h-6 rounded-full flex items-center justify-center mx-auto text-gray-500">
-                      {pos}
-                    </div>
-                  </td>
-                  <td className="py-3 px-4">
-                    <span className="font-bold text-[11px] text-gray-500 uppercase">
+  const renderTopTable = (item: { gender: "Women" | "Men"; contest: string; athletes: AthleteType[] }) => {
+    const isSprint = item.contest === "Sprint Distance";
+    const isMiddle = item.contest === "Middle Distance";
+
+    return (
+      <motion.div
+        initial={{ opacity: 0, y: 20 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true }}
+        key={`${item.gender}-${item.contest}`}
+        className="bg-neutral-900 border border-white/10 rounded-3xl overflow-hidden shadow-2xl flex flex-col transition-all hover:border-white/20"
+      >
+        <div
+          className={`px-4 sm:px-6 py-4 sm:py-5 border-b border-white/10 flex items-center justify-between ${
+            isSprint
+              ? "bg-white/80 text-black"
+              : isMiddle
+              ? "bg-red-500/20 text-white"
+              : "bg-blue-500/20 text-white"
+          }`}
+        >
+          <div className="flex items-center gap-2.5 sm:gap-3 min-w-0">
+            <h3 className="font-black uppercase tracking-widest text-xs sm:text-sm truncate">
+              {item.gender} <span className="opacity-40 mx-1">/</span>
+              {item.contest.replace(" Distance", "")}
+            </h3>
+          </div>
+          <div className="flex items-center gap-1.5 bg-black/30 backdrop-blur-md px-2.5 py-1 rounded-full border border-white/10 shrink-0">
+            <Star className="w-3 h-3 text-yellow-400 fill-yellow-400 animate-pulse" />
+            <span className="text-[10px] font-black uppercase tracking-wider text-white">Top 5</span>
+          </div>
+        </div>
+
+        <div className="w-full overflow-hidden">
+          <table className="w-full text-left border-collapse table-fixed">
+            <colgroup>
+              <col className="w-10 sm:w-12" />
+              <col />
+              <col className="w-20 sm:w-24" />
+            </colgroup>
+            <tbody>
+              {item.athletes.length > 0 ? (
+                item.athletes.map((athlete, idx) => {
+                  const posDisplay =
+                    typeof athlete.Pos === "number"
+                      ? athlete.Pos
+                      : parseInt(String(athlete.Pos), 10) || idx + 1;
+
+                  return (
+                    <tr
+                      key={athlete.Bib || athlete.TritonID || idx}
+                      className="border-b border-white/5 hover:bg-white/5 transition-colors group"
+                    >
+                      <td className="py-3 px-2 sm:px-3 text-center align-middle">
+                        <div className="flex items-center justify-center">
+                          {renderPosBadge(posDisplay)}
+                        </div>
+                      </td>
+                      <td className="py-3 px-2 sm:px-3 align-middle min-w-0">
+                        <div className="flex items-center gap-2 min-w-0">
+                          {athlete.Flag && (
+                            <img
+                              src={athlete.Flag}
+                              alt=""
+                              className="w-4 sm:w-5 h-2.5 sm:h-3.5 object-contain rounded-xs opacity-80 shrink-0"
+                              onError={(e) => {
+                                (e.currentTarget as HTMLImageElement).style.display = "none";
+                              }}
+                            />
+                          )}
+                          <div className="flex flex-col min-w-0 grow">
+                            <span className="font-bold text-xs sm:text-sm text-white uppercase truncate block group-hover:text-triton-red transition-colors">
+                              {athlete.Name}
+                            </span>
+                            {athlete.Bib && (
+                              <span className="text-[9px] font-mono font-bold text-gray-500 truncate block">
+                                BIB #{athlete.Bib}
+                              </span>
+                            )}
+                          </div>
+                        </div>
+                      </td>
+                      <td className="py-3 px-2 sm:px-3 text-right font-mono font-black text-xs sm:text-sm text-gray-300 tabular-nums align-middle whitespace-nowrap">
+                        {formatResultValue(athlete)}
+                      </td>
+                    </tr>
+                  );
+                })
+              ) : (
+                [1, 2, 3, 4, 5].map((pos) => (
+                  <tr key={pos} className="border-b border-white/5 opacity-40">
+                    <td className="py-3 px-2 sm:px-3 text-center align-middle">
+                      <div className="w-6 h-6 rounded-full flex items-center justify-center font-black text-[10px] text-gray-600 bg-white/5 mx-auto">
+                        {pos}
+                      </div>
+                    </td>
+                    <td className="py-3 px-2 sm:px-3 align-middle min-w-0">
+                      <span className="font-bold text-xs text-gray-600 uppercase">--</span>
+                    </td>
+                    <td className="py-3 px-2 sm:px-3 text-right font-mono font-black text-xs text-gray-600 tabular-nums align-middle whitespace-nowrap">
                       --
-                    </span>
-                  </td>
-                  <td className="py-3 px-6 text-right font-black text-[10px] text-gray-500 tabular-nums">
-                    --:--:--
-                  </td>
-                </tr>
-              ))
-            )}
-          </tbody>
-        </table>
-      </div>
-    </motion.div>
-  );
+                    </td>
+                  </tr>
+                ))
+              )}
+            </tbody>
+          </table>
+        </div>
+      </motion.div>
+    );
+  };
 
   return (
-    <div className="mt-12 space-y-12">
-      {/* Visual Header */}
-      <div className="flex flex-col items-center text-center space-y-4">
-        <div className="flex items-center gap-4 text-triton-red">
-          <div className="h-px w-12 bg-triton-red/30" />
-          <Trophy className="w-8 h-8" />
-          <div className="h-px w-12 bg-triton-red/30" />
+    <div className="mt-8 sm:mt-12 space-y-8 sm:space-y-12">
+      {/* Header */}
+      <div className="flex flex-col items-center text-center space-y-3 sm:space-y-4 px-2">
+        <div className="flex items-center gap-3 sm:gap-4 text-triton-red">
+          <div className="h-px w-8 sm:w-12 bg-triton-red/30" />
+          <Trophy className="w-6 h-6 sm:w-8 sm:h-8" />
+          <div className="h-px w-8 sm:w-12 bg-triton-red/30" />
         </div>
-        <h2 className="text-4xl font-black uppercase tracking-[0.2em] text-white">
+        <h2 className="text-2xl sm:text-3xl md:text-5xl font-black uppercase leading-tight tracking-tight text-white">
           The <span className="text-triton-red italic">Champions</span>
         </h2>
-        <p className="text-gray-500 text-xs font-bold uppercase tracking-widest max-w-md italic">
-          Highlighting the top 5 performers per distance and gender on the current stage.
+        <p className="text-xs sm:text-base md:text-lg text-gray-400 max-w-md italic">
+          Highlighting the top 5 performers per distance and gender.
         </p>
       </div>
 
