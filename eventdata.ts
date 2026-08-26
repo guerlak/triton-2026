@@ -1353,8 +1353,16 @@ export const EVENT_DATA_MAP: Record<string, EventData> = {
     targetDate: "2026-09-06T08:00:00",
     language: "en",
     registrationLink: "https://register.hakuapp.com/?event=9ce0f9c87c1b43a8b97a",
-    isRegistrationClosed: false
-    ,
+    isRegistrationClosed: false,
+    athleteArea: {
+      raceGuideLink: "/docs/race-guide/athlete_guide_lisbon26.pdf",
+      startListApiUrl: "",
+      mediaPictureUrl: "",
+      videoBriefingUrl: "",
+      topFiveApiUrl: "",
+      liveResultsApiUrl:"",
+      liveResultsUrl:"",
+    },
     hero: {
       backgroundImage: heroImgLisboa,
       logoImage: logoLisboa,
