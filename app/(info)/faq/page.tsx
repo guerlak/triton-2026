@@ -443,8 +443,8 @@ export default function FAQ() {
 										question="WHAT HAPPENS IF I MISS A CUT-OFF?"
 										answer={
 											<ul className="space-y-2 list-disc pl-5 text-gray-400">
-												<li>You will be stopped</li>
-												<li>You cannot continue</li>
+												<li>You will NOT be stopped</li>
+												<li>You CAN continue</li>
 												<li>You are recorded as DNF</li>
 												<li className="text-triton-red font-bold">No exceptions.</li>
 											</ul>
