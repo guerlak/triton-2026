@@ -1356,7 +1356,7 @@ export const EVENT_DATA_MAP: Record<string, EventData> = {
     isRegistrationClosed: true,
     athleteArea: {
       raceGuideLink: "/docs/race-guide/athlete_guide_lisbon26.pdf",
-      startListApiUrl: "",
+      startListApiUrl: "https://api.raceresult.com/371805/XN2SPAM4PV33WMM7YFAM06MGTI9V50QE",
       mediaPictureUrl: "",
       videoBriefingUrl: "",
       topFiveApiUrl: "",
