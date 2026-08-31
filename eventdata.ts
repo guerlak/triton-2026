@@ -207,8 +207,7 @@ export const EVENT_DATA_MAP: Record<string, EventData> = {
     fullDateText: "12 de Abril, 2026",
     targetDate: "2026-06-22T08:00:00",
     language: "pt-BR",
-    registrationLink:
-      "https://www.ticketsports.com.br/e/triton-1-salvador-86852",
+    registrationLink: "https://www.ticketsports.com.br/e/triton-1-salvador-86852",
     startListApiUrl: "https://api.raceresult.com/371805/RQDKNSO0GU02BW4IF4X1G7AF12S073FW",
     liveResultsUrl: "https://resultscui.active.com/events/TRITONSALVADOR2026",
     hero: {
@@ -2572,8 +2571,6 @@ export const EVENT_DATA_MAP: Record<string, EventData> = {
       }
     ]
   },
-
-
   "uae-2027": {
     id: "uae-2027",
     slug: "uae-2027",
