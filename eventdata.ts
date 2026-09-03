@@ -993,6 +993,15 @@ export const EVENT_DATA_MAP: Record<string, EventData> = {
       backgroundImage: heroImgQidong, // Placeholder
       logoImage: logoQidong,
     },
+    athleteArea: {
+      liveResultsUrl: "",
+      raceGuideLink: "/docs/race-guide/athlete_guide_qdong26.pdf",
+      startListApiUrl: "",
+      mediaPictureUrl: "",
+      videoBriefingUrl: "",
+      topFiveApiUrl: "",
+      liveResultsApiUrl: ""
+    },
     info: {
       title: "Experience the Orient Coast",
       subtitle: "Where Rivers meet the Sea",
