@@ -140,15 +140,13 @@ const CountdownSection: React.FC<CountdownSectionProps> = ({ data }) => {
                     </h3>
                   ) : (
                     <h3 className="text-base sm:text-lg md:text-xl font-bold uppercase leading-relaxed tracking-normal text-white mb-2 max-w-md sm:max-w-lg">
-                      The event is underway. Good luck to all athletes! Give it your all, stay strong, and we’ll see you at the finish line.{" "}
-                      <span className="text-triton-red italic font-black block mt-2 text-base sm:text-lg">STARTS NOW</span>
+                      Give it your all, stay strong, and we’ll see you at the finish line.{" "}
+                      <span className="text-triton-red italic font-black block mt-2 text-base sm:text-xl">Good luck to all athletes! </span>
                     </h3>
                   )}
 
                   {/* Subtitle / Wish */}
-                  <p className="text-xs sm:text-sm md:text-base font-bold uppercase tracking-widest text-gray-300 flex items-center justify-center gap-2">
-                    <span>{data.language === "pt-BR" ? "PRÓXIMA PARADA: Lisboa, Portugal!" : "Have a great race, athletes!"}</span>
-                  </p>
+
                 </div>
               ) : (
                 <div className="grid grid-cols-4 sm:grid-cols-4 lg:grid-cols-4 gap-3 md:gap-4">

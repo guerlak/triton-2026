@@ -22,7 +22,7 @@ const HeroSection: React.FC<HeroSectionProps> = ({
   logoImage,
   backgroundImageAlt = "Triathlon",
   logoImageAlt = "Triathlon",
-  heightClass = "h-[800px]",
+  heightClass = "aspect-[3/2] sm:aspect-auto sm:h-[800px]",
   backgroundImageClassName = "opacity-60",
   darkFilter = false,
   showChevron = true,
@@ -51,15 +51,15 @@ const HeroSection: React.FC<HeroSectionProps> = ({
           <Image
             src={logoImage}
             alt={logoImageAlt}
-            className="w-70 md:w-120 mx-auto"
+            className="w-40 md:w-120 mx-auto"
           />
         )}
         {children}
       </div>
 
       {showChevron && (
-        <div className="absolute bottom-10 animate-bounce text-white/50 z-30">
-          <ChevronDown size={32} />
+        <div className="absolute bottom-2 sm:bottom-10 animate-bounce text-white/50 z-30">
+          <ChevronDown className="w-6 h-6 sm:w-8 sm:h-8" />
         </div>
       )}
 

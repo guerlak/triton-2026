@@ -1467,7 +1467,7 @@ export const EVENT_DATA_MAP: Record<string, EventData> = {
         description: `
         <p>The run course starts from the Transition Zone and follows a flat, multi-lap route, creating an exciting and spectator-friendly atmosphere throughout the race.</p><br>
 
-        <strong>The course is a 5 km multi-lap circuit:</strong><br><br>
+        <strong>The course is a 4 km multi-lap circuit:</strong><br><br>
 
         <ul class="list-disc pl-5">
                 <li>SPRINT — 1 lap</li>
@@ -1475,14 +1475,14 @@ export const EVENT_DATA_MAP: Record<string, EventData> = {
                 <li>LONG — 4 laps</li>
             </ul>
             <br>
-        <p>Athletes will find one aid station approximately every 2.5 km, located near the midpoint of the course. One turnaround point is positioned near the iconic Vasco da Gama Bridge, one of the longest bridges in Europe, while the other is located closer to the Transition Zone.</p><br>
+        <p>Athletes will find one aid station approximately every 2 km, located near the midpoint of the course. One turnaround point is positioned near the iconic Vasco da Gama Bridge, one of the longest bridges in Europe, while the other is located closer to the Transition Zone.</p><br>
         <p>The Finish Line is located on Rossio dos Olivais, directly in front of Doca dos Olivais and the Vasco da Gama Mall, where the Recovery Zone awaits finishers.</p><br>
         
             `,
         distances: [
-          { label: "Sprint", val: "5km", p: 33 },
-          { label: "Middle", val: "10km", p: 66 },
-          { label: "Long", val: "20km", p: 100 },
+          { label: "Sprint", val: "4km", p: 33 },
+          { label: "Middle", val: "8km", p: 66 },
+          { label: "Long", val: "16km", p: 100 },
         ],
         stravaIds: { sprint: "3442184922483070074", middle: "3514202065593315860", long: "3514203195016413614" },
       },
