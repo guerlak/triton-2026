@@ -140,7 +140,7 @@ const CountdownSection: React.FC<CountdownSectionProps> = ({ data }) => {
                     </h3>
                   ) : (
                     <h3 className="text-base sm:text-lg md:text-xl font-bold uppercase leading-relaxed tracking-normal text-white mb-2 max-w-md sm:max-w-lg">
-                      Give it your all, stay strong, and we’ll see you at the finish line.{" "}
+                      Give it your all, stay strong, and see you at the finish line.{" "}
                       <span className="text-triton-red italic font-black block mt-2 text-base sm:text-xl">Good luck to all athletes! </span>
                     </h3>
                   )}
