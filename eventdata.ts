@@ -1373,7 +1373,7 @@ export const EVENT_DATA_MAP: Record<string, EventData> = {
       videoBriefingUrl: "",
       topFiveApiUrl: "",
       liveResultsApiUrl:"",
-      liveResultsUrl:"",
+      liveResultsUrl:"https://results.multicrono.com/triton-lisboa-26",
     },
     hero: {
       backgroundImage: heroImgLisboa,
