@@ -1372,7 +1372,7 @@ export const EVENT_DATA_MAP: Record<string, EventData> = {
       mediaPictureUrl: "https://marathonphotos.live/Event/Sports%2FMPUK%2F2026%2FTriton1%20Lisboa/",
       videoBriefingUrl: "",
       topFiveApiUrl: "https://api.raceresult.com/371805/AG1SSDYAYQ3FV5UGAF4YU8UM3G02KN27",
-      liveResultsApiUrl:"",
+      liveResultsApiUrl:"https://api.raceresult.com/371805/OUVYM0LYEY2A76K0EPV6ZRQETQ3XMBF3",
       liveResultsUrl:"https://results.multicrono.com/triton-lisboa-26",
     },
     hero: {

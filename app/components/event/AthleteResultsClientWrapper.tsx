@@ -5,7 +5,7 @@ import { Search, Clock, ClockArrowUp } from "lucide-react";
 
 interface LiveAthlete {
   Contest: string;
-  Pos: number;
+  Pos: number | string;
   TritonID: number;
   Bib: number;
   Flag: string;
@@ -43,7 +43,7 @@ const LiveResultsClientWrapper: React.FC<Props> = ({ initialAthletes }) => {
   }, [initialAthletes]);
 
   const filteredAthletes = useMemo(() => {
-    let result = initialAthletes.filter((athlete) => {
+    return initialAthletes.filter((athlete) => {
       const query = searchQuery.toLowerCase();
       const nameMatch =
         athlete.Name.toLowerCase().includes(query) ||
@@ -53,14 +53,6 @@ const LiveResultsClientWrapper: React.FC<Props> = ({ initialAthletes }) => {
       const genderMatch = selectedGender === "" || athlete.Gender === selectedGender;
 
       return nameMatch && ageGroupMatch && distanceMatch && genderMatch;
-    });
-
-    // Always sort by time (fastest first)
-    return [...result].sort((a, b) => {
-      // Handle empty or placeholder times
-      const timeA = !a.Time || a.Time === "--:--:--" || a.Time === "" ? "99:99:99" : a.Time;
-      const timeB = !b.Time || b.Time === "--:--:--" || b.Time === "" ? "99:99:99" : b.Time;
-      return timeA.localeCompare(timeB);
     });
   }, [initialAthletes, searchQuery, selectedAgeGroup, selectedDistance, selectedGender]);
 
@@ -174,7 +166,7 @@ const LiveResultsClientWrapper: React.FC<Props> = ({ initialAthletes }) => {
                     className="border-b border-white/5 hover:bg-white/5 transition-colors group"
                   >
                     <td className="py-5 px-4 text-center font-bold text-gray-400">
-                      #{i + 1}
+                      {athlete.Pos != null && athlete.Pos !== "" ? `#${athlete.Pos}` : `#${i + 1}`}
                     </td>
                     <td className="py-5 px-6">
                       <div className="flex items-center gap-4">

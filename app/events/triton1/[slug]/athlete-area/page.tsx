@@ -15,6 +15,10 @@ export default async function AthleteArePage({ params }: { params: Promise<{ slu
 
 	const data = await getEventData(slug);
 
+	if (!data) {
+		notFound();
+	}
+
 	const athletes = await getAthleteResultsFromAPI(data?.athleteArea?.liveResultsApiUrl);
 	const athletesTop5 = await getAthleteResultsFromAPI(data?.athleteArea?.topFiveApiUrl);
 
@@ -22,9 +26,9 @@ export default async function AthleteArePage({ params }: { params: Promise<{ slu
 
 	return (
 		<>
-			<AthleteNavBar liveResultsUrl={data?.athleteArea?.liveResultsUrl} targetDate={data?.targetDate} mediaPictureUrl={data?.athleteArea?.mediaPictureUrl} />
-			<RaceGuide raceGuideLink={data?.athleteArea?.raceGuideLink} />
-			<EventVideo videoBriefingUrl={data?.athleteArea?.videoBriefingUrl} />
+			<AthleteNavBar liveResultsUrl={data.athleteArea?.liveResultsUrl} targetDate={data?.targetDate} mediaPictureUrl={data?.athleteArea?.mediaPictureUrl} />
+			<RaceGuide raceGuideLink={data.athleteArea?.raceGuideLink} />
+			<EventVideo videoBriefingUrl={data.athleteArea?.videoBriefingUrl} />
 			<section id="top-five" className="py-12 sm:py-20 bg-black relative border-t border-white/5">
 				<div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 					<TopFiveAthletes initialAthletes={athletesTop5} />
