@@ -12,6 +12,7 @@ export interface AthleteType {
   Name: string;
   Gender: string;
   TotalPoints?: string | number;
+  TotalTime?: string | number;
   Points?: string | number;
   Total?: string | number;
   Time?: string;
@@ -37,11 +38,11 @@ function normalizeGender(gender?: string): "Men" | "Women" | string {
 }
 
 function formatResultValue(athlete: AthleteType): string {
-  const val = athlete.TotalPoints ?? athlete.Points ?? athlete.Total;
+  const val = athlete.TotalPoints ?? athlete.Points ?? athlete.Total ?? athlete.TotalTime;
   if (val !== undefined && val !== null && val !== "") {
     const str = String(val).trim();
     if (str.toLowerCase().includes("pt")) return str;
-    return `${str} pts`;
+    return `${str}`;
   }
   if (athlete.Time) return athlete.Time;
   return "--";
@@ -50,7 +51,7 @@ function formatResultValue(athlete: AthleteType): string {
 const TopFiveAthletes: React.FC<Props> = ({ initialAthletes = [] }) => {
   const topGroups = useMemo(() => {
     const safeAthletes = initialAthletes || [];
-    
+
     let uniqueDistances = Array.from(new Set(safeAthletes.map((a) => a.Contest)))
       .filter(Boolean)
       .sort((a, b) => {
@@ -142,13 +143,12 @@ const TopFiveAthletes: React.FC<Props> = ({ initialAthletes = [] }) => {
         className="bg-neutral-900 border border-white/10 rounded-3xl overflow-hidden shadow-2xl flex flex-col transition-all hover:border-white/20"
       >
         <div
-          className={`px-4 sm:px-6 py-4 sm:py-5 border-b border-white/10 flex items-center justify-between ${
-            isSprint
-              ? "bg-white/80 text-black"
-              : isMiddle
+          className={`px-4 sm:px-6 py-4 sm:py-5 border-b border-white/10 flex items-center justify-between ${isSprint
+            ? "bg-white/80 text-black"
+            : isMiddle
               ? "bg-red-500/20 text-white"
               : "bg-blue-500/20 text-white"
-          }`}
+            }`}
         >
           <div className="flex items-center gap-2.5 sm:gap-3 min-w-0">
             <h3 className="font-black uppercase tracking-widest text-xs sm:text-sm truncate">

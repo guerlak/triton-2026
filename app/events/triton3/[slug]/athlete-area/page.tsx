@@ -31,7 +31,7 @@ export default async function AthleteArePage({ params }: { params: Promise<{ slu
 				<div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 					<TopFiveAthletes initialAthletes={athletesTop5} />
 				</div>
-			</section>te
+			</section>
 			{/* Full Results Section */}
 			<section id="full-results" className="py-12 sm:py-20 bg-black relative border-t border-white/5">
 				<div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
