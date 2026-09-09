@@ -94,6 +94,7 @@ export interface EventData {
   country: string;
   flag: string;
   status: "Confirmed" | "Planned" | "Completed";
+  eventStatus?: "Confirmed" | "Planned" | "Completed";
   year: number;
   extraEvent?: {
     imageSrc: string;
@@ -1358,7 +1359,7 @@ export const EVENT_DATA_MAP: Record<string, EventData> = {
     venue: "Lisbon, Portugal",
     country: "Portugal",
     flag: "🇵🇹",
-    status: "Confirmed",
+    status: "Completed",
     year: 2026,
     dateText: "SEP 05",
     fullDateText: "September 4, 2026",

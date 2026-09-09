@@ -17,6 +17,7 @@ const CountdownSection: React.FC<CountdownSectionProps> = ({ data }) => {
     seconds: 0,
   });
   const [isEventStarted, setIsEventStarted] = useState(false);
+  const isCompleted = (data.eventStatus || data.status)?.toLowerCase() === "completed";
 
   useEffect(() => {
     const target = new Date(data.targetDate).getTime();
@@ -92,14 +93,14 @@ const CountdownSection: React.FC<CountdownSectionProps> = ({ data }) => {
               </div>
 
               <div className="mt-8 sm:mt-10 flex flex-wrap gap-4 justify-center lg:justify-start">
-                {isEventStarted && liveResultsUrl ? (
+                {(isCompleted || isEventStarted) && liveResultsUrl ? (
                   <a
                     href={liveResultsUrl}
                     target="_blank"
                     rel="noopener noreferrer"
                     className="bg-triton-red hover:bg-white text-white hover:text-black font-black py-2 px-4 md:px-10 rounded-none flex items-center gap-3 uppercase tracking-widest transition-all duration-300"
                   >
-                    <span>{data.language === "pt-BR" ? "Resultados" : "Live Results"}</span>
+                    <span>{data.language === "pt-BR" ? "Resultados" : isCompleted ? "Results" : "Live Results"}</span>
                     <ArrowRight size={18} />
                   </a>
                 ) : data.isRegistrationClosed ? (
@@ -122,21 +123,42 @@ const CountdownSection: React.FC<CountdownSectionProps> = ({ data }) => {
 
             {/* Countdown Grid / Event Started Message */}
             <div className="w-full max-w-xl lg:max-w-none lg:w-auto lg:shrink-0 flex justify-center">
-              {isEventStarted ? (
+              {isCompleted || isEventStarted ? (
                 <div className="w-full max-w-xl md:max-w-2xl lg:w-[540px] xl:w-[580px] flex flex-col items-center justify-center text-center p-6 md:p-8 rounded-3xl bg-linear-to-b from-triton-red/10 via-black/40 to-transparent border border-triton-red/30 shadow-[0_0_30px_rgba(235,0,40,0.15)] relative overflow-hidden">
-                  {/* Live Badge Indicator */}
+                  {/* Status Badge Indicator */}
                   <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-triton-red/20 border border-triton-red/40 text-triton-red text-xs font-black uppercase tracking-widest mb-3">
                     <span className="relative flex h-2.5 w-2.5">
-                      <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-triton-red opacity-75"></span>
+                      {!isCompleted && (
+                        <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-triton-red opacity-75"></span>
+                      )}
                       <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-triton-red"></span>
                     </span>
-                    <span>{data.language === "pt-BR" ? "PROVA ENCERRADA" : "RACE IN PROGRESS"}</span>
+                    <span>
+                      {isCompleted
+                        ? data.language === "pt-BR"
+                          ? "PROVA ENCERRADA"
+                          : "RACE COMPLETED"
+                        : data.language === "pt-BR"
+                        ? "PROVA EM ANDAMENTO"
+                        : "RACE IN PROGRESS"}
+                    </span>
                   </div>
 
                   {/* Main Headline */}
-                  {data.language === "pt-BR" ? (
-                    <h3 className="text-2xl sm:text-3xl md:text-4xl font-black uppercase leading-tight tracking-tight text-white mb-2">
-                      PARABÉNS <span className="text-triton-red italic">ATLETAS</span>
+                  {isCompleted ? (
+                    data.language === "pt-BR" ? (
+                      <h3 className="text-2xl sm:text-3xl md:text-4xl font-black uppercase leading-tight tracking-tight text-white mb-2">
+                        PARABÉNS <span className="text-triton-red italic">ATLETAS</span>
+                      </h3>
+                    ) : (
+                      <h3 className="text-2xl sm:text-3xl md:text-4xl font-black uppercase leading-tight tracking-tight text-white mb-2">
+                        CONGRATULATIONS <span className="text-triton-red italic">ATHLETES</span>
+                      </h3>
+                    )
+                  ) : data.language === "pt-BR" ? (
+                    <h3 className="text-base sm:text-lg md:text-xl font-bold uppercase leading-relaxed tracking-normal text-white mb-2 max-w-md sm:max-w-lg">
+                      Dê o seu melhor, mantenha o foco e nos vemos na linha de chegada.{" "}
+                      <span className="text-triton-red italic font-black block mt-2 text-base sm:text-xl">Boa sorte a todos os atletas!</span>
                     </h3>
                   ) : (
                     <h3 className="text-base sm:text-lg md:text-xl font-bold uppercase leading-relaxed tracking-normal text-white mb-2 max-w-md sm:max-w-lg">
@@ -144,9 +166,6 @@ const CountdownSection: React.FC<CountdownSectionProps> = ({ data }) => {
                       <span className="text-triton-red italic font-black block mt-2 text-base sm:text-xl">Good luck to all athletes! </span>
                     </h3>
                   )}
-
-                  {/* Subtitle / Wish */}
-
                 </div>
               ) : (
                 <div className="grid grid-cols-4 sm:grid-cols-4 lg:grid-cols-4 gap-3 md:gap-4">
