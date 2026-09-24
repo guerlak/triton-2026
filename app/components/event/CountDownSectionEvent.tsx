@@ -103,9 +103,12 @@ const CountdownSection: React.FC<CountdownSectionProps> = ({ data }) => {
                     <span>{data.language === "pt-BR" ? "Resultados" : isCompleted ? "Results" : "Live Results"}</span>
                     <ArrowRight size={18} />
                   </a>
-                ) : data.isRegistrationClosed ? (
+                ) : data.isRegistrationClosed || Boolean(data.registrationStatus?.trim()) ? (
                   <span className="bg-neutral-800 text-gray-500 font-black py-2 px-4 md:px-10 rounded-none flex items-center gap-3 uppercase tracking-widest cursor-not-allowed opacity-60 border border-white/10 select-none">
-                    <span>{data.language === "pt-BR" ? "Inscrições Encerradas" : "Registration Closed"}</span>
+                    <span>
+                      {data.registrationStatus?.trim() ||
+                        (data.language === "pt-BR" ? "Inscrições Encerradas" : "Registration Closed")}
+                    </span>
                   </span>
                 ) : (
                   <a

@@ -91,6 +91,7 @@ export interface EventData {
   raceGuideLink?: string;
   registrationLink: string;
   isRegistrationClosed?: boolean;
+  registrationStatus?: string;
   country: string;
   flag: string;
   status: "Confirmed" | "Planned" | "Completed";
@@ -106,12 +107,12 @@ export interface EventData {
     ctaLink: string;
     badge: string;
   };
-  info: {
+  info?: {
     title: string;
     subtitle: string;
     description: string;
   };
-  scoring: {
+  scoring?: {
     title: string;
     description: string;
   };
@@ -189,6 +190,13 @@ import { StaticImport } from "next/dist/shared/lib/get-img-props";
 
 //imports LISBOA 2027
 import heroImgLisboa27 from "@/public/images/eventos/lisboa-2027/hero-lisboa27.jpg";
+
+//imports RIO 2027
+import heroImgRio27 from "@/public/images/eventos/rio-2027/hero-triton-rio27.jpg";
+//import logoRio27 from "@/public/images/eventos/rio-2027/triton-rio-logo.png"
+import swimPicRio27 from "@/public/images/eventos/rio-2027/swim-pic-rio27.jpg"
+//import bikePicRio27 from "@/public/images/eventos/rio-2027/bike-pic-rio27.jpeg"
+//import runPicRio27 from "@/public/images/eventos/rio-2027/run-pic-rio27.jpeg"
 
 
 export const EVENT_DATA_MAP: Record<string, EventData> = {
@@ -2211,7 +2219,6 @@ export const EVENT_DATA_MAP: Record<string, EventData> = {
       },
     ]
   },
-
    "lisboa-2027": {
     id: "lisboa-2027",
     slug: "lisboa-2027",
@@ -3113,6 +3120,422 @@ export const EVENT_DATA_MAP: Record<string, EventData> = {
         logo: "/images/partners/prouder.png",
         url: "#"
       },
+    ]
+  },
+   "rio-2027": {
+    slug: "rio-2027",
+    language: "pt-BR",
+    id: "rio-2027",
+    eventFormat: "triton1",
+    title: "Rio de Janeiro",
+    subtitle: "TRITON 1",
+    location: "Aterro do Flamengo",
+    venue: "Aterro do Flamengo, Rio de Janeiro",
+    country: "Brazil",
+    flag: "🇧🇷",
+    status: "Confirmed",
+    year: 2027,
+    dateText: "JUN 26",
+    fullDateText: "26 Junho, 2027",
+    targetDate: "2027-06-26T08:00:00",
+    athleteArea: {
+      liveResultsUrl: "https://www.eicrono.com.br/triton/index_triton3.html",
+      raceGuideLink: "/docs/race-guide/guia_do_atleta_rio26.pdf",
+      startListApiUrl: "https://api.raceresult.com/371805/2ZJGC6U06Z8RLDI16UWNEHNXGE39KYE0",
+      mediaPictureUrl: "https://www.focoradical.com.br/grupos/triton-3-rj",
+      videoBriefingUrl: "https://youtu.be/mx0aPdfgAUY?si=4UZPQTTX_dVuo_HB",
+      topFiveApiUrl: "https://api.raceresult.com/371805/T21MVQLRLLDAAWR8G7QNWCPSHPE7WIED",
+      liveResultsApiUrl:"https://api.raceresult.com/371805/9DMAJY5O7T7Z3ZUOVV0MOJGW5BFP5M9R"
+
+    },
+    isRegistrationClosed: false,
+    registrationStatus: "Inscrições em breve",
+    hero: {
+      backgroundImage: heroImgRio27,
+      logoImage: "",
+    },
+    registrationLink:
+      "https://www.ticketsports.com.br/e/triton-3-rio-de-janeiro-2026-74526",
+    
+    formats: {
+      swim: {
+        day: "Dia 1",
+        date: "21 Ago (sexta)",
+        startTime: "15:30",
+        image: swimPicRio27,
+        title: "Natação",
+        description: `
+            <p>Estamos trabalhando para preparar um percurso incrível para você, pensado para proporcionar uma experiência desafiadora, segura e inesquecível.</p>
+            <br>
+            <p>Em breve, divulgaremos todos os detalhes do percurso de natação, para que você planeje seus treinos e chegue à prova
+             preparado para entregar o seu melhor!</p>
+          <br>
+            <p>As distâncias indicadas ao lado podem sofrer alterações. <br><br><strong>Fique atento as nossas atualizações e prepare-se para viver 
+            mais uma grande experiência TRITON!</strong>
+            `,
+        distances: [
+          { label: "Sprint", val: "750m", p: 33 },
+          { label: "Middle", val: "1500m", p: 66 },
+          { label: "Long", val: "2250m", p: 100 },
+        ],
+
+        stravaIds: { sprint:"", middle:"", long:"" },
+      },
+      bike: {
+        day: "Dia 2",
+        date: "22 Ago (sábado)",
+        startTime: "08:00",
+        image: bikePic,
+        title: "Ciclismo",
+        description:
+          `
+          <p>Estamos trabalhando para preparar um percurso incrível para você, pensado para proporcionar uma experiência
+           desafiadora, segura e inesquecível.</p>
+            <br>
+            <p>Em breve, divulgaremos todos os detalhes do percurso de ciclismo, para que você planeje seus treinos e chegue à prova
+             preparado para entregar o seu melhor!</p>
+          <br>
+            <p>As distâncias indicadas ao lado podem sofrer alterações. <br><br><strong>Fique atento as nossas atualizações e prepare-se para viver 
+            mais uma grande experiência TRITON!</strong>
+        `,
+        distances: [
+          { label: "Sprint", val: "20km", p: 33 },
+          { label: "Middle", val: "40km", p: 66 },
+          { label: "Long", val: "60km", p: 100 },
+        ],
+        stravaIds: { sprint: "", middle: "", long: "" },
+        details: [
+          "Retorno Sprint: ~4,5 km após Macundu",
+          "Hidratação Middle & Long: ~10 km após Macundu",
+          "Retorno Middle & Long (Rio Claro): ~7,5 km após o ponto de hidratação",
+          "Chegada: ~3 km após Macundu (sentido Mangaratiba)",
+          "Descida neutralizada: ~14 km",
+          "Vácuo liberado (Proibido bike de TT)",
+        ],
+      },
+      run: {
+        day: "Dia 3",
+        date: "23 Ago (domingo)",
+        startTime: "08:00",
+        image: runPic,
+        title: "Corrida",
+        description: `<p>Estamos trabalhando para preparar um percurso incrível para você, pensado para proporcionar uma experiência desafiadora, segura e inesquecível.</p>
+            <br>
+            <p>Em breve, divulgaremos todos os detalhes do percurso de corrida, para que você planeje seus treinos 
+            e chegue à prova
+             preparado para entregar o seu melhor!</p>
+          <br>
+            <p>As distâncias indicadas ao lado podem sofrer alterações. <br><br><strong>Fique atento as nossas atualizações e prepare-se para viver 
+            mais uma grande experiência TRITON!</strong>`,
+        distances: [
+          { label: "Sprint", val: "5km", p: 33 },
+          { label: "Middle", val: "10km", p: 66 },
+          { label: "Long", val: "15km", p: 100 },
+        ],
+        stravaIds: { sprint: "", middle: "", long: "" },
+      },
+      distanceTable: [
+        {
+          "name": "SPRINT",
+          "swim": "750m",
+          "bike": "20km",
+          "run": "5km"
+        },
+        {
+          "name": "MIDDLE",
+          "swim": "1500m",
+          "bike": "40km",
+          "run": "10km"
+        },
+        {
+          "name": "LONG",
+          "swim": "2250m",
+          "bike": "60km",
+          "run": "15km"
+        }
+      ],
+    },
+    afterMovie: {
+      youtubeSrc: "z7xHxVVnkjU?si=6GShK1msGCTy7LDH",
+    },
+    testimonial: {
+      youtubeSrc: "https://www.youtube.com/embed/x0J6xM96QhQ",
+      testimonials: [{
+      "avatar_url": "/images/atletas/viviane.jpeg",
+      "quote": "Quantas lições em um único final de semana. Foram 3 dias, 3 esportes, 3 humores e unimeras variações de sentimentos. No Triton 3 pude me testar, exercitar a paciência e também o carinho comigo mesma. ",
+      "author": "Viviane",
+      "company": "TechFlow",
+      "link_social": "https://www.instagram.com/viviwigand"
+    },
+    {
+      "avatar_url": "/images/atletas/elida.jpeg",
+      "quote": "Que fim de semana incrível! Obrigada Triton pela experiência única. Levo para casa uma recordação cheias de boas energias e momentos especiais...",
+      "author": "Elida",
+      "company": "TechFlow",
+      "link_social": "https://www.instagram.com/elidacordeiroo"
+    },
+    {
+      "avatar_url": "/images/atletas/bizarelo.jpeg",
+      "quote": "Que dia incrível e que dia forte! Obrigado TRITON pela prova top, segura e com visual fantástico",
+      "author": "Bizarelo",
+      "company": "TechFlow",
+      "link_social": "https://www.instagram.com/bizarelocycling"
+    }]
+    },
+    schedule: {
+      title: "AGENDA",
+      subtitle: "Planning your journey",
+      days: [
+        {
+          id: "friday",
+          date: "21 Ago",
+          title: "Sexta-feira",
+          subtitle: "RACE DAY 1 - THE SWIM",
+          events: [
+            {
+              time: "12:00 – 18:00",
+              title: "Entrega de Kits",
+              location: "Sala Araras, Portobello Resort",
+            },
+            {
+              time: "12:00",
+              title: "Abertura Arena TRITON",
+              location: "Portobello Resort",
+            },
+            {
+              time: "15:15 – 15:30",
+              title: "Concentração largada Natação",
+              location: "Praia do Portobello Resort",
+            },
+            { time: "15:33", title: "Largada SPRINT" },
+            { time: "15:36", title: "Largada MIDDLE" },
+            { time: "15:39", title: "Largada LONG" },
+            {
+              isCutoff: true,
+              title: "Tempos de Corte da Prova",
+              details: [
+                { label: "SPRINT", value: "40 min" },
+                { label: "MIDDLE", value: "80 min" },
+                { label: "LONG", value: "120 min" },
+              ],
+            },
+            {
+              time: "17:15 – 18:00",
+              title: "Premiação Natação",
+              location: "Portobello Resort",
+            },
+          ],
+        },
+        {
+          id: "saturday",
+          date: "22 Ago",
+          title: "Sábado",
+          subtitle: "RACE DAY 2 – THE BIKE",
+          events: [
+            {
+              time: "06:00 – 07:45",
+              title: "Ajustes Bike - Barcellos Sports",
+              location: "Parque de Exposições de Mangaratiba (EXPO)",
+            },
+            {
+              time: "06:30 – 07:30",
+              title: "Entrega de kit do ciclismo",
+              location: "Parque de Exposições de Mangaratiba (EXPO)",
+            },
+            {
+              time: "07:45",
+              title: "Concentração largada Ciclismo",
+              location:
+                "Serra do Piloto em frente ao Parque de Exposições de Mangaratiba (EXPO)",
+            },
+            {
+              time: "08:00",
+              title: "Largada Prova Ciclismo",
+              location:
+                "Serra do Piloto em frente ao Parque de Exposições de Mangaratiba (EXPO)",
+            },
+            {
+              isCutoff: true,
+              title: "Tempos de Corte da Prova",
+              details: [
+                { label: "SPRINT", value: "2h" },
+                { label: "MIDDLE", value: "4h" },
+                { label: "LONG", value: "6h" },
+              ],
+            },
+            {
+              time: "10:00",
+              title: "Abertura Arena TRITON",
+              location: "Portobello Resort",
+            },
+            {
+              time: "15:00 – 16:00",
+              title: "Premiação Ciclismo",
+              location: "Portobello Resort",
+            },
+          ],
+        },
+        {
+          id: "sunday",
+          date: "23 Ago",
+          title: "Domingo",
+          subtitle: "RACE DAY 3 - THE RUN",
+          events: [
+            {
+              time: "06:00 – 06:30",
+              title: "Entrega de kit corrida",
+              location: "Sala Araras, Portobelo Resort",
+            },
+            {
+              time: "07:00",
+              title: "Largada Prova Corrida",
+              location: "Portobello Resort",
+            },
+            {
+              isCutoff: true,
+              title: "Tempos de Corte da Prova",
+              details: [
+                { label: "SPRINT", value: "1h15" },
+                { label: "MIDDLE", value: "2h30" },
+                { label: "LONG", value: "3h45" },
+              ],
+            },
+            {
+              time: "10:50 – 11:50",
+              title: "Premiação Corrida",
+              location: "Portobello Resort",
+            },
+            {
+              time: "12:00 – 13:00",
+              title: "Premiação TRITON Geral",
+              location: "Portobello Resort",
+            },
+            {
+              time: "13:00 – 14:00",
+              title: "Premiação TRITON Age Group",
+              location: "Portobello Resort",
+            },
+          ],
+        },
+      ],
+      importantNote:
+        "Todos os horários estão sujeitos a alteração sem aviso prévio devido a circunstâncias imprevistas. Os horários e a ordem de largada também poderão ser ajustados. Recomendamos acompanhar a programação regularmente para se manter atualizado sobre possíveis mudanças de última hora.",
+    },
+    locations: {
+      description: "O TRITON Rio 26 acontece em Mangaratiba, um destino que combina o melhor da Serra do Mar com a Costa Verde. Planeje sua viagem, escolha seu hotel parceiro e prepare-se para uma experiência que vai além da competição.",
+      experience: {
+        image: touristCoast,
+        pois: [
+          {
+            icon: "Compass",
+            title: "Explore a Ilha Grande",
+            desc: "Eleita uma das ilhas mais bonitas do mundo. Barcos com saídas diárias do centro de Mangaratiba levam você a praias paradisíacas como Lopes Mendes.",
+          },
+          {
+            icon: "Anchor",
+            title: "VIDA MARINHA E TRILHAS",
+            desc: "Agende localmente passeios para mergulhar em águas calmas e explore trilhas em meio à mata preservada, que levam a cachoeiras escondidas na Serra do Piloto.",
+          },
+          {
+            icon: "Utensils",
+            title: "JORNADA GASTRONÔMICA",
+            desc: "Experimente frutos do mar frescos e receitas tradicionais nos restaurantes à beira-mar ao longo da costa. Uma ótima dica é o Toca da Garoupa. Ou desfrute das delícias culinárias servidas no próprio Portobello Resort.",
+          },
+          {
+            icon: "Palmtree",
+            title: "Portobello Safari",
+            desc: "Uma experiência única para toda a família, dentro do próprio Resort Portobello. Visite o maior safári resort do Brasil, com mais de 500 animais em habitats naturais.",
+          },
+        ],
+      },
+      logistics: [
+        {
+          icon: "Plane",
+          title: "GIG Aeroporto",
+          detail: "115 km",
+          sub: "~1h 45min",
+          color: "from-blue-500/20",
+        },
+        {
+          icon: "Navigation",
+          title: "SDU Aeroporto",
+          detail: "110 km",
+          sub: "~1h 50min",
+          color: "from-green-500/20",
+        },
+        {
+          icon: "Car",
+          title: "Accesso",
+          detail: "BR-101",
+          sub: "Fácil Conexão",
+          color: "from-purple-500/20",
+        },
+        {
+          icon: "MapPin",
+          title: "Localização",
+          detail: "Mangaratiba",
+          sub: "Rio de Janeiro",
+          color: "from-red-500/20",
+        },
+      ],
+      resort: {
+        image: fotoResort,
+        title: "Portobello Resort",
+        description:
+          "É o hotel oficial do evento e oferece condições exclusivas para atletas TRITON e suas famílias:",
+        benefits: [
+          "Todas as refeições incluídas",
+          "Gratuidade p/ 2 crianças de até 7 anos",
+          "Opções de pagamento parcelado",
+        ],
+        buttonText: "Reservas",
+        whatsappLink:
+          "https://api.whatsapp.com/send?phone=552127898000&text=Ol%C3%A1!%20Me%20inscrevi%20no%20TRITON%20e%20gostaria%20de%20informa%C3%A7%C3%B5es%20sobre%20a%20reserva%20em%20Portobello.",
+      },
+    },
+    partners: [
+      {
+        name: "Lei de Insentivo ao Esporte",
+        logo: "/images/partners/events/rio2026/lei-incentivo-logo.png",
+        url: "#"
+      },
+      {
+        name: "Instituto Bons Ventos",
+        logo: "/images/partners/events/rio2026/instituto-bons-ventos-logo.png",
+        url: "#"
+      },
+      {
+        name: "Dobro",
+        logo: "/images/partners/events/rio2026/dobro-logo.png",
+        url: "#"
+      },
+      {
+        name: "My Safe",
+        logo: "/images/partners/events/rio2026/my-safe-logo.png",
+        url: ""
+      },
+       {
+        name: "Prefeitura de Mangaratiba",
+        logo: "/images/partners/events/rio2026/mangaratiba-logo.png",
+        url: "#"
+      },
+      {
+        name: "Equilibrium Saude Integrada",
+        logo: "/images/partners/events/rio2026/eq-logo.png",
+        url: "#"
+      },
+      {
+        name: "B Drops",
+        logo: "/images/partners/events/rio2026/drops.png",
+        url: "#"
+      },
+      
+      {
+        name: "Ministerio Esporte",
+        logo: "/images/partners/events/rio2026/ministerio-esporte.png",
+        url: "#"
+      },
+     
     ]
   },
 };
