@@ -92,13 +92,13 @@ const CalendarSection: React.FC = () => {
                     {event.format}
                   </span>
                 </div>
-                {event.status !== "Completed" && (
-                  <div className="mt-4 sm:mt-6 pt-3 sm:pt-4 border-t border-white/5 opacity-100 sm:opacity-0 sm:group-hover:opacity-100 transition-opacity">
-                    <Link href={`/events/${event.eventFormat}/${event.slug}`} className="text-triton-red sm:text-white text-xs font-bold uppercase hover:text-triton-red flex items-center gap-1">
-                      More Info &rarr;
-                    </Link>
-                  </div>
-                )}
+
+                <div className="mt-4 sm:mt-6 pt-3 sm:pt-4 border-t border-white/5 opacity-100 sm:opacity-0 sm:group-hover:opacity-100 transition-opacity">
+                  <Link href={`/events/${event.eventFormat}/${event.slug}`} className="text-triton-red sm:text-white text-xs font-bold uppercase hover:text-triton-red flex items-center gap-1">
+                    More Info &rarr;
+                  </Link>
+                </div>
+
               </div>
             ))}
           </div>
@@ -119,7 +119,7 @@ const CalendarSection: React.FC = () => {
                   <p className="font-bold text-white uppercase text-xs sm:text-sm">
                     {event.location}
                   </p>
-                  <p className="text-[10px] text-gray-400">{event.date}</p>
+
                 </div>
               </div>
             ))}

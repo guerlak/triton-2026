@@ -5,8 +5,13 @@ import Image from "next/image";
 import NavButton from "../ui/NavButton";
 import { useState, useEffect } from "react";
 import Link from "next/link";
+import { Radio } from "lucide-react";
+import { EVENT_DATA_MAP } from "@/eventdata";
 
 const Navbar = () => {
+  const isLiveEventOn = Object.values(EVENT_DATA_MAP).some(
+    (event) => Boolean(event.isEVentOn || event.isEventOn)
+  );
   const [isOpen, setIsOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
 
@@ -67,7 +72,19 @@ const Navbar = () => {
 
         {/* Desktop Buttons */}
         <div className="hidden lg:flex items-center gap-4">
-          <NavButton text="Live Results" href="/results" />
+          {isLiveEventOn && (
+            <Link
+              href="/results"
+              className="relative group/live inline-flex items-center gap-2.5 px-5 py-2 rounded-full text-sm font-black uppercase tracking-wider bg-neutral-950/90 text-white border border-triton-red/60 shadow-[0_0_20px_rgba(235,0,40,0.35)] hover:bg-triton-red hover:text-white hover:border-triton-red hover:shadow-[0_0_30px_rgba(235,0,40,0.7)] transition-all duration-300 backdrop-blur-md"
+            >
+              <span className="relative flex h-2.5 w-2.5 shrink-0">
+                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-triton-red opacity-80"></span>
+                <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-triton-red shadow-[0_0_8px_#eb0028] group-hover/live:bg-white group-hover/live:shadow-[0_0_8px_#ffffff]"></span>
+              </span>
+              <Radio className="w-4 h-4 text-triton-red group-hover/live:text-white animate-pulse shrink-0" />
+              <span>Live Results</span>
+            </Link>
+          )}
           <NavButton isRed text="Find a Race" href="/events" />
         </div>
 
@@ -123,7 +140,20 @@ const Navbar = () => {
             </a>
           ))}
           <div className="mt-6 flex flex-col items-center gap-4 w-full max-w-xs">
-            <NavButton text="Live Results" href="/results" className="w-full text-center" />
+            {isLiveEventOn && (
+              <Link
+                href="/results"
+                onClick={() => setIsOpen(false)}
+                className="w-full relative group/live inline-flex items-center justify-center gap-2.5 px-5 py-3 rounded-full text-sm font-black uppercase tracking-wider bg-neutral-900/90 text-white border border-triton-red/60 shadow-[0_0_20px_rgba(235,0,40,0.35)] hover:bg-triton-red hover:text-white hover:border-triton-red transition-all duration-300 text-center"
+              >
+                <span className="relative flex h-2.5 w-2.5 shrink-0">
+                  <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-triton-red opacity-80"></span>
+                  <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-triton-red shadow-[0_0_8px_#eb0028] group-hover/live:bg-white"></span>
+                </span>
+                <Radio className="w-4 h-4 text-triton-red group-hover/live:text-white animate-pulse shrink-0" />
+                <span>Live Results</span>
+              </Link>
+            )}
             <NavButton isRed text="Find a Race" href="/events" className="w-full text-center" />
           </div>
         </div>
