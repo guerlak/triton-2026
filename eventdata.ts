@@ -90,7 +90,7 @@ export interface EventData {
   mediaPictureUrl?: string;
   raceGuideLink?: string;
   registrationLink: string;
-  isEVentOn?: boolean;
+  isEventOn?: boolean;
   isRegistrationClosed?: boolean;
   registrationStatus?: "Open" | "Closed" | "Hold";
   country: string;
@@ -3159,7 +3159,7 @@ export const EVENT_DATA_MAP: Record<string, EventData> = {
       topFiveApiUrl: "",
       liveResultsApiUrl:""
     },
-    isEVentOn: false,
+    isEventOn: false,
     isRegistrationClosed: true,
     registrationStatus: "Hold",
     hero: {

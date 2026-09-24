@@ -10,7 +10,7 @@ import { EVENT_DATA_MAP } from "@/eventdata";
 
 const Navbar = () => {
   const isLiveEventOn = Object.values(EVENT_DATA_MAP).some(
-    (event) => Boolean(event.isEVentOn || event.isEventOn)
+    (event) => Boolean(event.isEventOn || event.isEventOn)
   );
   const [isOpen, setIsOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
