@@ -91,7 +91,7 @@ export interface EventData {
   raceGuideLink?: string;
   registrationLink: string;
   isRegistrationClosed?: boolean;
-  registrationStatus?: string;
+  registrationStatus?: "Open" | "Closed" | "Hold";
   country: string;
   flag: string;
   status: "Confirmed" | "Planned" | "Completed";
@@ -142,7 +142,7 @@ export interface EventData {
     testimonials: TestimonialProps[];
     youtubeSrc: string;
   };
-  partners: Array<{
+  partners?: Array<{
     name: string;
     logo: StaticImageData | string;
     url: string;
@@ -197,6 +197,8 @@ import heroImgRio27 from "@/public/images/eventos/rio-2027/hero-triton-rio27.jpg
 import swimPicRio27 from "@/public/images/eventos/rio-2027/swim-pic-rio27.jpg"
 //import bikePicRio27 from "@/public/images/eventos/rio-2027/bike-pic-rio27.jpeg"
 //import runPicRio27 from "@/public/images/eventos/rio-2027/run-pic-rio27.jpeg"
+import experiencePic from "@/public/images/eventos/rio-2027/landscape-rio27.jpg"
+import hotelRio27 from "@/public/images/eventos/rio-2027/hotel-rio27.jpg";
 
 
 export const EVENT_DATA_MAP: Record<string, EventData> = {
@@ -3139,17 +3141,17 @@ export const EVENT_DATA_MAP: Record<string, EventData> = {
     fullDateText: "26 Junho, 2027",
     targetDate: "2027-06-26T08:00:00",
     athleteArea: {
-      liveResultsUrl: "https://www.eicrono.com.br/triton/index_triton3.html",
-      raceGuideLink: "/docs/race-guide/guia_do_atleta_rio26.pdf",
-      startListApiUrl: "https://api.raceresult.com/371805/2ZJGC6U06Z8RLDI16UWNEHNXGE39KYE0",
-      mediaPictureUrl: "https://www.focoradical.com.br/grupos/triton-3-rj",
-      videoBriefingUrl: "https://youtu.be/mx0aPdfgAUY?si=4UZPQTTX_dVuo_HB",
-      topFiveApiUrl: "https://api.raceresult.com/371805/T21MVQLRLLDAAWR8G7QNWCPSHPE7WIED",
-      liveResultsApiUrl:"https://api.raceresult.com/371805/9DMAJY5O7T7Z3ZUOVV0MOJGW5BFP5M9R"
+      liveResultsUrl: "",
+      raceGuideLink: "",
+      startListApiUrl: "",
+      mediaPictureUrl: "",
+      videoBriefingUrl: "",
+      topFiveApiUrl: "",
+      liveResultsApiUrl:""
 
     },
-    isRegistrationClosed: false,
-    registrationStatus: "Inscrições em breve",
+    isRegistrationClosed: true,
+    registrationStatus: "Hold",
     hero: {
       backgroundImage: heroImgRio27,
       logoImage: "",
@@ -3256,10 +3258,10 @@ export const EVENT_DATA_MAP: Record<string, EventData> = {
       ],
     },
     afterMovie: {
-      youtubeSrc: "z7xHxVVnkjU?si=6GShK1msGCTy7LDH",
+      youtubeSrc: "xmdRgPahpjA?si=vf06ZayGhkjGq97X",
     },
     testimonial: {
-      youtubeSrc: "https://www.youtube.com/embed/x0J6xM96QhQ",
+      youtubeSrc: "https://www.youtube.com/embed/YVnYtrSNPhk?si=TvUMsKfI2kL7NBSD",
       testimonials: [{
       "avatar_url": "/images/atletas/viviane.jpeg",
       "quote": "Quantas lições em um único final de semana. Foram 3 dias, 3 esportes, 3 humores e unimeras variações de sentimentos. No Triton 3 pude me testar, exercitar a paciência e também o carinho comigo mesma. ",
@@ -3422,120 +3424,76 @@ export const EVENT_DATA_MAP: Record<string, EventData> = {
         "Todos os horários estão sujeitos a alteração sem aviso prévio devido a circunstâncias imprevistas. Os horários e a ordem de largada também poderão ser ajustados. Recomendamos acompanhar a programação regularmente para se manter atualizado sobre possíveis mudanças de última hora.",
     },
     locations: {
-      description: "O TRITON Rio 26 acontece em Mangaratiba, um destino que combina o melhor da Serra do Mar com a Costa Verde. Planeje sua viagem, escolha seu hotel parceiro e prepare-se para uma experiência que vai além da competição.",
+      description: "O TRITON Rio de Janeiro acontece no icônico Aterro do Flamengo, combinando o cenário inconfundível da Baía de Guanabara e do Pão de Açúcar com a energia única da Cidade Maravilhosa. Planeje sua viagem e prepare-se para uma experiência que vai além da competição.",
       experience: {
-        image: touristCoast,
+        image: experiencePic,
         pois: [
           {
             icon: "Compass",
-            title: "Explore a Ilha Grande",
-            desc: "Eleita uma das ilhas mais bonitas do mundo. Barcos com saídas diárias do centro de Mangaratiba levam você a praias paradisíacas como Lopes Mendes.",
+            title: "Pão de Açúcar & Corcovado",
+            desc: "Visite os cartões-postais mais famosos do mundo a poucos minutos da arena da prova, com vistas panorâmicas inesquecíveis da Cidade Maravilhosa.",
           },
           {
             icon: "Anchor",
-            title: "VIDA MARINHA E TRILHAS",
-            desc: "Agende localmente passeios para mergulhar em águas calmas e explore trilhas em meio à mata preservada, que levam a cachoeiras escondidas na Serra do Piloto.",
+            title: "Orla & Praias da Zona Sul",
+            desc: "Aproveite a energia vibrante de Copacabana, Ipanema e Leblon, perfeitas para relaxar antes ou depois da prova e curtir o estilo de vida carioca.",
           },
           {
             icon: "Utensils",
-            title: "JORNADA GASTRONÔMICA",
-            desc: "Experimente frutos do mar frescos e receitas tradicionais nos restaurantes à beira-mar ao longo da costa. Uma ótima dica é o Toca da Garoupa. Ou desfrute das delícias culinárias servidas no próprio Portobello Resort.",
+            title: "Gastronomia Carioca",
+            desc: "Dos clássicos botequins da Lapa e Santa Teresa aos restaurantes renomados do Leblon e Botafogo, saboreie o melhor da culinária da capital fluminense.",
           },
           {
             icon: "Palmtree",
-            title: "Portobello Safari",
-            desc: "Uma experiência única para toda a família, dentro do próprio Resort Portobello. Visite o maior safári resort do Brasil, com mais de 500 animais em habitats naturais.",
+            title: "Parque do Flamengo & MAM",
+            desc: "Desfrute dos jardins de Burle Marx ao longo do Aterro, visite o Museu de Arte Moderna (MAM) e viva uma fusão única entre esporte, cultura e natureza.",
           },
         ],
       },
       logistics: [
         {
           icon: "Plane",
-          title: "GIG Aeroporto",
-          detail: "115 km",
-          sub: "~1h 45min",
+          title: "SDU Aeroporto",
+          detail: "3 km",
+          sub: "~8 min",
           color: "from-blue-500/20",
         },
         {
-          icon: "Navigation",
-          title: "SDU Aeroporto",
-          detail: "110 km",
-          sub: "~1h 50min",
+          icon: "Plane",
+          title: "GIG Aeroporto",
+          detail: "19 km",
+          sub: "~25 min",
           color: "from-green-500/20",
         },
         {
           icon: "Car",
-          title: "Accesso",
-          detail: "BR-101",
-          sub: "Fácil Conexão",
+          title: "Acesso",
+          detail: "Metrô & Vias",
+          sub: "Estações Glória e Catete",
           color: "from-purple-500/20",
         },
         {
           icon: "MapPin",
           title: "Localização",
-          detail: "Mangaratiba",
-          sub: "Rio de Janeiro",
+          detail: "Aterro do Flamengo",
+          sub: "Rio de Janeiro, RJ",
           color: "from-red-500/20",
         },
       ],
       resort: {
-        image: fotoResort,
-        title: "Portobello Resort",
+        image: hotelRio27,
+        title: "Hotel a Confirmar",
         description:
-          "É o hotel oficial do evento e oferece condições exclusivas para atletas TRITON e suas famílias:",
+          "Estamos definindo o hotel oficial do evento com tarifas negociadas e benefícios exclusivos para atletas TRITON e seus acompanhantes.",
         benefits: [
-          "Todas as refeições incluídas",
-          "Gratuidade p/ 2 crianças de até 7 anos",
-          "Opções de pagamento parcelado",
+          "Tarifas especiais para atletas",
+          "Localização privilegiada na Zona Sul",
+          "Divulgação em breve com condições exclusivas",
         ],
-        buttonText: "Reservas",
-        whatsappLink:
-          "https://api.whatsapp.com/send?phone=552127898000&text=Ol%C3%A1!%20Me%20inscrevi%20no%20TRITON%20e%20gostaria%20de%20informa%C3%A7%C3%B5es%20sobre%20a%20reserva%20em%20Portobello.",
+        buttonText: "Em Breve",
+        whatsappLink: "#",
       },
     },
-    partners: [
-      {
-        name: "Lei de Insentivo ao Esporte",
-        logo: "/images/partners/events/rio2026/lei-incentivo-logo.png",
-        url: "#"
-      },
-      {
-        name: "Instituto Bons Ventos",
-        logo: "/images/partners/events/rio2026/instituto-bons-ventos-logo.png",
-        url: "#"
-      },
-      {
-        name: "Dobro",
-        logo: "/images/partners/events/rio2026/dobro-logo.png",
-        url: "#"
-      },
-      {
-        name: "My Safe",
-        logo: "/images/partners/events/rio2026/my-safe-logo.png",
-        url: ""
-      },
-       {
-        name: "Prefeitura de Mangaratiba",
-        logo: "/images/partners/events/rio2026/mangaratiba-logo.png",
-        url: "#"
-      },
-      {
-        name: "Equilibrium Saude Integrada",
-        logo: "/images/partners/events/rio2026/eq-logo.png",
-        url: "#"
-      },
-      {
-        name: "B Drops",
-        logo: "/images/partners/events/rio2026/drops.png",
-        url: "#"
-      },
-      
-      {
-        name: "Ministerio Esporte",
-        logo: "/images/partners/events/rio2026/ministerio-esporte.png",
-        url: "#"
-      },
-     
-    ]
+    
   },
 };

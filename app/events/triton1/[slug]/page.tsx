@@ -39,7 +39,7 @@ export default async function Page({ params }: { params: Promise<{ slug: string 
       <main className="text-white bg-black/90">
         <HeroEvent data={data.hero} />
         <CountdownSectionEvent data={data} />
-        <InfoSectionTriton1 info={data.info} scoring={data.scoring} eventFormat={data.eventFormat} language={data.language} />
+        <InfoSectionTriton1 eventFormat={data.eventFormat} language={data.language} />
         <FormatsSectionTriton1 formats={data.formats} language={data.language} />
         {data.extraEvent && <ExtraEvent {...data.extraEvent} />}
         <ScheduleSection schedule={data.schedule} language={data.language} />
@@ -48,7 +48,7 @@ export default async function Page({ params }: { params: Promise<{ slug: string 
         {data.testimonial && <Testimonials testimonials={data.testimonial.testimonials} youtubeSrc={data.testimonial.youtubeSrc} language={data.language} />}
         <ShopSection language={data.language} />
         <NewsletterSection language={data.language} />
-        <PartnersSectionEvent partners={data.partners} />
+        {data.partners && <PartnersSectionEvent partners={data.partners} />}
       </main>
     </>
   );

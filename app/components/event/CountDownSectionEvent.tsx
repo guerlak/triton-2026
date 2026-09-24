@@ -46,6 +46,7 @@ const CountdownSection: React.FC<CountdownSectionProps> = ({ data }) => {
   }, [data.targetDate]);
 
   const liveResultsUrl = data.liveResultsUrl || data.athleteArea?.liveResultsUrl;
+  const registrationStatus = data.registrationStatus ?? (data.isRegistrationClosed ? "Closed" : "Open");
 
   return (
     <section className="relative py-10 overflow-hidden min-h-100 flex items-center">
@@ -89,7 +90,10 @@ const CountdownSection: React.FC<CountdownSectionProps> = ({ data }) => {
                   {data.location}
                 </div>
                 <span className="hidden sm:block opacity-30">|</span>
-                <div className="text-white">{data.dateText}</div>
+                <div className="text-white">
+                  {data.dateText}
+                  {data.year && !data.dateText.includes(String(data.year)) ? `, ${data.year}` : ""}
+                </div>
               </div>
 
               <div className="mt-8 sm:mt-10 flex flex-wrap gap-4 justify-center lg:justify-start">
@@ -103,12 +107,13 @@ const CountdownSection: React.FC<CountdownSectionProps> = ({ data }) => {
                     <span>{data.language === "pt-BR" ? "Resultados" : isCompleted ? "Results" : "Live Results"}</span>
                     <ArrowRight size={18} />
                   </a>
-                ) : data.isRegistrationClosed || Boolean(data.registrationStatus?.trim()) ? (
+                ) : registrationStatus === "Closed" ? (
                   <span className="bg-neutral-800 text-gray-500 font-black py-2 px-4 md:px-10 rounded-none flex items-center gap-3 uppercase tracking-widest cursor-not-allowed opacity-60 border border-white/10 select-none">
-                    <span>
-                      {data.registrationStatus?.trim() ||
-                        (data.language === "pt-BR" ? "Inscrições Encerradas" : "Registration Closed")}
-                    </span>
+                    <span>{data.language === "pt-BR" ? "Inscrições Encerradas" : "Registration Closed"}</span>
+                  </span>
+                ) : registrationStatus === "Hold" ? (
+                  <span className="bg-neutral-800 text-gray-500 font-black py-2 px-4 md:px-10 rounded-none flex items-center gap-3 uppercase tracking-widest cursor-not-allowed opacity-60 border border-white/10 select-none">
+                    <span>{data.language === "pt-BR" ? "Inscrições em Breve" : "Coming Soon"}</span>
                   </span>
                 ) : (
                   <a

@@ -94,20 +94,12 @@ const STATS_DATA = {
 };
 
 interface InfoSectionProps {
-  info: {
-    title: string;
-    subtitle: string;
-    description: string;
-  };
-  scoring: {
-    title: string;
-    description: string;
-  };
+
   eventFormat: "triton1" | "triton3";
   language: "pt-BR" | "en";
 }
 
-export default function InfoSection({ info, scoring, eventFormat, language }: InfoSectionProps) {
+export default function InfoSection({ eventFormat, language }: InfoSectionProps) {
   const currentLanguage = language === "pt-BR" ? "pt-BR" : "en";
   const stats = STATS_DATA[currentLanguage][eventFormat];
 

@@ -188,14 +188,23 @@ const LocationsSection: React.FC<LocationsSectionProps> = ({ locations, language
                   ))}
                 </div>
 
-                <a
-                  href={locations.resort.whatsappLink}
-                  target="_blank"
-                  className="inline-flex items-center justify-center bg-triton-red hover:bg-white text-white hover:text-black px-10 py-5 rounded-2xl font-black uppercase italic tracking-widest transition-all duration-300 group shadow-[0_20px_40px_rgba(223,31,38,0.3)]"
-                >
-                  <MessageCircle className="w-6 h-6 mr-3" />
-                  {locations.resort.buttonText}
-                </a>
+                {!locations.resort.whatsappLink ||
+                locations.resort.whatsappLink === "#" ||
+                locations.resort.buttonText?.toLowerCase().includes("breve") ||
+                locations.resort.buttonText?.toLowerCase().includes("soon") ? (
+                  <span className="inline-flex items-center justify-center bg-neutral-800 text-gray-500 border border-white/10 px-10 py-5 rounded-2xl font-black uppercase italic tracking-widest cursor-not-allowed opacity-60 select-none">
+                    {locations.resort.buttonText}
+                  </span>
+                ) : (
+                  <a
+                    href={locations.resort.whatsappLink}
+                    target="_blank"
+                    className="inline-flex items-center justify-center bg-triton-red hover:bg-white text-white hover:text-black px-10 py-5 rounded-2xl font-black uppercase italic tracking-widest transition-all duration-300 group shadow-[0_20px_40px_rgba(223,31,38,0.3)]"
+                  >
+                    <MessageCircle className="w-6 h-6 mr-3" />
+                    {locations.resort.buttonText}
+                  </a>
+                )}
                 {locations.resort.title === "Portobello Resort" && (
                   <p className="mt-4 text-[10px] text-gray-500 uppercase font-bold text-center lg:text-left italic">
                     * Desconto válido apenas via atendimento com consultor. Não

@@ -147,7 +147,7 @@ const TopFiveAthletes: React.FC<Props> = ({ initialAthletes = [] }) => {
             ? "bg-white/80 text-black"
             : isMiddle
               ? "bg-red-500/20 text-white"
-              : "bg-blue-500/20 text-white"
+              : "bg-white/5 text-white"
             }`}
         >
           <div className="flex items-center gap-2.5 sm:gap-3 min-w-0">

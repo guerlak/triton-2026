@@ -94,9 +94,8 @@ const FormatsSection: React.FC<{ language: string; formats: any }> = ({ language
                   <button
                     key={dist}
                     onClick={() => setSelectedDistance(dist)}
-                    className={`relative px-3 md:px-4 py-1.5 md:py-2 rounded-lg text-[10px] md:text-xs font-black uppercase tracking-widest transition-all duration-300 z-10 ${
-                      isSelected ? "text-white" : "text-gray-500 hover:text-white"
-                    }`}
+                    className={`relative px-3 md:px-4 py-1.5 md:py-2 rounded-lg text-[10px] md:text-xs font-black uppercase tracking-widest transition-all duration-300 z-10 ${isSelected ? "text-white" : "text-gray-500 hover:text-white"
+                      }`}
                   >
                     {isSelected && (
                       <motion.div
@@ -185,9 +184,8 @@ const FormatsSection: React.FC<{ language: string; formats: any }> = ({ language
               <button
                 key={tab}
                 onClick={() => setActiveTab(tab as "1" | "2" | "3")}
-                className={`relative px-3 md:px-10 py-2 md:py-4 rounded-xl text-[10px] md:text-sm font-black uppercase tracking-widest transition-all duration-300 z-10 ${
-                  activeTab === tab ? "text-white" : "text-gray-500 hover:text-white"
-                }`}
+                className={`relative px-3 md:px-10 py-2 md:py-4 rounded-xl text-[10px] md:text-sm font-black uppercase tracking-widest transition-all duration-300 z-10 ${activeTab === tab ? "text-white" : "text-gray-500 hover:text-white"
+                  }`}
               >
                 {activeTab === tab && (
                   <motion.div
@@ -213,9 +211,8 @@ const FormatsSection: React.FC<{ language: string; formats: any }> = ({ language
 
         <div className="relative min-h-[500px]">
           <div
-            className={`bg-white/5 text-white p-4 sm:p-6 block w-full h-full rounded-2xl border border-white/10 backdrop-blur-md ${
-              activeTab === "1" ? "block" : "hidden"
-            }`}
+            className={`bg-white/5 text-white p-4 sm:p-6 block w-full h-full rounded-2xl border border-white/10 backdrop-blur-md ${activeTab === "1" ? "block" : "hidden"
+              }`}
           >
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 lg:gap-8 mb-6 sm:mb-8">
               <div className="space-y-4 sm:space-y-6">
@@ -299,9 +296,8 @@ const FormatsSection: React.FC<{ language: string; formats: any }> = ({ language
           </div>
 
           <div
-            className={`bg-white/5 text-white p-4 sm:p-6 block w-full h-full rounded-2xl border border-white/10 backdrop-blur-md ${
-              activeTab === "2" ? "block" : "hidden"
-            }`}
+            className={`bg-white/5 text-white p-4 sm:p-6 block w-full h-full rounded-2xl border border-white/10 backdrop-blur-md ${activeTab === "2" ? "block" : "hidden"
+              }`}
           >
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 lg:gap-8 mb-6 sm:mb-8">
               <div className="space-y-4 sm:space-y-6">
@@ -386,9 +382,8 @@ const FormatsSection: React.FC<{ language: string; formats: any }> = ({ language
           </div>
 
           <div
-            className={`bg-white/5 text-white p-4 sm:p-6 block w-full h-full rounded-2xl border border-white/10 backdrop-blur-md ${
-              activeTab === "3" ? "block" : "hidden"
-            }`}
+            className={`bg-white/5 text-white p-4 sm:p-6 block w-full h-full rounded-2xl border border-white/10 backdrop-blur-md ${activeTab === "3" ? "block" : "hidden"
+              }`}
           >
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 lg:gap-8 mb-6 sm:mb-8">
               <div className="space-y-4 sm:space-y-6">
@@ -518,17 +513,16 @@ const FormatsSection: React.FC<{ language: string; formats: any }> = ({ language
               </span>
               <p className="text-gray-400 text-xs sm:text-sm leading-relaxed mt-2">
                 {language === "pt-BR"
-                  ? "Forme sua equipe (dupla ou trio). Cada um faz uma modalidade. No caso de dupla, um atleta terá que fazer mais de uma modalidade. Esse formato conta com premiação no dia, mas não classifica para a final mundial."
+                  ? "Forme sua equipe (dupla ou trio). Cada um faz uma modalidade. No caso de dupla, um atleta terá que fazer mais de uma modalidade. Esse formato conta com premiação no dia e classifica para a final mundial."
                   : "Build your team of two or three athletes, with each participant completing one or more disciplines. This format includes age-group awards and serves as a qualifier for the TRITON World Finals."}
               </p>
             </div>
 
             <div
-              className={`p-4 sm:p-6 rounded-xl border transition-all group relative ${
-                formats.disableMixMatch === true
+              className={`p-4 sm:p-6 rounded-xl border transition-all group relative ${formats.disableMixMatch === true
                   ? "bg-white/5 border-white/5 opacity-50"
                   : "bg-white/5 border-white/10 hover:border-triton-red/50"
-              }`}
+                }`}
             >
               {formats.disableMixMatch === true && (
                 <span className="absolute top-4 right-4 bg-triton-red/20 text-triton-red border border-triton-red/30 text-[10px] font-bold px-2.5 py-1 rounded-full uppercase tracking-wider">

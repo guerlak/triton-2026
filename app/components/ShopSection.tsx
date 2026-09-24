@@ -92,7 +92,7 @@ const ShopSection: React.FC<{ language: string }> = ({ language }) => {
                 Save it in your screen<br></br> and use it like an app.
               </p>
 
-              <a className="inline-flex bg-white hover:bg-triton-red text-black hover:text-white font-black py-2 px-5 rounded-none items-center justify-center gap-3 uppercase tracking-widest transition-all duration-300">
+              <a href="https://pwa.prouder.se/event/b46853a2-68cc-4f04-a201-72a1b3af027c" target="_blank" className="inline-flex bg-white hover:bg-triton-red text-black hover:text-white font-black py-2 px-5 rounded-none items-center justify-center gap-3 uppercase tracking-widest transition-all duration-300">
                 <span className="text-xs sm:text-sm">Use the App</span>
                 <ArrowUpRight
                   size={18}
