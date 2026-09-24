@@ -79,7 +79,7 @@ export default async function Page({
         />
         <ShopSection language={data.language} />
         <NewsletterSection language={data.language} />
-        <PartnersSectionEvent partners={data.partners} />
+        {data.partners && <PartnersSectionEvent partners={data.partners} />}
       </main>
     </>
   );

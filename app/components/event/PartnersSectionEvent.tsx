@@ -10,7 +10,7 @@ interface Partner {
   url: string;
 }
 
-const PartnersSectionEvent = ({ partners = [] }: { partners: Partner[] }) => {
+const PartnersSectionEvent = ({ partners = [] }: { partners?: Partner[] }) => {
   return (
     <section className="py-10 sm:py-16 bg-neutral-950 border-y border-white/5">
       <div className="max-w-12xl mx-auto px-4 sm:px-6 lg:px-8">

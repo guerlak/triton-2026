@@ -94,12 +94,12 @@ const STATS_DATA = {
 };
 
 interface InfoSectionProps {
-  info: {
+  info?: {
     title: string;
     subtitle: string;
     description: string;
   };
-  scoring: {
+  scoring?: {
     title: string;
     description: string;
   };
@@ -159,35 +159,37 @@ export default function InfoSection({
         </div>
 
         {/* Demographics Banner */}
-        <div
-          className="bg-linear-to-r from-neutral-900 to-neutral-950 rounded-2xl p-8 md:p-12 border-l-4 border-triton-red
-         shadow-2xl"
-        >
-          <div className="grid grid-cols-1 lg:grid-cols-5 gap-12 items-center">
-            <div className="lg:col-span-4 text-center lg:text-left">
-              <h3 className="text-3xl font-black uppercase text-white mb-4">
-                {scoring.title}
-              </h3>
-              <p className="text-gray-300 text-lg leading-relaxed">
-                {scoring.description}
-              </p>
-            </div>
+        {scoring && (
+          <div
+            className="bg-linear-to-r from-neutral-900 to-neutral-950 rounded-2xl p-8 md:p-12 border-l-4 border-triton-red
+           shadow-2xl"
+          >
+            <div className="grid grid-cols-1 lg:grid-cols-5 gap-12 items-center">
+              <div className="lg:col-span-4 text-center lg:text-left">
+                <h3 className="text-3xl font-black uppercase text-white mb-4">
+                  {scoring.title}
+                </h3>
+                <p className="text-gray-300 text-lg leading-relaxed">
+                  {scoring.description}
+                </p>
+              </div>
 
-            <Link
-              href="/ranking"
-              className="flex flex-col items-center justify-center text-center w-full p-4 border border-white/10 bg-white/5 rounded-lg hover:border-triton-red/50 active:bg-white/10 active:scale-95 transition-all duration-300 lg:border-0 lg:bg-transparent lg:p-4"
-            >
-              <Trophy className="text-triton-red mb-3 w-8 h-8 mx-auto" />
-              <span className="text-3xl font-black text-white">Global</span>
-              <span className="text-xs font-bold text-gray-400 uppercase text-center mt-1">
-                Ranking
-              </span>
-              <span className="text-triton-red text-[10px] font-bold uppercase tracking-wide mt-2 lg:hidden">
-                Ver ranking →
-              </span>
-            </Link>
+              <Link
+                href="/ranking"
+                className="flex flex-col items-center justify-center text-center w-full p-4 border border-white/10 bg-white/5 rounded-lg hover:border-triton-red/50 active:bg-white/10 active:scale-95 transition-all duration-300 lg:border-0 lg:bg-transparent lg:p-4"
+              >
+                <Trophy className="text-triton-red mb-3 w-8 h-8 mx-auto" />
+                <span className="text-3xl font-black text-white">Global</span>
+                <span className="text-xs font-bold text-gray-400 uppercase text-center mt-1">
+                  Ranking
+                </span>
+                <span className="text-triton-red text-[10px] font-bold uppercase tracking-wide mt-2 lg:hidden">
+                  Ver ranking →
+                </span>
+              </Link>
+            </div>
           </div>
-        </div>
+        )}
       </div>
     </section>
   );
