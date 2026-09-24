@@ -91,7 +91,6 @@ export interface EventData {
   raceGuideLink?: string;
   registrationLink: string;
   isEVentOn?: boolean;
-  isEventOn?: boolean;
   isRegistrationClosed?: boolean;
   registrationStatus?: "Open" | "Closed" | "Hold";
   country: string;
@@ -1845,7 +1844,16 @@ export const EVENT_DATA_MAP: Record<string, EventData> = {
     language: "pt-BR",
     registrationLink:
       "https://www.ticketsports.com.br/e/triton-1-salvador-86852",
-    startListApiUrl: "https://api.raceresult.com/371805/RQDKNSO0GU02BW4IF4X1G7AF12S073FW",
+    startListApiUrl: "",
+    athleteArea: {
+      liveResultsUrl: "",
+      raceGuideLink: "",
+      startListApiUrl: "",
+      mediaPictureUrl: "",
+      videoBriefingUrl: "",
+      liveResultsApiUrl: "",
+      topFiveApiUrl: "",
+    },
     hero: {
       backgroundImage: heroImgSalvador, // Placeholder
       logoImage: logoSalvador,
