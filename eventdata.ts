@@ -194,7 +194,7 @@ import heroImgLisboa27 from "@/public/images/eventos/lisboa-2027/hero-lisboa27.j
 
 //imports RIO 2027
 import heroImgRio27 from "@/public/images/eventos/rio-2027/hero-triton-rio27.jpg";
-//import logoRio27 from "@/public/images/eventos/rio-2027/triton-rio-logo.png"
+import logoRio27 from "@/public/images/eventos/rio-2027/logo-triton-rio27.png"
 import swimPicRio27 from "@/public/images/eventos/rio-2027/swim-pic-rio27.jpg"
 //import bikePicRio27 from "@/public/images/eventos/rio-2027/bike-pic-rio27.jpeg"
 //import runPicRio27 from "@/public/images/eventos/rio-2027/run-pic-rio27.jpeg"
@@ -3164,7 +3164,7 @@ export const EVENT_DATA_MAP: Record<string, EventData> = {
     registrationStatus: "Hold",
     hero: {
       backgroundImage: heroImgRio27,
-      logoImage: "",
+      logoImage: logoRio27,
     },
     registrationLink:
       "https://www.ticketsports.com.br/e/triton-3-rio-de-janeiro-2026-74526",
@@ -3300,135 +3300,33 @@ export const EVENT_DATA_MAP: Record<string, EventData> = {
       days: [
         {
           id: "friday",
-          date: "21 Ago",
+          date: "25 Jun",
           title: "Sexta-feira",
           subtitle: "RACE DAY 1 - THE SWIM",
           events: [
             {
-              time: "12:00 – 18:00",
+              time: "06:00 – 18:00",
               title: "Entrega de Kits",
-              location: "Sala Araras, Portobello Resort",
+              location: "A Confirmar",
             },
-            {
-              time: "12:00",
-              title: "Abertura Arena TRITON",
-              location: "Portobello Resort",
-            },
-            {
-              time: "15:15 – 15:30",
-              title: "Concentração largada Natação",
-              location: "Praia do Portobello Resort",
-            },
-            { time: "15:33", title: "Largada SPRINT" },
-            { time: "15:36", title: "Largada MIDDLE" },
-            { time: "15:39", title: "Largada LONG" },
-            {
-              isCutoff: true,
-              title: "Tempos de Corte da Prova",
-              details: [
-                { label: "SPRINT", value: "40 min" },
-                { label: "MIDDLE", value: "80 min" },
-                { label: "LONG", value: "120 min" },
-              ],
-            },
-            {
-              time: "17:15 – 18:00",
-              title: "Premiação Natação",
-              location: "Portobello Resort",
-            },
+            
           ],
         },
         {
           id: "saturday",
-          date: "22 Ago",
+          date: "26 Jun",
           title: "Sábado",
           subtitle: "RACE DAY 2 – THE BIKE",
           events: [
             {
-              time: "06:00 – 07:45",
-              title: "Ajustes Bike - Barcellos Sports",
-              location: "Parque de Exposições de Mangaratiba (EXPO)",
+              time: "06:00 – 18:00",
+              title: "Realização da Prova",
+              location: "A Confirmar",
             },
-            {
-              time: "06:30 – 07:30",
-              title: "Entrega de kit do ciclismo",
-              location: "Parque de Exposições de Mangaratiba (EXPO)",
-            },
-            {
-              time: "07:45",
-              title: "Concentração largada Ciclismo",
-              location:
-                "Serra do Piloto em frente ao Parque de Exposições de Mangaratiba (EXPO)",
-            },
-            {
-              time: "08:00",
-              title: "Largada Prova Ciclismo",
-              location:
-                "Serra do Piloto em frente ao Parque de Exposições de Mangaratiba (EXPO)",
-            },
-            {
-              isCutoff: true,
-              title: "Tempos de Corte da Prova",
-              details: [
-                { label: "SPRINT", value: "2h" },
-                { label: "MIDDLE", value: "4h" },
-                { label: "LONG", value: "6h" },
-              ],
-            },
-            {
-              time: "10:00",
-              title: "Abertura Arena TRITON",
-              location: "Portobello Resort",
-            },
-            {
-              time: "15:00 – 16:00",
-              title: "Premiação Ciclismo",
-              location: "Portobello Resort",
-            },
+            
           ],
         },
-        {
-          id: "sunday",
-          date: "23 Ago",
-          title: "Domingo",
-          subtitle: "RACE DAY 3 - THE RUN",
-          events: [
-            {
-              time: "06:00 – 06:30",
-              title: "Entrega de kit corrida",
-              location: "Sala Araras, Portobelo Resort",
-            },
-            {
-              time: "07:00",
-              title: "Largada Prova Corrida",
-              location: "Portobello Resort",
-            },
-            {
-              isCutoff: true,
-              title: "Tempos de Corte da Prova",
-              details: [
-                { label: "SPRINT", value: "1h15" },
-                { label: "MIDDLE", value: "2h30" },
-                { label: "LONG", value: "3h45" },
-              ],
-            },
-            {
-              time: "10:50 – 11:50",
-              title: "Premiação Corrida",
-              location: "Portobello Resort",
-            },
-            {
-              time: "12:00 – 13:00",
-              title: "Premiação TRITON Geral",
-              location: "Portobello Resort",
-            },
-            {
-              time: "13:00 – 14:00",
-              title: "Premiação TRITON Age Group",
-              location: "Portobello Resort",
-            },
-          ],
-        },
+       
       ],
       importantNote:
         "Todos os horários estão sujeitos a alteração sem aviso prévio devido a circunstâncias imprevistas. Os horários e a ordem de largada também poderão ser ajustados. Recomendamos acompanhar a programação regularmente para se manter atualizado sobre possíveis mudanças de última hora.",
