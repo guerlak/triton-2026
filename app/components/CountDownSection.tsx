@@ -15,7 +15,7 @@ const COUNTDOWN_EVENTS = Object.values(EVENT_DATA_MAP)
     slug: event.slug,
     subtitle: event.title.toUpperCase(),
     location: event.venue || event.location,
-    date: event.dateText,
+    date: event.fullDateText,
     targetDate: event.targetDate,
     href: `/events/${event.eventFormat}/${event.slug}`,
     registerUrl: event.registrationLink,

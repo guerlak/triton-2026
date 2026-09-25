@@ -17,7 +17,7 @@ const FounderSection: React.FC = () => {
             <div className="w-full max-w-[320px] sm:max-w-sm md:h-170 md:w-130 md:max-w-none mx-auto aspect-3/4 overflow-hidden rounded-sm shadow-[0_0_50px_rgba(255,0,0,0.15)] relative md:mt-15 border border-white/10 group">
 
               <Image
-                src="/images/paulo.png"
+                src="/images/paulo.jpg"
                 alt="Paulo Passos Leite"
                 fill
                 className="rounded-sm object-cover object-top z-10 transition-transform duration-700 group-hover:scale-105"

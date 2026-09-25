@@ -10,6 +10,7 @@ import TritonExperienceCards from "./components/TritonCardsSection";
 import WorldStatsSection from "./components/WorldStatsSection";
 import RankingSection from "./components/RankingSection";
 import PartnersSection from "./components/PartnersSection";
+import WorldFinalsBanner from "./components/WorldFinalsBanner";
 
 export default function Page() {
   return (
@@ -20,6 +21,7 @@ export default function Page() {
         <WorldStatsSection />
         <TritonExperienceCards />
         <CountdownSection />
+        {/* <WorldFinalsBanner /> */}
         <RankingSection />
         <Testimonials language='en' />
         <CalendarSection />

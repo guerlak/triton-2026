@@ -168,8 +168,8 @@ const FormatsSection: React.FC<{ language: string; formats: any }> = ({ language
           </h2>
           <h3 className="text-2xl sm:text-3xl md:text-5xl font-black uppercase text-white leading-tight mb-4 sm:mb-6">
             {language === "pt-BR"
-              ? "Novos formatos para um novo desafio"
-              : "Formats that redefine the experience"}
+              ? "cada percurso, uma história. viva a sua!"
+              : "Every course tells a history. Make yours"}
           </h3>
           <p className="text-gray-400 max-w-5xl mx-auto text-xs sm:text-base md:text-lg">
             {language === "pt-BR"
@@ -520,8 +520,8 @@ const FormatsSection: React.FC<{ language: string; formats: any }> = ({ language
 
             <div
               className={`p-4 sm:p-6 rounded-xl border transition-all group relative ${formats.disableMixMatch === true
-                  ? "bg-white/5 border-white/5 opacity-50"
-                  : "bg-white/5 border-white/10 hover:border-triton-red/50"
+                ? "bg-white/5 border-white/5 opacity-50"
+                : "bg-white/5 border-white/10 hover:border-triton-red/50"
                 }`}
             >
               {formats.disableMixMatch === true && (
