@@ -7,7 +7,19 @@ import { useState, useEffect } from "react";
 import { Radio, Camera, ExternalLink } from "lucide-react";
 import Link from "next/link";
 
-const Navbar = ({ liveResultsUrl, targetDate, mediaPictureUrl }: { liveResultsUrl?: string; targetDate?: string, mediaPictureUrl?: string }) => {
+interface AthleteNavBarProps {
+  liveResultsUrl?: string;
+  targetDate?: string;
+  mediaPictureUrl?: string;
+  videoBriefingUrl?: string;
+}
+
+const Navbar = ({
+  liveResultsUrl,
+  targetDate,
+  mediaPictureUrl,
+  videoBriefingUrl,
+}: AthleteNavBarProps) => {
   const [isOpen, setIsOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
 
@@ -23,6 +35,9 @@ const Navbar = ({ liveResultsUrl, targetDate, mediaPictureUrl }: { liveResultsUr
 
   const navLinks = [
     { name: "Race Guide", href: "#race-guide" },
+    ...(videoBriefingUrl && videoBriefingUrl.trim() !== ""
+      ? [{ name: "Technical Briefing", href: "#technical-briefing" }]
+      : []),
     { name: "Start List", href: "#start-list" },
     { name: "Top 5", href: "#top-five" },
     { name: "Results", href: "#full-results" },

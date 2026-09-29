@@ -3140,8 +3140,6 @@ export const EVENT_DATA_MAP: Record<string, EventData> = {
       },
     ]
   },
-  
-    
 };
 
 export const WORLDFINALS_DATA_MAP: Record<string, EventData> = {

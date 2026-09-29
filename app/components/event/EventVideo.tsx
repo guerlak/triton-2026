@@ -48,7 +48,8 @@ export default function EventVideo({
   }
 
   return (
-    <section id="event-video" className="relative py-8 sm:py-12 md:py-20 bg-black overflow-hidden border-t border-b border-white/10">
+    <section id="technical-briefing" className="relative py-8 sm:py-12 md:py-20 bg-black overflow-hidden border-t border-b border-white/10 scroll-mt-20">
+      <div id="event-video" className="sr-only" />
       {/* Background Ambient Glow */}
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-96 h-96 bg-triton-red/10 rounded-full blur-3xl pointer-events-none" />
 

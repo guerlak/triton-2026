@@ -25,7 +25,12 @@ export default async function AthleteArePage({ params }: { params: Promise<{ slu
 
 	return (
 		<main className="min-h-screen bg-black text-white">
-			<AthleteNavBar liveResultsUrl={data.athleteArea?.liveResultsUrl} targetDate={data.targetDate} mediaPictureUrl={data.athleteArea?.mediaPictureUrl} />
+			<AthleteNavBar
+				liveResultsUrl={data.athleteArea?.liveResultsUrl}
+				targetDate={data.targetDate}
+				mediaPictureUrl={data.athleteArea?.mediaPictureUrl}
+				videoBriefingUrl={data.athleteArea?.videoBriefingUrl}
+			/>
 			<RaceGuide raceGuideLink={data.athleteArea?.raceGuideLink} />
 			<section id="top-five" className="py-12 sm:py-20 bg-black relative border-t border-white/5">
 				<div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
