@@ -101,6 +101,16 @@ const TopFiveAthletes: React.FC<Props> = ({ initialAthletes = [] }) => {
     return result;
   }, [initialAthletes]);
 
+  const womenGroups = useMemo(
+    () => topGroups.filter((g) => g.gender === "Women"),
+    [topGroups]
+  );
+
+  const menGroups = useMemo(
+    () => topGroups.filter((g) => g.gender === "Men"),
+    [topGroups]
+  );
+
   const renderPosBadge = (pos: number) => {
     if (pos === 1) {
       return (
@@ -140,7 +150,7 @@ const TopFiveAthletes: React.FC<Props> = ({ initialAthletes = [] }) => {
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
         key={`${item.gender}-${item.contest}`}
-        className="bg-neutral-900 border border-white/10 rounded-2xl sm:rounded-3xl overflow-hidden shadow-2xl flex flex-col transition-all hover:border-white/20"
+        className="bg-neutral-900 border border-white/10 rounded-2xl sm:rounded-3xl overflow-hidden shadow-2xl flex flex-col transition-all hover:border-white/20 shrink-0 w-[85vw] max-w-[360px] sm:w-[350px] lg:w-full lg:max-w-none snap-start"
       >
         <div
           className={`px-3.5 sm:px-6 py-3.5 sm:py-5 border-b border-white/10 flex items-center justify-between ${isSprint
@@ -258,8 +268,42 @@ const TopFiveAthletes: React.FC<Props> = ({ initialAthletes = [] }) => {
         </p>
       </div>
 
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 lg:gap-8">
-        {topGroups.map((group) => renderTopTable(group))}
+      {/* Women Section */}
+      <div className="space-y-3 sm:space-y-4">
+        <div className="flex items-center justify-between border-b border-white/10 pb-2.5 sm:pb-3">
+          <div className="flex items-center gap-2 sm:gap-2.5">
+            <span className="w-2 h-2 rounded-full bg-triton-red shadow-sm shadow-red-500/50" />
+            <h3 className="text-xs sm:text-sm font-bold tracking-widest uppercase text-triton-red">
+              Women
+            </h3>
+          </div>
+          <span className="text-[10px] sm:text-xs font-bold text-gray-500 uppercase tracking-widest lg:hidden">
+            Scroll horizontal →
+          </span>
+        </div>
+
+        <div className="flex overflow-x-auto snap-x snap-mandatory lg:grid lg:grid-cols-3 gap-4 sm:gap-6 lg:gap-8 pb-4 lg:pb-0 no-scrollbar -mx-4 px-4 sm:-mx-6 sm:px-6 lg:mx-0 lg:px-0">
+          {womenGroups.map((group) => renderTopTable(group))}
+        </div>
+      </div>
+
+      {/* Men Section */}
+      <div className="space-y-3 sm:space-y-4">
+        <div className="flex items-center justify-between border-b border-white/10 pb-2.5 sm:pb-3">
+          <div className="flex items-center gap-2 sm:gap-2.5">
+            <span className="w-2 h-2 rounded-full bg-triton-red shadow-sm shadow-red-500/50" />
+            <h3 className="text-xs sm:text-sm font-bold tracking-widest uppercase text-triton-red">
+              Men
+            </h3>
+          </div>
+          <span className="text-[10px] sm:text-xs font-bold text-gray-500 uppercase tracking-widest lg:hidden">
+            Scroll horizontal →
+          </span>
+        </div>
+
+        <div className="flex overflow-x-auto snap-x snap-mandatory lg:grid lg:grid-cols-3 gap-4 sm:gap-6 lg:gap-8 pb-4 lg:pb-0 no-scrollbar -mx-4 px-4 sm:-mx-6 sm:px-6 lg:mx-0 lg:px-0">
+          {menGroups.map((group) => renderTopTable(group))}
+        </div>
       </div>
     </div>
   );

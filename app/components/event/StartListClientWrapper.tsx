@@ -82,7 +82,7 @@ const StartListClientWrapper: React.FC<Props> = ({ initialAthletes }) => {
           <select
             value={selectedGender}
             onChange={(e) => setSelectedGender(e.target.value)}
-            className="w-full bg-neutral-900 border border-white/10 rounded-xl py-2.5 sm:py-3.5 md:py-4 px-3 sm:px-4 md:px-6 text-[11px] sm:text-xs font-bold md:font-black text-white uppercase tracking-wider sm:tracking-widest focus:outline-none focus:border-triton-red/50 transition-all appearance-none cursor-pointer"
+            className="w-full bg-neutral-900 border border-white/10 rounded-xl py-2.5 sm:py-3 px-3 sm:px-4 text-[11px] sm:text-xs font-bold text-white uppercase tracking-wider sm:tracking-widest appearance-none focus:outline-none focus:border-triton-red/50 transition-all cursor-pointer"
           >
             {uniqueGenders.map((gender) => (
               <option key={gender} value={gender} className="bg-neutral-900 text-white uppercase">
@@ -102,7 +102,7 @@ const StartListClientWrapper: React.FC<Props> = ({ initialAthletes }) => {
           <select
             value={selectedDistance}
             onChange={(e) => setSelectedDistance(e.target.value)}
-            className="w-full bg-neutral-900 border border-white/10 rounded-xl py-2.5 sm:py-3.5 md:py-4 px-3 sm:px-4 md:px-6 text-[11px] sm:text-xs font-bold md:font-black text-white uppercase tracking-wider sm:tracking-widest focus:outline-none focus:border-triton-red/50 transition-all appearance-none cursor-pointer"
+            className="w-full bg-neutral-900 border border-white/10 rounded-xl py-2.5 sm:py-3 px-3 sm:px-4 text-[11px] sm:text-xs font-bold text-white uppercase tracking-wider sm:tracking-widest appearance-none focus:outline-none focus:border-triton-red/50 transition-all cursor-pointer"
           >
             {uniqueDistances.map((dist) => (
               <option key={dist} value={dist} className="bg-neutral-900 text-white uppercase">
@@ -122,7 +122,7 @@ const StartListClientWrapper: React.FC<Props> = ({ initialAthletes }) => {
           <select
             value={selectedAgeGroup}
             onChange={(e) => setSelectedAgeGroup(e.target.value)}
-            className="w-full bg-neutral-900 border border-white/10 rounded-xl py-2.5 sm:py-3.5 md:py-4 px-3 sm:px-4 md:px-6 text-[11px] sm:text-xs font-bold md:font-black text-white uppercase tracking-wider sm:tracking-widest focus:outline-none focus:border-triton-red/50 transition-all appearance-none cursor-pointer"
+            className="w-full bg-neutral-900 border border-white/10 rounded-xl py-2.5 sm:py-3 px-3 sm:px-4 text-[11px] sm:text-xs font-bold text-white uppercase tracking-wider sm:tracking-widest appearance-none focus:outline-none focus:border-triton-red/50 transition-all cursor-pointer"
           >
             {uniqueAgeGroups.map((group) => (
               <option key={group} value={group} className="bg-neutral-900 text-white uppercase">
@@ -145,16 +145,16 @@ const StartListClientWrapper: React.FC<Props> = ({ initialAthletes }) => {
         viewport={{ once: true }}
         className="bg-neutral-900 border border-white/5 rounded-2xl sm:rounded-3xl overflow-hidden shadow-2xl"
       >
-        <div className="overflow-x-auto scrollbar-hide">
+        <div className="overflow-x-auto custom-scrollbar pb-2 sm:pb-3">
           <table className="w-full text-left border-collapse min-w-[700px] md:min-w-[800px]">
             <thead>
-              <tr className="bg-black/60 text-[10px] sm:text-xs font-black uppercase text-gray-400 border-b border-white/10 tracking-widest whitespace-nowrap">
-                <th className="py-3.5 sm:py-4 md:py-5 px-3 sm:px-6 text-center w-14 sm:w-20 md:w-24">Bib</th>
-                <th className="py-3.5 sm:py-4 md:py-5 px-3 sm:px-6">Athlete</th>
-                <th className="py-3.5 sm:py-4 md:py-5 px-3 sm:px-6">Race</th>
-                <th className="py-3.5 sm:py-4 md:py-5 px-3 sm:px-6">Distance</th>
-                <th className="py-3.5 sm:py-4 md:py-5 px-3 sm:px-6">Gender</th>
-                <th className="py-3.5 sm:py-4 md:py-5 px-3 sm:px-6 text-center">Age Group</th>
+              <tr className="bg-black/60 text-[10px] font-black uppercase text-gray-400 border-b border-white/10 tracking-widest whitespace-nowrap">
+                <th className="py-3 sm:py-4 px-3 sm:px-6 text-center w-14 sm:w-20 md:w-24">Bib</th>
+                <th className="py-3 sm:py-4 px-3 sm:px-6">Athlete</th>
+                <th className="py-3 sm:py-4 px-3 sm:px-6">Race</th>
+                <th className="py-3 sm:py-4 px-3 sm:px-6">Distance</th>
+                <th className="py-3 sm:py-4 px-3 sm:px-6">Gender</th>
+                <th className="py-3 sm:py-4 px-3 sm:px-6 text-center">Age Group</th>
               </tr>
             </thead>
             <tbody>
@@ -165,7 +165,7 @@ const StartListClientWrapper: React.FC<Props> = ({ initialAthletes }) => {
                     className="border-b border-white/5 hover:bg-white/5 transition-colors group whitespace-nowrap"
                   >
                     {/* BIB */}
-                    <td className="py-3.5 sm:py-4 px-3 sm:px-6 text-center font-mono font-bold text-gray-300 text-xs sm:text-sm">
+                    <td className="py-3.5 sm:py-4 px-3 sm:px-6 text-center font-mono font-bold text-gray-400 text-xs sm:text-sm">
                       {athlete.Bib}
                     </td>
 
@@ -191,16 +191,16 @@ const StartListClientWrapper: React.FC<Props> = ({ initialAthletes }) => {
                     </td>
 
                     {/* RACE */}
-                    <td className="py-3.5 sm:py-4 px-3 sm:px-6 text-xs font-bold text-gray-300 uppercase tracking-wider">
-                      <span className="text-[10px] sm:text-xs font-black uppercase px-2.5 py-1  text-gray-200">
+                    <td className="py-3.5 sm:py-4 px-3 sm:px-6 text-xs font-bold text-gray-400 uppercase tracking-wider">
+                      <span className="text-[10px] font-black uppercase px-2 py-1 text-gray-300">
                         {athlete.Race || "Triathlon"}
                       </span>
                     </td>
 
                     {/* DISTANCE */}
-                    <td className="py-3.5 sm:py-4 px-3 sm:px-6 text-xs font-bold uppercase tracking-wider">
+                    <td className="py-3.5 sm:py-4 px-3 sm:px-6 text-xs font-bold text-gray-400 uppercase tracking-wider">
                       <span
-                        className={`text-[10px] sm:text-xs font-black uppercase px-2.5 py-1 rounded-md border shadow-sm ${(athlete.Distance || athlete.Contest)?.toLowerCase().includes("sprint")
+                        className={`text-[10px] font-black uppercase px-2 py-1 rounded-md border shadow-sm ${(athlete.Distance || athlete.Contest)?.toLowerCase().includes("sprint")
                           ? "bg-gray-400 text-black border-white/40"
                           : (athlete.Distance || athlete.Contest)?.toLowerCase().includes("middle")
                             ? "bg-red-500/30 text-white border-red-500/30"
@@ -215,14 +215,14 @@ const StartListClientWrapper: React.FC<Props> = ({ initialAthletes }) => {
 
                     {/* GENDER */}
                     <td className="py-3.5 sm:py-4 px-3 sm:px-6">
-                      <span className="text-[10px] sm:text-xs font-bold uppercase text-gray-300 tracking-wider">
+                      <span className="text-[10px] font-black uppercase px-2 py-1 tracking-widest text-gray-400">
                         {athlete.Gender}
                       </span>
                     </td>
 
                     {/* AGE GROUP */}
                     <td className="py-3.5 sm:py-4 px-3 sm:px-6 text-center">
-                      <span className="font-mono font-bold text-white text-xs uppercase tracking-widest px-3 py-1 rounded-full bg-white/5 border border-white/10 inline-block">
+                      <span className="font-black text-xs uppercase tracking-widest px-3 py-1 text-gray-300">
                         {athlete.AgeGroup}
                       </span>
                     </td>

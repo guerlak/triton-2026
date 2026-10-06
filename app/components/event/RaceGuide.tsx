@@ -5,9 +5,9 @@ import MainButton from "@/app/ui/MainButton";
 export default async function RaceGuide({ raceGuideLink }: { raceGuideLink?: string }) {
 
     return (
-        <section id="race-guide" className="relative py-12 sm:py-16 md:py-30 overflow-hidden">
+        <section id="race-guide" className="relative pt-32 pb-12 sm:pt-36 sm:pb-16 md:pt-44 md:pb-28 overflow-hidden">
             {/* Background Image */}
-            <div className="absolute inset-0 z-0">
+            <div className="absolute inset-0 z-0 ">
                 <Image
                     src="/images/triton-about-002.png"
                     alt="Race Start"
