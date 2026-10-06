@@ -1,7 +1,7 @@
 import RankingPageClient from "./RankingPageClient";
 import Heading from "../../ui/Heading";
 import { ApiRankingRepo } from "@/repositories/ApiRankingRepo";
-import { fetchGeneralRanking } from "@/services/RankingService";
+import { fetchGeneralRanking, fetchClubRanking } from "@/services/RankingService";
 import HallOfFame from "./HallOfFame";
 import { Award, Trophy } from "lucide-react";
 import Image from "next/image";
@@ -9,12 +9,15 @@ import { Metadata } from 'next';
 
 export const metadata: Metadata = {
   title: "Ranking | Triton World Series",
-  description: "Check the global standings and points for all Triton World Series athletes.",
+  description: "Check the global standings and points for all Triton World Series athletes and clubs.",
 };
 
 export default async function RankingPage() {
-
-  const data = await fetchGeneralRanking(new ApiRankingRepo());
+  const rankingRepo = new ApiRankingRepo();
+  const [data, clubsData] = await Promise.all([
+    fetchGeneralRanking(rankingRepo),
+    fetchClubRanking(rankingRepo),
+  ]);
 
   if (!data) {
     return (
@@ -113,9 +116,11 @@ export default async function RankingPage() {
           </p>
         </div>
       </div>
+
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <RankingPageClient initialAthletes={data} />
       </section>
+
 
       <section className="relative w-full overflow-hidden my-8 sm:my-10 group bg-triton-gray py-8 sm:py-12 md:py-16">
         {/* Background Image with Creative Effects */}

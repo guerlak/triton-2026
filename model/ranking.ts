@@ -21,4 +21,13 @@ export interface Athlete {
   [key: string]: any; // Para outros campos possíveis
 }
 
+export interface ClubRanking {
+  Club: string;
+  "Total Points": string;
+  NationFlag?: string;
+  Nation?: string;
+  Country?: string;
+  [key: string]: any;
+}
+
 

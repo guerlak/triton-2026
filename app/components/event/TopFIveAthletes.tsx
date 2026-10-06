@@ -140,17 +140,17 @@ const TopFiveAthletes: React.FC<Props> = ({ initialAthletes = [] }) => {
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
         key={`${item.gender}-${item.contest}`}
-        className="bg-neutral-900 border border-white/10 rounded-3xl overflow-hidden shadow-2xl flex flex-col transition-all hover:border-white/20"
+        className="bg-neutral-900 border border-white/10 rounded-2xl sm:rounded-3xl overflow-hidden shadow-2xl flex flex-col transition-all hover:border-white/20"
       >
         <div
-          className={`px-4 sm:px-6 py-4 sm:py-5 border-b border-white/10 flex items-center justify-between ${isSprint
+          className={`px-3.5 sm:px-6 py-3.5 sm:py-5 border-b border-white/10 flex items-center justify-between ${isSprint
             ? "bg-white/80 text-black"
             : isMiddle
               ? "bg-red-500/20 text-white"
               : "bg-white/5 text-white"
             }`}
         >
-          <div className="flex items-center gap-2.5 sm:gap-3 min-w-0">
+          <div className="flex items-center gap-2 sm:gap-3 min-w-0">
             <h3 className="font-black uppercase tracking-widest text-xs sm:text-sm truncate">
               {item.gender} <span className="opacity-40 mx-1">/</span>
               {item.contest.replace(" Distance", "")}
@@ -242,7 +242,7 @@ const TopFiveAthletes: React.FC<Props> = ({ initialAthletes = [] }) => {
   };
 
   return (
-    <div className="mt-8 sm:mt-12 space-y-8 sm:space-y-12">
+    <div className="mt-6 sm:mt-8 md:mt-12 space-y-6 sm:space-y-8 md:space-y-12">
       {/* Header */}
       <div className="flex flex-col items-center text-center space-y-3 sm:space-y-4 px-2">
         <div className="flex items-center gap-3 sm:gap-4 text-triton-red">
@@ -253,12 +253,12 @@ const TopFiveAthletes: React.FC<Props> = ({ initialAthletes = [] }) => {
         <h2 className="text-2xl sm:text-3xl md:text-5xl font-black uppercase leading-tight tracking-tight text-white">
           The <span className="text-triton-red italic">Champions</span>
         </h2>
-        <p className="text-xs sm:text-base md:text-lg text-gray-400 max-w-md italic">
+        <p className="text-xs sm:text-base md:text-lg text-gray-400 max-w-xl italic">
           Highlighting the top 5 performers per distance and gender.
         </p>
       </div>
 
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 lg:gap-8">
         {topGroups.map((group) => renderTopTable(group))}
       </div>
     </div>

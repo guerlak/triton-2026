@@ -40,7 +40,7 @@ const Navbar = ({
       : []),
     { name: "Start List", href: "#start-list" },
     { name: "Top 5", href: "#top-five" },
-    { name: "Results", href: "#full-results" },
+    { name: "Results", href: "#results" },
   ];
 
   const isEventActive = () => {

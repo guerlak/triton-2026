@@ -57,25 +57,25 @@ const LiveResultsClientWrapper: React.FC<Props> = ({ initialAthletes }) => {
   }, [initialAthletes, searchQuery, selectedAgeGroup, selectedDistance, selectedGender]);
 
   return (
-    <div className="mt-12 space-y-8">
-      <div className="flex flex-col items-center text-center space-y-4">
-        <div className="flex items-center gap-4 text-triton-red">
-          <div className="h-px w-12 bg-triton-red/30" />
-          <ClockArrowUp className="w-8 h-8" />
-          <div className="h-px w-12 bg-triton-red/30" />
+    <div className="mt-6 sm:mt-8 md:mt-12 space-y-6 sm:space-y-8">
+      <div className="flex flex-col items-center text-center space-y-3 sm:space-y-4 px-2">
+        <div className="flex items-center gap-3 sm:gap-4 text-triton-red">
+          <div className="h-px w-8 sm:w-12 bg-triton-red/30" />
+          <ClockArrowUp className="w-6 h-6 sm:w-8 sm:h-8" />
+          <div className="h-px w-8 sm:w-12 bg-triton-red/30" />
         </div>
-        <h2 className="text-4xl font-black uppercase tracking-[0.2em] text-white">
+        <h2 className="text-2xl sm:text-3xl md:text-5xl font-black uppercase leading-tight tracking-tight text-white">
           Full <span className="text-triton-red italic">Results</span>
         </h2>
-        <p className="text-gray-500 text-xs font-bold uppercase tracking-widest max-w-md italic">
-          Check all the  results of athletes participating in the event.
+        <p className="text-xs sm:text-base md:text-lg text-gray-400 max-w-xl italic">
+          Check all the results of athletes participating in the event.
         </p>
       </div>
       {/* Filters Header */}
-      <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-6">
+      <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-4 sm:gap-6">
         {/* Search Bar */}
         <div className="relative w-full lg:max-w-md group">
-          <div className="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none">
+          <div className="absolute inset-y-0 left-0 pl-3.5 sm:pl-4 flex items-center pointer-events-none">
             <Search size={18} className="text-gray-500 group-focus-within:text-triton-red transition-colors" />
           </div>
           <input
@@ -83,18 +83,18 @@ const LiveResultsClientWrapper: React.FC<Props> = ({ initialAthletes }) => {
             placeholder="SEARCH BY NAME OR BIB..."
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}
-            className="w-full bg-neutral-900 border border-white/10 rounded-2xl py-4 pl-12 pr-6 text-sm font-bold text-white uppercase tracking-widest focus:outline-none focus:border-triton-red/50 focus:ring-1 focus:ring-triton-red/50 transition-all placeholder:text-gray-600 shadow-xl"
+            className="w-full bg-neutral-900 border border-white/10 rounded-xl sm:rounded-2xl py-3 sm:py-4 pl-10 sm:pl-12 pr-4 sm:pr-6 text-xs sm:text-sm font-bold text-white uppercase tracking-wider sm:tracking-widest focus:outline-none focus:border-triton-red/50 focus:ring-1 focus:ring-triton-red/50 transition-all placeholder:text-gray-600 shadow-xl"
           />
         </div>
 
         {/* Select Filters */}
-        <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 w-full lg:w-auto">
+        <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 sm:gap-4 w-full lg:w-auto">
           {/* Distance Filter */}
           <div className="relative">
             <select
               value={selectedDistance}
               onChange={(e) => setSelectedDistance(e.target.value)}
-              className="w-full bg-neutral-900 border border-white/10 rounded-xl py-3 px-4 text-xs font-bold text-white uppercase tracking-widest appearance-none focus:outline-none focus:border-triton-red/50 transition-all cursor-pointer"
+              className="w-full bg-neutral-900 border border-white/10 rounded-xl py-2.5 sm:py-3 px-3 sm:px-4 text-[11px] sm:text-xs font-bold text-white uppercase tracking-wider sm:tracking-widest appearance-none focus:outline-none focus:border-triton-red/50 transition-all cursor-pointer"
             >
               <option value="">All Distances</option>
               {filterOptions.distances.map((d) => (
@@ -108,7 +108,7 @@ const LiveResultsClientWrapper: React.FC<Props> = ({ initialAthletes }) => {
             <select
               value={selectedGender}
               onChange={(e) => setSelectedGender(e.target.value)}
-              className="w-full bg-neutral-900 border border-white/10 rounded-xl py-3 px-4 text-xs font-bold text-white uppercase tracking-widest appearance-none focus:outline-none focus:border-triton-red/50 transition-all cursor-pointer"
+              className="w-full bg-neutral-900 border border-white/10 rounded-xl py-2.5 sm:py-3 px-3 sm:px-4 text-[11px] sm:text-xs font-bold text-white uppercase tracking-wider sm:tracking-widest appearance-none focus:outline-none focus:border-triton-red/50 transition-all cursor-pointer"
             >
               <option value="">All Genders</option>
               {filterOptions.genders.map((g) => (
@@ -122,7 +122,7 @@ const LiveResultsClientWrapper: React.FC<Props> = ({ initialAthletes }) => {
             <select
               value={selectedAgeGroup}
               onChange={(e) => setSelectedAgeGroup(e.target.value)}
-              className="w-full bg-neutral-900 border border-white/10 rounded-xl py-3 px-4 text-xs font-bold text-white uppercase tracking-widest appearance-none focus:outline-none focus:border-triton-red/50 transition-all cursor-pointer"
+              className="w-full bg-neutral-900 border border-white/10 rounded-xl py-2.5 sm:py-3 px-3 sm:px-4 text-[11px] sm:text-xs font-bold text-white uppercase tracking-wider sm:tracking-widest appearance-none focus:outline-none focus:border-triton-red/50 transition-all cursor-pointer"
             >
               <option value="">All Categories</option>
               {filterOptions.ageGroups.map((ag) => (
@@ -139,18 +139,18 @@ const LiveResultsClientWrapper: React.FC<Props> = ({ initialAthletes }) => {
         animate={{ opacity: 1, y: 0 }}
         key={`${selectedDistance}-${selectedGender}-${selectedAgeGroup}`} // Re-animate on filter change
         viewport={{ once: true }}
-        className="bg-neutral-900 border border-white/5 rounded-3xl overflow-hidden shadow-2xl"
+        className="bg-neutral-900 border border-white/5 rounded-2xl sm:rounded-3xl overflow-hidden shadow-2xl"
       >
-        <div className="overflow-x-auto scrollbar-hide">
-          <table className="w-full text-left border-collapse min-w-[900px]">
-            <thead>
-              <tr className="bg-black/40 text-[10px] font-black uppercase text-gray-500 border-b border-white/5 tracking-widest">
-                <th className="py-6 px-8 text-center w-24">Pos</th>
-                <th className="py-6 px-6">Athlete</th>
-                <th className="py-6 px-6">Distance</th>
-                <th className="py-6 px-6">Gender</th>
-                <th className="py-6 px-6">Age Group</th>
-                <th className="py-6 px-8 text-right text-triton-red">
+        <div className="overflow-auto max-h-[65vh] custom-scrollbar">
+          <table className="w-full text-left border-collapse min-w-[720px] md:min-w-[900px]">
+            <thead className="sticky top-0 z-10 bg-neutral-950/90 backdrop-blur-md">
+              <tr className="bg-black/60 text-[10px] font-black uppercase text-gray-400 border-b border-white/10 tracking-widest">
+                <th className="py-3 sm:py-4 px-3 sm:px-6 md:px-8 text-center w-16 sm:w-24">Pos</th>
+                <th className="py-3 sm:py-4 px-3 sm:px-6">Athlete</th>
+                <th className="py-3 sm:py-4 px-3 sm:px-6">Distance</th>
+                <th className="py-3 sm:py-4 px-3 sm:px-6">Gender</th>
+                <th className="py-3 sm:py-4 px-3 sm:px-6">Age Group</th>
+                <th className="py-3 sm:py-4 px-3 sm:px-6 md:px-8 text-right text-triton-red">
                   <div className="flex items-center justify-end gap-2 text-triton-red">
                     <Clock size={14} />
                     <span>Time</span>
@@ -165,10 +165,10 @@ const LiveResultsClientWrapper: React.FC<Props> = ({ initialAthletes }) => {
                     key={athlete.Bib}
                     className="border-b border-white/5 hover:bg-white/5 transition-colors group"
                   >
-                    <td className="py-5 px-4 text-center font-bold text-gray-400">
+                    <td className="py-3.5 sm:py-4 px-4 text-center font-bold text-gray-400">
                       {athlete.Pos != null && athlete.Pos !== "" ? `#${athlete.Pos}` : `#${i + 1}`}
                     </td>
-                    <td className="py-5 px-6">
+                    <td className="py-3.5 sm:py-4 px-6">
                       <div className="flex items-center gap-4">
                         {/* <img
                           src={athlete.Flag}
@@ -185,7 +185,7 @@ const LiveResultsClientWrapper: React.FC<Props> = ({ initialAthletes }) => {
                         )}
                       </div>
                     </td>
-                    <td className="py-5 px-6 text-xs font-bold text-gray-400 uppercase tracking-wider">
+                    <td className="py-3.5 sm:py-4 px-6 text-xs font-bold text-gray-400 uppercase tracking-wider">
                       <span className={`text-[10px] font-black uppercase px-2 py-1 rounded-md border 
                         ${athlete.Contest === "Sprint Distance"
                           ? "border-white/20 text-black bg-white/75"
@@ -196,17 +196,17 @@ const LiveResultsClientWrapper: React.FC<Props> = ({ initialAthletes }) => {
                         {athlete.Contest}
                       </span>
                     </td>
-                    <td className="py-5 px-6">
+                    <td className="py-3.5 sm:py-4 px-6">
                       <span className="text-[10px] font-black uppercase px-2 py-1 tracking-widest text-gray-400">
                         {athlete.Gender}
                       </span>
                     </td>
-                    <td className="py-5 px-6">
+                    <td className="py-3.5 sm:py-4 px-6">
                       <span className="font-black text-xs uppercase tracking-widest px-3 py-1 text-gray-300">
                         {athlete.AgeGroup}
                       </span>
                     </td>
-                    <td className="py-5 px-8 text-right">
+                    <td className="py-3.5 sm:py-4 px-8 text-right">
                       <span className="font-black text-sm text-white tabular-nums tracking-widest">
                         {athlete.Time || "--:--:--"}
                       </span>
@@ -215,7 +215,7 @@ const LiveResultsClientWrapper: React.FC<Props> = ({ initialAthletes }) => {
                 ))
               ) : (
                 <tr>
-                  <td colSpan={6} className="py-20 text-center text-gray-500 font-bold uppercase tracking-widest">
+                  <td colSpan={6} className="py-16 text-center text-gray-500 font-bold uppercase tracking-widest">
                     No athletes found matching your filters.
                   </td>
                 </tr>

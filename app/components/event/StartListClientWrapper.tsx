@@ -60,12 +60,12 @@ const StartListClientWrapper: React.FC<Props> = ({ initialAthletes }) => {
 
   return (
 
-    <div className="mt-12 space-y-6">
+    <div className="mt-6 sm:mt-8 md:mt-12 space-y-4 sm:space-y-6">
       {/* Search & Filter Bar */}
-      <div className="flex flex-col lg:flex-row gap-4 items-start lg:items-center">
+      <div className="flex flex-col lg:flex-row gap-3 sm:gap-4 items-start lg:items-center">
         {/* Search Bar */}
         <div className="relative w-full lg:max-w-md group">
-          <div className="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none">
+          <div className="absolute inset-y-0 left-0 pl-3.5 sm:pl-4 flex items-center pointer-events-none">
             <Search size={18} className="text-gray-500 group-focus-within:text-triton-red transition-colors" />
           </div>
           <input
@@ -73,7 +73,7 @@ const StartListClientWrapper: React.FC<Props> = ({ initialAthletes }) => {
             placeholder="SEARCH BY NAME OR BIB..."
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}
-            className="w-full bg-neutral-900 border border-white/10 rounded-2xl py-4 pl-12 pr-6 text-sm font-bold text-white uppercase tracking-widest focus:outline-none focus:border-triton-red/50 focus:ring-1 focus:ring-triton-red/50 transition-all placeholder:text-gray-600 shadow-xl"
+            className="w-full bg-neutral-900 border border-white/10 rounded-xl sm:rounded-2xl py-3 sm:py-4 pl-10 sm:pl-12 pr-4 sm:pr-6 text-xs sm:text-sm font-bold text-white uppercase tracking-wider sm:tracking-widest focus:outline-none focus:border-triton-red/50 focus:ring-1 focus:ring-triton-red/50 transition-all placeholder:text-gray-600 shadow-xl"
           />
         </div>
 
@@ -82,7 +82,7 @@ const StartListClientWrapper: React.FC<Props> = ({ initialAthletes }) => {
           <select
             value={selectedGender}
             onChange={(e) => setSelectedGender(e.target.value)}
-            className="w-full bg-neutral-900 border border-white/10 rounded-2xl py-4 px-6 text-xs font-black text-white uppercase tracking-widest focus:outline-none focus:border-triton-red/50 transition-all appearance-none cursor-pointer"
+            className="w-full bg-neutral-900 border border-white/10 rounded-xl py-2.5 sm:py-3.5 md:py-4 px-3 sm:px-4 md:px-6 text-[11px] sm:text-xs font-bold md:font-black text-white uppercase tracking-wider sm:tracking-widest focus:outline-none focus:border-triton-red/50 transition-all appearance-none cursor-pointer"
           >
             {uniqueGenders.map((gender) => (
               <option key={gender} value={gender} className="bg-neutral-900 text-white uppercase">
@@ -102,7 +102,7 @@ const StartListClientWrapper: React.FC<Props> = ({ initialAthletes }) => {
           <select
             value={selectedDistance}
             onChange={(e) => setSelectedDistance(e.target.value)}
-            className="w-full bg-neutral-900 border border-white/10 rounded-2xl py-4 px-6 text-xs font-black text-white uppercase tracking-widest focus:outline-none focus:border-triton-red/50 transition-all appearance-none cursor-pointer"
+            className="w-full bg-neutral-900 border border-white/10 rounded-xl py-2.5 sm:py-3.5 md:py-4 px-3 sm:px-4 md:px-6 text-[11px] sm:text-xs font-bold md:font-black text-white uppercase tracking-wider sm:tracking-widest focus:outline-none focus:border-triton-red/50 transition-all appearance-none cursor-pointer"
           >
             {uniqueDistances.map((dist) => (
               <option key={dist} value={dist} className="bg-neutral-900 text-white uppercase">
@@ -122,7 +122,7 @@ const StartListClientWrapper: React.FC<Props> = ({ initialAthletes }) => {
           <select
             value={selectedAgeGroup}
             onChange={(e) => setSelectedAgeGroup(e.target.value)}
-            className="w-full bg-neutral-900 border border-white/10 rounded-2xl py-4 px-6 text-xs font-black text-white uppercase tracking-widest focus:outline-none focus:border-triton-red/50 transition-all appearance-none cursor-pointer"
+            className="w-full bg-neutral-900 border border-white/10 rounded-xl py-2.5 sm:py-3.5 md:py-4 px-3 sm:px-4 md:px-6 text-[11px] sm:text-xs font-bold md:font-black text-white uppercase tracking-wider sm:tracking-widest focus:outline-none focus:border-triton-red/50 transition-all appearance-none cursor-pointer"
           >
             {uniqueAgeGroups.map((group) => (
               <option key={group} value={group} className="bg-neutral-900 text-white uppercase">
@@ -143,18 +143,18 @@ const StartListClientWrapper: React.FC<Props> = ({ initialAthletes }) => {
         initial={{ opacity: 0, y: 30 }}
         animate={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
-        className="bg-neutral-900 border border-white/5 rounded-3xl overflow-hidden shadow-2xl"
+        className="bg-neutral-900 border border-white/5 rounded-2xl sm:rounded-3xl overflow-hidden shadow-2xl"
       >
         <div className="overflow-x-auto scrollbar-hide">
-          <table className="w-full text-left border-collapse min-w-[800px]">
+          <table className="w-full text-left border-collapse min-w-[700px] md:min-w-[800px]">
             <thead>
               <tr className="bg-black/60 text-[10px] sm:text-xs font-black uppercase text-gray-400 border-b border-white/10 tracking-widest whitespace-nowrap">
-                <th className="py-5 px-3 sm:px-6 text-center w-16 sm:w-24">Bib</th>
-                <th className="py-5 px-3 sm:px-6">Athlete</th>
-                <th className="py-5 px-3 sm:px-6">Race</th>
-                <th className="py-5 px-3 sm:px-6">Distance</th>
-                <th className="py-5 px-3 sm:px-6">Gender</th>
-                <th className="py-5 px-3 sm:px-6 text-center">Age Group</th>
+                <th className="py-3.5 sm:py-4 md:py-5 px-3 sm:px-6 text-center w-14 sm:w-20 md:w-24">Bib</th>
+                <th className="py-3.5 sm:py-4 md:py-5 px-3 sm:px-6">Athlete</th>
+                <th className="py-3.5 sm:py-4 md:py-5 px-3 sm:px-6">Race</th>
+                <th className="py-3.5 sm:py-4 md:py-5 px-3 sm:px-6">Distance</th>
+                <th className="py-3.5 sm:py-4 md:py-5 px-3 sm:px-6">Gender</th>
+                <th className="py-3.5 sm:py-4 md:py-5 px-3 sm:px-6 text-center">Age Group</th>
               </tr>
             </thead>
             <tbody>
@@ -241,10 +241,10 @@ const StartListClientWrapper: React.FC<Props> = ({ initialAthletes }) => {
 
         {/* View All Button */}
         {filteredAthletes.length > displayedAthletes.length && !showAll && (
-          <div className="p-8 flex justify-center border-t border-white/5 bg-black/20">
+          <div className="p-4 sm:p-6 md:p-8 flex justify-center border-t border-white/5 bg-black/20">
             <button
               onClick={() => setShowAll(true)}
-              className="group relative px-10 py-4 bg-triton-red hover:bg-white text-white hover:text-black font-black uppercase tracking-[0.2em] text-xs rounded-2xl transition-all duration-300 transform hover:scale-105 shadow-[0_0_20px_rgba(234,30,36,0.3)] hover:shadow-[0_0_30px_rgba(255,255,255,0.1)] flex items-center gap-3"
+              className="group relative w-full sm:w-auto justify-center px-6 sm:px-10 py-3 sm:py-4 bg-triton-red hover:bg-white text-white hover:text-black font-black uppercase tracking-wider sm:tracking-[0.2em] text-xs rounded-xl sm:rounded-2xl transition-all duration-300 transform hover:scale-105 shadow-[0_0_20px_rgba(234,30,36,0.3)] hover:shadow-[0_0_30px_rgba(255,255,255,0.1)] flex items-center gap-3"
             >
               <span>View All</span>
               <span className="opacity-60 font-medium text-[10px]">({filteredAthletes.length} Matches)</span>

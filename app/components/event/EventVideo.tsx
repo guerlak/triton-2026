@@ -55,30 +55,19 @@ export default function EventVideo({
 
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         {/* Header Section */}
-        <div className="flex flex-col items-center text-center mb-6 sm:mb-10 md:mb-12">
-          <motion.div
-            initial={{ opacity: 0, scale: 0.8 }}
-            whileInView={{ opacity: 1, scale: 1 }}
-            viewport={{ once: true }}
-            className="w-16 h-1 bg-triton-red mb-4 rounded-full"
-          />
-
-          <motion.span
-            initial={{ opacity: 0, y: 15 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            className="text-xs sm:text-sm font-bold tracking-widest uppercase text-triton-red mb-2 sm:mb-3 flex items-center gap-2"
-          >
-            <Play className="w-3.5 h-3.5 fill-triton-red" />
-            {subtitle}
-          </motion.span>
+        <div className="flex flex-col items-center text-center space-y-3 sm:space-y-4 px-2 mb-6 sm:mb-10 md:mb-12">
+          <div className="flex items-center gap-3 sm:gap-4 text-triton-red">
+            <div className="h-px w-8 sm:w-12 bg-triton-red/30" />
+            <Play className="w-6 h-6 sm:w-8 sm:h-8 fill-triton-red" />
+            <div className="h-px w-8 sm:w-12 bg-triton-red/30" />
+          </div>
 
           <motion.h2
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ delay: 0.1, duration: 0.6 }}
-            className="text-2xl sm:text-3xl md:text-5xl font-black text-white uppercase leading-tight tracking-tight mb-3 sm:mb-4"
+            className="text-2xl sm:text-3xl md:text-5xl font-black text-white uppercase leading-tight tracking-tight"
           >
             {title}
           </motion.h2>
@@ -89,7 +78,7 @@ export default function EventVideo({
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: 0.2, duration: 0.6 }}
-              className="text-xs sm:text-base md:text-lg text-gray-400 max-w-2xl leading-relaxed"
+              className="text-xs sm:text-base md:text-lg text-gray-400 max-w-xl italic"
             >
               {description}
             </motion.p>

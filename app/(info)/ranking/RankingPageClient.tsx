@@ -146,7 +146,6 @@ export default function RankingPageClient({ initialAthletes }: RankingPageClient
               <thead>
                 <tr className="bg-black/60 text-[10px] font-black uppercase tracking-[0.2em] text-gray-500 border-b border-white/10">
                   <th className="py-4 sm:py-6 px-2 sm:px-8 text-center w-12 sm:w-20">Rank</th>
-                  <th className="py-4 sm:py-6 px-2 sm:px-4">BIB</th>
                   <th className="py-4 sm:py-6 px-2 sm:px-4">Athlete</th>
                   <th className="py-4 sm:py-6 px-4 hidden sm:table-cell">Gender</th>
                   <th className="py-4 sm:py-6 px-4 hidden md:table-cell">Distance</th>
@@ -175,7 +174,7 @@ export default function RankingPageClient({ initialAthletes }: RankingPageClient
                             {athlete["Global Standings"]}
                           </span>
                         </td>
-                        <td className="py-3.5 sm:py-5 px-2 sm:px-4 font-mono text-[11px] sm:text-xs text-gray-500">#{athlete.Bib}</td>
+
                         <td className="py-3.5 sm:py-5 px-2 sm:px-4">
                           <div className="flex items-center gap-2 sm:gap-3">
                             <CountryFlag countryCode={athlete.Country} />

@@ -5,7 +5,7 @@ import MainButton from "@/app/ui/MainButton";
 export default async function RaceGuide({ raceGuideLink }: { raceGuideLink?: string }) {
 
     return (
-        <section id="race-guide" className="relative py-48 overflow-hidden">
+        <section id="race-guide" className="relative py-12 sm:py-16 md:py-30 overflow-hidden">
             {/* Background Image */}
             <div className="absolute inset-0 z-0">
                 <Image
@@ -23,14 +23,14 @@ export default async function RaceGuide({ raceGuideLink }: { raceGuideLink?: str
                         initial={{ opacity: 0, scale: 0.8 }}
                         whileInView={{ opacity: 1, scale: 1 }}
                         viewport={{ once: true }}
-                        className="w-20 h-1 bg-triton-red mb-8 rounded-full"
+                        className="w-12 sm:w-16 md:w-20 h-1 bg-triton-red mb-4 sm:mb-6 md:mb-8 rounded-full"
                     />
 
                     <motion.span
                         initial={{ opacity: 0, y: 20 }}
                         whileInView={{ opacity: 1, y: 0 }}
                         viewport={{ once: true }}
-                        className="text-triton-red font-bold uppercase tracking-[0.3em] mb-4 text-sm"
+                        className="text-triton-red font-bold uppercase tracking-wider sm:tracking-[0.3em] mb-3 sm:mb-4 text-xs sm:text-sm"
                     >
                         Official Technical Content
                     </motion.span>
@@ -40,7 +40,7 @@ export default async function RaceGuide({ raceGuideLink }: { raceGuideLink?: str
                         whileInView={{ opacity: 1, y: 0 }}
                         viewport={{ once: true }}
                         transition={{ delay: 0.1, duration: 0.8 }}
-                        className="text-4xl md:text-5xl lg:text-6xl font-black text-white uppercase mb-8 leading-[1.1] max-w-5xl"
+                        className="text-2xl sm:text-3xl md:text-5xl font-black text-white uppercase mb-6 leading-tight tracking-tight max-w-4xl"
                     >
                         All the information you need in the <span className="text-triton-red">Race Guide</span>
                     </motion.h2>
@@ -50,7 +50,7 @@ export default async function RaceGuide({ raceGuideLink }: { raceGuideLink?: str
                         whileInView={{ opacity: 1, y: 0 }}
                         viewport={{ once: true }}
                         transition={{ delay: 0.2, duration: 0.8 }}
-                        className="text-gray-400 text-lg md:text-xl max-w-3xl mb-12 leading-relaxed"
+                        className="text-xs sm:text-base md:text-lg text-gray-400 max-w-2xl mb-10 leading-relaxed italic"
                     >
                         Every detail counts. From technical rules to hydration points, get the official information  to optimize your performance at TRITON RACE.
                     </motion.p>
