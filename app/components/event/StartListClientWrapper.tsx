@@ -14,6 +14,7 @@ interface LiveAthlete {
   Name: string;
   Gender: string;
   AgeGroup: string;
+  Club?: string;
 }
 
 interface Props {
@@ -25,6 +26,7 @@ const StartListClientWrapper: React.FC<Props> = ({ initialAthletes }) => {
   const [selectedGender, setSelectedGender] = useState("ALL GENDERS");
   const [selectedDistance, setSelectedDistance] = useState("ALL DISTANCES");
   const [selectedAgeGroup, setSelectedAgeGroup] = useState("ALL AGE GROUPS");
+  const [selectedClub, setSelectedClub] = useState("ALL CLUBS");
   const [showAll, setShowAll] = useState(false);
 
   const uniqueGenders = ["ALL GENDERS", ...Array.from(new Set(initialAthletes.map((a) => a.Gender)))];
@@ -39,6 +41,7 @@ const StartListClientWrapper: React.FC<Props> = ({ initialAthletes }) => {
     ),
   ].sort();
   const uniqueAgeGroups = ["ALL AGE GROUPS", ...Array.from(new Set(initialAthletes.map((a) => a.AgeGroup)))].sort();
+  const uniqueClubs = ["ALL CLUBS", ...Array.from(new Set(initialAthletes.map((a) => a.Club)))].sort();
 
   const filteredAthletes = initialAthletes.filter((athlete) => {
     const query = searchQuery.toLowerCase();
@@ -52,8 +55,9 @@ const StartListClientWrapper: React.FC<Props> = ({ initialAthletes }) => {
     const matchesAgeGroup = selectedAgeGroup === "ALL AGE GROUPS" || athlete.AgeGroup === selectedAgeGroup;
     const athleteDistance = athlete.Distance || athlete.Contest;
     const matchesDistance = selectedDistance === "ALL DISTANCES" || athleteDistance === selectedDistance;
+    const matchesClub = selectedClub === "ALL CLUBS" || athlete.Club === selectedClub;
 
-    return matchesSearch && matchesGender && matchesAgeGroup && matchesDistance;
+    return matchesSearch && matchesGender && matchesAgeGroup && matchesDistance && matchesClub;
   });
 
   const displayedAthletes = showAll ? filteredAthletes : filteredAthletes.slice(0, 20);
@@ -136,6 +140,25 @@ const StartListClientWrapper: React.FC<Props> = ({ initialAthletes }) => {
             </svg>
           </div>
         </div>
+
+        <div className="relative w-full lg:w-64">
+          <select
+            value={selectedClub}
+            onChange={(e) => setSelectedClub(e.target.value)}
+            className="w-full bg-neutral-900 border border-white/10 rounded-xl py-2.5 sm:py-3 px-3 sm:px-4 text-[11px] sm:text-xs font-bold text-white uppercase tracking-wider sm:tracking-widest appearance-none focus:outline-none focus:border-triton-red/50 transition-all cursor-pointer"
+          >
+            {uniqueClubs.map((club) => (
+              <option key={club} value={club} className="bg-neutral-900 text-white uppercase">
+                {club}
+              </option>
+            ))}
+          </select>
+          <div className="absolute inset-y-0 right-0 pr-4 flex items-center pointer-events-none text-gray-500">
+            <svg className="w-4 h-4 fill-current" viewBox="0 0 20 20">
+              <path d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" />
+            </svg>
+          </div>
+        </div>
       </div>
 
       {/* Table Container */}
@@ -155,6 +178,7 @@ const StartListClientWrapper: React.FC<Props> = ({ initialAthletes }) => {
                 <th className="py-3 sm:py-4 px-3 sm:px-6">Distance</th>
                 <th className="py-3 sm:py-4 px-3 sm:px-6">Gender</th>
                 <th className="py-3 sm:py-4 px-3 sm:px-6 text-center">Age Group</th>
+                <th className="py-3 sm:py-4 px-3 sm:px-6 text-center">Club</th>
               </tr>
             </thead>
             <tbody>
@@ -224,6 +248,12 @@ const StartListClientWrapper: React.FC<Props> = ({ initialAthletes }) => {
                     <td className="py-3.5 sm:py-4 px-3 sm:px-6 text-center">
                       <span className="font-black text-xs uppercase tracking-widest px-3 py-1 text-gray-300">
                         {athlete.AgeGroup}
+                      </span>
+                    </td>
+
+                    <td className="py-3.5 sm:py-4 px-3 sm:px-6 text-center">
+                      <span className="font-black text-xs uppercase tracking-widest px-3 py-1 text-gray-300">
+                        {athlete.Club}
                       </span>
                     </td>
                   </tr>

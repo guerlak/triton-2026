@@ -50,11 +50,11 @@ export default async function AthleteArePage({ params }: { params: Promise<{ slu
 				</div>
 			</section>
 
-			<section id="club-ranking" className="py-8 sm:py-12 md:py-20 bg-black relative border-t border-white/5">
+			{/* <section id="club-ranking" className="py-8 sm:py-12 md:py-20 bg-black relative border-t border-white/5">
 				<div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 					<ClubRankingPageClient initialClubs={clubsData ?? []} />
 				</div>
-			</section>
+			</section> */}
 
 			<EventVideo videoBriefingUrl={data.athleteArea?.videoBriefingUrl} />
 			<StartList slug={slug} />
