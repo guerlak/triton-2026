@@ -148,7 +148,7 @@ const StartListClientWrapper: React.FC<Props> = ({ initialAthletes }) => {
         <div className="overflow-x-auto custom-scrollbar pb-2 sm:pb-3">
           <table className="w-full text-left border-collapse min-w-[700px] md:min-w-[800px]">
             <thead>
-              <tr className="bg-black/60 text-[10px] font-black uppercase text-gray-400 border-b border-white/10 tracking-widest whitespace-nowrap">
+              <tr className="bg-black/60 text-[10px] font-black uppercase text-gray-400 border-b border-white/10 tracking-widest whitespace-nowrap text-center">
                 <th className="py-3 sm:py-4 px-3 sm:px-6 text-center w-14 sm:w-20 md:w-24">Bib</th>
                 <th className="py-3 sm:py-4 px-3 sm:px-6">Athlete</th>
                 <th className="py-3 sm:py-4 px-3 sm:px-6">Race</th>
@@ -162,7 +162,7 @@ const StartListClientWrapper: React.FC<Props> = ({ initialAthletes }) => {
                 displayedAthletes.map((athlete) => (
                   <tr
                     key={`${athlete.TritonID}-${athlete.Bib}`}
-                    className="border-b border-white/5 hover:bg-white/5 transition-colors group whitespace-nowrap"
+                    className="border-b border-white/5 hover:bg-white/5 transition-colors group whitespace-nowrap text-center"
                   >
                     {/* BIB */}
                     <td className="py-3.5 sm:py-4 px-3 sm:px-6 text-center font-mono font-bold text-gray-400 text-xs sm:text-sm">
@@ -193,7 +193,7 @@ const StartListClientWrapper: React.FC<Props> = ({ initialAthletes }) => {
                     {/* RACE */}
                     <td className="py-3.5 sm:py-4 px-3 sm:px-6 text-xs font-bold text-gray-400 uppercase tracking-wider">
                       <span className="text-[10px] font-black uppercase px-2 py-1 text-gray-300">
-                        {athlete.Race || "Triathlon"}
+                        {athlete.Race || "-"}
                       </span>
                     </td>
 

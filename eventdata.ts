@@ -1014,7 +1014,7 @@ export const EVENT_DATA_MAP: Record<string, EventData> = {
     athleteArea: {
       liveResultsUrl: "",
       raceGuideLink: "/docs/race-guide/athlete_guide_qdong26.pdf",
-      startListApiUrl: "",
+      startListApiUrl: "https://api.raceresult.com/371805/J1CHIPHJFTLQ2LQWVP319LYWTF2ACT7W",
       mediaPictureUrl: "",
       videoBriefingUrl: "",
       topFiveApiUrl: "",

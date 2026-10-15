@@ -13,6 +13,7 @@ interface Props {
 }
 
 const RankingClientWrapper: React.FC<Props> = ({ initialAthletes }) => {
+
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [selectedAthlete, setSelectedAthlete] = useState<Athlete | null>(null);
 
@@ -87,21 +88,21 @@ const RankingClientWrapper: React.FC<Props> = ({ initialAthletes }) => {
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8 w-full max-w-full overflow-hidden">
           {/* Women's Column */}
           <div className="flex flex-col gap-2">
-            <h3 className="text-gray-300 text-center font-black uppercase tracking-widest text-lg mb-4 px-4 md:px-0">Women</h3>
+            {/* <h3 className="text-gray-300 text-center font-black uppercase tracking-widest text-lg mb-4 px-4 md:px-0">Women</h3> */}
             <div className="flex md:flex-col overflow-x-auto md:overflow-x-visible pb-6 md:pb-0 snap-x snap-mandatory gap-4 no-scrollbar px-4 md:px-0">
-              {renderTable(athleteFilter("Women", "Sprint Distance"))}
-              {renderTable(athleteFilter("Women", "Middle Distance"))}
-              {renderTable(athleteFilter("Women", "Long Distance"))}
+              {renderTable(athleteFilter("Women", "Sprint"))}
+              {renderTable(athleteFilter("Women", "Middle"))}
+              {renderTable(athleteFilter("Women", "Long"))}
             </div>
           </div>
 
           {/* Men's Column */}
           <div className="flex flex-col gap-2">
-            <h3 className="text-gray-300 text-center font-black uppercase tracking-widest text-lg mb-4 px-4 md:px-0">Men</h3>
+            {/* <h3 className="text-gray-300 text-center font-black uppercase tracking-widest text-lg mb-4 px-4 md:px-0">Men</h3> */}
             <div className="flex md:flex-col overflow-x-auto md:overflow-x-visible pb-6 md:pb-0 snap-x snap-mandatory gap-4 no-scrollbar px-4 md:px-0">
-              {renderTable(athleteFilter("Men", "Sprint Distance"))}
-              {renderTable(athleteFilter("Men", "Middle Distance"))}
-              {renderTable(athleteFilter("Men", "Long Distance"))}
+              {renderTable(athleteFilter("Men", "Sprint"))}
+              {renderTable(athleteFilter("Men", "Middle"))}
+              {renderTable(athleteFilter("Men", "Long"))}
             </div>
           </div>
         </div>

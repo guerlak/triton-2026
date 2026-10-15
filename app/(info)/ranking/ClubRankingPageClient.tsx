@@ -15,9 +15,7 @@ import {
   Sparkles,
 } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
-import CustomSelect from "@/app/components/CustomSelect";
 import { CountryFlag } from "@/app/utils/CountryFlag";
-import Modal from "@/app/ui/Modal";
 
 interface ClubRankingPageClientProps {
   initialClubs?: ClubRanking[] | null;
@@ -79,6 +77,7 @@ export function ClubRankingPageClient({ initialClubs = [] }: ClubRankingPageClie
 
   // Normalização e cálculo de ranking sequencial
   const normalizedClubs = useMemo<NormalizedClub[]>(() => {
+
     const list = Array.isArray(initialClubs) ? initialClubs : [];
 
     const mapped = list.map((item, idx) => {
@@ -114,18 +113,7 @@ export function ClubRankingPageClient({ initialClubs = [] }: ClubRankingPageClie
     return rankedList;
   }, [initialClubs]);
 
-  // Lista única de países para o filtro
-  const countryOptions = useMemo(() => {
-    const countries = new Set(
-      normalizedClubs
-        .map((c) => c.countryName)
-        .filter((c) => Boolean(c) && c !== "Global")
-    );
-    return [
-      { value: "All", label: "All Countries" },
-      ...Array.from(countries).sort().map((c) => ({ value: c, label: c })),
-    ];
-  }, [normalizedClubs]);
+
 
   // Filtragem e ordenação na visualização
   const filteredClubs = useMemo(() => {
@@ -141,8 +129,8 @@ export function ClubRankingPageClient({ initialClubs = [] }: ClubRankingPageClie
         return matchesSearch && matchesCountry;
       })
       .sort((a, b) => {
-        if (sortOrder === "points-asc") return a.totalPoints - b.totalPoints;
-        if (sortOrder === "name-asc") return a.name.localeCompare(b.name);
+        if (sortOrder === "points-desc") return b.totalPoints - a.totalPoints;
+
         return a.totalPoints - b.totalPoints; // points-desc por padrão do rank
       });
   }, [normalizedClubs, search, countryFilter, sortOrder]);
@@ -187,15 +175,14 @@ export function ClubRankingPageClient({ initialClubs = [] }: ClubRankingPageClie
             {topClubs.map((club) => {
               const isFirst = club.rank === 1;
               const isSecond = club.rank === 2;
-              const isThird = club.rank === 3;
+
 
               return (
                 <motion.div
                   key={club.id}
                   whileHover={{ y: -4 }}
                   transition={{ duration: 0.2 }}
-                  onClick={() => handleClubClick(club)}
-                  className={`relative p-4 sm:p-6 md:p-8 rounded-2xl sm:rounded-3xl cursor-pointer border transition-all ${isFirst
+                  className={`relative p-4 sm:p-6 md:p-8 rounded-2xl sm:rounded-3xl border transition-all ${isFirst
                     ? "bg-linear-to-b from-triton-red/20 via-neutral-900/90 to-neutral-900 border-triton-red/40 shadow-xl shadow-triton-red/10"
                     : isSecond
                       ? "bg-linear-to-b from-white/10 via-neutral-900/90 to-neutral-900 border-white/20 shadow-lg"
@@ -287,7 +274,7 @@ export function ClubRankingPageClient({ initialClubs = [] }: ClubRankingPageClie
                       animate={{ opacity: 1 }}
                       exit={{ opacity: 0 }}
                       key={club.id}
-                      onClick={() => handleClubClick(club)}
+
                       className="group hover:bg-white/5 transition-all cursor-pointer"
                     >
                       {/* Posição no Ranking */}
