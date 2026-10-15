@@ -278,7 +278,7 @@ const TopFiveAthletes: React.FC<Props> = ({ initialAthletes = [] }) => {
             </h3>
           </div>
           <span className="text-[10px] sm:text-xs font-bold text-gray-500 uppercase tracking-widest lg:hidden">
-            Scroll horizontal →
+            →
           </span>
         </div>
 
@@ -297,7 +297,7 @@ const TopFiveAthletes: React.FC<Props> = ({ initialAthletes = [] }) => {
             </h3>
           </div>
           <span className="text-[10px] sm:text-xs font-bold text-gray-500 uppercase tracking-widest lg:hidden">
-            Scroll horizontal →
+            →
           </span>
         </div>
 

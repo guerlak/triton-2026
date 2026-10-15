@@ -171,7 +171,7 @@ export function ClubRankingPageClient({ initialClubs = [] }: ClubRankingPageClie
             <span>Top Performing Clubs</span>
           </div>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3.5 sm:gap-6">
+          <div className="grid grid-cols-3 sm:grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3.5 sm:gap-6">
             {topClubs.map((club) => {
               const isFirst = club.rank === 1;
               const isSecond = club.rank === 2;
@@ -191,29 +191,17 @@ export function ClubRankingPageClient({ initialClubs = [] }: ClubRankingPageClie
                 >
                   <div className="flex items-start justify-between gap-3 mb-3 sm:mb-4">
                     <span
-                      className={`inline-flex items-center justify-center w-7 h-7 sm:w-10 sm:h-10 rounded-full font-black text-xs sm:text-sm border ${isFirst
-                        ? "bg-triton-red border-triton-red text-white shadow-md shadow-triton-red/30"
+                      className={`inline-flex items-center justify-center w-7 h-7 sm:w-10 sm:h-10 rounded-full font-black text-xs sm:text-sm ${isFirst
+                        ? "bg-amber-400 text-black shadow-md shadow-amber-500/20"
                         : isSecond
-                          ? "bg-white/15 border-white/30 text-white"
-                          : "bg-amber-500/20 border-amber-500/40 text-amber-300"
+                          ? "bg-slate-300 text-black shadow-sm"
+                          : club.rank === 3
+                            ? "bg-amber-700 text-white shadow-sm"
+                            : "text-gray-300 bg-white/10"
                         }`}
                     >
-                      #{club.rank}
+                      {club.rank}
                     </span>
-
-                    <div className="flex items-center gap-1 px-2.5 sm:px-3 py-1 rounded-full bg-white/5 border border-white/10 text-[10px] sm:text-[11px] font-bold uppercase tracking-wider text-white/80">
-                      {isFirst ? (
-                        <>
-                          <Trophy className="w-3 sm:w-3.5 h-3 sm:h-3.5 text-yellow-400" />
-                          <span>Leader</span>
-                        </>
-                      ) : (
-                        <>
-                          <Medal className="w-3 sm:w-3.5 h-3 sm:h-3.5 text-gray-300" />
-                          <span>Podium</span>
-                        </>
-                      )}
-                    </div>
                   </div>
 
                   <div className="space-y-1.5 sm:space-y-2">
@@ -256,7 +244,7 @@ export function ClubRankingPageClient({ initialClubs = [] }: ClubRankingPageClie
           <table className="w-full text-left border-collapse">
             <thead>
               <tr className="bg-black/60 text-[10px] font-black uppercase tracking-[0.2em] text-gray-500 border-b border-white/10">
-                <th className="py-3 sm:py-3.5 md:py-5 px-2.5 sm:px-4 md:px-6 text-center w-12 sm:w-14 md:w-20">Rank</th>
+                <th className="py-3 sm:py-3.5 md:py-5 px-2.5 sm:px-4 md:px-6 text-center w-12 sm:w-14 md:w-20">POS</th>
                 <th className="py-3 sm:py-3.5 md:py-5 px-2.5 sm:px-4">Club</th>
                 <th className="py-3 sm:py-3.5 md:py-5 px-2.5 sm:px-4 hidden sm:table-cell">Country</th>
                 <th className="py-3 sm:py-3.5 md:py-5 px-2.5 sm:px-4 text-center text-triton-red">
@@ -280,9 +268,13 @@ export function ClubRankingPageClient({ initialClubs = [] }: ClubRankingPageClie
                       {/* Posição no Ranking */}
                       <td className="py-2.5 sm:py-3 md:py-4 px-2 sm:px-3 md:px-6 text-center whitespace-nowrap">
                         <span
-                          className={`inline-flex items-center justify-center w-6 h-6 sm:w-8 sm:h-8 rounded-full font-black text-[10px] sm:text-xs border ${club.rank <= 3
-                            ? "bg-triton-red border-triton-red text-white shadow-md shadow-triton-red/20"
-                            : "border-white/10 text-gray-400 bg-white/5"
+                          className={`inline-flex items-center justify-center w-6 h-6 sm:w-8 sm:h-8 rounded-full font-black text-[10px] sm:text-xs ${club.rank === 1
+                            ? "bg-amber-400 text-black shadow-md shadow-amber-500/20"
+                            : club.rank === 2
+                              ? "bg-slate-300 text-black shadow-sm"
+                              : club.rank === 3
+                                ? "bg-amber-700 text-white shadow-sm"
+                                : "border border-white/10 text-gray-400 bg-white/5"
                             }`}
                         >
                           {club.rank}
