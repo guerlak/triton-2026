@@ -25,8 +25,8 @@ export default async function RankingSection() {
             TOP 3 LEADER BOARD
           </h3>
           <p className="text-gray-400 max-w-4xl mx-auto text-xs sm:text-base md:text-lg mt-2 sm:mt-4">
-            Check your score, and ranking. The points competition rewards consistency rather
-            than single day performance making it a year long open race to the end that anyone can win.
+            Check your score. The points competition rewards consistency rather
+            than single race performance making it a year long open race to the end that anyone can win.
           </p>
         </div>
 
@@ -36,9 +36,8 @@ export default async function RankingSection() {
         <div className="text-center py-6 sm:py-10">
           <MainButton href="/ranking">Full Ranking</MainButton>
         </div>
-
-        <RedLine />
       </div>
+      <RedLine />
     </section>
   );
 }

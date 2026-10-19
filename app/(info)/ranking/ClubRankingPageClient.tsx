@@ -166,30 +166,33 @@ export function ClubRankingPageClient({ initialClubs = [] }: ClubRankingPageClie
       {/* Destaque do Pódio / Top 3 Cards (se houver clubes) */}
       {topClubs.length > 0 && (
         <div className="mb-6 sm:mb-10 md:mb-12">
-          <div className="flex items-center gap-2 mb-3 sm:mb-4 text-xs font-bold uppercase tracking-widest text-gray-400">
-            <Sparkles className="w-4 h-4 text-triton-red" />
-            <span>Top Performing Clubs</span>
+          <div className="flex items-center justify-between mb-3 sm:mb-4">
+            <div className="flex items-center gap-2 text-xs font-bold uppercase tracking-widest text-gray-400">
+              <Sparkles className="w-4 h-4 text-triton-red" />
+              <span>Top Performing Clubs</span>
+            </div>
+            <span className="sm:hidden text-[10px] uppercase font-bold tracking-wider text-gray-500">
+              →
+            </span>
           </div>
 
-          <div className="grid grid-cols-3 sm:grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3.5 sm:gap-6">
+          <div className="flex sm:grid sm:grid-cols-2 lg:grid-cols-3 gap-3.5 sm:gap-6 overflow-x-auto sm:overflow-visible pb-4 sm:pb-0 -mx-4 px-4 sm:mx-0 sm:px-0 snap-x snap-mandatory sm:snap-none custom-scrollbar">
             {topClubs.map((club) => {
               const isFirst = club.rank === 1;
               const isSecond = club.rank === 2;
-
-
               return (
                 <motion.div
                   key={club.id}
                   whileHover={{ y: -4 }}
                   transition={{ duration: 0.2 }}
-                  className={`relative p-4 sm:p-6 md:p-8 rounded-2xl sm:rounded-3xl border transition-all ${isFirst
+                  className={`shrink-0 w-[60vw] sm:w-auto max-w-[320px] sm:max-w-none min-w-[240px] sm:min-w-0 snap-start relative p-4 sm:p-6 md:p-8 rounded-2xl sm:rounded-3xl border transition-all ${isFirst
                     ? "bg-linear-to-b from-triton-red/20 via-neutral-900/90 to-neutral-900 border-triton-red/40 shadow-xl shadow-triton-red/10"
                     : isSecond
                       ? "bg-linear-to-b from-white/10 via-neutral-900/90 to-neutral-900 border-white/20 shadow-lg"
                       : "bg-linear-to-b from-amber-500/10 via-neutral-900/90 to-neutral-900 border-amber-500/20 shadow-lg"
                     }`}
                 >
-                  <div className="flex items-start justify-between gap-3 mb-3 sm:mb-4">
+                  <div className="flex items-center justify-between gap-3 mb-3 sm:mb-4">
                     <span
                       className={`inline-flex items-center justify-center w-7 h-7 sm:w-10 sm:h-10 rounded-full font-black text-xs sm:text-sm ${isFirst
                         ? "bg-amber-400 text-black shadow-md shadow-amber-500/20"
@@ -202,9 +205,7 @@ export function ClubRankingPageClient({ initialClubs = [] }: ClubRankingPageClie
                     >
                       {club.rank}
                     </span>
-                  </div>
 
-                  <div className="space-y-1.5 sm:space-y-2">
                     <div className="flex items-center gap-1.5 sm:gap-2">
                       {club.countryCode ? (
                         <CountryFlag countryCode={club.countryCode} className="w-5 sm:w-6 h-3.5 sm:h-4 shadow-sm" />
@@ -215,17 +216,19 @@ export function ClubRankingPageClient({ initialClubs = [] }: ClubRankingPageClie
                         {club.countryName}
                       </span>
                     </div>
+                  </div>
 
+                  <div className="space-y-1.5 sm:space-y-2">
                     <h3 className="text-base sm:text-xl md:text-2xl font-black uppercase text-white tracking-tight break-words group-hover:text-triton-red transition-colors">
                       {club.name}
                     </h3>
 
-                    <div className="pt-2 border-t border-white/5 flex items-baseline justify-between">
-                      <span className="text-[10px] sm:text-[11px] font-bold uppercase tracking-widest text-gray-500">
-                        Total Points
-                      </span>
-                      <span className="font-mono font-black text-base sm:text-xl md:text-2xl text-triton-red">
+                    <div className="pt-2 border-t border-white/5 ">
+                      <span className="font-mono font-black text-base sm:text-xl md:text-2xl text-triton-red block">
                         {club.totalPointsDisplay}
+                      </span>
+                      <span className="text-[8px] sm:text-[11px] font-bold uppercase tracking-widest text-gray-500">
+                        Total Points
                       </span>
                     </div>
                   </div>

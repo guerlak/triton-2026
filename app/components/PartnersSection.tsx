@@ -9,54 +9,39 @@ import lucidTravelLogo from "@/public/images/partners/lucid-logo.png";
 import prouderLogo from "@/public/images/partners/prouder-logo.png";
 import icarusLogo from "@/public/images/partners/icarus-logo.png";
 
+const partners = [
+  { name: "Marathon Photos", logo: marathonLogo, className: "max-h-5 sm:max-h-7 md:max-h-8" },
+  { name: "HotelPlanner", logo: hotelPlannerLogo, className: "max-h-4 sm:max-h-5 md:max-h-6" },
+  { name: "Ahoto", logo: ahotoLogo, className: "max-h-5 sm:max-h-6 md:max-h-7" },
+  { name: "Haku", logo: hakuLogo, className: "max-h-6 sm:max-h-8 md:max-h-9" },
+  { name: "Smitar", logo: smitarLogo, className: "max-h-6 sm:max-h-8 md:max-h-9" },
+  { name: "Lucid Travel", logo: lucidTravelLogo, className: "max-h-6 sm:max-h-8 md:max-h-9" },
+  { name: "Prouder", logo: prouderLogo, className: "max-h-5 sm:max-h-6 md:max-h-7" },
+  { name: "Icarus", logo: icarusLogo, className: "max-h-6 sm:max-h-8 md:max-h-9" },
+];
+
 const PartnersSection: React.FC = () => {
   return (
-    <section className="py-16 bg-neutral-950 border-y border-white/5">
-      <div className="max-w-12xl mx-auto px-4 sm:px-6 lg:px-8">
-        <h2 className="text-triton-red font-bold tracking-widest uppercase flex items-center justify-center gap-2 mb-10">
+    <section className="py-10 sm:py-14 md:py-16 bg-neutral-950 border-y border-white/5">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <h2 className="text-triton-red font-bold tracking-widest uppercase flex items-center justify-center gap-2 mb-8 sm:mb-10 text-xs sm:text-sm">
           Triton Partners
         </h2>
-        <div className="flex flex-wrap justify-center items-center gap-12 md:gap-20">
-          <div className="group flex items-center gap-3 text-gray-500
-           hover:text-white transition-all duration-500 opacity-50 hover:opacity-100 
-            grayscale hover:grayscale-0">
-            <Image src={marathonLogo} alt="Marathon Photos" width={240} height={100} className="h-8 w-auto" />
-          </div>
-          <div className="group flex items-center gap-3 text-gray-500
-           hover:text-white transition-all duration-500 opacity-50 hover:opacity-100 
-            grayscale hover:grayscale-0">
-            <Image src={hotelPlannerLogo} alt="Hotel Planner" width={240} height={100} className="h-6 w-auto" />
-          </div>
-          <div className="group flex items-center gap-3 text-gray-500
-           hover:text-white transition-all duration-500 opacity-50 hover:opacity-100 
-            grayscale hover:grayscale-0">
-            <Image src={ahotoLogo} alt="ahoto" width={240} height={100} className="h-7 w-auto" />
-          </div>
-          <div className="group flex items-center gap-3 text-gray-500
-           hover:text-white transition-all duration-500 opacity-50 hover:opacity-100 
-            grayscale hover:grayscale-0">
-            <Image src={hakuLogo} alt="haku" width={340} height={200} className="h-15 w-auto" />
-          </div>
-          <div className="group flex items-center gap-3 text-gray-500
-           hover:text-white transition-all duration-500 opacity-50 hover:opacity-100 
-            grayscale hover:grayscale-0">
-            <Image src={smitarLogo} alt="haku" width={340} height={200} className="h-15 w-auto" />
-          </div>
-          <div className="group flex items-center gap-3 text-gray-500
-           hover:text-white transition-all duration-500 opacity-50 hover:opacity-100 
-            grayscale hover:grayscale-0">
-            <Image src={lucidTravelLogo} alt="haku" width={340} height={200} className="h-16 w-auto" />
-          </div>
-          <div className="group flex items-center gap-3 text-gray-500
-           hover:text-white transition-all duration-500 opacity-50 hover:opacity-100 
-            grayscale hover:grayscale-0">
-            <Image src={prouderLogo} alt="haku" width={340} height={200} className="h-7 w-auto" />
-          </div>
-          <div className="group flex items-center gap-3 text-gray-500
-           hover:text-white transition-all duration-500 opacity-50 hover:opacity-100 
-            grayscale hover:grayscale-0">
-            <Image src={icarusLogo} alt="haku" width={340} height={200} className="h-15 w-auto" />
-          </div>
+        <div className="grid grid-cols-2 sm:grid-cols-4 lg:flex lg:flex-wrap lg:justify-center items-center gap-6 sm:gap-8 md:gap-10 lg:gap-14">
+          {partners.map((partner) => (
+            <div
+              key={partner.name}
+              className="group flex items-center justify-center h-10 sm:h-12 w-full lg:w-auto px-2 opacity-50 hover:opacity-100 grayscale hover:grayscale-0 transition-all duration-300"
+            >
+              <Image
+                src={partner.logo}
+                alt={partner.name}
+                width={240}
+                height={100}
+                className={`w-auto object-contain max-w-[120px] sm:max-w-[140px] md:max-w-[160px] ${partner.className}`}
+              />
+            </div>
+          ))}
         </div>
       </div>
     </section>

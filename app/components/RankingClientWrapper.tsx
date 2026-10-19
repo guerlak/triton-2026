@@ -33,47 +33,78 @@ const RankingClientWrapper: React.FC<Props> = ({ initialAthletes }) => {
     if (athletes.length === 0) return null;
 
     return (
-      <div className="bg-neutral-900 shrink-0 w-[80vw] border border-white/5 rounded-3xl overflow-hidden shadow-2xl mb-12 sm:w-140 snap-center min-h-[340px]">
-        <table className="w-full text-left border-collapse">
-          <caption className="p-4 font-bold text-white bg-white/5 uppercase">
-            {athletes[0]?.Gender} - {athletes[0]?.Contest}
-          </caption>
-          <thead>
-            <tr className="bg-black/40 text-xs font-bold uppercase text-gray-500 border-b border-white/5">
-              <th className="py-5 px-6 text-center">Pos</th>
-              <th className="py-5 px-6">Athlete</th>
-              <th className="py-5 px-6 text-center text-triton-red ">Total</th>
-              <th></th>
-            </tr>
-          </thead>
-          <tbody>
-            {athletes.slice(0, 3).map((athlete) => {
-              const pos = athlete["Global Standings"];
-              let medalClass = "text-white";
-              if (pos == 1) medalClass = "bg-yellow-600 border border-yellow-400 text-black rounded-full w-8 h-8 flex items-center justify-center mx-auto";
-              if (pos == 2) medalClass = "bg-gray-500 border border-gray-300 text-black rounded-full w-8 h-8 flex items-center justify-center mx-auto";
-              if (pos == 3) medalClass = "bg-amber-900 border border-amber-700 text-white rounded-full w-8 h-8 flex items-center justify-center mx-auto";
+      <div className="bg-neutral-900 border border-white/5 rounded-2xl sm:rounded-3xl overflow-hidden shadow-2xl shrink-0 w-[82vw] max-w-[340px] sm:max-w-none sm:w-[420px] md:w-full snap-start transition-all hover:border-white/10">
+        {/* Card Header */}
+        <div className="px-3.5 sm:px-6 py-3 sm:py-3.5 bg-white/5 border-b border-white/10 flex items-center justify-between">
+          <div className="flex items-center gap-2">
+            <span className="w-2 h-2 rounded-full bg-triton-red animate-pulse" />
+            <h4 className="text-xs sm:text-sm font-black uppercase tracking-wider text-white">
+              {athletes[0]?.Gender} • {athletes[0]?.Contest}
+            </h4>
+          </div>
+          <span className="text-[10px] sm:text-xs font-mono font-bold uppercase tracking-widest text-gray-400 bg-black/40 px-2 py-0.5 sm:py-1 rounded-md border border-white/5">
+            Top 3
+          </span>
+        </div>
 
-              return (
-                <tr key={athlete.Name} onClick={() => handleEditClick(athlete)} className="cursor-pointer border-b border-white/5 hover:bg-white/5 transition-colors group">
-                  <td className="py-4 px-6 text-center font-bold">
-                    <span className={medalClass}>{pos}</span>
-                  </td>
-                  <td className="py-4 px-2">
-                    {CountryFlag({ countryCode: athlete.Country })}
-                    <span className="font-bold text-sm text-white ml-2">{athlete.Name}</span>
-                  </td>
-                  <td className="py-4 px-2 text-center font-black text-white">{athlete["Total Points"]}</td>
-                  <td className="py-4 px-4 text-right hidden md:block">
-                    <div className="inline-flex items-center justify-center w-10 h-10 rounded-xl bg-triton-red/10 text-triton-red group-hover:bg-triton-red group-hover:text-white transition-all shadow-lg shadow-triton-red/0 group-hover:shadow-triton-red/20">
-                      <Plus size={20} />
-                    </div>
-                  </td>
-                </tr>
-              )
-            })}
-          </tbody>
-        </table>
+        {/* Table */}
+        <div className="overflow-x-auto">
+          <table className="w-full text-left border-collapse">
+            <thead>
+              <tr className="bg-black/60 text-[10px] font-black uppercase tracking-[0.2em] text-gray-500 border-b border-white/10 whitespace-nowrap">
+                <th className="py-2.5 sm:py-3.5 px-2.5 sm:px-4 text-center w-12 sm:w-16">Pos</th>
+                <th className="py-2.5 sm:py-3.5 px-2.5 sm:px-4">Athlete</th>
+                <th className="py-2.5 sm:py-3.5 px-2.5 sm:px-4 text-center text-triton-red">Total</th>
+                <th className="hidden sm:block py-2.5 sm:py-3.5 px-2 sm:px-4 text-right w-10 sm:w-12"></th>
+              </tr>
+            </thead>
+            <tbody className="divide-y divide-white/5">
+              {athletes.slice(0, 3).map((athlete) => {
+                const pos = athlete["Global Standings"];
+                return (
+                  <tr
+                    key={athlete.Name}
+                    onClick={() => handleEditClick(athlete)}
+                    className="cursor-pointer hover:bg-white/5 active:bg-white/10 transition-colors group whitespace-nowrap"
+                  >
+                    <td className="py-2.5 sm:py-3.5 px-2.5 sm:px-4 text-center">
+                      <span
+                        className={`inline-flex items-center justify-center w-7 h-7 sm:w-8 sm:h-8 rounded-full font-black text-xs ${pos == 1
+                          ? "bg-amber-400 text-black shadow-md shadow-amber-500/20"
+                          : pos == 2
+                            ? "bg-slate-300 text-black shadow-sm"
+                            : pos == 3
+                              ? "bg-amber-700 text-white shadow-sm"
+                              : "text-gray-300 bg-white/10"
+                          }`}
+                      >
+                        {pos}
+                      </span>
+                    </td>
+                    <td className="py-2.5 sm:py-3.5 px-2.5 sm:px-4">
+                      <div className="flex items-center gap-2 sm:gap-2.5 min-w-0">
+                        <CountryFlag countryCode={athlete.Country} className="w-5 sm:w-6 h-3.5 sm:h-4 shadow-sm shrink-0" />
+                        <span className="font-bold text-xs sm:text-sm text-white uppercase tracking-tight truncate group-hover:text-triton-red transition-colors">
+                          {athlete.Name}
+                        </span>
+                      </div>
+                    </td>
+                    <td className="py-2.5 sm:py-3.5 px-2.5 sm:px-4 text-center">
+                      <span className="font-mono font-black text-xs sm:text-base text-white group-hover:text-triton-red transition-colors">
+                        {athlete["Total Points"]}
+                      </span>
+                    </td>
+                    <td className="hidden sm:block py-2.5 sm:py-3.5 px-2 sm:px-4 text-right">
+                      <div className="inline-flex items-center justify-center w-7 h-7 sm:w-8 sm:h-8 rounded-lg bg-triton-red/10 text-triton-red group-hover:bg-triton-red group-hover:text-white transition-all shadow-sm">
+                        <Plus size={16} />
+                      </div>
+                    </td>
+                  </tr>
+                );
+              })}
+            </tbody>
+          </table>
+        </div>
       </div>
     );
   };
@@ -85,11 +116,11 @@ const RankingClientWrapper: React.FC<Props> = ({ initialAthletes }) => {
         whileInView={{ opacity: 1, y: 0 }}
         className="flex flex-wrap justify-around"
       >
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 w-full max-w-full overflow-hidden">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8 w-full max-w-full">
           {/* Women's Column */}
-          <div className="flex flex-col gap-2">
-            {/* <h3 className="text-gray-300 text-center font-black uppercase tracking-widest text-lg mb-4 px-4 md:px-0">Women</h3> */}
-            <div className="flex md:flex-col overflow-x-auto md:overflow-x-visible pb-6 md:pb-0 snap-x snap-mandatory gap-4 no-scrollbar px-4 md:px-0">
+          <div className="flex flex-col gap-3 sm:gap-4">
+
+            <div className="flex md:flex-col overflow-x-auto md:overflow-x-visible pb-4 md:pb-0 snap-x snap-mandatory gap-4 custom-scrollbar -mx-4 px-4 md:mx-0 md:px-0">
               {renderTable(athleteFilter("Women", "Sprint"))}
               {renderTable(athleteFilter("Women", "Middle"))}
               {renderTable(athleteFilter("Women", "Long"))}
@@ -97,9 +128,9 @@ const RankingClientWrapper: React.FC<Props> = ({ initialAthletes }) => {
           </div>
 
           {/* Men's Column */}
-          <div className="flex flex-col gap-2">
-            {/* <h3 className="text-gray-300 text-center font-black uppercase tracking-widest text-lg mb-4 px-4 md:px-0">Men</h3> */}
-            <div className="flex md:flex-col overflow-x-auto md:overflow-x-visible pb-6 md:pb-0 snap-x snap-mandatory gap-4 no-scrollbar px-4 md:px-0">
+          <div className="flex flex-col gap-3 sm:gap-4">
+
+            <div className="flex md:flex-col overflow-x-auto md:overflow-x-visible pb-4 md:pb-0 snap-x snap-mandatory gap-4 custom-scrollbar -mx-4 px-4 md:mx-0 md:px-0">
               {renderTable(athleteFilter("Men", "Sprint"))}
               {renderTable(athleteFilter("Men", "Middle"))}
               {renderTable(athleteFilter("Men", "Long"))}
