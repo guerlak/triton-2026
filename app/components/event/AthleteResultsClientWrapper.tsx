@@ -1,60 +1,121 @@
 "use client";
 import React, { useState, useMemo } from "react";
 import { motion } from "framer-motion";
-import { Search, Clock, ClockArrowUp } from "lucide-react";
+import { Search, Clock, ClockArrowUp, ChevronDown } from "lucide-react";
 
 interface LiveAthlete {
-  Contest: string;
-  Pos: number | string;
-  TritonID: number;
-  Bib: number;
-  Flag: string;
+  Pos?: number | string;
+  PosAgeGroup?: number | string;
+  TritonID?: number;
+  Bib: number | string;
+  Flag?: string;
   Name: string;
-  Gender: "Men" | "Women";
+  Nation?: string;
+  Race?: string;
+  Contest?: string;
+  Distance?: string;
+  Gender: "Men" | "Women" | "m" | "f" | string;
   AgeGroup: string;
-  Swim: string;
-  T1: string;
-  Bike: string;
-  T2: string;
-  Run: string;
-  Time: string;
-  Gap: string;
-  Nation: string;
+  Club?: string;
+  Swim?: string;
+  T1?: string;
+  Bike?: string;
+  T2?: string;
+  Run?: string;
+  Time?: string;
+  Gap?: string;
+  Total?: string | number;
+  TotalPoints?: string | number;
+  Points?: string | number;
+  Triton?: string | number;
 }
 
 interface Props {
   initialAthletes: LiveAthlete[];
 }
 
-const LiveResultsClientWrapper: React.FC<Props> = ({ initialAthletes }) => {
+const formatGender = (gender?: string) => {
+  if (!gender) return "-";
+  const g = gender.trim().toLowerCase();
+  if (g === "m" || g === "men" || g === "male") return "Men";
+  if (g === "f" || g === "women" || g === "female") return "Women";
+  return gender;
+};
 
+const getDistanceBadgeClass = (distanceName?: string) => {
+  const d = distanceName?.toLowerCase() || "";
+  if (d.includes("sprint")) return "border-white/20 text-black bg-white/75";
+  if (d.includes("middle")) return "border-red-500/30 text-white bg-red-500/30";
+  if (d.includes("long") || d.includes("full")) return "border-white/30 text-white bg-gray-800";
+  return "border-white/10 text-white bg-white/5";
+};
+
+const LiveResultsClientWrapper: React.FC<Props> = ({ initialAthletes }) => {
   const [searchQuery, setSearchQuery] = useState("");
-  const [selectedAgeGroup, setSelectedAgeGroup] = useState("");
   const [selectedDistance, setSelectedDistance] = useState("");
   const [selectedGender, setSelectedGender] = useState("");
+  const [selectedAgeGroup, setSelectedAgeGroup] = useState("");
+  const [selectedClub, setSelectedClub] = useState("");
 
   // Get unique filter options
   const filterOptions = useMemo(() => {
+    const list = Array.isArray(initialAthletes) ? initialAthletes : [];
     return {
-      ageGroups: Array.from(new Set(initialAthletes.map((a) => a.AgeGroup))).sort(),
-      distances: Array.from(new Set(initialAthletes.map((a) => a.Contest))).sort(),
-      genders: Array.from(new Set(initialAthletes.map((a) => a.Gender))).sort(),
+      distances: Array.from(
+        new Set(
+          list
+            .map((a) => a.Distance || a.Contest)
+            .filter((d): d is string => Boolean(d && d.trim()))
+        )
+      ).sort(),
+      genders: Array.from(
+        new Set(
+          list
+            .map((a) => a.Gender)
+            .filter((g): g is string => Boolean(g && g.trim()))
+        )
+      ).sort(),
+      ageGroups: Array.from(
+        new Set(
+          list
+            .map((a) => a.AgeGroup)
+            .filter((ag): ag is string => Boolean(ag && ag.trim()))
+        )
+      ).sort(),
+      clubs: Array.from(
+        new Set(
+          list
+            .map((a) => a.Club)
+            .filter((c): c is string => Boolean(c && c.trim()))
+        )
+      ).sort(),
     };
   }, [initialAthletes]);
 
   const filteredAthletes = useMemo(() => {
-    return initialAthletes.filter((athlete) => {
-      const query = searchQuery.toLowerCase();
+    const list = Array.isArray(initialAthletes) ? initialAthletes : [];
+    return list.filter((athlete) => {
+      const query = searchQuery.trim().toLowerCase();
       const nameMatch =
-        athlete.Name.toLowerCase().includes(query) ||
-        athlete.Bib.toString().includes(query);
-      const ageGroupMatch = selectedAgeGroup === "" || athlete.AgeGroup === selectedAgeGroup;
-      const distanceMatch = selectedDistance === "" || athlete.Contest === selectedDistance;
-      const genderMatch = selectedGender === "" || athlete.Gender === selectedGender;
+        query === "" ||
+        (athlete.Name && athlete.Name.toLowerCase().includes(query)) ||
+        (athlete.Bib != null && athlete.Bib.toString().toLowerCase().includes(query)) ||
+        (athlete.Club && athlete.Club.toLowerCase().includes(query)) ||
+        (athlete.Race && athlete.Race.toLowerCase().includes(query));
 
-      return nameMatch && ageGroupMatch && distanceMatch && genderMatch;
+      const athleteDistance = athlete.Distance || athlete.Contest || "";
+      const distanceMatch = selectedDistance === "" || athleteDistance === selectedDistance;
+      const genderMatch = selectedGender === "" || athlete.Gender === selectedGender;
+      const ageGroupMatch = selectedAgeGroup === "" || athlete.AgeGroup === selectedAgeGroup;
+      const clubMatch = selectedClub === "" || athlete.Club === selectedClub;
+
+      return nameMatch && distanceMatch && genderMatch && ageGroupMatch && clubMatch;
     });
-  }, [initialAthletes, searchQuery, selectedAgeGroup, selectedDistance, selectedGender]);
+  }, [initialAthletes, searchQuery, selectedDistance, selectedGender, selectedAgeGroup, selectedClub]);
+
+  const hasActiveFilters = Boolean(
+    searchQuery || selectedDistance || selectedGender || selectedAgeGroup || selectedClub
+  );
 
   return (
     <div className="mt-6 sm:mt-8 md:mt-12 space-y-6 sm:space-y-8">
@@ -71,65 +132,124 @@ const LiveResultsClientWrapper: React.FC<Props> = ({ initialAthletes }) => {
           Check all the results of athletes participating in the event.
         </p>
       </div>
+
       {/* Filters Header */}
-      <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-4 sm:gap-6">
-        {/* Search Bar */}
-        <div className="relative w-full lg:max-w-md group">
-          <div className="absolute inset-y-0 left-0 pl-3.5 sm:pl-4 flex items-center pointer-events-none">
-            <Search size={18} className="text-gray-500 group-focus-within:text-triton-red transition-colors" />
+      <div className="space-y-3">
+        <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-4 sm:gap-6">
+          {/* Search Bar */}
+          <div className="relative w-full lg:max-w-xs group">
+            <div className="absolute inset-y-0 left-0 pl-3.5 sm:pl-4 flex items-center pointer-events-none">
+              <Search size={18} className="text-gray-500 group-focus-within:text-triton-red transition-colors" />
+            </div>
+            <input
+              type="text"
+              placeholder="SEARCH BY NAME, BIB, CLUB..."
+              value={searchQuery}
+              onChange={(e) => setSearchQuery(e.target.value)}
+              className="w-full bg-neutral-900 border border-white/10 rounded-xl sm:rounded-2xl py-3 sm:py-3.5 pl-10 sm:pl-12 pr-4 text-xs sm:text-sm font-bold text-white uppercase tracking-wider sm:tracking-widest focus:outline-none focus:border-triton-red/50 focus:ring-1 focus:ring-triton-red/50 transition-all placeholder:text-gray-600 shadow-xl"
+            />
           </div>
-          <input
-            type="text"
-            placeholder="SEARCH BY NAME OR BIB..."
-            value={searchQuery}
-            onChange={(e) => setSearchQuery(e.target.value)}
-            className="w-full bg-neutral-900 border border-white/10 rounded-xl sm:rounded-2xl py-3 sm:py-4 pl-10 sm:pl-12 pr-4 sm:pr-6 text-xs sm:text-sm font-bold text-white uppercase tracking-wider sm:tracking-widest focus:outline-none focus:border-triton-red/50 focus:ring-1 focus:ring-triton-red/50 transition-all placeholder:text-gray-600 shadow-xl"
-          />
+
+          {/* Select Filters */}
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4 w-full lg:w-auto">
+            {/* Distance Filter */}
+            <div className="relative">
+              <select
+                value={selectedDistance}
+                onChange={(e) => setSelectedDistance(e.target.value)}
+                className="w-full bg-neutral-900 border border-white/10 rounded-xl py-2.5 sm:py-3 pl-3 sm:px-4 pr-8 text-[11px] sm:text-xs font-bold text-white uppercase tracking-wider sm:tracking-widest appearance-none focus:outline-none focus:border-triton-red/50 transition-all cursor-pointer"
+              >
+                <option value="">All Distances</option>
+                {filterOptions.distances.map((d) => (
+                  <option key={d} value={d} className="bg-neutral-900 text-white uppercase">
+                    {d}
+                  </option>
+                ))}
+              </select>
+              <div className="absolute inset-y-0 right-0 pr-3 flex items-center pointer-events-none text-gray-500">
+                <ChevronDown size={14} />
+              </div>
+            </div>
+
+            {/* Gender Filter */}
+            <div className="relative">
+              <select
+                value={selectedGender}
+                onChange={(e) => setSelectedGender(e.target.value)}
+                className="w-full bg-neutral-900 border border-white/10 rounded-xl py-2.5 sm:py-3 pl-3 sm:px-4 pr-8 text-[11px] sm:text-xs font-bold text-white uppercase tracking-wider sm:tracking-widest appearance-none focus:outline-none focus:border-triton-red/50 transition-all cursor-pointer"
+              >
+                <option value="">All Genders</option>
+                {filterOptions.genders.map((g) => (
+                  <option key={g} value={g} className="bg-neutral-900 text-white uppercase">
+                    {formatGender(g)}
+                  </option>
+                ))}
+              </select>
+              <div className="absolute inset-y-0 right-0 pr-3 flex items-center pointer-events-none text-gray-500">
+                <ChevronDown size={14} />
+              </div>
+            </div>
+
+            {/* Age Group Filter */}
+            <div className="relative">
+              <select
+                value={selectedAgeGroup}
+                onChange={(e) => setSelectedAgeGroup(e.target.value)}
+                className="w-full bg-neutral-900 border border-white/10 rounded-xl py-2.5 sm:py-3 pl-3 sm:px-4 pr-8 text-[11px] sm:text-xs font-bold text-white uppercase tracking-wider sm:tracking-widest appearance-none focus:outline-none focus:border-triton-red/50 transition-all cursor-pointer"
+              >
+                <option value="">All Categories</option>
+                {filterOptions.ageGroups.map((ag) => (
+                  <option key={ag} value={ag} className="bg-neutral-900 text-white uppercase">
+                    {ag}
+                  </option>
+                ))}
+              </select>
+              <div className="absolute inset-y-0 right-0 pr-3 flex items-center pointer-events-none text-gray-500">
+                <ChevronDown size={14} />
+              </div>
+            </div>
+
+            {/* Club Filter */}
+            <div className="relative">
+              <select
+                value={selectedClub}
+                onChange={(e) => setSelectedClub(e.target.value)}
+                className="w-full bg-neutral-900 border border-white/10 rounded-xl py-2.5 sm:py-3 pl-3 sm:px-4 pr-8 text-[11px] sm:text-xs font-bold text-white uppercase tracking-wider sm:tracking-widest appearance-none focus:outline-none focus:border-triton-red/50 transition-all cursor-pointer"
+              >
+                <option value="">All Clubs</option>
+                {filterOptions.clubs.map((c) => (
+                  <option key={c} value={c} className="bg-neutral-900 text-white uppercase">
+                    {c}
+                  </option>
+                ))}
+              </select>
+              <div className="absolute inset-y-0 right-0 pr-3 flex items-center pointer-events-none text-gray-500">
+                <ChevronDown size={14} />
+              </div>
+            </div>
+          </div>
         </div>
 
-        {/* Select Filters */}
-        <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 sm:gap-4 w-full lg:w-auto">
-          {/* Distance Filter */}
-          <div className="relative">
-            <select
-              value={selectedDistance}
-              onChange={(e) => setSelectedDistance(e.target.value)}
-              className="w-full bg-neutral-900 border border-white/10 rounded-xl py-2.5 sm:py-3 px-3 sm:px-4 text-[11px] sm:text-xs font-bold text-white uppercase tracking-wider sm:tracking-widest appearance-none focus:outline-none focus:border-triton-red/50 transition-all cursor-pointer"
+        {/* Counter and Clear Filters */}
+        <div className="flex items-center justify-between text-[11px] sm:text-xs text-gray-400 px-1 pt-1">
+          <span>
+            Showing <strong className="text-white font-mono">{filteredAthletes.length}</strong> athlete{filteredAthletes.length === 1 ? "" : "s"}
+          </span>
+          {hasActiveFilters && (
+            <button
+              type="button"
+              onClick={() => {
+                setSearchQuery("");
+                setSelectedDistance("");
+                setSelectedGender("");
+                setSelectedAgeGroup("");
+                setSelectedClub("");
+              }}
+              className="text-triton-red hover:underline font-bold uppercase tracking-wider transition-colors cursor-pointer"
             >
-              <option value="">All Distances</option>
-              {filterOptions.distances.map((d) => (
-                <option key={d} value={d}>{d}</option>
-              ))}
-            </select>
-          </div>
-
-          {/* Gender Filter */}
-          <div className="relative">
-            <select
-              value={selectedGender}
-              onChange={(e) => setSelectedGender(e.target.value)}
-              className="w-full bg-neutral-900 border border-white/10 rounded-xl py-2.5 sm:py-3 px-3 sm:px-4 text-[11px] sm:text-xs font-bold text-white uppercase tracking-wider sm:tracking-widest appearance-none focus:outline-none focus:border-triton-red/50 transition-all cursor-pointer"
-            >
-              <option value="">All Genders</option>
-              {filterOptions.genders.map((g) => (
-                <option key={g} value={g}>{g}</option>
-              ))}
-            </select>
-          </div>
-
-          {/* Age Group Filter */}
-          <div className="relative">
-            <select
-              value={selectedAgeGroup}
-              onChange={(e) => setSelectedAgeGroup(e.target.value)}
-              className="w-full bg-neutral-900 border border-white/10 rounded-xl py-2.5 sm:py-3 px-3 sm:px-4 text-[11px] sm:text-xs font-bold text-white uppercase tracking-wider sm:tracking-widest appearance-none focus:outline-none focus:border-triton-red/50 transition-all cursor-pointer"
-            >
-              <option value="">All Categories</option>
-              {filterOptions.ageGroups.map((ag) => (
-                <option key={ag} value={ag}>{ag}</option>
-              ))}
-            </select>
-          </div>
+              Reset Filters
+            </button>
+          )}
         </div>
       </div>
 
@@ -137,21 +257,23 @@ const LiveResultsClientWrapper: React.FC<Props> = ({ initialAthletes }) => {
       <motion.div
         initial={{ opacity: 0, y: 30 }}
         animate={{ opacity: 1, y: 0 }}
-        key={`${selectedDistance}-${selectedGender}-${selectedAgeGroup}`} // Re-animate on filter change
+        key={`${selectedDistance}-${selectedGender}-${selectedAgeGroup}-${selectedClub}`}
         viewport={{ once: true }}
         className="bg-neutral-900 border border-white/5 rounded-2xl sm:rounded-3xl overflow-hidden shadow-2xl"
       >
-        <div className="overflow-auto max-h-[65vh] custom-scrollbar">
-          <table className="w-full text-left border-collapse min-w-[720px] md:min-w-[900px]">
+        <div className="overflow-x-auto max-h-[65vh] custom-scrollbar">
+          <table className="w-full text-left border-collapse min-w-[760px] md:min-w-[960px]">
             <thead className="sticky top-0 z-10 bg-neutral-950/90 backdrop-blur-md">
-              <tr className="bg-black/60 text-[10px] font-black uppercase text-gray-400 border-b border-white/10 tracking-widest">
-                <th className="py-3 sm:py-4 px-3 sm:px-6 md:px-8 text-center w-16 sm:w-24">Pos</th>
-                <th className="py-3 sm:py-4 px-3 sm:px-6">Athlete</th>
-                <th className="py-3 sm:py-4 px-3 sm:px-6">Distance</th>
-                <th className="py-3 sm:py-4 px-3 sm:px-6">Gender</th>
-                <th className="py-3 sm:py-4 px-3 sm:px-6">Age Group</th>
-                <th className="py-3 sm:py-4 px-3 sm:px-6 md:px-8 text-right text-triton-red">
-                  <div className="flex items-center justify-end gap-2 text-triton-red">
+              <tr className="bg-black/60 text-[10px] font-black uppercase text-gray-400 border-b border-white/10 tracking-widest whitespace-nowrap">
+                <th className="py-3 sm:py-4 px-2.5 sm:px-4 text-center w-14 sm:w-20">Pos</th>
+                <th className="py-3 sm:py-4 px-2.5 sm:px-4">Athlete</th>
+                <th className="py-3 sm:py-4 px-2.5 sm:px-4 text-center">Race</th>
+                <th className="py-3 sm:py-4 px-2.5 sm:px-4 text-center">Distance</th>
+                <th className="py-3 sm:py-4 px-2.5 sm:px-4 text-center">Gender</th>
+                <th className="py-3 sm:py-4 px-2.5 sm:px-4 text-center">Age Group</th>
+                <th className="py-3 sm:py-4 px-2.5 sm:px-4 text-center">Club</th>
+                <th className="py-3 sm:py-4 px-2.5 sm:px-4 md:px-6 text-right text-triton-red">
+                  <div className="flex items-center justify-end gap-1.5 sm:gap-2 text-triton-red">
                     <Clock size={14} />
                     <span>Time</span>
                   </div>
@@ -162,20 +284,25 @@ const LiveResultsClientWrapper: React.FC<Props> = ({ initialAthletes }) => {
               {filteredAthletes.length > 0 ? (
                 filteredAthletes.map((athlete, i) => (
                   <tr
-                    key={athlete.Bib}
-                    className="border-b border-white/5 hover:bg-white/5 transition-colors group"
+                    key={`${athlete.TritonID ?? ""}-${athlete.Bib}-${i}`}
+                    className="border-b border-white/5 hover:bg-white/5 transition-colors group whitespace-nowrap"
                   >
-                    <td className="py-3.5 sm:py-4 px-4 text-center font-bold text-gray-400">
+                    {/* POS */}
+                    <td className="py-2.5 sm:py-3.5 px-2.5 sm:px-4 text-center font-mono font-bold text-xs sm:text-sm text-gray-400">
                       {athlete.Pos != null && athlete.Pos !== "" ? `#${athlete.Pos}` : `#${i + 1}`}
                     </td>
-                    <td className="py-3.5 sm:py-4 px-6">
-                      <div className="flex items-center gap-4">
-                        {/* <img
-                          src={athlete.Flag}
-                          alt={athlete.Flag}
-                          className="w-6 h-4 object-contain rounded-sm shadow-md"
-                        /> */}
-                        <span className="font-black text-sm text-white uppercase tracking-tight">
+
+                    {/* ATHLETE */}
+                    <td className="py-2.5 sm:py-3.5 px-2.5 sm:px-4">
+                      <div className="flex items-center gap-2.5 sm:gap-3">
+                        {athlete.Flag && (
+                          <img
+                            src={athlete.Flag}
+                            alt={athlete.Nation || "Flag"}
+                            className="w-5 h-3.5 sm:w-6 sm:h-4 object-contain rounded-xs shadow-sm shrink-0"
+                          />
+                        )}
+                        <span className="font-black text-xs sm:text-sm text-white uppercase tracking-tight">
                           {athlete.Name}
                         </span>
                         {athlete.Nation && (
@@ -185,29 +312,49 @@ const LiveResultsClientWrapper: React.FC<Props> = ({ initialAthletes }) => {
                         )}
                       </div>
                     </td>
-                    <td className="py-3.5 sm:py-4 px-6 text-xs font-bold text-gray-400 uppercase tracking-wider">
-                      <span className={`text-[10px] font-black uppercase px-2 py-1 rounded-md border 
-                        ${athlete.Contest === "Sprint Distance"
-                          ? "border-white/20 text-black bg-white/75"
-                          : athlete.Contest === "Middle Distance"
-                            ? "border-red-500/30 text-white bg-red-500/30"
-                            : "border-black/20 text-white bg-white/5"
-                        }`}>
-                        {athlete.Contest}
+
+                    {/* RACE */}
+                    <td className="py-2.5 sm:py-3.5 px-2.5 sm:px-4 text-center text-xs font-bold text-gray-300 uppercase tracking-wider">
+                      <span className="text-[10px] sm:text-xs font-bold uppercase text-gray-300">
+                        {athlete.Race || "-"}
                       </span>
                     </td>
-                    <td className="py-3.5 sm:py-4 px-6">
-                      <span className="text-[10px] font-black uppercase px-2 py-1 tracking-widest text-gray-400">
-                        {athlete.Gender}
+
+                    {/* DISTANCE */}
+                    <td className="py-2.5 sm:py-3.5 px-2.5 sm:px-4 text-center">
+                      <span
+                        className={`text-[10px] font-black uppercase px-2 py-1 rounded-md border shadow-xs ${getDistanceBadgeClass(
+                          athlete.Distance || athlete.Contest
+                        )}`}
+                      >
+                        {athlete.Distance || athlete.Contest || "-"}
                       </span>
                     </td>
-                    <td className="py-3.5 sm:py-4 px-6">
-                      <span className="font-black text-xs uppercase tracking-widest px-3 py-1 text-gray-300">
-                        {athlete.AgeGroup}
+
+                    {/* GENDER */}
+                    <td className="py-2.5 sm:py-3.5 px-2.5 sm:px-4 text-center">
+                      <span className="text-[10px] sm:text-xs font-black uppercase px-2 py-1 tracking-widest text-gray-400">
+                        {formatGender(athlete.Gender)}
                       </span>
                     </td>
-                    <td className="py-3.5 sm:py-4 px-8 text-right">
-                      <span className="font-black text-sm text-white tabular-nums tracking-widest">
+
+                    {/* AGE GROUP */}
+                    <td className="py-2.5 sm:py-3.5 px-2.5 sm:px-4 text-center">
+                      <span className="font-mono font-bold text-xs sm:text-sm uppercase tracking-wider text-gray-300">
+                        {athlete.AgeGroup || "-"}
+                      </span>
+                    </td>
+
+                    {/* CLUB */}
+                    <td className="py-2.5 sm:py-3.5 px-2.5 sm:px-4 text-center">
+                      <span className="font-bold text-xs sm:text-sm text-gray-300 uppercase tracking-wide">
+                        {athlete.Club || "-"}
+                      </span>
+                    </td>
+
+                    {/* TIME */}
+                    <td className="py-2.5 sm:py-3.5 px-2.5 sm:px-4 md:px-6 text-right">
+                      <span className="font-mono font-black text-xs sm:text-sm text-white tabular-nums tracking-widest">
                         {athlete.Time || "--:--:--"}
                       </span>
                     </td>
@@ -215,7 +362,7 @@ const LiveResultsClientWrapper: React.FC<Props> = ({ initialAthletes }) => {
                 ))
               ) : (
                 <tr>
-                  <td colSpan={6} className="py-16 text-center text-gray-500 font-bold uppercase tracking-widest">
+                  <td colSpan={8} className="py-16 text-center text-gray-500 font-bold uppercase tracking-widest text-xs sm:text-sm">
                     No athletes found matching your filters.
                   </td>
                 </tr>
