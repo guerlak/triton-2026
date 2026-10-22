@@ -19,15 +19,12 @@ const InfoNavbar = () => {
   }, []);
 
   const navItems = [
-
     { name: "About", href: "/about" },
+    { name: "TRITON PASS", href: "/triton-pass" },
     { name: "Scoring System", href: "/scoring-system" },
     { name: "Terms & Conditions", href: "/terms-and-conditions" },
     { name: "Social responsibility", href: "/social-responsibility" },
     { name: "FAQ", href: "/faq" },
-
-
-
   ];
 
   return (

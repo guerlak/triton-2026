@@ -3519,7 +3519,8 @@ export const WORLDFINALS_DATA_MAP: Record<string, EventData> = {
 }
 
 
-const onHold =  {"rio-2027": {
+const onHold =  {
+  "rio-2027": {
     slug: "rio-2027",
     language: "pt-BR",
     id: "rio-2027",
