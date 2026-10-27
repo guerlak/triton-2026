@@ -54,7 +54,7 @@ export interface EventFormatDetail {
   title: string;
   description: string;
   distances: { label: string; val: string; p: number }[];
-  stravaIds?: { sprint:string, middle:string, long:string };
+  stravaIds?: { sprint: string; middle: string; long: string };
   stravaId?: string;
   details?: string[];
   extraDescription?: string;
@@ -127,7 +127,12 @@ export interface EventData {
     swim: EventFormatDetail;
     bike: EventFormatDetail;
     run: EventFormatDetail;
-    distanceTable: Array<{ name: string; swim: string; bike: string; run: string }>;
+    distanceTable: Array<{
+      name: string;
+      swim: string;
+      bike: string;
+      run: string;
+    }>;
     disableMixMatch?: boolean;
   };
   locations: {
@@ -165,48 +170,42 @@ import { StaticImageData } from "next/image";
 
 //imports SALVADOR
 import heroImgSalvador from "@/public/images/eventos/salvador-2027/hero-salvador.jpeg";
-import logoSalvador from "@/public/images/eventos/salvador-2027/logo-salvador.png"
-import bikePicSalvador from "@/public/images/eventos/salvador-2027/bike-salvador.jpeg"
-import runPicSalvador from "@/public/images/eventos/salvador-2027/run-salvador.jpeg"
-import salvadorExperienceImage from "@/public/images/eventos/salvador-2027/salvador-experience.jpeg"
-import fotoResortSalvador from "@/public/images/eventos/salvador-2027/salvador-hotel.jpeg"
-
+import logoSalvador from "@/public/images/eventos/salvador-2027/logo-salvador.png";
+import bikePicSalvador from "@/public/images/eventos/salvador-2027/bike-salvador.jpeg";
+import runPicSalvador from "@/public/images/eventos/salvador-2027/run-salvador.jpeg";
+import salvadorExperienceImage from "@/public/images/eventos/salvador-2027/salvador-experience.jpeg";
+import fotoResortSalvador from "@/public/images/eventos/salvador-2027/salvador-hotel.jpeg";
 
 //imports LISBOA 2026
 import heroImgLisboa from "@/public/images/eventos/lisboa-2026/hero-lisboa.jpeg";
-import logoLisboa from "@/public/images/eventos/lisboa-2026/triton-lisboa-logo.png"
-import bikePicLisboa from "@/public/images/eventos/lisboa-2026/bike-lisboa.jpeg"
-import runPicLisboa from "@/public/images/eventos/lisboa-2026/run-lisboa.jpeg"
-import swimPicLisboa from "@/public/images/eventos/lisboa-2026/swim-lisboa.jpeg"
-import lisboaExperienceImage from "@/public/images/eventos/lisboa-2026/lisboa-experience.jpeg"
-import fotoResortLisboa from "@/public/images/eventos/lisboa-2026/hotel-lisboa.jpeg"
+import logoLisboa from "@/public/images/eventos/lisboa-2026/triton-lisboa-logo.png";
+import bikePicLisboa from "@/public/images/eventos/lisboa-2026/bike-lisboa.jpeg";
+import runPicLisboa from "@/public/images/eventos/lisboa-2026/run-lisboa.jpeg";
+import swimPicLisboa from "@/public/images/eventos/lisboa-2026/swim-lisboa.jpeg";
+import lisboaExperienceImage from "@/public/images/eventos/lisboa-2026/lisboa-experience.jpeg";
+import fotoResortLisboa from "@/public/images/eventos/lisboa-2026/hotel-lisboa.jpeg";
 
 //imports qdong
-import heroImgQidong from "@/public/images/eventos/qidong/triton1-qidong-hero.jpeg"
-import logoQidong from "@/public/images/eventos/qidong/logo-qidong.png"
-import qidongHotel from "@/public/images/eventos/qidong/evergrande-hotel.jpeg"
-import landScapeQidong from "@/public/images/eventos/qidong/landscape-qidong.jpeg"
+import heroImgQidong from "@/public/images/eventos/qidong/triton1-qidong-hero.jpeg";
+import logoQidong from "@/public/images/eventos/qidong/logo-qidong.png";
+import qidongHotel from "@/public/images/eventos/qidong/evergrande-hotel.jpeg";
+import landScapeQidong from "@/public/images/eventos/qidong/landscape-qidong.jpeg";
 import { StaticImport } from "next/dist/shared/lib/get-img-props";
-
 
 //imports LISBOA 2027
 import heroImgLisboa27 from "@/public/images/eventos/lisboa-2027/hero-lisboa27.jpg";
 
 //imports RIO 2027
 import heroImgRio27 from "@/public/images/eventos/rio-2027/hero-triton-rio27.jpg";
-import logoRio27 from "@/public/images/eventos/rio-2027/logo-triton-rio27.png"
-import swimPicRio27 from "@/public/images/eventos/rio-2027/swim-pic-rio27.jpg"
+import logoRio27 from "@/public/images/eventos/rio-2027/logo-triton-rio27.png";
+import swimPicRio27 from "@/public/images/eventos/rio-2027/swim-pic-rio27.jpg";
 //import bikePicRio27 from "@/public/images/eventos/rio-2027/bike-pic-rio27.jpeg"
 //import runPicRio27 from "@/public/images/eventos/rio-2027/run-pic-rio27.jpeg"
-import experiencePic from "@/public/images/eventos/rio-2027/landscape-rio27.jpg"
+import experiencePic from "@/public/images/eventos/rio-2027/landscape-rio27.jpg";
 import hotelRio27 from "@/public/images/eventos/rio-2027/hotel-rio27.jpg";
-
-
 
 //imports WOrld Finals 27
 import heroImgWorldFinals27 from "@/public/images/eventos/world-final-2027/hero.jpg";
-
-
 
 export const EVENT_DATA_MAP: Record<string, EventData> = {
   "salvador-2026": {
@@ -225,8 +224,10 @@ export const EVENT_DATA_MAP: Record<string, EventData> = {
     fullDateText: "12 de Abril, 2026",
     targetDate: "2026-06-22T08:00:00",
     language: "pt-BR",
-    registrationLink: "https://www.ticketsports.com.br/e/triton-1-salvador-86852",
-    startListApiUrl: "https://api.raceresult.com/371805/RQDKNSO0GU02BW4IF4X1G7AF12S073FW",
+    registrationLink:
+      "https://www.ticketsports.com.br/e/triton-1-salvador-86852",
+    startListApiUrl:
+      "https://api.raceresult.com/371805/RQDKNSO0GU02BW4IF4X1G7AF12S073FW",
     liveResultsUrl: "https://resultscui.active.com/events/TRITONSALVADOR2026",
     hero: {
       backgroundImage: heroImgSalvador, // Placeholder
@@ -244,7 +245,8 @@ export const EVENT_DATA_MAP: Record<string, EventData> = {
         "Compete for points in the global ranking while enjoying the unique energy of Salvador.",
     },
     locations: {
-      description: "Planeje sua viagem e aproveite ao máximo sua jornada no TRITON. Localizada em um dos destinos mais vibrantes e históricos do Brasil, Salvador combina praias, cultura, gastronomia e energia única, tornando a experiência do TRITON ainda mais inesquecível.",
+      description:
+        "Planeje sua viagem e aproveite ao máximo sua jornada no TRITON. Localizada em um dos destinos mais vibrantes e históricos do Brasil, Salvador combina praias, cultura, gastronomia e energia única, tornando a experiência do TRITON ainda mais inesquecível.",
       experience: {
         image: touristCoast, // Placeholder
         pois: [
@@ -313,7 +315,6 @@ export const EVENT_DATA_MAP: Record<string, EventData> = {
         ],
         buttonText: "Contact Reservations",
         whatsappLink: "https://api.whatsapp.com/send?phone=55...",
-
       },
     },
     formats: {
@@ -331,7 +332,11 @@ export const EVENT_DATA_MAP: Record<string, EventData> = {
           { label: "Long", val: "1500m", p: 100 },
         ],
 
-        stravaIds: { sprint:"442206601619587448", middle:"3442186454436027514", long:"3442206601619587448" },
+        stravaIds: {
+          sprint: "442206601619587448",
+          middle: "3442186454436027514",
+          long: "3442206601619587448",
+        },
       },
       bike: {
         day: "Dia 2",
@@ -346,7 +351,11 @@ export const EVENT_DATA_MAP: Record<string, EventData> = {
           { label: "Middle", val: "40km", p: 66 },
           { label: "Long", val: "60km", p: 100 },
         ],
-        stravaIds: { sprint:"3442190057377176544 ", middle:"3514206730520669716", long:"3514202065593315860" },
+        stravaIds: {
+          sprint: "3442190057377176544 ",
+          middle: "3514206730520669716",
+          long: "3514202065593315860",
+        },
         details: [
           "Retorno Sprint: ~4,5 km após Macundu",
           "Hidratação Middle & Long: ~10 km após Macundu",
@@ -362,34 +371,39 @@ export const EVENT_DATA_MAP: Record<string, EventData> = {
         startTime: "08:00",
         image: runPic,
         title: "Corrida",
-        description: "Caracterizado por um percurso totalmente plano e 100% à beira-mar, pela orla da Praia de Piatã, o trajeto de corrida proporciona uma experiência dinâmica e com grande presença de público ao longo do caminho, permitindo que os atletas recebam apoio e torcida de perto durante toda a prova. Ao sair da área de transição, o triatleta seguirá em direção ao ponto de retorno, localizado na Av. Oceânica, após a 3ª ponte. Serão dois pontos de abastecimento, sendo um logo na saída da transição e outro a 500m antes do retorno.O percurso será realizado em voltas: SPRINT — 1 volta, MIDDLE — 2 voltas, LONG — 3 voltas. Com altimetria plana, esse é um percurso ideal para manter um ritmo forte e buscar velocidade nos quilômetros finais da prova. Informações adicionais: Número de peito obrigatório e visível na frente. Atletas masculinos: camiseta obrigatória (sem camiseta = desclassificação). Proibido fones/equipamentos de som (cartão amarelo e pode evoluir para desclassificação).",
+        description:
+          "Caracterizado por um percurso totalmente plano e 100% à beira-mar, pela orla da Praia de Piatã, o trajeto de corrida proporciona uma experiência dinâmica e com grande presença de público ao longo do caminho, permitindo que os atletas recebam apoio e torcida de perto durante toda a prova. Ao sair da área de transição, o triatleta seguirá em direção ao ponto de retorno, localizado na Av. Oceânica, após a 3ª ponte. Serão dois pontos de abastecimento, sendo um logo na saída da transição e outro a 500m antes do retorno.O percurso será realizado em voltas: SPRINT — 1 volta, MIDDLE — 2 voltas, LONG — 3 voltas. Com altimetria plana, esse é um percurso ideal para manter um ritmo forte e buscar velocidade nos quilômetros finais da prova. Informações adicionais: Número de peito obrigatório e visível na frente. Atletas masculinos: camiseta obrigatória (sem camiseta = desclassificação). Proibido fones/equipamentos de som (cartão amarelo e pode evoluir para desclassificação).",
         distances: [
           { label: "Sprint", val: "5km", p: 33 },
           { label: "Middle", val: "10km", p: 66 },
           { label: "Long", val: "15km", p: 100 },
         ],
-        stravaIds: { sprint:"3442184922483070074", middle:"3514202065593315860", long:"3514203195016413614" },
+        stravaIds: {
+          sprint: "3442184922483070074",
+          middle: "3514202065593315860",
+          long: "3514203195016413614",
+        },
       },
       distanceTable: [
-      {
-        "name": "SPRINT",
-        "swim": "500m",
-        "bike": "20km",
-        "run": "5km"
-      },
-      {
-        "name": "MIDDLE",
-        "swim": "1000m",
-        "bike": "40km",
-        "run": "10km"
-      },
-      {
-        "name": "LONG",
-        "swim": "1500m",
-        "bike": "60km",
-        "run": "15km"
-      }
-    ],
+        {
+          name: "SPRINT",
+          swim: "500m",
+          bike: "20km",
+          run: "5km",
+        },
+        {
+          name: "MIDDLE",
+          swim: "1000m",
+          bike: "40km",
+          run: "10km",
+        },
+        {
+          name: "LONG",
+          swim: "1500m",
+          bike: "60km",
+          run: "15km",
+        },
+      ],
     },
     schedule: {
       title: "AGENDA",
@@ -529,9 +543,9 @@ export const EVENT_DATA_MAP: Record<string, EventData> = {
       {
         name: "Prouder",
         logo: "/images/partners/prouder.png",
-        url: "#"
+        url: "#",
       },
-    ]
+    ],
   },
   "rio-2026": {
     slug: "rio-2026",
@@ -552,12 +566,14 @@ export const EVENT_DATA_MAP: Record<string, EventData> = {
     athleteArea: {
       liveResultsUrl: "https://www.eicrono.com.br/triton/index_triton3.html",
       raceGuideLink: "/docs/race-guide/guia_do_atleta_rio26.pdf",
-      startListApiUrl: "https://api.raceresult.com/371805/2ZJGC6U06Z8RLDI16UWNEHNXGE39KYE0",
+      startListApiUrl:
+        "https://api.raceresult.com/371805/2ZJGC6U06Z8RLDI16UWNEHNXGE39KYE0",
       mediaPictureUrl: "https://www.focoradical.com.br/grupos/triton-3-rj",
       videoBriefingUrl: "https://youtu.be/mx0aPdfgAUY?si=4UZPQTTX_dVuo_HB",
-      topFiveApiUrl: "https://api.raceresult.com/371805/T21MVQLRLLDAAWR8G7QNWCPSHPE7WIED",
-      liveResultsApiUrl:"https://api.raceresult.com/371805/9DMAJY5O7T7Z3ZUOVV0MOJGW5BFP5M9R"
-
+      topFiveApiUrl:
+        "https://api.raceresult.com/371805/T21MVQLRLLDAAWR8G7QNWCPSHPE7WIED",
+      liveResultsApiUrl:
+        "https://api.raceresult.com/371805/9DMAJY5O7T7Z3ZUOVV0MOJGW5BFP5M9R",
     },
     isRegistrationClosed: true,
     hero: {
@@ -613,7 +629,11 @@ export const EVENT_DATA_MAP: Record<string, EventData> = {
           { label: "Long", val: "3000m", p: 100 },
         ],
 
-        stravaIds: { sprint:"3489878661225659880", middle:"3514670048784968980", long:"3514676975046882124" },
+        stravaIds: {
+          sprint: "3489878661225659880",
+          middle: "3514670048784968980",
+          long: "3514676975046882124",
+        },
       },
       bike: {
         day: "Dia 2",
@@ -621,8 +641,7 @@ export const EVENT_DATA_MAP: Record<string, EventData> = {
         startTime: "08:00",
         image: bikePic,
         title: "Ciclismo",
-        description:
-          `
+        description: `
           <p>O percurso de ciclismo acontece na <span class="destaque">Serra do Piloto</span>.
           Localizada a aproximadamente 12 km do Resort Portobello, a prova tem início em frente ao <span class="destaque">Parque de Exposições de Mangaratiba (EXPO)</span>, onde os atletas contam com estacionamento seguro e estrutura de apoio antes da largada.</p>
           <br>
@@ -650,7 +669,11 @@ export const EVENT_DATA_MAP: Record<string, EventData> = {
           { label: "Middle", val: "60km", p: 66 },
           { label: "Long", val: "90km", p: 100 },
         ],
-        stravaIds: { sprint: "3522256534637037376", middle: "3522246706375714318", long: "3522246706371795470" },
+        stravaIds: {
+          sprint: "3522256534637037376",
+          middle: "3522246706375714318",
+          long: "3522246706371795470",
+        },
         details: [
           "Retorno Sprint: ~4,5 km após Macundu",
           "Hidratação Middle & Long: ~10 km após Macundu",
@@ -684,27 +707,31 @@ export const EVENT_DATA_MAP: Record<string, EventData> = {
           { label: "Middle", val: "20km", p: 66 },
           { label: "Long", val: "30km", p: 100 },
         ],
-        stravaIds: { sprint: "3519487411797267070", middle: "3522263920951085426", long: "3522260860951276352" },
+        stravaIds: {
+          sprint: "3519487411797267070",
+          middle: "3522263920951085426",
+          long: "3522260860951276352",
+        },
       },
       distanceTable: [
         {
-          "name": "SPRINT",
-          "swim": "750m",
-          "bike": "30km",
-          "run": "10km"
+          name: "SPRINT",
+          swim: "750m",
+          bike: "30km",
+          run: "10km",
         },
         {
-          "name": "MIDDLE",
-          "swim": "1500m",
-          "bike": "60km",
-          "run": "20km"
+          name: "MIDDLE",
+          swim: "1500m",
+          bike: "60km",
+          run: "20km",
         },
         {
-          "name": "LONG",
-          "swim": "2250m",
-          "bike": "90km",
-          "run": "30km"
-        }
+          name: "LONG",
+          swim: "2250m",
+          bike: "90km",
+          run: "30km",
+        },
       ],
     },
     afterMovie: {
@@ -712,27 +739,32 @@ export const EVENT_DATA_MAP: Record<string, EventData> = {
     },
     testimonial: {
       youtubeSrc: "https://www.youtube.com/embed/x0J6xM96QhQ",
-      testimonials: [{
-      "avatar_url": "/images/atletas/viviane.jpeg",
-      "quote": "Quantas lições em um único final de semana. Foram 3 dias, 3 esportes, 3 humores e unimeras variações de sentimentos. No Triton 3 pude me testar, exercitar a paciência e também o carinho comigo mesma. ",
-      "author": "Viviane",
-      "company": "TechFlow",
-      "link_social": "https://www.instagram.com/viviwigand"
-    },
-    {
-      "avatar_url": "/images/atletas/elida.jpeg",
-      "quote": "Que fim de semana incrível! Obrigada Triton pela experiência única. Levo para casa uma recordação cheias de boas energias e momentos especiais...",
-      "author": "Elida",
-      "company": "TechFlow",
-      "link_social": "https://www.instagram.com/elidacordeiroo"
-    },
-    {
-      "avatar_url": "/images/atletas/bizarelo.jpeg",
-      "quote": "Que dia incrível e que dia forte! Obrigado TRITON pela prova top, segura e com visual fantástico",
-      "author": "Bizarelo",
-      "company": "TechFlow",
-      "link_social": "https://www.instagram.com/bizarelocycling"
-    }]
+      testimonials: [
+        {
+          avatar_url: "/images/atletas/viviane.jpeg",
+          quote:
+            "Quantas lições em um único final de semana. Foram 3 dias, 3 esportes, 3 humores e unimeras variações de sentimentos. No Triton 3 pude me testar, exercitar a paciência e também o carinho comigo mesma. ",
+          author: "Viviane",
+          company: "TechFlow",
+          link_social: "https://www.instagram.com/viviwigand",
+        },
+        {
+          avatar_url: "/images/atletas/elida.jpeg",
+          quote:
+            "Que fim de semana incrível! Obrigada Triton pela experiência única. Levo para casa uma recordação cheias de boas energias e momentos especiais...",
+          author: "Elida",
+          company: "TechFlow",
+          link_social: "https://www.instagram.com/elidacordeiroo",
+        },
+        {
+          avatar_url: "/images/atletas/bizarelo.jpeg",
+          quote:
+            "Que dia incrível e que dia forte! Obrigado TRITON pela prova top, segura e com visual fantástico",
+          author: "Bizarelo",
+          company: "TechFlow",
+          link_social: "https://www.instagram.com/bizarelocycling",
+        },
+      ],
     },
     schedule: {
       title: "AGENDA",
@@ -874,7 +906,8 @@ export const EVENT_DATA_MAP: Record<string, EventData> = {
         "Todos os horários estão sujeitos a alteração sem aviso prévio devido a circunstâncias imprevistas. Os horários e a ordem de largada também poderão ser ajustados. Recomendamos acompanhar a programação regularmente para se manter atualizado sobre possíveis mudanças de última hora.",
     },
     locations: {
-      description: "O TRITON Rio 26 acontece em Mangaratiba, um destino que combina o melhor da Serra do Mar com a Costa Verde. Planeje sua viagem, escolha seu hotel parceiro e prepare-se para uma experiência que vai além da competição.",
+      description:
+        "O TRITON Rio 26 acontece em Mangaratiba, um destino que combina o melhor da Serra do Mar com a Costa Verde. Planeje sua viagem, escolha seu hotel parceiro e prepare-se para uma experiência que vai além da competição.",
       experience: {
         image: touristCoast,
         pois: [
@@ -949,46 +982,45 @@ export const EVENT_DATA_MAP: Record<string, EventData> = {
       {
         name: "Lei de Insentivo ao Esporte",
         logo: "/images/partners/events/rio2026/lei-incentivo-logo.png",
-        url: "#"
+        url: "#",
       },
       {
         name: "Instituto Bons Ventos",
         logo: "/images/partners/events/rio2026/instituto-bons-ventos-logo.png",
-        url: "#"
+        url: "#",
       },
       {
         name: "Dobro",
         logo: "/images/partners/events/rio2026/dobro-logo.png",
-        url: "#"
+        url: "#",
       },
       {
         name: "My Safe",
         logo: "/images/partners/events/rio2026/my-safe-logo.png",
-        url: ""
+        url: "",
       },
-       {
+      {
         name: "Prefeitura de Mangaratiba",
         logo: "/images/partners/events/rio2026/mangaratiba-logo.png",
-        url: "#"
+        url: "#",
       },
       {
         name: "Equilibrium Saude Integrada",
         logo: "/images/partners/events/rio2026/eq-logo.png",
-        url: "#"
+        url: "#",
       },
       {
         name: "B Drops",
         logo: "/images/partners/events/rio2026/drops.png",
-        url: "#"
+        url: "#",
       },
-      
+
       {
         name: "Ministerio Esporte",
         logo: "/images/partners/events/rio2026/ministerio-esporte.png",
-        url: "#"
+        url: "#",
       },
-     
-    ]
+    ],
   },
   "qindong-2026": {
     id: "qindong-2026",
@@ -1006,7 +1038,8 @@ export const EVENT_DATA_MAP: Record<string, EventData> = {
     fullDateText: "Oct 31 - Nov 01, 2026",
     targetDate: "2026-11-01T08:00:00",
     language: "en",
-    registrationLink:"https://endurancecui.active.com/new/events/97349504/select-race?e4p=187915b9-9a93-4ced-99f0-839e3e981906&e4ts=1783257039&e4q=02163a21-29c0-4de1-b66e-72afad13e817&e4c=active&e4e=snawe00000000&e4h=59a235dbd7daa5c78eae6eae03177f16&e4rt=Safetynet&_p=9911300500391054",
+    registrationLink:
+      "https://endurancecui.active.com/new/events/97349504/select-race?e4p=187915b9-9a93-4ced-99f0-839e3e981906&e4ts=1783257039&e4q=02163a21-29c0-4de1-b66e-72afad13e817&e4c=active&e4e=snawe00000000&e4h=59a235dbd7daa5c78eae6eae03177f16&e4rt=Safetynet&_p=9911300500391054",
     isRegistrationClosed: true,
     hero: {
       backgroundImage: heroImgQidong, // Placeholder
@@ -1015,11 +1048,13 @@ export const EVENT_DATA_MAP: Record<string, EventData> = {
     athleteArea: {
       liveResultsUrl: "",
       raceGuideLink: "/docs/race-guide/athlete_guide_qdong26.pdf",
-      startListApiUrl: "https://api.raceresult.com/371805/J1CHIPHJFTLQ2LQWVP319LYWTF2ACT7W",
-      mediaPictureUrl: "",
+      startListApiUrl:
+        "https://api.raceresult.com/371805/J1CHIPHJFTLQ2LQWVP319LYWTF2ACT7W",
+      mediaPictureUrl:
+        "https://static.marathon-photos.com/triton/gallery.html?key=d5864acd59e189fba9d1cfddd11bcebe&race=qidong",
       videoBriefingUrl: "",
       topFiveApiUrl: "",
-      liveResultsApiUrl: ""
+      liveResultsApiUrl: "",
     },
     info: {
       title: "Experience the Orient Coast",
@@ -1040,7 +1075,7 @@ export const EVENT_DATA_MAP: Record<string, EventData> = {
         image: "",
         video: "https://www.youtube.com/embed/iM_ot3vSexQ?si=ETtFTJHWSe3DN1qJ",
         title: "Natação",
-        description:`
+        description: `
           <p>The swim race will take place at Bihai Yintan Scenic Area Beach, renowned for its calm waters, natural shelter from ocean swells, and excellent visibility.</p>
           <br>
           <p>Athletes will start in waves directly from the beach, beginning with LONG, followed by MIDDLE and SPRINT. The swim course follows a loop format:</p>
@@ -1066,16 +1101,20 @@ export const EVENT_DATA_MAP: Record<string, EventData> = {
           { label: "Long", val: "2100m", p: 100 },
         ],
 
-        stravaIds: { sprint: "3490382720997212106", middle: "3490382720997212106", long: "3490382720997212106" },
+        stravaIds: {
+          sprint: "3490382720997212106",
+          middle: "3490382720997212106",
+          long: "3490382720997212106",
+        },
       },
       bike: {
         day: "Dia 2",
         date: "22 de Agosto (sábado)",
         startTime: "08:00",
-       image: "",
+        image: "",
         video: "https://www.youtube.com/embed/ChnAi8MZARI?si=F0K-K9Gd-MK5UgAO",
         title: "Ciclismo",
-        description:`
+        description: `
           <p>The bike course follows scenic coastal roads renowned for their stunning views and recognized by National Geographic as one of the region's most remarkable routes.</p>
           <br>
           <p>The course is almost entirely flat, providing ideal conditions for athletes aiming to achieve their personal best performances.</p>
@@ -1087,15 +1126,17 @@ export const EVENT_DATA_MAP: Record<string, EventData> = {
           <br>
           <p>Hydration stations and restroom facilities will be available along the course.</p>
             `,
-        distances: [  
+        distances: [
           { label: "Sprint", val: "20km", p: 33 },
           { label: "Middle", val: "36km", p: 66 },
           { label: "Long", val: "88km", p: 100 },
         ],
-        stravaIds: { sprint: "3489887744610501362", middle: "3489887744610501362", long: "3489887744610501362" },
-        details: [
-          
-        ],
+        stravaIds: {
+          sprint: "3489887744610501362",
+          middle: "3489887744610501362",
+          long: "3489887744610501362",
+        },
+        details: [],
       },
       run: {
         day: "Dia 3",
@@ -1121,29 +1162,33 @@ export const EVENT_DATA_MAP: Record<string, EventData> = {
           { label: "Middle", val: "12km", p: 66 },
           { label: "Long", val: "20km", p: 100 },
         ],
-        stravaIds: { sprint:"3490379193741390584", middle:"3490379193741390584", long:"3490379193741390584" },
+        stravaIds: {
+          sprint: "3490379193741390584",
+          middle: "3490379193741390584",
+          long: "3490379193741390584",
+        },
       },
       distanceTable: [
-      {
-        "name": "SPRINT",
-        "swim": "700m",
-        "bike": "20km",
-        "run": "4,5km"
-      },
-      {
-        "name": "MIDDLE",
-        "swim": "1400m",
-        "bike": "36km",
-        "run": "12km"
-      },
-      {
-        "name": "LONG",
-        "swim": "2100m",
-        "bike": "88km",
-        "run": "20km"
-      }
-    ],
-    disableMixMatch: true,
+        {
+          name: "SPRINT",
+          swim: "700m",
+          bike: "20km",
+          run: "4,5km",
+        },
+        {
+          name: "MIDDLE",
+          swim: "1400m",
+          bike: "36km",
+          run: "12km",
+        },
+        {
+          name: "LONG",
+          swim: "2100m",
+          bike: "88km",
+          run: "20km",
+        },
+      ],
+      disableMixMatch: true,
     },
     schedule: {
       title: "AGENDA",
@@ -1289,7 +1334,8 @@ export const EVENT_DATA_MAP: Record<string, EventData> = {
       importantNote: "",
     },
     locations: {
-      description: "Plan your trip and make the most of your TRITON experience in Qidong. Enjoy a fast-growing coastal destination with unique local culture, fresh seafood, and scenic courses where the rivers meet the sea.",
+      description:
+        "Plan your trip and make the most of your TRITON experience in Qidong. Enjoy a fast-growing coastal destination with unique local culture, fresh seafood, and scenic courses where the rivers meet the sea.",
       experience: {
         image: landScapeQidong, // Placeholder
         pois: [
@@ -1356,18 +1402,19 @@ export const EVENT_DATA_MAP: Record<string, EventData> = {
           "Late check-out available",
         ],
         buttonText: "Book Now",
-        whatsappLink: "https://endurancecui.active.com/new/events/97349504/select-race?e4p=187915b9-9a93-4ced-99f0-839e3e981906&e4ts=1783257039&e4q=02163a21-29c0-4de1-b66e-72afad13e817&e4c=active&e4e=snawe00000000&e4h=59a235dbd7daa5c78eae6eae03177f16&e4rt=Safetynet&_p=9911300500391054",
+        whatsappLink:
+          "https://endurancecui.active.com/new/events/97349504/select-race?e4p=187915b9-9a93-4ced-99f0-839e3e981906&e4ts=1783257039&e4q=02163a21-29c0-4de1-b66e-72afad13e817&e4c=active&e4e=snawe00000000&e4h=59a235dbd7daa5c78eae6eae03177f16&e4rt=Safetynet&_p=9911300500391054",
       },
     },
     partners: [
       {
         name: "Marathon Photos",
         logo: "/images/partners/marathon-photos-logo.png",
-        url: ""
+        url: "",
       },
-    ]
+    ],
   },
- "lisboa-2026": {
+  "lisboa-2026": {
     id: "lisboa-2026",
     slug: "lisboa-2026",
     eventFormat: "triton1",
@@ -1383,16 +1430,21 @@ export const EVENT_DATA_MAP: Record<string, EventData> = {
     fullDateText: "September 4, 2026",
     targetDate: "2026-09-05T05:00:00",
     language: "en",
-    registrationLink: "https://register.hakuapp.com/?event=9ce0f9c87c1b43a8b97a",
+    registrationLink:
+      "https://register.hakuapp.com/?event=9ce0f9c87c1b43a8b97a",
     isRegistrationClosed: true,
     athleteArea: {
       raceGuideLink: "/docs/race-guide/athlete_guide_lisbon26.pdf",
-      startListApiUrl: "https://api.raceresult.com/371805/XN2SPAM4PV33WMM7YFAM06MGTI9V50QE",
-      mediaPictureUrl: "https://marathonphotos.live/Event/Sports%2FMPUK%2F2026%2FTriton1%20Lisboa/",
+      startListApiUrl:
+        "https://api.raceresult.com/371805/XN2SPAM4PV33WMM7YFAM06MGTI9V50QE",
+      mediaPictureUrl:
+        "https://marathonphotos.live/Event/Sports%2FMPUK%2F2026%2FTriton1%20Lisboa/",
       videoBriefingUrl: "",
-      topFiveApiUrl: "https://api.raceresult.com/371805/AG1SSDYAYQ3FV5UGAF4YU8UM3G02KN27",
-      liveResultsApiUrl:"https://api.raceresult.com/371805/OUVYM0LYEY2A76K0EPV6ZRQETQ3XMBF3",
-      liveResultsUrl:"https://results.multicrono.com/triton-lisboa-26",
+      topFiveApiUrl:
+        "https://api.raceresult.com/371805/AG1SSDYAYQ3FV5UGAF4YU8UM3G02KN27",
+      liveResultsApiUrl:
+        "https://api.raceresult.com/371805/OUVYM0LYEY2A76K0EPV6ZRQETQ3XMBF3",
+      liveResultsUrl: "https://results.multicrono.com/triton-lisboa-26",
     },
     hero: {
       backgroundImage: heroImgLisboa,
@@ -1415,7 +1467,7 @@ export const EVENT_DATA_MAP: Record<string, EventData> = {
         startTime: "15:30",
         image: swimPicLisboa,
         title: "Natação",
-        description:`
+        description: `
             <p>The swim takes place in Doca dos Olivais, a man-made lake located next to Lisbon’s iconic waterfront. Athletes enter the water from the Oceanário de Lisboa side, with the course positioned just a short distance from the transition area for a smooth race experience.</p>
             <br>
             <p>With calm, still waters and an average temperature of 18°C to 19°C (64°F–66°F), the venue offers excellent conditions for athletes. </p>
@@ -1437,7 +1489,11 @@ export const EVENT_DATA_MAP: Record<string, EventData> = {
           { label: "Long", val: "1800m", p: 100 },
         ],
 
-        stravaIds: { sprint:"3442206601619587448", middle:"3442186454436027514", long:"3514199409116588682" },
+        stravaIds: {
+          sprint: "3442206601619587448",
+          middle: "3442186454436027514",
+          long: "3514199409116588682",
+        },
       },
       bike: {
         day: "Dia 2",
@@ -1445,7 +1501,7 @@ export const EVENT_DATA_MAP: Record<string, EventData> = {
         startTime: "08:00",
         image: bikePicLisboa,
         title: "Ciclismo",
-        description:`
+        description: `
              <strong>100% CLOSED TO TRAFFIC</strong>
              <br><br>
             <p>One of the few urban triathlon bike courses in Lisbon that is fully closed to traffic, providing a safe and fast racing experience.</p>
@@ -1458,15 +1514,15 @@ export const EVENT_DATA_MAP: Record<string, EventData> = {
             <br>
 <p>Starting from Transition, athletes head north along Avenida D. João II before joining the IC2 highway. The course is predominantly flat and fast, featuring gentle rolling terrain and a gradual 1 km climb near the turnaround point.</p><br>
 <p>A Bike Aid Station is located at the turnaround area and is accessible at the start of each new lap. Please note that littering is only permitted within the designated aid station zone and may result in disqualification if done elsewhere.</p>`,
-        distances: [  
+        distances: [
           { label: "Sprint", val: "21.5km", p: 33 },
           { label: "Middle", val: "43km", p: 66 },
           { label: "Long", val: "86km", p: 100 },
         ],
-        stravaIds: { 
-          sprint: "3442190057377176544", 
+        stravaIds: {
+          sprint: "3442190057377176544",
           middle: "3514206730520669716",
-          long: "3514208343517162558"
+          long: "3514208343517162558",
         },
         details: [
           "Retorno Sprint: ~4,5 km após Macundu",
@@ -1503,35 +1559,39 @@ export const EVENT_DATA_MAP: Record<string, EventData> = {
           { label: "Middle", val: "8km", p: 66 },
           { label: "Long", val: "16km", p: 100 },
         ],
-        stravaIds: { sprint: "3442184922483070074", middle: "3514202065593315860", long: "3514203195016413614" },
+        stravaIds: {
+          sprint: "3442184922483070074",
+          middle: "3514202065593315860",
+          long: "3514203195016413614",
+        },
       },
       distanceTable: [
-      {
-        "name": "SPRINT",
-        "swim": "600m",
-        "bike": "21.5km",
-        "run": "5km"
-      },
-      {
-        "name": "MIDDLE",
-        "swim": "1200m",
-        "bike": "43km",
-        "run": "10km"
-      },
-      {
-        "name": "LONG",
-        "swim": "1800m",
-        "bike": "86km",
-        "run": "20km"
-      }
-    ],
+        {
+          name: "SPRINT",
+          swim: "600m",
+          bike: "21.5km",
+          run: "5km",
+        },
+        {
+          name: "MIDDLE",
+          swim: "1200m",
+          bike: "43km",
+          run: "10km",
+        },
+        {
+          name: "LONG",
+          swim: "1800m",
+          bike: "86km",
+          run: "20km",
+        },
+      ],
     },
     extraEvent: {
       imageSrc: "/images/eventos/lisboa-2026/event-extra.jpg",
       imageAlt: "Extra Event",
-      ctaText:"Register now",
-      ctaLink:"https://register.hakuapp.com/?event=9ce0f9c87c1b43a8b97a",
-      badge:"EXTRA EXPERIENCE",
+      ctaText: "Register now",
+      ctaLink: "https://register.hakuapp.com/?event=9ce0f9c87c1b43a8b97a",
+      badge: "EXTRA EXPERIENCE",
       title: "TRITON KIDS & FAMILY",
       subtitle: "",
       description: `<div class="space-y-4">
@@ -1595,12 +1655,14 @@ export const EVENT_DATA_MAP: Record<string, EventData> = {
             {
               time: "16:00",
               title: "Kids & Parents, Swim & Run",
-              location: "Meeting point (15:00) at Race Office (at the finish-line)",
+              location:
+                "Meeting point (15:00) at Race Office (at the finish-line)",
             },
             {
               time: "16:30",
               title: "Family Triathlon",
-              location: "Meeting point (15:00) at Race Office (at the finish-line)",
+              location:
+                "Meeting point (15:00) at Race Office (at the finish-line)",
             },
             {
               time: "16:30 - 17:30",
@@ -1769,69 +1831,73 @@ export const EVENT_DATA_MAP: Record<string, EventData> = {
           "700 meters from race venue",
         ],
         buttonText: "Contact Us",
-        whatsappLink:
-          "https://www.nh-hotels.com/pt/hoteis/lisboa",
+        whatsappLink: "https://www.nh-hotels.com/pt/hoteis/lisboa",
       },
     },
-    afterMovie:{
-      youtubeSrc:"uF-G6jTNDLQ?si=qfYeZlMsdkWxfshZ"
+    afterMovie: {
+      youtubeSrc: "uF-G6jTNDLQ?si=qfYeZlMsdkWxfshZ",
     },
     testimonial: {
-      youtubeSrc:"",
-      testimonials: [{
-      "avatar_url": "/images/atletas/viviane.jpeg",
-      "quote": "Quantas lições em um único final de semana. Foram 3 dias, 3 esportes, 3 humores e unimeras variações de sentimentos. No Triton 3 pude me testar, exercitar a paciência e também o carinho comigo mesma. ",
-      "author": "Viviane",
-      "company": "TechFlow",
-      "link_social": "https://www.instagram.com/viviwigand"
+      youtubeSrc: "",
+      testimonials: [
+        {
+          avatar_url: "/images/atletas/viviane.jpeg",
+          quote:
+            "Quantas lições em um único final de semana. Foram 3 dias, 3 esportes, 3 humores e unimeras variações de sentimentos. No Triton 3 pude me testar, exercitar a paciência e também o carinho comigo mesma. ",
+          author: "Viviane",
+          company: "TechFlow",
+          link_social: "https://www.instagram.com/viviwigand",
+        },
+        {
+          avatar_url: "/images/atletas/elida.jpeg",
+          quote:
+            "Que fim de semana incrível! Obrigada Triton pela experiência única. Levo para casa uma recordação cheias de boas energias e momentos especiais...",
+          author: "Elida",
+          company: "TechFlow",
+          link_social: "https://www.instagram.com/elidacordeiroo",
+        },
+        {
+          avatar_url: "/images/atletas/bizarelo.jpeg",
+          quote:
+            "Que dia incrível e que dia forte! Obrigado TRITON pela prova top, segura e com visual fantástico",
+          author: "Bizarelo",
+          company: "TechFlow",
+          link_social: "https://www.instagram.com/bizarelocycling",
+        },
+      ],
     },
-    {
-      "avatar_url": "/images/atletas/elida.jpeg",
-      "quote": "Que fim de semana incrível! Obrigada Triton pela experiência única. Levo para casa uma recordação cheias de boas energias e momentos especiais...",
-      "author": "Elida",
-      "company": "TechFlow",
-      "link_social": "https://www.instagram.com/elidacordeiroo"
-    },
-    {
-      "avatar_url": "/images/atletas/bizarelo.jpeg",
-      "quote": "Que dia incrível e que dia forte! Obrigado TRITON pela prova top, segura e com visual fantástico",
-      "author": "Bizarelo",
-      "company": "TechFlow",
-      "link_social": "https://www.instagram.com/bizarelocycling"
-    }]
-  },
     partners: [
       {
         name: "Câmara Municipal de Lisboa",
         logo: "/images/eventos/lisboa-2026/partners/logo-camara-lisboa.png",
-        url: "#"
+        url: "#",
       },
       {
         name: "Instituto Português do Desporto e Juventude",
         logo: "/images/eventos/lisboa-2026/partners/logo-instituto-portugues.png",
-        url: "#"
+        url: "#",
       },
       {
         name: "Loff",
         logo: "/images/eventos/lisboa-2026/partners/logo-loff.png",
-        url: "#"
+        url: "#",
       },
       {
         name: "Parque das Nações",
         logo: "/images/eventos/lisboa-2026/partners/logo-parque-nacoes.png",
-        url: "#"
+        url: "#",
       },
       {
         name: "Snupe",
         logo: "/images/eventos/lisboa-2026/partners/logo-snupe.png",
-        url: "#"
+        url: "#",
       },
       {
         name: "Tivoli",
         logo: "/images/eventos/lisboa-2026/partners/logo-tivoli.png",
-        url: "#"
-      }
-    ]
+        url: "#",
+      },
+    ],
   },
   "salvador-2027": {
     id: "salvador-2027",
@@ -1883,7 +1949,7 @@ export const EVENT_DATA_MAP: Record<string, EventData> = {
         startTime: "15:30",
         image: swimPic,
         title: "Natação",
-        description:`
+        description: `
             <p>A natação acontece na praia de Placaford, a poucos metros da arena montada na praça de Piatã. A largada será em ondas, iniciando pelo SPRINT, seguido do MIDDLE e do LONG, com saída diretamente da areia. O percurso será delimitado por boias e realizado em voltas.</p>
             <br>
             <ul style="list-style-type: disc; padding-left: 20px;">
@@ -1911,7 +1977,7 @@ export const EVENT_DATA_MAP: Record<string, EventData> = {
           { label: "Long", val: "1500m", p: 100 },
         ],
 
-        stravaIds: { sprint:"", middle:"", long:"" },
+        stravaIds: { sprint: "", middle: "", long: "" },
       },
       bike: {
         day: "Dia 2",
@@ -1919,7 +1985,7 @@ export const EVENT_DATA_MAP: Record<string, EventData> = {
         startTime: "08:00",
         image: bikePicSalvador,
         title: "Ciclismo",
-        description:`
+        description: `
             <p>Saindo da área de transição, localizada a poucos metros da arena de prova, o triatleta seguirá em direção à Av. Orlando Gomes, passando pela Av. 29 de Março e realizando o retorno na Via Regional.</p>
             <br>
             <strong>O percurso será realizado em voltas:</strong>
@@ -1995,25 +2061,25 @@ export const EVENT_DATA_MAP: Record<string, EventData> = {
         stravaIds: { sprint: "", middle: "", long: "" },
       },
       distanceTable: [
-      {
-        "name": "SPRINT",
-        "swim": "500m",
-        "bike": "20km",
-        "run": "5km"
-      },
-      {
-        "name": "MIDDLE",
-        "swim": "1000m",
-        "bike": "40km",
-        "run": "10km"
-      },
-      {
-        "name": "LONG",
-        "swim": "1500m",
-        "bike": "60km",
-        "run": "15km"
-      }
-    ],
+        {
+          name: "SPRINT",
+          swim: "500m",
+          bike: "20km",
+          run: "5km",
+        },
+        {
+          name: "MIDDLE",
+          swim: "1000m",
+          bike: "40km",
+          run: "10km",
+        },
+        {
+          name: "LONG",
+          swim: "1500m",
+          bike: "60km",
+          run: "15km",
+        },
+      ],
     },
     schedule: {
       title: "AGENDA",
@@ -2060,7 +2126,8 @@ export const EVENT_DATA_MAP: Record<string, EventData> = {
             {
               time: "04:10 – 05:40",
               title: "Minutos Finais Bike Check In ",
-              location:  "Arena TRITON - Praça Piatã - Av. Octávio Mangabeira 1988",
+              location:
+                "Arena TRITON - Praça Piatã - Av. Octávio Mangabeira 1988",
             },
             {
               time: "05:45",
@@ -2072,7 +2139,7 @@ export const EVENT_DATA_MAP: Record<string, EventData> = {
               title: "Largada SPRINT",
               location: "Praia de Placaford",
             },
-             {
+            {
               time: "06:03",
               title: "Largada MIDDLE",
               location: "Praia de Placaford",
@@ -2109,21 +2176,24 @@ export const EVENT_DATA_MAP: Record<string, EventData> = {
                 { label: "LONG", value: "2h00" },
               ],
             },
-            
+
             {
               time: "08:30",
               title: "Premiação SPRINT",
-              location: "Arena TRITON - Praça Piatã - Av. Octávio Mangabeira 1988",
+              location:
+                "Arena TRITON - Praça Piatã - Av. Octávio Mangabeira 1988",
             },
             {
               time: "10:30",
               title: "Premiação MIDDLE",
-              location: "Arena TRITON - Praça Piatã - Av. Octávio Mangabeira 1988",
+              location:
+                "Arena TRITON - Praça Piatã - Av. Octávio Mangabeira 1988",
             },
             {
               time: "12:30",
               title: "Premiação LONG",
-              location: "Arena TRITON - Praça Piatã - Av. Octávio Mangabeira 1988",
+              location:
+                "Arena TRITON - Praça Piatã - Av. Octávio Mangabeira 1988",
             },
           ],
         },
@@ -2132,7 +2202,8 @@ export const EVENT_DATA_MAP: Record<string, EventData> = {
         "Todos os horários estão sujeitos a alteração sem aviso prévio devido a circunstâncias imprevistas. Os horários e a ordem de largada também poderão ser ajustados. Recomendamos acompanhar a programação regularmente para se manter atualizado sobre possíveis mudanças de última hora.",
     },
     locations: {
-      description: "Planeje sua viagem e aproveite ao máximo sua jornada no TRITON. Localizada em um dos destinos mais vibrantes e históricos do Brasil, Salvador combina praias, cultura, gastronomia e energia única, tornando a experiência do TRITON ainda mais inesquecível.",
+      description:
+        "Planeje sua viagem e aproveite ao máximo sua jornada no TRITON. Localizada em um dos destinos mais vibrantes e históricos do Brasil, Salvador combina praias, cultura, gastronomia e energia única, tornando a experiência do TRITON ainda mais inesquecível.",
       experience: {
         image: salvadorExperienceImage, // Placeholder
         pois: [
@@ -2191,16 +2262,11 @@ export const EVENT_DATA_MAP: Record<string, EventData> = {
       resort: {
         image: fotoResortSalvador,
         title: "Vila Bahia",
-        description:
-          "Agência oficial de turismo do TRITON Salvador. ",
-        benefits: [
-          "Passagem Aérea",
-          "Transfer",
-          "Hospedagem",
-          "Suporte Local",
-        ],
+        description: "Agência oficial de turismo do TRITON Salvador. ",
+        benefits: ["Passagem Aérea", "Transfer", "Hospedagem", "Suporte Local"],
         buttonText: "Entre em contato",
-        whatsappLink: "https://api.whatsapp.com/send/?phone=5571991468904&text&type=phone_number&app_absent=0",
+        whatsappLink:
+          "https://api.whatsapp.com/send/?phone=5571991468904&text&type=phone_number&app_absent=0",
       },
     },
     afterMovie: {
@@ -2208,37 +2274,42 @@ export const EVENT_DATA_MAP: Record<string, EventData> = {
     },
     testimonial: {
       youtubeSrc: "https://www.youtube.com/embed/rTUEVYYoyjE",
-      testimonials: [{
-      "avatar_url": "/images/atletas/debora-mares.jpeg",
-      "quote": "Que experiência absurda foi o Triton. @triton1salvador Obrigada, foi simplesmente incrível fazer parte disso! 💙🏊‍♀️🚴‍♀️🏃‍♀️",
-      "author": "Débora Mares",
-      "company": "TechFlow",
-      "link_social": "https://www.instagram.com/deboramares_/"
-    },
-    {
-      "avatar_url": "/images/atletas/bruno-doria.jpeg",
-      "quote": "Mais uma vez impecável @triton1salvador , que prova incrível! É um enorme prazer em ser embaixador @tritonws_br Brasil!",
-      "author": "Bruno Doria",
-      "company": "TechFlow",
-      "link_social": "https://www.instagram.com/brunodoria_/"
-    },
-    {
-      "avatar_url": "/images/atletas/diego-fonseca.jpeg",
-      "quote": "Foi sensacional competir em salvador ao lado de muita gente bruta. Prova que testou minha mente a cada minuto!",
-      "author": "Diego Fonseca",
-      "company": "TechFlow",
-      "link_social": "https://www.instagram.com/bucodiegofonseca/"
-    }]
+      testimonials: [
+        {
+          avatar_url: "/images/atletas/debora-mares.jpeg",
+          quote:
+            "Que experiência absurda foi o Triton. @triton1salvador Obrigada, foi simplesmente incrível fazer parte disso! 💙🏊‍♀️🚴‍♀️🏃‍♀️",
+          author: "Débora Mares",
+          company: "TechFlow",
+          link_social: "https://www.instagram.com/deboramares_/",
+        },
+        {
+          avatar_url: "/images/atletas/bruno-doria.jpeg",
+          quote:
+            "Mais uma vez impecável @triton1salvador , que prova incrível! É um enorme prazer em ser embaixador @tritonws_br Brasil!",
+          author: "Bruno Doria",
+          company: "TechFlow",
+          link_social: "https://www.instagram.com/brunodoria_/",
+        },
+        {
+          avatar_url: "/images/atletas/diego-fonseca.jpeg",
+          quote:
+            "Foi sensacional competir em salvador ao lado de muita gente bruta. Prova que testou minha mente a cada minuto!",
+          author: "Diego Fonseca",
+          company: "TechFlow",
+          link_social: "https://www.instagram.com/bucodiegofonseca/",
+        },
+      ],
     },
     partners: [
       {
         name: "Esportiva Bet",
         logo: "/images/eventos/salvador-2027/esportiva-bet-logo.png",
-        url: "#"
+        url: "#",
       },
-    ]
+    ],
   },
-   "lisboa-2027": {
+  "lisboa-2027": {
     id: "lisboa-2027",
     slug: "lisboa-2027",
     eventFormat: "triton1",
@@ -2254,7 +2325,8 @@ export const EVENT_DATA_MAP: Record<string, EventData> = {
     fullDateText: "Sep 11-12, 2027",
     targetDate: "2027-09-11T08:00:00",
     language: "en",
-    registrationLink: "https://register.hakuapp.com/?event=4a449a61911ec49b146b",
+    registrationLink:
+      "https://register.hakuapp.com/?event=4a449a61911ec49b146b",
     isRegistrationClosed: false,
     athleteArea: {
       raceGuideLink: "",
@@ -2262,8 +2334,8 @@ export const EVENT_DATA_MAP: Record<string, EventData> = {
       mediaPictureUrl: "",
       videoBriefingUrl: "",
       topFiveApiUrl: "",
-      liveResultsApiUrl:"",
-      liveResultsUrl:"",
+      liveResultsApiUrl: "",
+      liveResultsUrl: "",
     },
     hero: {
       backgroundImage: heroImgLisboa27,
@@ -2286,7 +2358,7 @@ export const EVENT_DATA_MAP: Record<string, EventData> = {
         startTime: "15:30",
         image: swimPicLisboa,
         title: "Natação",
-        description:`
+        description: `
             <p>The swim takes place in Doca dos Olivais, a man-made lake located next to Lisbon’s iconic waterfront. Athletes enter the water from the Oceanário de Lisboa side, with the course positioned just a short distance from the transition area for a smooth race experience.</p>
             <br>
             <p>With calm, still waters and an average temperature of 18°C to 19°C (64°F–66°F), the venue offers excellent conditions for athletes. </p>
@@ -2308,7 +2380,11 @@ export const EVENT_DATA_MAP: Record<string, EventData> = {
           { label: "Long", val: "1800m", p: 100 },
         ],
 
-        stravaIds: { sprint:"3442206601619587448", middle:"3442186454436027514", long:"3514199409116588682" },
+        stravaIds: {
+          sprint: "3442206601619587448",
+          middle: "3442186454436027514",
+          long: "3514199409116588682",
+        },
       },
       bike: {
         day: "Dia 2",
@@ -2316,7 +2392,7 @@ export const EVENT_DATA_MAP: Record<string, EventData> = {
         startTime: "08:00",
         image: bikePicLisboa,
         title: "Ciclismo",
-        description:`
+        description: `
              <strong>100% CLOSED TO TRAFFIC</strong>
              <br><br>
             <p>One of the few urban triathlon bike courses in Lisbon that is fully closed to traffic, providing a safe and fast racing experience.</p>
@@ -2329,15 +2405,15 @@ export const EVENT_DATA_MAP: Record<string, EventData> = {
             <br>
 <p>Starting from Transition, athletes head north along Avenida D. João II before joining the IC2 highway. The course is predominantly flat and fast, featuring gentle rolling terrain and a gradual 1 km climb near the turnaround point.</p><br>
 <p>A Bike Aid Station is located at the turnaround area and is accessible at the start of each new lap. Please note that littering is only permitted within the designated aid station zone and may result in disqualification if done elsewhere.</p>`,
-        distances: [  
+        distances: [
           { label: "Sprint", val: "21.5km", p: 33 },
           { label: "Middle", val: "43km", p: 66 },
           { label: "Long", val: "86km", p: 100 },
         ],
-        stravaIds: { 
-          sprint: "3442190057377176544", 
+        stravaIds: {
+          sprint: "3442190057377176544",
           middle: "3514206730520669716",
-          long: "3514208343517162558"
+          long: "3514208343517162558",
         },
         details: [
           "Retorno Sprint: ~4,5 km após Macundu",
@@ -2374,28 +2450,32 @@ export const EVENT_DATA_MAP: Record<string, EventData> = {
           { label: "Middle", val: "10km", p: 66 },
           { label: "Long", val: "20km", p: 100 },
         ],
-        stravaIds: { sprint: "3442184922483070074", middle: "3514202065593315860", long: "3514203195016413614" },
+        stravaIds: {
+          sprint: "3442184922483070074",
+          middle: "3514202065593315860",
+          long: "3514203195016413614",
+        },
       },
       distanceTable: [
-      {
-        "name": "SPRINT",
-        "swim": "600m",
-        "bike": "21.5km",
-        "run": "5km"
-      },
-      {
-        "name": "MIDDLE",
-        "swim": "1200m",
-        "bike": "43km",
-        "run": "10km"
-      },
-      {
-        "name": "LONG",
-        "swim": "1800m",
-        "bike": "86km",
-        "run": "20km"
-      }
-    ],
+        {
+          name: "SPRINT",
+          swim: "600m",
+          bike: "21.5km",
+          run: "5km",
+        },
+        {
+          name: "MIDDLE",
+          swim: "1200m",
+          bike: "43km",
+          run: "10km",
+        },
+        {
+          name: "LONG",
+          swim: "1800m",
+          bike: "86km",
+          run: "20km",
+        },
+      ],
     },
     // extraEvent: {
     //   imageSrc: "/images/eventos/lisboa-2026/event-extra.jpg",
@@ -2455,7 +2535,7 @@ export const EVENT_DATA_MAP: Record<string, EventData> = {
             {
               time: "09:00 - 18:00",
               title: "Coming Soon",
-              location: "", 
+              location: "",
             },
           ],
         },
@@ -2543,69 +2623,73 @@ export const EVENT_DATA_MAP: Record<string, EventData> = {
           "700 meters from race venue",
         ],
         buttonText: "Contact Us",
-        whatsappLink:
-          "https://www.nh-hotels.com/pt/hoteis/lisboa",
+        whatsappLink: "https://www.nh-hotels.com/pt/hoteis/lisboa",
       },
     },
-    afterMovie:{
-      youtubeSrc:"uF-G6jTNDLQ?si=qfYeZlMsdkWxfshZ"
+    afterMovie: {
+      youtubeSrc: "uF-G6jTNDLQ?si=qfYeZlMsdkWxfshZ",
     },
     testimonial: {
-      youtubeSrc:"",
-      testimonials: [{
-      "avatar_url": "/images/atletas/viviane.jpeg",
-      "quote": "Quantas lições em um único final de semana. Foram 3 dias, 3 esportes, 3 humores e unimeras variações de sentimentos. No Triton 3 pude me testar, exercitar a paciência e também o carinho comigo mesma. ",
-      "author": "Viviane",
-      "company": "TechFlow",
-      "link_social": "https://www.instagram.com/viviwigand"
+      youtubeSrc: "",
+      testimonials: [
+        {
+          avatar_url: "/images/atletas/viviane.jpeg",
+          quote:
+            "Quantas lições em um único final de semana. Foram 3 dias, 3 esportes, 3 humores e unimeras variações de sentimentos. No Triton 3 pude me testar, exercitar a paciência e também o carinho comigo mesma. ",
+          author: "Viviane",
+          company: "TechFlow",
+          link_social: "https://www.instagram.com/viviwigand",
+        },
+        {
+          avatar_url: "/images/atletas/elida.jpeg",
+          quote:
+            "Que fim de semana incrível! Obrigada Triton pela experiência única. Levo para casa uma recordação cheias de boas energias e momentos especiais...",
+          author: "Elida",
+          company: "TechFlow",
+          link_social: "https://www.instagram.com/elidacordeiroo",
+        },
+        {
+          avatar_url: "/images/atletas/bizarelo.jpeg",
+          quote:
+            "Que dia incrível e que dia forte! Obrigado TRITON pela prova top, segura e com visual fantástico",
+          author: "Bizarelo",
+          company: "TechFlow",
+          link_social: "https://www.instagram.com/bizarelocycling",
+        },
+      ],
     },
-    {
-      "avatar_url": "/images/atletas/elida.jpeg",
-      "quote": "Que fim de semana incrível! Obrigada Triton pela experiência única. Levo para casa uma recordação cheias de boas energias e momentos especiais...",
-      "author": "Elida",
-      "company": "TechFlow",
-      "link_social": "https://www.instagram.com/elidacordeiroo"
-    },
-    {
-      "avatar_url": "/images/atletas/bizarelo.jpeg",
-      "quote": "Que dia incrível e que dia forte! Obrigado TRITON pela prova top, segura e com visual fantástico",
-      "author": "Bizarelo",
-      "company": "TechFlow",
-      "link_social": "https://www.instagram.com/bizarelocycling"
-    }]
-  },
     partners: [
       {
         name: "Câmara Municipal de Lisboa",
         logo: "/images/eventos/lisboa-2026/partners/logo-camara-lisboa.png",
-        url: "#"
+        url: "#",
       },
       {
         name: "Instituto Português do Desporto e Juventude",
         logo: "/images/eventos/lisboa-2026/partners/logo-instituto-portugues.png",
-        url: "#"
+        url: "#",
       },
       {
         name: "Loff",
         logo: "/images/eventos/lisboa-2026/partners/logo-loff.png",
-        url: "#"
+        url: "#",
       },
       {
         name: "Parque das Nações",
         logo: "/images/eventos/lisboa-2026/partners/logo-parque-nacoes.png",
-        url: "#"
+        url: "#",
       },
       {
         name: "Snupe",
         logo: "/images/eventos/lisboa-2026/partners/logo-snupe.png",
-        url: "#"
+        url: "#",
       },
       {
         name: "Tivoli",
         logo: "/images/eventos/lisboa-2026/partners/logo-tivoli.png",
-        url: "#"
-      }
-    ]
+        url: "#",
+      },
+    ],
   },
   "uae-2027": {
     id: "uae-2027",
@@ -2644,7 +2728,7 @@ export const EVENT_DATA_MAP: Record<string, EventData> = {
         startTime: "15:30",
         image: swimPicLisboa,
         title: "Natação",
-        description:`
+        description: `
             <p>The swim takes place in Doca dos Olivais, a man-made lake located next to Lisbon’s iconic waterfront. Athletes enter the water from the Oceanário de Lisboa side, with the course positioned just a short distance from the transition area for a smooth race experience.</p>
             <br>
             <p>With calm, still waters and an average temperature of 18°C to 19°C (64°F–66°F), the venue offers excellent conditions for athletes. </p>
@@ -2666,7 +2750,11 @@ export const EVENT_DATA_MAP: Record<string, EventData> = {
           { label: "Long", val: "1800m", p: 100 },
         ],
 
-        stravaIds: { sprint:"3442186454436027514", middle:"3442186454436027514", long:"3442186454436027514" },
+        stravaIds: {
+          sprint: "3442186454436027514",
+          middle: "3442186454436027514",
+          long: "3442186454436027514",
+        },
       },
       bike: {
         day: "Dia 2",
@@ -2674,7 +2762,7 @@ export const EVENT_DATA_MAP: Record<string, EventData> = {
         startTime: "08:00",
         image: bikePicLisboa,
         title: "Ciclismo",
-        description:`
+        description: `
              <strong>100% CLOSED TO TRAFFIC</strong>
              <br><br>
             <p>One of the few urban triathlon bike courses in Lisbon that is fully closed to traffic, providing a safe and fast racing experience.</p>
@@ -2690,12 +2778,16 @@ export const EVENT_DATA_MAP: Record<string, EventData> = {
 
 
             `,
-        distances: [  
+        distances: [
           { label: "Sprint", val: "21.5km", p: 33 },
           { label: "Middle", val: "43km", p: 66 },
           { label: "Long", val: "86km", p: 100 },
         ],
-        stravaIds: { sprint: "3442190057377176544", middle: "3442190057377176544", long: "3442190057377176544" },
+        stravaIds: {
+          sprint: "3442190057377176544",
+          middle: "3442190057377176544",
+          long: "3442190057377176544",
+        },
         details: [
           "Retorno Sprint: ~4,5 km após Macundu",
           "Hidratação Middle & Long: ~10 km após Macundu",
@@ -2731,32 +2823,37 @@ export const EVENT_DATA_MAP: Record<string, EventData> = {
           { label: "Middle", val: "10km", p: 66 },
           { label: "Long", val: "20km", p: 100 },
         ],
-        stravaIds: { sprint: "3442184922483070074", middle: "3442184922483070074", long: "3442184922483070074" },
+        stravaIds: {
+          sprint: "3442184922483070074",
+          middle: "3442184922483070074",
+          long: "3442184922483070074",
+        },
       },
       distanceTable: [
-      {
-        "name": "SPRINT",
-        "swim": "600m",
-        "bike": "21.5km",
-        "run": "5km"
-      },
-      {
-        "name": "MIDDLE",
-        "swim": "1200m",
-        "bike": "43km",
-        "run": "10km"
-      },
-      {
-        "name": "LONG",
-        "swim": "1800m",
-        "bike": "86km",
-        "run": "20km"
-      }
-    ],
+        {
+          name: "SPRINT",
+          swim: "600m",
+          bike: "21.5km",
+          run: "5km",
+        },
+        {
+          name: "MIDDLE",
+          swim: "1200m",
+          bike: "43km",
+          run: "10km",
+        },
+        {
+          name: "LONG",
+          swim: "1800m",
+          bike: "86km",
+          run: "20km",
+        },
+      ],
     },
 
     locations: {
-      description: "Plan your trip to the United Arab Emirates. Discover local attractions, official accommodations, and transport options to make your TRITON UAE experience seamless and memorable.",
+      description:
+        "Plan your trip to the United Arab Emirates. Discover local attractions, official accommodations, and transport options to make your TRITON UAE experience seamless and memorable.",
       experience: {
         image: touristCoast,
         pois: [],
@@ -2781,9 +2878,9 @@ export const EVENT_DATA_MAP: Record<string, EventData> = {
       {
         name: "Prouder",
         logo: "/images/partners/prouder.png",
-        url: "#"
+        url: "#",
       },
-    ]
+    ],
   },
   "ireland-2027": {
     id: "ireland-2027",
@@ -2822,7 +2919,7 @@ export const EVENT_DATA_MAP: Record<string, EventData> = {
         startTime: "15:30",
         image: swimPicLisboa,
         title: "Natação",
-        description:`
+        description: `
             <p>The swim takes place in Doca dos Olivais, a man-made lake located next to Lisbon’s iconic waterfront. Athletes enter the water from the Oceanário de Lisboa side, with the course positioned just a short distance from the transition area for a smooth race experience.</p>
             <br>
             <p>With calm, still waters and an average temperature of 18°C to 19°C (64°F–66°F), the venue offers excellent conditions for athletes. </p>
@@ -2844,7 +2941,11 @@ export const EVENT_DATA_MAP: Record<string, EventData> = {
           { label: "Long", val: "1800m", p: 100 },
         ],
 
-        stravaIds: { sprint:"3442186454436027514", middle:"3442186454436027514", long:"3442186454436027514" },
+        stravaIds: {
+          sprint: "3442186454436027514",
+          middle: "3442186454436027514",
+          long: "3442186454436027514",
+        },
       },
       bike: {
         day: "Dia 2",
@@ -2852,7 +2953,7 @@ export const EVENT_DATA_MAP: Record<string, EventData> = {
         startTime: "08:00",
         image: bikePicLisboa,
         title: "Ciclismo",
-        description:`
+        description: `
              <strong>100% CLOSED TO TRAFFIC</strong>
              <br><br>
             <p>One of the few urban triathlon bike courses in Lisbon that is fully closed to traffic, providing a safe and fast racing experience.</p>
@@ -2868,12 +2969,16 @@ export const EVENT_DATA_MAP: Record<string, EventData> = {
 
 
             `,
-        distances: [  
+        distances: [
           { label: "Sprint", val: "21.5km", p: 33 },
           { label: "Middle", val: "43km", p: 66 },
           { label: "Long", val: "86km", p: 100 },
         ],
-        stravaIds: { sprint: "3442190057377176544", middle: "3442190057377176544", long: "3442190057377176544" },
+        stravaIds: {
+          sprint: "3442190057377176544",
+          middle: "3442190057377176544",
+          long: "3442190057377176544",
+        },
         details: [
           "Retorno Sprint: ~4,5 km após Macundu",
           "Hidratação Middle & Long: ~10 km após Macundu",
@@ -2909,32 +3014,37 @@ export const EVENT_DATA_MAP: Record<string, EventData> = {
           { label: "Middle", val: "10km", p: 66 },
           { label: "Long", val: "20km", p: 100 },
         ],
-        stravaIds: { sprint: "3442184922483070074", middle: "3442184922483070074", long: "3442184922483070074" },
+        stravaIds: {
+          sprint: "3442184922483070074",
+          middle: "3442184922483070074",
+          long: "3442184922483070074",
+        },
       },
       distanceTable: [
-      {
-        "name": "SPRINT",
-        "swim": "600m",
-        "bike": "21.5km",
-        "run": "5km"
-      },
-      {
-        "name": "MIDDLE",
-        "swim": "1200m",
-        "bike": "43km",
-        "run": "10km"
-      },
-      {
-        "name": "LONG",
-        "swim": "1800m",
-        "bike": "86km",
-        "run": "20km"
-      }
-    ],
+        {
+          name: "SPRINT",
+          swim: "600m",
+          bike: "21.5km",
+          run: "5km",
+        },
+        {
+          name: "MIDDLE",
+          swim: "1200m",
+          bike: "43km",
+          run: "10km",
+        },
+        {
+          name: "LONG",
+          swim: "1800m",
+          bike: "86km",
+          run: "20km",
+        },
+      ],
     },
 
     locations: {
-      description: "Plan your trip to Ireland. Discover the rugged beauty of the Emerald Isle, official accommodations, and transport options to make your TRITON Ireland experience seamless and memorable.",
+      description:
+        "Plan your trip to Ireland. Discover the rugged beauty of the Emerald Isle, official accommodations, and transport options to make your TRITON Ireland experience seamless and memorable.",
       experience: {
         image: touristCoast,
         pois: [],
@@ -2959,9 +3069,9 @@ export const EVENT_DATA_MAP: Record<string, EventData> = {
       {
         name: "Prouder",
         logo: "/images/partners/prouder.png",
-        url: "#"
+        url: "#",
       },
-    ]
+    ],
   },
   "usa-2027": {
     id: "usa-2027",
@@ -3000,7 +3110,7 @@ export const EVENT_DATA_MAP: Record<string, EventData> = {
         startTime: "15:30",
         image: swimPicLisboa,
         title: "Natação",
-        description:`
+        description: `
             <p>The swim takes place in Doca dos Olivais, a man-made lake located next to Lisbon’s iconic waterfront. Athletes enter the water from the Oceanário de Lisboa side, with the course positioned just a short distance from the transition area for a smooth race experience.</p>
             <br>
             <p>With calm, still waters and an average temperature of 18°C to 19°C (64°F–66°F), the venue offers excellent conditions for athletes. </p>
@@ -3022,7 +3132,11 @@ export const EVENT_DATA_MAP: Record<string, EventData> = {
           { label: "Long", val: "1800m", p: 100 },
         ],
 
-        stravaIds: { sprint:"3442186454436027514", middle:"3442186454436027514", long:"3442186454436027514" },
+        stravaIds: {
+          sprint: "3442186454436027514",
+          middle: "3442186454436027514",
+          long: "3442186454436027514",
+        },
       },
       bike: {
         day: "Dia 2",
@@ -3030,7 +3144,7 @@ export const EVENT_DATA_MAP: Record<string, EventData> = {
         startTime: "08:00",
         image: bikePicLisboa,
         title: "Ciclismo",
-        description:`
+        description: `
              <strong>100% CLOSED TO TRAFFIC</strong>
              <br><br>
             <p>One of the few urban triathlon bike courses in Lisbon that is fully closed to traffic, providing a safe and fast racing experience.</p>
@@ -3046,12 +3160,16 @@ export const EVENT_DATA_MAP: Record<string, EventData> = {
 
 
             `,
-        distances: [  
+        distances: [
           { label: "Sprint", val: "21.5km", p: 33 },
           { label: "Middle", val: "43km", p: 66 },
           { label: "Long", val: "86km", p: 100 },
         ],
-        stravaIds: { sprint: "3442190057377176544", middle: "3442190057377176544", long: "3442190057377176544" },
+        stravaIds: {
+          sprint: "3442190057377176544",
+          middle: "3442190057377176544",
+          long: "3442190057377176544",
+        },
         details: [
           "Retorno Sprint: ~4,5 km após Macundu",
           "Hidratação Middle & Long: ~10 km após Macundu",
@@ -3087,32 +3205,37 @@ export const EVENT_DATA_MAP: Record<string, EventData> = {
           { label: "Middle", val: "10km", p: 66 },
           { label: "Long", val: "20km", p: 100 },
         ],
-        stravaIds: { sprint: "3442184922483070074", middle: "3442184922483070074", long: "3442184922483070074" },
+        stravaIds: {
+          sprint: "3442184922483070074",
+          middle: "3442184922483070074",
+          long: "3442184922483070074",
+        },
       },
       distanceTable: [
-      {
-        "name": "SPRINT",
-        "swim": "600m",
-        "bike": "21.5km",
-        "run": "5km"
-      },
-      {
-        "name": "MIDDLE",
-        "swim": "1200m",
-        "bike": "43km",
-        "run": "10km"
-      },
-      {
-        "name": "LONG",
-        "swim": "1800m",
-        "bike": "86km",
-        "run": "20km"
-      }
-    ],
+        {
+          name: "SPRINT",
+          swim: "600m",
+          bike: "21.5km",
+          run: "5km",
+        },
+        {
+          name: "MIDDLE",
+          swim: "1200m",
+          bike: "43km",
+          run: "10km",
+        },
+        {
+          name: "LONG",
+          swim: "1800m",
+          bike: "86km",
+          run: "20km",
+        },
+      ],
     },
 
     locations: {
-      description: "Plan your trip to the USA. Discover local attractions, official accommodations, and transport options to make your TRITON USA experience seamless and memorable.",
+      description:
+        "Plan your trip to the USA. Discover local attractions, official accommodations, and transport options to make your TRITON USA experience seamless and memorable.",
       experience: {
         image: touristCoast,
         pois: [],
@@ -3137,14 +3260,13 @@ export const EVENT_DATA_MAP: Record<string, EventData> = {
       {
         name: "Prouder",
         logo: "/images/partners/prouder.png",
-        url: "#"
+        url: "#",
       },
-    ]
+    ],
   },
 };
 
 export const WORLDFINALS_DATA_MAP: Record<string, EventData> = {
-
   "2027": {
     id: "world-final-2027",
     slug: "world-final-2027",
@@ -3163,15 +3285,15 @@ export const WORLDFINALS_DATA_MAP: Record<string, EventData> = {
     language: "en",
     registrationLink: "",
     isRegistrationClosed: true,
-    registrationStatus:"Hold",
+    registrationStatus: "Hold",
     athleteArea: {
       raceGuideLink: "",
       startListApiUrl: "",
       mediaPictureUrl: "",
       videoBriefingUrl: "",
       topFiveApiUrl: "",
-      liveResultsApiUrl:"",
-      liveResultsUrl:"",
+      liveResultsApiUrl: "",
+      liveResultsUrl: "",
     },
     hero: {
       backgroundImage: heroImgWorldFinals27,
@@ -3194,7 +3316,7 @@ export const WORLDFINALS_DATA_MAP: Record<string, EventData> = {
         startTime: "15:30",
         image: swimPicLisboa,
         title: "Natação",
-        description:`
+        description: `
             <p>The swim takes place in Doca dos Olivais, a man-made lake located next to Lisbon’s iconic waterfront. Athletes enter the water from the Oceanário de Lisboa side, with the course positioned just a short distance from the transition area for a smooth race experience.</p>
             <br>
             <p>With calm, still waters and an average temperature of 18°C to 19°C (64°F–66°F), the venue offers excellent conditions for athletes. </p>
@@ -3216,7 +3338,11 @@ export const WORLDFINALS_DATA_MAP: Record<string, EventData> = {
           { label: "Long", val: "1800m", p: 100 },
         ],
 
-        stravaIds: { sprint:"3442206601619587448", middle:"3442186454436027514", long:"3514199409116588682" },
+        stravaIds: {
+          sprint: "3442206601619587448",
+          middle: "3442186454436027514",
+          long: "3514199409116588682",
+        },
       },
       bike: {
         day: "Dia 2",
@@ -3224,7 +3350,7 @@ export const WORLDFINALS_DATA_MAP: Record<string, EventData> = {
         startTime: "08:00",
         image: bikePicLisboa,
         title: "Ciclismo",
-        description:`
+        description: `
              <strong>100% CLOSED TO TRAFFIC</strong>
              <br><br>
             <p>One of the few urban triathlon bike courses in Lisbon that is fully closed to traffic, providing a safe and fast racing experience.</p>
@@ -3237,15 +3363,15 @@ export const WORLDFINALS_DATA_MAP: Record<string, EventData> = {
             <br>
 <p>Starting from Transition, athletes head north along Avenida D. João II before joining the IC2 highway. The course is predominantly flat and fast, featuring gentle rolling terrain and a gradual 1 km climb near the turnaround point.</p><br>
 <p>A Bike Aid Station is located at the turnaround area and is accessible at the start of each new lap. Please note that littering is only permitted within the designated aid station zone and may result in disqualification if done elsewhere.</p>`,
-        distances: [  
+        distances: [
           { label: "Sprint", val: "21.5km", p: 33 },
           { label: "Middle", val: "43km", p: 66 },
           { label: "Long", val: "86km", p: 100 },
         ],
-        stravaIds: { 
-          sprint: "3442190057377176544", 
+        stravaIds: {
+          sprint: "3442190057377176544",
           middle: "3514206730520669716",
-          long: "3514208343517162558"
+          long: "3514208343517162558",
         },
         details: [
           "Retorno Sprint: ~4,5 km após Macundu",
@@ -3282,28 +3408,32 @@ export const WORLDFINALS_DATA_MAP: Record<string, EventData> = {
           { label: "Middle", val: "10km", p: 66 },
           { label: "Long", val: "20km", p: 100 },
         ],
-        stravaIds: { sprint: "3442184922483070074", middle: "3514202065593315860", long: "3514203195016413614" },
+        stravaIds: {
+          sprint: "3442184922483070074",
+          middle: "3514202065593315860",
+          long: "3514203195016413614",
+        },
       },
       distanceTable: [
-      {
-        "name": "SPRINT",
-        "swim": "600m",
-        "bike": "21.5km",
-        "run": "5km"
-      },
-      {
-        "name": "MIDDLE",
-        "swim": "1200m",
-        "bike": "43km",
-        "run": "10km"
-      },
-      {
-        "name": "LONG",
-        "swim": "1800m",
-        "bike": "86km",
-        "run": "20km"
-      }
-    ],
+        {
+          name: "SPRINT",
+          swim: "600m",
+          bike: "21.5km",
+          run: "5km",
+        },
+        {
+          name: "MIDDLE",
+          swim: "1200m",
+          bike: "43km",
+          run: "10km",
+        },
+        {
+          name: "LONG",
+          swim: "1800m",
+          bike: "86km",
+          run: "20km",
+        },
+      ],
     },
     // extraEvent: {
     //   imageSrc: "/images/eventos/lisboa-2026/event-extra.jpg",
@@ -3363,7 +3493,7 @@ export const WORLDFINALS_DATA_MAP: Record<string, EventData> = {
             {
               time: "09:00 - 18:00",
               title: "Coming Soon",
-              location: "", 
+              location: "",
             },
           ],
         },
@@ -3451,75 +3581,77 @@ export const WORLDFINALS_DATA_MAP: Record<string, EventData> = {
           "700 meters from race venue",
         ],
         buttonText: "Contact Us",
-        whatsappLink:
-          "https://www.nh-hotels.com/pt/hoteis/lisboa",
+        whatsappLink: "https://www.nh-hotels.com/pt/hoteis/lisboa",
       },
     },
-    afterMovie:{
-      youtubeSrc:"uF-G6jTNDLQ?si=qfYeZlMsdkWxfshZ"
+    afterMovie: {
+      youtubeSrc: "uF-G6jTNDLQ?si=qfYeZlMsdkWxfshZ",
     },
     testimonial: {
-      youtubeSrc:"",
-      testimonials: [{
-      "avatar_url": "/images/atletas/viviane.jpeg",
-      "quote": "Quantas lições em um único final de semana. Foram 3 dias, 3 esportes, 3 humores e unimeras variações de sentimentos. No Triton 3 pude me testar, exercitar a paciência e também o carinho comigo mesma. ",
-      "author": "Viviane",
-      "company": "TechFlow",
-      "link_social": "https://www.instagram.com/viviwigand"
+      youtubeSrc: "",
+      testimonials: [
+        {
+          avatar_url: "/images/atletas/viviane.jpeg",
+          quote:
+            "Quantas lições em um único final de semana. Foram 3 dias, 3 esportes, 3 humores e unimeras variações de sentimentos. No Triton 3 pude me testar, exercitar a paciência e também o carinho comigo mesma. ",
+          author: "Viviane",
+          company: "TechFlow",
+          link_social: "https://www.instagram.com/viviwigand",
+        },
+        {
+          avatar_url: "/images/atletas/elida.jpeg",
+          quote:
+            "Que fim de semana incrível! Obrigada Triton pela experiência única. Levo para casa uma recordação cheias de boas energias e momentos especiais...",
+          author: "Elida",
+          company: "TechFlow",
+          link_social: "https://www.instagram.com/elidacordeiroo",
+        },
+        {
+          avatar_url: "/images/atletas/bizarelo.jpeg",
+          quote:
+            "Que dia incrível e que dia forte! Obrigado TRITON pela prova top, segura e com visual fantástico",
+          author: "Bizarelo",
+          company: "TechFlow",
+          link_social: "https://www.instagram.com/bizarelocycling",
+        },
+      ],
     },
-    {
-      "avatar_url": "/images/atletas/elida.jpeg",
-      "quote": "Que fim de semana incrível! Obrigada Triton pela experiência única. Levo para casa uma recordação cheias de boas energias e momentos especiais...",
-      "author": "Elida",
-      "company": "TechFlow",
-      "link_social": "https://www.instagram.com/elidacordeiroo"
-    },
-    {
-      "avatar_url": "/images/atletas/bizarelo.jpeg",
-      "quote": "Que dia incrível e que dia forte! Obrigado TRITON pela prova top, segura e com visual fantástico",
-      "author": "Bizarelo",
-      "company": "TechFlow",
-      "link_social": "https://www.instagram.com/bizarelocycling"
-    }]
-  },
     partners: [
       {
         name: "Câmara Municipal de Lisboa",
         logo: "/images/eventos/lisboa-2026/partners/logo-camara-lisboa.png",
-        url: "#"
+        url: "#",
       },
       {
         name: "Instituto Português do Desporto e Juventude",
         logo: "/images/eventos/lisboa-2026/partners/logo-instituto-portugues.png",
-        url: "#"
+        url: "#",
       },
       {
         name: "Loff",
         logo: "/images/eventos/lisboa-2026/partners/logo-loff.png",
-        url: "#"
+        url: "#",
       },
       {
         name: "Parque das Nações",
         logo: "/images/eventos/lisboa-2026/partners/logo-parque-nacoes.png",
-        url: "#"
+        url: "#",
       },
       {
         name: "Snupe",
         logo: "/images/eventos/lisboa-2026/partners/logo-snupe.png",
-        url: "#"
+        url: "#",
       },
       {
         name: "Tivoli",
         logo: "/images/eventos/lisboa-2026/partners/logo-tivoli.png",
-        url: "#"
-      }
-    ]
+        url: "#",
+      },
+    ],
   },
+};
 
-}
-
-
-const onHold =  {
+const onHold = {
   "rio-2027": {
     slug: "rio-2027",
     language: "pt-BR",
@@ -3543,7 +3675,7 @@ const onHold =  {
       mediaPictureUrl: "",
       videoBriefingUrl: "",
       topFiveApiUrl: "",
-      liveResultsApiUrl:""
+      liveResultsApiUrl: "",
     },
     isEventOn: false,
     isRegistrationClosed: true,
@@ -3554,7 +3686,7 @@ const onHold =  {
     },
     registrationLink:
       "https://www.ticketsports.com.br/e/triton-3-rio-de-janeiro-2026-74526",
-    
+
     formats: {
       swim: {
         day: "Dia 1",
@@ -3577,7 +3709,7 @@ const onHold =  {
           { label: "Long", val: "2250m", p: 100 },
         ],
 
-        stravaIds: { sprint:"", middle:"", long:"" },
+        stravaIds: { sprint: "", middle: "", long: "" },
       },
       bike: {
         day: "Dia 2",
@@ -3585,8 +3717,7 @@ const onHold =  {
         startTime: "08:00",
         image: bikePic,
         title: "Ciclismo",
-        description:
-          `
+        description: `
           <p>Estamos trabalhando para preparar um percurso incrível para você, pensado para proporcionar uma experiência
            desafiadora, segura e inesquecível.</p>
             <br>
@@ -3634,51 +3765,57 @@ const onHold =  {
       },
       distanceTable: [
         {
-          "name": "SPRINT",
-          "swim": "750m",
-          "bike": "20km",
-          "run": "5km"
+          name: "SPRINT",
+          swim: "750m",
+          bike: "20km",
+          run: "5km",
         },
         {
-          "name": "MIDDLE",
-          "swim": "1500m",
-          "bike": "40km",
-          "run": "10km"
+          name: "MIDDLE",
+          swim: "1500m",
+          bike: "40km",
+          run: "10km",
         },
         {
-          "name": "LONG",
-          "swim": "2250m",
-          "bike": "60km",
-          "run": "15km"
-        }
+          name: "LONG",
+          swim: "2250m",
+          bike: "60km",
+          run: "15km",
+        },
       ],
     },
     afterMovie: {
       youtubeSrc: "xmdRgPahpjA?si=vf06ZayGhkjGq97X",
     },
     testimonial: {
-      youtubeSrc: "https://www.youtube.com/embed/YVnYtrSNPhk?si=TvUMsKfI2kL7NBSD",
-      testimonials: [{
-      "avatar_url": "/images/atletas/viviane.jpeg",
-      "quote": "Quantas lições em um único final de semana. Foram 3 dias, 3 esportes, 3 humores e unimeras variações de sentimentos. No Triton 3 pude me testar, exercitar a paciência e também o carinho comigo mesma. ",
-      "author": "Viviane",
-      "company": "TechFlow",
-      "link_social": "https://www.instagram.com/viviwigand"
-    },
-    {
-      "avatar_url": "/images/atletas/elida.jpeg",
-      "quote": "Que fim de semana incrível! Obrigada Triton pela experiência única. Levo para casa uma recordação cheias de boas energias e momentos especiais...",
-      "author": "Elida",
-      "company": "TechFlow",
-      "link_social": "https://www.instagram.com/elidacordeiroo"
-    },
-    {
-      "avatar_url": "/images/atletas/bizarelo.jpeg",
-      "quote": "Que dia incrível e que dia forte! Obrigado TRITON pela prova top, segura e com visual fantástico",
-      "author": "Bizarelo",
-      "company": "TechFlow",
-      "link_social": "https://www.instagram.com/bizarelocycling"
-    }]
+      youtubeSrc:
+        "https://www.youtube.com/embed/YVnYtrSNPhk?si=TvUMsKfI2kL7NBSD",
+      testimonials: [
+        {
+          avatar_url: "/images/atletas/viviane.jpeg",
+          quote:
+            "Quantas lições em um único final de semana. Foram 3 dias, 3 esportes, 3 humores e unimeras variações de sentimentos. No Triton 3 pude me testar, exercitar a paciência e também o carinho comigo mesma. ",
+          author: "Viviane",
+          company: "TechFlow",
+          link_social: "https://www.instagram.com/viviwigand",
+        },
+        {
+          avatar_url: "/images/atletas/elida.jpeg",
+          quote:
+            "Que fim de semana incrível! Obrigada Triton pela experiência única. Levo para casa uma recordação cheias de boas energias e momentos especiais...",
+          author: "Elida",
+          company: "TechFlow",
+          link_social: "https://www.instagram.com/elidacordeiroo",
+        },
+        {
+          avatar_url: "/images/atletas/bizarelo.jpeg",
+          quote:
+            "Que dia incrível e que dia forte! Obrigado TRITON pela prova top, segura e com visual fantástico",
+          author: "Bizarelo",
+          company: "TechFlow",
+          link_social: "https://www.instagram.com/bizarelocycling",
+        },
+      ],
     },
     schedule: {
       title: "AGENDA",
@@ -3695,7 +3832,6 @@ const onHold =  {
               title: "Entrega de Kits",
               location: "A Confirmar",
             },
-            
           ],
         },
         {
@@ -3709,16 +3845,15 @@ const onHold =  {
               title: "Realização da Prova",
               location: "A Confirmar",
             },
-            
           ],
         },
-       
       ],
       importantNote:
         "Todos os horários estão sujeitos a alteração sem aviso prévio devido a circunstâncias imprevistas. Os horários e a ordem de largada também poderão ser ajustados. Recomendamos acompanhar a programação regularmente para se manter atualizado sobre possíveis mudanças de última hora.",
     },
     locations: {
-      description: "O TRITON Rio de Janeiro acontece no icônico Aterro do Flamengo, combinando o cenário inconfundível da Baía de Guanabara e do Pão de Açúcar com a energia única da Cidade Maravilhosa. Planeje sua viagem e prepare-se para uma experiência que vai além da competição.",
+      description:
+        "O TRITON Rio de Janeiro acontece no icônico Aterro do Flamengo, combinando o cenário inconfundível da Baía de Guanabara e do Pão de Açúcar com a energia única da Cidade Maravilhosa. Planeje sua viagem e prepare-se para uma experiência que vai além da competição.",
       experience: {
         image: experiencePic,
         pois: [
@@ -3788,5 +3923,5 @@ const onHold =  {
         whatsappLink: "#",
       },
     },
-    
-  }};
+  },
+};

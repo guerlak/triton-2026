@@ -21,7 +21,6 @@ export default function TritonPassPage() {
       <main className="grow">
         <TritonPassClient />
       </main>
-
     </div>
   );
 }

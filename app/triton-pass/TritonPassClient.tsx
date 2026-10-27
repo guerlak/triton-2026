@@ -22,11 +22,14 @@ import {
   Lock,
   Flame,
   ArrowUpRight,
+  FileText,
 } from "lucide-react";
 import atletaMobile from "@/public/images/atleta-mobile.png";
 import atletaShop from "@/public/images/atleta-shop.png";
 import diegoAvatar from "@/public/images/atletas/diego-fonseca.jpeg";
 import tritonLogo from "@/public/images/triton-ws-branco.png";
+import Navbar from "../components/Navbar";
+import CustomNavbar from "../components/CustomNavbar";
 
 export default function TritonPassClient() {
   const [activeCard, setActiveCard] = useState<"club" | "standard">("club");
@@ -83,25 +86,38 @@ export default function TritonPassClient() {
   return (
     <div className="bg-neutral-950 text-white min-h-screen selection:bg-triton-red selection:text-white">
       {/* Top Banner / Motto */}
-      <div className="border-b border-white/10 bg-black/60 backdrop-blur-md">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-2.5 flex items-center justify-between text-xs tracking-widest font-mono">
-          <div className="flex items-center gap-2">
-            <span className="inline-block w-2 h-2 rounded-full bg-triton-red animate-pulse" />
-            <span className="text-gray-400 font-bold uppercase">TRITON ATHLETE ECOSYSTEM</span>
-          </div>
-          <span className="text-gray-400 font-bold uppercase tracking-[0.2em] hidden sm:inline">
-            BE EAGER. BE BRAVE. BE STRONG.
-          </span>
-        </div>
-      </div>
+
+      <CustomNavbar
+
+
+        actions={
+          <>
+            {/* Botão Terms & Conditions */}
+            <Link
+              href="/triton-pass/terms-condition"
+              className="px-3 sm:px-3.5 py-1.5 rounded-full border border-white/20 hover:border-white/50 bg-white/5 hover:bg-white/10 text-gray-300 hover:text-white text-[10px] sm:text-xs font-bold uppercase tracking-wider transition-all duration-200 flex items-center gap-1.5"
+            >
+              <FileText className="w-3 h-3 text-gray-400" />
+              <span>Terms &amp; Conditions</span>
+            </Link>
+            {/* Botão CTA Buy Now */}
+            <button
+              onClick={() => setIsModalOpen(true)}
+              className="px-3.5 sm:px-4 py-1.5 rounded-full bg-triton-red hover:bg-red-700 text-white text-[10px] sm:text-xs font-black uppercase tracking-wider shadow-md shadow-red-950/60 transition-all duration-200 flex items-center gap-1.5 active:scale-95 group"
+            >
+
+              <span>Buy Now</span>
+              <ArrowRight className="w-3.5 h-3.5 transition-transform group-hover:translate-x-0.5" />
+            </button>
+          </>
+        }
+      />
+
 
       {/* Hero Section matching reference image */}
-      <section className="relative overflow-hidden py-8 sm:py-12 md:py-20 border-b border-white/5">
-        {/* Subtle Athletic Background Glows */}
-        <div className="absolute top-0 left-1/4 w-96 h-96 bg-triton-red/15 rounded-full blur-3xl pointer-events-none -z-10" />
-        <div className="absolute bottom-10 right-10 w-[500px] h-[500px] bg-red-600/10 rounded-full blur-[140px] pointer-events-none -z-10" />
+      <section className="relative overflow-hidden py-8 pt-15 sm:pt-30 sm:py-12 md:py-20 border-b border-white/5">
 
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="max-w-7xl mx-auto px-4 mt-10 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
 
             {/* Left Column: Heading, Benefits & Red Pricing Strip */}
@@ -238,7 +254,7 @@ export default function TritonPassClient() {
                   <div className="flex items-center justify-between border-b border-white/10 pb-3">
                     <div className="flex items-center gap-1.5">
                       <div className="w-5 h-5 rounded bg-white/20 flex items-center justify-center text-[10px] font-black text-white">
-                        Ψ
+                        LOGO
                       </div>
                       <span className="text-[11px] font-black uppercase tracking-wider text-white">
                         TRITON WORLD SERIES
@@ -332,7 +348,7 @@ export default function TritonPassClient() {
                       <div className="flex items-start justify-between relative z-10">
                         <div className="flex items-center gap-2">
                           <div className="w-6 h-6 rounded bg-white flex items-center justify-center shadow-md">
-                            <span className="text-triton-red font-black text-xs">Ψ</span>
+                            <span className="text-triton-red font-black text-xs">LOGO</span>
                           </div>
                           <div>
                             <span className="text-[11px] font-black uppercase tracking-wider block leading-none">
@@ -458,7 +474,7 @@ export default function TritonPassClient() {
                             {/* Center Trident Badge */}
                             <div className="absolute inset-0 flex items-center justify-center">
                               <div className="w-7 h-7 rounded-lg bg-triton-red text-white flex items-center justify-center font-black text-xs shadow-md">
-                                Ψ
+                                logo
                               </div>
                             </div>
                           </div>
