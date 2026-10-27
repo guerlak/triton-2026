@@ -52,6 +52,7 @@ const getDistanceBadgeClass = (distanceName?: string) => {
 
 const LiveResultsClientWrapper: React.FC<Props> = ({ initialAthletes }) => {
   const [searchQuery, setSearchQuery] = useState("");
+  const [selectedRace, setSelectedRace] = useState("");
   const [selectedDistance, setSelectedDistance] = useState("");
   const [selectedGender, setSelectedGender] = useState("");
   const [selectedAgeGroup, setSelectedAgeGroup] = useState("");
@@ -61,6 +62,13 @@ const LiveResultsClientWrapper: React.FC<Props> = ({ initialAthletes }) => {
   const filterOptions = useMemo(() => {
     const list = Array.isArray(initialAthletes) ? initialAthletes : [];
     return {
+      races: Array.from(
+        new Set(
+          list
+            .map((a) => a.Race)
+            .filter((r): r is string => Boolean(r && r.trim()))
+        )
+      ).sort(),
       distances: Array.from(
         new Set(
           list
@@ -103,18 +111,19 @@ const LiveResultsClientWrapper: React.FC<Props> = ({ initialAthletes }) => {
         (athlete.Club && athlete.Club.toLowerCase().includes(query)) ||
         (athlete.Race && athlete.Race.toLowerCase().includes(query));
 
+      const raceMatch = selectedRace === "" || athlete.Race === selectedRace;
       const athleteDistance = athlete.Distance || athlete.Contest || "";
       const distanceMatch = selectedDistance === "" || athleteDistance === selectedDistance;
       const genderMatch = selectedGender === "" || athlete.Gender === selectedGender;
       const ageGroupMatch = selectedAgeGroup === "" || athlete.AgeGroup === selectedAgeGroup;
       const clubMatch = selectedClub === "" || athlete.Club === selectedClub;
 
-      return nameMatch && distanceMatch && genderMatch && ageGroupMatch && clubMatch;
+      return nameMatch && raceMatch && distanceMatch && genderMatch && ageGroupMatch && clubMatch;
     });
-  }, [initialAthletes, searchQuery, selectedDistance, selectedGender, selectedAgeGroup, selectedClub]);
+  }, [initialAthletes, searchQuery, selectedRace, selectedDistance, selectedGender, selectedAgeGroup, selectedClub]);
 
   const hasActiveFilters = Boolean(
-    searchQuery || selectedDistance || selectedGender || selectedAgeGroup || selectedClub
+    searchQuery || selectedRace || selectedDistance || selectedGender || selectedAgeGroup || selectedClub
   );
 
   return (
@@ -135,96 +144,128 @@ const LiveResultsClientWrapper: React.FC<Props> = ({ initialAthletes }) => {
 
       {/* Filters Header */}
       <div className="space-y-3">
-        <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-4 sm:gap-6">
+        <div className="flex flex-col lg:flex-row items-center gap-2 xl:gap-2.5 w-full">
           {/* Search Bar */}
-          <div className="relative w-full lg:max-w-xs group">
-            <div className="absolute inset-y-0 left-0 pl-3.5 sm:pl-4 flex items-center pointer-events-none">
-              <Search size={18} className="text-gray-500 group-focus-within:text-triton-red transition-colors" />
+          <div className="relative w-full lg:flex-1 min-w-0 group">
+            <div className="absolute inset-y-0 left-0 pl-2.5 sm:pl-3 lg:pl-3.5 flex items-center pointer-events-none">
+              <Search
+                size={14}
+                className="sm:w-4 sm:h-4 text-gray-500 group-focus-within:text-triton-red transition-colors"
+              />
             </div>
             <input
               type="text"
               placeholder="SEARCH BY NAME, BIB, CLUB..."
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
-              className="w-full bg-neutral-900 border border-white/10 rounded-xl sm:rounded-2xl py-3 sm:py-3.5 pl-10 sm:pl-12 pr-4 text-xs sm:text-sm font-bold text-white uppercase tracking-wider sm:tracking-widest focus:outline-none focus:border-triton-red/50 focus:ring-1 focus:ring-triton-red/50 transition-all placeholder:text-gray-600 shadow-xl"
+              className="w-full bg-neutral-900 border border-white/10 rounded-xl py-2 sm:py-2.5 lg:py-3 pl-8 sm:pl-9 lg:pl-10 pr-3 sm:pr-4 text-[10px] sm:text-xs font-bold text-white uppercase tracking-wider focus:outline-none focus:border-triton-red/50 focus:ring-1 focus:ring-triton-red/50 transition-all placeholder:text-[10px] sm:placeholder:text-xs placeholder:text-gray-600 shadow-xl truncate"
             />
           </div>
 
-          {/* Select Filters */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4 w-full lg:w-auto">
+          {/* Filter Selects: single horizontal line below Search on mobile, inline on desktop */}
+          <div className="w-full lg:w-auto flex flex-nowrap items-center gap-1.5 sm:gap-2 xl:gap-2.5 overflow-x-auto lg:overflow-visible pb-1.5 lg:pb-0 custom-scrollbar shrink-0">
+            {/* Race Filter */}
+            <div className="relative w-[90px] sm:w-28 lg:w-28 xl:w-32 shrink-0">
+              <select
+                value={selectedRace}
+                onChange={(e) => setSelectedRace(e.target.value)}
+                className="w-full bg-neutral-900 border border-white/10 rounded-xl py-2 sm:py-2.5 lg:py-3 pl-2 sm:pl-3 pr-5 sm:pr-7 text-[9px] sm:text-xs font-bold text-white uppercase tracking-wider appearance-none focus:outline-none focus:border-triton-red/50 transition-all cursor-pointer truncate"
+              >
+                <option value="" className="bg-neutral-900 text-white uppercase text-[10px] sm:text-xs">
+                  RACES
+                </option>
+                {filterOptions.races.map((r) => (
+                  <option key={r} value={r} className="bg-neutral-900 text-white uppercase text-[10px] sm:text-xs">
+                    {r}
+                  </option>
+                ))}
+              </select>
+              <div className="absolute inset-y-0 right-0 pr-1.5 sm:pr-2.5 flex items-center pointer-events-none text-gray-500">
+                <ChevronDown className="w-3 h-3 sm:w-3.5 sm:h-3.5" />
+              </div>
+            </div>
+
             {/* Distance Filter */}
-            <div className="relative">
+            <div className="relative w-[105px] sm:w-32 lg:w-32 xl:w-36 shrink-0">
               <select
                 value={selectedDistance}
                 onChange={(e) => setSelectedDistance(e.target.value)}
-                className="w-full bg-neutral-900 border border-white/10 rounded-xl py-2.5 sm:py-3 pl-3 sm:px-4 pr-8 text-[11px] sm:text-xs font-bold text-white uppercase tracking-wider sm:tracking-widest appearance-none focus:outline-none focus:border-triton-red/50 transition-all cursor-pointer"
+                className="w-full bg-neutral-900 border border-white/10 rounded-xl py-2 sm:py-2.5 lg:py-3 pl-2 sm:pl-3 pr-5 sm:pr-7 text-[9px] sm:text-xs font-bold text-white uppercase tracking-wider appearance-none focus:outline-none focus:border-triton-red/50 transition-all cursor-pointer truncate"
               >
-                <option value="">All Distances</option>
+                <option value="" className="bg-neutral-900 text-white uppercase text-[10px] sm:text-xs">
+                  DISTANCES
+                </option>
                 {filterOptions.distances.map((d) => (
-                  <option key={d} value={d} className="bg-neutral-900 text-white uppercase">
+                  <option key={d} value={d} className="bg-neutral-900 text-white uppercase text-[10px] sm:text-xs">
                     {d}
                   </option>
                 ))}
               </select>
-              <div className="absolute inset-y-0 right-0 pr-3 flex items-center pointer-events-none text-gray-500">
-                <ChevronDown size={14} />
+              <div className="absolute inset-y-0 right-0 pr-1.5 sm:pr-2.5 flex items-center pointer-events-none text-gray-500">
+                <ChevronDown className="w-3 h-3 sm:w-3.5 sm:h-3.5" />
               </div>
             </div>
 
             {/* Gender Filter */}
-            <div className="relative">
+            <div className="relative w-[90px] sm:w-28 lg:w-28 xl:w-32 shrink-0">
               <select
                 value={selectedGender}
                 onChange={(e) => setSelectedGender(e.target.value)}
-                className="w-full bg-neutral-900 border border-white/10 rounded-xl py-2.5 sm:py-3 pl-3 sm:px-4 pr-8 text-[11px] sm:text-xs font-bold text-white uppercase tracking-wider sm:tracking-widest appearance-none focus:outline-none focus:border-triton-red/50 transition-all cursor-pointer"
+                className="w-full bg-neutral-900 border border-white/10 rounded-xl py-2 sm:py-2.5 lg:py-3 pl-2 sm:pl-3 pr-5 sm:pr-7 text-[9px] sm:text-xs font-bold text-white uppercase tracking-wider appearance-none focus:outline-none focus:border-triton-red/50 transition-all cursor-pointer truncate"
               >
-                <option value="">All Genders</option>
+                <option value="" className="bg-neutral-900 text-white uppercase text-[10px] sm:text-xs">
+                  GENDERS
+                </option>
                 {filterOptions.genders.map((g) => (
-                  <option key={g} value={g} className="bg-neutral-900 text-white uppercase">
+                  <option key={g} value={g} className="bg-neutral-900 text-white uppercase text-[10px] sm:text-xs">
                     {formatGender(g)}
                   </option>
                 ))}
               </select>
-              <div className="absolute inset-y-0 right-0 pr-3 flex items-center pointer-events-none text-gray-500">
-                <ChevronDown size={14} />
+              <div className="absolute inset-y-0 right-0 pr-1.5 sm:pr-2.5 flex items-center pointer-events-none text-gray-500">
+                <ChevronDown className="w-3 h-3 sm:w-3.5 sm:h-3.5" />
               </div>
             </div>
 
             {/* Age Group Filter */}
-            <div className="relative">
+            <div className="relative w-[90px] sm:w-28 lg:w-28 xl:w-32 shrink-0">
               <select
                 value={selectedAgeGroup}
                 onChange={(e) => setSelectedAgeGroup(e.target.value)}
-                className="w-full bg-neutral-900 border border-white/10 rounded-xl py-2.5 sm:py-3 pl-3 sm:px-4 pr-8 text-[11px] sm:text-xs font-bold text-white uppercase tracking-wider sm:tracking-widest appearance-none focus:outline-none focus:border-triton-red/50 transition-all cursor-pointer"
+                className="w-full bg-neutral-900 border border-white/10 rounded-xl py-2 sm:py-2.5 lg:py-3 pl-2 sm:pl-3 pr-5 sm:pr-7 text-[9px] sm:text-xs font-bold text-white uppercase tracking-wider appearance-none focus:outline-none focus:border-triton-red/50 transition-all cursor-pointer truncate"
               >
-                <option value="">All Categories</option>
+                <option value="" className="bg-neutral-900 text-white uppercase text-[10px] sm:text-xs">
+                  GROUPS
+                </option>
                 {filterOptions.ageGroups.map((ag) => (
-                  <option key={ag} value={ag} className="bg-neutral-900 text-white uppercase">
+                  <option key={ag} value={ag} className="bg-neutral-900 text-white uppercase text-[10px] sm:text-xs">
                     {ag}
                   </option>
                 ))}
               </select>
-              <div className="absolute inset-y-0 right-0 pr-3 flex items-center pointer-events-none text-gray-500">
-                <ChevronDown size={14} />
+              <div className="absolute inset-y-0 right-0 pr-1.5 sm:pr-2.5 flex items-center pointer-events-none text-gray-500">
+                <ChevronDown className="w-3 h-3 sm:w-3.5 sm:h-3.5" />
               </div>
             </div>
 
             {/* Club Filter */}
-            <div className="relative">
+            <div className="relative w-[105px] sm:w-32 lg:w-32 xl:w-36 shrink-0">
               <select
                 value={selectedClub}
                 onChange={(e) => setSelectedClub(e.target.value)}
-                className="w-full bg-neutral-900 border border-white/10 rounded-xl py-2.5 sm:py-3 pl-3 sm:px-4 pr-8 text-[11px] sm:text-xs font-bold text-white uppercase tracking-wider sm:tracking-widest appearance-none focus:outline-none focus:border-triton-red/50 transition-all cursor-pointer"
+                className="w-full bg-neutral-900 border border-white/10 rounded-xl py-2 sm:py-2.5 lg:py-3 pl-2 sm:pl-3 pr-5 sm:pr-7 text-[9px] sm:text-xs font-bold text-white uppercase tracking-wider appearance-none focus:outline-none focus:border-triton-red/50 transition-all cursor-pointer truncate"
               >
-                <option value="">All Clubs</option>
+                <option value="" className="bg-neutral-900 text-white uppercase text-[10px] sm:text-xs">
+                  CLUBS
+                </option>
                 {filterOptions.clubs.map((c) => (
-                  <option key={c} value={c} className="bg-neutral-900 text-white uppercase">
+                  <option key={c} value={c} className="bg-neutral-900 text-white uppercase text-[10px] sm:text-xs">
                     {c}
                   </option>
                 ))}
               </select>
-              <div className="absolute inset-y-0 right-0 pr-3 flex items-center pointer-events-none text-gray-500">
-                <ChevronDown size={14} />
+              <div className="absolute inset-y-0 right-0 pr-1.5 sm:pr-2.5 flex items-center pointer-events-none text-gray-500">
+                <ChevronDown className="w-3 h-3 sm:w-3.5 sm:h-3.5" />
               </div>
             </div>
           </div>
@@ -240,6 +281,7 @@ const LiveResultsClientWrapper: React.FC<Props> = ({ initialAthletes }) => {
               type="button"
               onClick={() => {
                 setSearchQuery("");
+                setSelectedRace("");
                 setSelectedDistance("");
                 setSelectedGender("");
                 setSelectedAgeGroup("");
@@ -257,7 +299,7 @@ const LiveResultsClientWrapper: React.FC<Props> = ({ initialAthletes }) => {
       <motion.div
         initial={{ opacity: 0, y: 30 }}
         animate={{ opacity: 1, y: 0 }}
-        key={`${selectedDistance}-${selectedGender}-${selectedAgeGroup}-${selectedClub}`}
+        key={`${selectedRace}-${selectedDistance}-${selectedGender}-${selectedAgeGroup}-${selectedClub}`}
         viewport={{ once: true }}
         className="bg-neutral-900 border border-white/5 rounded-2xl sm:rounded-3xl overflow-hidden shadow-2xl"
       >
