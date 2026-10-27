@@ -26,7 +26,7 @@ const StartListClientWrapper: React.FC<Props> = ({ initialAthletes }) => {
   const [selectedRace, setSelectedRace] = useState("RACES");
   const [selectedGender, setSelectedGender] = useState("GENDERS");
   const [selectedDistance, setSelectedDistance] = useState("DISTANCES");
-  const [selectedAgeGroup, setSelectedAgeGroup] = useState("GROUPS");
+  const [selectedAgeGroup, setSelectedAgeGroup] = useState("AG");
   const [selectedClub, setSelectedClub] = useState("CLUBS");
   const [showAll, setShowAll] = useState(false);
 
@@ -57,7 +57,7 @@ const StartListClientWrapper: React.FC<Props> = ({ initialAthletes }) => {
     ).sort(),
   ];
   const uniqueAgeGroups = [
-    "GROUPS",
+    "AG",
     ...Array.from(
       new Set(initialAthletes.map((a) => a.AgeGroup).filter(Boolean)),
     ).sort(),
@@ -86,7 +86,7 @@ const StartListClientWrapper: React.FC<Props> = ({ initialAthletes }) => {
     const matchesGender =
       selectedGender === "GENDERS" || athlete.Gender === selectedGender;
     const matchesAgeGroup =
-      selectedAgeGroup === "GROUPS" || athlete.AgeGroup === selectedAgeGroup;
+      selectedAgeGroup === "AG" || athlete.AgeGroup === selectedAgeGroup;
     const athleteDistance = athlete.Distance || athlete.Contest;
     const matchesDistance =
       selectedDistance === "DISTANCES" || athleteDistance === selectedDistance;
@@ -148,7 +148,10 @@ const StartListClientWrapper: React.FC<Props> = ({ initialAthletes }) => {
               ))}
             </select>
             <div className="absolute inset-y-0 right-0 pr-1.5 sm:pr-2.5 flex items-center pointer-events-none text-gray-500">
-              <svg className="w-3 h-3 sm:w-3.5 sm:h-3.5 fill-current" viewBox="0 0 20 20">
+              <svg
+                className="w-3 h-3 sm:w-3.5 sm:h-3.5 fill-current"
+                viewBox="0 0 20 20"
+              >
                 <path d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" />
               </svg>
             </div>
@@ -172,7 +175,10 @@ const StartListClientWrapper: React.FC<Props> = ({ initialAthletes }) => {
               ))}
             </select>
             <div className="absolute inset-y-0 right-0 pr-1.5 sm:pr-2.5 flex items-center pointer-events-none text-gray-500">
-              <svg className="w-3 h-3 sm:w-3.5 sm:h-3.5 fill-current" viewBox="0 0 20 20">
+              <svg
+                className="w-3 h-3 sm:w-3.5 sm:h-3.5 fill-current"
+                viewBox="0 0 20 20"
+              >
                 <path d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" />
               </svg>
             </div>
@@ -196,7 +202,10 @@ const StartListClientWrapper: React.FC<Props> = ({ initialAthletes }) => {
               ))}
             </select>
             <div className="absolute inset-y-0 right-0 pr-1.5 sm:pr-2.5 flex items-center pointer-events-none text-gray-500">
-              <svg className="w-3 h-3 sm:w-3.5 sm:h-3.5 fill-current" viewBox="0 0 20 20">
+              <svg
+                className="w-3 h-3 sm:w-3.5 sm:h-3.5 fill-current"
+                viewBox="0 0 20 20"
+              >
                 <path d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" />
               </svg>
             </div>
@@ -220,7 +229,10 @@ const StartListClientWrapper: React.FC<Props> = ({ initialAthletes }) => {
               ))}
             </select>
             <div className="absolute inset-y-0 right-0 pr-1.5 sm:pr-2.5 flex items-center pointer-events-none text-gray-500">
-              <svg className="w-3 h-3 sm:w-3.5 sm:h-3.5 fill-current" viewBox="0 0 20 20">
+              <svg
+                className="w-3 h-3 sm:w-3.5 sm:h-3.5 fill-current"
+                viewBox="0 0 20 20"
+              >
                 <path d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" />
               </svg>
             </div>
