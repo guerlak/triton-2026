@@ -13,12 +13,12 @@ import {
   MapPin,
   Trophy,
 } from "lucide-react";
-import bikePic from "@/public/images/triton-fotos-prova-bike.jpeg";
-import swimPic from "@/public/images/triton-fotos-prova-swim.jpeg";
+
 import runPic from "@/public/images/triton-fotos-prova-run.jpeg";
 import dict from "../../../dictionaries/en.json";
 import { motion } from "framer-motion";
 import Script from "next/script";
+import { form } from "framer-motion/client";
 
 const FormatTable: React.FC<{ distances: any[] }> = ({ distances }) => (
   <div className="w-full overflow-x-auto">
@@ -191,7 +191,7 @@ const FormatsSection: React.FC<{ language: string; formats: any }> = ({
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-16">
           <h2 className="text-triton-red font-bold tracking-widest uppercase mb-2">
-            {language === "pt-BR" ? "PERCURSOS" : "COURSES"}
+            {language === "pt-BR" ? "PERCURSOS" : "RACE COURSES"}
           </h2>
           <h3 className="text-3xl md:text-5xl font-black uppercase text-white leading-tight mb-6">
             {language === "pt-BR"
@@ -201,7 +201,7 @@ const FormatsSection: React.FC<{ language: string; formats: any }> = ({
           <p className="text-gray-400 max-w-5xl mx-auto text-lg">
             {language === "pt-BR"
               ? "O TRITON 3 é uma prova realizada em 3 dias consecutivos. Uma experiência única que eleva o triathlon a outro nível. O formato permite que atletas, nadadores, ciclistas e corredores participem da prova individualmente. Confira os percursos de cada modalidade e prepare-se para a prova."
-              : "The TRITON 3 is a race held over 3 consecutive days. An unique experience that elevates triathlon to another level. The format allows athletes, swimmers, cyclists, and runners to participate in the race individually."}
+              : "Contested over two consecutive days—with the swim stage on Saturday followed by the bike and run on Sunday—TRITON delivers a dynamic stage-race format that completely reimagines the athlete experience. Our flexible model welcomes full triathletes as well as single-discipline specialists, allowing pure swimmers, cyclists, and runners to compete in standalone stages. Check out the discipline course maps below and get ready to race!"}
           </p>
         </div>
 
@@ -255,14 +255,14 @@ const FormatsSection: React.FC<{ language: string; formats: any }> = ({
               <div className="space-y-6">
                 <div className="w-full h-[300px] mb-4 rounded-2xl relative overflow-hidden group shadow-2xl">
                   <Image
-                    src={swimPic}
+                    src={formats.swim.image}
                     alt="Swimming"
                     className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
                   />
                   <div className="absolute inset-0 bg-linear-to-t from-black/80 via-transparent to-transparent" />
                   <div className="absolute bottom-6 left-6">
                     <span className="bg-triton-red text-white font-black px-4 py-1.5 rounded-lg text-sm uppercase italic tracking-widest shadow-xl">
-                      {language === "pt-BR" ? "Dia 1" : "Day 1"}
+                      {formats.swim.day}
                     </span>
                   </div>
                 </div>
@@ -310,11 +310,7 @@ const FormatsSection: React.FC<{ language: string; formats: any }> = ({
 
                   {/* Distance Visualization Graph */}
                   <div className="space-y-5">
-                    {[
-                      { label: "Sprint", val: "1000m", p: 33 },
-                      { label: "Middle", val: "2000m", p: 66 },
-                      { label: "Long", val: "3000m", p: 100 },
-                    ].map((d, i) => (
+                    {formats.swim?.distances?.map((d: any, i: number) => (
                       <div key={i} className="space-y-2">
                         <div className="flex justify-between items-end">
                           <span className="text-[10px] font-bold text-gray-500 uppercase italic tracking-tighter">
@@ -372,14 +368,14 @@ const FormatsSection: React.FC<{ language: string; formats: any }> = ({
               <div className="space-y-6">
                 <div className="w-full h-[300px] mb-4 rounded-2xl relative overflow-hidden group shadow-2xl">
                   <Image
-                    src={bikePic}
+                    src={formats.bike.image}
                     alt="Cycling"
                     className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
                   />
                   <div className="absolute inset-0 bg-linear-to-t from-black/80 via-transparent to-transparent" />
                   <div className="absolute bottom-6 left-6">
                     <span className="bg-triton-red text-white font-black px-4 py-1.5 rounded-lg text-sm uppercase italic tracking-widest shadow-xl">
-                      {language === "pt-BR" ? "Dia 2" : "Day 2"}
+                      {formats.bike.day}
                     </span>
                   </div>
                 </div>
@@ -427,11 +423,7 @@ const FormatsSection: React.FC<{ language: string; formats: any }> = ({
 
                   {/* Distance Visualization Graph */}
                   <div className="space-y-5">
-                    {[
-                      { label: "Sprint", val: "30km", p: 33 },
-                      { label: "Middle", val: "60km", p: 66 },
-                      { label: "Long", val: "90km", p: 100 },
-                    ].map((d, i) => (
+                    {formats.bike?.distances?.map((d: any, i: number) => (
                       <div key={i} className="space-y-2">
                         <div className="flex justify-between items-end">
                           <span className="text-[10px] font-bold text-gray-500 uppercase italic tracking-tighter">
@@ -491,14 +483,14 @@ const FormatsSection: React.FC<{ language: string; formats: any }> = ({
               <div className="space-y-6">
                 <div className="w-full h-[300px] mb-4 rounded-2xl relative overflow-hidden group shadow-2xl">
                   <Image
-                    src={runPic}
+                    src={formats.run.image}
                     alt="Running"
                     className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
                   />
                   <div className="absolute inset-0 bg-linear-to-t from-black/80 via-transparent to-transparent" />
                   <div className="absolute bottom-6 left-6">
                     <span className="bg-triton-red text-white font-black px-4 py-1.5 rounded-lg text-sm uppercase italic tracking-widest shadow-xl">
-                      {language === "pt-BR" ? "Dia 3" : "Day 3"}
+                      {formats.run.day}
                     </span>
                   </div>
                 </div>
@@ -528,7 +520,7 @@ const FormatsSection: React.FC<{ language: string; formats: any }> = ({
                           : "Start Time"}
                       </p>
                       <p className="text-sm font-black uppercase text-white">
-                        {dict.format_section.toogles_content.day_3.start}
+                        {formats.run.startTime}
                       </p>
                     </div>
                   </div>
@@ -538,17 +530,15 @@ const FormatsSection: React.FC<{ language: string; formats: any }> = ({
                   <div className="flex items-center gap-2 mb-2">
                     <Trophy className="text-triton-red" size={18} />
                     <span className="text-xs font-black uppercase tracking-widest text-gray-300">
-                      Available Distances
+                      {language === "pt-BR"
+                        ? "Distâncias disponíveis"
+                        : "Available Distances"}
                     </span>
                   </div>
 
                   {/* Distance Visualization Graph */}
                   <div className="space-y-5">
-                    {[
-                      { label: "Sprint", val: "10km", p: 33 },
-                      { label: "Middle", val: "20km", p: 66 },
-                      { label: "Long", val: "30km", p: 100 },
-                    ].map((d, i) => (
+                    {formats.run?.distances?.map((d: any, i: number) => (
                       <div key={i} className="space-y-2">
                         <div className="flex justify-between items-end">
                           <span className="text-[10px] font-bold text-gray-500 uppercase italic tracking-tighter">
@@ -605,7 +595,7 @@ const FormatsSection: React.FC<{ language: string; formats: any }> = ({
             : "Choose your distance"}
         </h4>
 
-        <FormatTable distances={dict?.distances?.triton_1} />
+        <FormatTable distances={formats.distanceTable} />
 
         <div className="mt-8 pt-12">
           <h4 className="text-2xl font-bold text-white mb-8 uppercase border-l-4 border-triton-red pl-4">
@@ -637,7 +627,7 @@ const FormatsSection: React.FC<{ language: string; formats: any }> = ({
                 <p className="text-gray-400 text-sm leading-relaxed mb-4 mt-2">
                   {language === "pt-BR"
                     ? "Escolha uma das 3 distâncias e encare os 3 dias de competição. Sua posição final no ranking (após os três dias) será a soma da sua colocação em cada modalidade: Natação + Ciclismo + Corrida"
-                    : "Choose one of the 3 distances and face the 3 days of competition. Your final ranking position (after the three days) will be the sum of your placement in each modality: Swimming + Cycling + Running."}
+                    : "Choose one of the 3 distances and face the 2 days of competition. Your final ranking position (after two days) will be the sum of your placement in each modality: Swimming + Cycling + Running."}
                 </p>
               </div>
 
@@ -672,7 +662,7 @@ const FormatsSection: React.FC<{ language: string; formats: any }> = ({
                 <h5 className="text-white font-black uppercase mb-2 text-lg">
                   {language === "pt-BR"
                     ? "Modalidade Avulsa"
-                    : "Individual Modality"}
+                    : "Single Discipline"}
                 </h5>
                 <span className="inline-block bg-white/10 text-white text-[10px] font-bold px-2 py-1 rounded uppercase m-0.5">
                   Sprint
@@ -691,7 +681,7 @@ const FormatsSection: React.FC<{ language: string; formats: any }> = ({
                 <p className="text-gray-500 text-xs leading-relaxed">
                   {language === "pt-BR"
                     ? "Não pontua para o ranking geral (3 dias), mas concorre à premiação diária por modalidade."
-                    : "Does not score for the final ranking (3 days), but competes for daily awards by modality."}
+                    : "Does not score for the final ranking (2 days), but competes for daily awards by modality."}
                 </p>
               </div>
             </div>

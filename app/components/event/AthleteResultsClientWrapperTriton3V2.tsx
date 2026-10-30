@@ -138,8 +138,7 @@ const AthleteResultsClientWrapperTriton3V2: React.FC<Props> = ({ initialAthletes
           Full Triton 3 <span className="text-triton-red italic"><br />Ranking Results</span>
         </h2>
         <p className="text-gray-400 text-xs sm:text-sm font-bold uppercase tracking-widest max-w-2xl italic">
-          This ranking is exclusively for TRITON athletes competing across all three disciplines over the three days of the event.<br />
-          Click the Details icon to view each athlete’s times and rankings for all three disciplines.
+          Check All the resultos of Athletes participating in the event.
         </p>
       </div>
 

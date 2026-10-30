@@ -7,8 +7,8 @@ const STATS_DATA = {
     triton3: [
       {
         value: "3",
-        label: "consecutive days",
-        description: "Swim - Fri / Bike - Sat / Run - Sun",
+        label: "separate disciplines",
+        description: "Swim - Saturday / Bike & Run - Sunday",
         icon: Calendar,
       },
       {
@@ -19,9 +19,9 @@ const STATS_DATA = {
       },
       {
         value: "3",
-        label: "competition options",
+        label: "competition formats",
         description:
-          "Individual Triathlon / Corporate Relay / Individual Disciplines",
+          "Individual Triathlon / Corporate Relay / Single Disciplines",
         icon: Users,
       },
     ],
@@ -64,8 +64,7 @@ const STATS_DATA = {
       {
         value: "3",
         label: "opções de competição",
-        description:
-          "Triathlon Individual / Revezamento / Modalidades Avulsas",
+        description: "Triathlon Individual / Revezamento / Modalidades Avulsas",
         icon: Users,
       },
     ],
@@ -129,12 +128,12 @@ export default function InfoSection({
           <h3 className="text-3xl md:text-5xl font-black uppercase text-white leading-tight">
             {language === "pt-BR"
               ? "Permita-se viver esse desafio"
-              : "Embrace the challenge"}
+              : "Redefine your limits"}
           </h3>
           <p className="text-gray-400 max-w-5xl mx-auto text-lg text-center mt-10">
             {language === "pt-BR"
               ? "O TRITON 3 redefine o triathlon tradicional, oferecendo uma experiência surpreendente para quem topa o desafio. Em vez de concentrar as três modalidades em um único dia, cada uma se torna uma prova independente — ao longo de três dias consecutivos. Esse formato exige mais do que resistência. Ele desafia os atletas a performar no mais alto nível, dia após dia — onde consistência, resiliência e estratégia são levadas ao limite."
-              : "TRITON 3 reimagines the traditional triathlon experience, offering a unique and exciting challenge for athletes ready to push their limits. Instead of completing all three disciplines in a single day, each becomes a standalone race held over three consecutive days: swimming on Friday, cycling on Saturday, and running on Sunday. This format demands more than endurance alone. It challenges athletes to perform at their highest level day after day, where consistency, resilience, and strategic race management become the keys to success. The result is an unforgettable journey that tests both physical and mental strength while delivering the full TRITON experience."}
+              : "TRITON 3 redefines traditional triathlon, delivering a game-changing experience for those ready to push their limits. Instead of packing all three disciplines into a single day, each sport becomes a standalone race across three or two consecutive days. This format demands far more than endurance. It challenges athletes to perform at the highest level day after day—where consistency, resilience, and strategy are pushed to the edge."}
           </p>
         </div>
 

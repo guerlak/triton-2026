@@ -11,6 +11,10 @@ interface Partner {
 }
 
 const PartnersSectionEvent = ({ partners = [] }: { partners?: Partner[] }) => {
+  if (!partners || partners.length === 0) {
+    return null;
+  }
+
   return (
     <section className="py-10 sm:py-16 bg-neutral-950 border-y border-white/5">
       <div className="max-w-12xl mx-auto px-4 sm:px-6 lg:px-8">

@@ -204,6 +204,14 @@ import swimPicRio27 from "@/public/images/eventos/rio-2027/swim-pic-rio27.jpg";
 import experiencePic from "@/public/images/eventos/rio-2027/landscape-rio27.jpg";
 import hotelRio27 from "@/public/images/eventos/rio-2027/hotel-rio27.jpg";
 
+//imports CHINA SHIJIAZUANG 2027
+import heroImgShijiazhuang27 from "@/public/images/eventos/shijiazhuang-2027/hero-shijiazhuang27.jpg";
+import logoShijiazhuang27 from "@/public/images/eventos/shijiazhuang-2027/logo-shijiazhuang27.png";
+import swimShijiazhuang27 from "@/public/images/eventos/shijiazhuang-2027/swim-shijiazhuang27.jpg";
+import bikeShijiazhuang27 from "@/public/images/eventos/shijiazhuang-2027/bike-shijiazhuang27.jpg";
+import runShijiazhuang27 from "@/public/images/eventos/shijiazhuang-2027/run-shijiazhuang27.jpg";
+import poisShijiazhuang27 from "@/public/images/eventos/shijiazhuang-2027/pois-shijiazhuang27.jpg";
+
 //imports WOrld Finals 27
 import heroImgWorldFinals27 from "@/public/images/eventos/world-final-2027/hero.jpg";
 
@@ -3263,6 +3271,407 @@ export const EVENT_DATA_MAP: Record<string, EventData> = {
         url: "#",
       },
     ],
+  },
+  "shijiazhuang-2027": {
+    slug: "shijiazhuang-2027",
+    language: "en",
+    id: "shijiazhuang-2027",
+    eventFormat: "triton3",
+    title: "Shijiazhuang",
+    subtitle: "TRITON 3",
+    location: "Hutuo RIver Ecological Island ",
+    venue: "Portobello, Rio de Janeiro",
+    country: "China",
+    flag: "🇨🇳",
+    status: "Confirmed",
+    year: 2027,
+    dateText: "JUN 25 . 26 . 27",
+    fullDateText: "June 25, 26 and 27, 2027",
+    targetDate: "2027-06-25T08:00:00",
+    athleteArea: {
+      liveResultsUrl: "",
+      raceGuideLink: "",
+      startListApiUrl: "",
+      mediaPictureUrl: "",
+      videoBriefingUrl: "",
+      topFiveApiUrl:
+        "",
+      liveResultsApiUrl:
+        "",
+    },
+    isRegistrationClosed: true,
+    registrationStatus: "Hold",
+    hero: {
+      backgroundImage: heroImgShijiazhuang27,
+      logoImage: logoShijiazhuang27,
+    },
+    registrationLink:
+      "https://www.ticketsports.com.br/e/triton-3-rio-de-janeiro-2026-74526",
+    info: {
+      title: "Um formato inovador",
+      subtitle: "Permita-se viver esse desafio",
+      description:
+        "TRITON 3 redefines traditional triathlon, delivering a game-changing experience for those ready to push their limits. Instead of packing all three disciplines into a single day, each sport becomes a standalone race across three or two consecutive days.This format demands far more than endurance. It challenges athletes to perform at the highest level day after day—where consistency, resilience, and strategy are pushed to the edge.",
+    },
+    scoring: {
+      title: "An Innovative Scoring System",
+      description:
+        "TRITON 3 features an innovative scoring system that awards equal weight to all three disciplines. In the TRITON 3 format, the overall winner is the athlete with the lowest combined score across the racing days. The concept is simple: your finishing position in each race discipline equals your points (the higher you place, the fewer points you score). This model rewards consistency and all-around performance across swim, bike, and run. In addition, this stage awards points toward the TRITON World Series Global Ranking and serves as an official qualifier for the World Championship",
+    },
+    formats: {
+      swim: {
+        day: "Day 1",
+        date: "Jun 26th (saturday)",
+        startTime: "14:10",
+        image: swimShijiazhuang27,
+        title: "Swimming",
+        description: `
+          <p>The race weekend kicks off on Saturday with the opening swim stage in the calm waters of the Hutuo River. Starting from the Hutuo River Ecological Island entry point, athletes take to the water guided by the river breeze, framed by the Taihang Mountains behind them and an expansive blue-green ecological corridor ahead—a true test of balance, composure, and grit amidst nature.</p>
+          <br>
+          <p>The swim course follows a 700-meter triangular loop:</p>
+          <br>
+          <ul style="list-style-type: disc; padding-left: 20px;">
+            <li><strong>SPRINT</strong> — 1 lap</li>
+            <li><strong>MIDDLE</strong> — 2 laps</li>
+            <li><strong>LONG</strong> — 3 laps</li>
+          </ul>
+          <br>
+          <p>Swimmers will complete the designated number of laps around the marked buoys before heading into the exit chute to finish the stage.</p>
+        `,
+        distances: [
+          { label: "Sprint", val: "700m", p: 33 },
+          { label: "Middle", val: "1400m", p: 66 },
+          { label: "Long", val: "2100m", p: 100 },
+        ],
+
+        stravaIds: {
+          sprint: "",
+          middle: "",
+          long: "",
+        },
+      },
+      bike: {
+        day: "Day 2",
+        date: "JUN 27th (sunday)",
+        startTime: "07:00",
+        image: bikeShijiazhuang27,
+        title: "Cycling",
+        description: `
+          <p>The action continues on Sunday as the bike course kicks off the second day of racing. Set along the city’s scenic greenway, this course features a flat, fast-paced layout perfectly designed for athletes looking to push their limits and lock into a strong, aggressive rhythm.</p>
+          <br>
+          <p><strong>Course Breakdown:</strong></p>
+          <br>
+          <ul style="list-style-type: disc; padding-left: 20px;">
+            <li><strong>SPRINT:</strong> Heading south from the Hutuo Island exit, athletes will merge onto the greenway's main vehicle lane until they reach the Xincheng Avenue exit. After a quick U-turn, the route brings you back along the dedicated cycling path straight into the transition area at Hutuo Island.</li><br>
+            <li><strong>MIDDLE:</strong> Two-loop race following the exact layout of the SPRINT Distance route.</li><br>
+            <li><strong>LONG:</strong> Starting from the Hutuo Island exit, athletes will tackle one massive, full loop around the city's greenway.</li>
+          </ul>
+          <br>
+          <p><strong>⚠️ Rules:</strong> Please note that this is a draft-legal race. For safety and compliance, time-trial (TT) bikes and road bikes with clip-on aero extensions are <strong style="color: #c53030;">NOT allowed</strong>.</p>
+        `,
+        distances: [
+          { label: "Sprint", val: "29km", p: 33 },
+          { label: "Middle", val: "58km", p: 66 },
+          { label: "Long", val: "90km", p: 100 },
+        ],
+        stravaIds: {
+          sprint: "",
+          middle: "",
+          long: "",
+        },
+        details: [],
+      },
+      run: {
+        day: "Day 2",
+        date: "JUN 27th (sunday)",
+        startTime: "10:00",
+        image: runShijiazhuang27,
+        title: "Corrida",
+        description: `
+          <p>The run is the final showdown. Set entirely within the beautiful Hutuo Ecological Island, this completely flat course is built for speed and designed for you to leave everything you have out on the course.</p>
+          <br>
+          <p><strong>Distances:</strong></p>
+          <br>
+          <ul style="list-style-type: disc; padding-left: 20px;">
+            <li><strong>SPRINT:</strong> 6.5km</li>
+            <li><strong>MIDDLE:</strong> 11km</li>
+            <li><strong>LONG:</strong> 15.5km</li>
+          </ul>
+        `,
+        distances: [
+          { label: "Sprint", val: "6.5km", p: 33 },
+          { label: "Middle", val: "11km", p: 66 },
+          { label: "Long", val: "15.5km", p: 100 },
+        ],
+        stravaIds: {
+          sprint: "",
+          middle: "",
+          long: "",
+        },
+      },
+      distanceTable: [
+        {
+          name: "SPRINT",
+          swim: "700m",
+          bike: "29km",
+          run: "6.5km",
+        },
+        {
+          name: "MIDDLE",
+          swim: "1400m",
+          bike: "58km",
+          run: "11km",
+        },
+        {
+          name: "LONG",
+          swim: "2100m",
+          bike: "90km",
+          run: "15.5km",
+        },
+      ],
+    },
+    afterMovie: {
+      youtubeSrc: "z7xHxVVnkjU?si=6GShK1msGCTy7LDH",
+    },
+    testimonial: {
+      youtubeSrc: "https://www.youtube.com/embed/x0J6xM96QhQ",
+      testimonials: [
+        {
+          avatar_url: "/images/atletas/viviane.jpeg",
+          quote:
+            "Quantas lições em um único final de semana. Foram 3 dias, 3 esportes, 3 humores e unimeras variações de sentimentos. No Triton 3 pude me testar, exercitar a paciência e também o carinho comigo mesma. ",
+          author: "Viviane",
+          company: "TechFlow",
+          link_social: "https://www.instagram.com/viviwigand",
+        },
+        {
+          avatar_url: "/images/atletas/elida.jpeg",
+          quote:
+            "Que fim de semana incrível! Obrigada Triton pela experiência única. Levo para casa uma recordação cheias de boas energias e momentos especiais...",
+          author: "Elida",
+          company: "TechFlow",
+          link_social: "https://www.instagram.com/elidacordeiroo",
+        },
+        {
+          avatar_url: "/images/atletas/bizarelo.jpeg",
+          quote:
+            "Que dia incrível e que dia forte! Obrigado TRITON pela prova top, segura e com visual fantástico",
+          author: "Bizarelo",
+          company: "TechFlow",
+          link_social: "https://www.instagram.com/bizarelocycling",
+        },
+      ],
+    },
+    schedule: {
+      title: "AGENDA",
+      subtitle: "Planning your journey",
+      days: [
+        {
+          id: "friday",
+          date: "JUN 25",
+          title: "Friday",
+          subtitle: "Registration & Briefing",
+          events: [
+            {
+              time: "09:00 - 20:00",
+              title: "Registration & Race Pack Collection Day",
+              location: "Yellow Duck Plaza, Hutuo Island",
+            },
+            {
+              time: "18:00",
+              title: "Race Briefing",
+              location: "Indoor Venue on Hutuo Island (TBC)",
+            },
+          ],
+        },
+        {
+          id: "saturday",
+          date: "JUN 26",
+          title: "Saturday",
+          subtitle: "Race Day (Swim, Junior Triathlon)",
+          events: [
+            {
+              time: "08:00 - 18:00",
+              title: "Registration & Athlete Check-in",
+              location: "Yellow Duck Plaza, Hutuo Island",
+            },
+            {
+              time: "10:00",
+              title: "Junior Triathlon Start",
+              location: "Yellow Duck Plaza, Hutuo Island",
+            },
+            {
+              time: "12:00",
+              title: "Junior Triathlon Awards Ceremony",
+              location: "Yellow Duck Plaza, Hutuo Island",
+            },
+            {
+              time: "12:30 - 14:00",
+              title:
+                "Preparation & Registration for Open Water Swim & Triathlon",
+              location: "Yellow Duck Plaza, Hutuo Island",
+            },
+            {
+              time: "14:00",
+              title: "Open Water Swim Start",
+              location: "Yellow Duck Plaza, Hutuo Island",
+            },
+            {
+              time: "14:10",
+              title:
+                "Rolling Start for Long, Middle, and Sprint  (Swim)",
+              location: "Yellow Duck Plaza, Hutuo Island",
+            },
+            {
+              time: "14:40 - 15:50",
+              title: "Swim Stage Awards Ceremony",
+              location: "Yellow Duck Plaza, Hutuo Island",
+            },
+            {
+              time: "15:50",
+              title: "Swim Course Cut-off",
+              location: "Yellow Duck Plaza, Hutuo Island",
+            },
+            {
+              time: "19:00",
+              title: "10km Open Water Swim Cut-off",
+              location: "Yellow Duck Plaza, Hutuo Island",
+            },
+            {
+              time: "08:00 - 20:00",
+              title: "Triathlon Carnival (Sports Expo)",
+              location: "Yellow Duck Plaza, Hutuo Island",
+            },
+          ],
+        },
+        {
+          id: "sunday",
+          date: "JUN 27",
+          title: "Sunday",
+          subtitle: "Race Day (Bike, Run)",
+          events: [
+            {
+              time: "05:00",
+              title: "Breakfast Service Begins",
+              location: "All Partner Hotels",
+            },
+            {
+              time: "05:30 - 20:00",
+              title: "Shuttle Bus Service to Transition Area Opens",
+              location: "All Partner Hotels",
+            },
+            {
+              time: "07:00",
+              title:
+                "Bike Stage Start",
+              location: "Hutuo Island Entrance",
+            },
+            {
+              time: "10:00",
+              title:
+                "Rolling Start for Run",
+              location: "Hutuo Island Entrance",
+            },
+            {
+              time: "10:00 - 20:00",
+              title: "Triathlon Carnival (Sports Expo)",
+              location: "Yellow Duck Plaza, Hutuo Island",
+            },
+            {
+              time: "12:00",
+              title: "Bike Course Cut-off",
+              location: "City Greenway",
+            },
+            {
+              time: "12:30",
+              title: "Bike Course Reopens",
+              location: "City Greenway",
+            },
+            {
+              time: "12:30",
+              title: "Run Course Cut-off",
+              location: "Hutuo Island",
+            },
+            {
+              time: "12:00 - 14:00",
+              title: "Run Stage & Overall Triathlon Awards Ceremony",
+              location: "Yellow Duck Plaza, Hutuo Island",
+            },
+          ],
+        },
+      ],
+      importantNote:
+        "All times are subject to change without notice due to unforeseen circumstances. Start times and order may also be adjusted. We recommend following the schedule regularly to stay updated on any last-minute changes.",
+    },
+    locations: {
+      description:
+        "O TRITON Rio 26 acontece em Mangaratiba, um destino que combina o melhor da Serra do Mar com a Costa Verde. Planeje sua viagem, escolha seu hotel parceiro e prepare-se para uma experiência que vai além da competição.",
+      experience: {
+        image: poisShijiazhuang27,
+        pois: [
+          {
+            icon: "Compass",
+            title: "EXPLORE HUTUO ECOLOGICAL ISLAND",
+            desc: "Find peace in this unique natural sanctuary. Enjoy scenic eco-trails, gentle river breezes, and the tranquil charm of the Hutuo River.",
+          },
+          {
+            icon: "Anchor",
+            title: "RIVERSIDE & NATURE",
+            desc: "Stroll along scenic, tree-lined promenades and expansive parks. It’s the perfect spot to relax and take in beautiful riverside views against the stunning Taihang Mountains.",
+          },
+          {
+            icon: "Utensils",
+            title: "LOCAL CULINARY FLAVORS",
+            desc: "Taste the region's authentic flavors. Savor traditional dishes celebrated for their fresh, premium ingredients and time-honored preparation.",
+          },
+          {
+            icon: "Palmtree",
+            title: "CULTURE & HERITAGE",
+            desc: "Immerse yourself in a rich cultural heritage. Experience centuries of history, traditional architecture, and warm local hospitality for a truly welcoming stay.",
+          },
+        ],
+      },
+      logistics: [
+        {
+          icon: "Plane",
+          title: "SJW Airport",
+          detail: "20 km",
+          sub: "~30min",
+          color: "from-blue-500/20",
+        },
+        {
+          icon: "Navigation",
+          title: "Shijiazhuang Station",
+          detail: "Railway",
+          sub: "~40min",
+          color: "from-green-500/20",
+        },
+        {
+          icon: "Car",
+          title: "Access",
+          detail: "EXPY G4",
+          sub: "Beijing Connection",
+          color: "from-purple-500/20",
+        },
+        {
+          icon: "MapPin",
+          title: "Location",
+          detail: "Shijiazhuang",
+          sub: "Hutuo Eco Island",
+          color: "from-red-500/20",
+        },
+      ],
+      resort: {
+        image: poisShijiazhuang27,
+        title: "Coming Soon",
+        description:
+          "We will soon announce our official partner hotel with special conditions and exclusive rates for you and your family during the event.",
+        benefits: [],
+        buttonText: "Coming Soon",
+        whatsappLink: "",
+      },
+    },
+    partners: [],
   },
 };
 

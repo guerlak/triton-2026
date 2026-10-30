@@ -50,7 +50,7 @@ const LocationsSection: React.FC<LocationsSectionProps> = ({ locations, language
     <section id="locations" className="py-12 md:py-24 bg-triton-dark overflow-hidden">
       <div className="text-center mb-14 hidden sm:block">
         <h2 className="text-triton-red font-bold tracking-[0.3em] uppercase mb-4 text-sm md:text-base">
-          {language === "pt-BR" ? "SEU PRÓXIMO DESAFIO É NO PARAÍSO" : "YOUR NEXT CHALLENGE IS IN PARADISE"}
+          {language === "pt-BR" ? "SEU PRÓXIMO DESAFIO É NO PARAÍSO" : "YOUR NEXT TRITON STAGE IS IN PARADISE"}
         </h2>
         <h3 className="text-4xl md:text-5xl font-black uppercase text-white leading-[0.9] italic mb-8">
           {language === "pt-BR" ? "VIAGEM & DESTINO" : "TRAVEL & DESTINATION"}
@@ -189,9 +189,9 @@ const LocationsSection: React.FC<LocationsSectionProps> = ({ locations, language
                 </div>
 
                 {!locations.resort.whatsappLink ||
-                locations.resort.whatsappLink === "#" ||
-                locations.resort.buttonText?.toLowerCase().includes("breve") ||
-                locations.resort.buttonText?.toLowerCase().includes("soon") ? (
+                  locations.resort.whatsappLink === "#" ||
+                  locations.resort.buttonText?.toLowerCase().includes("breve") ||
+                  locations.resort.buttonText?.toLowerCase().includes("soon") ? (
                   <span className="inline-flex items-center justify-center bg-neutral-800 text-gray-500 border border-white/10 px-10 py-5 rounded-2xl font-black uppercase italic tracking-widest cursor-not-allowed opacity-60 select-none">
                     {locations.resort.buttonText}
                   </span>
