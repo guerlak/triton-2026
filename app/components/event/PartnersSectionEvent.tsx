@@ -16,9 +16,9 @@ const PartnersSectionEvent = ({ partners = [] }: { partners?: Partner[] }) => {
   }
 
   return (
-    <section className="py-10 sm:py-16 bg-neutral-950 border-y border-white/5">
+    <section className="py-8 sm:py-12 md:py-16 bg-neutral-950 border-y border-white/5">
       <div className="max-w-12xl mx-auto px-4 sm:px-6 lg:px-8">
-        <h2 className="text-triton-red font-bold tracking-widest uppercase flex items-center justify-center gap-2 mb-6 sm:mb-10 text-sm sm:text-base">
+        <h2 className="text-triton-red font-bold tracking-widest uppercase flex items-center justify-center gap-2 mb-6 sm:mb-10 text-xs sm:text-sm">
           Triton Partners
         </h2>
         <div className="flex flex-wrap justify-center items-center gap-6 sm:gap-10 md:gap-16">

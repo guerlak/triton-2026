@@ -47,17 +47,19 @@ interface LocationsSectionProps {
 
 const LocationsSection: React.FC<LocationsSectionProps> = ({ locations, language, description }) => {
   return (
-    <section id="locations" className="py-12 md:py-24 bg-triton-dark overflow-hidden">
-      <div className="text-center mb-14 hidden sm:block">
-        <h2 className="text-triton-red font-bold tracking-[0.3em] uppercase mb-4 text-sm md:text-base">
+    <section id="locations" className="py-8 sm:py-12 md:py-20 bg-triton-dark overflow-hidden">
+      <div className="text-center mb-8 sm:mb-14 px-4">
+        <h2 className="text-triton-red font-bold tracking-widest uppercase mb-2 text-xs sm:text-sm">
           {language === "pt-BR" ? "SEU PRÓXIMO DESAFIO É NO PARAÍSO" : "YOUR NEXT TRITON STAGE IS IN PARADISE"}
         </h2>
-        <h3 className="text-4xl md:text-5xl font-black uppercase text-white leading-[0.9] italic mb-8">
+        <h3 className="text-2xl sm:text-3xl md:text-5xl font-black uppercase text-white leading-tight mb-4 sm:mb-6">
           {language === "pt-BR" ? "VIAGEM & DESTINO" : "TRAVEL & DESTINATION"}
         </h3>
-        <p className="text-gray-400 max-w-7xl mx-auto text-lg md:text-xl leading-relaxed">
-          {description}
-        </p>
+        {description && (
+          <p className="text-gray-400 max-w-5xl mx-auto text-xs sm:text-base md:text-lg leading-relaxed">
+            {description}
+          </p>
+        )}
       </div>
       {/* Intro Video Section */}
 
@@ -75,11 +77,11 @@ const LocationsSection: React.FC<LocationsSectionProps> = ({ locations, language
             <div className="absolute inset-0 bg-linear-to-t from-black via-black/40 to-transparent lg:hidden"></div>
           </div>
 
-          <div className="relative z-10 p-8 lg:p-20 max-w-4xl">
-            <div className="inline-block bg-triton-red/20 text-triton-red px-3 py-1 rounded-full text-[10px] uppercase font-black tracking-[0.2em] mb-6 border border-triton-red/20 backdrop-blur-md">
+          <div className="relative z-10 p-5 sm:p-8 lg:p-20 max-w-4xl">
+            <div className="inline-block bg-triton-red/20 text-triton-red px-3 py-1 rounded-full text-[10px] uppercase font-black tracking-[0.2em] mb-4 sm:mb-6 border border-triton-red/20 backdrop-blur-md">
               Experience
             </div>
-            <h3 className="text-4xl lg:text-5xl font-black text-white uppercase italic mb-10 leading-[0.9] tracking-tighter">
+            <h3 className="text-2xl sm:text-4xl lg:text-5xl font-black text-white uppercase italic mb-6 sm:mb-10 leading-tight tracking-tight">
               {language === "pt-BR" ? "Para além da" : "Beyond the"}
               <br />{" "}
               <span className="text-triton-red underline decoration-red-900/30">
@@ -165,10 +167,10 @@ const LocationsSection: React.FC<LocationsSectionProps> = ({ locations, language
                     {language === "pt-BR" ? "Hotel Oficial" : "OFFICIAL HOTEL"}
                   </span>
                 </div>
-                <h3 className="text-3xl lg:text-5xl font-black text-white uppercase italic mb-6 leading-tight">
+                <h3 className="text-2xl sm:text-3xl md:text-5xl font-black text-white uppercase italic mb-4 sm:mb-6 leading-tight">
                   {locations.resort.title}
                 </h3>
-                <p className="text-gray-400 text-lg mb-8 leading-relaxed">
+                <p className="text-gray-400 text-xs sm:text-base md:text-lg mb-6 sm:mb-8 leading-relaxed">
                   {locations.resort.description}
                 </p>
 
@@ -227,7 +229,7 @@ const LocationsSection: React.FC<LocationsSectionProps> = ({ locations, language
                   {language === "pt-BR" ? "Hospedagem Alternativa" : "Alternative Lodging"}
                 </span>
               </div>
-              <h3 className="text-3xl lg:text-4xl font-black text-white uppercase italic mb-4">
+              <h3 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-black text-white uppercase italic mb-3 sm:mb-4">
                 {language === "pt-BR" ? "Opções de Acomodação" : "Other Accommodation Options"}
               </h3>
               <p className="text-gray-400 text-sm lg:text-base leading-relaxed max-w-3xl font-bold">

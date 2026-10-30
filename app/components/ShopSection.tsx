@@ -11,7 +11,7 @@ const ShopSection: React.FC<{ language: string }> = ({ language }) => {
   return (
     <section
       id="shop"
-      className="overflow-hidden bg-black flex flex-col md:flex-row justify-center items-center py-10 md:py-20 gap-5"
+      className="overflow-hidden bg-black flex flex-col md:flex-row justify-center items-center py-8 sm:py-12 md:py-20 gap-5"
     >
       <div className="md:max-w-1/2 px-4 sm:px-6 lg:px-8">
         <div className="relative rounded-4xl overflow-hidden group">
@@ -34,12 +34,12 @@ const ShopSection: React.FC<{ language: string }> = ({ language }) => {
             </div>
 
             <div className="mt-16 md:mt-50">
-              <h2 className="text-3xl md:text-3xl font-black text-white uppercase leading-tight 
-              mb-0 sm:mb-2 max-w-2/3">
+              <h2 className="text-2xl sm:text-3xl font-black text-white uppercase leading-tight 
+              mb-1 sm:mb-2 max-w-2/3">
                 WEAR THE <br></br><span className="text-triton-red">
                   TRITON MINDSET</span>{" "}
               </h2>
-              <p className="text-gray-300 text-lg md:text-xl leading-relaxed mb-10 max-w-lg">
+              <p className="text-gray-300 text-xs sm:text-base md:text-xl leading-relaxed mb-6 sm:mb-10 max-w-lg">
                 {language == 'pt' ? 'Roupa oficial inspirada na resistência.' : 'Official apparel inspired by endurance.'}
               </p>
             </div>
@@ -83,12 +83,12 @@ const ShopSection: React.FC<{ language: string }> = ({ language }) => {
             </div>
 
             <div className="mt-16 md:mt-50">
-              <h2 className="text-3xl font-black text-white uppercase leading-tight mb-2 max-w-2/3">
+              <h2 className="text-2xl sm:text-3xl font-black text-white uppercase leading-tight mb-2 max-w-2/3">
                 TAKE US WITH YOU <br></br>
                 <span className="text-triton-red">WITH YOU</span>{" "}
               </h2>
 
-              <p className="text-gray-300 text-lg md:text-md leading-relaxed mb-10 max-w-lg">
+              <p className="text-gray-300 text-xs sm:text-base leading-relaxed mb-6 sm:mb-10 max-w-lg">
                 Save it in your screen<br></br> and use it like an app.
               </p>
 

@@ -26,7 +26,7 @@ const ExtraEvent: React.FC<ExtraEventProps> = ({
     badge,
 }) => {
     return (
-        <section className=" py-16 md:py-24 bg-triton-lightß text-white relative overflow-hidden border-t border-white/5">
+        <section className="py-8 sm:py-12 md:py-20 bg-triton-lightß text-white relative overflow-hidden border-t border-white/5">
             {/* Background glow effect */}
             <div className="absolute top-1/2 right-0 w-96 h-96 bg-triton-red/10 rounded-full blur-3xl pointer-events-none translate-x-1/2 -translate-y-1/2" />
 
@@ -34,12 +34,12 @@ const ExtraEvent: React.FC<ExtraEventProps> = ({
                 <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 md:gap-12 items-center">
 
                     {/* Text Description: Left Side */}
-                    <div className="lg:col-span-7 space-y-6">
+                    <div className="lg:col-span-7 space-y-4 sm:space-y-6">
                         {/* Badge */}
                         {badge && (
-                            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/10 backdrop-blur-md border border-white/20">
-                                <Sparkles className="h-4 w-4 text-triton-red" />
-                                <span className="text-xs md:text-sm font-semibold tracking-wider uppercase text-white">
+                            <div className="inline-flex items-center gap-2 px-3 sm:px-4 py-1.5 sm:py-2 rounded-full bg-white/10 backdrop-blur-md border border-white/20">
+                                <Sparkles className="h-3.5 w-3.5 sm:h-4 sm:w-4 text-triton-red" />
+                                <span className="text-[10px] sm:text-xs md:text-sm font-semibold tracking-wider uppercase text-white">
                                     {badge}
                                 </span>
                             </div>
@@ -47,11 +47,11 @@ const ExtraEvent: React.FC<ExtraEventProps> = ({
 
                         {/* Heading & Subtitle */}
                         <div>
-                            <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-black uppercase tracking-tight text-white leading-tight">
+                            <h2 className="text-2xl sm:text-3xl md:text-5xl font-black uppercase tracking-tight text-white leading-tight">
                                 {title}
                             </h2>
                             {subtitle && (
-                                <p className="text-lg md:text-xl text-triton-red font-medium mt-3 border-l-2 border-triton-red pl-4">
+                                <p className="text-sm sm:text-base md:text-xl text-triton-red font-medium mt-2 sm:mt-3 border-l-2 border-triton-red pl-4">
                                     {subtitle}
                                 </p>
                             )}
@@ -62,7 +62,7 @@ const ExtraEvent: React.FC<ExtraEventProps> = ({
 
                         {/* Description Text (HTML supported) */}
                         <div
-                            className="text-gray-300 text-base md:text-lg leading-relaxed font-light space-y-4"
+                            className="text-gray-300 text-xs sm:text-base md:text-lg leading-relaxed font-light space-y-3 sm:space-y-4"
                             dangerouslySetInnerHTML={{ __html: description }}
                         />
 

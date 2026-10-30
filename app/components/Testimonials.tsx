@@ -56,14 +56,14 @@ export default function TestimonialList({ language, testimonials, youtubeSrc }: 
   return (
     <section
       id="moviment"
-      className="py-10 bg-triton-dark relative overflow-hidden text-center"
+      className="py-8 sm:py-12 md:py-20 bg-triton-dark relative overflow-hidden text-center"
     >
-      <h2 className="text-triton-red font-bold tracking-widest uppercase mb-2">
+      <h2 className="text-xs sm:text-sm font-bold tracking-widest uppercase mb-2 text-triton-red">
         {language === "pt-BR" ? "NÃO É APENAS UMA PROVA" : "Is not just a race"}
       </h2>
-      <h2 className="text-3xl md:text-5xl font-black uppercase text-white leading-tight mb-6 ">
+      <h3 className="text-2xl sm:text-3xl md:text-5xl font-black uppercase text-white leading-tight mb-4 sm:mb-6">
         {language === "pt-BR" ? "OUÇA QUEM JÁ VIVEU ESSA EXPERIÊNCIA" : "Hear from the participants"}
-      </h2>
+      </h3>
 
       <div className="p-2 flex flex-col-reverse gap-10 justify-between items-center max-w-[1200] mx-auto md:flex-row mt-8">
         <div className="flex overflow-x-auto sm:flex-col snap-x snap-mandatory sm:snap-none w-full md:max-w-[700px] gap-4 pb-6 sm:pb-0 [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden">

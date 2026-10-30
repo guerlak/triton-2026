@@ -19,50 +19,8 @@ import dict from "../../../dictionaries/en.json";
 import { motion } from "framer-motion";
 import Script from "next/script";
 import { form } from "framer-motion/client";
+import DistanceTable from "./DistanceTable";
 
-const FormatTable: React.FC<{ distances: any[] }> = ({ distances }) => (
-  <div className="w-full overflow-x-auto">
-    <table className="w-full text-left border-collapse">
-      <thead>
-        <tr className="border-b border-white/20">
-          <th className="py-4 px-4 text-sm font-bold uppercase text-gray-400">
-            Distance
-          </th>
-          <th className="py-4 px-4 text-center">
-            <Waves className="mx-auto w-6 h-6 text-triton-red" />
-          </th>
-          <th className="py-4 px-4 text-center">
-            <Bike className="mx-auto w-6 h-6 text-triton-red" />
-          </th>
-          <th className="py-4 px-4 text-center">
-            <PersonStanding className="mx-auto w-6 h-6 text-triton-red" />
-          </th>
-        </tr>
-      </thead>
-      <tbody>
-        {distances?.map((row: any, idx: number) => (
-          <tr
-            key={idx}
-            className="border-b border-white/10 hover:bg-white/5 transition-colors"
-          >
-            <td className="py-4 px-4 font-black text-xl italic uppercase text-white">
-              {row.name}
-            </td>
-            <td className="py-4 px-4 text-center font-bold text-gray-300">
-              {row.swim}
-            </td>
-            <td className="py-4 px-2 text-center font-bold text-gray-300">
-              {row.bike}
-            </td>
-            <td className="py-4 px-4 text-center font-bold text-gray-300">
-              {row.run}
-            </td>
-          </tr>
-        ))}
-      </tbody>
-    </table>
-  </div>
-);
 
 const FormatsSection: React.FC<{ language: string; formats: any }> = ({
   language,
@@ -595,7 +553,7 @@ const FormatsSection: React.FC<{ language: string; formats: any }> = ({
             : "Choose your distance"}
         </h4>
 
-        <FormatTable distances={formats.distanceTable} />
+        <DistanceTable distances={formats.distanceTable} />
 
         <div className="mt-8 pt-12">
           <h4 className="text-2xl font-bold text-white mb-8 uppercase border-l-4 border-triton-red pl-4">

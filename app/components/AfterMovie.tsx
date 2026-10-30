@@ -8,14 +8,14 @@ export default function AfterMovie({ youtubeSrc, language }: { youtubeSrc: strin
 		<section className="relative">
 			<RedLine isAbsolute={false} />
 
-			<div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-20 mb-20">
-				<h2 className="text-triton-red font-bold tracking-widest uppercase mb-2 text-center">
+			<div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-12 md:py-20">
+				<h2 className="text-xs sm:text-sm font-bold tracking-widest uppercase mb-2 text-center text-triton-red">
 					{language === "pt-BR" ? "Transformando o paraíso no seu campo de prova" : "Turning paradise into your racing ground"}
 				</h2>
-				<h2 className="text-3xl md:text-5xl font-black uppercase text-white leading-tight mb-6 text-center">
+				<h3 className="text-2xl sm:text-3xl md:text-5xl font-black uppercase text-white leading-tight mb-4 sm:mb-6 text-center">
 					{language === "pt-BR" ? "Uma jornada inesquecível" : "An unforgettable journey"}
-				</h2>
-				<div className="relative rounded-4xl overflow-hidden shadow-[0_0_50px_rgba(223,31,38,0.2)] border border-white/10 group mt-15">
+				</h3>
+				<div className="relative rounded-2xl sm:rounded-4xl overflow-hidden shadow-[0_0_50px_rgba(223,31,38,0.2)] border border-white/10 group mt-6 sm:mt-10 md:mt-12">
 					<div className="aspect-video w-full">
 						<iframe
 							className="w-full h-full"

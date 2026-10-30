@@ -4,23 +4,24 @@ import Image from "next/image";
 import { Waves, Bike, PersonStanding, Users, User, Shuffle, MapPin, Trophy } from "lucide-react";
 import { motion } from "framer-motion";
 import Script from "next/script";
+import DistanceTable from "./DistanceTable";
 
 const FormatTable: React.FC<{ distances: any[] }> = ({ distances }) => (
   <div className="w-full overflow-x-auto">
-    <table className="w-full text-left border-collapse min-w-[500px]">
+    <table className="w-full text-left border-collapse">
       <thead>
         <tr className="border-b border-white/20">
-          <th className="py-3 sm:py-4 px-3 sm:px-4 text-xs sm:text-sm font-bold uppercase text-gray-400 whitespace-nowrap">
+          <th className="py-2.5 sm:py-4 px-2 sm:px-4 text-[11px] sm:text-sm font-bold uppercase text-gray-400 whitespace-nowrap">
             Distance
           </th>
-          <th className="py-3 sm:py-4 px-3 sm:px-4 text-center">
-            <Waves className="mx-auto w-5 h-5 sm:w-6 sm:h-6 text-triton-red" />
+          <th className="py-2.5 sm:py-4 px-1.5 sm:px-4 text-center">
+            <Waves className="mx-auto w-4 h-4 sm:w-6 sm:h-6 text-triton-red" />
           </th>
-          <th className="py-3 sm:py-4 px-3 sm:px-4 text-center">
-            <Bike className="mx-auto w-5 h-5 sm:w-6 sm:h-6 text-triton-red" />
+          <th className="py-2.5 sm:py-4 px-1.5 sm:px-4 text-center">
+            <Bike className="mx-auto w-4 h-4 sm:w-6 sm:h-6 text-triton-red" />
           </th>
-          <th className="py-3 sm:py-4 px-3 sm:px-4 text-center">
-            <PersonStanding className="mx-auto w-5 h-5 sm:w-6 sm:h-6 text-triton-red" />
+          <th className="py-2.5 sm:py-4 px-1.5 sm:px-4 text-center">
+            <PersonStanding className="mx-auto w-4 h-4 sm:w-6 sm:h-6 text-triton-red" />
           </th>
         </tr>
       </thead>
@@ -30,16 +31,16 @@ const FormatTable: React.FC<{ distances: any[] }> = ({ distances }) => (
             key={idx}
             className="border-b border-white/10 hover:bg-white/5 transition-colors"
           >
-            <td className="py-3 sm:py-4 px-3 sm:px-4 font-black text-base sm:text-xl italic uppercase text-white whitespace-nowrap">
+            <td className="py-2.5 sm:py-4 px-2 sm:px-4 font-black text-xs sm:text-xl italic uppercase text-white whitespace-nowrap">
               {row.name}
             </td>
-            <td className="py-3 sm:py-4 px-3 sm:px-4 text-center font-bold text-xs sm:text-base text-gray-300 font-mono whitespace-nowrap">
+            <td className="py-2.5 sm:py-4 px-1.5 sm:px-4 text-center font-bold text-[11px] sm:text-base text-gray-300 font-mono whitespace-nowrap">
               {row.swim}
             </td>
-            <td className="py-3 sm:py-4 px-2 sm:px-4 text-center font-bold text-xs sm:text-base text-gray-300 font-mono whitespace-nowrap">
+            <td className="py-2.5 sm:py-4 px-1.5 sm:px-4 text-center font-bold text-[11px] sm:text-base text-gray-300 font-mono whitespace-nowrap">
               {row.bike}
             </td>
-            <td className="py-3 sm:py-4 px-3 sm:px-4 text-center font-bold text-xs sm:text-base text-gray-300 font-mono whitespace-nowrap">
+            <td className="py-2.5 sm:py-4 px-1.5 sm:px-4 text-center font-bold text-[11px] sm:text-base text-gray-300 font-mono whitespace-nowrap">
               {row.run}
             </td>
           </tr>
@@ -471,7 +472,7 @@ const FormatsSection: React.FC<{ language: string; formats: any }> = ({ language
           {language === "pt-BR" ? "Escolha a sua distância" : "Choose your distance"}
         </h4>
 
-        <FormatTable distances={formats.distanceTable} />
+        <DistanceTable distances={formats.distanceTable} />
 
         <div className="mt-8 pt-8 sm:pt-12">
           <h4 className="text-xl sm:text-2xl font-bold text-white mb-6 sm:mb-8 uppercase border-l-4 border-triton-red pl-4">

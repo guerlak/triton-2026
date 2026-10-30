@@ -19,21 +19,21 @@ const NewsletterSection: React.FC<{ language: string }> = ({ language }) => {
   return (
     <section
       id="newsletter"
-      className="py-10 bg-black relative overflow-hidden"
+      className="py-8 sm:py-12 md:py-20 bg-black relative overflow-hidden"
     >
       <div className="max-w-7xl mx-auto px-4 relative z-10">
-        <div className="bg-neutral-900/50 border border-white/5 rounded-[2rem] p-8 md:p-16 lg:p-24 backdrop-blur-sm">
-          <div className="grid lg:grid-cols-2 gap-16 items-center">
+        <div className="bg-neutral-900/50 border border-white/5 rounded-2xl sm:rounded-[2rem] p-5 sm:p-8 md:p-16 lg:p-24 backdrop-blur-sm">
+          <div className="grid lg:grid-cols-2 gap-8 sm:gap-16 items-center">
             <div>
-              <span className="inline-block px-4 py-1.5 rounded-full bg-triton-red/10 text-triton-red text-[10px] font-black uppercase tracking-[0.3em] mb-6">
+              <span className="inline-block px-3 sm:px-4 py-1.5 rounded-full bg-triton-red/10 text-triton-red text-[10px] font-black uppercase tracking-[0.3em] mb-4 sm:mb-6">
                 Newsletter
               </span>
-              <h2 className="text-4xl md:text-6xl font-black uppercase tracking-tighter mb-6 leading-none">
+              <h2 className="text-2xl sm:text-4xl md:text-6xl font-black uppercase tracking-tight mb-4 sm:mb-6 leading-tight">
                 {language === "pt-BR" ? "Junte-se ao" : "Join the"}
                 <br />
                 <span className="text-triton-red">{language === "pt-BR" ? "Movimento" : "Movement"}</span>
               </h2>
-              <p className="text-md text-gray-400 max-w-md leading-relaxed">
+              <p className="text-xs sm:text-base text-gray-400 max-w-md leading-relaxed">
                 {language === "pt-BR" ? "Seja o primeiro a receber as datas dos eventos, dicas de treinamento de especialistas e ofertas exclusivas da TRITON World Series." : "Be the first to receive event dates, expert training tips, and exclusive TRITON World Series offers."}
               </p>
             </div>

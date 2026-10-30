@@ -3,7 +3,6 @@
 import React, { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Clock, MapPin, AlertCircle } from "lucide-react";
-import Heading from "@/app/ui/Heading";
 import { ScheduleDay, ScheduleEvent } from "@/eventdata";
 interface ScheduleSectionProps {
   schedule: {
@@ -39,18 +38,18 @@ const ScheduleSection: React.FC<ScheduleSectionProps> = ({
   };
 
   return (
-    <section id="schedule" className="py-20 bg-black overflow-hidden">
+    <section id="schedule" className="py-8 sm:py-12 md:py-20 bg-black overflow-hidden">
       <div className="container mx-auto px-4 md:px-8 lg:px-16">
-        <div className="text-center mb-16">
-          <Heading
-            text1={language === "pt-BR" ? "programa" : "RACE SCHEDULE"}
-            text2={
-              language === "pt-BR"
-                ? "FIQUE POR DENTRO DOS HORÁRIOS"
-                : "Plan your weekend"
-            }
-          />
-          <p className="text-gray-400 mx-auto text-lg">
+        <div className="text-center mb-8 sm:mb-12 md:mb-16">
+          <h2 className="text-triton-red font-bold tracking-widest uppercase mb-2 text-xs sm:text-sm">
+            {language === "pt-BR" ? "PROGRAMA" : "RACE SCHEDULE"}
+          </h2>
+          <h3 className="text-2xl sm:text-3xl md:text-5xl font-black uppercase text-white leading-tight mb-4 sm:mb-6">
+            {language === "pt-BR"
+              ? "FIQUE POR DENTRO DOS HORÁRIOS"
+              : "Plan your weekend"}
+          </h3>
+          <p className="text-gray-400 max-w-5xl mx-auto text-xs sm:text-base md:text-lg">
             {language === "pt-BR"
               ? "Organize-se e não perca nenhum momento. Confira a programação completa do fim de semana de prova."
               : "Plan ahead and make the most of every moment. Explore the full schedule for an unforgettable TRITON race weekend."}
@@ -100,39 +99,39 @@ const ScheduleSection: React.FC<ScheduleSectionProps> = ({
 
                 <motion.div
                   variants={itemVariants}
-                  className="bg-white/5 border border-white/10 rounded-3xl p-8 md:p-12 backdrop-blur-xl"
+                  className="bg-white/5 border border-white/10 rounded-2xl sm:rounded-3xl p-4 sm:p-6 md:p-12 backdrop-blur-xl"
                 >
-                  <div className="space-y-6">
+                  <div className="space-y-4 sm:space-y-6">
                     {day.events.map((event, idx) => (
                       <div
                         key={`${day.id}-event-${idx}`}
-                        className={`pb-6 ${idx !== day.events.length - 1 ? "border-b border-white/10" : ""}`}
+                        className={`pb-4 sm:pb-6 ${idx !== day.events.length - 1 ? "border-b border-white/10" : ""}`}
                       >
                         {/* Time & Title Row */}
-                        <div className="flex flex-col md:flex-row md:items-start md:justify-between gap-4 mb-3">
+                        <div className="flex flex-col md:flex-row md:items-start md:justify-between gap-2 sm:gap-4 mb-2 sm:mb-3">
                           <div className="flex items-center gap-3">
                             {!event.isCutoff && event.time && (
                               <div className="flex items-center gap-2 text-gray-400 font-bold text-xs">
-                                <Clock className="w-4 h-4 text-triton-red" />
+                                <Clock className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-triton-red" />
                                 <span>{event.time}</span>
                               </div>
                             )}
                           </div>
-                          <h4 className="text-md md:text-md font-black uppercase tracking-wide text-white">
+                          <h4 className="text-sm sm:text-base md:text-lg font-black uppercase tracking-wide text-white">
                             {event.title}
                           </h4>
                         </div>
 
                         {/* Description & Location */}
-                        <div className="space-y-2">
+                        <div className="space-y-1.5 sm:space-y-2">
                           {event.description && (
                             <p
-                              className="text-gray-400 text-xs md:text-sm"
+                              className="text-gray-400 text-xs sm:text-sm"
                               dangerouslySetInnerHTML={{ __html: event.description }}
                             />
                           )}
                           {event.location && (
-                            <div className="flex items-center gap-2 text-gray-500 text-xs md:text-sm">
+                            <div className="flex items-center gap-2 text-gray-500 text-xs sm:text-sm">
                               <MapPin className="w-3 h-3 shrink-0" />
                               <span dangerouslySetInnerHTML={{ __html: event.location }} />
                             </div>
@@ -141,16 +140,16 @@ const ScheduleSection: React.FC<ScheduleSectionProps> = ({
 
                         {/* Cutoff Details */}
                         {event.isCutoff && event.details && (
-                          <div className="mt-4 grid grid-cols-3 gap-3">
+                          <div className="mt-3 sm:mt-4 grid grid-cols-3 gap-2 sm:gap-3">
                             {event.details.map((detail, dIdx) => (
                               <div
                                 key={dIdx}
-                                className="text-center p-3 rounded-lg bg-black/30"
+                                className="text-center p-2 sm:p-3 rounded-lg bg-black/30 min-w-[64px] sm:min-w-[80px]"
                               >
                                 <div className="text-[10px] text-gray-400 font-bold uppercase mb-1">
                                   {detail.label}
                                 </div>
-                                <div className="text-sm font-black text-white">
+                                <div className="text-xs sm:text-sm font-black text-white">
                                   {detail.value}
                                 </div>
                               </div>
@@ -167,11 +166,11 @@ const ScheduleSection: React.FC<ScheduleSectionProps> = ({
         </div>
 
         {/* Bottom Note */}
-        <div className="mt-5 max-w-4xl mx-auto p-6 md:p-8 rounded-2xl bg-linear-to-r from-triton-dark to-triton-gray border border-white/5 flex flex-col md:flex-row items-center gap-6">
-          <div className="w-12 h-12 rounded-xl bg-triton-red/10 flex items-center justify-center shrink-0">
-            <AlertCircle className="w-6 h-6 text-triton-red" />
+        <div className="mt-5 max-w-4xl mx-auto p-4 sm:p-6 md:p-8 rounded-2xl bg-linear-to-r from-triton-dark to-triton-gray border border-white/5 flex flex-col md:flex-row items-center gap-4 sm:gap-6">
+          <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-xl bg-triton-red/10 flex items-center justify-center shrink-0">
+            <AlertCircle className="w-5 h-5 sm:w-6 sm:h-6 text-triton-red" />
           </div>
-          <p className="text-gray-400 text-sm leading-relaxed italic text-center md:text-left">
+          <p className="text-gray-400 text-xs sm:text-sm leading-relaxed italic text-center md:text-left">
             {language === "pt-BR"
               ? "Todos os horários estão sujeitos a alteração sem aviso prévio devido a circunstâncias imprevistas. Os horários e a ordem de largada também poderão ser ajustados. Recomendamos acompanhar a programação regularmente para se manter atualizado sobre possíveis mudanças de última hora."
               : "All times are subject to change without notice due to unforeseen circumstances. Start times and order may also be adjusted. We recommend following the schedule regularly to stay updated on any last-minute changes."}
