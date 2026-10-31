@@ -41,7 +41,7 @@ export default async function AthleteArePage({
         videoBriefingUrl={data?.athleteArea?.videoBriefingUrl}
       />
       <RaceGuide raceGuideLink={data.athleteArea?.raceGuideLink} />
-      <StartList slug={slug} />
+
       <section
         id="top-five"
         className="py-8 sm:py-12 md:py-20 bg-black relative border-t border-white/5"
@@ -59,6 +59,8 @@ export default async function AthleteArePage({
           <AthleteResultsClientWrapper initialAthletes={athletes} />
         </div>
       </section>
+
+      <StartList slug={slug} />
 
       {/* <section id="club-ranking" className="py-8 sm:py-12 md:py-20 bg-black relative border-t border-white/5">
 				<div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">

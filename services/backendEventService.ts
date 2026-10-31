@@ -55,6 +55,7 @@ export async function createEventApi(eventData: Partial<EventData>): Promise<{ s
       method: "POST",
       headers: {
         "Content-Type": "application/json",
+        "Authorization": `Bearer ${getAuthToken()}`,
       },
       body: JSON.stringify(eventData),
     });
@@ -77,6 +78,7 @@ export async function updateEventApi(idOrSlug: string, eventData: Partial<EventD
       method: "PUT",
       headers: {
         "Content-Type": "application/json",
+        "Authorization": `Bearer ${getAuthToken()}`,
       },
       body: JSON.stringify(eventData),
     });
@@ -120,6 +122,10 @@ export async function deleteEventApi(idOrSlug: string): Promise<{ success: boole
   try {
     const res = await fetch(`${API_BASE_URL}/events/${idOrSlug}`, {
       method: "DELETE",
+      headers: {
+        "Content-Type": "application/json",
+        "Authorization": `Bearer ${getAuthToken()}`,
+  }
     });
 
     const json = await res.json();
@@ -131,5 +137,40 @@ export async function deleteEventApi(idOrSlug: string): Promise<{ success: boole
     return { success: true, message: json.message };
   } catch (error: any) {
     return { success: false, message: error.message || "Erro ao conectar com o servidor." };
+  }
+}
+// Helper para pegar o token armazenado
+export function getAuthToken(): string | null {
+  if (typeof window === "undefined") return null;
+  return localStorage.getItem("triton_admin_token");
+}
+
+export function setAuthToken(token: string) {
+  if (typeof window !== "undefined") {
+    localStorage.setItem("triton_admin_token", token);
+  }
+}
+
+export function removeAuthToken() {
+  if (typeof window !== "undefined") {
+    localStorage.removeItem("triton_admin_token");
+  }
+}
+// Função de Login
+export async function loginApi(email: string, password: string) {
+  try {
+    const res = await fetch(`${API_BASE_URL}/auth/login`, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ email, password }),
+    });
+    const json = await res.json();
+    if (!res.ok) {
+      return { success: false, message: json.message || "Erro no login." };
+    }
+    setAuthToken(json.data.token);
+    return { success: true, data: json.data };
+  } catch (err: any) {
+    return { success: false, message: err.message || "Erro de conexão com o servidor." };
   }
 }

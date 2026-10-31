@@ -1062,7 +1062,7 @@ export const EVENT_DATA_MAP: Record<string, EventData> = {
         "https://static.marathon-photos.com/triton/gallery.html?key=d5864acd59e189fba9d1cfddd11bcebe&race=qidong",
       videoBriefingUrl: "",
       topFiveApiUrl: "",
-      liveResultsApiUrl: "",
+      liveResultsApiUrl: "https://api.raceresult.com/371805/1KADKP9W8EZRU5RV8PR4OX4XLTOD3WKU",
     },
     info: {
       title: "Experience the Orient Coast",
