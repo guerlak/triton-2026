@@ -1040,7 +1040,7 @@ export const EVENT_DATA_MAP: Record<string, EventData> = {
     venue: "Jiangsu",
     country: "China",
     flag: "🇨🇳",
-    status: "Confirmed",
+    status: "Completed",
     year: 2026,
     dateText: "31 OCT - 01 NOV",
     fullDateText: "Oct 31 - Nov 01, 2026",
