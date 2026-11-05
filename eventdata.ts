@@ -256,7 +256,7 @@ export const EVENT_DATA_MAP: Record<string, EventData> = {
       description:
         "Planeje sua viagem e aproveite ao máximo sua jornada no TRITON. Localizada em um dos destinos mais vibrantes e históricos do Brasil, Salvador combina praias, cultura, gastronomia e energia única, tornando a experiência do TRITON ainda mais inesquecível.",
       experience: {
-        image: touristCoast, // Placeholder
+        image: salvadorExperienceImage,
         pois: [
           {
             icon: "Compass",
