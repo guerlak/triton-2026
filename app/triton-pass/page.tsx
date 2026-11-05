@@ -1,5 +1,3 @@
-import React from "react";
-import Footer from "@/app/components/Footer";
 import { Metadata } from "next";
 import TritonPassClient from "./TritonPassClient";
 

@@ -3,7 +3,7 @@ const nextConfig = {
   // Image optimization
   images: {
     unoptimized: false,
-    qualities: [75, 80],
+    qualities: [70, 75, 80, 90],
     formats: ["image/avif", "image/webp"],
   },
 
@@ -18,3 +18,4 @@ const nextConfig = {
 };
 
 module.exports = nextConfig;
+    
