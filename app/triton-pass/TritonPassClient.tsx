@@ -24,12 +24,9 @@ import {
   ArrowUpRight,
   FileText,
 } from "lucide-react";
-import atletaMobile from "@/public/images/atleta-mobile.png";
-import atletaShop from "@/public/images/atleta-shop.png";
+
 import diegoAvatar from "@/public/images/atletas/diego-fonseca.jpeg";
-import tritonLogo from "@/public/images/triton-ws-branco.png";
 import bgTritonPass from "@/public/triton-pass/bg-triton-pass.jpeg";
-import Navbar from "../components/Navbar";
 import CustomNavbar from "../components/CustomNavbar";
 
 export default function TritonPassClient() {
@@ -94,7 +91,7 @@ export default function TritonPassClient() {
             {/* Botão Terms & Conditions */}
             <Link
               href="/triton-pass/terms-condition"
-              className="px-3 sm:px-3.5 py-1.5 rounded-full border border-white/20 hover:border-white/50 bg-white/5 hover:bg-white/10 text-gray-300 hover:text-white text-[10px] sm:text-xs font-bold uppercase tracking-wider transition-all duration-200 flex items-center gap-1.5"
+              className="hidden sm:flex px-3 sm:px-3.5 py-1.5 rounded-full border border-white/20 hover:border-white/50 bg-white/5 hover:bg-white/10 text-gray-300 hover:text-white text-[10px] sm:text-xs font-bold uppercase tracking-wider transition-all duration-200 items-center gap-1.5"
             >
               <FileText className="w-3 h-3 text-gray-400" />
               <span>Terms &amp; Conditions</span>
@@ -104,7 +101,7 @@ export default function TritonPassClient() {
               onClick={() => setIsModalOpen(true)}
               className="px-3.5 sm:px-4 py-1.5 rounded-full bg-triton-red hover:bg-red-700 text-white text-[10px] sm:text-xs font-black uppercase tracking-wider shadow-md shadow-red-950/60 transition-all duration-200 flex items-center gap-1.5 active:scale-95 group"
             >
-              <span>Buy Now</span>
+              <span>Join The Club</span>
               <ArrowRight className="w-3.5 h-3.5 transition-transform group-hover:translate-x-0.5" />
             </button>
           </>
@@ -249,23 +246,12 @@ export default function TritonPassClient() {
               <div className="relative w-full max-w-[440px] sm:max-w-[480px] flex items-center justify-center">
                 {/* Finisher Glow & Background Silhouette */}
                 <div className="absolute -inset-6 sm:-inset-10 rounded-[54px] bg-gradient-to-b from-triton-red/30 via-red-900/15 to-transparent blur-3xl -z-10" />
-
-                {/* Background Athlete image behind the phone */}
-                <div className="absolute -top-10 -right-6 w-64 h-80 sm:w-80 sm:h-96 opacity-35 mix-blend-screen pointer-events-none -z-10 overflow-hidden">
-                  <Image
-                    src={atletaShop}
-                    alt="Finisher TRITON Athlete"
-                    className="w-full h-full object-cover rounded-3xl"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-neutral-950 via-transparent to-neutral-950/80" />
-                </div>
-
                 {/* Peeking Black Pass in background */}
                 <div
                   onClick={() => setActiveCard("standard")}
-                  className={`cursor-pointer absolute top-2 right-[-10px] sm:right-[-20px] w-[280px] sm:w-[320px] h-[480px] sm:h-[520px] rounded-[44px] bg-neutral-900 border border-white/10 p-5 flex flex-col justify-between shadow-2xl transition-all duration-500 transform rotate-6 hover:rotate-8 opacity-75 hover:opacity-90 scale-95 ${activeCard === "standard"
-                      ? "z-20 scale-100 opacity-100 !rotate-0 !translate-x-0"
-                      : "z-0"
+                  className={`cursor-pointer absolute top-2 right-[-8px] sm:right-[-20px] w-[265px] sm:w-[320px] h-[450px] sm:h-[520px] rounded-[40px] sm:rounded-[44px] bg-neutral-900 border border-white/10 p-4 sm:p-5 flex flex-col justify-between shadow-2xl transition-all duration-500 transform rotate-6 hover:rotate-8 opacity-75 hover:opacity-90 scale-95 ${activeCard === "standard"
+                    ? "z-20 scale-100 opacity-100 !rotate-0 !translate-x-0"
+                    : "z-0"
                     }`}
                 >
                   {/* Mock Pass Header */}
@@ -308,25 +294,25 @@ export default function TritonPassClient() {
 
                 {/* Main Foreground iPhone 16 Pro Mockup */}
                 <div
-                  className={`relative z-10 w-[310px] sm:w-[340px] rounded-[52px] bg-black p-3.5 shadow-2xl border-4 border-neutral-800 ring-1 ring-white/10 transition-all duration-500 ${activeCard === "club"
-                      ? "scale-100 rotate-0"
-                      : "scale-95 opacity-80 -rotate-3"
+                  className={`relative z-10 w-[260px] sm:w-[340px] rounded-[44px] sm:rounded-[52px] bg-black p-3 sm:p-3.5 shadow-2xl border-4 border-neutral-800 ring-1 ring-white/10 transition-all duration-500 ${activeCard === "club"
+                    ? "scale-100 rotate-0"
+                    : "scale-95 opacity-80 -rotate-3"
                     }`}
                 >
                   {/* iPhone Bezel Elements */}
                   {/* Dynamic Island */}
-                  <div className="absolute top-5 left-1/2 -translate-x-1/2 w-24 h-5 bg-black rounded-full z-30 flex items-center justify-between px-2.5 border border-white/5">
-                    <div className="w-2.5 h-2.5 rounded-full bg-neutral-900" />
-                    <div className="w-2 h-2 rounded-full bg-blue-950/80" />
+                  <div className="absolute top-4 sm:top-5 left-1/2 -translate-x-1/2 w-20 sm:w-24 h-4.5 sm:h-5 bg-black rounded-full z-30 flex items-center justify-between px-2 sm:px-2.5 border border-white/5">
+                    <div className="w-2 sm:w-2.5 h-2 sm:h-2.5 rounded-full bg-neutral-900" />
+                    <div className="w-1.5 sm:w-2 h-1.5 sm:h-2 rounded-full bg-blue-950/80" />
                   </div>
 
                   {/* Screen Outer */}
                   <div
-                    className="relative rounded-[40px] overflow-hidden bg-neutral-950 border border-white/10 flex flex-col cursor-pointer"
+                    className="relative rounded-[36px] sm:rounded-[40px] overflow-hidden bg-neutral-950 border border-white/10 flex flex-col cursor-pointer"
                     onClick={() => setActiveCard("club")}
                   >
                     {/* Status Bar */}
-                    <div className="h-10 px-6 pt-3 flex items-center justify-between text-[11px] font-medium text-white/90 z-20">
+                    <div className="h-9 sm:h-10 px-4 sm:px-6 pt-2.5 sm:pt-3 flex items-center justify-between text-[10px] sm:text-[11px] font-medium text-white/90 z-20">
                       <span>9:41</span>
                       <div className="flex items-center gap-1.5 text-[10px]">
                         <span>5G</span>
@@ -337,7 +323,7 @@ export default function TritonPassClient() {
                     </div>
 
                     {/* Apple Wallet Navigation */}
-                    <div className="px-4 py-2 flex items-center justify-between border-b border-white/10 text-xs">
+                    <div className="px-3.5 sm:px-4 py-1.5 sm:py-2 flex items-center justify-between border-b border-white/10 text-xs">
                       <button
                         onClick={() =>
                           setActiveCard(
@@ -364,9 +350,9 @@ export default function TritonPassClient() {
 
                     {/* Wallet Card Body */}
                     <div
-                      className={`p-4 sm:p-5 flex flex-col justify-between min-h-[460px] sm:min-h-[490px] transition-colors duration-500 relative overflow-hidden ${activeCard === "club"
-                          ? "bg-gradient-to-b from-[#e52830] via-[#df1f26] to-[#991016] text-white"
-                          : "bg-gradient-to-b from-neutral-800 via-neutral-900 to-black text-white"
+                      className={`p-3.5 sm:p-5 flex flex-col justify-between min-h-[440px] sm:min-h-[490px] transition-colors duration-500 relative overflow-hidden ${activeCard === "club"
+                        ? "bg-gradient-to-b from-[#e52830] via-[#df1f26] to-[#991016] text-white"
+                        : "bg-gradient-to-b from-neutral-800 via-neutral-900 to-black text-white"
                         }`}
                     >
                       {/* Decorative watermark trident in background */}
@@ -394,8 +380,8 @@ export default function TritonPassClient() {
 
                         <span
                           className={`text-[9px] font-black uppercase tracking-widest px-2.5 py-0.5 rounded-full border ${activeCard === "club"
-                              ? "bg-black/25 border-white/30 text-white"
-                              : "bg-triton-red/30 border-triton-red text-white"
+                            ? "bg-black/25 border-white/30 text-white"
+                            : "bg-triton-red/30 border-triton-red text-white"
                             }`}
                         >
                           {activeCard === "club" ? "CLUB PASS" : "ATHLETE PASS"}
@@ -403,12 +389,12 @@ export default function TritonPassClient() {
                       </div>
 
                       {/* Athlete Info & Photo */}
-                      <div className="flex items-center justify-between my-3 relative z-10">
+                      <div className="flex items-center justify-between my-2.5 sm:my-3 relative z-10">
                         <div className="space-y-0.5">
                           <span className="text-[9px] font-bold uppercase tracking-widest text-white/70 block">
                             ATHLETE
                           </span>
-                          <h4 className="text-lg sm:text-xl font-black uppercase tracking-wide text-white drop-shadow-sm">
+                          <h4 className="text-base sm:text-xl font-black uppercase tracking-wide text-white drop-shadow-sm">
                             {athleteName}
                           </h4>
                           <span className="text-[9px] font-mono text-white/80 tracking-wider">
@@ -417,7 +403,7 @@ export default function TritonPassClient() {
                         </div>
 
                         {/* Athlete Avatar */}
-                        <div className="w-14 h-14 sm:w-16 sm:h-16 rounded-2xl overflow-hidden border-2 border-white/50 shadow-lg relative shrink-0">
+                        <div className="w-13 h-13 sm:w-16 sm:h-16 rounded-xl sm:rounded-2xl overflow-hidden border-2 border-white/50 shadow-lg relative shrink-0">
                           <Image
                             src={diegoAvatar}
                             alt="Athlete Finisher"
@@ -427,7 +413,7 @@ export default function TritonPassClient() {
                       </div>
 
                       {/* Metadata Row: Member Since & Status */}
-                      <div className="grid grid-cols-2 gap-3 py-2 border-t border-b border-white/20 relative z-10 text-left">
+                      <div className="grid grid-cols-2 gap-2 sm:gap-3 py-1.5 sm:py-2 border-t border-b border-white/20 relative z-10 text-left">
                         <div>
                           <span className="text-[8px] font-bold uppercase tracking-widest text-white/70 block">
                             MEMBER SINCE
@@ -450,10 +436,10 @@ export default function TritonPassClient() {
                       </div>
 
                       {/* QR Code Section */}
-                      <div className="flex flex-col items-center justify-center my-3 relative z-10">
-                        <div className="bg-white p-3 rounded-2xl shadow-xl flex flex-col items-center">
+                      <div className="flex flex-col items-center justify-center my-2 sm:my-3 relative z-10">
+                        <div className="bg-white p-2.5 sm:p-3 rounded-xl sm:rounded-2xl shadow-xl flex flex-col items-center">
                           {/* SVG QR Code Simulation with Triton Trident Centerpiece */}
-                          <div className="relative w-32 h-32 sm:w-36 sm:h-36 bg-white flex items-center justify-center">
+                          <div className="relative w-28 h-28 sm:w-36 sm:h-36 bg-white flex items-center justify-center">
                             {/* SVG Pattern */}
                             <svg
                               viewBox="0 0 100 100"
@@ -566,18 +552,18 @@ export default function TritonPassClient() {
                 <button
                   onClick={() => setActiveCard("club")}
                   className={`px-4 py-2 rounded-full text-xs font-black uppercase tracking-wider transition-all duration-300 flex items-center gap-1.5 ${activeCard === "club"
-                      ? "bg-triton-red text-white shadow-md shadow-red-950/60"
-                      : "text-gray-400 hover:text-white"
+                    ? "bg-triton-red text-white shadow-md shadow-red-950/60"
+                    : "text-gray-400 hover:text-white"
                     }`}
                 >
                   <Sparkles className="w-3.5 h-3.5" />
-                  <span>TRITON Club Pass (€19)</span>
+                  <span>Club Pass (€19)</span>
                 </button>
                 <button
                   onClick={() => setActiveCard("standard")}
                   className={`px-4 py-2 rounded-full text-xs font-black uppercase tracking-wider transition-all duration-300 flex items-center gap-1.5 ${activeCard === "standard"
-                      ? "bg-white text-black shadow-md"
-                      : "text-gray-400 hover:text-white"
+                    ? "bg-white text-black shadow-md"
+                    : "text-gray-400 hover:text-white"
                     }`}
                 >
                   <Smartphone className="w-3.5 h-3.5" />
@@ -598,6 +584,7 @@ export default function TritonPassClient() {
             </div>
           </div>
         </div>
+
       </section>
 
       {/* How it Works / 3 Easy Steps */}
@@ -679,127 +666,147 @@ export default function TritonPassClient() {
           </div>
 
           {/* Responsive Table */}
-          <div className="overflow-x-auto rounded-3xl border border-white/10 bg-white/[0.02] shadow-2xl">
-            <table className="w-full text-left border-collapse">
+          <div className="overflow-x-auto rounded-2xl sm:rounded-3xl border border-white/10 bg-white/[0.02] shadow-2xl">
+            <table className="w-full text-left border-collapse table-fixed">
               <thead>
                 <tr className="border-b border-white/10 bg-black/60">
-                  <th className="px-4 sm:px-6 py-4 sm:py-5 text-xs sm:text-sm font-black uppercase tracking-wider text-gray-400">
-                    Feature &amp; Benefit
+                  <th className="w-[52%] sm:w-[58%] px-2.5 sm:px-6 py-3 sm:py-5 text-[11px] sm:text-sm font-black uppercase tracking-wider text-gray-400">
+                    Benefit
                   </th>
-                  <th className="px-4 sm:px-6 py-4 sm:py-5 text-center whitespace-nowrap">
-                    <div className="text-xs sm:text-sm font-black uppercase tracking-wider text-white">
-                      TRITON Pass
+                  <th className="w-[24%] sm:w-[21%] px-1.5 sm:px-4 py-3 sm:py-5 text-center">
+                    <div className="text-[11px] sm:text-sm font-black uppercase tracking-wider text-white">
+                      Free<span className="hidden sm:inline"> Pass</span>
                     </div>
-                    <div className="text-[10px] sm:text-xs font-mono text-gray-500 uppercase mt-0.5">
-                      Free Standard
+                    <div className="text-[9px] sm:text-xs font-mono text-gray-500 uppercase mt-0.5">
+                      Standard
                     </div>
                   </th>
-                  <th className="px-4 sm:px-6 py-4 sm:py-5 text-center bg-triton-red/15 border-l border-r border-triton-red/30 whitespace-nowrap">
-                    <div className="text-xs sm:text-sm font-black uppercase tracking-wider text-white flex items-center justify-center gap-1.5">
-                      <Sparkles className="w-3.5 h-3.5 text-triton-red" />
-                      TRITON Club Pass
+                  <th className="w-[24%] sm:w-[21%] px-1.5 sm:px-4 py-3 sm:py-5 text-center bg-triton-red/15 border-l border-r border-triton-red/30">
+                    <div className="text-[11px] sm:text-sm font-black uppercase tracking-wider text-white flex items-center justify-center gap-1 sm:gap-1.5">
+                      <Sparkles className="w-3 h-3 sm:w-3.5 sm:h-3.5 text-triton-red shrink-0" />
+                      Club<span className="hidden sm:inline"> Pass</span>
                     </div>
-                    <div className="text-[10px] sm:text-xs font-mono font-bold text-triton-red uppercase mt-0.5">
-                      €19/ year
+                    <div className="text-[9px] sm:text-xs font-mono font-bold text-triton-red uppercase mt-0.5">
+                      €19<span className="hidden sm:inline">/ year</span><span className="sm:hidden">/yr</span>
                     </div>
                   </th>
                 </tr>
               </thead>
               <tbody className="divide-y divide-white/5 text-xs sm:text-sm">
                 <tr>
-                  <td className="px-4 sm:px-6 py-3.5 sm:py-4 font-bold text-white">
-                    Digital Athlete Credential (Apple &amp; Google Wallet)
+                  <td className="px-2.5 sm:px-6 py-2.5 sm:py-4">
+                    <div className="font-bold text-white text-[11px] sm:text-sm leading-snug">
+                      Digital Wallet Pass
+                    </div>
+                    <p className="text-[9.5px] sm:text-xs text-gray-400 mt-0.5">
+                      Apple &amp; Google Wallet
+                    </p>
                   </td>
-                  <td className="px-4 sm:px-6 py-3.5 sm:py-4 text-center text-emerald-400">
-                    <CheckCircle2 className="w-4 h-4 mx-auto" />
+                  <td className="px-1.5 sm:px-4 py-2.5 sm:py-4 text-center text-emerald-400">
+                    <CheckCircle2 className="w-3.5 h-3.5 sm:w-4 sm:h-4 mx-auto" />
                   </td>
-                  <td className="px-4 sm:px-6 py-3.5 sm:py-4 text-center bg-triton-red/10 border-l border-r border-triton-red/20 text-emerald-400">
-                    <CheckCircle2 className="w-4 h-4 mx-auto" />
+                  <td className="px-1.5 sm:px-4 py-2.5 sm:py-4 text-center bg-triton-red/10 border-l border-r border-triton-red/20 text-emerald-400">
+                    <CheckCircle2 className="w-3.5 h-3.5 sm:w-4 sm:h-4 mx-auto" />
                   </td>
                 </tr>
 
                 <tr>
-                  <td className="px-4 sm:px-6 py-3.5 sm:py-4 font-bold text-white">
-                    Direct Race Operational Alerts &amp; Updates
+                  <td className="px-2.5 sm:px-6 py-2.5 sm:py-4">
+                    <div className="font-bold text-white text-[11px] sm:text-sm leading-snug">
+                      Race Alerts &amp; Updates
+                    </div>
+                    <p className="text-[9.5px] sm:text-xs text-gray-400 mt-0.5">
+                      Direct operational info
+                    </p>
                   </td>
-                  <td className="px-4 sm:px-6 py-3.5 sm:py-4 text-center text-emerald-400">
-                    <CheckCircle2 className="w-4 h-4 mx-auto" />
+                  <td className="px-1.5 sm:px-4 py-2.5 sm:py-4 text-center text-emerald-400">
+                    <CheckCircle2 className="w-3.5 h-3.5 sm:w-4 sm:h-4 mx-auto" />
                   </td>
-                  <td className="px-4 sm:px-6 py-3.5 sm:py-4 text-center bg-triton-red/10 border-l border-r border-triton-red/20 text-emerald-400">
-                    <CheckCircle2 className="w-4 h-4 mx-auto " />
+                  <td className="px-1.5 sm:px-4 py-2.5 sm:py-4 text-center bg-triton-red/10 border-l border-r border-triton-red/20 text-emerald-400">
+                    <CheckCircle2 className="w-3.5 h-3.5 sm:w-4 sm:h-4 mx-auto" />
                   </td>
                 </tr>
 
                 {/* Exclusive Club Benefits */}
                 <tr className="bg-triton-red/5">
-                  <td className="px-4 sm:px-6 py-3.5 sm:py-4 font-bold text-white">
-                    <div className="flex items-center gap-2">
-                      <ShieldCheck className="w-4 h-4 text-triton-red shrink-0" />
-                      <span>
-                        100% Registration Protection (1 eligible race/year)
+                  <td className="px-2.5 sm:px-6 py-2.5 sm:py-4">
+                    <div className="flex items-center gap-1.5 sm:gap-2">
+                      <ShieldCheck className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-triton-red shrink-0" />
+                      <span className="font-bold text-white text-[11px] sm:text-sm leading-snug">
+                        80% Change of Heart
                       </span>
                     </div>
-                    <p className="text-[11px] text-gray-400 font-normal mt-0.5">
-                      Cancel up to 7 days before race. No medical certificate or
-                      justification required.
+                    <p className="text-[9.5px] sm:text-xs text-gray-400 font-normal mt-0.5 leading-tight">
+                      Cancel up to 48h before race
                     </p>
                   </td>
-                  <td className="px-4 sm:px-6 py-3.5 sm:py-4 text-center text-gray-600">
+                  <td className="px-1.5 sm:px-4 py-2.5 sm:py-4 text-center text-gray-600 font-mono text-xs">
                     —
                   </td>
-                  <td className="px-4 sm:px-6 py-3.5 sm:py-4 text-center bg-triton-red/15 border-l border-r border-triton-red/30 text-white font-mono font-bold">
-                    80% Refund
+                  <td className="px-1.5 sm:px-4 py-2.5 sm:py-4 text-center bg-triton-red/15 border-l border-r border-triton-red/30 text-white font-mono font-bold text-[10px] sm:text-sm">
+                    80%<span className="hidden sm:inline"> Refund</span>
                   </td>
                 </tr>
 
                 <tr className="bg-triton-red/5">
-                  <td className="px-4 sm:px-6 py-3.5 sm:py-4 font-bold text-white">
-                    <div className="flex items-center gap-2">
-                      <Clock className="w-4 h-4 text-triton-red shrink-0" />
-                      <span>Free Deferral (Up to 48 hours before start)</span>
+                  <td className="px-2.5 sm:px-6 py-2.5 sm:py-4">
+                    <div className="flex items-center gap-1.5 sm:gap-2">
+                      <Clock className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-triton-red shrink-0" />
+                      <span className="font-bold text-white text-[11px] sm:text-sm leading-snug">
+                        Free Race Deferral
+                      </span>
                     </div>
-                    <p className="text-[11px] text-gray-400 font-normal mt-0.5">
-                      Missed the cancellation window? Defer your entry to the
-                      next edition without fee.
+                    <p className="text-[9.5px] sm:text-xs text-gray-400 font-normal mt-0.5 leading-tight">
+                      Transfer up to 48h before start
                     </p>
                   </td>
-                  <td className="px-4 sm:px-6 py-3.5 sm:py-4 text-center text-gray-600">
+                  <td className="px-1.5 sm:px-4 py-2.5 sm:py-4 text-center text-gray-600 font-mono text-xs">
                     —
                   </td>
-                  <td className="px-4 sm:px-6 py-3.5 sm:py-4 text-center bg-triton-red/15 border-l border-r border-triton-red/30 text-white font-mono font-bold">
+                  <td className="px-1.5 sm:px-4 py-2.5 sm:py-4 text-center bg-triton-red/15 border-l border-r border-triton-red/30 text-white font-mono font-bold text-[10px] sm:text-sm">
                     Free
                   </td>
                 </tr>
 
                 <tr className="bg-triton-red/5">
-                  <td className="px-4 sm:px-6 py-3.5 sm:py-4 font-bold text-white">
-                    <div className="flex items-center gap-2">
-                      <Rocket className="w-4 h-4 text-triton-red shrink-0" />
-                      <span>Priority Registration &amp; Opening Prices</span>
+                  <td className="px-2.5 sm:px-6 py-2.5 sm:py-4">
+                    <div className="flex items-center gap-1.5 sm:gap-2">
+                      <Rocket className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-triton-red shrink-0" />
+                      <span className="font-bold text-white text-[11px] sm:text-sm leading-snug">
+                        Priority Registration
+                      </span>
                     </div>
+                    <p className="text-[9.5px] sm:text-xs text-gray-400 font-normal mt-0.5 leading-tight">
+                      Opening rates &amp; early access
+                    </p>
                   </td>
-                  <td className="px-4 sm:px-6 py-3.5 sm:py-4 text-center text-gray-600">
+                  <td className="px-1.5 sm:px-4 py-2.5 sm:py-4 text-center text-gray-600 font-mono text-xs">
                     —
                   </td>
-                  <td className="px-4 sm:px-6 py-3.5 sm:py-4 text-center bg-triton-red/15 border-l border-r border-triton-red/30 text-emerald-400 font-bold">
-                    Included
+                  <td className="px-1.5 sm:px-4 py-2.5 sm:py-4 text-center bg-triton-red/15 border-l border-r border-triton-red/30 text-emerald-400 font-bold text-[10px] sm:text-sm">
+                    <span className="hidden sm:inline">Included</span>
+                    <CheckCircle2 className="w-3.5 h-3.5 sm:w-4 sm:h-4 mx-auto sm:hidden" />
                   </td>
                 </tr>
 
                 <tr className="bg-triton-red/5">
-                  <td className="px-4 sm:px-6 py-3.5 sm:py-4 font-bold text-white">
-                    <div className="flex items-center gap-2">
-                      <Gift className="w-4 h-4 text-triton-red shrink-0" />
-                      <span>
-                        TRITON Official Store Discounts &amp; Partner Perks
+                  <td className="px-2.5 sm:px-6 py-2.5 sm:py-4">
+                    <div className="flex items-center gap-1.5 sm:gap-2">
+                      <Gift className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-triton-red shrink-0" />
+                      <span className="font-bold text-white text-[11px] sm:text-sm leading-snug">
+                        Store Discounts &amp; Perks
                       </span>
                     </div>
+                    <p className="text-[9.5px] sm:text-xs text-gray-400 font-normal mt-0.5 leading-tight">
+                      Official store &amp; partner offers
+                    </p>
                   </td>
-                  <td className="px-4 sm:px-6 py-3.5 sm:py-4 text-center text-gray-600">
+                  <td className="px-1.5 sm:px-4 py-2.5 sm:py-4 text-center text-gray-600 font-mono text-xs">
                     —
                   </td>
-                  <td className="px-4 sm:px-6 py-3.5 sm:py-4 text-center bg-triton-red/15 border-l border-r border-triton-red/30 text-emerald-400 font-bold">
-                    Included
+                  <td className="px-1.5 sm:px-4 py-2.5 sm:py-4 text-center bg-triton-red/15 border-l border-r border-triton-red/30 text-emerald-400 font-bold text-[10px] sm:text-sm">
+                    <span className="hidden sm:inline">Included</span>
+                    <CheckCircle2 className="w-3.5 h-3.5 sm:w-4 sm:h-4 mx-auto sm:hidden" />
                   </td>
                 </tr>
               </tbody>
