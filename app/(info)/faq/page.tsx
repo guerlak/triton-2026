@@ -420,7 +420,7 @@ export default function FAQ() {
 											<div className="space-y-4">
 												<p>All athletes must maintain at least:</p>
 												<ul className="space-y-2 list-disc pl-5 text-gray-400">
-													<li>Swim: 2:45 / 100m</li>
+													<li>Swim: 3:45 / 100m</li>
 													<li>Bike: 18 km/h</li>
 													<li>Run: 9:00 / km</li>
 												</ul>

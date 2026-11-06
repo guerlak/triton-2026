@@ -90,7 +90,7 @@ const EventsPage: React.FC<EventsPageProps> = () => {
                     key={`${event.location}-${event.date}-${event.year}`}
                     className={`group relative h-[450px] rounded-3xl overflow-hidden bg-neutral-900 border
                      transition-all duration-500 shadow-2xl block ${isCompleted
-                        ? "border-white/5 opacity-60 hover:opacity-90 grayscale-[0.25] hover:grayscale-0 hover:border-white/20"
+                        ? "border-white/5  hover:opacity-90  hover:grayscale-0 hover:border-white/20"
                         : "border-white/5 hover:border-triton-red/30"
                       }`}
                   >
@@ -101,7 +101,7 @@ const EventsPage: React.FC<EventsPageProps> = () => {
                         alt={event.location}
                         fill
                         sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-                        className="object-cover absolute inset-0 opacity-40 group-hover:scale-105 group-hover:opacity-50 transition-all duration-700 pointer-events-none"
+                        className={`object-cover absolute inset-0 opacity-90 group-hover:scale-105 transition-all duration-700 pointer-events-none ${isCompleted ? "opacity-50 grayscale-[15]" : ""}`}
                       />
                     )}
                     {/* Bottom Gradient Overlay */}
