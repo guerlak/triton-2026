@@ -26,7 +26,7 @@ import {
 } from "lucide-react";
 
 import diegoAvatar from "@/public/images/atletas/diego-fonseca.jpeg";
-import bgTritonPass from "@/public/triton-pass/bg-triton-pass.jpeg";
+import bgTritonPass from "@/public/images/triton-pass/bg-triton-pass.jpeg";
 import CustomNavbar from "../components/CustomNavbar";
 
 export default function TritonPassClient() {
