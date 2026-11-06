@@ -19,9 +19,11 @@ const CalendarSection: React.FC = () => {
       slug: event.slug,
     }));
 
-  const events2026 = calendarEvents.filter((e) => e.year === 2026);
+  const currentYear = new Date().getFullYear();
+
+  const events2026 = calendarEvents.filter((e) => e.year === currentYear);
   const eventsFuture = calendarEvents.filter(
-    (e) => e.year > 2026 || e.status === "Planned"
+    (e) => e.year > currentYear || e.status === "Planned"
   );
 
   return (
@@ -52,7 +54,7 @@ const CalendarSection: React.FC = () => {
         {/* 2026 Timeline */}
         <div className="mb-8 sm:mb-12">
           <h4 className="text-xl sm:text-2xl font-bold text-white mb-4 sm:mb-8 border-l-4 border-triton-red pl-3 sm:pl-4">
-            2026 RACES{" "}
+            {currentYear} RACES{" "}
             <span className="text-xs sm:text-sm font-normal text-gray-500 ml-1.5 sm:ml-2">
               *Official series stages
             </span>
@@ -105,22 +107,19 @@ const CalendarSection: React.FC = () => {
         </div>
         {/* Future Locations */}
         <div>
-          <h4 className="text-lg sm:text-xl font-bold text-gray-400 mb-4 sm:mb-8 border-l-4 border-white/20 pl-3 sm:pl-4">
+          <h4 className="text-sm sm:text-xl font-bold text-gray-400 mb-3 sm:mb-8 border-l-4 border-white/20 pl-2.5 sm:pl-4">
             COMING SOON
           </h4>
-          <div className="flex flex-wrap gap-2.5 sm:gap-4">
+          <div className="flex flex-wrap gap-1.5 sm:gap-4">
             {eventsFuture.map((event, idx) => (
               <div
                 key={idx}
-                className="flex items-center bg-white/5 px-4 py-2 sm:px-6 sm:py-3 rounded-full border border-white/5"
+                className="flex items-center bg-white/5 px-2.5 py-1 sm:px-6 sm:py-3 rounded-full border border-white/5 hover:border-white/20 transition-colors"
               >
-                <span className="mr-2.5 sm:mr-3 text-2xl sm:text-3xl">{event.flag}</span>
-                <div>
-                  <p className="font-bold text-white uppercase text-xs sm:text-sm">
-                    {event.location}
-                  </p>
-
-                </div>
+                <span className="mr-1.5 sm:mr-3 text-base sm:text-3xl leading-none">{event.flag}</span>
+                <p className="font-bold text-white uppercase text-[10px] sm:text-sm tracking-wide">
+                  {event.location}
+                </p>
               </div>
             ))}
           </div>

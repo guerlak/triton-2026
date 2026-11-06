@@ -1899,7 +1899,7 @@ export const EVENT_DATA_MAP: Record<string, EventData> = {
     id: "salvador-2027",
     slug: "salvador-2027",
     eventFormat: "triton1",
-    title: "Salvador",
+    title: "Bahia",
     subtitle: "TRITON 1",
     location: "Piatã, Bahia",
     venue: "Piatã",
