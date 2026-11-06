@@ -2318,7 +2318,7 @@ export const EVENT_DATA_MAP: Record<string, EventData> = {
     status: "Confirmed",
     year: 2027,
     dateText: "SEP 11",
-    fullDateText: "Sep 11-12, 2027",
+    fullDateText: "Sep 11 . 12, 2027",
     targetDate: "2027-09-11T08:00:00",
     language: "en",
     registrationLink:
@@ -3268,13 +3268,13 @@ export const EVENT_DATA_MAP: Record<string, EventData> = {
     title: "Shijiazhuang",
     subtitle: "TRITON 3",
     location: "Hutuo RIver Island ",
-    venue: "Portobello, Rio de Janeiro",
+    venue: "Hutuo, RIver Island ",
     country: "China",
     flag: "🇨🇳",
     status: "Confirmed",
     year: 2027,
     dateText: "JUN 26 . 27",
-    fullDateText: "June 25, 26 and 27, 2027",
+    fullDateText: "June 26 . 27, 2027",
     targetDate: "2027-06-25T08:00:00",
     athleteArea: {
       liveResultsUrl: "",
@@ -3294,7 +3294,7 @@ export const EVENT_DATA_MAP: Record<string, EventData> = {
       logoImage: logoShijiazhuang27,
     },
     registrationLink:
-      "https://www.ticketsports.com.br/e/triton-3-rio-de-janeiro-2026-74526",
+      "",
     info: {
       title: "Um formato inovador",
       subtitle: "Permita-se viver esse desafio",
