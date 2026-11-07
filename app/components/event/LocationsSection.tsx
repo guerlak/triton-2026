@@ -17,6 +17,7 @@ import {
   Navigation,
   Car,
   MapPin,
+  Train,
 } from "lucide-react";
 import { POI, LogisticItem, ResortInfo } from "@/eventdata";
 
@@ -29,6 +30,7 @@ const ICON_MAP: Record<string, any> = {
   Navigation,
   Car,
   MapPin,
+  Train,
 };
 
 interface LocationsSectionProps {

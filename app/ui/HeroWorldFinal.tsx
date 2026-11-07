@@ -41,7 +41,7 @@ export default function HeroWorldFinal({
 		eventData?.subtitle || (isTriton3 ? "TRITON 3" : "TRITON 1");
 	const formatSubtext = isTriton3
 		? "3 Days • 3 Independent Stages • Sprint, Middle & Long"
-		: "1 Day • Full Triathlon • Sprint, Middle & Long";
+		: "1 Day • Standard Triathlon:  Sprint, Middle & Long";
 
 	return (
 		<section className="relative min-h-[85vh] sm:min-h-[90vh] w-full flex items-center justify-start overflow-hidden bg-black pt-24 pb-16">
@@ -68,7 +68,7 @@ export default function HeroWorldFinal({
 					<div className="inline-flex items-center gap-2 px-3 sm:px-4 py-1.5 rounded-full border border-triton-red/40 bg-triton-red/10 backdrop-blur-md">
 
 						<span className="text-xs sm:text-sm font-bold tracking-widest uppercase text-triton-red">
-							BE eager . be brave . be strong
+							be eager . be brave . be strong
 						</span>
 					</div>
 
@@ -92,8 +92,7 @@ export default function HeroWorldFinal({
 								subtitle
 							) : (
 								<>
-									The ultimate battleground where champions are crowned. The top qualified triathletes
-									across the globe contest the title with <strong className="text-white">3× points</strong> on the line in the definitive climax of the season.
+									The ultimate battleground where champions are crowned. Triathletes of diverse nationalities dispute the title with <strong className="text-white">3× points</strong> on the line in the definitive climax of the season.
 								</>
 							)}
 						</p>

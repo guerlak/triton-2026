@@ -214,6 +214,8 @@ import poisShijiazhuang27 from "@/public/images/eventos/shijiazhuang-2027/pois-s
 
 //imports WOrld Finals 27
 import heroImgWorldFinals27 from "@/public/images/eventos/world-final-2027/hero.jpg";
+import poisWorldFinals27 from "@/public/images/eventos/world-final-2027/finals-location.jpeg";
+
 
 export const EVENT_DATA_MAP: Record<string, EventData> = {
   "salvador-2026": {
@@ -3736,9 +3738,9 @@ export const WORLDFINALS_DATA_MAP: Record<string, EventData> = {
         ],
 
         stravaIds: {
-          sprint: "3442206601619587448",
-          middle: "3442186454436027514",
-          long: "3514199409116588682",
+          sprint: "",
+          middle: "",
+          long: "",
         },
       },
       bike: {
@@ -3766,9 +3768,9 @@ export const WORLDFINALS_DATA_MAP: Record<string, EventData> = {
           { label: "Long", val: "86km", p: 100 },
         ],
         stravaIds: {
-          sprint: "3442190057377176544",
-          middle: "3514206730520669716",
-          long: "3514208343517162558",
+          sprint: "",
+          middle: "",
+          long: "",
         },
         details: [
           "Retorno Sprint: ~4,5 km após Macundu",
@@ -3787,9 +3789,7 @@ export const WORLDFINALS_DATA_MAP: Record<string, EventData> = {
         title: "Corrida",
         description: `
         <p>The run course starts from the Transition Zone and follows a flat, multi-lap route, creating an exciting and spectator-friendly atmosphere throughout the race.</p><br>
-
         <strong>The course is a 5 km multi-lap circuit:</strong><br><br>
-
         <ul class="list-disc pl-5">
                 <li>SPRINT — 1 lap</li>
                 <li>MIDDLE — 2 laps</li>
@@ -3797,18 +3797,18 @@ export const WORLDFINALS_DATA_MAP: Record<string, EventData> = {
             </ul>
             <br>
         <p>Athletes will find one aid station approximately every 2.5 km, located near the midpoint of the course. One turnaround point is positioned near the iconic Vasco da Gama Bridge, one of the longest bridges in Europe, while the other is located closer to the Transition Zone.</p><br>
-        <p>The Finish Line is located on Rossio dos Olivais, directly in front of Doca dos Olivais and the Vasco da Gama Mall, where the Recovery Zone awaits finishers.</p><br>
-        
-            `,
+        <p>The Finish Line is located on Rossio dos Olivais, directly in front of Doca dos Olivais and the Vasco da Gama Mall, where the Recovery Zone awaits finishers.</p>
+        <br>
+        `,
         distances: [
           { label: "Sprint", val: "5km", p: 33 },
           { label: "Middle", val: "10km", p: 66 },
           { label: "Long", val: "20km", p: 100 },
         ],
         stravaIds: {
-          sprint: "3442184922483070074",
-          middle: "3514202065593315860",
-          long: "3514203195016413614",
+          sprint: "",
+          middle: "",
+          long: "",
         },
       },
       distanceTable: [
@@ -3832,38 +3832,7 @@ export const WORLDFINALS_DATA_MAP: Record<string, EventData> = {
         },
       ],
     },
-    // extraEvent: {
-    //   imageSrc: "/images/eventos/lisboa-2026/event-extra.jpg",
-    //   imageAlt: "Extra Event",
-    //   ctaText:"Register now",
-    //   ctaLink:"https://register.hakuapp.com/?event=9ce0f9c87c1b43a8b97a",
-    //   badge:"EXTRA EXPERIENCE",
-    //   title: "TRITON KIDS & FAMILY",
-    //   subtitle: "",
-    //   description: `<div class="space-y-4">
-    //     <p>Create unforgettable memories and experience the spirit of TRITON together. Whether you choose the Family Swim & Run or the TRITON Family Triathlon, every team starts, races, and finishes side by side.</p>
-    //     <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 my-4">
-    //       <div class="bg-white/5 p-4 rounded-xl border border-white/10">
-    //         <h4 class="font-bold text-triton-red text-base mb-2">Family Swim & Run</h4>
-    //         <ul class="text-sm space-y-1 text-gray-300">
-    //           <li><strong class="text-white">Ages:</strong> 8–11 (accompanied by family members of any age)</li>
-    //           <li><strong class="text-white">Start:</strong> 4:00 PM</li>
-    //           <li><strong class="text-white">Distance:</strong> 50 m swim + 1 km run</li>
-    //         </ul>
-    //       </div>
-    //       <div class="bg-white/5 p-4 rounded-xl border border-white/10">
-    //         <h4 class="font-bold text-triton-red text-base mb-2">TRITON Family Triathlon</h4>
-    //         <ul class="text-sm space-y-1 text-gray-300">
-    //           <li><strong class="text-white">Ages:</strong> 12–15 (accompanied by family members of any age)</li>
-    //           <li><strong class="text-white">Start:</strong> 4:30 PM</li>
-    //           <li><strong class="text-white">Distance:</strong> 200 m swim + 5 km bike + 2 km run</li>
-    //         </ul>
-    //       </div>
-    //     </div>
-    //     <p class="text-sm text-gray-300"><strong class="text-white">Team Rules:</strong> Each team must consist of 2 or 3 family members. The entire course must be completed together—this is not a relay race.</p>
-    //     <p class="text-sm font-medium text-white flex items-center gap-2"><span>🏆</span> <span><strong>Awards Ceremony:</strong> Following the completion of both events.</span></p>
-    //   </div>`,
-    // },
+   
     schedule: {
       title: "AGENDA",
       subtitle: "Planning your journey",
@@ -3913,76 +3882,74 @@ export const WORLDFINALS_DATA_MAP: Record<string, EventData> = {
     locations: {
       description: "",
       experience: {
-        image: lisboaExperienceImage,
+        image: poisWorldFinals27,
         pois: [
           {
             icon: "Compass",
-            title: "Explore a Lisbon",
-            desc: "Discover Lisbon’s historic heart, from the charming streets of Alfama and Baixa to the iconic Belém district. Experience centuries of history, traditional architecture, and the vibrant atmosphere of Portugal’s capital.",
+            title: "EXPLORE THE SCENIC RIVER THAMES",
+            desc: "Find peace along this iconic waterway. Enjoy gentle river breezes, historic bridges, and the tranquil charm of Henley’s famous riverside paths.",
           },
           {
             icon: "Anchor",
-            title: "COASTLINE & BEACHES",
-            desc: "Enjoy Lisbon’s Atlantic coastline, with easy access to famous beaches such as Cascais, Carcavelos, and Costa da Caparica. Perfect for relaxation, outdoor activities, and family moments.",
+            title: "RIVERSIDE & NATURE",
+            desc: "Stroll along tree-lined promenades, expansive meadows, and the beautiful Chiltern Hills. It’s the perfect spot to relax and take in stunning views of boats and wildlife.",
           },
           {
             icon: "Utensils",
-            title: "PORTUGUESE GASTRONOMY",
-            desc: "Savor Portugal’s renowned cuisine, from fresh seafood and traditional dishes to the iconic Pastéis de Belém. Lisbon offers authentic flavors at every turn.",
+            title: "LOCAL CULINARY FLAVORS",
+            desc: "Taste the town's vibrant food scene. Savor traditional dishes in historic pubs, cozy riverside cafes, and award-winning restaurants using fresh British produce.",
           },
           {
             icon: "Palmtree",
-            title: "CULTURE & LOCAL EXPERIENCES",
-            desc: "Experience Lisbon through Fado, lively squares, riverside sunsets, local markets, and cultural attractions. A city full of unique experiences beyond race weekend.",
+            title: "CULTURE & HERITAGE",
+            desc: "Immerse yourself in centuries of history. Experience the home of the world-famous Henley Royal Regatta, historic Georgian architecture, and the River & Rowing Museum.",
           },
         ],
       },
       logistics: [
         {
           icon: "Plane",
-          title: "LIS Aeroporto",
-          detail: "4 km",
-          sub: "~10min",
+          title: "LONDON HEATHROW (LHR)",
+          detail: "23 MILES / 37 KM",
+          sub: "~35 min drive / direct international flights",
           color: "from-blue-500/20",
         },
         {
-          icon: "Track",
-          title: "Metro & Train",
-          detail: "ORIENTE STATION",
-          sub: "2 min walk",
+          icon: "Train",
+          title: "RAIL & ELIZABETH LINE",
+          detail: "HENLEY-ON-THAMES STATION",
+          sub: "GWR connection / ~45 min to London",
           color: "from-green-500/20",
         },
         {
           icon: "Car",
           title: "ROAD ACCESS",
-          detail: "A1 & A2",
-          sub: "National & International Links ",
+          detail: "M4 & M40 MOTORWAYS",
+          sub: "Via A404 / Fast links to London & Oxford",
           color: "from-purple-500/20",
         },
         {
           icon: "MapPin",
-          title: "LOCATION",
-          detail: "PQ. DAS NAÇÕES",
-          sub: "Lisbon",
+          title: "RACE VENUE",
+          detail: "HENLEY-ON-THAMES",
+          sub: "River Thames, Oxfordshire, UK",
           color: "from-red-500/20",
         },
       ],
       resort: {
-        image: fotoResortLisboa,
-        title: "Tivoli",
+        image: poisWorldFinals27,
+        title: "Coming Soon",
         description:
-          "The Tivoli Oriente Lisboa Hotel is the official hotel of TRITON Lisboa, offering the best location for athletes and their families.",
+          "We will soon announce our official partner hotel with special conditions and exclusive rates for you and your family during the event in Henley-on-Thames.",
         benefits: [
-          "Close to airport",
-          "Our staff hotel",
-          "700 meters from race venue",
+          
         ],
-        buttonText: "Contact Us",
-        whatsappLink: "https://www.nh-hotels.com/pt/hoteis/lisboa",
+        buttonText: "Coming Soon",
+        whatsappLink: "",
       },
     },
     afterMovie: {
-      youtubeSrc: "uF-G6jTNDLQ?si=qfYeZlMsdkWxfshZ",
+      youtubeSrc: "",
     },
     testimonial: {
       youtubeSrc: "",

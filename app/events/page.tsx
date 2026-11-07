@@ -59,11 +59,11 @@ const EventsPage: React.FC<EventsPageProps> = () => {
         </Link>
 
         <header className="mb-20">
-          <h1 className="text-6xl md:text-6xl font-black uppercase tracking-tighter mb-6 leading-none">
+          <h1 className="text-4xl md:text-6xl font-black uppercase tracking-tighter mb-6 leading-none">
             Global <br />
             <span className="text-triton-red">Calendar</span>
           </h1>
-          <p className="text-xl text-gray-400 max-w-2xl leading-relaxed">
+          <p className="text-md text-gray-400 max-w-2xl leading-relaxed">
             Explore every TRITON World Series destination across the globe.
           </p>
         </header>
