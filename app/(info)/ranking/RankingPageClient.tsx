@@ -9,12 +9,42 @@ import {
   FilterX,
   Plus
 } from "lucide-react";
-import { motion, AnimatePresence } from "framer-motion";
+import { motion } from "framer-motion";
 import Image from "next/image";
 import Modal from "@/app/ui/Modal";
 import fotoUrl from "@/public/images/ranking-modal.png";
 import CustomSelect from "@/app/components/CustomSelect";
-import { CountryFlag } from "@/app/utils/CountryFlag"
+import { CountryFlag } from "@/app/utils/CountryFlag";
+
+const NON_EVENT_KEYS = new Set([
+  "bib",
+  "tritonid",
+  "contest",
+  "name",
+  "gender",
+  "club",
+  "country",
+  "nation",
+  "nationflag",
+  "rank",
+  "points",
+  "distance",
+  "agegroup",
+  "global standings",
+  "national standings",
+  "swim ranking",
+  "bike ranking",
+  "run ranking",
+  "total points",
+]);
+
+function formatEventLabel(key: string): string {
+  const clean = key
+    .replace(/_/g, " ")
+    .replace(/([a-z])([A-Z])/g, "$1 $2")
+    .trim();
+  return clean.charAt(0).toUpperCase() + clean.slice(1);
+}
 
 interface RankingPageClientProps {
   initialAthletes: Athlete[];
@@ -30,8 +60,30 @@ export default function RankingPageClient({ initialAthletes }: RankingPageClient
 
   // Extrair opções únicas para os filtros
   const contestOptions = useMemo(() => {
-    const options = new Set(initialAthletes.map(a => a.Contest));
+    const options = new Set(initialAthletes.map((a) => a.Contest));
     return ["All", ...Array.from(options)];
+  }, [initialAthletes]);
+
+  // Extrair dinamicamente todas as etapas/provas presentes no ranking
+  const eventKeys = useMemo(() => {
+    const keys = new Set<string>();
+
+    initialAthletes.forEach((athlete) => {
+      Object.keys(athlete).forEach((key) => {
+        const lower = key.toLowerCase();
+        if (NON_EVENT_KEYS.has(lower)) return;
+
+        // Se for um placeholder genérico tipo "Event5", só inclui se tiver dados reais
+        if (/^event\d+$/i.test(key)) {
+          const val = athlete[key];
+          if (!val || val === "-" || val === "") return;
+        }
+
+        keys.add(key);
+      });
+    });
+
+    return Array.from(keys);
   }, [initialAthletes]);
 
   const filteredAthletes = useMemo(() => {
@@ -154,64 +206,58 @@ export default function RankingPageClient({ initialAthletes }: RankingPageClient
                 </tr>
               </thead>
               <tbody className="divide-y divide-white/5">
-                <AnimatePresence mode="wait">
-                  {filteredAthletes.length > 0 ? (
-                    filteredAthletes.map((athlete, index) => (
-                      <motion.tr
-                        layout
-                        initial={{ opacity: 0 }}
-                        animate={{ opacity: 1 }}
-                        exit={{ opacity: 0 }}
-                        key={athlete.Name}
-                        onClick={() => handleAthleteClick(athlete)}
-                        className="group hover:bg-white/5 transition-all cursor-pointer"
-                      >
-                        <td className="py-3.5 sm:py-5 px-2 sm:px-8 text-center">
-                          <span className={`inline-flex items-center justify-center w-7 h-7 sm:w-8 sm:h-8 rounded-full font-black text-[11px] sm:text-xs border ${athlete["Global Standings"] <= 3
-                            ? "bg-triton-red border-triton-red text-white"
-                            : "border-white/10 text-gray-400"
-                            }`}>
-                            {athlete["Global Standings"]}
-                          </span>
-                        </td>
+                {filteredAthletes.length > 0 ? (
+                  filteredAthletes.map((athlete) => (
+                    <tr
+                      key={athlete.Name}
+                      onClick={() => handleAthleteClick(athlete)}
+                      className="group hover:bg-white/5 transition-all cursor-pointer"
+                    >
+                      <td className="py-3.5 sm:py-5 px-2 sm:px-8 text-center">
+                        <span className={`inline-flex items-center justify-center w-7 h-7 sm:w-8 sm:h-8 rounded-full font-black text-[11px] sm:text-xs border ${athlete["Global Standings"] <= 3
+                          ? "bg-triton-red border-triton-red text-white"
+                          : "border-white/10 text-gray-400"
+                          }`}>
+                          {athlete["Global Standings"]}
+                        </span>
+                      </td>
 
-                        <td className="py-3.5 sm:py-5 px-2 sm:px-4">
-                          <div className="flex items-center gap-2 sm:gap-3">
-                            <CountryFlag countryCode={athlete.Country} />
-                            <span className="text-xs sm:text-sm md:text-base font-bold text-white uppercase tracking-wider">{athlete.Name}</span>
-                          </div>
-                        </td>
-                        <td className="py-3.5 sm:py-5 px-4 hidden sm:table-cell">
-                          <span className="text-xs font-black uppercase tracking-widest text-gray-400 group-hover:text-white transition-colors">
-                            {athlete.Gender}
-                          </span>
-                        </td>
-                        <td className="py-3.5 sm:py-5 px-4 hidden md:table-cell">
-                          <span className="text-xs font-bold text-white/60 bg-white/5 border border-white/10 px-3 py-1 rounded-full whitespace-nowrap">
-                            {athlete.Contest}
-                          </span>
-                        </td>
-                        <td className="py-3.5 sm:py-5 px-2 sm:px-4 text-center">
-                          <span className="font-black text-sm sm:text-lg text-white group-hover:text-triton-red transition-colors">
-                            {athlete["Total Points"]}
-                          </span>
-                        </td>
-                        <td className="py-3.5 sm:py-5 px-2 sm:px-4 text-right">
-                          <div className="inline-flex items-center justify-center w-8 h-8 sm:w-10 sm:h-10 rounded-lg sm:rounded-xl bg-triton-red/10 text-triton-red group-hover:bg-triton-red group-hover:text-white transition-all">
-                            <Plus size={18} className="sm:hidden" />
-                            <Plus size={20} className="hidden sm:block" />
-                          </div>
-                        </td>
-                      </motion.tr>
-                    ))
-                  ) : (
-                    <tr>
-                      <td colSpan={7} className="py-20 text-center text-gray-500 font-bold uppercase tracking-widest">
-                        No athletes found with these criteria.
+                      <td className="py-3.5 sm:py-5 px-2 sm:px-4">
+                        <div className="flex items-center gap-2 sm:gap-3">
+                          <CountryFlag countryCode={athlete.Country} />
+                          <span className="text-xs sm:text-sm md:text-base font-bold text-white uppercase tracking-wider">{athlete.Name}</span>
+                        </div>
+                      </td>
+                      <td className="py-3.5 sm:py-5 px-4 hidden sm:table-cell">
+                        <span className="text-xs font-black uppercase tracking-widest text-gray-400 group-hover:text-white transition-colors">
+                          {athlete.Gender}
+                        </span>
+                      </td>
+                      <td className="py-3.5 sm:py-5 px-4 hidden md:table-cell">
+                        <span className="text-xs font-bold text-white/60 bg-white/5 border border-white/10 px-3 py-1 rounded-full whitespace-nowrap">
+                          {athlete.Contest}
+                        </span>
+                      </td>
+                      <td className="py-3.5 sm:py-5 px-2 sm:px-4 text-center">
+                        <span className="font-black text-sm sm:text-lg text-white group-hover:text-triton-red transition-colors">
+                          {athlete["Total Points"]}
+                        </span>
+                      </td>
+                      <td className="py-3.5 sm:py-5 px-2 sm:px-4 text-right">
+                        <div className="inline-flex items-center justify-center w-8 h-8 sm:w-10 sm:h-10 rounded-lg sm:rounded-xl bg-triton-red/10 text-triton-red group-hover:bg-triton-red group-hover:text-white transition-all">
+                          <Plus size={18} className="sm:hidden" />
+                          <Plus size={20} className="hidden sm:block" />
+                        </div>
                       </td>
                     </tr>
-                  )}
-                </AnimatePresence>
+                  ))
+                ) : (
+                  <tr>
+                    <td colSpan={7} className="py-20 text-center text-gray-500 font-bold uppercase tracking-widest">
+                      No athletes found with these criteria.
+                    </td>
+                  </tr>
+                )}
               </tbody>
             </table>
           </div>
@@ -296,22 +342,33 @@ export default function RankingPageClient({ initialAthletes }: RankingPageClient
                   <div className="h-px bg-white/10 grow" />
                 </h3>
                 <div className="grid gap-2">
-                  {[
-                    { label: "Salvador, BA", value: selectedAthlete.Salvador },
-                    { label: "Jiangsu-qidong", value: selectedAthlete.China },
-                    { label: "Rio de Janeiro, RJ", value: selectedAthlete.Rio },
-                    { label: "Lisboa", value: selectedAthlete.Lisboa },
-                  ].map((race, i) => (
-                    <div key={i} className="flex justify-between items-center p-4 bg-white/5 rounded-xl border border-white/5 group transition-colors hover:bg-white/10">
-                      <div className="flex items-center gap-3">
-                        <MapPin size={16} className="text-triton-red opacity-50 group-hover:opacity-100 transition-opacity" />
-                        <span className="text-[11px] font-bold uppercase tracking-widest text-gray-400 group-hover:text-white transition-colors">{race.label}</span>
+                  {eventKeys.map((key) => {
+                    const rawValue = selectedAthlete[key];
+                    const value =
+                      rawValue && rawValue !== "-" && rawValue !== ""
+                        ? rawValue
+                        : "---";
+
+                    return (
+                      <div
+                        key={key}
+                        className="flex justify-between items-center p-4 bg-white/5 rounded-xl border border-white/5 group transition-colors hover:bg-white/10"
+                      >
+                        <div className="flex items-center gap-3">
+                          <MapPin
+                            size={16}
+                            className="text-triton-red opacity-50 group-hover:opacity-100 transition-opacity"
+                          />
+                          <span className="text-[11px] font-bold uppercase tracking-widest text-gray-400 group-hover:text-white transition-colors">
+                            {formatEventLabel(key)}
+                          </span>
+                        </div>
+                        <span className="text-white font-black text-sm">
+                          {value}
+                        </span>
                       </div>
-                      <span className="text-white font-black text-sm">
-                        {(race.value && race.value !== "-") ? race.value : "---"}
-                      </span>
-                    </div>
-                  ))}
+                    );
+                  })}
                 </div>
               </div>
             </div>

@@ -14,7 +14,7 @@ import {
   Globe,
   Sparkles,
 } from "lucide-react";
-import { motion, AnimatePresence } from "framer-motion";
+import { motion } from "framer-motion";
 import { CountryFlag } from "@/app/utils/CountryFlag";
 
 interface ClubRankingPageClientProps {
@@ -256,79 +256,72 @@ export function ClubRankingPageClient({ initialClubs = [] }: ClubRankingPageClie
               </tr>
             </thead>
             <tbody className="divide-y divide-white/5">
-              <AnimatePresence mode="wait">
-                {filteredClubs.length > 0 ? (
-                  filteredClubs.map((club) => (
-                    <motion.tr
-                      layout
-                      initial={{ opacity: 0 }}
-                      animate={{ opacity: 1 }}
-                      exit={{ opacity: 0 }}
-                      key={club.id}
+              {filteredClubs.length > 0 ? (
+                filteredClubs.map((club) => (
+                  <tr
+                    key={club.id}
+                    className="group hover:bg-white/5 transition-all cursor-pointer"
+                  >
+                    {/* Posição no Ranking */}
+                    <td className="py-2.5 sm:py-3 md:py-4 px-2 sm:px-3 md:px-6 text-center whitespace-nowrap">
+                      <span
+                        className={`inline-flex items-center justify-center w-6 h-6 sm:w-8 sm:h-8 rounded-full font-black text-[10px] sm:text-xs ${club.rank === 1
+                          ? "bg-amber-400 text-black shadow-md shadow-amber-500/20"
+                          : club.rank === 2
+                            ? "bg-slate-300 text-black shadow-sm"
+                            : club.rank === 3
+                              ? "bg-amber-700 text-white shadow-sm"
+                              : "border border-white/10 text-gray-400 bg-white/5"
+                          }`}
+                      >
+                        {club.rank}
+                      </span>
+                    </td>
 
-                      className="group hover:bg-white/5 transition-all cursor-pointer"
-                    >
-                      {/* Posição no Ranking */}
-                      <td className="py-2.5 sm:py-3 md:py-4 px-2 sm:px-3 md:px-6 text-center whitespace-nowrap">
-                        <span
-                          className={`inline-flex items-center justify-center w-6 h-6 sm:w-8 sm:h-8 rounded-full font-black text-[10px] sm:text-xs ${club.rank === 1
-                            ? "bg-amber-400 text-black shadow-md shadow-amber-500/20"
-                            : club.rank === 2
-                              ? "bg-slate-300 text-black shadow-sm"
-                              : club.rank === 3
-                                ? "bg-amber-700 text-white shadow-sm"
-                                : "border border-white/10 text-gray-400 bg-white/5"
-                            }`}
-                        >
-                          {club.rank}
-                        </span>
-                      </td>
-
-                      {/* Nome do Clube + Bandeira */}
-                      <td className="py-2.5 sm:py-3 md:py-4 px-2.5 sm:px-4">
-                        <div className="flex items-center gap-2 sm:gap-3">
-                          {club.countryCode ? (
-                            <CountryFlag countryCode={club.countryCode} className="w-5 sm:w-6 h-3.5 sm:h-4 shadow-sm shrink-0" />
-                          ) : (
-                            <Globe className="w-4 h-4 text-gray-500 shrink-0" />
-                          )}
-                          <div className="flex flex-col">
-                            <span className="text-xs sm:text-sm md:text-base font-bold text-white uppercase tracking-wider group-hover:text-triton-red transition-colors">
-                              {club.name}
-                            </span>
-                            <span className="text-[10px] text-gray-500 sm:hidden uppercase font-semibold">
-                              {club.countryName}
-                            </span>
-                          </div>
+                    {/* Nome do Clube + Bandeira */}
+                    <td className="py-2.5 sm:py-3 md:py-4 px-2.5 sm:px-4">
+                      <div className="flex items-center gap-2 sm:gap-3">
+                        {club.countryCode ? (
+                          <CountryFlag countryCode={club.countryCode} className="w-5 sm:w-6 h-3.5 sm:h-4 shadow-sm shrink-0" />
+                        ) : (
+                          <Globe className="w-4 h-4 text-gray-500 shrink-0" />
+                        )}
+                        <div className="flex flex-col">
+                          <span className="text-xs sm:text-sm md:text-base font-bold text-white uppercase tracking-wider group-hover:text-triton-red transition-colors">
+                            {club.name}
+                          </span>
+                          <span className="text-[10px] text-gray-500 sm:hidden uppercase font-semibold">
+                            {club.countryName}
+                          </span>
                         </div>
-                      </td>
-
-                      {/* País */}
-                      <td className="py-2.5 sm:py-3 md:py-4 px-2.5 sm:px-4 hidden sm:table-cell whitespace-nowrap">
-                        <span className="text-xs font-bold text-white/60 bg-white/5 border border-white/10 px-3 py-1 rounded-full uppercase tracking-wider">
-                          {club.countryName}
-                        </span>
-                      </td>
-
-                      {/* Total de Pontos */}
-                      <td className="py-2.5 sm:py-3 md:py-4 px-2.5 sm:px-4 text-center whitespace-nowrap">
-                        <span className="font-mono font-black text-xs sm:text-base md:text-lg text-white group-hover:text-triton-red transition-colors">
-                          {club.totalPointsDisplay}
-                        </span>
-                      </td>
-                    </motion.tr>
-                  ))
-                ) : (
-                  <tr>
-                    <td colSpan={4} className="py-12 sm:py-16 text-center text-gray-500 font-bold uppercase tracking-widest text-xs sm:text-sm">
-                      <div className="flex flex-col items-center justify-center gap-3">
-                        <Users className="w-8 h-8 text-gray-600" />
-                        <p>No clubs found matching the criteria.</p>
                       </div>
                     </td>
+
+                    {/* País */}
+                    <td className="py-2.5 sm:py-3 md:py-4 px-2.5 sm:px-4 hidden sm:table-cell whitespace-nowrap">
+                      <span className="text-xs font-bold text-white/60 bg-white/5 border border-white/10 px-3 py-1 rounded-full uppercase tracking-wider">
+                        {club.countryName}
+                      </span>
+                    </td>
+
+                    {/* Total de Pontos */}
+                    <td className="py-2.5 sm:py-3 md:py-4 px-2.5 sm:px-4 text-center whitespace-nowrap">
+                      <span className="font-mono font-black text-xs sm:text-base md:text-lg text-white group-hover:text-triton-red transition-colors">
+                        {club.totalPointsDisplay}
+                      </span>
+                    </td>
                   </tr>
-                )}
-              </AnimatePresence>
+                ))
+              ) : (
+                <tr>
+                  <td colSpan={4} className="py-12 sm:py-16 text-center text-gray-500 font-bold uppercase tracking-widest text-xs sm:text-sm">
+                    <div className="flex flex-col items-center justify-center gap-3">
+                      <Users className="w-8 h-8 text-gray-600" />
+                      <p>No clubs found matching the criteria.</p>
+                    </div>
+                  </td>
+                </tr>
+              )}
             </tbody>
           </table>
         </div>

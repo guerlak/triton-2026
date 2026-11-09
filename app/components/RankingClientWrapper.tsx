@@ -1,5 +1,5 @@
 "use client";
-import React, { useState } from "react";
+import React, { useState, useMemo } from "react";
 import { Plus, User, MapPin } from "lucide-react";
 import { motion } from "framer-motion";
 import Image from "next/image";
@@ -8,14 +8,64 @@ import fotoUrl from "../../public/images/ranking-modal.png";
 import { Athlete } from "../../model/ranking";
 import { CountryFlag } from "@/app/utils/CountryFlag";
 
+const NON_EVENT_KEYS = new Set([
+  "bib",
+  "tritonid",
+  "contest",
+  "name",
+  "gender",
+  "club",
+  "country",
+  "nation",
+  "nationflag",
+  "rank",
+  "points",
+  "distance",
+  "agegroup",
+  "global standings",
+  "national standings",
+  "swim ranking",
+  "bike ranking",
+  "run ranking",
+  "total points",
+]);
+
+function formatEventLabel(key: string): string {
+  const clean = key
+    .replace(/_/g, " ")
+    .replace(/([a-z])([A-Z])/g, "$1 $2")
+    .trim();
+  return clean.charAt(0).toUpperCase() + clean.slice(1);
+}
+
 interface Props {
   initialAthletes: Athlete[];
 }
 
 const RankingClientWrapper: React.FC<Props> = ({ initialAthletes }) => {
-
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [selectedAthlete, setSelectedAthlete] = useState<Athlete | null>(null);
+
+  const eventKeys = useMemo(() => {
+    const keys = new Set<string>();
+
+    initialAthletes.forEach((athlete) => {
+      Object.keys(athlete).forEach((key) => {
+        const lower = key.toLowerCase();
+        if (NON_EVENT_KEYS.has(lower)) return;
+
+        // Se for placeholder genérico sem dados (ex: "Event5"), ignora
+        if (/^event\d+$/i.test(key)) {
+          const val = athlete[key];
+          if (!val || val === "-" || val === "") return;
+        }
+
+        keys.add(key);
+      });
+    });
+
+    return Array.from(keys);
+  }, [initialAthletes]);
 
   const athleteFilter = (gender: string, distance: string) => {
     return initialAthletes.filter(
@@ -214,26 +264,37 @@ const RankingClientWrapper: React.FC<Props> = ({ initialAthletes }) => {
               <div>
                 <h3 className="text-xs font-black text-white/30 uppercase tracking-[0.3em] mb-5 flex items-center gap-2">
                   <div className="h-px bg-white/10 grow" />
-                  Top 3 Results
+                  Event History
                   <div className="h-px bg-white/10 grow" />
                 </h3>
                 <div className="grid gap-2">
-                  {[
-                    { label: "Salvador, BA", value: selectedAthlete.Salvador },
-                    { label: "Jiangsu-qidong", value: selectedAthlete.China },
-                    { label: "Rio de Janeiro, RJ", value: selectedAthlete.Rio },
-                    { label: "Lisboa", value: selectedAthlete.Lisboa },
-                  ].map((race, i) => (
-                    <div key={i} className="flex justify-between items-center p-4 bg-white/5 rounded-xl border border-white/5 group transition-colors hover:bg-white/10">
-                      <div className="flex items-center gap-3">
-                        <MapPin size={16} className="text-triton-red opacity-50 group-hover:opacity-100 transition-opacity" />
-                        <span className="text-[11px] font-bold uppercase tracking-widest text-gray-400 group-hover:text-white transition-colors">{race.label}</span>
+                  {eventKeys.map((key) => {
+                    const rawValue = selectedAthlete[key];
+                    const value =
+                      rawValue && rawValue !== "-" && rawValue !== ""
+                        ? rawValue
+                        : "---";
+
+                    return (
+                      <div
+                        key={key}
+                        className="flex justify-between items-center p-4 bg-white/5 rounded-xl border border-white/5 group transition-colors hover:bg-white/10"
+                      >
+                        <div className="flex items-center gap-3">
+                          <MapPin
+                            size={16}
+                            className="text-triton-red opacity-50 group-hover:opacity-100 transition-opacity"
+                          />
+                          <span className="text-[11px] font-bold uppercase tracking-widest text-gray-400 group-hover:text-white transition-colors">
+                            {formatEventLabel(key)}
+                          </span>
+                        </div>
+                        <span className="text-white font-black text-sm">
+                          {value}
+                        </span>
                       </div>
-                      <span className="text-white font-black text-sm">
-                        {(race.value && race.value !== "-") ? race.value : "---"}
-                      </span>
-                    </div>
-                  ))}
+                    );
+                  })}
                 </div>
               </div>
 
