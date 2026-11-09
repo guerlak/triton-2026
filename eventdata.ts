@@ -1056,14 +1056,14 @@ export const EVENT_DATA_MAP: Record<string, EventData> = {
       logoImage: logoQidong,
     },
     athleteArea: {
-      liveResultsUrl: "",
+      liveResultsUrl: "https://api.raceresult.com/371805/CZBL6J266FAXH4MGJU4N26DZ1N31QS6U",
       raceGuideLink: "https://drive.google.com/file/d/1T85jA2uPbkRfPtB4xR_8mVZj-sIPDYvU/view?usp=sharing",
       startListApiUrl:
         "https://api.raceresult.com/371805/J1CHIPHJFTLQ2LQWVP319LYWTF2ACT7W",
       mediaPictureUrl:
         "https://static.marathon-photos.com/triton/gallery.html?key=d5864acd59e189fba9d1cfddd11bcebe&race=qidong",
       videoBriefingUrl: "",
-      topFiveApiUrl: "",
+      topFiveApiUrl: "https://api.raceresult.com/371805/CZBL6J266FAXH4MGJU4N26DZ1N31QS6U",
       liveResultsApiUrl: "https://api.raceresult.com/371805/1KADKP9W8EZRU5RV8PR4OX4XLTOD3WKU",
     },
     info: {
