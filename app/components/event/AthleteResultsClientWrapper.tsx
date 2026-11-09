@@ -273,9 +273,9 @@ const LiveResultsClientWrapper: React.FC<Props> = ({ initialAthletes }) => {
 
         {/* Counter and Clear Filters */}
         <div className="flex items-center justify-between text-[11px] sm:text-xs text-gray-400 px-1 pt-1">
-          <span>
+          {/* <span>
             Showing <strong className="text-white font-mono">{filteredAthletes.length}</strong> athlete{filteredAthletes.length === 1 ? "" : "s"}
-          </span>
+          </span> */}
           {hasActiveFilters && (
             <button
               type="button"
