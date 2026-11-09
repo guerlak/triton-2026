@@ -4015,7 +4015,7 @@ export const WORLDFINALS_DATA_MAP: Record<string, EventData> = {
   },
 };
 
-const onHold = {
+export const PREVIEW_DATA_MAP: Record<string, EventData> = {
   "rio-2027": {
     slug: "rio-2027",
     language: "pt-BR",
@@ -4289,3 +4289,5 @@ const onHold = {
     },
   },
 };
+
+export const onHold = PREVIEW_DATA_MAP;
