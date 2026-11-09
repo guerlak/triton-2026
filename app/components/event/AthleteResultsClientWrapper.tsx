@@ -304,19 +304,19 @@ const LiveResultsClientWrapper: React.FC<Props> = ({ initialAthletes }) => {
         className="bg-neutral-900 border border-white/5 rounded-2xl sm:rounded-3xl overflow-hidden shadow-2xl"
       >
         <div className="overflow-x-auto max-h-[65vh] custom-scrollbar">
-          <table className="w-full text-left border-collapse min-w-[760px] md:min-w-[960px]">
+          <table className="w-full text-left border-collapse">
             <thead className="sticky top-0 z-10 bg-neutral-950/90 backdrop-blur-md">
-              <tr className="bg-black/60 text-[10px] font-black uppercase text-gray-400 border-b border-white/10 tracking-widest whitespace-nowrap">
-                <th className="py-3 sm:py-4 px-2.5 sm:px-4 text-center w-14 sm:w-20">Pos</th>
-                <th className="py-3 sm:py-4 px-2.5 sm:px-4">Athlete</th>
-                <th className="py-3 sm:py-4 px-2.5 sm:px-4 text-center">Race</th>
-                <th className="py-3 sm:py-4 px-2.5 sm:px-4 text-center">Distance</th>
-                <th className="py-3 sm:py-4 px-2.5 sm:px-4 text-center">Gender</th>
-                <th className="py-3 sm:py-4 px-2.5 sm:px-4 text-center">Age Group</th>
-                <th className="py-3 sm:py-4 px-2.5 sm:px-4 text-center">Club</th>
-                <th className="py-3 sm:py-4 px-2.5 sm:px-4 md:px-6 text-right text-triton-red">
-                  <div className="flex items-center justify-end gap-1.5 sm:gap-2 text-triton-red">
-                    <Clock size={14} />
+              <tr className="bg-black/60 text-[10px] font-black uppercase text-gray-400 border-b border-white/10 tracking-wider whitespace-nowrap">
+                <th className="py-2.5 sm:py-3 px-1 sm:px-2 text-center w-10 sm:w-12">Pos</th>
+                <th className="py-2.5 sm:py-3 px-1.5 sm:px-2 md:px-3">Athlete</th>
+                <th className="py-2.5 sm:py-3 px-1 sm:px-2 text-center">Race</th>
+                <th className="py-2.5 sm:py-3 px-1 sm:px-2 text-center">Distance</th>
+                <th className="py-2.5 sm:py-3 px-1 sm:px-2 text-center">Gender</th>
+                <th className="py-2.5 sm:py-3 px-1 sm:px-2 text-center">Age Group</th>
+                <th className="py-2.5 sm:py-3 px-1 sm:px-2 text-center">Club</th>
+                <th className="py-2.5 sm:py-3 px-1.5 sm:px-2 md:px-3 text-right text-triton-red">
+                  <div className="flex items-center justify-end gap-1 sm:gap-1.5 text-triton-red">
+                    <Clock size={13} />
                     <span>Time</span>
                   </div>
                 </th>
@@ -330,25 +330,25 @@ const LiveResultsClientWrapper: React.FC<Props> = ({ initialAthletes }) => {
                     className="border-b border-white/5 hover:bg-white/5 transition-colors group whitespace-nowrap"
                   >
                     {/* POS */}
-                    <td className="py-2.5 sm:py-3.5 px-2.5 sm:px-4 text-center font-mono font-bold text-xs sm:text-sm text-gray-400">
+                    <td className="py-2 sm:py-2.5 px-1 sm:px-2 text-center font-mono font-bold text-[11px] sm:text-xs text-gray-400">
                       {athlete.Pos != null && athlete.Pos !== "" ? `#${athlete.Pos}` : `#${i + 1}`}
                     </td>
 
                     {/* ATHLETE */}
-                    <td className="py-2.5 sm:py-3.5 px-2.5 sm:px-4">
-                      <div className="flex items-center gap-2.5 sm:gap-3">
+                    <td className="py-2 sm:py-2.5 px-1.5 sm:px-2 md:px-3">
+                      <div className="flex items-center gap-1.5 sm:gap-2 min-w-0">
                         {athlete.Flag && (
                           <img
                             src={athlete.Flag}
                             alt={athlete.Nation || "Flag"}
-                            className="w-5 h-3.5 sm:w-6 sm:h-4 object-contain rounded-xs shadow-sm shrink-0"
+                            className="w-4 h-3 sm:w-5 sm:h-3.5 object-contain rounded-xs shadow-sm shrink-0"
                           />
                         )}
-                        <span className="font-black text-xs sm:text-sm text-white uppercase tracking-tight">
+                        <span className="font-black text-[11px] sm:text-xs md:text-sm text-white uppercase tracking-tight truncate max-w-[120px] sm:max-w-[180px] md:max-w-none">
                           {athlete.Name}
                         </span>
                         {athlete.Nation && (
-                          <span className="text-[10px] font-mono text-gray-500 uppercase">
+                          <span className="text-[9px] sm:text-[10px] font-mono text-gray-500 uppercase shrink-0">
                             ({athlete.Nation})
                           </span>
                         )}
@@ -356,16 +356,16 @@ const LiveResultsClientWrapper: React.FC<Props> = ({ initialAthletes }) => {
                     </td>
 
                     {/* RACE */}
-                    <td className="py-2.5 sm:py-3.5 px-2.5 sm:px-4 text-center text-xs font-bold text-gray-300 uppercase tracking-wider">
+                    <td className="py-2 sm:py-2.5 px-1 sm:px-2 text-center">
                       <span className="text-[10px] sm:text-xs font-bold uppercase text-gray-300">
                         {athlete.Race || "-"}
                       </span>
                     </td>
 
                     {/* DISTANCE */}
-                    <td className="py-2.5 sm:py-3.5 px-2.5 sm:px-4 text-center">
+                    <td className="py-2 sm:py-2.5 px-1 sm:px-2 text-center">
                       <span
-                        className={`text-[10px] font-black uppercase px-2 py-1 rounded-md border shadow-xs ${getDistanceBadgeClass(
+                        className={`text-[9px] sm:text-[10px] font-black uppercase px-1.5 py-0.5 sm:px-2 sm:py-0.5 rounded-md border shadow-xs ${getDistanceBadgeClass(
                           athlete.Distance || athlete.Contest
                         )}`}
                       >
@@ -374,29 +374,29 @@ const LiveResultsClientWrapper: React.FC<Props> = ({ initialAthletes }) => {
                     </td>
 
                     {/* GENDER */}
-                    <td className="py-2.5 sm:py-3.5 px-2.5 sm:px-4 text-center">
-                      <span className="text-[10px] sm:text-xs font-black uppercase px-2 py-1 tracking-widest text-gray-400">
+                    <td className="py-2 sm:py-2.5 px-1 sm:px-2 text-center">
+                      <span className="text-[10px] sm:text-xs font-black uppercase px-1 tracking-wide text-gray-400">
                         {formatGender(athlete.Gender)}
                       </span>
                     </td>
 
                     {/* AGE GROUP */}
-                    <td className="py-2.5 sm:py-3.5 px-2.5 sm:px-4 text-center">
-                      <span className="font-mono font-bold text-xs sm:text-sm uppercase tracking-wider text-gray-300">
+                    <td className="py-2 sm:py-2.5 px-1 sm:px-2 text-center">
+                      <span className="font-mono font-bold text-[10px] sm:text-xs uppercase tracking-tight text-gray-300">
                         {athlete.AgeGroup || "-"}
                       </span>
                     </td>
 
                     {/* CLUB */}
-                    <td className="py-2.5 sm:py-3.5 px-2.5 sm:px-4 text-center">
-                      <span className="font-bold text-xs sm:text-sm text-gray-300 uppercase tracking-wide">
+                    <td className="py-2 sm:py-2.5 px-1 sm:px-2 text-center">
+                      <span className="font-bold text-[10px] sm:text-xs text-gray-300 uppercase tracking-tight truncate max-w-[90px] sm:max-w-[140px] md:max-w-none inline-block">
                         {athlete.Club || "-"}
                       </span>
                     </td>
 
                     {/* TIME */}
-                    <td className="py-2.5 sm:py-3.5 px-2.5 sm:px-4 md:px-6 text-right">
-                      <span className="font-mono font-black text-xs sm:text-sm text-white tabular-nums tracking-widest">
+                    <td className="py-2 sm:py-2.5 px-1.5 sm:px-2 md:px-3 text-right">
+                      <span className="font-mono font-black text-[11px] sm:text-xs md:text-sm text-white tabular-nums tracking-normal">
                         {athlete.Time || "--:--:--"}
                       </span>
                     </td>
