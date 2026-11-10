@@ -4029,9 +4029,9 @@ export const PREVIEW_DATA_MAP: Record<string, EventData> = {
     flag: "🇧🇷",
     status: "Confirmed",
     year: 2027,
-    dateText: "JUN 26",
-    fullDateText: "26 Jun, 2027",
-    targetDate: "2027-06-26T08:00:00",
+    dateText: "JUN 20",
+    fullDateText: "20 Jun, 2027",
+    targetDate: "2027-06-20T08:00:00",
     athleteArea: {
       liveResultsUrl: "",
       raceGuideLink: "",
@@ -4187,7 +4187,7 @@ export const PREVIEW_DATA_MAP: Record<string, EventData> = {
       days: [
         {
           id: "friday",
-          date: "25 Jun",
+          date: "19 Jun",
           title: "Sexta-feira",
           subtitle: "RACE DAY 1 - THE SWIM",
           events: [
@@ -4200,7 +4200,7 @@ export const PREVIEW_DATA_MAP: Record<string, EventData> = {
         },
         {
           id: "saturday",
-          date: "26 Jun",
+          date: "20 Jun",
           title: "Sábado",
           subtitle: "RACE DAY 2 – THE BIKE",
           events: [
