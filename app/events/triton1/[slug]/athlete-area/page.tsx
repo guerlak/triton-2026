@@ -36,6 +36,7 @@ export default async function AthleteArePage({
         targetDate={data?.targetDate}
         mediaPictureUrl={data?.athleteArea?.mediaPictureUrl}
         videoBriefingUrl={data?.athleteArea?.videoBriefingUrl}
+        rankingClubsUrl={data.athleteArea?.clubRankingAPIUrl}
       />
       <RaceGuide raceGuideLink={data.athleteArea?.raceGuideLink} />
 

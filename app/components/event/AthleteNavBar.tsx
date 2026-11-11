@@ -12,6 +12,7 @@ interface AthleteNavBarProps {
   targetDate?: string;
   mediaPictureUrl?: string;
   videoBriefingUrl?: string;
+  clubRanking?: string;
 }
 
 const Navbar = ({
@@ -19,6 +20,8 @@ const Navbar = ({
   targetDate,
   mediaPictureUrl,
   videoBriefingUrl,
+  clubRanking
+
 }: AthleteNavBarProps) => {
   const [isOpen, setIsOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
@@ -41,6 +44,7 @@ const Navbar = ({
     { name: "Start List", href: "#start-list" },
     { name: "Top 5", href: "#top-five" },
     { name: "Results", href: "#results" },
+    { name: "Club Ranking", href: "#club-ranking" }
   ];
 
   const isEventActive = () => {
