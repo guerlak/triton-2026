@@ -68,6 +68,7 @@ export interface AthleteArea {
   videoBriefingUrl?: string;
   liveResultsApiUrl?: string;
   topFiveApiUrl?: string;
+  clubRankingAPIUrl?: string;
 }
 
 export interface EventData {
@@ -1056,7 +1057,7 @@ export const EVENT_DATA_MAP: Record<string, EventData> = {
       logoImage: logoQidong,
     },
     athleteArea: {
-      liveResultsUrl: "https://api.raceresult.com/371805/CZBL6J266FAXH4MGJU4N26DZ1N31QS6U",
+      liveResultsUrl: "",
       raceGuideLink: "https://drive.google.com/file/d/1T85jA2uPbkRfPtB4xR_8mVZj-sIPDYvU/view?usp=sharing",
       startListApiUrl:
         "https://api.raceresult.com/371805/J1CHIPHJFTLQ2LQWVP319LYWTF2ACT7W",
@@ -1065,6 +1066,8 @@ export const EVENT_DATA_MAP: Record<string, EventData> = {
       videoBriefingUrl: "",
       topFiveApiUrl: "https://api.raceresult.com/371805/CZBL6J266FAXH4MGJU4N26DZ1N31QS6U",
       liveResultsApiUrl: "https://api.raceresult.com/371805/1KADKP9W8EZRU5RV8PR4OX4XLTOD3WKU",
+      clubRankingAPIUrl: "https://api.raceresult.com/371805/TIXT5QPHID3FHU2N08FV9PWILK7FD9OP"
+      
     },
     info: {
       title: "Experience the Orient Coast",

@@ -9,8 +9,6 @@ import TopFiveAthletes from "@/app/components/event/TopFIveAthletes";
 import { getAthleteResultsFromAPI } from "@/services/RaceResultsService";
 import AthleteResultsClientWrapper from "@/app/components/event/AthleteResultsClientWrapper";
 import { ClubRankingPageClient } from "@/app/(info)/ranking/ClubRankingPageClient";
-import { fetchClubRanking } from "@/services/RankingService";
-import { ApiRankingRepo } from "@/repositories/ApiRankingRepo";
 
 export default async function AthleteArePage({
   params,
@@ -20,7 +18,6 @@ export default async function AthleteArePage({
   //redirect("/under-development")
   const { slug } = await params;
   const data = await getEventData(slug);
-  const rankingRepo = new ApiRankingRepo();
 
   if (!data) {
     notFound();
@@ -29,7 +26,7 @@ export default async function AthleteArePage({
   const [athletes, athletesTop5, clubsData] = await Promise.all([
     getAthleteResultsFromAPI(data?.athleteArea?.liveResultsApiUrl),
     getAthleteResultsFromAPI(data?.athleteArea?.topFiveApiUrl),
-    fetchClubRanking(rankingRepo),
+    getAthleteResultsFromAPI(data?.athleteArea?.clubRankingAPIUrl),
   ]);
 
   return (
@@ -60,13 +57,15 @@ export default async function AthleteArePage({
         </div>
       </section>
 
-      <StartList slug={slug} />
+      {data?.athleteArea?.clubRankingAPIUrl && (
+        <section id="club-ranking" className="py-8 sm:py-12 md:py-20 bg-black relative border-t border-white/5">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <ClubRankingPageClient initialClubs={clubsData ?? []} />
+          </div>
+        </section>
+      )}
 
-      {/* <section id="club-ranking" className="py-8 sm:py-12 md:py-20 bg-black relative border-t border-white/5">
-				<div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-					<ClubRankingPageClient initialClubs={clubsData ?? []} />
-				</div>
-			</section> */}
+      <StartList slug={slug} />
 
       <EventVideo videoBriefingUrl={data.athleteArea?.videoBriefingUrl} />
     </>
