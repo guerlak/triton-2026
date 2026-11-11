@@ -12,7 +12,9 @@ interface AthleteNavBarProps {
   targetDate?: string;
   mediaPictureUrl?: string;
   videoBriefingUrl?: string;
-  clubRanking?: string;
+  clubRankingUrl?: string;
+  clubRankingAPIUrl?: string;
+  rankingClubsUrl?: string;
 }
 
 const Navbar = ({
@@ -20,11 +22,14 @@ const Navbar = ({
   targetDate,
   mediaPictureUrl,
   videoBriefingUrl,
-  clubRanking
-
+  clubRankingUrl,
+  clubRankingAPIUrl,
+  rankingClubsUrl,
 }: AthleteNavBarProps) => {
   const [isOpen, setIsOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
+
+  const effectiveClubRanking = clubRankingUrl || clubRankingAPIUrl || rankingClubsUrl;
 
   useEffect(() => {
     const handleScroll = () => {
@@ -44,7 +49,9 @@ const Navbar = ({
     { name: "Start List", href: "#start-list" },
     { name: "Top 5", href: "#top-five" },
     { name: "Results", href: "#results" },
-    { name: "Club Ranking", href: "#club-ranking" }
+    ...(effectiveClubRanking && effectiveClubRanking.trim() !== ""
+      ? [{ name: "Club Ranking", href: "#club-ranking" }]
+      : []),
   ];
 
   const isEventActive = () => {
