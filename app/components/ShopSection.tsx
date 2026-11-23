@@ -13,7 +13,7 @@ const ShopSection: React.FC<{ language: string }> = ({ language }) => {
       className="overflow-hidden bg-black py-8 sm:py-12 md:py-20"
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8 items-stretch">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-8 items-stretch">
           {/* Card 1: Official Collection */}
           <div className="relative rounded-3xl sm:rounded-4xl overflow-hidden group min-h-[480px] sm:min-h-[520px] md:min-h-[560px] flex flex-col justify-between p-6 sm:p-8 md:p-10 border border-white/5">
             {/* Background Image */}
@@ -64,9 +64,9 @@ const ShopSection: React.FC<{ language: string }> = ({ language }) => {
             <div className="absolute bottom-0 right-0 w-32 h-32 bg-triton-red translate-x-16 translate-y-16 rotate-45 opacity-20 group-hover:opacity-40 transition-opacity pointer-events-none"></div>
           </div>
 
-          {/* Card 2: Web App */}
+          {/* Card 2: Web App
           <div className="relative rounded-3xl sm:rounded-4xl overflow-hidden group min-h-[480px] sm:min-h-[520px] md:min-h-[560px] flex flex-col justify-between p-6 sm:p-8 md:p-10 border border-white/5">
-            {/* Background Image */}
+            // Background Image
             <div className="absolute inset-0">
               <Image
                 src={atletaMobile}
@@ -77,14 +77,14 @@ const ShopSection: React.FC<{ language: string }> = ({ language }) => {
               <div className="absolute inset-0 bg-gradient-to-t from-black via-black/60 to-black/20"></div>
             </div>
 
-            {/* Badge */}
+            // Badge
             <div className="relative z-10">
               <div className="inline-flex items-center gap-2 bg-triton-red px-4 py-1.5 rounded-full text-white text-[10px] font-black uppercase tracking-widest shadow-md shadow-red-950/50">
                 <TabletSmartphone size={12} /> WEB APP
               </div>
             </div>
 
-            {/* Content & CTA */}
+            // Content & CTA
             <div className="relative z-10 mt-auto">
               <h2 className="text-2xl sm:text-3xl font-black text-white uppercase leading-tight mb-2">
                 TAKE US <br />
@@ -111,9 +111,10 @@ const ShopSection: React.FC<{ language: string }> = ({ language }) => {
               </a>
             </div>
 
-            {/* Decorative Corner Element */}
+            // Decorative Corner Element
             <div className="absolute bottom-0 right-0 w-32 h-32 bg-triton-red translate-x-16 translate-y-16 rotate-45 opacity-20 group-hover:opacity-40 transition-opacity pointer-events-none"></div>
           </div>
+          */}
 
           {/* Card 3: TRITON Pass */}
           <div className="relative rounded-3xl sm:rounded-4xl overflow-hidden group min-h-[480px] sm:min-h-[520px] md:min-h-[560px] flex flex-col justify-between p-6 sm:p-8 md:p-10 border border-white/5 md:col-span-2 lg:col-span-1">

@@ -38,25 +38,31 @@ export default async function AthleteArePage({
         videoBriefingUrl={data?.athleteArea?.videoBriefingUrl}
         rankingClubsUrl={data.athleteArea?.clubRankingAPIUrl}
       />
-      <RaceGuide raceGuideLink={data.athleteArea?.raceGuideLink} />
+      {data?.athleteArea?.raceGuideLink && (
+        <RaceGuide raceGuideLink={data.athleteArea?.raceGuideLink} />
+      )}
 
-      <section
-        id="top-five"
-        className="py-8 sm:py-12 md:py-20 bg-black relative border-t border-white/5"
-      >
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <TopFiveAthletes initialAthletes={athletesTop5} />
-        </div>
-      </section>
+      {data?.athleteArea?.topFiveApiUrl && (
+        <section
+          id="top-five"
+          className="py-8 sm:py-12 md:py-20  bg-black relative border-t border-white/5"
+        >
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <TopFiveAthletes initialAthletes={athletesTop5} />
+          </div>
+        </section>
+      )}
 
-      <section
-        id="results"
-        className="py-8 sm:py-12 md:py-20 bg-black relative border-t border-white/5"
-      >
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <AthleteResultsClientWrapper initialAthletes={athletes} />
-        </div>
-      </section>
+      {data?.athleteArea?.liveResultsApiUrl && (
+        <section
+          id="results"
+          className="py-8 sm:py-12 md:py-20 bg-black relative border-t border-white/5"
+        >
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <AthleteResultsClientWrapper initialAthletes={athletes} />
+          </div>
+        </section>
+      )}
 
       {data?.athleteArea?.clubRankingAPIUrl && (
         <section id="club-ranking" className="py-8 sm:py-12 md:py-20 bg-black relative border-t border-white/5">
@@ -66,7 +72,9 @@ export default async function AthleteArePage({
         </section>
       )}
 
-      <StartList slug={slug} />
+      {data?.athleteArea?.startListApiUrl && (
+        <StartList slug={data.athleteArea?.startListApiUrl} />
+      )}
 
       <EventVideo videoBriefingUrl={data.athleteArea?.videoBriefingUrl} />
     </>
