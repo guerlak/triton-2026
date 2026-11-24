@@ -30,7 +30,7 @@ const Navbar = () => {
     { name: "Global Ranking", href: "#ranking" },
     { name: "Calendar", href: "#calendar" },
     { name: "Shop", href: "#shop" },
-    { name: "Triton App", href: "#shop" },
+    { name: "Triton Pass", href: "#shop" },
   ];
 
   return (
