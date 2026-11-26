@@ -19,7 +19,7 @@ const COUNTDOWN_EVENTS = Object.values(EVENT_DATA_MAP)
     targetDate: event.targetDate,
     href: `/events/${event.eventFormat}/${event.slug}`,
     registerUrl: event.registrationLink,
-    isOnLive: Boolean(event.athleteArea?.liveResultsUrl || event.liveResultsUrl),
+    isOnLive: Boolean(event.athleteArea?.liveResultsUrl),
   }));
 
 const CountdownSection: React.FC = () => {
@@ -27,7 +27,7 @@ const CountdownSection: React.FC = () => {
   const [direction, setDirection] = useState(0);
   const currentEvent = COUNTDOWN_EVENTS[currentIndex] || COUNTDOWN_EVENTS[0];
   const eventData = currentEvent ? EVENT_DATA_MAP[currentEvent.slug] : null;
-  const liveResultsUrl = eventData?.athleteArea?.liveResultsUrl || eventData?.liveResultsUrl;
+  const liveResultsUrl = eventData?.athleteArea?.liveResultsUrl;
 
   const [timeLeft, setTimeLeft] = useState({
     days: 0,

@@ -17,7 +17,7 @@ const CountdownSection: React.FC<CountdownSectionProps> = ({ data }) => {
     seconds: 0,
   });
   const [isEventStarted, setIsEventStarted] = useState(false);
-  const isCompleted = (data.eventStatus || data.status)?.toLowerCase() === "completed";
+  const isCompleted = data.status?.toLowerCase() === "completed";
 
   useEffect(() => {
     const target = new Date(data.targetDate).getTime();
@@ -45,8 +45,8 @@ const CountdownSection: React.FC<CountdownSectionProps> = ({ data }) => {
     return () => clearInterval(timer);
   }, [data.targetDate]);
 
-  const liveResultsUrl = data.liveResultsUrl || data.athleteArea?.liveResultsUrl;
-  const registrationStatus = data.registrationStatus ?? (data.isRegistrationClosed ? "Closed" : "Open");
+  const liveResultsUrl = data.athleteArea?.liveResultsUrl;
+  const registrationStatus = data.registrationStatus ?? "Open";
 
   return (
     <section className="relative py-10 overflow-hidden min-h-100 flex items-center">

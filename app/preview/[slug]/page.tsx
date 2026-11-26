@@ -66,7 +66,7 @@ export default async function PreviewPage({
       <EventNavBar
         language={data.language}
         registerLink={data.registrationLink}
-        isRegistrationClosed={data.isRegistrationClosed}
+        isRegistrationClosed={data.registrationStatus === "Closed" || data.registrationStatus === "Hold"}
       />
 
       <main className="text-white bg-black/90 relative">

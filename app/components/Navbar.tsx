@@ -5,12 +5,12 @@ import Image from "next/image";
 import NavButton from "../ui/NavButton";
 import { useState, useEffect } from "react";
 import Link from "next/link";
-import { Radio } from "lucide-react";
+import { Radio, Compass } from "lucide-react";
 import { EVENT_DATA_MAP } from "@/eventdata";
 
 const Navbar = () => {
   const isLiveEventOn = Object.values(EVENT_DATA_MAP).some(
-    (event) => Boolean(event.isEventOn || event.isEventOn)
+    (event) => Boolean(event.isEventOn)
   );
   const [isOpen, setIsOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
@@ -85,7 +85,12 @@ const Navbar = () => {
               <span>Live Results</span>
             </Link>
           )}
-          <NavButton isRed text="Find a Race" href="/events" />
+          <NavButton
+            isRed
+            text="Find a Race"
+            href="/events"
+            icon={<Compass className="w-4 h-4 shrink-0" />}
+          />
         </div>
 
         {/* Mobile menu button */}
@@ -154,7 +159,13 @@ const Navbar = () => {
                 <span>Live Results</span>
               </Link>
             )}
-            <NavButton isRed text="Find a Race" href="/events" className="w-full text-center" />
+            <NavButton
+              isRed
+              text="Find a Race"
+              href="/events"
+              icon={<Compass className="w-4 h-4 shrink-0" />}
+              className="w-full text-center"
+            />
           </div>
         </div>
       </div>

@@ -6,6 +6,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import NavButton from "@/app/ui/NavButton";
 import { useState, useEffect } from "react";
+import { Trophy, Ticket, Globe } from "lucide-react";
 
 const Navbar = ({
   language,
@@ -95,12 +96,16 @@ const Navbar = ({
           <NavButton
             text={language === "pt-BR" ? "Área do Atleta" : "Athlete Area"}
             href={`${pathname}/athlete-area`}
+            icon={
+              <Trophy className="w-4 h-4 text-triton-red group-hover:text-white transition-colors shrink-0" />
+            }
           />
           {!isRegistrationClosed && (
             <NavButton
               isRed
               text={language === "pt-BR" ? "Inscreva-se Já" : "Register Now"}
               href={registerLink}
+              icon={<Ticket className="w-4 h-4 shrink-0" />}
               external
             />
           )}
@@ -172,10 +177,20 @@ const Navbar = ({
             </a>
           ))}
           <div className="mt-8 flex flex-col items-center gap-6 w-full max-w-xs">
-            <NavButton text="Triton Global" href="/" className="w-full" />
+            <NavButton
+              text="Triton Global"
+              href="/"
+              icon={
+                <Globe className="w-4 h-4 text-triton-red group-hover:text-white transition-colors shrink-0" />
+              }
+              className="w-full"
+            />
             <NavButton
               text={language === "pt-BR" ? "Área do Atleta" : "Athlete Area"}
               href={`${pathname}/athlete-area`}
+              icon={
+                <Trophy className="w-4 h-4 text-triton-red group-hover:text-white transition-colors shrink-0" />
+              }
               className="w-full"
             />
             {!isRegistrationClosed && (
@@ -183,6 +198,7 @@ const Navbar = ({
                 isRed
                 text={language === "pt-BR" ? "Inscreva-se Já" : "Register Now"}
                 href={registerLink}
+                icon={<Ticket className="w-4 h-4 shrink-0" />}
                 external
                 className="w-full"
               />

@@ -116,7 +116,7 @@ const Navbar = ({
               href={liveResultsUrl}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full text-xs font-bold uppercase tracking-wider bg-white/10 hover:bg-triton-red text-white transition-all duration-300 border border-white/20 hover:border-triton-red shadow-sm group hover:scale-105 active:scale-95"
+              className="inline-flex items-center gap-2 px-5 py-2 rounded-full text-xs font-bold uppercase tracking-wider bg-white/10 hover:bg-triton-red text-white transition-all duration-300 border border-white/20 hover:border-triton-red shadow-sm group hover:scale-105 active:scale-95"
             >
               <Radio className="w-4 h-4 text-triton-red animate-pulse group-hover:text-white transition-colors" />
               <span>Check Live Results</span>
@@ -132,7 +132,7 @@ const Navbar = ({
               href={mediaPictureUrl}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full text-xs font-bold uppercase tracking-wider bg-white/10 hover:bg-triton-red text-white transition-all duration-300 border border-white/20 hover:border-triton-red shadow-sm group hover:scale-105 active:scale-95"
+              className="inline-flex items-center gap-2 px-5 py-2 rounded-full text-xs font-bold uppercase tracking-wider bg-white/10 hover:bg-triton-red text-white transition-all duration-300 border border-white/20 hover:border-triton-red shadow-sm group hover:scale-105 active:scale-95"
             >
               <Camera className="w-4 h-4 text-triton-red group-hover:text-white transition-colors" />
               <span>Race Pictures</span>

@@ -12,7 +12,7 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
   const [authorized, setAuthorized] = useState(false);
 
   useEffect(() => {
-    // Se estiver na tela de login, não bloqueia
+    // Do not block on the login page
     if (pathname === "/admin/login") {
       setAuthorized(true);
       return;
@@ -31,13 +31,13 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
     router.push("/admin/login");
   };
 
-  // Se for a tela de login, renderiza limpo sem menu
+  // Render clean layout without menu on the login page
   if (pathname === "/admin/login") {
     return <>{children}</>;
   }
 
   if (!authorized) {
-    return null; // ou um loader enquanto valida o token
+    return null; // or a loader while validating the token
   }
 
   return (
@@ -57,7 +57,7 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
                 className="flex items-center space-x-2 px-3 py-2 rounded-md text-sm font-medium text-gray-300 hover:text-white hover:bg-white/5 transition"
               >
                 <Calendar className="w-4 h-4 text-[#df1f26]" />
-                <span>Eventos</span>
+                <span>Events</span>
               </Link>
             </nav>
           </div>
@@ -69,7 +69,7 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
               className="flex items-center space-x-1.5 text-xs text-gray-400 hover:text-white px-3 py-1.5 rounded-lg border border-white/10 hover:border-white/20 transition"
             >
               <ArrowLeft className="w-3.5 h-3.5" />
-              <span>Ver Site</span>
+              <span>View Site</span>
             </Link>
 
             <Link
@@ -77,16 +77,16 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
               className="flex items-center space-x-1.5 bg-[#df1f26] hover:bg-red-700 text-white text-xs font-semibold px-3 py-1.5 rounded-lg transition"
             >
               <PlusCircle className="w-4 h-4" />
-              <span>Novo Evento</span>
+              <span>New Event</span>
             </Link>
 
             <button
               onClick={handleLogout}
               className="flex items-center space-x-1.5 text-xs text-red-400 hover:text-red-300 px-3 py-1.5 rounded-lg border border-red-500/20 hover:bg-red-500/10 transition"
-              title="Encerrar Sessão"
+              title="Sign Out"
             >
               <LogOut className="w-3.5 h-3.5" />
-              <span>Sair</span>
+              <span>Sign Out</span>
             </button>
           </div>
         </div>
@@ -97,7 +97,7 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
       </main>
 
       <footer className="border-t border-white/10 py-4 text-center text-xs text-gray-500">
-        TRITON World Series &copy; {new Date().getFullYear()} — Painel Administrativo
+        TRITON World Series &copy; {new Date().getFullYear()} — Admin Panel
       </footer>
     </div>
   );

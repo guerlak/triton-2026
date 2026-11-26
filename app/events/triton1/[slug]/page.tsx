@@ -35,7 +35,7 @@ export default async function Page({ params }: { params: Promise<{ slug: string 
 
   return (
     <>
-      <EventNavBar language={data.language} registerLink={data.registrationLink} isRegistrationClosed={data.isRegistrationClosed} />
+      <EventNavBar language={data.language} registerLink={data.registrationLink} isRegistrationClosed={data.registrationStatus === "Closed" || data.registrationStatus === "Hold"} />
       <main className="text-white bg-black/90">
         <HeroEvent data={data.hero} />
         <CountdownSectionEvent data={data} />

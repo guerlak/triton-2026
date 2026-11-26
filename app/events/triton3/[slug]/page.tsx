@@ -14,7 +14,6 @@ import PartnersSectionEvent from "@/app/components/event/PartnersSectionEvent";
 import AfterMovie from "@/app/components/AfterMovie";
 import { Metadata } from "next";
 import ExtraEvent from "@/app/components/event/ExtraEvent";
-import RedLine from "@/app/ui/RedLine";
 
 export async function generateMetadata({
   params,
@@ -52,7 +51,7 @@ export default async function Page({
       <EventNavBar
         language={data.language}
         registerLink={data.registrationLink}
-        isRegistrationClosed={data.isRegistrationClosed}
+        isRegistrationClosed={data.registrationStatus === "Closed" || data.registrationStatus === "Hold"}
       />
       <main className="text-white bg-black/90">
         <HeroEvent data={data.hero} />

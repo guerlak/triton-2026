@@ -101,7 +101,7 @@ export default async function Page({ params }: { params: Promise<{ slug: string 
             >
               Athlete Area
             </Link> */}
-            {data.registrationLink && !data.isRegistrationClosed ? (
+            {data.registrationLink && data.registrationStatus !== "Closed" && data.registrationStatus !== "Hold" ? (
               <a
                 href={data.registrationLink}
                 target="_blank"

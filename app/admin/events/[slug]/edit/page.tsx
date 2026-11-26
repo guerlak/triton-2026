@@ -13,12 +13,14 @@ import {
   Image as ImageIcon,
   FileText,
   Trophy,
+  Clock,
 } from "lucide-react";
 import {
   getEventBySlugFromApi,
   updateEventApi,
   uploadMediaApi,
 } from "@/services/backendEventService";
+import ScheduleEditor, { ScheduleFormState } from "../../_components/ScheduleEditor";
 
 export default function EditEventPage() {
   const router = useRouter();
@@ -26,7 +28,7 @@ export default function EditEventPage() {
   const slug = String(params.slug);
 
   // Navigation tab
-  const [activeTab, setActiveTab] = useState<"general" | "media" | "info" | "athlete">("general");
+  const [activeTab, setActiveTab] = useState<"general" | "media" | "info" | "athlete" | "schedule">("general");
 
   // Loading states
   const [loading, setLoading] = useState(true);
@@ -70,6 +72,13 @@ export default function EditEventPage() {
     videoBriefingUrl: "",
   });
 
+  const [schedule, setSchedule] = useState<ScheduleFormState>({
+    title: "",
+    subtitle: "",
+    importantNote: "",
+    days: [],
+  });
+
   // Load existing event data
   useEffect(() => {
     async function loadEvent() {
@@ -77,7 +86,7 @@ export default function EditEventPage() {
       const data = await getEventBySlugFromApi(slug);
 
       if (!data) {
-        setFeedback({ type: "error", message: `Evento '${slug}' não encontrado.` });
+        setFeedback({ type: "error", message: `Event '${slug}' not found.` });
         setLoading(false);
         return;
       }
@@ -116,6 +125,13 @@ export default function EditEventPage() {
         videoBriefingUrl: data.athleteArea?.videoBriefingUrl || "",
       });
 
+      setSchedule({
+        title: data.schedule?.title || "",
+        subtitle: data.schedule?.subtitle || "",
+        importantNote: data.schedule?.importantNote || "",
+        days: data.schedule?.days || [],
+      });
+
       setLoading(false);
     }
 
@@ -138,9 +154,9 @@ export default function EditEventPage() {
     setUploadingHero(false);
     if (res.success && res.data) {
       setFormData((prev) => ({ ...prev, heroBackgroundImage: res.data!.url }));
-      setFeedback({ type: "success", message: "Nova foto de capa enviada ao Cloudflare R2!" });
+      setFeedback({ type: "success", message: "New cover photo uploaded to Cloudflare R2!" });
     } else {
-      setFeedback({ type: "error", message: res.message || "Erro no upload da imagem." });
+      setFeedback({ type: "error", message: res.message || "Error uploading image." });
     }
   };
 
@@ -158,9 +174,9 @@ export default function EditEventPage() {
     setUploadingLogo(false);
     if (res.success && res.data) {
       setFormData((prev) => ({ ...prev, heroLogoImage: res.data!.url }));
-      setFeedback({ type: "success", message: "Nova logo enviada ao Cloudflare R2!" });
+      setFeedback({ type: "success", message: "New logo uploaded to Cloudflare R2!" });
     } else {
-      setFeedback({ type: "error", message: res.message || "Erro no upload do logo." });
+      setFeedback({ type: "error", message: res.message || "Error uploading logo." });
     }
   };
 
@@ -169,7 +185,7 @@ export default function EditEventPage() {
     e.preventDefault();
 
     if (!formData.title || !formData.location) {
-      setFeedback({ type: "error", message: "Preencha os campos obrigatórios (Título e Local)." });
+      setFeedback({ type: "error", message: "Please fill in the required fields (Title and Location)." });
       setActiveTab("general");
       return;
     }
@@ -223,16 +239,18 @@ export default function EditEventPage() {
       };
     }
 
+    payload.schedule = schedule;
+
     const result = await updateEventApi(slug, payload);
     setSubmitting(false);
 
     if (result.success) {
-      setFeedback({ type: "success", message: "Evento atualizado com sucesso no PostgreSQL!" });
+      setFeedback({ type: "success", message: "Event updated successfully in PostgreSQL!" });
       setTimeout(() => {
         router.push("/admin/events");
       }, 1200);
     } else {
-      setFeedback({ type: "error", message: result.message || "Erro ao atualizar evento." });
+      setFeedback({ type: "error", message: result.message || "Error updating event." });
     }
   };
 
@@ -240,7 +258,7 @@ export default function EditEventPage() {
     return (
       <div className="py-24 text-center">
         <Loader2 className="w-8 h-8 text-[#df1f26] animate-spin mx-auto mb-3" />
-        <p className="text-sm text-gray-400">Carregando dados do evento...</p>
+        <p className="text-sm text-gray-400">Loading event data...</p>
       </div>
     );
   }
@@ -254,7 +272,7 @@ export default function EditEventPage() {
           className="inline-flex items-center space-x-2 text-sm text-gray-400 hover:text-white transition"
         >
           <ArrowLeft className="w-4 h-4" />
-          <span>Voltar para Lista de Eventos</span>
+          <span>Back to Events List</span>
         </Link>
       </div>
 
@@ -262,7 +280,7 @@ export default function EditEventPage() {
         <div className="p-6 border-b border-white/10 flex items-center justify-between">
           <div>
             <h1 className="text-xl font-bold text-white flex items-center space-x-2">
-              <span>Editar Evento:</span>
+              <span>Edit Event:</span>
               <span className="text-[#df1f26]">{formData.title}</span>
             </h1>
             <p className="text-xs text-gray-400 mt-1 font-mono">slug: {slug}</p>
@@ -311,7 +329,7 @@ export default function EditEventPage() {
             }`}
           >
             <Calendar className="w-4 h-4 text-[#df1f26]" />
-            <span>1. Informações Gerais</span>
+            <span>1. General Info</span>
           </button>
 
           <button
@@ -324,7 +342,7 @@ export default function EditEventPage() {
             }`}
           >
             <ImageIcon className="w-4 h-4 text-[#df1f26]" />
-            <span>2. Fotos e Mídias (R2)</span>
+            <span>2. Photos & Media (R2)</span>
           </button>
 
           <button
@@ -337,7 +355,20 @@ export default function EditEventPage() {
             }`}
           >
             <FileText className="w-4 h-4 text-[#df1f26]" />
-            <span>3. Conteúdo & Pontuação</span>
+            <span>3. Content & Scoring</span>
+          </button>
+
+          <button
+            type="button"
+            onClick={() => setActiveTab("schedule")}
+            className={`flex items-center space-x-2 py-3.5 px-4 text-xs font-semibold border-b-2 transition ${
+              activeTab === "schedule"
+                ? "border-[#df1f26] text-white"
+                : "border-transparent text-gray-400 hover:text-gray-200"
+            }`}
+          >
+            <Clock className="w-4 h-4 text-[#df1f26]" />
+            <span>4. Schedule</span>
           </button>
 
           <button
@@ -350,7 +381,7 @@ export default function EditEventPage() {
             }`}
           >
             <Trophy className="w-4 h-4 text-[#df1f26]" />
-            <span>4. Área do Atleta</span>
+            <span>5. Athlete Area</span>
           </button>
         </div>
 
@@ -362,7 +393,7 @@ export default function EditEventPage() {
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                 <div>
                   <label className="block text-xs font-medium text-gray-300 mb-1.5">
-                    Título do Evento *
+                    Event Title *
                   </label>
                   <input
                     type="text"
@@ -375,7 +406,7 @@ export default function EditEventPage() {
 
                 <div>
                   <label className="block text-xs font-medium text-gray-300 mb-1.5">
-                    Subtítulo
+                    Subtitle
                   </label>
                   <input
                     type="text"
@@ -390,21 +421,21 @@ export default function EditEventPage() {
               <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
                 <div>
                   <label className="block text-xs font-medium text-gray-300 mb-1.5">
-                    Formato do Evento
+                    Event Format
                   </label>
                   <select
                     value={formData.eventFormat}
                     onChange={(e) => setFormData({ ...formData, eventFormat: e.target.value as any })}
                     className="w-full bg-[#1b1b1b] border border-white/10 rounded-xl px-3.5 py-2.5 text-white text-sm focus:outline-none focus:border-[#df1f26] transition"
                   >
-                    <option value="triton3">TRITON 3 (3 dias consecutivos)</option>
-                    <option value="triton1">TRITON 1 (1 dia de prova)</option>
+                    <option value="triton3">TRITON 3 (3 consecutive days)</option>
+                    <option value="triton1">TRITON 1 (1-day race)</option>
                   </select>
                 </div>
 
                 <div>
                   <label className="block text-xs font-medium text-gray-300 mb-1.5">
-                    Ano da Prova
+                    Race Year
                   </label>
                   <input
                     type="number"
@@ -416,16 +447,16 @@ export default function EditEventPage() {
 
                 <div>
                   <label className="block text-xs font-medium text-gray-300 mb-1.5">
-                    Status do Evento
+                    Event Status
                   </label>
                   <select
                     value={formData.status}
                     onChange={(e) => setFormData({ ...formData, status: e.target.value as any })}
                     className="w-full bg-[#1b1b1b] border border-white/10 rounded-xl px-3.5 py-2.5 text-white text-sm focus:outline-none focus:border-[#df1f26] transition"
                   >
-                    <option value="Confirmed">Confirmed (Confirmado)</option>
-                    <option value="Planned">Planned (Planejado / Em Breve)</option>
-                    <option value="Completed">Completed (Realizado)</option>
+                    <option value="Confirmed">Confirmed</option>
+                    <option value="Planned">Planned (Coming Soon)</option>
+                    <option value="Completed">Completed</option>
                   </select>
                 </div>
               </div>
@@ -433,7 +464,7 @@ export default function EditEventPage() {
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                 <div>
                   <label className="block text-xs font-medium text-gray-300 mb-1.5">
-                    Localização *
+                    Location *
                   </label>
                   <input
                     type="text"
@@ -457,22 +488,10 @@ export default function EditEventPage() {
                 </div>
               </div>
 
-              <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                 <div>
                   <label className="block text-xs font-medium text-gray-300 mb-1.5">
-                    Texto Curto da Data
-                  </label>
-                  <input
-                    type="text"
-                    value={formData.dateText}
-                    onChange={(e) => setFormData({ ...formData, dateText: e.target.value })}
-                    className="w-full bg-[#1b1b1b] border border-white/10 rounded-xl px-3.5 py-2.5 text-white text-sm focus:outline-none focus:border-[#df1f26] transition"
-                  />
-                </div>
-
-                <div>
-                  <label className="block text-xs font-medium text-gray-300 mb-1.5">
-                    Texto Completo da Data
+                    Date Text
                   </label>
                   <input
                     type="text"
@@ -484,7 +503,7 @@ export default function EditEventPage() {
 
                 <div>
                   <label className="block text-xs font-medium text-gray-300 mb-1.5">
-                    Data Alvo (Target Date)
+                    Target Date
                   </label>
                   <input
                     type="datetime-local"
@@ -497,7 +516,7 @@ export default function EditEventPage() {
 
               <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
                 <div>
-                  <label className="block text-xs font-medium text-gray-300 mb-1.5">País</label>
+                  <label className="block text-xs font-medium text-gray-300 mb-1.5">Country</label>
                   <input
                     type="text"
                     value={formData.country}
@@ -507,7 +526,7 @@ export default function EditEventPage() {
                 </div>
 
                 <div>
-                  <label className="block text-xs font-medium text-gray-300 mb-1.5">Bandeira (Emoji)</label>
+                  <label className="block text-xs font-medium text-gray-300 mb-1.5">Flag (Emoji)</label>
                   <input
                     type="text"
                     value={formData.flag}
@@ -517,7 +536,7 @@ export default function EditEventPage() {
                 </div>
 
                 <div>
-                  <label className="block text-xs font-medium text-gray-300 mb-1.5">Link de Inscrição</label>
+                  <label className="block text-xs font-medium text-gray-300 mb-1.5">Registration Link</label>
                   <input
                     type="url"
                     value={formData.registrationLink}
@@ -536,15 +555,15 @@ export default function EditEventPage() {
               <div className="p-5 bg-[#171717] border border-white/10 rounded-2xl space-y-3">
                 <div className="flex items-center justify-between">
                   <div>
-                    <h3 className="text-sm font-semibold text-white">Imagem de Capa (Hero Background)</h3>
+                    <h3 className="text-sm font-semibold text-white">Cover Image (Hero Background)</h3>
                     <p className="text-xs text-gray-400">
-                      Foto panorâmica no topo da página.
+                      Panoramic photo displayed at the top of the page.
                     </p>
                   </div>
                   {uploadingHero && (
                     <span className="flex items-center space-x-1.5 text-xs text-[#df1f26]">
                       <Loader2 className="w-3.5 h-3.5 animate-spin" />
-                      <span>Enviando nova foto ao R2...</span>
+                      <span>Uploading new photo to R2...</span>
                     </span>
                   )}
                 </div>
@@ -565,7 +584,7 @@ export default function EditEventPage() {
                 <div className="flex items-center space-x-3">
                   <label className="cursor-pointer inline-flex items-center space-x-2 bg-white/5 hover:bg-white/10 text-white border border-white/15 px-4 py-2 rounded-xl text-xs font-medium transition">
                     <Upload className="w-4 h-4 text-[#df1f26]" />
-                    <span>Substituir Foto</span>
+                    <span>Replace Photo</span>
                     <input
                       type="file"
                       accept="image/*"
@@ -587,15 +606,15 @@ export default function EditEventPage() {
               <div className="p-5 bg-[#171717] border border-white/10 rounded-2xl space-y-3">
                 <div className="flex items-center justify-between">
                   <div>
-                    <h3 className="text-sm font-semibold text-white">Logo do Evento</h3>
+                    <h3 className="text-sm font-semibold text-white">Event Logo</h3>
                     <p className="text-xs text-gray-400">
-                      Logo transparente da etapa.
+                      Transparent logo for this event.
                     </p>
                   </div>
                   {uploadingLogo && (
                     <span className="flex items-center space-x-1.5 text-xs text-[#df1f26]">
                       <Loader2 className="w-3.5 h-3.5 animate-spin" />
-                      <span>Enviando nova logo ao R2...</span>
+                      <span>Uploading new logo to R2...</span>
                     </span>
                   )}
                 </div>
@@ -613,7 +632,7 @@ export default function EditEventPage() {
                 <div className="flex items-center space-x-3">
                   <label className="cursor-pointer inline-flex items-center space-x-2 bg-white/5 hover:bg-white/10 text-white border border-white/15 px-4 py-2 rounded-xl text-xs font-medium transition">
                     <Upload className="w-4 h-4 text-[#df1f26]" />
-                    <span>Substituir Logo</span>
+                    <span>Replace Logo</span>
                     <input
                       type="file"
                       accept="image/*"
@@ -637,9 +656,9 @@ export default function EditEventPage() {
           {activeTab === "info" && (
             <div className="space-y-4">
               <div className="p-4 bg-[#171717] border border-white/10 rounded-2xl space-y-3">
-                <h3 className="text-sm font-semibold text-white">Seção Institucional / Sobre a Etapa</h3>
+                <h3 className="text-sm font-semibold text-white">About / Institutional Section</h3>
                 <div>
-                  <label className="block text-xs font-medium text-gray-300 mb-1">Título</label>
+                  <label className="block text-xs font-medium text-gray-300 mb-1">Title</label>
                   <input
                     type="text"
                     value={formData.infoTitle}
@@ -648,7 +667,7 @@ export default function EditEventPage() {
                   />
                 </div>
                 <div>
-                  <label className="block text-xs font-medium text-gray-300 mb-1">Subtítulo</label>
+                  <label className="block text-xs font-medium text-gray-300 mb-1">Subtitle</label>
                   <input
                     type="text"
                     value={formData.infoSubtitle}
@@ -657,7 +676,7 @@ export default function EditEventPage() {
                   />
                 </div>
                 <div>
-                  <label className="block text-xs font-medium text-gray-300 mb-1">Descrição</label>
+                  <label className="block text-xs font-medium text-gray-300 mb-1">Description</label>
                   <textarea
                     rows={4}
                     value={formData.infoDescription}
@@ -668,9 +687,9 @@ export default function EditEventPage() {
               </div>
 
               <div className="p-4 bg-[#171717] border border-white/10 rounded-2xl space-y-3">
-                <h3 className="text-sm font-semibold text-white">Seção de Pontuação & Ranking</h3>
+                <h3 className="text-sm font-semibold text-white">Scoring & Ranking Section</h3>
                 <div>
-                  <label className="block text-xs font-medium text-gray-300 mb-1">Título da Pontuação</label>
+                  <label className="block text-xs font-medium text-gray-300 mb-1">Scoring Title</label>
                   <input
                     type="text"
                     value={formData.scoringTitle}
@@ -679,7 +698,7 @@ export default function EditEventPage() {
                   />
                 </div>
                 <div>
-                  <label className="block text-xs font-medium text-gray-300 mb-1">Descrição da Pontuação</label>
+                  <label className="block text-xs font-medium text-gray-300 mb-1">Scoring Description</label>
                   <textarea
                     rows={3}
                     value={formData.scoringDescription}
@@ -695,7 +714,7 @@ export default function EditEventPage() {
           {activeTab === "athlete" && (
             <div className="space-y-4">
               <div>
-                <label className="block text-xs font-medium text-gray-300 mb-1">Resultados Ao Vivo (URL)</label>
+                <label className="block text-xs font-medium text-gray-300 mb-1">Live Results (URL)</label>
                 <input
                   type="url"
                   value={formData.liveResultsUrl}
@@ -705,7 +724,7 @@ export default function EditEventPage() {
               </div>
 
               <div>
-                <label className="block text-xs font-medium text-gray-300 mb-1">Start List API (URL RaceResult)</label>
+                <label className="block text-xs font-medium text-gray-300 mb-1">Start List API (RaceResult URL)</label>
                 <input
                   type="url"
                   value={formData.startListApiUrl}
@@ -715,7 +734,7 @@ export default function EditEventPage() {
               </div>
 
               <div>
-                <label className="block text-xs font-medium text-gray-300 mb-1">Guia do Atleta / Race Guide (PDF)</label>
+                <label className="block text-xs font-medium text-gray-300 mb-1">Athlete / Race Guide (PDF)</label>
                 <input
                   type="text"
                   value={formData.raceGuideLink}
@@ -725,7 +744,7 @@ export default function EditEventPage() {
               </div>
 
               <div>
-                <label className="block text-xs font-medium text-gray-300 mb-1">Galeria de Fotos (URL)</label>
+                <label className="block text-xs font-medium text-gray-300 mb-1">Photo Gallery (URL)</label>
                 <input
                   type="url"
                   value={formData.mediaPictureUrl}
@@ -735,7 +754,7 @@ export default function EditEventPage() {
               </div>
 
               <div>
-                <label className="block text-xs font-medium text-gray-300 mb-1">Vídeo Briefing (YouTube)</label>
+                <label className="block text-xs font-medium text-gray-300 mb-1">Video Briefing (YouTube)</label>
                 <input
                   type="url"
                   value={formData.videoBriefingUrl}
@@ -746,13 +765,18 @@ export default function EditEventPage() {
             </div>
           )}
 
+          {/* TAB 5: SCHEDULE */}
+          {activeTab === "schedule" && (
+            <ScheduleEditor schedule={schedule} onChange={setSchedule} />
+          )}
+
           {/* Form Actions */}
           <div className="pt-6 border-t border-white/10 flex items-center justify-between">
             <Link
               href="/admin/events"
               className="text-xs text-gray-400 hover:text-white transition px-4 py-2"
             >
-              Cancelar
+              Cancel
             </Link>
 
             <button
@@ -763,10 +787,10 @@ export default function EditEventPage() {
               {submitting ? (
                 <>
                   <Loader2 className="w-4 h-4 animate-spin" />
-                  <span>Atualizando no PostgreSQL...</span>
+                  <span>Updating in PostgreSQL...</span>
                 </>
               ) : (
-                <span>Salvar Alterações</span>
+                <span>Save Changes</span>
               )}
             </button>
           </div>
@@ -775,4 +799,3 @@ export default function EditEventPage() {
     </div>
   );
 }
-

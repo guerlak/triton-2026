@@ -23,7 +23,7 @@ export default function LoginPage() {
     if (res.success) {
       router.push("/admin/events");
     } else {
-      setError(res.message || "Credenciais inválidas.");
+      setError(res.message || "Invalid credentials.");
     }
   };
 
@@ -35,7 +35,7 @@ export default function LoginPage() {
             TRITON <span className="text-[#df1f26]">ADMIN</span>
           </span>
           <p className="text-xs text-gray-400 mt-2">
-            Acesso exclusivo para administradores e colaboradores
+            Restricted access for administrators and staff
           </p>
         </div>
 
@@ -48,7 +48,7 @@ export default function LoginPage() {
 
         <form onSubmit={handleSubmit} className="space-y-4">
           <div>
-            <label className="block text-xs font-medium text-gray-300 mb-1.5">E-mail</label>
+            <label className="block text-xs font-medium text-gray-300 mb-1.5">Email</label>
             <div className="flex items-center bg-[#1b1b1b] border border-white/10 rounded-xl px-3.5 py-2.5 focus-within:border-[#df1f26] transition">
               <Mail className="w-4 h-4 text-gray-500 mr-2.5" />
               <input
@@ -63,7 +63,7 @@ export default function LoginPage() {
           </div>
 
           <div>
-            <label className="block text-xs font-medium text-gray-300 mb-1.5">Senha</label>
+            <label className="block text-xs font-medium text-gray-300 mb-1.5">Password</label>
             <div className="flex items-center bg-[#1b1b1b] border border-white/10 rounded-xl px-3.5 py-2.5 focus-within:border-[#df1f26] transition">
               <Lock className="w-4 h-4 text-gray-500 mr-2.5" />
               <input
@@ -85,10 +85,10 @@ export default function LoginPage() {
             {loading ? (
               <>
                 <Loader2 className="w-4 h-4 animate-spin" />
-                <span>Entrando...</span>
+                <span>Signing in...</span>
               </>
             ) : (
-              <span>Entrar no Painel</span>
+              <span>Sign In to Panel</span>
             )}
           </button>
         </form>

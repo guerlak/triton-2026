@@ -13,14 +13,16 @@ import {
   Image as ImageIcon,
   FileText,
   Trophy,
+  Clock,
 } from "lucide-react";
 import { createEventApi, uploadMediaApi } from "@/services/backendEventService";
+import ScheduleEditor, { ScheduleFormState } from "../_components/ScheduleEditor";
 
 export default function NewEventPage() {
   const router = useRouter();
 
   // Navigation tab
-  const [activeTab, setActiveTab] = useState<"general" | "media" | "info" | "athlete">("general");
+  const [activeTab, setActiveTab] = useState<"general" | "media" | "info" | "athlete" | "schedule">("general");
 
   // Loading & notification states
   const [submitting, setSubmitting] = useState(false);
@@ -63,6 +65,13 @@ export default function NewEventPage() {
     videoBriefingUrl: "",
   });
 
+  const [schedule, setSchedule] = useState<ScheduleFormState>({
+    title: "",
+    subtitle: "",
+    importantNote: "",
+    days: [],
+  });
+
   // Auto-slug generator
   const handleTitleChange = (val: string) => {
     const autoSlug = val
@@ -93,9 +102,9 @@ export default function NewEventPage() {
     setUploadingHero(false);
     if (res.success && res.data) {
       setFormData((prev) => ({ ...prev, heroBackgroundImage: res.data!.url }));
-      setFeedback({ type: "success", message: "Foto de capa enviada com sucesso para o Cloudflare R2!" });
+      setFeedback({ type: "success", message: "Cover image uploaded successfully to Cloudflare R2!" });
     } else {
-      setFeedback({ type: "error", message: res.message || "Erro no upload da imagem." });
+      setFeedback({ type: "error", message: res.message || "Error uploading image." });
     }
   };
 
@@ -113,9 +122,9 @@ export default function NewEventPage() {
     setUploadingLogo(false);
     if (res.success && res.data) {
       setFormData((prev) => ({ ...prev, heroLogoImage: res.data!.url }));
-      setFeedback({ type: "success", message: "Logo enviada com sucesso para o Cloudflare R2!" });
+      setFeedback({ type: "success", message: "Logo uploaded successfully to Cloudflare R2!" });
     } else {
-      setFeedback({ type: "error", message: res.message || "Erro no upload do logo." });
+      setFeedback({ type: "error", message: res.message || "Error uploading logo." });
     }
   };
 
@@ -124,7 +133,7 @@ export default function NewEventPage() {
     e.preventDefault();
 
     if (!formData.title || !formData.slug || !formData.location) {
-      setFeedback({ type: "error", message: "Preencha os campos obrigatórios (Título, Slug e Local)." });
+      setFeedback({ type: "error", message: "Please fill in the required fields (Title, Slug, and Location)." });
       setActiveTab("general");
       return;
     }
@@ -143,8 +152,8 @@ export default function NewEventPage() {
       year: Number(formData.year),
       location: formData.location,
       venue: formData.venue || undefined,
-      dateText: formData.dateText || "A Confirmar",
-      fullDateText: formData.fullDateText || "Data a Confirmar",
+      dateText: formData.fullDateText || "TBD",
+      fullDateText: formData.fullDateText || "Date TBD",
       targetDate: formData.targetDate,
       country: formData.country,
       flag: formData.flag,
@@ -180,16 +189,25 @@ export default function NewEventPage() {
       };
     }
 
+    if (
+      schedule.title ||
+      schedule.subtitle ||
+      schedule.importantNote ||
+      schedule.days.length > 0
+    ) {
+      payload.schedule = schedule;
+    }
+
     const result = await createEventApi(payload);
     setSubmitting(false);
 
     if (result.success) {
-      setFeedback({ type: "success", message: "Evento criado com sucesso no PostgreSQL!" });
+      setFeedback({ type: "success", message: "Event created successfully in PostgreSQL!" });
       setTimeout(() => {
         router.push("/admin/events");
       }, 1500);
     } else {
-      setFeedback({ type: "error", message: result.message || "Erro ao salvar evento." });
+      setFeedback({ type: "error", message: result.message || "Error saving event." });
     }
   };
 
@@ -202,15 +220,15 @@ export default function NewEventPage() {
           className="inline-flex items-center space-x-2 text-sm text-gray-400 hover:text-white transition"
         >
           <ArrowLeft className="w-4 h-4" />
-          <span>Voltar para Lista de Eventos</span>
+          <span>Back to Events List</span>
         </Link>
       </div>
 
       <div className="bg-[#141414] border border-white/10 rounded-2xl overflow-hidden shadow-2xl">
         <div className="p-6 border-b border-white/10">
-          <h1 className="text-xl font-bold text-white">Cadastrar Novo Evento</h1>
+          <h1 className="text-xl font-bold text-white">Create New Event</h1>
           <p className="text-xs text-gray-400 mt-1">
-            Preencha os dados do evento e envie as mídias. As imagens serão otimizadas e salvas diretamente no Cloudflare R2.
+            Fill in the event details and upload media assets. Images will be optimized and stored directly in Cloudflare R2.
           </p>
         </div>
 
@@ -244,7 +262,7 @@ export default function NewEventPage() {
             }`}
           >
             <Calendar className="w-4 h-4 text-[#df1f26]" />
-            <span>1. Informações Gerais</span>
+            <span>1. General Info</span>
           </button>
 
           <button
@@ -257,7 +275,7 @@ export default function NewEventPage() {
             }`}
           >
             <ImageIcon className="w-4 h-4 text-[#df1f26]" />
-            <span>2. Fotos e Mídias (R2)</span>
+            <span>2. Photos & Media (R2)</span>
           </button>
 
           <button
@@ -270,7 +288,20 @@ export default function NewEventPage() {
             }`}
           >
             <FileText className="w-4 h-4 text-[#df1f26]" />
-            <span>3. Conteúdo & Pontuação</span>
+            <span>3. Content & Scoring</span>
+          </button>
+
+          <button
+            type="button"
+            onClick={() => setActiveTab("schedule")}
+            className={`flex items-center space-x-2 py-3.5 px-4 text-xs font-semibold border-b-2 transition ${
+              activeTab === "schedule"
+                ? "border-[#df1f26] text-white"
+                : "border-transparent text-gray-400 hover:text-gray-200"
+            }`}
+          >
+            <Clock className="w-4 h-4 text-[#df1f26]" />
+            <span>4. Schedule</span>
           </button>
 
           <button
@@ -283,7 +314,7 @@ export default function NewEventPage() {
             }`}
           >
             <Trophy className="w-4 h-4 text-[#df1f26]" />
-            <span>4. Área do Atleta</span>
+            <span>5. Athlete Area</span>
           </button>
         </div>
 
@@ -295,21 +326,21 @@ export default function NewEventPage() {
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                 <div>
                   <label className="block text-xs font-medium text-gray-300 mb-1.5">
-                    Título do Evento * <span className="text-zinc-500">(Ex: Florianópolis)</span>
+                    Event Title * <span className="text-zinc-500">(e.g. Florianópolis)</span>
                   </label>
                   <input
                     type="text"
                     required
                     value={formData.title}
                     onChange={(e) => handleTitleChange(e.target.value)}
-                    placeholder="Ex: Rio de Janeiro"
+                    placeholder="e.g. Rio de Janeiro"
                     className="w-full bg-[#1b1b1b] border border-white/10 rounded-xl px-3.5 py-2.5 text-white text-sm focus:outline-none focus:border-[#df1f26] transition"
                   />
                 </div>
 
                 <div>
                   <label className="block text-xs font-medium text-gray-300 mb-1.5">
-                    Slug (URL amigável) * <span className="text-zinc-500">(Ex: floripa-2027)</span>
+                    Slug (URL-friendly) * <span className="text-zinc-500">(e.g. floripa-2027)</span>
                   </label>
                   <input
                     type="text"
@@ -325,21 +356,21 @@ export default function NewEventPage() {
               <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
                 <div>
                   <label className="block text-xs font-medium text-gray-300 mb-1.5">
-                    Formato do Evento
+                    Event Format
                   </label>
                   <select
                     value={formData.eventFormat}
                     onChange={(e) => setFormData({ ...formData, eventFormat: e.target.value as any })}
                     className="w-full bg-[#1b1b1b] border border-white/10 rounded-xl px-3.5 py-2.5 text-white text-sm focus:outline-none focus:border-[#df1f26] transition"
                   >
-                    <option value="triton3">TRITON 3 (3 dias consecutivos)</option>
-                    <option value="triton1">TRITON 1 (1 dia de prova)</option>
+                    <option value="triton3">TRITON 3 (3 consecutive days)</option>
+                    <option value="triton1">TRITON 1 (1-day race)</option>
                   </select>
                 </div>
 
                 <div>
                   <label className="block text-xs font-medium text-gray-300 mb-1.5">
-                    Ano da Prova
+                    Race Year
                   </label>
                   <input
                     type="number"
@@ -351,16 +382,16 @@ export default function NewEventPage() {
 
                 <div>
                   <label className="block text-xs font-medium text-gray-300 mb-1.5">
-                    Status do Evento
+                    Event Status
                   </label>
                   <select
                     value={formData.status}
                     onChange={(e) => setFormData({ ...formData, status: e.target.value as any })}
                     className="w-full bg-[#1b1b1b] border border-white/10 rounded-xl px-3.5 py-2.5 text-white text-sm focus:outline-none focus:border-[#df1f26] transition"
                   >
-                    <option value="Confirmed">Confirmed (Confirmado)</option>
-                    <option value="Planned">Planned (Planejado / Em Breve)</option>
-                    <option value="Completed">Completed (Realizado)</option>
+                    <option value="Confirmed">Confirmed</option>
+                    <option value="Planned">Planned (Coming Soon)</option>
+                    <option value="Completed">Completed</option>
                   </select>
                 </div>
               </div>
@@ -368,7 +399,7 @@ export default function NewEventPage() {
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                 <div>
                   <label className="block text-xs font-medium text-gray-300 mb-1.5">
-                    Localização * <span className="text-zinc-500">(Ex: Portobello, RJ)</span>
+                    Location * <span className="text-zinc-500">(e.g. Portobello, RJ)</span>
                   </label>
                   <input
                     type="text"
@@ -382,7 +413,7 @@ export default function NewEventPage() {
 
                 <div>
                   <label className="block text-xs font-medium text-gray-300 mb-1.5">
-                    Arena / Venue <span className="text-zinc-500">(Ex: Portobello Resort & Safari)</span>
+                    Arena / Venue <span className="text-zinc-500">(e.g. Portobello Resort & Safari)</span>
                   </label>
                   <input
                     type="text"
@@ -394,36 +425,23 @@ export default function NewEventPage() {
                 </div>
               </div>
 
-              <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                 <div>
                   <label className="block text-xs font-medium text-gray-300 mb-1.5">
-                    Texto Curto da Data <span className="text-zinc-500">(Ex: AGO 21 . 22 . 23)</span>
-                  </label>
-                  <input
-                    type="text"
-                    value={formData.dateText}
-                    onChange={(e) => setFormData({ ...formData, dateText: e.target.value })}
-                    placeholder="OUT 16 . 17 . 18"
-                    className="w-full bg-[#1b1b1b] border border-white/10 rounded-xl px-3.5 py-2.5 text-white text-sm focus:outline-none focus:border-[#df1f26] transition"
-                  />
-                </div>
-
-                <div>
-                  <label className="block text-xs font-medium text-gray-300 mb-1.5">
-                    Texto Completo da Data <span className="text-zinc-500">(Ex: 21, 22 e 23 de Agosto)</span>
+                    Date Text <span className="text-zinc-500">(e.g. August 21, 22 & 23)</span>
                   </label>
                   <input
                     type="text"
                     value={formData.fullDateText}
                     onChange={(e) => setFormData({ ...formData, fullDateText: e.target.value })}
-                    placeholder="16, 17 e 18 de Outubro, 2027"
+                    placeholder="October 16, 17 & 18, 2027"
                     className="w-full bg-[#1b1b1b] border border-white/10 rounded-xl px-3.5 py-2.5 text-white text-sm focus:outline-none focus:border-[#df1f26] transition"
                   />
                 </div>
 
                 <div>
                   <label className="block text-xs font-medium text-gray-300 mb-1.5">
-                    Data Alvo (Target Date p/ Countdown)
+                    Target Date (for Countdown)
                   </label>
                   <input
                     type="datetime-local"
@@ -436,7 +454,7 @@ export default function NewEventPage() {
 
               <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
                 <div>
-                  <label className="block text-xs font-medium text-gray-300 mb-1.5">País</label>
+                  <label className="block text-xs font-medium text-gray-300 mb-1.5">Country</label>
                   <input
                     type="text"
                     value={formData.country}
@@ -446,7 +464,7 @@ export default function NewEventPage() {
                 </div>
 
                 <div>
-                  <label className="block text-xs font-medium text-gray-300 mb-1.5">Bandeira (Emoji)</label>
+                  <label className="block text-xs font-medium text-gray-300 mb-1.5">Flag (Emoji)</label>
                   <input
                     type="text"
                     value={formData.flag}
@@ -456,7 +474,7 @@ export default function NewEventPage() {
                 </div>
 
                 <div>
-                  <label className="block text-xs font-medium text-gray-300 mb-1.5">Link de Inscrição</label>
+                  <label className="block text-xs font-medium text-gray-300 mb-1.5">Registration Link</label>
                   <input
                     type="url"
                     value={formData.registrationLink}
@@ -476,15 +494,15 @@ export default function NewEventPage() {
               <div className="p-5 bg-[#171717] border border-white/10 rounded-2xl space-y-3">
                 <div className="flex items-center justify-between">
                   <div>
-                    <h3 className="text-sm font-semibold text-white">Imagem de Capa (Hero Background)</h3>
+                    <h3 className="text-sm font-semibold text-white">Cover Image (Hero Background)</h3>
                     <p className="text-xs text-gray-400">
-                      Foto panorâmica da arena ou modalidade que ocupa o topo da página do evento.
+                      Panoramic photo of the venue or discipline displayed at the top of the event page.
                     </p>
                   </div>
                   {uploadingHero && (
                     <span className="flex items-center space-x-1.5 text-xs text-[#df1f26]">
                       <Loader2 className="w-3.5 h-3.5 animate-spin" />
-                      <span>Otimizando e enviando ao R2...</span>
+                      <span>Optimizing and uploading to R2...</span>
                     </span>
                   )}
                 </div>
@@ -505,7 +523,7 @@ export default function NewEventPage() {
                 <div className="flex items-center space-x-3">
                   <label className="cursor-pointer inline-flex items-center space-x-2 bg-white/5 hover:bg-white/10 text-white border border-white/15 px-4 py-2 rounded-xl text-xs font-medium transition">
                     <Upload className="w-4 h-4 text-[#df1f26]" />
-                    <span>{formData.heroBackgroundImage ? "Alterar Foto" : "Selecionar Foto de Capa"}</span>
+                    <span>{formData.heroBackgroundImage ? "Change Photo" : "Select Cover Photo"}</span>
                     <input
                       type="file"
                       accept="image/*"
@@ -518,7 +536,7 @@ export default function NewEventPage() {
                     type="text"
                     value={formData.heroBackgroundImage}
                     onChange={(e) => setFormData({ ...formData, heroBackgroundImage: e.target.value })}
-                    placeholder="Ou cole a URL da imagem diretamente..."
+                    placeholder="Or paste the image URL directly..."
                     className="flex-1 bg-[#1b1b1b] border border-white/10 rounded-xl px-3 py-2 text-white text-xs font-mono focus:outline-none focus:border-[#df1f26] transition"
                   />
                 </div>
@@ -528,15 +546,15 @@ export default function NewEventPage() {
               <div className="p-5 bg-[#171717] border border-white/10 rounded-2xl space-y-3">
                 <div className="flex items-center justify-between">
                   <div>
-                    <h3 className="text-sm font-semibold text-white">Logo do Evento</h3>
+                    <h3 className="text-sm font-semibold text-white">Event Logo</h3>
                     <p className="text-xs text-gray-400">
-                      Logo em formato PNG transparente ou SVG da etapa (ex: logo branco).
+                      Transparent PNG or SVG logo for this event (e.g. white logo).
                     </p>
                   </div>
                   {uploadingLogo && (
                     <span className="flex items-center space-x-1.5 text-xs text-[#df1f26]">
                       <Loader2 className="w-3.5 h-3.5 animate-spin" />
-                      <span>Enviando logo ao R2...</span>
+                      <span>Uploading logo to R2...</span>
                     </span>
                   )}
                 </div>
@@ -554,7 +572,7 @@ export default function NewEventPage() {
                 <div className="flex items-center space-x-3">
                   <label className="cursor-pointer inline-flex items-center space-x-2 bg-white/5 hover:bg-white/10 text-white border border-white/15 px-4 py-2 rounded-xl text-xs font-medium transition">
                     <Upload className="w-4 h-4 text-[#df1f26]" />
-                    <span>{formData.heroLogoImage ? "Alterar Logo" : "Selecionar Logo"}</span>
+                    <span>{formData.heroLogoImage ? "Change Logo" : "Select Logo"}</span>
                     <input
                       type="file"
                       accept="image/*"
@@ -567,7 +585,7 @@ export default function NewEventPage() {
                     type="text"
                     value={formData.heroLogoImage}
                     onChange={(e) => setFormData({ ...formData, heroLogoImage: e.target.value })}
-                    placeholder="Ou cole a URL do logo..."
+                    placeholder="Or paste the logo URL..."
                     className="flex-1 bg-[#1b1b1b] border border-white/10 rounded-xl px-3 py-2 text-white text-xs font-mono focus:outline-none focus:border-[#df1f26] transition"
                   />
                 </div>
@@ -579,58 +597,58 @@ export default function NewEventPage() {
           {activeTab === "info" && (
             <div className="space-y-4">
               <div className="p-4 bg-[#171717] border border-white/10 rounded-2xl space-y-3">
-                <h3 className="text-sm font-semibold text-white">Seção Institucional / Sobre a Etapa</h3>
+                <h3 className="text-sm font-semibold text-white">About / Institutional Section</h3>
                 <div>
-                  <label className="block text-xs font-medium text-gray-300 mb-1">Título</label>
+                  <label className="block text-xs font-medium text-gray-300 mb-1">Title</label>
                   <input
                     type="text"
                     value={formData.infoTitle}
                     onChange={(e) => setFormData({ ...formData, infoTitle: e.target.value })}
-                    placeholder="Ex: Um formato inovador"
+                    placeholder="e.g. An innovative format"
                     className="w-full bg-[#1b1b1b] border border-white/10 rounded-xl px-3.5 py-2 text-white text-sm focus:outline-none focus:border-[#df1f26] transition"
                   />
                 </div>
                 <div>
-                  <label className="block text-xs font-medium text-gray-300 mb-1">Subtítulo</label>
+                  <label className="block text-xs font-medium text-gray-300 mb-1">Subtitle</label>
                   <input
                     type="text"
                     value={formData.infoSubtitle}
                     onChange={(e) => setFormData({ ...formData, infoSubtitle: e.target.value })}
-                    placeholder="Ex: Permita-se viver esse desafio"
+                    placeholder="e.g. Challenge yourself"
                     className="w-full bg-[#1b1b1b] border border-white/10 rounded-xl px-3.5 py-2 text-white text-sm focus:outline-none focus:border-[#df1f26] transition"
                   />
                 </div>
                 <div>
-                  <label className="block text-xs font-medium text-gray-300 mb-1">Descrição</label>
+                  <label className="block text-xs font-medium text-gray-300 mb-1">Description</label>
                   <textarea
                     rows={4}
                     value={formData.infoDescription}
                     onChange={(e) => setFormData({ ...formData, infoDescription: e.target.value })}
-                    placeholder="Descreva a prova e o diferencial da etapa..."
+                    placeholder="Describe the race and what makes this stage unique..."
                     className="w-full bg-[#1b1b1b] border border-white/10 rounded-xl px-3.5 py-2 text-white text-sm focus:outline-none focus:border-[#df1f26] transition"
                   />
                 </div>
               </div>
 
               <div className="p-4 bg-[#171717] border border-white/10 rounded-2xl space-y-3">
-                <h3 className="text-sm font-semibold text-white">Seção de Pontuação & Ranking</h3>
+                <h3 className="text-sm font-semibold text-white">Scoring & Ranking Section</h3>
                 <div>
-                  <label className="block text-xs font-medium text-gray-300 mb-1">Título da Pontuação</label>
+                  <label className="block text-xs font-medium text-gray-300 mb-1">Scoring Title</label>
                   <input
                     type="text"
                     value={formData.scoringTitle}
                     onChange={(e) => setFormData({ ...formData, scoringTitle: e.target.value })}
-                    placeholder="Ex: Um sistema de pontuação inovador"
+                    placeholder="e.g. An innovative scoring system"
                     className="w-full bg-[#1b1b1b] border border-white/10 rounded-xl px-3.5 py-2 text-white text-sm focus:outline-none focus:border-[#df1f26] transition"
                   />
                 </div>
                 <div>
-                  <label className="block text-xs font-medium text-gray-300 mb-1">Descrição da Pontuação</label>
+                  <label className="block text-xs font-medium text-gray-300 mb-1">Scoring Description</label>
                   <textarea
                     rows={3}
                     value={formData.scoringDescription}
                     onChange={(e) => setFormData({ ...formData, scoringDescription: e.target.value })}
-                    placeholder="Explique as regras de pontuação da etapa..."
+                    placeholder="Explain the scoring rules for this event..."
                     className="w-full bg-[#1b1b1b] border border-white/10 rounded-xl px-3.5 py-2 text-white text-sm focus:outline-none focus:border-[#df1f26] transition"
                   />
                 </div>
@@ -642,11 +660,11 @@ export default function NewEventPage() {
           {activeTab === "athlete" && (
             <div className="space-y-4">
               <p className="text-xs text-gray-400">
-                Links dinâmicos exibidos na Área do Atleta (resultados ao vivo, start list, guia da prova em PDF e fotos).
+                Dynamic links displayed in the Athlete Area (live results, start list, PDF race guide, and photo gallery).
               </p>
 
               <div>
-                <label className="block text-xs font-medium text-gray-300 mb-1">Resultados Ao Vivo (URL)</label>
+                <label className="block text-xs font-medium text-gray-300 mb-1">Live Results (URL)</label>
                 <input
                   type="url"
                   value={formData.liveResultsUrl}
@@ -657,7 +675,7 @@ export default function NewEventPage() {
               </div>
 
               <div>
-                <label className="block text-xs font-medium text-gray-300 mb-1">Start List API (URL RaceResult)</label>
+                <label className="block text-xs font-medium text-gray-300 mb-1">Start List API (RaceResult URL)</label>
                 <input
                   type="url"
                   value={formData.startListApiUrl}
@@ -668,18 +686,18 @@ export default function NewEventPage() {
               </div>
 
               <div>
-                <label className="block text-xs font-medium text-gray-300 mb-1">Guia do Atleta / Race Guide (PDF)</label>
+                <label className="block text-xs font-medium text-gray-300 mb-1">Athlete / Race Guide (PDF)</label>
                 <input
                   type="text"
                   value={formData.raceGuideLink}
                   onChange={(e) => setFormData({ ...formData, raceGuideLink: e.target.value })}
-                  placeholder="/docs/race-guide/... ou URL do PDF"
+                  placeholder="/docs/race-guide/... or PDF URL"
                   className="w-full bg-[#1b1b1b] border border-white/10 rounded-xl px-3.5 py-2 text-white text-sm focus:outline-none focus:border-[#df1f26] transition"
                 />
               </div>
 
               <div>
-                <label className="block text-xs font-medium text-gray-300 mb-1">Galeria de Fotos (Foco Radical / Fotop)</label>
+                <label className="block text-xs font-medium text-gray-300 mb-1">Photo Gallery (Foco Radical / Fotop)</label>
                 <input
                   type="url"
                   value={formData.mediaPictureUrl}
@@ -690,7 +708,7 @@ export default function NewEventPage() {
               </div>
 
               <div>
-                <label className="block text-xs font-medium text-gray-300 mb-1">Vídeo Briefing (YouTube)</label>
+                <label className="block text-xs font-medium text-gray-300 mb-1">Video Briefing (YouTube)</label>
                 <input
                   type="url"
                   value={formData.videoBriefingUrl}
@@ -702,13 +720,18 @@ export default function NewEventPage() {
             </div>
           )}
 
+          {/* TAB 5: SCHEDULE */}
+          {activeTab === "schedule" && (
+            <ScheduleEditor schedule={schedule} onChange={setSchedule} />
+          )}
+
           {/* Form Actions */}
           <div className="pt-6 border-t border-white/10 flex items-center justify-between">
             <Link
               href="/admin/events"
               className="text-xs text-gray-400 hover:text-white transition px-4 py-2"
             >
-              Cancelar
+              Cancel
             </Link>
 
             <button
@@ -719,10 +742,10 @@ export default function NewEventPage() {
               {submitting ? (
                 <>
                   <Loader2 className="w-4 h-4 animate-spin" />
-                  <span>Salvando no PostgreSQL...</span>
+                  <span>Saving to PostgreSQL...</span>
                 </>
               ) : (
-                <span>Salvar e Publicar Evento</span>
+                <span>Save & Publish Event</span>
               )}
             </button>
           </div>
@@ -731,4 +754,3 @@ export default function NewEventPage() {
     </div>
   );
 }
-

@@ -61,7 +61,7 @@ export interface EventFormatDetail {
 }
 
 export interface AthleteArea {
-  liveResultsUrl: string;
+  liveResultsUrl?: string;
   raceGuideLink?: string;
   startListApiUrl?: string;
   mediaPictureUrl?: string;
@@ -85,19 +85,12 @@ export interface EventData {
   targetDate: string;
   hero: EventHero;
   athleteArea?: AthleteArea;
-  liveResultsUrl?: string;
-  startListApiUrl?: string;
-  athleteResultsUrl?: string;
-  mediaPictureUrl?: string;
-  raceGuideLink?: string;
   registrationLink: string;
   isEventOn?: boolean;
-  isRegistrationClosed?: boolean;
   registrationStatus?: "Open" | "Closed" | "Hold";
   country: string;
   flag: string;
   status: "Confirmed" | "Planned" | "Completed";
-  eventStatus?: "Confirmed" | "Planned" | "Completed";
   year: number;
   extraEvent?: {
     imageSrc: string;
@@ -237,9 +230,11 @@ export const EVENT_DATA_MAP: Record<string, EventData> = {
     language: "pt-BR",
     registrationLink:
       "https://www.ticketsports.com.br/e/triton-1-salvador-86852",
-    startListApiUrl:
-      "https://api.raceresult.com/371805/RQDKNSO0GU02BW4IF4X1G7AF12S073FW",
-    liveResultsUrl: "https://resultscui.active.com/events/TRITONSALVADOR2026",
+    athleteArea: {
+      startListApiUrl:
+        "https://api.raceresult.com/371805/RQDKNSO0GU02BW4IF4X1G7AF12S073FW",
+      liveResultsUrl: "https://resultscui.active.com/events/TRITONSALVADOR2026",
+    },
     hero: {
       backgroundImage: heroImgSalvador, // Placeholder
       logoImage: logoSalvador,
@@ -586,7 +581,7 @@ export const EVENT_DATA_MAP: Record<string, EventData> = {
       liveResultsApiUrl:
         "https://api.raceresult.com/371805/9DMAJY5O7T7Z3ZUOVV0MOJGW5BFP5M9R",
     },
-    isRegistrationClosed: true,
+    registrationStatus: "Closed",
     hero: {
       backgroundImage: heroImg,
       logoImage: logoHero,
@@ -1051,19 +1046,17 @@ export const EVENT_DATA_MAP: Record<string, EventData> = {
     language: "en",
     registrationLink:
       "https://endurancecui.active.com/new/events/97349504/select-race?e4p=187915b9-9a93-4ced-99f0-839e3e981906&e4ts=1783257039&e4q=02163a21-29c0-4de1-b66e-72afad13e817&e4c=active&e4e=snawe00000000&e4h=59a235dbd7daa5c78eae6eae03177f16&e4rt=Safetynet&_p=9911300500391054",
-    isRegistrationClosed: true,
+    registrationStatus: "Closed",
     hero: {
       backgroundImage: heroImgQidong, // Placeholder
       logoImage: logoQidong,
     },
     athleteArea: {
-      liveResultsUrl: "",
       raceGuideLink: "https://drive.google.com/file/d/1T85jA2uPbkRfPtB4xR_8mVZj-sIPDYvU/view?usp=sharing",
       startListApiUrl:
         "https://api.raceresult.com/371805/J1CHIPHJFTLQ2LQWVP319LYWTF2ACT7W",
       mediaPictureUrl:
         "https://static.marathon-photos.com/triton/gallery.html?key=d5864acd59e189fba9d1cfddd11bcebe&race=qidong",
-      videoBriefingUrl: "",
       topFiveApiUrl: "https://api.raceresult.com/371805/CZBL6J266FAXH4MGJU4N26DZ1N31QS6U",
       liveResultsApiUrl: "https://api.raceresult.com/371805/1KADKP9W8EZRU5RV8PR4OX4XLTOD3WKU",
       clubRankingAPIUrl: "https://api.raceresult.com/371805/TIXT5QPHID3FHU2N08FV9PWILK7FD9OP"
@@ -1433,14 +1426,13 @@ export const EVENT_DATA_MAP: Record<string, EventData> = {
     language: "en",
     registrationLink:
       "https://register.hakuapp.com/?event=9ce0f9c87c1b43a8b97a",
-    isRegistrationClosed: true,
+    registrationStatus: "Closed",
     athleteArea: {
       raceGuideLink: "/docs/race-guide/athlete_guide_lisbon26.pdf",
       startListApiUrl:
         "https://api.raceresult.com/371805/XN2SPAM4PV33WMM7YFAM06MGTI9V50QE",
       mediaPictureUrl:
         "https://marathonphotos.live/Event/Sports%2FMPUK%2F2026%2FTriton1%20Lisboa/",
-      videoBriefingUrl: "",
       topFiveApiUrl:
         "https://api.raceresult.com/371805/AG1SSDYAYQ3FV5UGAF4YU8UM3G02KN27",
       liveResultsApiUrl:
@@ -1918,16 +1910,6 @@ export const EVENT_DATA_MAP: Record<string, EventData> = {
     language: "pt-BR",
     registrationLink:
       "https://www.ticketsports.com.br/e/triton-1-salvador-86852",
-    startListApiUrl: "",
-    athleteArea: {
-      liveResultsUrl: "",
-      raceGuideLink: "",
-      startListApiUrl: "",
-      mediaPictureUrl: "",
-      videoBriefingUrl: "",
-      liveResultsApiUrl: "",
-      topFiveApiUrl: "",
-    },
     hero: {
       backgroundImage: heroImgSalvador, // Placeholder
       logoImage: logoSalvador,
@@ -1978,7 +1960,6 @@ export const EVENT_DATA_MAP: Record<string, EventData> = {
           { label: "Long", val: "1500m", p: 100 },
         ],
 
-        stravaIds: { sprint: "", middle: "", long: "" },
       },
       bike: {
         day: "Dia 2",
@@ -2017,7 +1998,6 @@ export const EVENT_DATA_MAP: Record<string, EventData> = {
           { label: "Middle", val: "40km", p: 66 },
           { label: "Long", val: "60km", p: 100 },
         ],
-        stravaIds: { sprint: "", middle: "", long: "" },
         details: [
           "Retorno Sprint: ~4,5 km após Macundu",
           "Hidratação Middle & Long: ~10 km após Macundu",
@@ -2059,7 +2039,6 @@ export const EVENT_DATA_MAP: Record<string, EventData> = {
           { label: "Middle", val: "10km", p: 66 },
           { label: "Long", val: "15km", p: 100 },
         ],
-        stravaIds: { sprint: "", middle: "", long: "" },
       },
       distanceTable: [
         {
@@ -2328,16 +2307,6 @@ export const EVENT_DATA_MAP: Record<string, EventData> = {
     language: "en",
     registrationLink:
       "https://register.hakuapp.com/?event=4a449a61911ec49b146b",
-    isRegistrationClosed: false,
-    athleteArea: {
-      raceGuideLink: "",
-      startListApiUrl: "",
-      mediaPictureUrl: "",
-      videoBriefingUrl: "",
-      topFiveApiUrl: "",
-      liveResultsApiUrl: "",
-      liveResultsUrl: "",
-    },
     hero: {
       backgroundImage: heroImgLisboa27,
       logoImage: logoLisboa,
@@ -3281,18 +3250,6 @@ export const EVENT_DATA_MAP: Record<string, EventData> = {
     dateText: "JUN 26 . 27",
     fullDateText: "June 26 . 27, 2027",
     targetDate: "2027-06-25T08:00:00",
-    athleteArea: {
-      liveResultsUrl: "",
-      raceGuideLink: "",
-      startListApiUrl: "",
-      mediaPictureUrl: "",
-      videoBriefingUrl: "",
-      topFiveApiUrl:
-        "",
-      liveResultsApiUrl:
-        "",
-    },
-    isRegistrationClosed: true,
     registrationStatus: "Hold",
     hero: {
       backgroundImage: heroImgShijiazhuang27,
@@ -3686,17 +3643,7 @@ export const WORLDFINALS_DATA_MAP: Record<string, EventData> = {
     targetDate: "2027-09-26T08:00:00",
     language: "en",
     registrationLink: "",
-    isRegistrationClosed: true,
     registrationStatus: "Hold",
-    athleteArea: {
-      raceGuideLink: "",
-      startListApiUrl: "",
-      mediaPictureUrl: "",
-      videoBriefingUrl: "",
-      topFiveApiUrl: "",
-      liveResultsApiUrl: "",
-      liveResultsUrl: "",
-    },
     hero: {
       backgroundImage: heroImgWorldFinals27,
       logoImage: logoLisboa,
@@ -4035,17 +3982,7 @@ export const PREVIEW_DATA_MAP: Record<string, EventData> = {
     dateText: "JUN 20",
     fullDateText: "20 Jun, 2027",
     targetDate: "2027-06-20T08:00:00",
-    athleteArea: {
-      liveResultsUrl: "",
-      raceGuideLink: "",
-      startListApiUrl: "",
-      mediaPictureUrl: "",
-      videoBriefingUrl: "",
-      topFiveApiUrl: "",
-      liveResultsApiUrl: "",
-    },
     isEventOn: false,
-    isRegistrationClosed: true,
     registrationStatus: "Hold",
     hero: {
       backgroundImage: heroImgRio27,
@@ -4076,7 +4013,6 @@ export const PREVIEW_DATA_MAP: Record<string, EventData> = {
           { label: "Long", val: "2250m", p: 100 },
         ],
 
-        stravaIds: { sprint: "", middle: "", long: "" },
       },
       bike: {
         day: "Dia 2",
@@ -4099,7 +4035,6 @@ export const PREVIEW_DATA_MAP: Record<string, EventData> = {
           { label: "Middle", val: "40km", p: 66 },
           { label: "Long", val: "60km", p: 100 },
         ],
-        stravaIds: { sprint: "", middle: "", long: "" },
         details: [
           "Retorno Sprint: ~4,5 km após Macundu",
           "Hidratação Middle & Long: ~10 km após Macundu",
@@ -4128,7 +4063,6 @@ export const PREVIEW_DATA_MAP: Record<string, EventData> = {
           { label: "Middle", val: "10km", p: 66 },
           { label: "Long", val: "15km", p: 100 },
         ],
-        stravaIds: { sprint: "", middle: "", long: "" },
       },
       distanceTable: [
         {

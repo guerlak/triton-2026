@@ -41,7 +41,7 @@ export async function fetchStrapiEvents(): Promise<CalendarEvent[]> {
         location: attrs.location || '',
         country: attrs.country || '',
         flag: attrs.flag || '',
-        status: attrs.eventStatus || attrs.status || 'Planned',
+        status: attrs.status || 'Planned',
         year: attrs.year || new Date().getFullYear(),
         format: attrs.format || 'Triton 1',
         eventFormat: attrs.eventFormat || '',
