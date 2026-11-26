@@ -101,8 +101,10 @@ export async function uploadMediaApi(file: File, folder: string = "events"): Pro
     formData.append("file", file);
     formData.append("folder", folder);
 
+    const token = getAuthToken();
     const res = await fetch(`${API_BASE_URL}/upload`, {
       method: "POST",
+      headers: token ? { Authorization: `Bearer ${token}` } : undefined,
       body: formData,
     });
 
