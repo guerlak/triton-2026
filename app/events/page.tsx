@@ -140,7 +140,7 @@ const EventsPage: React.FC<EventsPageProps> = () => {
                           className={`px-4 py-1.5 rounded-full text-[10px] font-black uppercase tracking-[0.2em] ${event.status === "Confirmed"
                             ? "bg-green-500/10 text-green-400 border border-green-500/20"
                             : isCompleted
-                              ? "bg-white/10 text-gray-400 border border-white/10"
+                              ? "bg-white/10 text-white border border-white/10"
                               : "bg-yellow-500/10 text-yellow-400 border border-yellow-500/20"
                             }`}
                         >

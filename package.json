@@ -11,6 +11,12 @@
   "dependencies": {
     "@formatjs/intl-localematcher": "^0.7.5",
     "@next/third-parties": "^16.2.9",
+    "@tiptap/extension-image": "^3.35.0",
+    "@tiptap/extension-link": "^3.35.0",
+    "@tiptap/extension-placeholder": "^3.35.0",
+    "@tiptap/pm": "^3.35.0",
+    "@tiptap/react": "^3.35.0",
+    "@tiptap/starter-kit": "^3.35.0",
     "framer-motion": "^12.34.3",
     "lucide-react": "^0.556.0",
     "negotiator": "^1.0.0",

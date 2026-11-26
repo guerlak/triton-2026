@@ -29,8 +29,8 @@ const Navbar = () => {
     { name: "About", href: "#formats" },
     { name: "Global Ranking", href: "#ranking" },
     { name: "Calendar", href: "#calendar" },
-    { name: "Shop", href: "#shop" },
-    { name: "Triton Pass", href: "#shop" },
+
+    // { name: "Blog", href: "/blog" },
   ];
 
   return (

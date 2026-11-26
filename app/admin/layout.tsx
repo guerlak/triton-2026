@@ -3,7 +3,7 @@
 import { useEffect, useState } from "react";
 import { useRouter, usePathname } from "next/navigation";
 import Link from "next/link";
-import { Calendar, PlusCircle, ArrowLeft, LogOut } from "lucide-react";
+import { Calendar, PlusCircle, ArrowLeft, LogOut, FileText } from "lucide-react";
 import { getAuthToken, removeAuthToken } from "@/services/backendEventService";
 
 export default function AdminLayout({ children }: { children: React.ReactNode }) {
@@ -58,6 +58,13 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
               >
                 <Calendar className="w-4 h-4 text-[#df1f26]" />
                 <span>Events</span>
+              </Link>
+              <Link
+                href="/admin/blog"
+                className="flex items-center space-x-2 px-3 py-2 rounded-md text-sm font-medium text-gray-300 hover:text-white hover:bg-white/5 transition"
+              >
+                <FileText className="w-4 h-4 text-[#df1f26]" />
+                <span>Blog</span>
               </Link>
             </nav>
           </div>
